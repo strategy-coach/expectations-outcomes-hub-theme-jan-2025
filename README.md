@@ -147,4 +147,4 @@ This white paper outlines the architecture and technology strategy for implement
 
 ---
 
-This architecture and technology strategy provides a robust foundation for creating scalable, maintainable Customer Hub microsites for Netspective and Opsfolio CaaS customers. By leveraging modern frameworks like Astro, a TypeScript-first approach, and reusable components, the strategy ensures efficiency and adaptability in a MIMT environment. With a focus on the DRY principle, modular design, and balanced use of SSR and SSG, the approach minimizes duplication, promotes consistency, and supports seamless scaling as the customer base grows.
+This architecture and technology strategy provides a robust foundation for creating scalable, maintainable Customer Hub microsites. By leveraging modern frameworks like Astro, a TypeScript-first approach, and reusable components, the strategy ensures efficiency and adaptability in a MIMT environment. With a focus on the DRY principle, modular design, and balanced use of SSR and SSG, the approach minimizes duplication, promotes consistency, and supports seamless scaling as the customer base grows.
