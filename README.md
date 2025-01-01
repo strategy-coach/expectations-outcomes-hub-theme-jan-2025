@@ -21,7 +21,7 @@ This white paper outlines the architecture and technology strategy for implement
   - Use HTMx to enhance user experience by enabling dynamic interactions, such as inline updates or partial page refreshes, with minimal overhead.
 
 ##### 4. **GitHub Repository Strategy**
-- Create a single GitHub repository housing the reusable **Customer Hub Theme (CHT)**:
+- Use this `github.com/strategy-coach/client-hub-theme-jan-2025` private repo to house the reusable **Customer Hub Theme (CHT)**:
   - This theme will act as a base for all microsites and follow best practices established by Astro themes.
   - Centralize shared styles, components, and configurations.
 
@@ -32,16 +32,16 @@ This white paper outlines the architecture and technology strategy for implement
   - Where Web Components are not feasible, fallback to Astro components or React components, ensuring they remain decoupled and composable.
 
 ##### 6. **Subdomain Management**
-- Host each Customer Hub instance in its own repository and deploy it as a subdomain on the master domain (e.g., `customer1.example.com`, `customer2.example.com`).
+- Host each Customer Hub instance in its own private repository and deploy it as a subdomain on the master domain (e.g., `customer1.example.com`, `customer2.example.com`).
 - Automate domain configuration and SSL certificate provisioning using tools like Let's Encrypt and DNS management APIs.
 
 #### Technology Strategy
 
 ##### 1. **Code Reuse and Modularity**
 - Emphasize the **DRY (Don’t Repeat Yourself)** principle:
-  - Centralize common logic, styles, and assets in the CHT repository.
+  - Centralize common logic, styles, and assets in the `github.com/strategy-coach/client-hub-theme-*` CHT repository.
   - Use Astro Integrations to package reusable modules.
-- Structure the CHT repository for extensibility:
+- Structure the `github.com/strategy-coach/client-hub-theme-*` CHT repository for extensibility:
   - Separate shared components into distinct directories or packages.
   - Use TypeScript types/interfaces to enforce consistent API contracts between components.
 
