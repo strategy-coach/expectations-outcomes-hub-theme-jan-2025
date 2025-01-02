@@ -72,7 +72,7 @@ The Expectations and Outcomes Hub is more than a tool; it’s a strategy for dri
 
 ## **Guidance for EOH Admins: Leveraging AI and `surveilr` for Content Generation and Updates**
 
-Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced through the strategic use of Artificial Intelligence (AI) and integration tools like **`surveilr`**. This white paper provides a framework for EOH administrators to leverage AI and `surveilr` tools on a daily, weekly, monthly, quarterly, and annual basis to maintain and enrich the content of their EOH instances. It includes practical AI prompts, suggested workflows, and `surveilr`-specific integration strategies designed to ensure consistency, accuracy, and efficiency, even for less experienced managers. Additionally, this paper introduces Microsoft GenAIScript and BAML as effective starting points for automation, offering templates and guidance to operationalize these strategies.
+Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced through the strategic use of Artificial Intelligence (AI) and integration tools like **`surveilr`**. This white paper provides a framework for EOH administrators to leverage AI and `surveilr` tools on a daily, weekly, monthly, quarterly, and annual basis to maintain and enrich the content of their EOH instances. It includes practical AI prompts, suggested workflows, and `surveilr`-specific integration strategies designed to ensure consistency, accuracy, and efficiency, even for less experienced managers. Additionally, this paper introduces [Microsoft GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) and BAML as effective starting points for automation, offering templates and guidance to operationalize these strategies.
 
 ## **Why Use AI and `surveilr` for EOH Management?**
 - **Efficiency:** Automate repetitive tasks like generating updates or summaries.
@@ -100,7 +100,7 @@ Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced 
 - Schedule these cells via cron jobs to ensure daily updates are generated and synced automatically.
 
 ### **Microsoft GenAIScript and BAML:**
-- Utilize GenAIScript to draft reusable automation templates for daily updates.
+- Utilize [GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) to draft reusable automation templates for daily updates.
 - Implement BAML to operationalize these templates with pre-built workflows for quick deployment.
 
 ## **Weekly AI and `surveilr` Tasks and Prompts**
@@ -123,7 +123,7 @@ Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced 
 - Schedule these cells to run at the end of each week via cron jobs to ensure consistent and timely reporting.
 
 ### **Microsoft GenAIScript and BAML:**
-- Design GenAIScript workflows to integrate weekly reporting templates into the automation process.
+- Design [GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) workflows to integrate weekly reporting templates into the automation process.
 - Use BAML to manage and track the execution of these automated tasks, ensuring alignment with organizational goals.
 
 ## **Monthly AI and `surveilr` Tasks and Prompts**
@@ -146,7 +146,7 @@ Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced 
 - Schedule these cells with cron jobs to execute on a recurring monthly cycle.
 
 ### **Microsoft GenAIScript and BAML:**
-- Apply GenAIScript to structure detailed monthly reporting workflows.
+- Apply [GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) to structure detailed monthly reporting workflows.
 - Use BAML to ensure automation processes align with the broader objectives of customer success and growth.
 
 ## **Quarterly AI and `surveilr` Tasks and Prompts**
@@ -169,7 +169,7 @@ Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced 
 - Automate their execution via cron jobs at the start of each quarter.
 
 ### **Microsoft GenAIScript and BAML:**
-- Use GenAIScript to craft modular workflows for quarterly reviews and stakeholder engagement.
+- Use [GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) to craft modular workflows for quarterly reviews and stakeholder engagement.
 - Leverage BAML for detailed tracking and monitoring of these strategic initiatives.
 
 ## **Annual AI and `surveilr` Tasks and Prompts**
@@ -191,7 +191,7 @@ Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced 
 - Use cron jobs to ensure timely execution and delivery of annual summaries.
 
 ### **Microsoft GenAIScript and BAML:**
-- Implement GenAIScript workflows for comprehensive annual reporting.
+- Implement [GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) workflows for comprehensive annual reporting.
 - Manage and execute these workflows through BAML, ensuring alignment with long-term goals.
 
 ## **AI Agents and `surveilr` Strategy for EOH Management**
@@ -207,7 +207,7 @@ Managing an Expectations and Outcomes Hub (EOH) can be streamlined and enhanced 
 3. **Review:** Validate AI outputs and `surveilr`-synced content to ensure accuracy and relevance.
 4. **Publish:** Update the EOH with reviewed content.
 
-By combining AI with `surveilr`’s powerful integration capabilities, EOH administrators can ensure their hubs remain dynamic, accurate, and valuable. The outlined daily-to-annual tasks, coupled with specific prompts and `surveilr` strategies, provide a practical roadmap for even less experienced managers to excel. With Microsoft GenAIScript and BAML as foundational tools, organizations can fast-track automation and build scalable, efficient processes. As we continue refining these practices, the EOH will become an indispensable tool for driving customer success and fostering long-term growth.
+By combining AI with `surveilr`’s powerful integration capabilities, EOH administrators can ensure their hubs remain dynamic, accurate, and valuable. The outlined daily-to-annual tasks, coupled with specific prompts and `surveilr` strategies, provide a practical roadmap for even less experienced managers to excel. With Microsoft [GenAIScript](https://www.microsoft.com/en-us/research/project/genaiscript-scripting-for-generative-ai/) and BAML as foundational tools, organizations can fast-track automation and build scalable, efficient processes. As we continue refining these practices, the EOH will become an indispensable tool for driving customer success and fostering long-term growth.
 
 ---
 
