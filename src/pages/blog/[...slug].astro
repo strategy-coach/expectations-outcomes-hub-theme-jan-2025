@@ -1,0 +1,48 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { render } from 'astro:content';
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout {...post.data}>
+	<div class="w-full mx-auto flex flex-col min-h-screen bg-gray-100">
+		<!-- Main Content -->
+		<main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]">
+			<Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
+			>
+			<svg
+			slot="separator"
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			><polyline points="9 18 15 12 9 6"></polyline>
+			</svg>
+			</Breadcrumbs>
+		  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<!-- Page Title -->
+			<h1 class="text-4xl font-bold text-center mb-12">{post.data.title}</h1>
+			<Content />
+		   </div>
+		</main>
+	</div>
+</Layout>

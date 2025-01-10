@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+
+const posts = await getCollection('blog');
+---
+<Layout>
+	<div class="w-full mx-auto flex flex-col min-h-screen bg-gray-100">
+    <!-- Main Content -->
+    <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]">
+      <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
+    >
+    <svg
+      slot="separator"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+    </Breadcrumbs>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Page Title -->
+        <h1 class="text-4xl font-bold text-center mb-12">Our Blog</h1>
+  
+        <!-- Blog Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post) => (
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img
+                src={post.data.heroImage}
+                alt={post.data.title}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <h2 class="text-2xl font-bold mb-2">{post.data.title}</h2>
+                <p class="text-gray-600 mb-4">{post.data.description}</p>
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                  {/* <span>By {post.data.author || "Unknown"}</span> */}
+                  <span>
+                    {/* <FormattedDate date={post.data.pubDate} /> */}
+                  </span>
+                </div>
+                <a
+                  href={`/blog/${post.id}`}
+                  class="inline-block mt-4 text-blue-600 hover:text-blue-800 font-semibold"
+                >
+                  Read More →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  </div>
+  
+</Layout>

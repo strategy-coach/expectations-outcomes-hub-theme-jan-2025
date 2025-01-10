@@ -1,0 +1,67 @@
+---
+// Function to build the menu tree
+export function extractTitle(content) {
+  if (typeof content !== 'string') {
+    //console.warn('Content is not a string:', content);
+    return null; // Return null if content is not a string
+  }
+
+  const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/); // Match the title in frontmatter
+  return titleMatch ? titleMatch[1] : null; // Return the title if found
+}
+
+export function formatName(name) {
+  return name
+    .split(/[-_]/) // Split by hyphens or underscores
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter
+    .join(' '); // Join words with spaces
+}
+
+export function buildMenuTree(files) {
+  const tree = [];
+
+  for (const path in files) {
+    const parts = path.replace('/src/content/expectations/', '').split('/'); // Remove base path and split by "/"
+    let currentLevel = tree;
+
+    parts.forEach((part, index) => {
+      const isFile = index === parts.length - 1;
+
+      if (isFile) {
+        // Extract the content to get the title
+        const content = files[path]; // Assuming `files[path]` contains the file content
+        const title =
+          extractTitle(content) || formatName(part.replace('.md', '').replace('.mdx', '')); // Use title or formatted file name
+
+        // Remove file extension from the path
+        const filePath = `${path.replace('/src/content', '').replace('.md', '').replace('.mdx', '')}`;
+
+        currentLevel.push({
+          name: title, // Use extracted or formatted name
+          path: filePath, // File path without extension
+          isFile: true,
+        });
+      } else {
+        // Format folder name
+        const formattedName = formatName(part);
+        let folder = currentLevel.find(item => item.name === formattedName);
+
+        if (!folder) {
+          folder = {
+            name: formattedName, // Use formatted folder name
+            path: `${path.replace('/src/content', '')}`,
+            isFile: false,
+            children: [],
+          };
+          currentLevel.push(folder);
+        }
+
+        // Move to the children of the current folder for the next iteration
+        currentLevel = folder.children;
+      }
+    });
+  }
+
+  return tree;
+}
+---

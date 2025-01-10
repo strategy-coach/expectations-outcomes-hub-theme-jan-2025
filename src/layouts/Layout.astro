@@ -1,0 +1,23 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+	    <link rel="stylesheet" href="/assets/styles/tailwind.min.css" />
+	    <link rel="stylesheet" href="/assets/styles/basic.css" />
+        <link rel="stylesheet" href="/assets/styles/custom.css" />  
+		<meta name="generator" content={Astro.generator} />
+		<title>Expectations and Outcomes Hub Theme</title>
+	</head>
+	 <body class="bg-gray-50">	
+		<Header />
+		<slot />
+		<Footer />
+	</body>
+</html>
+
