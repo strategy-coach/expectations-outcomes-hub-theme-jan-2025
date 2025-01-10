@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+---
+<Layout>
+	<div class="w-full mx-auto flex flex-col min-h-screen">
+        <!-- Main Content -->
+        <main class="flex-grow bg-gray-100 py-10 px-6">
+          <div class="max-w-7xl mx-auto">
+            <!-- Heading -->
+            <h1 class="text-3xl font-bold mb-4 text-center">Contact</h1>
+            <h2 class="text-2xl font-semibold mb-6 text-center">Let's Connect!</h2>
+      
+            <!-- Form Wrapper -->
+            <div class="flex justify-center">
+              <form action="/submit-form" method="post" class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg space-y-4">
+                <!-- Name -->
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <!-- Email -->
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <!-- Message -->
+                <div>
+                  <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your message"
+                  ></textarea>
+                </div>
+                <!-- Submit Button -->
+                <button
+                  type="submit"
+                  class="w-full py-2 px-4 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </main>
+      </div>
+      
+</Layout>

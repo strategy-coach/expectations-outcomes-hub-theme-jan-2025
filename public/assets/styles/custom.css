@@ -1,0 +1,363 @@
+.policy_cmp {
+  list-style: none !important;
+}
+
+.policy_cmp summary {
+  list-style: none !important;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr; /* Sidebar, main content, right sidebar */
+  gap: 2rem;
+  margin: 2rem;
+}
+.sidebar {
+  position: sticky;
+  top: 0;
+  /* background-color: #f4f4f4; */
+  padding: 1rem;
+  /* border-right: 1px solid #ccc; */
+}
+.right-sidebar {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-left: 1px solid #ccc;
+}
+.main-content {
+  padding: 0 1rem;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  /* background-color: #fff; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+.post-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sidebar-left-menu svg.arrow-ico {
+    width: 30px;
+    height: 30px;
+    color: #606770;
+}
+
+details[open] > .fst_mn .caret {
+  transform: rotate(90deg);
+}
+
+.sidebar-pane {
+  z-index: var(--sl-z-index-menu);
+  inset-block: 0;
+  inset-inline-start: 0;
+  padding-top: var(--sl-nav-height);
+  width: 100%;
+  background-color: var(--sl-color-black);
+}
+
+.sidebar {
+  height: 100%;
+  padding: 1rem var(--sl-sidebar-pad-x);
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-header {
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar-header h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.sidebar-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+}
+
+.sidebar-links a:hover {
+  background-color: #eee;
+}
+
+.sidebar-links a.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.summary {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+
+.policy_cmp {
+  list-style: none !important;
+}
+
+.policy_cmp summary {
+  list-style: none !important;
+}
+
+.caret {
+  transition: transform 0.2s ease-in-out;
+}
+
+.sidebar-left-menu details summary {
+  padding: 5px 0px 5px 10px;
+  line-height: 20px;
+}
+
+.sidebar-left-menu details[open] summary {
+  background: #f2f2f2 !important;
+  color: #18816a !important;
+  border-radius: 4px;
+}
+
+.inner-menu-select {
+  background: #f2f2f2 !important;
+  color: #18816a !important;
+  border-radius: 4px;
+}
+
+.sidebar-left-menu li {
+  margin-top: 0px !important;
+}
+
+.sidebar-left-menu ul ul li a {
+  padding: 5px 10px;
+  display: block;
+}
+
+.sidebar-left-menu svg.arrow-ico {
+  width: 30px;
+  height: 30px;
+  color: #606770;
+}
+
+.sidebar-left-menu details summary:hover,
+.sidebar-left-menu details[open] summary:hover,
+.sidebar-left-menu ul ul li a:hover {
+  background: #f2f2f2 !important;
+  border-radius: 4px !important;
+}
+
+  /* Add any custom styles you need here */
+
+
+
+  /* :::::: markdown css ::::::> starts */
+.markdown-content a {
+  color: #18816a;
+  text-decoration: none;
+}
+
+.markdown-content a:hover {
+  color: #18816a;
+  text-decoration: underline;
+}
+
+.markdown-content .breadcrumb a {
+  text-decoration: none;
+  color: #000 !important;
+}
+
+.markdown-content .breadcrumb a:hover {
+  text-decoration: none;
+  color: #18816a !important;
+}
+
+.markdown-content,
+.markdown-content p,
+.markdown-content ul,
+.markdown-content ol {
+  font-size: 16px !important;
+  line-height: 26px !important;
+  margin-bottom: 20px !important;
+}
+
+.card-content a:hover {
+  text-decoration: none !important;
+}
+
+.markdown-content {
+  color: #000 !important;
+}
+
+.markdown-content h1 {
+  font-size: 48px !important;
+  margin-bottom: 25px !important;
+  line-height: 60px;
+  letter-spacing: 0px;
+  font-weight: 700;
+  padding-bottom: 0px;
+}
+
+.markdown-content h2 {
+  font-size: 32px !important;
+  line-height: 40px !important;
+  margin-top: 40px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700;
+}
+
+.markdown-content h4 {
+  font-size: 20px !important;
+  line-height: 30px !important;
+  margin-bottom: 20px !important;
+  font-weight: 700;
+}
+
+.markdown-content ul {
+  padding-left: 35px !important;
+  list-style: disc;
+}
+
+.markdown-content ul li::marker {
+  color: #000 !important;
+}
+
+.markdown-content li+li {
+  margin-top: 4px !important;
+}
+
+.markdown-content pre {
+  white-space: normal !important;
+}
+
+/* table > */
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0px 20px 0px !important;
+  background: white !important;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+}
+
+.breadcrumb li {
+  margin-left: 7px !important;
+}
+
+/* < table */
+
+/* accordion > */
+.markdown-content details summary {
+  background: #e4e4e7;
+  padding: 15px 10px 15px 15px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.markdown-content details[open] summary {
+  background: #e4e4e7;
+  color: #000;
+}
+
+.markdown-content details summary {
+  list-style: none;
+  font-size: 20px;
+}
+
+.markdown-content summary::-webkit-details-marker {
+  display: none;
+}
+
+/* .markdown-content summary::after {
+  content: "\1F892";
+  font-size: 24px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.markdown-content details[open] summary:after {
+  content: "\1F893";
+  top: 15px;
+} */
+
+.markdown-content summary::after {
+  content: " ";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('/assets/images/ico-right-arrow.png') no-repeat center center;
+  background-size: 24px;
+}
+
+.markdown-content details[open] summary:after {
+  background: url('/assets/images/ico-down-arrow.png') no-repeat center center;
+  width: 24px;
+  height: 24px;
+  background-size: 24px;
+}
+
+.sql-content summary::after {
+  top: 1px;
+}
+
+.sql-content details[open] summary:after {
+  top: 15px;
+}
+
+/* < accordion */
+.nav-menu-section .selected {
+  color: #18816a !important;
+}
+
+.slide-over-content a {
+  color: #18816a !important;
+  text-decoration: none !important;
+}
+
+.slide-over-content a:hover {
+  text-decoration: underline !important;
+}
+
+.selected {
+  color: #18816a !important;
+}
+
+h3.notify {
+  color: #991b1b !important;
+  font-weight: 500 !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+.markdown-content b, .markdown-content strong {
+    font-weight: bold!important;
+}
+
+/*::: media query starts :::> */
+@media (max-width: 576px) {
+  .markdown-content h1 {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
+  .markdown-content h2 {
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+}
+
+/* :::::: markdown css ::::::> ends */
+
+  

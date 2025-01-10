@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+---
+<Layout>
+  <!-- Main Content -->
+  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 bg-gray-50">
+    <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
+    >
+    <svg
+      slot="separator"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+    </Breadcrumbs>
+    <div class="border-b border-slate-300 pb-3">
+      <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Our Company Culture, Mission, Vision, Values</h1>
+      <p class="text-slate-500 mt-1 font-semibold">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..</p>
+    </div>
+    <div class="max-w-screen-2xl mx-auto mt-6">     
+      <div class="mb-10">
+        <div class="bg-white p-6 rounded text-gray-700" >
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                <div class="flex flex-col col-span-1 md:col-span-4 lg:col-span-3 text-center items-center border-r">
+                  <div>
+                    <img src="/assets/images/ico-company-culture.svg" class="w-24 h-24" alt="">
+                  </div>                   
+                      <h3 class="text-2xl font-bold text-gray-800">Our Company Culture</h3>  
+                </div>
+                <div class="flex pt-2 pl-2 col-span-1 md:col-span-8 lg:col-span-9">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+            </div>        
+        </div>        
+      </div>
+      <!-- Cards Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white border rounded-lg p-6">
+          <div class="mb-4 text-center justify-center flex">
+            <img src="/assets/images/ico-mission.svg" class="w-24 h-24" alt="">                         
+          </div>
+          <h3 class="text-2xl font-bold text-gray-800">Our Mission</h3>
+          <p class="text-gray-600 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="bg-white border rounded-lg p-6">
+            <div class="mb-4 text-center justify-center flex">
+              <img src="/assets/images/ico-vision.svg" class="w-24 h-24" alt="">
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">Our Vision</h3>
+            <p class="text-gray-600 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="bg-white border rounded-lg p-6">
+            <div class="mb-4 text-center justify-center flex">
+              <img src="/assets/images/ico-values.svg" class="w-24 h-24" alt="">                 
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800">Our Values</h3>
+            <p class="text-gray-600 mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
