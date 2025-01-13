@@ -1,0 +1,38 @@
+name: CI/CD Workflow
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          
+      - name: Node and npm versions
+        run: |
+          node --version
+          pnpm --version
+          
+      - name: Install dependencies and build using pnpm
+        run: |
+          pnpm install
+          pnpm run build
+          
+      - name: Archive build artifacts
+        run: |
+          tar -czvf expectations-outcomes-hub-theme.tar.gz dist
+
+      - name: Copy build artifacts to the production server
+        run: |
+          scp -P22 -o StrictHostKeyChecking=no expectations-outcomes-hub-theme.tar.gz "${{ secrets.PRODUCTION_DEPLOYMENT_USER }}@${{ secrets.PRODUCTION_DEPLOYMENT_SERVER_IP }}:"
+
+      - name: Deploy to production server
+        run: |
+          ssh -p22 -o StrictHostKeyChecking=no -t ${{ secrets.PRODUCTION_DEPLOYMENT_USER }}@${{ secrets.PRODUCTION_DEPLOYMENT_SERVER_IP }} "bash -i expectations-outcomes-hub-theme.sh"
