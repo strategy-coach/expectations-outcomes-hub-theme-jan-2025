@@ -17,11 +17,11 @@ export function formatName(name) {
     .join(' '); // Join words with spaces
 }
 
-export function buildMenuTree(files) {
+export function buildMenuTree(files,dirName) {
   const tree = [];
 
   for (const path in files) {
-    const parts = path.replace('/src/content/expectations/', '').split('/'); // Remove base path and split by "/"
+    const parts = path.replace(`/src/content/${dirName}/`, '').split('/'); // Remove base path and split by "/"
     let currentLevel = tree;
 
     parts.forEach((part, index) => {

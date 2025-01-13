@@ -7,24 +7,23 @@ import {buildMenuTree} from '../../utils/helper.astro';
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 
-const files = import.meta.glob('/src/content/expectations/**/*.{md,mdx}', { eager: true });
-const dirName = "expectations";
+const files = import.meta.glob('/src/content/outcomes/**/*.{md,mdx}', { eager: true });
 // Build the menu tree
-const menuTree = buildMenuTree(files,dirName);
+const menuTree = buildMenuTree(files,"outcomes");
 
 export async function getStaticPaths() {
-	const posts = await getCollection('expectations');
+	const posts = await getCollection('outcomes');
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,
 	}));
 }
-type Props = CollectionEntry<'expectations'>;
+type Props = CollectionEntry<'outcomes'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
 const slug = post.id;
-let slugval = '/expectations/' + slug;
+let slugval = '/outcomes/' + slug;
 
 ---
 <Layout>	
