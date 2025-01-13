@@ -22,4 +22,28 @@ const expectations = defineCollection({
   }),
 });
 
-export const collections = { blog, expectations };
+const connect = defineCollection({
+  // Load Markdown and MDX files in the `src/content/blog/` directory.
+  loader: glob({
+    base: "./src/content/connect",
+    pattern: "**/*.{md,mdx}",
+  }),
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+const outcomes = defineCollection({
+  // Load Markdown and MDX files in the `src/content/blog/` directory.
+  loader: glob({
+    base: "./src/content/outcomes",
+    pattern: "**/*.{md,mdx}",
+  }),
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = { blog, expectations, outcomes, connect };
