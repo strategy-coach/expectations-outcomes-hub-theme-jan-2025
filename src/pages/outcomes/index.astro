@@ -7,8 +7,8 @@ import {buildMenuTree} from '../../utils/helper.astro';
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 
-const files = import.meta.glob('/src/content/expectations/**/*.{md,mdx}', { eager: true });
-const dirName = "expectations";
+const files = import.meta.glob('/src/content/outcomes/**/*.{md,mdx}', { eager: true });
+const dirName = "outcomes";
 // Build the menu tree
 const menuTree = buildMenuTree(files,dirName);
 
@@ -47,38 +47,39 @@ const menuTree = buildMenuTree(files,dirName);
         </svg>
         </Breadcrumbs>
         <div class="border-b border-slate-300 pb-3">
-        <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Expectations Overview</h1>
+        <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Outcomes</h1>
         <p class="text-slate-500 mt-1 font-semibold">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..</p>
       </div>
 
       <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
-        {
-          menuTree.map((page, index) => {
-            // Check if it's a folder and has children
-            const firstFilePath = 
-              !page.isFile && page.children
-                ? page.children.find(child => child.isFile)?.path // Get the path of the first file
-                : page.path;
-        
-            return (
-              <a class="md:col-span-6 md:min-h-80 bg-white shadow rounded-lg p-4" href={firstFilePath || ""} >
-                <div class="flex items-start gap-3">
-                  <div class="w-[24px] flex-shrink-0">
-                    <img src="/assets/images/fi-rr-document-2.svg" class="w-full mt-1" alt="Icon" />
-                  </div>
-                  <div>
-                    <h3 class="text-lg font-semibold text-slate-700 mb-2">
-                      {page.name}
-                    </h3>
-                    <aside>
-                    The document contains a project estimation sheet outlining tasks, effort hours, and timelines across key phases like analysis, design, development, testing, and project management. It includes metrics such as confidence factors, consumed hours, and completion dates.
-                    </aside>
-                  </div>
-                </div>
-              </a>
-            );
-          })
-        }
+
+              {
+                menuTree.map((page, index) => {
+                  // Check if it's a folder and has children
+                  const firstFilePath = 
+                    !page.isFile && page.children
+                      ? page.children.find(child => child.isFile)?.path // Get the path of the first file
+                      : page.path;
+              
+                  return (
+                    <a class="md:col-span-6 md:min-h-80 bg-white shadow rounded-lg p-4" href={firstFilePath || ""} >
+                      <div class="flex items-start gap-3">
+                        <div class="w-[24px] flex-shrink-0">
+                          <img src="/assets/images/fi-rr-document-2.svg" class="w-full mt-1" alt="Icon" />
+                        </div>
+                        <div>
+                          <h3 class="text-lg font-semibold text-slate-700 mb-2">
+                            {page.name}
+                          </h3>
+                          <aside>
+                          The document contains a project estimation sheet outlining tasks, effort hours, and timelines across key phases like analysis, design, development, testing, and project management. It includes metrics such as confidence factors, consumed hours, and completion dates.
+                          </aside>
+                        </div>
+                     </div>
+                    </a>
+                  );
+                })
+              }
       </section>
       </div>
     </div>

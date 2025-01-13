@@ -11,12 +11,12 @@ import NavLink from '../layouts/NavLink.astro';
       </button>
       <div class="text-lg font-bold text-gray-900  py-4"><a href="/"><img src="/assets/images/logo.png" class="mr-3 h-10" alt=""></a></div>
       <nav class="hidden lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
-        <NavLink href="/" label="Home" />
-        <NavLink href="/expectations" label="Expectations" />
-        <NavLink href="#" label="Outcome Highlights" />
-        <NavLink href="/mission-vision" label="Mission & Vision" />
-        <NavLink href="/blog" label="Blog" />
-      </nav>
+          <a href="/" data-path="/" class="menu-link py-4">Home</a>
+          <a href="/expectations" data-path="/expectations" class="menu-link py-4">Expectations</a>
+          <a href="/outcomes" data-path="/outcomes" class="menu-link py-4">Outcomes</a>
+          <a href="/connect" data-path="/connect" class="menu-link py-4">Connect</a>
+          <a href="/blog" data-path="/blog" class="menu-link py-4">Blog</a>
+        </nav>
     </div>
     <div class="flex items-center space-x-4 py-3">
       <label class="relative block ">
@@ -40,3 +40,28 @@ import NavLink from '../layouts/NavLink.astro';
     </div>
   </div>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('.menu-link');
+
+    links.forEach(link => {
+      const path = link.dataset.path;
+
+      // Ensure Home is selected only for the exact path "/"
+      if (path === "/" && currentPath === path) {
+        link.classList.add('text-black', 'border-b-2', 'border-slate-700');
+        link.classList.remove('text-gray-700', 'hover:text-black');
+      } 
+      // Check for partial matches for other paths
+      else if (path !== "/" && currentPath.startsWith(path)) {
+        link.classList.add('text-black', 'border-b-2', 'border-slate-700');
+        link.classList.remove('text-gray-700', 'hover:text-black');
+      } else {
+        link.classList.add('text-gray-700', 'hover:text-black');
+        link.classList.remove('text-black', 'border-b-2', 'border-slate-700');
+      }
+    });
+  });
+</script>
