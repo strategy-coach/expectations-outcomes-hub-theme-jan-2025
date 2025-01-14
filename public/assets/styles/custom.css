@@ -136,7 +136,7 @@ details[open] > .fst_mn .caret {
 }
 
 .sidebar-left-menu ul ul li a {
-  padding: 5px 10px;
+  padding: 5px 10px 5px 20px;
   display: block;
 }
 
@@ -153,6 +153,9 @@ details[open] > .fst_mn .caret {
   border-radius: 4px !important;
 }
 
+.c-breadcrumbs__link{
+      font-size: 14px!important;
+}
   /* Add any custom styles you need here */
 
 
@@ -192,31 +195,34 @@ details[open] > .fst_mn .caret {
 }
 
 .markdown-content {
-  color: #000 !important;
+  color: #334155 !important;
 }
 
 .markdown-content h1 {
-  font-size: 48px !important;
-  margin-bottom: 25px !important;
-  line-height: 60px;
+  font-size: 36px !important;
+  margin-bottom: 15px !important;
+  line-height: 46px;
   letter-spacing: 0px;
   font-weight: 700;
   padding-bottom: 0px;
+  color: #334155 !important;
 }
 
 .markdown-content h2 {
   font-size: 32px !important;
   line-height: 40px !important;
   margin-top: 40px !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 15px !important;
   font-weight: 700;
+  color: #334155 !important;
 }
 
 .markdown-content h4 {
   font-size: 20px !important;
   line-height: 30px !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 15px !important;
   font-weight: 700;
+  color: #334155 !important;
 }
 
 .markdown-content ul {
