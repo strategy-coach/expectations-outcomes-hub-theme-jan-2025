@@ -28,43 +28,41 @@ let slugval = '/outcomes/' + slug;
 ---
 <Layout>	
 
-<main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]">
-    <div class="grid grid-cols-12 gap-6 flex  mb-3">
-      <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-3">
-        <div id="starlight__sidebar" class="sidebar-pane">
-          <div class="sidebar-content">
-            <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
-            <Sidebar menuTree={menuTree} slugval={slugval} />
-            </div>
-          </div>
+<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+  <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs">
+    <div id="starlight__sidebar" class="sidebar-pane">
+      <div class="sidebar-content">
+        <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
+        <Sidebar menuTree={menuTree} slugval={slugval} />
         </div>
-      </div>
-      <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-9">
-        <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
-        >
-        <svg
-          slot="separator"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-        </Breadcrumbs>
-        <div class="border-b border-slate-300 pb-3 mb-4">
-        <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">{post.data.title}</h1>
-        </div>
-      <article class="prose max-w-screen-xl withbullet markdown-content">
-        <Content />
-      </article>
       </div>
     </div>
-  </main>
+  </div>
+  <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5">
+    <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
+    >
+    <svg
+      slot="separator"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+    </Breadcrumbs>
+    <div class="border-b border-slate-300 pb-3 mb-4">
+    <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">{post.data.title}</h1>
+    </div>
+  <article class="prose max-w-screen-xl withbullet markdown-content">
+    <Content />
+  </article>
+  </div>
+</main>
 </Layout>
 
 

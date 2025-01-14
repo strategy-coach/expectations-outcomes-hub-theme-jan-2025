@@ -13,9 +13,8 @@ const menuTree = buildMenuTree(files,dirName);
 
 ---
 <Layout>	
-	<main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]">
-    <div class="grid grid-cols-12 gap-6 flex  mb-3">
-      <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-3">
+	<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+      <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs">
 
       <!-- Left Menu Content Goes Here -->
       <div id="starlight__sidebar" class="sidebar-pane">
@@ -28,7 +27,7 @@ const menuTree = buildMenuTree(files,dirName);
 
       </div>
 
-      <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-9">
+      <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5">
         <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
         >
         <svg
@@ -80,7 +79,6 @@ const menuTree = buildMenuTree(files,dirName);
         }
       </section>
       </div>
-    </div>
   </main>
 </Layout>
 
