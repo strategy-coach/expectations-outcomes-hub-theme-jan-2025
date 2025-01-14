@@ -28,13 +28,13 @@ const renderMenu = (menu: MenuNode[], slugval: string) => {
               href={`${item.path}/`}
               className={item.path === slugval ? "inner-menu-select" : ""}
             >
-              {item.name} 
+              {item.name}
             </a>
           ) : (
             <details open={isMenuOpen([item], slugval)}>
               <summary className="cursor-pointer flex fst_mn">
                 <h2 className="grow">{item.name}</h2>
-               
+
                 <svg
                   aria-hidden="true"
                   className="caret arrow-ico"
@@ -47,7 +47,7 @@ const renderMenu = (menu: MenuNode[], slugval: string) => {
                 </svg>
               </summary>
               {item.children && (
-                <ul className="top-level border-gray-200 pl-3">
+                <ul className="top-level border-gray-200">
                   {renderMenu(item.children, slugval)}
                 </ul>
               )}

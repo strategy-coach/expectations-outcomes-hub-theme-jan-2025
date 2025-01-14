@@ -1,13 +1,7 @@
 ---
-// Function to build the menu tree
-export function extractTitle(content) {
-  if (typeof content !== 'string') {
-    //console.warn('Content is not a string:', content);
-    return null; // Return null if content is not a string
-  }
-
-  const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/); // Match the title in frontmatter
-  return titleMatch ? titleMatch[1] : null; // Return the title if found
+export function extractTitle(frontmatter) {
+  // Check if frontmatter has a title property
+  return frontmatter?.title || null; // Return the title if found
 }
 
 export function formatName(name) {
@@ -17,7 +11,7 @@ export function formatName(name) {
     .join(' '); // Join words with spaces
 }
 
-export function buildMenuTree(files,dirName) {
+export function buildMenuTree(files, dirName) {
   const tree = [];
 
   for (const path in files) {
@@ -28,16 +22,17 @@ export function buildMenuTree(files,dirName) {
       const isFile = index === parts.length - 1;
 
       if (isFile) {
-        // Extract the content to get the title
-        const content = files[path]; // Assuming `files[path]` contains the file content
+        // Access the frontmatter from the file module
+        const fileModule = files[path];
+        const frontmatter = fileModule?.frontmatter || {};
         const title =
-          extractTitle(content) || formatName(part.replace('.md', '').replace('.mdx', '')); // Use title or formatted file name
+          extractTitle(frontmatter) || formatName(part.replace('.md', '').replace('.mdx', '')); // Use title or formatted file name
 
         // Remove file extension from the path
         const filePath = `${path.replace('/src/content', '').replace('.md', '').replace('.mdx', '')}`;
 
         currentLevel.push({
-          name: title, // Use extracted or formatted name
+          name: title, // Use extracted title or formatted name
           path: filePath, // File path without extension
           isFile: true,
         });
@@ -64,4 +59,6 @@ export function buildMenuTree(files,dirName) {
 
   return tree;
 }
+
+
 ---
