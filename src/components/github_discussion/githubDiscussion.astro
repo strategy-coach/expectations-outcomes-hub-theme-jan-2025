@@ -1,0 +1,12 @@
+---
+import { getCollection } from "astro:content";
+import Discussions from "../github_discussion/githubDisscussion"
+const discussions = (await getCollection("discussions")) ?? [];
+
+---
+
+<article class="mt-4 w-[95%] mx-auto">
+  <section class="grid gap-2">
+    <Discussions discussions={discussions} client:only="react"/>
+  </section>
+</article>
