@@ -102,7 +102,7 @@ import GithubDiscussionLoader from "../components/github_discussion/githubDiscus
 │   │       └── githubDisscussion.tsx
 │   ├── content
 │   │   ├── blog
-│   │   ├── connect
+│   │   ├── progress
 │   │   ├── expectations
 │   │   └── outcomes
 │   ├── content.config.ts
@@ -115,7 +115,7 @@ import GithubDiscussionLoader from "../components/github_discussion/githubDiscus
 │   │   ├── blog
 │   │   │   ├── [...slug].astro
 │   │   │   └── index.astro
-│   │   ├── connect
+│   │   ├── progress
 │   │   │   ├── [...slug].astro
 │   │   │   └── index.astro
 │   │   ├── contact

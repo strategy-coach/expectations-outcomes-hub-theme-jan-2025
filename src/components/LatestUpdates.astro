@@ -1,0 +1,40 @@
+---
+// src/pages/index.astro
+
+import { getCollection } from 'astro:content';
+
+// Fetch updates from multiple collections
+const collection1 = await getCollection('expectations');
+const collection2 = await getCollection('outcomes');
+const collection3 = await getCollection('progress');
+
+const allUpdates = [...collection1, ...collection2, ...collection3]
+  .sort((a, b) => {
+    const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
+    const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
+    return dateB - dateA;
+  })
+  .slice(0, 5);
+---
+
+<div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
+    <h3 class="text-lg font-semibold text-slate-700">
+        <div class="flex gap-2 items-center text-xl">
+        <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
+        <span>Latest Updates</span>
+        </div>
+    </h3>
+<ul class="mt-2 space-y-0.5 font-semibold ml-8">
+  {allUpdates.map((update) => {
+    const url = update.filePath ? `/${update.filePath.replace('src/content/', '').replace('.md', '')}` : '#';
+
+    return (
+      <li>
+        <a href={url} class="text-sm hover:text-black">
+          {update.data.title || "Untitled"}
+        </a>
+      </li>
+    );
+  })}
+</ul>
+</div>

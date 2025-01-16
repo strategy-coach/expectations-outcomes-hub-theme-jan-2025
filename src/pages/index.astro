@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import {buildMenuTree} from '../utils/helper.astro';
+import MyContent from '../content/progress/activity-logs/activity-log.md';
+import LatestUpdates from '../components/LatestUpdates.astro';
 
+const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
+const dirName = "progress";
+const menuTree = buildMenuTree(files,dirName);
 ---
 <Layout>
  <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
@@ -84,11 +90,13 @@ import Layout from '../layouts/Layout.astro';
 
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
-            <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/fi-rr-rec.svg" class="w-4 h-4" alt=""></span>
-              <span>XYZ Teams</span>
-            </div>
-          </div>
+            <a href="/progress/teams/team-members-and-contacts/">
+              <div class="flex gap-2.5 items-center text-sm">
+                <span><img src="/assets/images/fi-rr-rec.svg" class="w-4 h-4" alt=""></span>
+                <span>Teams</span>
+              </div>
+            </a>
+          </div>          
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-1.5 font-semibold flex-wrap">
               <span class="bg-red-100 text-sm px-2 py-1 rounded">Brand</span>
@@ -135,10 +143,10 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </h3>
         <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">Accomplishments</a></li>
+          <li><a href="/outcomes/milestone-achievements/achievements/" class="text-sm hover:text-black">Accomplishments</a></li>
           <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
           <li><a href="#" class="text-sm hover:text-black">Trackers</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Meeting Notes</a></li>
+          <li><a href="/progress/activity-logs/meeting-minutes" class="text-sm hover:text-black">Meeting Notes</a></li>
           <li><a href="#" class="text-sm hover:text-black">Workback Plan</a></li>
           <li><a href="#" class="text-sm hover:text-black">Timesheet</a></li>
           <li><a href="#" class="text-sm hover:text-black">Requests & Questions</a></li>
@@ -170,29 +178,16 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="lg:col-span-12 bg-white shadow rounded-lg p-4">
         <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-            <span>Accomplishments</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">Accomplishments</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
-        </ul>
+          <a href="/outcomes/milestone-achievements/achievements/">
+            <div class="flex gap-2 items-center text-xl">
+              <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
+              <span>Accomplishments</span>
+            </div>
+          </a>
+        </h3>        
       </div>
 
-      <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-            <span>Latest Updates</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">Accomplishments</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
-        </ul>
-      </div>
+      <LatestUpdates />
 
       <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
         <h3 class="text-lg font-semibold text-slate-700">
@@ -218,8 +213,15 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </h3>
         <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">Accomplishments</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
+          {menuTree
+            .find(page => page.name === "Activity Logs")?.children?.map((child: { path: string; name: string; }) => (
+              <li>
+                <a class="text-sm hover:text-black" href={child.path || ""}>
+                  {child.name}
+                </a>
+              </li>
+            ))}
+          
         </ul>
       </div>
 
@@ -248,7 +250,12 @@ import Layout from '../layouts/Layout.astro';
           <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
         </ul>
       </div>
-
+      <div class="lg:col-span-12 bg-white shadow rounded-lg p-4 markdown-content">
+        <details id="activityLog" data-persist-state="closed">
+          <summary>Activity Log</summary>
+          <MyContent />
+        </details>        
+      </div>
     </section>
   </main>
 </Layout>
