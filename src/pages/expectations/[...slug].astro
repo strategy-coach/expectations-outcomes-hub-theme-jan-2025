@@ -6,6 +6,8 @@ import Sidebar from '../../components/Sidebar';
 import {buildMenuTree} from '../../utils/helper.astro';
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
+import MarkdownEditor from '../../components/ContentEditor';
+import EditButton from '../../components/EditMarkdownButton';
 
 const files = import.meta.glob('/src/content/expectations/**/*.{md,mdx}', { eager: true });
 const dirName = "expectations";
@@ -23,6 +25,8 @@ type Props = CollectionEntry<'expectations'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const rawMarkdownContent = post.body; // Adjust if raw content is in another property
+
 const slug = post.id;
 let slugval = '/expectations/' + slug;
 
@@ -57,8 +61,38 @@ let slugval = '/expectations/' + slug;
         </svg>
         </Breadcrumbs>
         <div class="border-b border-slate-300 pb-3 mb-4">
-        <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">{post.data.title}</h1>
+          <div class="flex items-center justify-between">
+            <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">
+              {post.data.title}
+            </h1>
+            <EditButton client:only="react" />
+          </div>
         </div>
+
+        {
+          (
+            <article class="prose max-w-screen-xl withbullet">
+              <span id="markdown-content" style="display:none">
+                <MarkdownEditor bodyContent={rawMarkdownContent} client:only="react" />
+
+                <div class="md:col-span-3 text-right">
+                  <button
+                    type="button"
+                    class="relative mt-3 inline-flex items-center gap-x-1.5 rounded text-white px-3 py-2 font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10 text-sm"
+                    style="background-color: black;"
+                  >
+                    Save
+                  </button>
+                </div>
+              </span>
+              <span id="html-content">
+                <Content />
+              </span>
+            
+            </article>
+          )
+        }
+
       <article class="prose max-w-screen-xl withbullet markdown-content">
         <Content />
       </article>

@@ -266,14 +266,13 @@ details[open] > .fst_mn .caret {
 
 /* accordion > */
 .markdown-content details summary {
-  background: #e4e4e7;
-  padding: 15px 10px 15px 15px;
+  padding: 0px 0px 0px 30px;
   margin-bottom: 5px;
   position: relative;
+  cursor: pointer;
 }
 
 .markdown-content details[open] summary {
-  background: #e4e4e7;
   color: #000;
 }
 
@@ -306,6 +305,8 @@ details[open] > .fst_mn .caret {
   height: 24px;
   background: url('/assets/images/ico-right-arrow.png') no-repeat center center;
   background-size: 24px;
+  position: absolute;
+  left: 0px;
 }
 
 .markdown-content details[open] summary:after {
@@ -313,6 +314,8 @@ details[open] > .fst_mn .caret {
   width: 24px;
   height: 24px;
   background-size: 24px;
+  position: absolute;
+  left: 0px;
 }
 
 .sql-content summary::after {
