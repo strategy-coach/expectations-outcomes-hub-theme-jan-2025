@@ -18,8 +18,10 @@
     "axios": "^1.7.9",
     "github-discussions-blog-loader": "^1.0.1",
     "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-markdown-editor-lite": "^1.3.4",
     "reading-time-estimator": "^1.11.0",
     "slugify": "^1.6.6",
     "string-strip-html": "^13.4.8"
