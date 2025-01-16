@@ -4,6 +4,7 @@ import { githubDiscussionsBlogLoader } from "github-discussions-blog-loader";
 
 const baseSchema = z.object({
   title: z.string(),
+  date: z.string().optional(),
 });
 
 const blog = defineCollection({
@@ -23,8 +24,8 @@ const expectations = defineCollection({
   schema: baseSchema,
 });
 
-const connect = defineCollection({
-  loader: glob({ base: "./src/content/connect", pattern: "**/*.{md,mdx}" }),
+const progress = defineCollection({
+  loader: glob({ base: "./src/content/progress", pattern: "**/*.{md,mdx}" }),
   schema: baseSchema,
 });
 
@@ -61,6 +62,6 @@ export const collections = {
   blog,
   expectations,
   outcomes,
-  connect,
+  progress,
   discussions,
 };
