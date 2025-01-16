@@ -19,7 +19,14 @@ jobs:
         run: |
           node --version
           pnpm --version
-          
+      - name: Execute DB variables
+        env:
+          PUBLIC_GITHUB_TOKEN: ${{ vars.PUBLIC_GITHUB_TOKEN }}
+          PUBLIC_GITHUB_REPO_NAME: ${{ vars.PUBLIC_GITHUB_REPO_NAME }}
+          PUBLIC_GITHUB_OWNER_NAME: ${{ vars.PUBLIC_GITHUB_OWNER_NAME }}
+        run: |
+          bash -x support/ci-cd-prod.sh          
+
       - name: Install dependencies and build using pnpm
         run: |
           pnpm install
