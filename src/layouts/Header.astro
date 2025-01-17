@@ -1,65 +1,138 @@
 ---
 const currentPath = Astro.url.pathname;
 ---
+
 <header class="bg-white shadow-sm border-b">
-    <div class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 flex justify-between items-center sm:flex-row flex-col">
-      <div class="flex items-center space-x-4">
-        <!-- <button class="text-gray-500 py-4">
+  <div
+    class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 flex justify-between items-center sm:flex-row flex-col"
+  >
+    <div class="flex items-center space-x-4">
+      <!-- <button class="text-gray-500 py-4">
           <img src="/assets/images/fi-rr-menu-burger.svg" class="w-6 h-6" alt="">
         </button>  -->
-        <div class="text-lg font-bold text-gray-900  py-4"><a href="/"><img src="/assets/images/logo.png" class="mr-3 h-10" alt=""></a></div>
-        <nav class="lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
-          <a href="/" data-path="/" class="menu-link py-4 inline-flex">Home</a>
-          <a href="/expectations" data-path="/expectations" class="menu-link py-4 inline-flex">Expectations</a>
-          <a href="/outcomes" data-path="/outcomes" class="menu-link py-4 inline-flex">Outcomes</a>
-          <a href="/progress" data-path="/progress" class="menu-link py-4 inline-flex">Progress</a>
-          <a href="/blog" data-path="/blog" class="menu-link py-4 inline-flex">Blog</a>
-        </nav>
+      <div class="text-lg font-bold text-gray-900 py-4">
+        <a href="/"
+          ><img src="/assets/images/logo.png" class="mr-3 h-10" alt="" /></a
+        >
       </div>
-      <div class="flex items-center space-x-4 py-3">
-        <label class="relative block ">
-          <span class="sr-only">Search</span>
-          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-            <img src="/assets/images/fi-rr-search.svg" alt="" class="w-5 h-5">
-          </span>
-          <input class="placeholder:text-slate-700 block w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-1 sm:text-sm bg-slate-50 text-base text-slate-700" placeholder="Search" type="text" name="search"/>
-        </label>
-        <div class="relative flex items-center space-x-4">
-          <button class="relative text-gray-600 hover:text-gray-900 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.118V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.118c0 .417-.162.816-.405 1.113L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
-          <span class="absolute top-[-13px] left-[-7px] bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-            3
-          </span>
-        </div>
-        <span class="rounded-full overflow-hidden w-8 h-8"><a href="#."><img src="/assets/images/avatar-img-1.jpg" alt=""></a></span>
+      <nav class="lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
+        <a href="/" data-path="/" class="menu-link py-4 inline-flex">Home</a>
+        <a
+          href="/expectations"
+          data-path="/expectations"
+          class="menu-link py-4 inline-flex">Expectations</a
+        >
+        <a
+          href="/outcomes"
+          data-path="/outcomes"
+          class="menu-link py-4 inline-flex">Outcomes</a
+        >
+        <a
+          href="/progress"
+          data-path="/progress"
+          class="menu-link py-4 inline-flex">Progress</a
+        >
+        <a href="/blog" data-path="/blog" class="menu-link py-4 inline-flex"
+          >Blog</a
+        >
+      </nav>
+    </div>
+    <div class="flex items-center space-x-4 py-3">
+      <label class="relative block">
+        <span class="sr-only">Search</span>
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <img src="/assets/images/fi-rr-search.svg" alt="" class="w-5 h-5" />
+        </span>
+        <input
+          class="placeholder:text-slate-700 block w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-1 sm:text-sm bg-slate-50 text-base text-slate-700"
+          placeholder="Search"
+          type="text"
+          name="search"
+        />
+      </label>
+      <div class="relative flex items-center space-x-4">
+        <button
+          class="relative text-gray-600 hover:text-gray-900 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.118V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.118c0 .417-.162.816-.405 1.113L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+            ></path>
+          </svg>
+        </button>
+        <span
+          class="absolute top-[-13px] left-[-7px] bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full"
+        >
+          3
+        </span>
+      </div>
+      <span class="rounded-full overflow-hidden w-8 h-8"
+        ><a
+          href="#"
+          href="#"
+          id="dropdownDefaultButton"
+          data-dropdown-toggle="dropdown"
+          ><img src="/assets/images/avatar-img-1.jpg" alt="" /></a
+        ></span
+      >
+      <!-- Dropdown menu -->
+      <div
+        id="dropdown"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownDefaultButton"
+        >
+          <li>
+            <a
+              href="/"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="/logout"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >Sign out</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
-  </header>
-
+  </div>
+</header>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const currentPath = window.location.pathname;
-    const links = document.querySelectorAll('.menu-link');
+    const links = document.querySelectorAll(".menu-link");
 
-    links.forEach(link => {
+    links.forEach((link) => {
       const path = link.dataset.path;
 
       // Ensure Home is selected only for the exact path "/"
       if (path === "/" && currentPath === path) {
-        link.classList.add('text-black', 'border-b-2', 'border-slate-700');
-        link.classList.remove('text-gray-700', 'hover:text-black');
-      } 
+        link.classList.add("text-black", "border-b-2", "border-slate-700");
+        link.classList.remove("text-gray-700", "hover:text-black");
+      }
       // Check for partial matches for other paths
       else if (path !== "/" && currentPath.startsWith(path)) {
-        link.classList.add('text-black', 'border-b-2', 'border-slate-700');
-        link.classList.remove('text-gray-700', 'hover:text-black');
+        link.classList.add("text-black", "border-b-2", "border-slate-700");
+        link.classList.remove("text-gray-700", "hover:text-black");
       } else {
-        link.classList.add('text-gray-700', 'hover:text-black');
-        link.classList.remove('text-black', 'border-b-2', 'border-slate-700');
+        link.classList.add("text-gray-700", "hover:text-black");
+        link.classList.remove("text-black", "border-b-2", "border-slate-700");
       }
     });
   });
