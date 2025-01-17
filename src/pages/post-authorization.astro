@@ -1,0 +1,20 @@
+---
+import { Authentication } from "../components/zitadel-authentication";
+const envData = import.meta.env;
+const clientId = envData.PUBLIC_ZITADEL_CLIENT_ID;
+const authority = envData.PUBLIC_ZITADEL_AUTHORITY;
+const redirectUri = envData.PUBLIC_ZITADEL_REDIRECT_URI;
+const postLogoutRedirectUri = envData.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI;
+const organizationId = envData.PUBLIC_ZITADEL_ORGANIZATION_ID;
+const projectId = envData.PUBLIC_ZITADEL_PROJECT_ID;
+---
+
+<Authentication
+  clientId={clientId}
+  authority={authority}
+  redirectUri={redirectUri}
+  postLogoutRedirectUri={postLogoutRedirectUri}
+  organizationId={organizationId}
+  projectId={projectId}
+  operation="login"
+/>
