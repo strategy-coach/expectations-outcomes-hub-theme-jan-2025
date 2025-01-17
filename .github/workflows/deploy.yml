@@ -40,7 +40,7 @@ jobs:
           
       - name: Archive build artifacts
         run: |
-          tar -czvf expectations-outcomes-hub-theme.tar.gz dist
+          tar -czvf expectations-outcomes-hub-theme.tar.gz dist node_modules
 
       - name: Copy build artifacts to the production server
         run: |
