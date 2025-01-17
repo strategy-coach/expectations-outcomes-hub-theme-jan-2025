@@ -58,6 +58,68 @@ import GithubDiscussionLoader from "../components/github_discussion/githubDiscus
 
 ```
 
+## ZITADEL Authentication Component
+
+You can use the ZITADEL authentication component in your Astro files. The component is located at:
+
+`src/components/zitadel-authentication`
+
+
+## Update env file with following values
+
+PUBLIC_ZITADEL_CLIENT_ID="xxxxxxxxx"
+
+PUBLIC_ZITADEL_AUTHORITY="xxxxxxxxx"
+
+PUBLIC_ZITADEL_REDIRECT_URI="xxxxxxxxx"
+
+PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI="xxxxxxxxx"
+
+PUBLIC_ZITADEL_ORGANIZATION_ID="xxxxxxxxx"
+
+PUBLIC_ZITADEL_PROJECT_ID="xxxxxxxxx"
+
+## Example Usage
+
+To use the authentication component, import it and include it in your template:
+
+```astro
+---
+import { Authentication } from "../components/zitadel-authentication";
+---
+```
+
+## Login Example
+```
+<Authentication
+  clientId={clientId}
+  authority={authority}
+  redirectUri={redirectUri}
+  postLogoutRedirectUri={postLogoutRedirectUri}
+  organizationId={organizationId}
+  projectId={projectId}
+  operation="login"
+/>
+```
+
+## Logout Example
+```
+<Authentication
+  clientId={clientId}
+  authority={authority}
+  redirectUri={redirectUri}
+  postLogoutRedirectUri={postLogoutRedirectUri}
+  organizationId={organizationId}
+  projectId={projectId}
+  operation="logout"
+/>
+```
+## Default Login Credentials for Demo
+
+| User Name | Password       |
+|-----------|----------------|
+| EOHdemo   | Demo@eoh1234   |
+
 ## Getting Started  
 
 1. **Clone the Repository**  
@@ -81,8 +143,6 @@ import GithubDiscussionLoader from "../components/github_discussion/githubDiscus
 ## Folder Structure  
 
 ```text
-
-
 ├── LICENSE
 ├── README-Theme.md
 ├── README.md
@@ -95,27 +155,33 @@ import GithubDiscussionLoader from "../components/github_discussion/githubDiscus
 │       └── styles
 ├── src
 │   ├── components
+│   │   ├── ContentEditor.tsx
+│   │   ├── EditMarkdownButton.jsx
+│   │   ├── LatestUpdates.astro
 │   │   ├── Sidebar.tsx
-│   │   └── github_discussion
-│   │       ├── githubDiscussion.astro
-│   │       ├── githubDiscussionDetails.tsx
-│   │       └── githubDisscussion.tsx
+│   │   ├── github_discussion
+│   │   │   ├── githubDiscussion.astro
+│   │   │   ├── githubDiscussionDetails.tsx
+│   │   │   └── githubDisscussion.tsx
+│   │   └── zitadel-authentication
+│   │       ├── index.js
+│   │       ├── login.jsx
+│   │       └── zitadelAuthentication.astro
 │   ├── content
 │   │   ├── blog
-│   │   ├── progress
 │   │   ├── expectations
-│   │   └── outcomes
+│   │   ├── outcomes
+│   │   └── progress
 │   ├── content.config.ts
 │   ├── layouts
 │   │   ├── Footer.astro
 │   │   ├── Header.astro
 │   │   ├── Layout.astro
 │   │   └── NavLink.astro
+│   ├── middleware
+│   │   └── index.ts
 │   ├── pages
 │   │   ├── blog
-│   │   │   ├── [...slug].astro
-│   │   │   └── index.astro
-│   │   ├── progress
 │   │   │   ├── [...slug].astro
 │   │   │   └── index.astro
 │   │   ├── contact
@@ -126,13 +192,20 @@ import GithubDiscussionLoader from "../components/github_discussion/githubDiscus
 │   │   │   ├── [...slug].astro
 │   │   │   └── index.astro
 │   │   ├── index.astro
+│   │   ├── logout.astro
 │   │   ├── mission-vision
 │   │   │   └── index.astro
-│   │   └── outcomes
+│   │   ├── outcomes
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── post-authorization.astro
+│   │   └── progress
 │   │       ├── [...slug].astro
 │   │       └── index.astro
 │   └── utils
 │       └── helper.astro
+├── support
+│   └── ci-cd.sh
 ├── tailwind.config.js
 ├── tsconfig.json
 └── visualizing-expectations-outcomes.md
