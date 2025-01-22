@@ -1,4 +1,4 @@
-lockfileVersion: 5.4
+lockfileVersion: 9.0
 
 specifiers:
   '@astrojs/node': ^9.0.1
