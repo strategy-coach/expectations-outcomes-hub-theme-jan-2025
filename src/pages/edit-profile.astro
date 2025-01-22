@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EditProfileForm from "../components/profile/editProfile";
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+---
+
+<Layout>
+  <div class="w-full">
+    <main class="w-full p-7 bg-white">
+      <Breadcrumbs
+        linkTextFormat="capitalized"
+        ariaLabel="Site navigation"
+        separatorAriaHidden={false}
+      >
+        <svg
+          slot="separator"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </Breadcrumbs>
+      <EditProfileForm client:only="react" />
+    </main>
+  </div>
+  <span class="text-muted-foreground hidden"></span>
+</Layout>
