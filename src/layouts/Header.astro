@@ -1,5 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
+import { isZitadelEnabled } from "../utils/env";
 ---
 
 <header class="bg-white shadow-sm border-b">
@@ -107,13 +108,20 @@ const currentPath = Astro.url.pathname;
               >Profile</a
             >
           </li>
-          <li>
-            <a
-              href="/logout"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Sign out</a
-            >
-          </li>
+          {
+            isZitadelEnabled ? (
+              <li>
+                <a
+                  href="/logout"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Sign out
+                </a>
+              </li>
+            ) : (
+              ""
+            )
+          }
         </ul>
       </div>
     </div>
