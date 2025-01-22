@@ -1,46 +1,63 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import { render } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import Sidebar from '../../components/Sidebar';
-import {buildMenuTree} from '../../utils/helper.astro';
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Sidebar from "../../components/Sidebar";
+import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 
-const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
+const files = import.meta.glob("/src/content/progress/**/*.{md,mdx}", {
+  eager: true,
+});
 const dirName = "progress";
-const menuTree = buildMenuTree(files,dirName);
+const menuTree = buildMenuTree(files, dirName);
 
-export async function getStaticPaths() {
-	const posts = await getCollection('progress');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+const slug = Astro.params.slug;
+const entry = await getEntry("progress", slug);
+let slugval = "/progress/" + slug;
+if (!entry) {
+  // Handle Error, for example:
+  throw new Error("Could not find data");
 }
-type Props = CollectionEntry<'progress'>;
+const { Content } = await render(entry);
 
-const post = Astro.props;
-const { Content } = await render(post);
-const slug = post.id;
-let slugval = '/progress/' + slug;
+// export async function getStaticPaths() {
+//   const posts = await getCollection("progress");
+//   return posts.map((post) => ({
+//     params: { slug: post.id },
+//     props: post,
+//   }));
+// }
+// type Props = CollectionEntry<"progress">;
 
+// const post = Astro.props;
+// const { Content } = await render(post);
+// const slug = post.id;
+// let slugval = "/progress/" + slug;
 ---
-<Layout>	
 
-<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
-      <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs">
-        <div id="starlight__sidebar" class="sidebar-pane">
-          <div class="sidebar-content">
-            <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
+<Layout>
+  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+    <div
+      class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs"
+    >
+      <div id="starlight__sidebar" class="sidebar-pane">
+        <div class="sidebar-content">
+          <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
             <Sidebar menuTree={menuTree} slugval={slugval} />
-            </div>
           </div>
         </div>
       </div>
-      <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5">
-        <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
-        >
+    </div>
+    <div
+      class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5"
+    >
+      <Breadcrumbs
+        linkTextFormat="capitalized"
+        ariaLabel="Site navigation"
+        separatorAriaHidden={false}
+      >
         <svg
           slot="separator"
           xmlns="http://www.w3.org/2000/svg"
@@ -54,15 +71,15 @@ let slugval = '/progress/' + slug;
           stroke-linejoin="round"
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
-        </Breadcrumbs>
-        <div class="border-b border-slate-300 pb-3 mb-4">
-        <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">{post.data.title}</h1>
-        </div>
+      </Breadcrumbs>
+      <div class="border-b border-slate-300 pb-3 mb-4">
+        <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">
+          {entry.data.title}
+        </h1>
+      </div>
       <article class="prose max-w-screen-xl withbullet markdown-content">
         <Content />
       </article>
-      </div>
+    </div>
   </main>
 </Layout>
-
-
