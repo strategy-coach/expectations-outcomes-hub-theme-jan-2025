@@ -1,6 +1,8 @@
 ---
 title: Achievements
 ---
+# Achievements
+
 ## 1. Company Growth
 
 ### 🎉 Reached 1 Million Users

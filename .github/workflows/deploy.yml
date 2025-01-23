@@ -32,14 +32,22 @@ jobs:
           PUBLIC_ZITADEL_PROJECT_ID: ${{ vars.PUBLIC_ZITADEL_PROJECT_ID }}
           ENABLE_DEFAULT_AUTH: ${{ vars.ENABLE_DEFAULT_AUTH }}
           ENABLE_ZITADEL_AUTH: ${{ vars.ENABLE_ZITADEL_AUTH }}
-          PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}  
+          PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}
+          PUBLIC_QUALITYFOLIO_URL: ${{ vars.PUBLIC_QUALITYFOLIO_URL }}  
         run: |
           bash -x support/ci-cd.sh      
-
-      - name: Install dependencies and build using pnpm
+          
+      - name: Install dependencies
         run: |
           pnpm install
-          pnpm run build
+
+      - name: Generate pagefind HTML files
+        run: |
+          pnpm run pagefind-search          
+          
+      - name: Build using pnpm
+        run: |
+          pnpm run build       
           
       - name: Archive build artifacts
         run: |
