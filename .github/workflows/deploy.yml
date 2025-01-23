@@ -35,11 +35,18 @@ jobs:
           PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}  
         run: |
           bash -x support/ci-cd.sh      
-
-      - name: Install dependencies and build using pnpm
+          
+      - name: Install dependencies
         run: |
           pnpm install
-          pnpm run build
+
+      - name: Generate pagefind HTML files
+        run: |
+          pnpm run pagefind-search          
+          
+      - name: Build using pnpm
+        run: |
+          pnpm run build       
           
       - name: Archive build artifacts
         run: |
