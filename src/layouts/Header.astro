@@ -2,6 +2,8 @@
 const currentPath = Astro.url.pathname;
 import PageFind from "../components/PageFind.astro";
 import { isZitadelEnabled } from "../utils/env";
+
+const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
 ---
 
 <header class="bg-white shadow-sm border-b">
@@ -19,26 +21,15 @@ import { isZitadelEnabled } from "../utils/env";
       </div>
       <nav class="lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
         <a href="/" data-path="/" class="menu-link py-4 inline-flex">Home</a>
-        <a
-          href="/expectations"
-          data-path="/expectations"
-          class="menu-link py-4 inline-flex">Expectations</a
-        >
-        <a
-          href="/outcomes"
-          data-path="/outcomes"
-          class="menu-link py-4 inline-flex">Outcomes</a
-        >
-        <a
-          href="/progress"
-          data-path="/progress"
-          class="menu-link py-4 inline-flex">Progress</a
-        >
-         <a
-          href="/qualityfolio"
-          data-path="/qualityfolio"
-          class="menu-link py-4 inline-flex">Qualityfolio</a
-        >
+        <a href="/documentation" data-path="/documentation" class="menu-link py-4 inline-flex">Documentation</a>
+        {userId && (
+          <>
+            <a href="/expectations" data-path="/expectations" class="menu-link py-4 inline-flex">Expectations</a>
+            <a href="/outcomes" data-path="/outcomes" class="menu-link py-4 inline-flex">Outcomes</a>
+            <a href="/progress" data-path="/progress" class="menu-link py-4 inline-flex">Progress</a>
+            <a href="/qualityfolio" data-path="/qualityfolio" class="menu-link py-4 inline-flex">Qualityfolio</a>
+          </>
+        )}
         <a href="/blog" data-path="/blog" class="menu-link py-4 inline-flex"
           >Blog</a
         >
@@ -112,19 +103,29 @@ import { isZitadelEnabled } from "../utils/env";
           }
 
           {
-            isZitadelEnabled ? (
-              <li>
-                <a
-                  href="/logout"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                  Sign out
-                </a>
-              </li>
-            ) : (
-              ""
+            isZitadelEnabled && (
+              userId ? (
+                <li>
+                  <a
+                    href="/logout"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Sign out
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <a
+                    href="/post-authorization"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Sign in
+                  </a>
+                </li>
+              )
             )
           }
+
         </ul>
       </div>
     </div>
