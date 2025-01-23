@@ -2,6 +2,7 @@
 import ZitadelLogout from "./login";
 import querystring from "querystring";
 
+// Destructure Astro.props for clean access
 const {
   clientId,
   authority,
@@ -12,59 +13,18 @@ const {
   operation,
 } = Astro.props;
 
-function logout_using_zitadel() {
+// Helper function to construct the logout URL
+function createZitadelLogoutUrl() {
   const params = {
     id_token_hint: "<Token>",
     post_logout_redirect_uri: postLogoutRedirectUri,
     state: "<State>",
   };
-  const logout_url =
-    authority + "/oidc/v1/end_session" + "?" + querystring.stringify(params);
-  return logout_url;
+  return `${authority}/oidc/v1/end_session?${querystring.stringify(params)}`;
 }
 
-const zitadelLogoUrl = logout_using_zitadel();
+const zitadelLogoutUrl = createZitadelLogoutUrl();
 ---
-
-<script is:inline define:vars={{ operation }}>
-  if (operation == "logout") {
-    const deleteCookie = (key) => {
-      document.cookie = key + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
-    };
-
-    const deleteCookieWithDOmain = (key, domain) => {
-      document.cookie =
-        key +
-        "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/; domain=" +
-        domain;
-    };
-
-    localStorage.removeItem("authState");
-    localStorage.removeItem("User");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("refresh_token");
-    localStorage.removeItem("organizationId");
-    localStorage.removeItem("projectId");
-    localStorage.removeItem("clientId");
-    localStorage.removeItem("zitadelScope");
-    sessionStorage.clear();
-
-    deleteCookie("state");
-    deleteCookie("authState");
-    deleteCookie("user_roles");
-    deleteCookie("User");
-    deleteCookie("is-logged-in");
-    deleteCookie("email");
-    deleteCookie("userId");
-    deleteCookie("otContext");
-    deleteCookie("token");
-    deleteCookie("gravatar");
-    deleteCookie("tenantId");
-    deleteCookie("organizationName");
-    deleteCookieWithDOmain("__Secure-zitadel.useragent", "idi.opsfolio.com");
-    deleteCookieWithDOmain("__Secure-zitadel.useragent", "idi.opsfolio.com");
-  }
-</script>
 
 <ZitadelLogout
   client:only="react"
@@ -76,29 +36,56 @@ const zitadelLogoUrl = logout_using_zitadel();
   projectId={projectId}
 />
 
-<script is:inline define:vars={{operation }}>
-  if (operation == "login") {
+<script is:inline define:vars={{ operation }}>
+  if (operation === "login") {
     const state = new URL(window.location.href).searchParams.get("state");
     if (state) {
-      document.cookie = `state=${encodeURIComponent(state)}; path=/;`;
-      localStorage.setItem("state", state);
+      document.cookie = `zitadel_state=${encodeURIComponent(state)}; path=/;`;
+      localStorage.setItem("zitadel_state", state);
     }
   }
 </script>
-<script is:inline define:vars={{ zitadelLogoUrl, operation }}>
-  if (operation == "logout") {
-    const reloadHome = () => {
-      let logoutPath = zitadelLogoUrl;
-      logoutPath = decodeURI(logoutPath);
-      logoutPath = logoutPath.replace("<Token>", localStorage.getItem("token"));
-      logoutPath = logoutPath.replace("<State>", localStorage.getItem("state"));
-      // document.getElementById("logoutFrame").src = logoutPath;
-      localStorage.removeItem("token");
-      localStorage.removeItem("state");
+
+<script is:inline define:vars={{ zitadelLogoutUrl, operation }}>
+  const deleteCookie = (key, domain = null) => {
+    const cookieString = `${key}=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;`;
+    document.cookie = domain
+      ? `${cookieString} domain=${domain}`
+      : cookieString;
+  };
+
+  if (operation === "logout") {
+    const logoutAndClearData = () => {
+      let logoutPath = zitadelLogoutUrl;
+
+      // Replace placeholders with actual values
+      logoutPath = decodeURI(logoutPath)
+        .replace("<Token>", localStorage.getItem("zitadel_token"))
+        .replace("<State>", localStorage.getItem("zitadel_state"));
+
+      // Clear cookies, localStorage, and sessionStorage
+      const cookiesToDelete = [
+        "zitadel_state",
+        "zitadel_token",
+        "zitadel_user_name",
+        "zitadel_access_token",
+        "zitadel_user_id",
+        "zitadel_tenant_id",
+        "zitadel_user_email",
+      ];
+
+      cookiesToDelete.forEach((key) => deleteCookie(key));
+      deleteCookie("__Secure-zitadel.useragent", "idi.opsfolio.com");
+
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // Redirect to the logout URL
       window.location.href = logoutPath;
     };
-    if (localStorage.getItem("token")) {
-      setTimeout(reloadHome, 1000);
+
+    if (localStorage.getItem("zitadel_token")) {
+      setTimeout(logoutAndClearData, 1000);
     }
   }
 </script>
