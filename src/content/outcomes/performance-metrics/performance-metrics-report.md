@@ -1,6 +1,7 @@
 ---
 title: "Performance Metrics Report"
 ---
+# Performance Metrics Report
 
 ## Executive Summary
 This report provides an overview of key performance metrics for the [specified period]. It highlights critical areas of success and identifies opportunities for improvement to ensure sustainable growth and operational excellence.

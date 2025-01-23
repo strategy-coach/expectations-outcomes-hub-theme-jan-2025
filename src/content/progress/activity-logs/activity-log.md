@@ -1,6 +1,8 @@
 ---
 title: Recent Activity Log
 ---
+# Recent Activity Log
+
 ### January 16, 2025
 
 #### Morning

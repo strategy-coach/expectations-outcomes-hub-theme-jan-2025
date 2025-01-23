@@ -159,7 +159,88 @@ details[open] > .fst_mn .caret {
 .shadow-xs {box-shadow: 0px 0px 5px 0px rgba(227, 227, 227, 1);}
 
   /* Add any custom styles you need here */
+/* / pagefind ui css starts / */
+.dark {
+  --pagefind-ui-primary: #eeeeee;
+  --pagefind-ui-text: #eeeeee;
+  --pagefind-ui-background: #152028;
+  --pagefind-ui-border: #152028;
+  --pagefind-ui-tag: #152028;
+}
 
+.pagefind-ui__results-area {
+  margin-top: 0px !important;
+}
+.pagefind-ui__result {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-top: 0px !important;
+  padding-bottom: 10px !important;
+}
+.pagefind-ui__result-link {
+  font-size: 14px !important;
+}
+.pagefind-ui__result-excerpt {
+  line-height: 19px !important;
+}
+
+.pagefind-ui__message {
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  padding-top: 12px !important;
+  padding-bottom: 8px !important;
+  padding-left: 15px !important;
+}
+
+.pagefind-ui__search-input {
+  border-radius: 1.5rem !important;
+  border: 1px solid #ccc !important;
+}
+
+.pagefind-ui__search-clear {
+  border-radius: 1.5rem !important;
+}
+
+.pagefind-ui__drawer {
+  position: absolute;
+  /* / width: 100%; / */
+  top: 100%;
+  /* / left: 0; / */
+  width: 650px; /*try70 vh*/
+  right: 0%;
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid #ccc; 
+  border-radius: 0 0 8px 8px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 300px; 
+  overflow-y: auto;
+}
+
+.pagefind-ui__results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagefind-ui__result {
+  padding: 8px;
+  border-bottom: 1px solid #ccc; 
+}
+
+.pagefind-ui__result:last-child {
+  border-bottom: none;
+}
+.pagefind-ui__message {
+  padding-left: 10px !important;
+}
+
+.body-noscroll {
+  overflow: hidden;
+}
+
+
+/* / Pagefind ui css ends  / */
 
 
   /* :::::: markdown css ::::::> starts */
@@ -206,8 +287,11 @@ details[open] > .fst_mn .caret {
   line-height: 46px;
   letter-spacing: 0px;
   font-weight: 700;
-  padding-bottom: 0px;
   color: #334155 !important;
+  margin-top: 15px;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 12px;
+
 }
 
 .markdown-content h2 {
@@ -284,7 +368,9 @@ details[open] > .fst_mn .caret {
 .markdown-content summary::-webkit-details-marker {
   display: none;
 }
-
+#activityLog h1{
+  display: none;
+}
 /* .markdown-content summary::after {
   content: "\1F892";
   font-size: 24px;
