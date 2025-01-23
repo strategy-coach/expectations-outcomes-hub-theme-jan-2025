@@ -16,6 +16,8 @@ import Footer from "./Footer.astro";
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css"
       rel="stylesheet"
     />
+    <link href="/htmloutput/pagefind/pagefind-ui.css" rel="stylesheet">
+    <script src="/htmloutput/pagefind/pagefind-ui.js" is:inline></script>
     <script
       src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
     ></script>
@@ -28,3 +30,52 @@ import Footer from "./Footer.astro";
     <Footer />
   </body>
 </html>
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    function removeHtmlExtensionAndFolder(href) {
+      return href.replace(/\/htmloutput\//, "/").replace(/\.html$/, "");
+    }
+
+    // Function to apply URL modification to links
+    function updateLinks() {
+      const resultLinks = document.querySelectorAll(
+        ".pagefind-ui__result-link",
+      );
+      resultLinks.forEach((link) => {
+        const originalHref = link.getAttribute("href");
+        if (originalHref) {
+          const newHref = removeHtmlExtensionAndFolder(originalHref);
+          link.href = newHref;
+        }
+      });
+
+      // Remove the class `pagefind-ui__result-thumb` from elements
+      const thumbElements = document.querySelectorAll(".pagefind-ui__result-thumb");
+      thumbElements.forEach((element) => {
+        element.classList.remove("pagefind-ui__result-thumb");
+      });
+    }
+
+    // Add a keyup event listener to update existing links
+    window.addEventListener("keydown", function () {
+      setTimeout(updateLinks, 1500);
+    });
+    window.addEventListener("keyup", function () {
+      setTimeout(updateLinks, 500);
+    });
+
+    window.addEventListener("click", function () {
+      setTimeout(updateLinks, 500);
+    });
+
+    // Add a click event listener to handle "Load more Results" button
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "/" || event.key === ".") {
+      console.log("you pressed the slash");
+      event.preventDefault();
+      document.querySelector("div#search input").focus();
+    }
+  });
+</script>

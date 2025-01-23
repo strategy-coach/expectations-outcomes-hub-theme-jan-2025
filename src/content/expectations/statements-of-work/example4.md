@@ -1,6 +1,7 @@
 ---
 title: Project Statement of Work (SOW)
 ---
+# Project Statement of Work (SOW)
 
 ## Table of Contents
 1. [Project Overview](#project-overview)

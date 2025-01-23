@@ -1,10 +1,10 @@
 ---
 title: Responsibilities & Duties
 ---
+# Responsibilities & Duties
 
 This section outlines the key team members involved and their roles, and responsibilities.
 
----
 
 ## **Responsibilities by Role**
 

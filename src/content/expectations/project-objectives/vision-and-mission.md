@@ -1,6 +1,7 @@
 ---
 title: Mission and Vision
 ---
+# Mission and Vision
 
 At the heart of every project lies a purpose. Our objectives, mission, and vision guide our decisions, shape our direction, and keep us focused on delivering impactful results. Here's a look at how we envision success.
 

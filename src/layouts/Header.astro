@@ -1,5 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
+import PageFind from "../components/PageFind.astro";
 import { isZitadelEnabled } from "../utils/env";
 ---
 
@@ -39,18 +40,7 @@ import { isZitadelEnabled } from "../utils/env";
       </nav>
     </div>
     <div class="flex items-center space-x-4 py-3">
-      <label class="relative block">
-        <span class="sr-only">Search</span>
-        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-          <img src="/assets/images/fi-rr-search.svg" alt="" class="w-5 h-5" />
-        </span>
-        <input
-          class="placeholder:text-slate-700 block w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-slate-500 focus:ring-slate-500 focus:ring-1 sm:text-sm bg-slate-50 text-base text-slate-700"
-          placeholder="Search"
-          type="text"
-          name="search"
-        />
-      </label>
+      <PageFind />
       <div class="relative flex items-center space-x-4">
         <button
           class="relative text-gray-600 hover:text-gray-900 focus:outline-none"
