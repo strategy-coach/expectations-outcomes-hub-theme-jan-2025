@@ -3,6 +3,8 @@ title: Asset and Risk Analysis Report
 date: "2025-01-15"
 
 ---
+# Asset and Risk Analysis Report
+
 ## Executive Summary
 This report provides a comprehensive analysis of the assets within the organization and the associated risks. It aims to identify critical assets, assess potential vulnerabilities, and propose strategies to mitigate risks effectively.
 

@@ -1,6 +1,7 @@
 ---
 title: Meeting Minutes
 ---
+# Meeting Minutes
 
 ## Meeting Details
 - **Date**: [Insert Date]

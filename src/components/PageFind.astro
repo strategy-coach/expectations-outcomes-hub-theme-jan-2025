@@ -1,0 +1,15 @@
+<div id="search" class="ml-3"></div>
+
+<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+	  new PagefindUI({ element: '#search', resetStyles: false});
+	});
+
+    window.addEventListener('keydown', (event) => {
+        if (event.key === '/' || event.key === '.') {
+            console.log('you pressed the slash');
+            event.preventDefault();
+            document.querySelector('div#search input').focus();
+        }
+    });
+</script>

@@ -2,6 +2,7 @@
 title: Team Members & Contacts
 
 ---
+# Team Members & Contacts
 
 ## Introduction
 This document provides an overview of the key team members, their roles, and their contact information. It serves as a reference to facilitate communication within the team.
