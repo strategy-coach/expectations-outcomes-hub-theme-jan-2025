@@ -101,13 +101,21 @@ import { isZitadelEnabled } from "../utils/env";
               >Dashboard</a
             >
           </li>
-          <li>
-            <a
-              href="/my-profile"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Profile</a
-            >
-          </li>
+          {
+            isZitadelEnabled ? (
+              <li>
+                <a
+                  href="/my-profile"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Profile
+                </a>
+              </li>
+            ) : (
+              ""
+            )
+          }
+
           {
             isZitadelEnabled ? (
               <li>
