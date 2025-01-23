@@ -32,7 +32,8 @@ jobs:
           PUBLIC_ZITADEL_PROJECT_ID: ${{ vars.PUBLIC_ZITADEL_PROJECT_ID }}
           ENABLE_DEFAULT_AUTH: ${{ vars.ENABLE_DEFAULT_AUTH }}
           ENABLE_ZITADEL_AUTH: ${{ vars.ENABLE_ZITADEL_AUTH }}
-          PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}  
+          PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}
+          PUBLIC_QUALITYFOLIO_URL: ${{ vars.PUBLIC_QUALITYFOLIO_URL }}  
         run: |
           bash -x support/ci-cd.sh      
           
