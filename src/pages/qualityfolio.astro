@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+const envData = import.meta.env;
+const PUBLIC_QUALITYFOLIO_URL = envData.PUBLIC_QUALITYFOLIO_URL;
+
+---
+<Layout>	
+  <main class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]">
+    <div>
+      <title>Qualityfolio</title>
+      <style>
+        iframe {
+          width: 100%;
+          border: none;
+          height:250vh
+        }
+      </style>
+      <iframe   src={PUBLIC_QUALITYFOLIO_URL} id="qltyiframe"   scrolling="auto" title="Qualityfolio Web UI"></iframe>
+    </div>
+  </main>
+</Layout>
+
+
+<script>
+ var iFrameID = document.getElementById('qltyiframe');
+ const height = iFrameID.contentWindow.document.body.scrollHeight
+ var frameContent = iFrameID.contentWindow.document.body.innerHTML;
+ iFrameID.onload = function() {  
+    iFrameID.height = height + "px";
+  }
+</script>
