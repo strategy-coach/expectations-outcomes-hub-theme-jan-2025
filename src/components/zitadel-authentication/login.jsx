@@ -3,9 +3,11 @@ import React from "react";
 import { useAuth, AuthProvider } from "oidc-react";
 import Cookie from "js-cookie"
 import { jwtDecode } from "jwt-decode";
+
 const setCookie = (key, value) => {
     Cookie.set(key, value, { path: "/", secure: true });
 };
+
 const CheckLogin = () => {
     () => auth.signOut();
     const auth = useAuth();
@@ -21,59 +23,43 @@ const CheckLogin = () => {
         </div>
     );
 };
-const state = Cookie.get("state")
+
+const state = Cookie.get("zitadel_state");
 
 const LoggedIn = ({ clientId, authority, redirectUri, postLogoutRedirectUri, organizationId, projectId }) => {
 
-
     const handleSignIn = async (response) => {
-        const user = `${response.profile.name}`;
-        setCookie("User", user);
-        setCookie("token", response.access_token);
-        setCookie("userId", response.profile.sub);
-        localStorage.setItem("token", response.id_token);
 
         const decoded = jwtDecode(response.id_token);
         const roleKey = `urn:zitadel:iam:org:project:${projectId}:roles`;
-        let userRoles = "normal";
-
-        if (decoded[roleKey]) {
-            const roles = decoded[roleKey];
+        localStorage.setItem("zitadel_token", response.id_token);
+        setCookie("zitadel_access_token", response.access_token);
+        if (response.profile[roleKey]) {
+            const roles = response.profile[roleKey];
             if (typeof roles === "object" && roles !== null) {
                 const roleKeys = Object.keys(roles);
                 if (roleKeys.length > 0) {
-                    setCookie("user_roles", roleKeys[0]);
-                    userRoles = roleKeys[0];
+                    setCookie("zitadel_user_roles", JSON.stringify(roleKeys));
+                    if (decoded["urn:zitadel:iam:user:resourceowner:id"]) {
+                        setCookie("zitadel_tenant_id", decoded["urn:zitadel:iam:user:resourceowner:id"]);
+                    }
+                    const user = `${response.profile.name}`;
+                    setCookie("zitadel_user_name", user);
+                    setCookie("zitadel_user_id", response.profile.sub);
+                    setCookie("zitadel_user_email", response.profile.email);
+                    window.location.href = "/"
+                } else {
+                    window.location.href = "/no-permission"
                 }
             }
+        } else {
+            window.location.href = "/no-permission"
         }
-
-        if (decoded["urn:zitadel:iam:user:resourceowner:id"]) {
-            setCookie("tenantId", decoded["urn:zitadel:iam:user:resourceowner:id"]);
-        }
-
-        setCookie("email", decoded.email);
-        if (decoded.email === "admin@opsfolio.com") {
-            userRoles = "super-admin";
-            setCookie("user_roles", userRoles);
-        }
-
-        const authState = JSON.stringify({
-            status: "true",
-            name: user,
-            user_id: response.profile.sub,
-            email: decoded.email,
-            user_roles: userRoles,
-        });
-
-        setCookie("authState", authState);
-        window.location.href = "/"
     };
 
     const handleSignOut = async () => {
         window.location.reload();
     };
-
 
     const oidcConfig = state !== undefined ? {
         onSignIn: handleSignIn,
@@ -95,6 +81,7 @@ const LoggedIn = ({ clientId, authority, redirectUri, postLogoutRedirectUri, org
             window.location.reload();
         },
     };
+
     return (
         <React.Fragment>
             <AuthProvider {...oidcConfig}>

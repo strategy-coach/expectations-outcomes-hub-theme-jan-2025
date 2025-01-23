@@ -1,33 +1,25 @@
 import type { MiddlewareHandler, AstroCookies } from "astro";
 import { defineMiddleware, sequence } from "astro/middleware";
 import { isZitadelEnabled, zitadelConfig } from '../utils/env';
-const middleware: MiddlewareHandler = defineMiddleware((context, next) => {
-    const authStateCookie = context.cookies.get("authState")?.value;
-    const organizationName = context.cookies.get("organizationName")?.value;
+
+// Middleware to handle authentication and redirection logic
+const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (context, next) => {
+    const isLoggedIn = context.cookies.get("zitadel_user_id")?.value;
     const { pathname } = context.url;
-
+    const unauthorizedPages = ['/', '/documentation', '/blog', '/logout', '/no-permission'];
     if (isZitadelEnabled) {
-        if (pathname == '/post-authorization/') {
-            return next();
+        if (pathname === '/post-authorization/') {
+            return next(); // Allow access without further checks
         }
-        else if (authStateCookie === undefined && pathname != '/logout') {
-            return context.redirect("/logout");
-        } else {
-            return next();
+
+        if (!isLoggedIn && !unauthorizedPages.includes(pathname)) {
+            return context.redirect("/logout"); // Redirect unauthenticated users
         }
-    } else {
-        return next();
     }
-
-
-
+    return next(); // Proceed to the next middleware
 });
 
-export const onRequest: MiddlewareHandler = defineMiddleware(
-    (context, next) => {
-        next
-        return sequence(
-            middleware
-        )(context, next);
-    },
-);
+// Main middleware handler to sequence middleware functions
+export const onRequest: MiddlewareHandler = defineMiddleware((context, next) => {
+    return sequence(authenticationMiddleware)(context, next);
+});
