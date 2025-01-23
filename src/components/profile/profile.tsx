@@ -4,7 +4,7 @@ import Cookie from "js-cookie";
 import { getUserInfo, getUserMetaData } from "./userService"
 import type { ProfileInformation, UserMeta } from "./userService"
 
-const userId = Cookie.get("userId") || ""
+const userId = Cookie.get("zitadel_user_id") || ""
 
 const handleEditProfile = (): void => {
     window.location.href = "/edit-profile";

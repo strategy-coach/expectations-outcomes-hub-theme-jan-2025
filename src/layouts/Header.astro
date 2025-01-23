@@ -1,9 +1,9 @@
 ---
-const currentPath = Astro.url.pathname;
 import PageFind from "../components/PageFind.astro";
 import { isZitadelEnabled } from "../utils/env";
-
+import { Gravatar } from "../components/profile/gravatar/Gravatar";
 const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
+const email = Astro.cookies.get("zitadel_user_email");
 ---
 
 <header class="bg-white shadow-sm border-b">
@@ -21,15 +21,45 @@ const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
       </div>
       <nav class="lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
         <a href="/" data-path="/" class="menu-link py-4 inline-flex">Home</a>
-        <a href="/documentation" data-path="/documentation" class="menu-link py-4 inline-flex">Documentation</a>
-        {userId && (
-          <>
-            <a href="/expectations" data-path="/expectations" class="menu-link py-4 inline-flex">Expectations</a>
-            <a href="/outcomes" data-path="/outcomes" class="menu-link py-4 inline-flex">Outcomes</a>
-            <a href="/progress" data-path="/progress" class="menu-link py-4 inline-flex">Progress</a>
-            <a href="/qualityfolio" data-path="/qualityfolio" class="menu-link py-4 inline-flex">Qualityfolio</a>
-          </>
-        )}
+        <a
+          href="/documentation"
+          data-path="/documentation"
+          class="menu-link py-4 inline-flex">Documentation</a
+        >
+        {
+          userId && (
+            <>
+              <a
+                href="/expectations"
+                data-path="/expectations"
+                class="menu-link py-4 inline-flex"
+              >
+                Expectations
+              </a>
+              <a
+                href="/outcomes"
+                data-path="/outcomes"
+                class="menu-link py-4 inline-flex"
+              >
+                Outcomes
+              </a>
+              <a
+                href="/progress"
+                data-path="/progress"
+                class="menu-link py-4 inline-flex"
+              >
+                Progress
+              </a>
+              <a
+                href="/qualityfolio"
+                data-path="/qualityfolio"
+                class="menu-link py-4 inline-flex"
+              >
+                Qualityfolio
+              </a>
+            </>
+          )
+        }
         <a href="/blog" data-path="/blog" class="menu-link py-4 inline-flex"
           >Blog</a
         >
@@ -62,15 +92,24 @@ const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
           3
         </span>
       </div>
-      <span class="rounded-full overflow-hidden w-8 h-8"
-        ><a
-          href="#"
-          href="#"
-          id="dropdownDefaultButton"
-          data-dropdown-toggle="dropdown"
-          ><img src="/assets/images/avatar-img-1.jpg" alt="" /></a
-        ></span
-      >
+      {
+        isZitadelEnabled ? (
+          <a
+            href="#"
+            href="#"
+            id="dropdownDefaultButton"
+            data-dropdown-toggle="dropdown"
+          >
+            <Gravatar
+              userEmail={email ? email.value : ""}
+              width={9}
+              height={9}
+            />
+          </a>
+        ) : (
+          ""
+        )
+      }
       <!-- Dropdown menu -->
       <div
         id="dropdown"
@@ -103,8 +142,8 @@ const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
           }
 
           {
-            isZitadelEnabled && (
-              userId ? (
+            isZitadelEnabled &&
+              (userId ? (
                 <li>
                   <a
                     href="/logout"
@@ -122,10 +161,8 @@ const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
                     Sign in
                   </a>
                 </li>
-              )
-            )
+              ))
           }
-
         </ul>
       </div>
     </div>
