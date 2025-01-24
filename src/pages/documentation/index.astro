@@ -2,13 +2,50 @@
 import Layout from '../../layouts/Layout.astro';
 // import MyContent from './README-Theme.md';
 import MyContent from '../../content/documentation.md';
+import Sidebar from '../../components/Sidebar';
+import { buildMenuTree } from '../../utils/helper.astro';
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+
+const files = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true });
+const dirName = "documentation";
+// Build the menu tree
+const menuTree = buildMenuTree(files,dirName);
 ---
-<Layout>
- <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
-  <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5">
+<Layout>	
+	<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+    <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs">
+      <!-- Left Menu Content Goes Here -->
+      <div id="starlight__sidebar" class="sidebar-pane">
+        <div class="sidebar-content">
+          <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">            
+          <Sidebar menuTree={menuTree} />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5">
+      <Breadcrumbs linkTextFormat="capitalized"  ariaLabel="Site navigation" separatorAriaHidden={false}
+      >
+      <svg
+        slot="separator"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+      </Breadcrumbs>
+
     <article class="prose max-w-screen-xl withbullet markdown-content">
       <MyContent />
     </article> 
-  </div>   
+    </div>
   </main>
 </Layout>
+

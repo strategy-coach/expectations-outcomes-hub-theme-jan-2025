@@ -1,5 +1,4 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
 import { render, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Sidebar from "../../components/Sidebar";
@@ -7,15 +6,15 @@ import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 
-const files = import.meta.glob("/src/content/outcomes/**/*.{md,mdx}", {
+const files = import.meta.glob("/src/content/documentation/**/*.{md,mdx}", {
   eager: true,
 });
 // Build the menu tree
-const menuTree = buildMenuTree(files, "outcomes");
+const menuTree = buildMenuTree(files, "documentation");
 
 const slug = Astro.params.slug;
-const entry = await getEntry("outcomes", slug);
-let slugval = "/outcomes/" + slug;
+const entry = await getEntry("documentation", slug);
+let slugval = "/documentation/" + slug;
 if (!entry) {
   // Handle Error, for example:
   throw new Error("Could not find data");
@@ -57,7 +56,7 @@ const { Content } = await render(entry);
           stroke-linejoin="round"
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
-      </Breadcrumbs>
+      </Breadcrumbs>      
       <article class="prose max-w-screen-xl withbullet markdown-content">
         <Content />
       </article>
