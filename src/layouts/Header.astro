@@ -93,7 +93,7 @@ const email = Astro.cookies.get("zitadel_user_email");
         </span>
       </div>
       {
-        isZitadelEnabled ? (
+        isZitadelEnabled && userId ? (
           <a
             href="#"
             href="#"
@@ -107,7 +107,12 @@ const email = Astro.cookies.get("zitadel_user_email");
             />
           </a>
         ) : (
-          ""
+        <span class="rounded-full overflow-hidden w-8 h-8"><a
+          href="#"
+          href="#"
+          id="dropdownDefaultButton"
+          data-dropdown-toggle="dropdown"
+          ><img src="/assets/images/avatar-img-1.jpg" alt="" /></a></span>
         )
       }
       <!-- Dropdown menu -->
@@ -127,7 +132,7 @@ const email = Astro.cookies.get("zitadel_user_email");
             >
           </li>
           {
-            isZitadelEnabled ? (
+            isZitadelEnabled && userId ? (
               <li>
                 <a
                   href="/my-profile"
