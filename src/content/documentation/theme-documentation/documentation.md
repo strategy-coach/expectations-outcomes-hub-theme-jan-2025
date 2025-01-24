@@ -133,6 +133,17 @@ You can enable or disable ZITADEL authentication by setting the `ENABLE_ZITADEL_
 |-----------|----------------|  
 | EOHdemo   | Demo@eoh1234   |  
 
+
+## Qualityfolio Configuration
+
+To configure Qualityfolio, add the URL to your environment variables: 
+
+```
+PUBLIC_QUALITYFOLIO_URL="xxxxx"
+```
+
+Replace xxxxx with the appropriate URL.
+
 ---
 
 Enjoy building with this flexible and user-friendly Astro theme!  
