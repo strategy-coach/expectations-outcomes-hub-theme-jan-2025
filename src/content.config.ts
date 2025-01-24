@@ -34,6 +34,12 @@ const outcomes = defineCollection({
   schema: baseSchema,
 });
 
+const documentation = defineCollection({
+  loader: glob({ base: "./src/content/documentation", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string().optional(),
+  }),
+});
 const envData = import.meta.env;
 
 const githubToken = String(envData.PUBLIC_GITHUB_TOKEN || "");
@@ -64,4 +70,5 @@ export const collections = {
   outcomes,
   progress,
   discussions,
+  documentation,
 };

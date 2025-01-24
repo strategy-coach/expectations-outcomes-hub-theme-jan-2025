@@ -6,13 +6,14 @@ import { isZitadelEnabled, zitadelConfig } from '../utils/env';
 const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (context, next) => {
     const isLoggedIn = context.cookies.get("zitadel_user_id")?.value;
     const { pathname } = context.url;
-    const unauthorizedPages = ['/', '/documentation', '/blog', '/logout', '/no-permission'];
+    const splittedPath = pathname == "/" ? "/" : pathname.split("/");
+    const unauthorizedPages = ['/', 'documentation', 'blog', 'logout', 'no-permission'];
     if (isZitadelEnabled) {
         if (pathname === '/post-authorization/') {
             return next(); // Allow access without further checks
         }
 
-        if (!isLoggedIn && !unauthorizedPages.includes(pathname)) {
+        if (!isLoggedIn && !unauthorizedPages.includes(splittedPath[1] || "/")) {
             return context.redirect("/logout"); // Redirect unauthenticated users
         }
     }

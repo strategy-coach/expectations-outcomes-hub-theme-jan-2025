@@ -1,5 +1,4 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { render, getEntry } from "astro:content";
 import { Breadcrumbs } from "astro-breadcrumbs";
@@ -7,7 +6,6 @@ import "astro-breadcrumbs/breadcrumbs.css";
 
 const slug = Astro.params.slug;
 const entry = await getEntry("blog", slug);
-let slugval = "/blog/" + slug;
 if (!entry) {
   // Handle Error, for example:
   throw new Error("Could not find data");
@@ -41,9 +39,9 @@ const { Content } = await render(entry);
         </svg>
       </Breadcrumbs>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Page Title -->
-        <!-- <h1 class="text-4xl font-bold text-center mb-12">{entry.data.title}</h1> -->
-        <Content />
+        <article class="prose max-w-screen-xl withbullet markdown-content">
+          <Content />
+        </article>
       </div>
     </main>
   </div>
