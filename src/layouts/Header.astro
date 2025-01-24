@@ -4,6 +4,7 @@ import { isZitadelEnabled } from "../utils/env";
 import { Gravatar } from "../components/profile/gravatar/Gravatar";
 const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
 const email = Astro.cookies.get("zitadel_user_email");
+const userName = Astro.cookies.get("zitadel_user_name");
 ---
 
 <header class="bg-white shadow-sm border-b">
@@ -107,12 +108,16 @@ const email = Astro.cookies.get("zitadel_user_email");
             />
           </a>
         ) : (
-        <span class="rounded-full overflow-hidden w-8 h-8"><a
-          href="#"
-          href="#"
-          id="dropdownDefaultButton"
-          data-dropdown-toggle="dropdown"
-          ><img src="/assets/images/avatar-img-1.jpg" alt="" /></a></span>
+          <span class="rounded-full overflow-hidden w-8 h-8">
+            <a
+              href="#"
+              href="#"
+              id="dropdownDefaultButton"
+              data-dropdown-toggle="dropdown"
+            >
+              <img src="/assets/images/avatar-img-1.jpg" alt="" />
+            </a>
+          </span>
         )
       }
       <!-- Dropdown menu -->
@@ -124,6 +129,19 @@ const email = Astro.cookies.get("zitadel_user_email");
           class="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdownDefaultButton"
         >
+          {
+            isZitadelEnabled && userId ? (
+              <li>
+                <span
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                 Welcome {userName?userName.value.split(" ")[0]:""}
+                </span>
+              </li>
+            ) : (
+              ""
+            )
+          }
           <li>
             <a
               href="/"

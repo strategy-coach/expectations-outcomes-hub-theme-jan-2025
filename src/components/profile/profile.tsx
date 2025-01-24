@@ -45,7 +45,7 @@ const Profile: React.FC = () => {
                                 <Gravatar userEmail={user.user.human.email.email} height={35} width={35} />
                             </div>
                             <div className="col-span-1 md:col-span-4 flex flex-col justify-center">
-                                <h2 className="text-xl font-semibold">{user.user.userName}</h2>
+                                <h2 className="text-xl font-semibold">{user.user.human.profile.displayName}</h2>
                             </div>
                             <div className="col-span-1 md:col-span-6 flex items-end justify-end">
                                 <button
@@ -78,7 +78,7 @@ const Profile: React.FC = () => {
                             {user.user.human.profile.displayName !== "" && (
                                 <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
                                     <div className="col-span-1 md:col-span-4 font-semibold">
-                                        Display Name
+                                        User Name
                                     </div>
                                     <div className="col-span-1 md:col-span-8 flex">
                                         <svg
@@ -95,7 +95,7 @@ const Profile: React.FC = () => {
                                                 d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
                                             />
                                         </svg>
-                                        {user.user.human.profile.displayName}
+                                        {user.user.userName}
                                     </div>
                                 </aside>
                             )}
