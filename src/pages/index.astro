@@ -4,8 +4,10 @@ import {buildMenuTree} from '../utils/helper.astro';
 import MyContent from '../content/progress/activity-logs/activity-log.md';
 import LatestUpdates from '../components/LatestUpdates.astro';
 import themeConfig from '../../theme.config';
+import SkipTo from '../components/home/skipTo.astro';
+import KeyResources from '../components/home/keyReources.astro' 
 
-const { title } = themeConfig || {}; 
+const { title, description } = themeConfig || {}; 
 const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
 const dirName = "progress";
 const menuTree = buildMenuTree(files,dirName);
@@ -14,7 +16,7 @@ const menuTree = buildMenuTree(files,dirName);
  <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
     <div class="border-b border-slate-300 pb-3">
     <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Welcome to { title }</h1>
-    <p class="text-slate-500 mt-1 font-semibold">Welcome to the Expectations and Outcomes hub of { title }. This is your go-to resource to all activities regarding { title } products.</p>
+    <p class="text-slate-500 mt-1 font-semibold">{description}</p>
   </div>
 
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-6">
@@ -137,43 +139,10 @@ const menuTree = buildMenuTree(files,dirName);
         </aside>
       </div>
 
-      <div class="lg:col-span-3 bg-white shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-            <span>Skip to...</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="/outcomes/milestone-achievements/achievements/" class="text-sm hover:text-black">Accomplishments</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Trackers</a></li>
-          <li><a href="/progress/activity-logs/meeting-minutes" class="text-sm hover:text-black">Meeting Notes</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Workback Plan</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Timesheet</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Requests & Questions</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Peoples Directory</a></li>
-        </ul>
-      </div>
+      <SkipTo />
 
-      <div class="lg:col-span-3 bg-orange-100 shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-key.svg" class="w-6 h-6" alt=""></span>
-            <span>Key Resources</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">All Project Updates</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Mission, Vision, Values</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Company Goals</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Process Documentation</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Accessibility Checklist</a></li>
-          <li><a href="#" class="text-sm hover:text-black">All Product Design Files</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Messaging Documents</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Media kit & Sponsor Assets</a></li>
-        </ul>
-      </div>
+      <KeyResources />
+
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">

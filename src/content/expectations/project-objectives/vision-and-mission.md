@@ -1,5 +1,8 @@
 ---
 title: Mission and Vision
+home:
+  keyResources:
+    category: "keyResources"
 ---
 # Mission and Vision
 

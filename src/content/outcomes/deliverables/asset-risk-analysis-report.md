@@ -1,6 +1,9 @@
 ---
 title: Asset and Risk Analysis Report
 date: "2025-01-15"
+home:
+  skipTo: 
+    category: "skipTo"
 
 ---
 # Asset and Risk Analysis Report

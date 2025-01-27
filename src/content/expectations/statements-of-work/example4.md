@@ -1,5 +1,10 @@
 ---
 title: Project Statement of Work (SOW)
+home:
+  skipTo: 
+    category: "skipTo"
+  keyResources:
+    category: "keyResources"
 ---
 # Project Statement of Work (SOW)
 

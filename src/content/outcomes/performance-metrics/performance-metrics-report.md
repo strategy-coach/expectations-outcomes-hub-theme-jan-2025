@@ -1,5 +1,8 @@
 ---
 title: "Performance Metrics Report"
+home:
+  keyResources:
+    category: "keyResources"
 ---
 # Performance Metrics Report
 
