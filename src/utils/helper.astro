@@ -7,15 +7,15 @@ export function extractTitle(frontmatter) {
 export function formatName(name) {
   return name
     .split(/[-_]/) // Split by hyphens or underscores
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter
-    .join(' '); // Join words with spaces
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter
+    .join(" "); // Join words with spaces
 }
 
 export function buildMenuTree(files, dirName) {
   const tree = [];
 
   for (const path in files) {
-    const parts = path.replace(`/src/content/${dirName}/`, '').split('/'); // Remove base path and split by "/"
+    const parts = path.replace(`/src/content/${dirName}/`, "").split("/"); // Remove base path and split by "/"
     let currentLevel = tree;
 
     parts.forEach((part, index) => {
@@ -26,10 +26,13 @@ export function buildMenuTree(files, dirName) {
         const fileModule = files[path];
         const frontmatter = fileModule?.frontmatter || {};
         const title =
-          extractTitle(frontmatter) || formatName(part.replace('.md', '').replace('.mdx', '')); // Use title or formatted file name
+          extractTitle(frontmatter) ||
+          formatName(part.replace(/\.(md|mdx)$/, "")); // Use title or formatted file name
 
-        // Remove file extension from the path
-        const filePath = `${path.replace('/src/content', '').replace('.md', '').replace('.mdx', '')}`;
+       
+        const filePath = path
+          .replace("/src/content", "")
+          .replace(/\.(md|mdx)$/, "");
 
         currentLevel.push({
           name: title, // Use extracted title or formatted name
@@ -39,12 +42,12 @@ export function buildMenuTree(files, dirName) {
       } else {
         // Format folder name
         const formattedName = formatName(part);
-        let folder = currentLevel.find(item => item.name === formattedName);
+        let folder = currentLevel.find((item) => item.name === formattedName);
 
         if (!folder) {
           folder = {
             name: formattedName, // Use formatted folder name
-            path: `${path.replace('/src/content', '')}`,
+            path: `${path.replace("/src/content", "")}`,
             isFile: false,
             children: [],
           };
@@ -59,6 +62,4 @@ export function buildMenuTree(files, dirName) {
 
   return tree;
 }
-
-
 ---
