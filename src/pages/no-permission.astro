@@ -1,3 +1,8 @@
+---
+import themeConfig from '../../theme.config';
+
+const { logo, adminEmail } = themeConfig || {}; 
+---
 <div
     class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900"
 >
@@ -5,20 +10,7 @@
         class="max-w-sm p-8 bg-white border border-yellow-300 rounded-lg shadow-lg dark:bg-gray-800 dark:border-yellow-500"
     >
         <div class="flex justify-center mb-6">
-            <svg
-                class="w-16 h-16 text-yellow-500 dark:text-yellow-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 9v2m0 4h.01M21 12c0-4.97-4.03-9-9-9S3 7.03 3 12s4.03 9 9 9 9-4.03 9-9z"
-                ></path>
-            </svg>
+            <a href="/"><img src={logo} class="mr-3 h-10" alt="logo" /></a>
         </div>
         <h1
             class="text-2xl font-semibold text-center text-yellow-600 dark:text-yellow-400 mb-4"
@@ -30,6 +22,11 @@
         </p>
         <p class="mb-3 text-lg font-normal text-gray-700 dark:text-gray-400">
             Please contact the administrator for assistance.
+        </p>
+        <p
+            class="mt-4 text-center text-yellow-600 dark:text-yellow-400 font-semibold"
+        >
+            <a href="mailto:admin@opsfolio.com">{adminEmail}</a>
         </p>
     </div>
 </div>
