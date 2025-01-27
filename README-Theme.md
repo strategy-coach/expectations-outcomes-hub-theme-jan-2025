@@ -241,6 +241,7 @@ const themeConfig = (config: {
   logo: string;
   title: string;
   adminEmail: string;
+  description: string;
 }) => {
   return {
     ...config,
@@ -251,9 +252,65 @@ export default themeConfig({
   logo: "/assets/images/logo.png", // Path to the site's logo
   title: "EOH Astro 5 Site", // Title of the site
   adminEmail: "admin@example.com", // Admin email address
+  description: "Welcome to the Expectations and Outcomes hub of EOH Astro 5 Site. This is your go-to resource to all activities regarding EOH Astro 5 Site products.", // site short description
 });
 
 ```
+
+
+## Home Page Widgets
+
+Theme includes three widgets designed for the home page: **Skip To**, **Key Resources**, and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
+
+**Widgets Overview**
+--------------------
+
+### 1\. **Skip To**
+
+*   Displays a list of titles from Markdown files configured with the skipTo frontmatter.
+    
+*   ```
+      home:
+         skipTo: 
+            category: "skipTo"
+    ```
+*   You can add multiple Markdown files with this configuration, and their titles will appear under the **Skip To** card.
+    
+
+### 2\. **Key Resources**
+
+*   Displays a list of titles from Markdown files configured with the keyResources frontmatter.
+    
+*    ```
+      home:
+         keyResources: 
+            category: "keyResources"
+     ```
+*   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Key Resources** card.
+    
+
+### 3\. **Latest Accomplishments**
+
+*   Displays a list of content items sorted by date. The content is sourced from Markdown files with a date field in the frontmatter.
+    
+*   date: "2025-01-01"
+    
+*   Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
+    
+
+**Combination Frontmatter**
+---------------------------
+
+Markdown files can include configurations for multiple widgets. For example:
+
+```
+home:
+  keyResources:
+    category: "keyResources"
+  skipTo: 
+    category: "skipTo"
+```
+This configuration allows the file to be listed under both **Key Resources** and **Skip To** widgets.
 
 ---
 
