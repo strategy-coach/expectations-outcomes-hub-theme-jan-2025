@@ -260,7 +260,7 @@ export default themeConfig({
 
 ## Home Page Widgets
 
-Theme includes three widgets designed for the home page: **Skip To**, **Key Resources**, and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
+Theme includes three widgets designed for the home page: **Skip To**, **Key Resources**,**Trackers** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
 
 **Widgets Overview**
 --------------------
@@ -288,8 +288,17 @@ Theme includes three widgets designed for the home page: **Skip To**, **Key Reso
      ```
 *   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Key Resources** card.
     
+### 3\. **Trackers**
 
-### 3\. **Latest Accomplishments**
+*   Displays a list of titles from Markdown files that are configured with the trackers frontmatter. Each title links to the corresponding url specified in the frontmatter.
+    
+*    ```
+      home:
+         trackers: 
+             url: "Replace with the desired URL" 
+     ```
+
+### 4\. **Latest Accomplishments**
 
 *   Displays a list of content items sorted by date. The content is sourced from Markdown files with a date field in the frontmatter.
     
@@ -309,8 +318,10 @@ home:
     category: "keyResources"
   skipTo: 
     category: "skipTo"
+   trackers:
+    url: "Replace with the desired URL"
 ```
-This configuration allows the file to be listed under both **Key Resources** and **Skip To** widgets.
+This configuration allows the file to be listed under the **Key Resources**, **Skip To** and **Trackers** widgets.
 
 ---
 
