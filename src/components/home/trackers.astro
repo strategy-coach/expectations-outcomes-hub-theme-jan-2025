@@ -1,0 +1,42 @@
+---
+const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
+  eager: true,
+});
+
+const trackersList = Object.values(newFiles)
+  .filter((file) => file.frontmatter?.home?.trackers?.url) // Check if `trackers.url` exists
+  .map((file) => {
+    // Get the relative path by removing the base `/src/content` and extensions
+    const relativePath = file.file
+      .replace(/^.*\/src\/content/, '') // Remove everything up to `/src/content`
+      .replace('.md', '')              // Remove the `.md` extension
+      .replace('.mdx', '');            // Remove the `.mdx` extension
+
+    return {
+      title: file.frontmatter?.title,      // Get the title from the frontmatter
+      url: file.frontmatter?.home?.trackers?.url, // Get the `trackers.url` value
+    };
+  })
+  .filter((file) => file.title && file.url); // Ensure both title and url exist
+---
+
+{trackersList.length > 0 && (
+  <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
+    <h3 class="text-lg font-semibold text-slate-700">
+      <div class="flex gap-2 items-center text-xl">
+        <span><img src="/assets/images/fi-rr-bug.svg" class="w-6 h-6" alt="" /></span>
+        <span>Trackers</span>
+      </div>
+    </h3>
+
+    <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+      {trackersList.map((file) => (
+        <li>
+          <a href={file.url} class="text-sm hover:text-black">
+            {file.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
