@@ -5,6 +5,20 @@ import { githubDiscussionsBlogLoader } from "github-discussions-blog-loader";
 const baseSchema = z.object({
   title: z.string(),
   date: z.string().optional(),
+  home: z
+    .object({
+      skipTo: z
+        .object({
+          category: z.string().optional(),
+        })
+        .optional(),
+      keyResources: z
+        .object({
+          category: z.string().optional(),
+        })
+        .optional(),
+    })
+    .optional(),
 });
 
 const blog = defineCollection({

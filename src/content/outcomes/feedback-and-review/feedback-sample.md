@@ -1,5 +1,8 @@
 ---
 title: "Customer Feedback"
+home:
+  keyResources:
+    category: "keyResources"
 ---
 # Customer Feedback
 

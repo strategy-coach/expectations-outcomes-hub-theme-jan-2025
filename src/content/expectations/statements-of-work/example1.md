@@ -1,6 +1,9 @@
 ---
 
 title: Statement of Work (SOW)
+home:
+  skipTo: 
+    category: "skipTo"
 
 ---
 # Statement of Work (SOW)

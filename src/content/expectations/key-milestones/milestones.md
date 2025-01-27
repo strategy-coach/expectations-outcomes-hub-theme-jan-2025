@@ -1,6 +1,9 @@
 ---
 title: Journey of Excellence - Key Milestones
 date: "2025-01-01"
+home:
+  skipTo: 
+    category: "skipTo"
 ---
 # Journey of Excellence - Key Milestones
 
