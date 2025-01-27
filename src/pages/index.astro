@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import {buildMenuTree} from '../utils/helper.astro';
 import MyContent from '../content/progress/activity-logs/activity-log.md';
 import LatestUpdates from '../components/LatestUpdates.astro';
+import themeConfig from '../../theme.config';
 
+const { title } = themeConfig || {}; 
 const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
 const dirName = "progress";
 const menuTree = buildMenuTree(files,dirName);
@@ -11,8 +13,8 @@ const menuTree = buildMenuTree(files,dirName);
 <Layout>
  <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
     <div class="border-b border-slate-300 pb-3">
-    <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Welcome to XYZ</h1>
-    <p class="text-slate-500 mt-1 font-semibold">Welcome to the Expectations and Outcomes hub of XYZ. This is your go-to resource to all activities regarding XYZ products.</p>
+    <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Welcome to { title }</h1>
+    <p class="text-slate-500 mt-1 font-semibold">Welcome to the Expectations and Outcomes hub of { title }. This is your go-to resource to all activities regarding { title } products.</p>
   </div>
 
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-6">
