@@ -1,7 +1,7 @@
 # EOH Astro 5 Theme  
 
 ## Overview  
-The EOH Astro 5 Theme is a highly customizable and versatile Astro-based theme. It comes with built-in components like breadcrumbs, a header, footer, and sidebar for seamless navigation. The theme supports dynamic content creation, including features for expectations and outcomes, blog collections, landing pages, static pages, and integration with GitHub Discussions Blog Loader.  
+The **EOH Astro 5 Theme** is a highly customizable and versatile Astro-based theme. It comes equipped with essential components like breadcrumbs, headers, footers, and sidebars for seamless navigation. The theme supports dynamic content creation, including features such as blog collections, landing pages, static pages, and GitHub Discussions integration.
 
 ## Features  
 - **Header and Footer**: Easily customizable components.  
@@ -14,124 +14,203 @@ The EOH Astro 5 Theme is a highly customizable and versatile Astro-based theme. 
 - **Landing Page**: Includes cards, mission, and vision sections etc.  
 - **Custom Pages**: Easily add new pages as needed.  
 
-## GitHub Discussions  
+## GitHub Discussions Integration  
 
-This project demonstrates how to integrate GitHub Discussions into an Astro site using the `github-discussions-blog-loader`.  
+This theme demonstrates integration with GitHub Discussions using the `github-discussions-blog-loader`.
 
-## Setup  
+### Setup  
 
-### Setting Up Environment Variables  
-
-1. Copy the `.env.example` file to `.env`:  
+1. **Copy Environment Variables**:  
+   Copy `.env.example` to `.env`:  
    ```bash
    cp .env.example .env
-   ```  
+   ```
 
-To use the GitHub Discussions loader, follow these steps:  
+2. **Configure Environment Variables**:  
+   Update the `.env` file with the following values:
+   - `PUBLIC_GITHUB_TOKEN`: GitHub Personal Access Token with read access to discussions.  
+   - `PUBLIC_GITHUB_REPO_NAME`: Repository name.  
+   - `PUBLIC_GITHUB_OWNER_NAME`: Repository owner (user or organization).  
 
-#### 1. Provide Environment Variables  
+   Example:
+   ```env
+   PUBLIC_GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxx
+   PUBLIC_GITHUB_REPO_NAME=your-repo-name
+   PUBLIC_GITHUB_OWNER_NAME=your-username
+   ```
 
-Ensure the following environment variables are set in your project. You can create a `.env` file in the root of your project and add these values:  
-
-- `PUBLIC_GITHUB_TOKEN`: A GitHub Personal Access Token with read access to discussions.  
-- `PUBLIC_GITHUB_REPO_NAME`: The name of the GitHub repository.  
-- `PUBLIC_GITHUB_OWNER_NAME`: The owner of the GitHub repository (user or organization).  
-
-```env
-PUBLIC_GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxx  
-PUBLIC_GITHUB_REPO_NAME=xxxxxxxxxxx  
-PUBLIC_GITHUB_OWNER_NAME=xxxxx  
-```  
-
-#### 2. Use the Component  
-
-You can call the GitHub Discussions loader component in your Astro files. The component is located at:  
-
-`src/components/github_discussion/githubDiscussion.astro`  
-
-#### Example Usage  
-
-To use the loader, import the component and include it in your template:  
-
-```astro
----  
-import GithubDiscussionLoader from "../components/github_discussion/githubDiscussion.astro";  
----  
-
-<GithubDiscussionLoader />  
-```  
+3. **Use the GitHub Discussion Loader Component**:  
+   Import and include the component in your Astro templates:  
+   ```astro
+   ---
+   import GithubDiscussionLoader from "../components/github_discussion/githubDiscussion.astro";
+   ---
+   <GithubDiscussionLoader />
+   ```
 
 ## ZITADEL Authentication Component  
 
-You can use the ZITADEL authentication component in your Astro files. The component is located at:  
+Easily integrate ZITADEL authentication into your project.  
 
-`src/components/zitadel-authentication`  
+1. **Update Environment Variables**:  
+   Add the following to the `.env` file:  
+   ```env
+   PUBLIC_ZITADEL_CLIENT_ID="your-client-id"
+   PUBLIC_ZITADEL_AUTHORITY="your-authority"
+   PUBLIC_ZITADEL_REDIRECT_URI="your-redirect-uri"
+   PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI="your-logout-redirect-uri"
+   PUBLIC_ZITADEL_ORGANIZATION_ID="your-organization-id"
+   PUBLIC_ZITADEL_PROJECT_ID="your-project-id"
+   PUBLIC_ZITADEL_API_TOKEN = xxxxxxxxxxxxxxxxxx
 
-### Update `.env` File with the Following Values  
+   ```
 
-```env
-PUBLIC_ZITADEL_CLIENT_ID="xxxxxxxxx"  
-PUBLIC_ZITADEL_AUTHORITY="xxxxxxxxx"  
-PUBLIC_ZITADEL_REDIRECT_URI="xxxxxxxxx"  
-PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI="xxxxxxxxx"  
-PUBLIC_ZITADEL_ORGANIZATION_ID="xxxxxxxxx"  
-PUBLIC_ZITADEL_PROJECT_ID="xxxxxxxxx"  
+2. **Use the Authentication Component**:  
+   Import and use it in your templates:  
+   ```astro
+   ---
+   import { Authentication } from "../components/zitadel-authentication";
+   import { zitadelConfig } from "../utils/env";
+   ---
+   <Authentication
+     clientId={zitadelConfig.clientId}
+     authority={zitadelConfig.authority}
+     redirectUri={zitadelConfig.redirectUri}
+     postLogoutRedirectUri={zitadelConfig.postLogoutRedirectUri}
+     organizationId={zitadelConfig.organizationId}
+     projectId={zitadelConfig.projectId}
+     operation="login"
+   />
+   ```
 
-# Enable or disable ZITADEL authentication
-ENABLE_ZITADEL_AUTH=true
-```  
+3. **Example Usage**:  
+   - **Login**:  
+     ```astro
+     <Authentication operation="login" />
+     ```
+   - **Logout**:  
+     ```astro
+     <Authentication operation="logout" />
+     ```
 
-### Example Usage  
+## Demo Login Credentials  
 
-To use the authentication component, import it and include it in your template:  
+| Username | Password       |
+|----------|----------------|
+| EOHdemo  | Demo@eoh1234   |
 
-```astro
----  
-import { Authentication } from "../components/zitadel-authentication";  
-import { zitadelConfig } from "../utils/env";  
----  
-```  
+## Getting Started  
 
-#### Login Example  
+1. **Clone the Repository**  
+   ```bash
+   git clone <repository-url>  
+   cd <repository-directory>
+   
+2. **Install Dependencies**  
+   ```bash
+   pnpm install
 
-```astro
-<Authentication  
-  clientId={zitadelConfig.clientId}  
-  authority={zitadelConfig.authority}  
-  redirectUri={zitadelConfig.redirectUri}  
-  postLogoutRedirectUri={zitadelConfig.postLogoutRedirectUri}  
-  organizationId={zitadelConfig.organizationId}  
-  projectId={zitadelConfig.projectId}  
-  operation="login"  
-/>  
-```  
+   
+3. **To enable search in local run the following command**
+   ```bash
+   pnpm run pagefind-search
 
-#### Logout Example  
+4. **Start the development server**  
+   ```bash
+   pnpm run dev
+   
 
-```astro
-<Authentication  
-  clientId={zitadelConfig.clientId}  
-  authority={zitadelConfig.authority}  
-  redirectUri={zitadelConfig.redirectUri}  
-  postLogoutRedirectUri={zitadelConfig.postLogoutRedirectUri}  
-  organizationId={zitadelConfig.organizationId}  
-  projectId={zitadelConfig.projectId}  
-  operation="logout"  
-/>  
-```  
+5. **Build the site**  
+   ```bash
+   pnpm run build
+   ```
 
-### Enabling/Disabling ZITADEL Authentication  
+## Folder Structure  
 
-You can enable or disable ZITADEL authentication by setting the `ENABLE_ZITADEL_AUTH` environment variable in your `.env` file:  
-
-- **Enable**: `ENABLE_ZITADEL_AUTH=true`  
-- **Disable**: `ENABLE_ZITADEL_AUTH=false`  
-
-## Default Login Credentials for Demo  
-
-| User Name | Password       |  
-|-----------|----------------|  
-| EOHdemo   | Demo@eoh1234   |  
+```plaintext
+├── LICENSE
+├── README-Theme.md
+├── README.md
+├── astro.config.mjs 
+├── package.json
+├── pnpm-lock.yaml
+├── public
+│   ├── assets
+│   │   ├── images
+│   │   └── styles
+├── src
+│   ├── components
+│   │   ├── ContentEditor.tsx
+│   │   ├── EditMarkdownButton.jsx
+│   │   ├── LatestUpdates.astro
+│   │   ├── PageFind.astro
+│   │   ├── Sidebar.tsx
+│   │   ├── github_discussion
+│   │   │   ├── githubDiscussion.astro
+│   │   │   ├── githubDiscussionDetails.tsx
+│   │   │   └── githubDisscussion.tsx
+│   │   ├── profile
+│   │   │   ├── editProfile.tsx
+│   │   │   ├── gravatar
+│   │   │   │   └── Gravatar.tsx
+│   │   │   ├── profile.tsx
+│   │   │   └── userService.tsx
+│   │   └── zitadel-authentication
+│   │       ├── index.js
+│   │       ├── login.jsx
+│   │       └── zitadelAuthentication.astro
+│   ├── content
+│   │   ├── blog
+│   │   ├── documentation
+│   │   ├── expectations
+│   │   ├── outcomes
+│   │   └── progress
+│   ├── content.config.ts
+│   ├── layouts
+│   │   ├── Footer.astro
+│   │   ├── Header.astro
+│   │   └── Layout.astro
+│   ├── middleware
+│   │   └── index.ts
+│   ├── pages
+│   │   ├── blog
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── contact
+│   │   │   └── index.astro
+│   │   ├── discussions
+│   │   │   └── index.astro
+│   │   ├── documentation
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── edit-profile.astro
+│   │   ├── expectations
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── index.astro
+│   │   ├── logout.astro
+│   │   ├── mission-vision
+│   │   │   └── index.astro
+│   │   ├── my-profile.astro
+│   │   ├── no-permission.astro
+│   │   ├── outcomes
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   ├── post-authorization.astro
+│   │   ├── progress
+│   │   │   ├── [...slug].astro
+│   │   │   └── index.astro
+│   │   └── qualityfolio.astro
+│   └── utils
+│       ├── env.ts
+│       └── helper.astro
+├── support
+│   └── ci-cd.sh
+├── tailwind.config.js
+├── theme.config.ts
+├── tsconfig.json
+└── visualizing-expectations-outcomes.md
+```
 
 
 ## Qualityfolio Configuration
@@ -144,6 +223,38 @@ PUBLIC_QUALITYFOLIO_URL="xxxxx"
 
 Replace xxxxx with the appropriate URL.
 
+## Customization  
+
+- Update `header` and `footer` components to match your branding.  
+- Add or modify pages in the `src/pages` directory.  
+- Customize the sidebar menu by editing `src/content`.
+
+## Theme Configuration
+
+The `theme.config.ts` file allows you to customize certain aspects of the site's theme, including the logo, title, and admin email. These configurations are passed as an object to the `themeConfig` function.
+
+### Example Configuration
+
+```typescript
+// theme.config.ts
+const themeConfig = (config: {
+  logo: string;
+  title: string;
+  adminEmail: string;
+}) => {
+  return {
+    ...config,
+  };
+};
+
+export default themeConfig({
+  logo: "/assets/images/logo.png", // Path to the site's logo
+  title: "EOH Astro 5 Site", // Title of the site
+  adminEmail: "admin@example.com", // Admin email address
+});
+
+```
+
 ---
 
-Enjoy building with this flexible and user-friendly Astro theme!  
+**Enjoy building with the EOH Astro 5 Theme!** 🚀  
