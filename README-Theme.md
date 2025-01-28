@@ -266,7 +266,7 @@ export default themeConfig({
 
 ## Home Page Widgets
 
-Theme includes three widgets designed for the home page: **Skip To**, **Key Resources** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
+Theme includes widgets designed for the home page: **Skip To**, **Key Resources**, **Meeting Minutes**, **Accomplishments** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
 
 **Widgets Overview**
 --------------------
@@ -302,6 +302,29 @@ Theme includes three widgets designed for the home page: **Skip To**, **Key Reso
 *   date: "2025-01-01"
     
 *   Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
+    
+
+### 5\. **Accomplishments**
+
+*   Displays a list of titles from Markdown files configured with the accomplishments frontmatter.
+    
+*    ```
+      home:
+         accomplishments: 
+            category: "accomplishments"
+     ```
+*   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Accomplishments** card.
+
+### 4\. **Meeting Minutes**
+
+*   Displays a list of titles from Markdown files configured with the meetingMinutes frontmatter.
+    
+*    ```
+      home:
+         meetingMinutes: 
+            category: "meetingMinutes"
+     ```
+*   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
     
 
 **Combination Frontmatter**

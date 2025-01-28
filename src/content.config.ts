@@ -17,6 +17,16 @@ const baseSchema = z.object({
           category: z.string().optional(),
         })
         .optional(),
+      meetingMinutes: z
+        .object({
+          category: z.string().optional(),
+        })
+        .optional(),
+      accomplishments: z
+        .object({
+          category: z.string().optional(),
+        })
+        .optional()
     })
     .optional(),
 });

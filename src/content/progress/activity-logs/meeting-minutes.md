@@ -1,5 +1,8 @@
 ---
 title: Meeting Minutes
+home:
+  meetingMinutes: 
+    category: "meetingMinutes"
 ---
 # Meeting Minutes
 

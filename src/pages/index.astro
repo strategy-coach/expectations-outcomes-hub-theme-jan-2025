@@ -6,6 +6,8 @@ import LatestUpdates from '../components/LatestUpdates.astro';
 import themeConfig from '../../theme.config';
 import SkipTo from '../components/home/skipTo.astro';
 import KeyResources from '../components/home/keyReources.astro';
+import MeetingMinutes from '../components/home/meetingMinutes.astro';
+import Accomplishments from '../components/home/accomplishments.astro';
 
 const trackers = themeConfig.trackers;
 const { title, description } = themeConfig || {}; 
@@ -148,16 +150,7 @@ const menuTree = buildMenuTree(files,dirName);
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
 
-      <div class="lg:col-span-12 bg-white shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <a href="/outcomes/milestone-achievements/achievements/">
-            <div class="flex gap-2 items-center text-xl">
-              <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-              <span>Accomplishments</span>
-            </div>
-          </a>
-        </h3>        
-      </div>
+      <Accomplishments />
 
       <LatestUpdates />
       
@@ -174,58 +167,15 @@ const menuTree = buildMenuTree(files,dirName);
           <ul class="mt-2 space-y-0.5 font-semibold ml-8">
             {trackers.map((tracker) => (
               <li>
-                <a href={tracker.url} class="text-sm hover:text-black">{tracker.name}</a>
+                <a href={tracker.url} target="_blank" class="text-sm hover:text-black">{tracker.name}</a>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-            <span>Meeting Notes</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          {menuTree
-            .find(page => page.name === "Activity Logs")?.children?.map((child: { path: string; name: string; }) => (
-              <li>
-                <a class="text-sm hover:text-black" href={child.path || ""}>
-                  {child.name}
-                </a>
-              </li>
-            ))}
-          
-        </ul>
-      </div>
+      <MeetingMinutes />
 
-      <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-            <span>Requests & Questions</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">Accomplishments</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
-        </ul>
-      </div>
-
-      <div class="lg:col-span-12 bg-white shadow rounded-lg p-4">
-        <h3 class="text-lg font-semibold text-slate-700">
-          <div class="flex gap-2 items-center text-xl">
-            <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-            <span>Workback Plan</span>
-          </div>
-        </h3>
-        <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-          <li><a href="#" class="text-sm hover:text-black">Accomplishments</a></li>
-          <li><a href="#" class="text-sm hover:text-black">Latest Updates</a></li>
-        </ul>
-      </div>
       <div class="lg:col-span-12 bg-white shadow rounded-lg p-4 markdown-content">
         <details id="activityLog" data-persist-state="closed">
           <summary>Activity Log</summary>
