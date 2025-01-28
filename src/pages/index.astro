@@ -8,6 +8,7 @@ import SkipTo from '../components/home/skipTo.astro';
 import KeyResources from '../components/home/keyReources.astro';
 import MeetingMinutes from '../components/home/meetingMinutes.astro';
 import Accomplishments from '../components/home/accomplishments.astro';
+import Teams from '../components/teams/teams';
 
 const trackers = themeConfig.trackers;
 const { title, description } = themeConfig || {}; 
@@ -97,7 +98,7 @@ const menuTree = buildMenuTree(files,dirName);
 
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
-            <a href="/progress/teams/team-members-and-contacts/">
+            <a href="/team">
               <div class="flex gap-2.5 items-center text-sm">
                 <span><img src="/assets/images/fi-rr-rec.svg" class="w-4 h-4" alt=""></span>
                 <span>Teams</span>
@@ -106,11 +107,7 @@ const menuTree = buildMenuTree(files,dirName);
           </div>          
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-1.5 font-semibold flex-wrap">
-              <span class="bg-red-100 text-sm px-2 py-1 rounded">Brand</span>
-              <span class="bg-indigo-100 text-sm px-2 py-1 rounded">External Vendors</span>
-              <span class="bg-red-200 text-sm px-2 py-1 rounded">Events</span>
-              <span class="bg-orange-100 text-sm px-2 py-1 rounded">DS</span>
-              <span class="bg-green-100 text-sm px-2 py-1 rounded">MOPs</span>
+              <Teams client:only="react"/>
             </div>
           </div>
         </aside>

@@ -1,0 +1,78 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Gravatar } from "../profile/gravatar/Gravatar";
+
+const projectId = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID
+const token = import.meta.env.PUBLIC_ZITADEL_API_TOKEN;
+const organizationId = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID;
+const authority = import.meta.env.PUBLIC_ZITADEL_AUTHORITY;
+
+type TeamMember = {
+    userId: string;
+    displayName: string;
+    email: string;
+    roleKeys: string[];
+};
+
+const Teams = () => {
+    const [team, setTeam] = useState<TeamMember[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    // State to toggle showing more users
+
+    useEffect(() => {
+        const fetchTeam = async () => {
+            try {
+                let data = JSON.stringify({
+                    "queries": [
+                        {
+                            "projectIdQuery": {
+                                "projectId": projectId
+                            }
+                        }
+                    ]
+                });
+                const response = await axios.post(
+                    `${authority}/management/v1/users/grants/_search`,
+                    data,
+                    {
+                        headers: {
+                            "x-zitadel-orgid": organizationId,
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                setTeam(response.data.result);
+            } catch (err) {
+                setError("Failed to fetch team members.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTeam();
+    }, []);
+
+    if (loading) return <div className="text-center text-gray-600">Loading...</div>;
+    if (error) return <div className="text-center text-red-500">{error}</div>;
+
+    // Show only first 5 users unless "Show More" is clicked
+    const visibleTeam = team.slice(0, 5);
+
+    return (
+        <div>
+            {
+                visibleTeam.map((member) => (
+                    <div key={member.userId} className="flex flex-row items-center gap-2 py-2">
+                        <Gravatar userEmail={member.email} height={5} width={5} />
+                        <p className="text-sm text-slate-700 font-medium">{member.displayName}</p>
+                    </div>
+
+                ))
+            }
+        </div>
+
+    );
+};
+
+export default Teams;
