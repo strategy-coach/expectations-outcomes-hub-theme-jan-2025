@@ -1,5 +1,8 @@
 ---
 title: Recent Activity Log
+home:
+  meetingMinutes: 
+    category: "meetingMinutes"
 ---
 # Recent Activity Log
 

@@ -1,5 +1,8 @@
 ---
 title: Achievements
+home:
+  accomplishments: 
+    category: "accomplishments"
 ---
 # Achievements
 
