@@ -5,9 +5,9 @@ import MyContent from '../content/progress/activity-logs/activity-log.md';
 import LatestUpdates from '../components/LatestUpdates.astro';
 import themeConfig from '../../theme.config';
 import SkipTo from '../components/home/skipTo.astro';
-import KeyResources from '../components/home/keyReources.astro' 
-import Trackers from '../components/home/trackers.astro';
+import KeyResources from '../components/home/keyReources.astro';
 
+const trackers = themeConfig.trackers;
 const { title, description } = themeConfig || {}; 
 const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
 const dirName = "progress";
@@ -160,7 +160,26 @@ const menuTree = buildMenuTree(files,dirName);
       </div>
 
       <LatestUpdates />
-      <Trackers />      
+      
+      {trackers.length > 0 && (
+        <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
+          <h3 class="text-lg font-semibold text-slate-700">
+            <div class="flex gap-2 items-center text-xl">
+              <span>
+                <img src="/assets/images/fi-rr-bug.svg" class="w-6 h-6" alt="Trackers Icon" />
+              </span>
+              <span>Trackers</span>
+            </div>
+          </h3>
+          <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+            {trackers.map((tracker) => (
+              <li>
+                <a href={tracker.url} class="text-sm hover:text-black">{tracker.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
         <h3 class="text-lg font-semibold text-slate-700">
