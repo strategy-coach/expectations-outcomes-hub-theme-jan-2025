@@ -17,11 +17,6 @@ const baseSchema = z.object({
           category: z.string().optional(),
         })
         .optional(),
-        trackers: z
-        .object({
-          url: z.string().optional(),
-        })
-        .optional(),
     })
     .optional(),
 });

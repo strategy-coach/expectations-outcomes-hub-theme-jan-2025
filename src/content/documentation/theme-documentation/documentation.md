@@ -231,7 +231,7 @@ Replace xxxxx with the appropriate URL.
 
 ## Theme Configuration
 
-The `theme.config.ts` file allows you to customize certain aspects of the site's theme, including the logo, title, and admin email. These configurations are passed as an object to the `themeConfig` function.
+The `theme.config.ts` file allows you to customize certain aspects of the site's theme, including the logo, title, admin email and tracker details. These configurations are passed as an object to the `themeConfig` function.
 
 ### Example Configuration
 
@@ -242,6 +242,7 @@ const themeConfig = (config: {
   title: string;
   adminEmail: string;
   description: string;
+  trackers: { name: string; url: string }[];
 }) => {
   return {
     ...config,
@@ -253,6 +254,11 @@ export default themeConfig({
   title: "EOH Astro 5 Site", // Title of the site
   adminEmail: "admin@example.com", // Admin email address
   description: "Welcome to the Expectations and Outcomes hub of EOH Astro 5 Site. This is your go-to resource to all activities regarding EOH Astro 5 Site products.", // site short description
+  trackers: [
+    { name: "Product Bug Tracker", url: "https://example.com/bug-tracker" },
+    { name: "Google Analytics", url: "https://analytics.google.com" },
+    { name: "Product Reported Issues", url: "#" },
+  ],
 });
 
 ```
@@ -260,7 +266,7 @@ export default themeConfig({
 
 ## Home Page Widgets
 
-Theme includes three widgets designed for the home page: **Skip To**, **Key Resources**,**Trackers** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
+Theme includes three widgets designed for the home page: **Skip To**, **Key Resources** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
 
 **Widgets Overview**
 --------------------
@@ -288,17 +294,8 @@ Theme includes three widgets designed for the home page: **Skip To**, **Key Reso
      ```
 *   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Key Resources** card.
     
-### 3\. **Trackers**
 
-*   Displays a list of titles from Markdown files that are configured with the trackers frontmatter. Each title links to the corresponding url specified in the frontmatter.
-    
-*    ```
-      home:
-         trackers: 
-             url: "Replace with the desired URL" 
-     ```
-
-### 4\. **Latest Accomplishments**
+### 3\. **Latest Accomplishments**
 
 *   Displays a list of content items sorted by date. The content is sourced from Markdown files with a date field in the frontmatter.
     
@@ -318,10 +315,8 @@ home:
     category: "keyResources"
   skipTo: 
     category: "skipTo"
-   trackers:
-    url: "Replace with the desired URL"
 ```
-This configuration allows the file to be listed under the **Key Resources**, **Skip To** and **Trackers** widgets.
+This configuration allows the file to be listed under both the **Key Resources** and **Skip To** widgets.
 
 ---
 
