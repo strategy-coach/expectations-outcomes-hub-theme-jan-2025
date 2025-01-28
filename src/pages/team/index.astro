@@ -1,0 +1,12 @@
+---
+import { Breadcrumbs } from "astro-breadcrumbs";
+import TeamDetails from "../../components/teams/teamDetails";
+import Layout from "../../layouts/Layout.astro";
+import "astro-breadcrumbs/breadcrumbs.css";
+---
+
+<Layout>
+  <div class="min-h-screen h-full">
+    <TeamDetails client:only="react" />
+  </div>
+</Layout>
