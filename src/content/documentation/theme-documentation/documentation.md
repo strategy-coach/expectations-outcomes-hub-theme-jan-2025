@@ -341,6 +341,17 @@ home:
 ```
 This configuration allows the file to be listed under both the **Key Resources** and **Skip To** widgets.
 
+
+
+## Observability
+
+
+To enable observabilty and tracking, set the env variable as true
+
+```
+ENABLE_OPEN_OBSERVE=true
+```
+
 ---
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
