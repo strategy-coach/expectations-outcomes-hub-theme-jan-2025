@@ -1,0 +1,65 @@
+---
+import sqlite3 from "sqlite3";
+import path from "path";
+import fs from "fs";
+import pkg from "he";
+const { decode } = pkg;
+
+import DataTables from "./dataTable";
+import DataList from "./jsonList";
+import CardList from "./dataCard";
+
+const { title, layout, dbName } = Astro.props;
+
+// Function to fetch data from the database
+const children = Astro.slots.has("default")
+  ? String(await Astro.slots.render("default"))
+  : "";
+const query = decode(children);
+
+const dbPath = path.resolve(process.cwd(), dbName);
+
+// Check if database exists
+if (!fs.existsSync(dbPath)) {
+  console.error(`Database file not found: ${dbPath}`);
+}
+
+// Function to fetch data only if DB exists
+const getData = async (
+  query: string
+): Promise<Array<Record<string, any>> | string> => {
+  return new Promise((resolve, reject) => {
+    if (!fs.existsSync(dbPath)) {
+      resolve("Database not found. Please check the database name.");
+      return;
+    }
+
+    const db = new sqlite3.Database(dbPath);
+    db.all(query, [], (err, rows) => {
+      db.close();
+      if (err) {
+        resolve(`Error executing query: ${err.message}`);
+      } else {
+        resolve(rows as Record<string, any>[]);
+      }
+    });
+  });
+};
+
+const data = await getData(query);
+---
+
+<h2>{title}</h2>
+{
+  typeof data === "string" ? (
+    <p>{data}</p> // Show error messages in the component
+  ) : layout === "table" ? (
+    <DataTables client:only="react" data={data} />
+  ) : layout === "json" ? (
+    <DataList client:only="react" data={data} />
+  ) : layout === "card" ? (
+    <CardList client:only="react" data={data} />
+  ) : (
+    <p>No layout provided. Please specify a layout type.</p>
+  )
+}
