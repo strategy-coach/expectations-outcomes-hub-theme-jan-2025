@@ -7,7 +7,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
     const isLoggedIn = context.cookies.get("zitadel_user_id")?.value;
     const { pathname } = context.url;
     const splittedPath = pathname == "/" ? "/" : pathname.split("/");
-    const unauthorizedPages = ['/', 'documentation', 'blog', 'logout', 'no-permission'];
+    const unauthorizedPages = ['/', 'documentation', 'blog', 'logout', 'no-permission', 'presentation'];
     if (isZitadelEnabled) {
         if (pathname === '/post-authorization/') {
             return next(); // Allow access without further checks
