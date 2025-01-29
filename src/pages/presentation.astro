@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Expectations and Outcomes Hub Theme</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css">
+  </head>
+  <body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h3>EOH Astro 5 Theme Overview</h3>
+                <p>The EOH Astro 5 Theme is designed to support dynamic content creation, including blog collections, landing pages, static pages, and GitHub Discussions integration. It provides customizable components to cater to various needs.</p>
+                
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Header and Footer: Easily customizable components.</li>
+                    <li class="fragment">Blog Pages: Blog listing and detail pages.</li>
+                    <li class="fragment">Expectations & Outcomes Collection: Sidebar menu generated from items in src/content.</li>
+                    <li class="fragment">Landing Page: Includes sections like cards, mission, and vision.</li>
+                    <li class="fragment">Custom Pages: Easily add new pages as needed.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>GitHub Discussions Integration</h3>
+                <p>This theme demonstrates integration with GitHub Discussions using the github-discussions-blog-loader component.</p>
+                
+                <h3>Setup</h3>
+                <ul>
+                    <li>Copy Environment Variables: <code>cp .env.example .env</code></li>
+                    <li class="fragment">Configure environment variables in <code>.env</code> file.</li>
+                    <li class="fragment">Use the GitHub Discussion Loader Component in templates.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Getting Started</h3>
+                <p>Clone the repository, install dependencies, and run the development server to get started with the EOH Astro 5 Theme.</p>
+                
+                <h3>Commands</h3>
+                <ul>
+                    <li>Clone the Repository: <code>git clone <repository-url></code></li>
+                    <li class="fragment">Install Dependencies: <code>pnpm install</code></li>
+                    <li class="fragment">Start the Development Server: <code>pnpm run dev</code></li>
+                    <li class="fragment">Build the Site: <code>pnpm run build</code></li>
+                </ul>
+            </section>
+            <section>
+                <p>Enjoy building with the EOH Astro 5 Theme!</p>
+            </section>
+        </div>
+    </div>
+
+    <!-- Include Reveal.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+    <!-- Initialize Reveal.js AFTER the script is loaded -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const deck = new Reveal();
+        deck.initialize();
+      });
+    </script>
+    <style>
+        .slides {overflow: hidden auto!important; padding-right: 20px!important;}
+        .reveal p, .reveal ul { font-size: 35px!important;margin-top: 0px !important;}
+        .reveal h2 {font-size: 40px!important;}
+        .reveal h3 {font-size: 38px!important;}
+        .reveal h4 {font-size: 36px!important;}
+
+::-webkit-scrollbar {
+  width: 10px!important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1!important; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888!important; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555!important;
+}
+
+    </style>
+  </body>
+</html>
