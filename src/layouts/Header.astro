@@ -16,13 +16,8 @@ const userName = Astro.cookies.get("zitadel_user_name");
     class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 flex justify-between items-center sm:flex-row flex-col"
   >
     <div class="flex items-center space-x-4">
-      <!-- <button class="text-gray-500 py-4">
-          <img src="/assets/images/fi-rr-menu-burger.svg" class="w-6 h-6" alt="">
-        </button>  -->
       <div class="text-lg font-bold text-gray-900 py-4">
-        <a href="/"
-          ><img src={logo} class="mr-3 h-10" alt="logo" /></a
-        >
+        <a href="/"><img src={logo} class="mr-3 h-10" alt="logo" /></a>
       </div>
       <nav class="lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
         <a href="/" data-path="/" class="menu-link py-4 inline-flex">Home</a>
@@ -70,9 +65,15 @@ const userName = Astro.cookies.get("zitadel_user_name");
         >
       </nav>
     </div>
-    <div class="flex items-center space-x-4 py-3">
+    <div class="flex items-center space-x-4 py-3"> 
       <PageFind />
-      <div class="relative flex items-center space-x-4">
+      <a href="/presentation" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+       </svg>
+      </a>
+
+      <!-- <div class="relative flex items-center space-x-4">
         <button
           class="relative text-gray-600 hover:text-gray-900 focus:outline-none"
         >
@@ -96,7 +97,7 @@ const userName = Astro.cookies.get("zitadel_user_name");
         >
           3
         </span>
-      </div>
+      </div> -->
       {
         isZitadelEnabled && userId ? (
           <a
