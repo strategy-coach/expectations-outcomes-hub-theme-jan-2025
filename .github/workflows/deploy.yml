@@ -33,7 +33,8 @@ jobs:
           ENABLE_DEFAULT_AUTH: ${{ vars.ENABLE_DEFAULT_AUTH }}
           ENABLE_ZITADEL_AUTH: ${{ vars.ENABLE_ZITADEL_AUTH }}
           PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}
-          PUBLIC_QUALITYFOLIO_URL: ${{ vars.PUBLIC_QUALITYFOLIO_URL }}  
+          PUBLIC_QUALITYFOLIO_URL: ${{ vars.PUBLIC_QUALITYFOLIO_URL }}
+          ENABLE_OPEN_OBSERVE: ${{ vars.ENABLE_OPEN_OBSERVE }}
         run: |
           bash -x support/ci-cd.sh      
           
