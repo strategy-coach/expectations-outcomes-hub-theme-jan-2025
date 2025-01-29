@@ -3,23 +3,22 @@ const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
 
-
 const accomplishmentsList = Object.values(newFiles)
-  .filter((file) => file.frontmatter?.home?.accomplishments?.category === "accomplishments") // Filter by "skipTo" category
+  .filter((file) => file.frontmatter?.home?.accomplishments?.category === "accomplishments") // Filter by category
   .map((file) => {
     // Remove the base path '/src/content' from the file path
     const relativePath = file.file
       .replace(/^.*\/src\/content/, '')  // Remove everything up to '/src/content'
       .replace('.md', '')               // Remove the '.md' extension
       .replace('.mdx', '');             // Remove the '.mdx' extension
-    
+
     return {
       title: file.frontmatter?.title, // Get the title
-      path: `${relativePath}` // Correct the path to be relative
+      date: file.frontmatter?.date,   // Get the date
+      path: `${relativePath}`         // Correct the path to be relative
     };
   })
-  .filter((file) => file.title && file.path); // Ensure title and path exist
-
+  .filter((file) => file.title && file.path); // Ensure title, path, and date exist
 
 ---
 
@@ -31,17 +30,27 @@ const accomplishmentsList = Object.values(newFiles)
         <span>Accomplishments</span>
       </div>
     </h3>
-
-    <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {accomplishmentsList.map((file) => {
-        return (
-          <li>
-            <a href={file.path} class="text-sm hover:text-black">
-              {file.title}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
+    <div class="mt-2 space-y-0.5 ml-8 markdown-content">
+      <table class="border-collapse border border-gray-300 w-full">
+        <thead>
+          <tr class="bg-gray-100">
+            <th class="border border-gray-300 px-4 py-2 text-left">Title</th>
+            <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {accomplishmentsList.map((file) => (
+            <tr  class="hover:bg-gray-50">
+              <td class="border border-gray-300 px-4 py-2">
+                <a href={file.path} class="text-blue-600 hover:underline">
+                  {file.title}
+                </a>
+              </td>
+              <td class="border border-gray-300 px-4 py-2">{file.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </div>
 )}
