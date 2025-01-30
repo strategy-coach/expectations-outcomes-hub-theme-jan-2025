@@ -5,6 +5,8 @@ const themeConfig = (config: {
   adminEmail: string;
   description: string;
   trackers: { name: string; url: string }[]; // Array of objects for trackers
+  contentCollectionSort: string;
+  staticFixedFolders: { parent: string; child: string[] }[]; // Array of objects for trackers
 }) => {
   return {
     ...config,
@@ -20,5 +22,11 @@ export default themeConfig({
     { name: "Product Bug Tracker", url: "https://example.com/bug-tracker" },
     { name: "Google Analytics", url: "https://analytics.google.com" },
     { name: "Product Reported Issues", url: "#" },
+  ],
+  contentCollectionSort: "true",
+  staticFixedFolders: [
+    { parent: "progress", child: ["activity-logs","begin"] },
+    { parent: "outcomes", child: ["deliverables"] },
+    { parent: "expectations", child: ["key-milestones","roles-and-responsibilities"] },
   ],
 });

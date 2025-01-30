@@ -5,12 +5,15 @@ import Sidebar from "../../components/Sidebar";
 import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
+import themeConfig from '../../../theme.config';
+const { contentCollectionSort } = themeConfig || {}; 
 
 const files = import.meta.glob("/src/content/documentation/**/*.{md,mdx}", {
   eager: true,
 });
 // Build the menu tree
-const menuTree = buildMenuTree(files, "documentation");
+const menuTree = buildMenuTree(files, "documentation",contentCollectionSort,"asc");
+//const menuTree = buildMenuTree(files, "documentation");
 
 const slug = Astro.params.slug;
 const entry = await getEntry("documentation", slug);

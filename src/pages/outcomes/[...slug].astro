@@ -6,12 +6,16 @@ import Sidebar from "../../components/Sidebar";
 import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
+import themeConfig from '../../../theme.config';
+
+const { contentCollectionSort } = themeConfig || {}; 
 
 const files = import.meta.glob("/src/content/outcomes/**/*.{md,mdx}", {
   eager: true,
 });
 // Build the menu tree
-const menuTree = buildMenuTree(files, "outcomes");
+const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
+//const menuTree = buildMenuTree(files, "outcomes");
 
 const slug = Astro.params.slug;
 const entry = await getEntry("outcomes", slug);

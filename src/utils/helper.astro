@@ -1,4 +1,16 @@
 ---
+import themeConfig from '../../theme.config';
+
+const staticFixedFolders = themeConfig.staticFixedFolders;
+
+
+// Define the getPriorityFolders function
+export function getPriorityFolders(dirName) {
+  
+const config = themeConfig.staticFixedFolders.find((item) => item.parent === dirName);
+return config ? config.child : [];
+}
+
 export function extractTitle(frontmatter) {
   // Check if frontmatter has a title property
   return frontmatter?.title || null; // Return the title if found
@@ -11,8 +23,13 @@ export function formatName(name) {
     .join(" "); // Join words with spaces
 }
 
-export function buildMenuTree(files, dirName) {
+export function buildMenuTree(files, dirName,sorting,sortOrder) {
   const tree = [];
+     // Normalize name helper function
+   const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, '-');
+
+//   // Get priority folders from config
+   const priorityFolders = getPriorityFolders(dirName).map(normalizeName);
 
   for (const path in files) {
     const parts = path.replace(`/src/content/${dirName}/`, "").split("/"); // Remove base path and split by "/"
@@ -59,7 +76,144 @@ export function buildMenuTree(files, dirName) {
       }
     });
   }
+  // Sorting logic
+  const sortTree = (nodes) => {
+    nodes.sort((a, b) => {
+      // Priority folders first
+      const aPriority = priorityFolders.indexOf(normalizeName(a.name));
+      const bPriority = priorityFolders.indexOf(normalizeName(b.name));
+
+      if (aPriority !== -1 && bPriority !== -1) {
+        return aPriority - bPriority; // Maintain order in config
+      } else if (aPriority !== -1) {
+        return -1; // Move priority folders to top
+      } else if (bPriority !== -1) {
+        return 1;
+      }
+
+      // Default sorting: folders first, then files
+      if (a.isFile !== b.isFile) return a.isFile ? 1 : -1;
+//console.log(sortOrder,'--')
+      return sortOrder === "asc"
+        ? a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+        : b.name.localeCompare(a.name, undefined, { sensitivity: "base" });
+    });
+
+    for (const node of nodes) {
+      if (!node.isFile && node.children) {
+        sortTree(node.children);
+      }
+    }
+  };
+
+  if (sorting || priorityFolders.length > 0) {
+    sortTree(tree);
+  }
 
   return tree;
 }
+
+
+
+// export function buildMenuTree(files, dirName, sorting = false, sortOrder = "asc") {
+//   const tree = [];
+
+//   // Normalize name helper function
+//   const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, '-');
+
+//   // Get priority folders from config
+//   const priorityFolders = getPriorityFolders(dirName).map(normalizeName);
+
+//   // Initialize parent folder (but we don't return this)
+//   const parentFolder = {
+//     name: formatName(dirName),
+//     path: `/${dirName}`,
+//     isFile: false,
+//     children: [],
+//   };
+
+//   for (const path in files) {
+//     const parts = path.replace(`src/content/${dirName}/`, "").split("/");
+//     let currentLevel = parentFolder.children;
+
+//     parts.forEach((part, index) => {
+//       const isFile = index === parts.length - 1;
+
+//       if (isFile) {
+//         // Handle file
+//         const fileModule = files[path];
+//         const frontmatter = fileModule?.frontmatter || {};
+//         const title = extractTitle(frontmatter) || formatName(part.replace(/\.(md|mdx)$/, ""));
+//         const filePath = path.replace("src/content", "").replace(/\.(md|mdx)$/, "");
+        
+
+//         currentLevel.push({
+//           name: title,
+//           path: filePath,
+//           isFile: true,
+//         });
+//       } else {
+//         // Handle folder
+//         const formattedName = formatName(part);
+//         let folder = currentLevel.find((item) => item.name === formattedName);
+
+//         if (!folder) {
+//           folder = {
+//             name: formattedName,
+//             path: `/${dirName}/${part}`,
+//             isFile: false,
+//             children: [],
+//           };
+//           currentLevel.push(folder);
+//         }
+
+//         currentLevel = folder.children;
+//       }
+//     });
+//   }
+
+//   // Sorting logic
+//   const sortTree = (nodes) => {
+//     nodes.sort((a, b) => {
+//       // Priority folders first
+//       const aPriority = priorityFolders.indexOf(normalizeName(a.name));
+//       const bPriority = priorityFolders.indexOf(normalizeName(b.name));
+
+//       if (aPriority !== -1 && bPriority !== -1) {
+//         return aPriority - bPriority; // Maintain order in config
+//       } else if (aPriority !== -1) {
+//         return -1; // Move priority folders to top
+//       } else if (bPriority !== -1) {
+//         return 1;
+//       }
+
+//       // Default sorting: folders first, then files
+//       if (a.isFile !== b.isFile) return a.isFile ? 1 : -1;
+
+//       return sortOrder === "asc"
+//         ? a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+//         : b.name.localeCompare(a.name, undefined, { sensitivity: "base" });
+//     });
+
+//     for (const node of nodes) {
+//       if (!node.isFile && node.children) {
+//         sortTree(node.children);
+//       }
+//     }
+//   };
+// console.log(parentFolder.children,'---')
+//   if (sorting || priorityFolders.length > 0) {
+//     sortTree(parentFolder.children);
+//   }
+
+//   // 🚀 Return only the children array, not the parent object
+//   return parentFolder.children;
+// }
+
+
+
+
+
+
+
 ---

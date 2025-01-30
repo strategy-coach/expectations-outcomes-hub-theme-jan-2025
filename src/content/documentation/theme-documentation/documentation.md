@@ -351,6 +351,29 @@ To enable observabilty and tracking, set the env variable as true
 ```
 ENABLE_OPEN_OBSERVE=true
 ```
+## Sorting Functionality
+
+To enable side menu sorting set the variable as true in theme.config
+
+```
+contentCollectionSort=true
+```
+In order specify which all folders must be at the top in side menu, we can specify in theme.config like below 
+
+```
+staticFixedFolders: [
+    { parent: "progress", child: ["activity-logs","begin"] },
+    { parent: "outcomes", child: ["deliverables"] },
+    { parent: "expectations", child: ["key-milestones","roles-and-responsibilities"] },
+  ],
+```
+Here the folders specified in child will come at the top.
+
+We call the side menu like this - 
+
+```
+const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
+```
 
 ---
 
