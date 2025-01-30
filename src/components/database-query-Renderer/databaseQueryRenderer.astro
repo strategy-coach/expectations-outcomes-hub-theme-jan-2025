@@ -9,19 +9,49 @@ import DataTables from "./dataTable";
 import DataList from "./jsonList";
 import CardList from "./dataCard";
 
-const { title, layout, dbName } = Astro.props;
+const { title, layout, dbName, table, fields, where, orderBy, limit } =
+  Astro.props;
 
 // Function to fetch data from the database
 const children = Astro.slots.has("default")
   ? String(await Astro.slots.render("default"))
   : "";
-const query = decode(children);
+const query1 = decode(children);
 
 const dbPath = path.resolve(process.cwd(), dbName);
 
+// Check if layout is 'card' and fields is an array without 'title'
+if (
+  layout === "card" &&
+  !fields.some((field: string | string[]) => field.includes("title"))
+) {
+  throw new Error(
+    "When layout is 'card', the 'title' field must be included in the fields array."
+  );
+}
+
+let query;
+if (Array.isArray(fields) && fields.length > 0) {
+  query = `SELECT ${fields.join(", ")} FROM ${table}`;
+} else {
+  throw new Error("Invalid 'fields' parameter. It must be an array or '*'.");
+}
+
+if (where) {
+  query += ` WHERE ${where}`;
+}
+
+if (orderBy) {
+  query += ` ORDER BY ${orderBy}`;
+}
+
+if (limit) {
+  query += ` LIMIT ${limit}`;
+}
+
 // Check if database exists
 if (!fs.existsSync(dbPath)) {
-  console.error(`Database file not found: ${dbPath}`);
+  throw new Error(`Database file not found: ${dbPath}`);
 }
 
 // Function to fetch data only if DB exists
