@@ -7,13 +7,18 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import MarkdownEditor from "../../components/ContentEditor";
 import EditButton from "../../components/EditMarkdownButton";
+import themeConfig from '../../../theme.config';
+const { contentCollectionSort } = themeConfig || {}; 
+
 
 const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx}", {
   eager: true,
 });
 const dirName = "expectations";
+
 // Build the menu tree
-const menuTree = buildMenuTree(files, dirName);
+//const menuTree = buildMenuTree(files, dirName);
+const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
 const slug = Astro.params.slug;
 const entry = await getEntry("expectations", slug);
