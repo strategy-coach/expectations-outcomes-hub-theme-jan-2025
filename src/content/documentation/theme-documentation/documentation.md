@@ -375,6 +375,11 @@ We call the side menu like this -
 const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 ```
 
+## Presentation Mode
+
+Allows users to create slide-based presentations directly within the theme.
+Help icon in the header opens the presentaion url and slide content can be updated in the src/pages/presentation.astro
+
 ---
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
