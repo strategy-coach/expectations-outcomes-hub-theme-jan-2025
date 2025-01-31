@@ -58,11 +58,11 @@ const TeamDetails = () => {
     if (error) return <div className="text-center text-red-500">{error}</div>;
 
     return (
-        <div className="p-6 mt-3 w-[90%] min-h-screen h-full mx-auto">
+        <div className="p-6 pt-4 mt-3 min-h-screen h-full mx-auto">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Team Members</h2>
             <div className="grid grid-cols-12 gap-4">
                 {team.map((member) => (
-                    <div key={member.userId} className="col-span-3 md:col-span-3 bg-white p-4 rounded-lg shadow-md">
+                    <div key={member.userId} className=" leading-[3rem] col-span-3 md:col-span-3 bg-white p-4 rounded-lg shadow-md">
                         <div className="flex items-center gap-3">
                             <Gravatar userEmail={member.email} width={20} height={20} />
                             <div>
