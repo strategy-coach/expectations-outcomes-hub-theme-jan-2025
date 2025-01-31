@@ -351,6 +351,8 @@ To enable observabilty and tracking, set the env variable as true
 ```
 ENABLE_OPEN_OBSERVE=true
 ```
+
+
 ## Sorting Functionality
 
 To enable side menu sorting set the variable as true in theme.config
@@ -371,14 +373,68 @@ Here the folders specified in child will come at the top.
 
 We call the side menu like this - 
 
-```
 const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
-```
 
 ## Presentation Mode
 
 Allows users to create slide-based presentations directly within the theme.
 Help icon in the header opens the presentaion url and slide content can be updated in the src/pages/presentation.astro
+
+
+## Breadcrumbs Implementation
+
+We are using the `astro-breadcrumbs` package for listing breadcrumbs in our project.
+
+### Usage
+
+```astro
+<Breadcrumbs
+  linkTextFormat="capitalized"
+  ariaLabel="Site navigation"
+  separatorAriaHidden={false}
+  customizeLinks={[
+    { index: 2, "aria-disabled": true },
+    { index: 3, "aria-disabled": true },
+  ]}
+>
+  <svg
+    slot="separator"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</Breadcrumbs>
+
+```
+
+### Disabling Breadcrumb Links  
+
+You can disable specific breadcrumb links by setting the `aria-disabled` property to `true` using `customizeLinks`:
+
+```astro
+customizeLinks={[
+  { index: 2, "aria-disabled": true },
+  { index: 3, "aria-disabled": true },
+]}
+
+```
+### Removing Breadcrumbs  
+
+To remove a specific breadcrumb, set the `index` of the crumb you want to remove and use `customizeListElements`:
+
+```astro
+customizeListElements={[{ index: 1, remove: true }]}
+
+```
+For more information, check out the [official documentation](https://docs.astro-breadcrumbs.kasimir.dev/start-here/getting-started/).
 
 ---
 
