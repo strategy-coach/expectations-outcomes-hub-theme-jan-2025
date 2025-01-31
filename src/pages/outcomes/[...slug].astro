@@ -13,6 +13,9 @@ const { contentCollectionSort } = themeConfig || {};
 const files = import.meta.glob("/src/content/outcomes/**/*.{md,mdx}", {
   eager: true,
 });
+
+const dirName = "outcomes";
+
 // Build the menu tree
 const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 //const menuTree = buildMenuTree(files, "outcomes");
