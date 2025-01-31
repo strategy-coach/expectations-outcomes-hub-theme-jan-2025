@@ -60,17 +60,18 @@ const Teams = () => {
     const visibleTeam = team.slice(0, 5);
 
     return (
-        <div>
+        <>
             {
                 visibleTeam.map((member) => (
-                    <div key={member.userId} className="flex flex-row items-center gap-2 py-2">
-                        <Gravatar userEmail={member.email} height={5} width={5} />
-                        <p className="text-sm text-slate-700 font-medium">{member.displayName}</p>
+                    <div key={member.userId} className="text-sm rounded flex space-x-2 items-center">
+                        <span className="rounded-full overflow-hidden w-4 h-4">
+                         <Gravatar userEmail={member.email} height={5} width={5} />
+                        </span>
+                        <span>{member.displayName}</span>
                     </div>
-
                 ))
             }
-        </div>
+        </>
 
     );
 };
