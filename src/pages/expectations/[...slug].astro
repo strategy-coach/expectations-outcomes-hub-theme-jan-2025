@@ -32,7 +32,6 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 const rawMarkdownContent = entry.body; // Adjust if raw content is in another property
 
 ---
-
 <Layout>
   <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
     <div
@@ -53,6 +52,11 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
         linkTextFormat="capitalized"
         ariaLabel="Site navigation"
         separatorAriaHidden={false}
+        customizeLinks={[
+        { index: 2, "aria-disabled": true },
+        { index: 3, "aria-disabled": true },
+        { index: 4, "aria-disabled": true },
+        ]}
       >
         <svg
           slot="separator"
@@ -68,6 +72,7 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>
+
       <div class="">
         <div class="flex items-center justify-end">
           <EditButton client:only="react" />

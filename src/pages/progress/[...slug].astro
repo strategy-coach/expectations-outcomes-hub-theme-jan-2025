@@ -62,6 +62,11 @@ const { Content } = await render(entry);
         linkTextFormat="capitalized"
         ariaLabel="Site navigation"
         separatorAriaHidden={false}
+        customizeLinks={[
+        { index: 2, "aria-disabled": true },
+        { index: 3, "aria-disabled": true },
+        { index: 4, "aria-disabled": true },
+        ]}
       >
         <svg
           slot="separator"

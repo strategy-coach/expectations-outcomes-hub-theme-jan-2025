@@ -239,6 +239,11 @@ details[open] > .fst_mn .caret {
   overflow: hidden;
 }
 
+.c-breadcrumbs__link[aria-disabled="true"] {
+  pointer-events: none;
+  cursor: default;
+}
+
 
 /* / Pagefind ui css ends  / */
 
