@@ -1,0 +1,165 @@
+---
+import json from "../../../gitcommit-details/githubLatestCommit.json";
+
+const { filename } = Astro.props;
+
+// const filteredJsonData = json.filter((item) => {
+//   if (!item.fileStatus) return false; // Ensure fileStatus is defined
+
+//   const filePath = item.fileStatus.split("\t")[1]; // Extract file path
+//   if (!filePath) return false; // Ensure filePath exists
+
+//   const cleanedPath = filePath
+//   .replace(/^src\/content\/[^/]+\//, "") // Match and remove "src/content/<dynamic-folder>/"
+//   .replace(/\.\w+$/, ""); // Remove file extension
+
+//   return filename === cleanedPath;
+// });
+const filteredJsonData = json.filter((item) => {
+  if (!item.fileStatus) return false;
+
+  const filePath = item.fileStatus.split("\t")[1];
+  if (!filePath) return false;
+
+  const cleanedPath = filePath
+    .replace(/^src\/content\/[^/]+\//, "") // Remove "src/content/<dynamic-folder>/"
+    .replace(/\.\w+$/, ""); // Remove file extension
+
+  return filename === cleanedPath;
+});
+
+// Sort by commit date (ascending order)
+const sortedCommits = filteredJsonData.sort((a, b) => 
+  new Date(a.authorDate) - new Date(b.authorDate)
+);
+
+const firstCommit = sortedCommits[0]; // Oldest commit (first created)
+const lastCommit = sortedCommits[sortedCommits.length - 1]; // Most recent commit (last updated)
+
+//console.log('--filename---', filename);
+//console.log('--json---', filteredJsonData); // Add this line for debugging
+function getTimeDifference(commitDate: string | number | Date) {
+  const currentDate = new Date();
+  const commitDateTime = new Date(commitDate);
+  const timeDifference = Math.abs(currentDate - commitDateTime);
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysDifference === 1) {
+    return "1 day ago";
+  } else if (daysDifference > 1) {
+    return `${daysDifference} days ago`;
+  } else {
+    return "today";
+  }
+}
+---
+
+
+  <div class="-mb-5 mt-2"> 
+    <!-- {
+      filteredJsonData?.slice(0, 1).map((item) => (
+                        <span class="font-medium text-xs text-gray-500">
+                        Last Updated By : <strong class=" text-gray-500"> {item.authorName} </strong> on {getTimeDifference(item.authorDate)}
+                        </span>
+          
+      ))
+    } -->
+    <!-- {firstCommit && (
+      <span class="font-medium text-xs text-gray-500">
+        Created By : <strong class="text-gray-500">{firstCommit.authorName}</strong> on {getTimeDifference(firstCommit.authorDate)}
+      </span><br/>
+    )}
+    
+    {lastCommit && (
+      <span class="font-medium text-xs text-gray-500">
+        Last Updated By : <strong class="text-gray-500">{lastCommit.authorName}</strong> on {getTimeDifference(lastCommit.authorDate)}
+      </span>
+    )} -->
+    <div class="flex flex-col text-xs text-gray-500">
+      <div class="flex">
+        <span class="font-medium w-28">Created By</span>
+        <span class="mr-1">:</span> 
+        <strong class="text-gray-500">{firstCommit.authorName}</strong> 
+        <span class="ml-1">{getTimeDifference(firstCommit.authorDate)}</span>
+      </div>
+    
+      <div class="flex">
+        <span class="font-medium w-28">Last Updated By</span>
+        <span class="mr-1">:</span> 
+        <strong class="text-gray-500">{lastCommit.authorName}</strong> 
+        <span class="ml-1">{getTimeDifference(lastCommit.authorDate)}</span>
+      </div>
+    </div>
+    
+
+<!-- <div class="md:col-span-3 pt-5 pl-5" id="">
+  <h3 class="text-2xl font-bold mb-4 pt-10">Git Commit Details</h3>
+
+  <aside style="display: block;">
+    <div class="flow-root min-h-90">
+      <ul class="-mb-8">
+        <li>
+          <div class="relative pb-8">
+            <div class="relative flex space-x-3">
+              <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                <div>
+                  {
+                    filteredJsonData?.slice(0, 1).map((item) => (
+                      <div class="flow-root">
+                        <ul class="-mb-8">
+                          <li>
+                            <div class="relative pb-8">
+                              <span
+                                class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200"
+                                aria-hidden="true"
+                              />
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center ring-8 ring-white">
+                                    
+                                  </span>
+                                </div>
+                                <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                  <div>
+                                    <p class="text-base pb-6 mt-0 ">
+                                      <span class="font-medium text-base">
+                                        Updated By :  {item.authorName}
+                                      </span>{" "}
+                                      <br />
+                                      <span class="text-gray-500 text-sm">
+                                        <span class="font-medium">
+                                        Updated At :  {getTimeDifference(item.authorDate)}
+                                        </span>{" "}
+                                        
+                                        
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</div>
+<br /><br /><br /> -->
+
+<style>
+  .heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px; /* Optional: Adds spacing */
+}
+
+</style>

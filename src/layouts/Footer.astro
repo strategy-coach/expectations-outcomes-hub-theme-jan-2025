@@ -1,3 +1,28 @@
-<footer class="text-center text-sm text-slate-700 bg-white border-t border-slate-200 pt-8 pb-6">
-    Copyright © 2025. All rights reserved.
+---
+import themeConfig from '../../theme.config';
+const { editLink } = themeConfig || {}; 
+
+const { url } = Astro;
+
+// Split the pathname into segments
+const pathSegments = url.pathname.split("/").filter(Boolean);
+
+// Initialize edit URL as null
+let editUrl = null;
+
+// Condition 1: Only create an edit link if there are exactly 3 parameters in the URL
+if (pathSegments.length === 3) {
+  editUrl = `${editLink}${pathSegments.join("/")}.md`;
+}
+
+// Condition 2: Special case for "/test"
+if (url.pathname === "/documentation") {
+  editUrl = `${editLink}documentation/theme-documentation/documentation.md`; // Specify the file you want to edit for `/test`
+}
+---
+<footer class="flex items-center justify-between text-sm text-slate-700 bg-white border-t border-slate-200 pt-8 pb-6 px-4">
+    <span class="flex-1 text-center">Copyright © 2025. All rights reserved.</span>
+    <a href={editUrl} class="text-gray-500 hover:underline ml-auto">
+        Edit Page
+    </a>
 </footer>
