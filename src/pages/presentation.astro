@@ -20,7 +20,6 @@ const { logo } = themeConfig || {};
             <section>
                 <h3>EOH Astro 5 Theme Overview</h3>
                 <p>The EOH Astro 5 Theme is designed to support dynamic content creation, including blog collections, landing pages, static pages, Expectations & Outcomes Collection and GitHub Discussions integration. It provides customizable components to cater to various needs.</p>
-                
                 <h3>Key Features</h3>
                 <div class="flex justify-center flex-wrap">
                 <div class="w-48 h-48 flex flex-wrap items-center flex-col bg-[#0e222c] p-5 m-5 rounded-full">
@@ -44,7 +43,53 @@ const { logo } = themeConfig || {};
             </section>
             <section>
               <h3>Dashboard</h3>
-             <img src="/assets/images/theme-dashboard.png"  alt="" />
+             <!-- <img src="/assets/images/theme-dashboard.png"  alt="" /> -->
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <div class="col-span-1 md:col-span-6">
+                    <img src="/assets/images/content-imge-22.jpg" alt="icon" class="w-[85%] rounded-lg" />
+                </div>
+                <div class="col-span-1 md:col-span-6">
+                  <p class="text-2xl">The homepage provides a high-level summary of the product. Displays the project timeline, team members, priority, and latest updates.</p>
+                  <h4>Key Sections</h4>
+                  <aside class="flex gap-3 mb-4">
+                    <div class="w-16 h-16 flex flex-wrap items-center flex-col bg-[#0e222c] rounded-full text-base">
+                  <img src="/assets/images/ico-edit.svg" alt="icon" class="size-6" />
+                </div>
+                    <div class="basbasis-full text-lg">
+                      <div class="text-xl"><b>Active Project Details</b></div>
+                      <div>Shows current stage, timeline, and team members.</div>
+                    </div>
+                  </aside>
+                  <aside class="flex gap-3 mb-4">
+                    <div class="w-16 h-16 flex flex-wrap items-center flex-col bg-[#0e222c] rounded-full text-base">
+                  <img src="/assets/images/ico-edit.svg" alt="icon" class="size-6" />
+                </div>
+                    <div class="basbasis-full text-lg">
+                      <div class="text-xl"><b>Latest Updates</b></div>
+                      <div>Lists recent reports and document submissions.</div>
+                    </div>
+                  </aside>
+                  <aside class="flex gap-3 mb-4">
+                    <div class="w-16 h-16 flex flex-wrap items-center flex-col bg-[#0e222c] rounded-full text-base">
+                  <img src="/assets/images/ico-edit.svg" alt="icon" class="size-6" />
+                </div>
+                    <div class="basbasis-full text-lg">
+                      <div class="text-xl"><b>Accomplishments</b></div>
+                      <div>Highlights completed milestones and achievements.</div>
+                    </div>
+                  </aside>
+                  <aside class="flex gap-3 mb-4">
+                    <div class="w-16 h-16 flex flex-wrap items-center flex-col bg-[#0e222c] rounded-full text-base">
+                  <img src="/assets/images/ico-edit.svg" alt="icon" class="size-6" />
+                </div>
+                    <div class="basbasis-full text-lg">
+                      <div class="text-xl"><b>Trackers & Meeting Notes</b></div>
+                      <div>Links to bug tracking and meeting documentation.</div>
+                    </div>
+                  </aside>
+                </div>
+
+              </div>
             </section>
             <section>
                 <h3>GitHub Discussions Integration</h3>
@@ -95,7 +140,7 @@ const { logo } = themeConfig || {};
         .reveal p, .reveal ul { font-size: 30px!important;margin-top: 0px !important;}
         .reveal h2 {font-size: 38px!important;}
         .reveal h3 {font-size: 36px!important;color: #07b2e4;padding-bottom: 15px;border-bottom: 1px solid #07b2e4;}
-        .reveal h4 {font-size: 34px!important;}
+        .reveal h4 {font-size: 30px!important; color: #07b2e4; text-transform: capitalize!important;}
         .reveal ul {
             list-style: none;
             padding: 0;
@@ -135,6 +180,10 @@ const { logo } = themeConfig || {};
         .slides section {top:30px!important;}
         .reveal {height: calc(100% - 82px)!important;}
         .reveal img, .reveal video, .reveal iframe {max-width: 100%!important;}
+        .reveal p.text-2xl {
+          font-size: 1.3rem!important;
+          line-height: 1.8rem!important;
+        }
 
     </style>
   </body>
