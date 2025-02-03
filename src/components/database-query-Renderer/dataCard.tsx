@@ -13,18 +13,29 @@ type CardListProps = {
 };
 
 const CardList: React.FC<CardListProps> = ({ data }) => {
-    console.log(data)
     return (
         <div style={styles.cardListContainer}>
             {data.map((item) => (
-                <div style={styles.card}>
-                    <h3 style={styles.cardTitle}>{item.title}</h3>
-                    {item.description ? <p style={styles.cardDescription}>{item.description}</p> : ""}
+                <div key={item.title} style={styles.card}>
+                    {/* If using HTML inside title, use dangerouslySetInnerHTML */}
+                    {item.isDetail ? (
+                        <h3 style={styles.cardTitle}>
+                            <a href={item.detail_link} dangerouslySetInnerHTML={{ __html: item.title }} />
+                        </h3>
+                    ) : (
+                        <h3 style={styles.cardTitle} dangerouslySetInnerHTML={{ __html: item.title }} />
+                    )}
+
+                    {/* Corrected description rendering */}
+                    {item.description ? (
+                        <div dangerouslySetInnerHTML={{ __html: item.description }} />
+                    ) : null}
                 </div>
             ))}
         </div>
     );
 };
+
 
 // Styles for the card list and cards
 const styles: { [key: string]: React.CSSProperties } = {
@@ -39,7 +50,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         borderRadius: "8px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
         padding: "16px",
-        textAlign: "center",
+        textAlign: "left",
         transition: "transform 0.3s, box-shadow 0.3s",
     },
     cardImage: {

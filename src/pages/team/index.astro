@@ -3,6 +3,8 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import TeamDetails from "../../components/teams/teamDetails";
 import Layout from "../../layouts/Layout.astro";
 import "astro-breadcrumbs/breadcrumbs.css";
+import { teamDBConfig } from "../../utils/env";
+import DatabaseQueryRenderer from "../../components/database-query-Renderer/databaseQueryRenderer.astro";
 ---
 
 <Layout>
@@ -30,5 +32,54 @@ import "astro-breadcrumbs/breadcrumbs.css";
     </div>
 
     <TeamDetails client:only="react" />
+    {
+      teamDBConfig.isEnableTeamDB == "true" ? (
+        <div class="p-6 pt-4 mt-3 mx-auto team-table-content">
+          <DatabaseQueryRenderer
+            identifier="user_card"
+            title="Team Members"
+            layout="table"
+            dbName={teamDBConfig.dbName}
+            table="uniform_resource_user"
+            fields={["*"]}
+            orderBy="Name asc"
+          />
+        </div>
+      ) : null
+    }
   </div>
 </Layout>
+<style>
+  :global(.team-table-content h2) {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+    margin-bottom: 1rem !important;
+  }
+  :global(.team-table-content table) {
+    --tw-border-opacity: 1 !important;
+    background-color: #f9fafb !important;
+    border-width: 1px !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+  :global(.team-table-content thead) {
+  }
+  :global(.team-table-content tr) {
+    --tw-bg-opacity: 1;
+    background-color: #f3f4f6 !important;
+  }
+  :global(.team-table-content th) {
+    text-align: left;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    --tw-border-opacity: 1 !important;
+    border-color: #d1d5db !important;
+    border-width: 1px !important;
+  }
+  :global(.team-table-content td) {
+  }
+</style>

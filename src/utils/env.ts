@@ -8,3 +8,8 @@ export const zitadelConfig = {
     organizationId: import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID,
     projectId: import.meta.env.PUBLIC_ZITADEL_PROJECT_ID,
 };
+
+export const teamDBConfig = {
+    dbName: import.meta.env.PUBLIC_TEAM_DB,
+    isEnableTeamDB: import.meta.env.ENABLE_DB_TEAM
+};

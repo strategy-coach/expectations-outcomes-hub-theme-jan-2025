@@ -60,9 +60,9 @@ const TeamDetails = () => {
     if (error) return <div className="text-center text-red-500">{error}</div>;
 
     return (
-        <div className="p-6 pt-4 mt-3 min-h-screen h-full mx-auto">
+        <div className="p-6 pt-4 mt-3 mx-auto">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Team Members</h2>
-            <div className="p-6">
+            <div className="">
                 <div className="flex space-x-4">
 
                     <button
