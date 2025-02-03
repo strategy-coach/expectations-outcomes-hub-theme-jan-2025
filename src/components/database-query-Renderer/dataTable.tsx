@@ -6,11 +6,24 @@ type DataTableProps = {
 type RowData = { [key: string]: any };
 
 const DataTables: React.FC<DataTableProps> = ({ data }) => {
-    const columns = Object.keys(data[0]).map((key) => ({
-        name: key.replace("_", " ").toUpperCase(), // Format key names (e.g., "first_name" -> "FIRST NAME")
-        selector: (row: RowData) => row[key], // Access the value dynamically
-        sortable: true, // Make columns sortable
-    }));
+    const columns = Object.keys(data[0])
+        .filter((key) => key !== "isDetail") // Exclude 'isDetail' key
+        .map((key) => ({
+            name: key.replace(/_/g, " ").toUpperCase(), // Format key names (e.g., "first_name" -> "FIRST NAME")
+            selector: (row: RowData) => {
+                if (key === "detail_link" && row.isDetail) {
+                    // Only show the link if isDetail is true
+                    const link = row[key];
+                    delete row.isDetail;  // Remove the isDetail key after checking
+                    return <a href={link} rel="noopener noreferrer">View</a>;
+                }
+                return row[key]; // Access other values dynamically
+            },
+            sortable: true, // Make columns sortable
+        }));
+    // Remove null entries (like isDetail)
+
+    console.log(columns)
     return (
         <>
             <DataTable

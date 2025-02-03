@@ -8,23 +8,39 @@ const { decode } = pkg;
 import DataTables from "./dataTable";
 import DataList from "./jsonList";
 import CardList from "./dataCard";
+import DataDetail from "./dataDetail";
 
-const { title, layout, dbName, table, fields, where, orderBy, limit } =
-  Astro.props;
+const {
+  identifier,
+  title,
+  layout,
+  dbName,
+  table,
+  fields,
+  where,
+  orderBy,
+  limit,
+  detail,
+  detailWhere,
+} = Astro.props;
 
-// Function to fetch data from the database
-const children = Astro.slots.has("default")
-  ? String(await Astro.slots.render("default"))
-  : "";
-const query1 = decode(children);
-
+const params = Astro.url.searchParams;
+const getIdentifier = params.get("identifier");
+const urlSearchParams = Astro.url.searchParams.entries();
 const dbPath = path.resolve(process.cwd(), dbName);
 
-// Check if layout is 'card' and fields is an array without 'title'
+const { pathname, origin } = Astro.url;
+
+let link: string;
+if (detail) {
+  link = `${origin}${pathname}?identifier=${identifier}`;
+}
+
 if (
   layout === "card" &&
   !fields.some((field: string | string[]) => field.includes("title"))
 ) {
+  // Check if layout is 'card' and fields is an array without 'title'
   throw new Error(
     "When layout is 'card', the 'title' field must be included in the fields array."
   );
@@ -34,11 +50,23 @@ let query;
 if (Array.isArray(fields) && fields.length > 0) {
   query = `SELECT ${fields.join(", ")} FROM ${table}`;
 } else {
-  throw new Error("Invalid 'fields' parameter. It must be an array or '*'.");
+  throw new Error("Invalid 'fields' parameter. It must be an array.");
 }
 
-if (where) {
-  query += ` WHERE ${where}`;
+if (getIdentifier == identifier) {
+  const conditions: string[] = [];
+
+  for (const [key, value] of urlSearchParams) {
+    if (key !== "identifier" && value) {
+      conditions.push(`${key} = '${value.replace(/'/g, "''")}'`); // Prevent SQL injection
+    }
+  }
+
+  query += conditions.length > 0 ? ` WHERE ${conditions.join(" AND ")}` : "";
+} else {
+  if (where) {
+    query += ` WHERE ${where}`;
+  }
 }
 
 if (orderBy) {
@@ -49,13 +77,15 @@ if (limit) {
   query += ` LIMIT ${limit}`;
 }
 
+console.log(query);
+
 // Check if database exists
 if (!fs.existsSync(dbPath)) {
   throw new Error(`Database file not found: ${dbPath}`);
 }
 
 // Function to fetch data only if DB exists
-const getData = async (
+const getDataList = async (
   query: string
 ): Promise<Array<Record<string, any>> | string> => {
   return new Promise((resolve, reject) => {
@@ -65,23 +95,51 @@ const getData = async (
     }
 
     const db = new sqlite3.Database(dbPath);
-    db.all(query, [], (err, rows) => {
+    db.all(query, [], (err, rows: Record<string, any>[]) => {
       db.close();
       if (err) {
         resolve(`Error executing query: ${err.message}`);
       } else {
-        resolve(rows as Record<string, any>[]);
+        let updatedRows: Record<string, any>[] = [];
+        if (detail && detailWhere.length > 0 && getIdentifier != identifier) {
+          updatedRows = Array.isArray(rows)
+            ? rows.map((row) => {
+                // Construct query params from detailWhere fields
+                const queryParams = detailWhere
+                  .map((field: string) =>
+                    row[field] !== undefined
+                      ? `${field}=${encodeURIComponent(row[field])}`
+                      : ""
+                  )
+                  .filter(Boolean) // Remove empty strings
+                  .join("&");
+
+                return {
+                  ...row,
+                  isDetail: detail,
+                  detail_link: `${origin}${pathname}?identifier=${identifier}&${queryParams}`,
+                };
+              })
+            : [];
+        } else {
+          // If condition is not satisfied, just return original row data
+          updatedRows = Array.isArray(rows) ? rows : [];
+        }
+
+        resolve(updatedRows);
       }
     });
   });
 };
 
-const data = await getData(query);
+const data = await getDataList(query);
 ---
 
 <h2>{title}</h2>
 {
-  typeof data === "string" ? (
+  getIdentifier === identifier ? (
+    <DataDetail client:only="react" data={Array.isArray(data) ? data : []} />
+  ) : typeof data === "string" ? (
     <p>{data}</p> // Show error messages in the component
   ) : layout === "table" ? (
     <DataTables client:only="react" data={data} />
