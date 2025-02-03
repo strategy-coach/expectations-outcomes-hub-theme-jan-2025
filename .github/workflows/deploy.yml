@@ -36,6 +36,8 @@ jobs:
           PUBLIC_ZITADEL_API_TOKEN: ${{ vars.PUBLIC_ZITADEL_API_TOKEN }}
           PUBLIC_QUALITYFOLIO_URL: ${{ vars.PUBLIC_QUALITYFOLIO_URL }}
           ENABLE_OPEN_OBSERVE: ${{ vars.ENABLE_OPEN_OBSERVE }}
+          PUBLIC_TEAM_DB: ${{ vars.PUBLIC_TEAM_DB }}
+          ENABLE_DB_TEAM: ${{ vars.ENABLE_DB_TEAM }}
         run: |
           bash -x support/ci-cd.sh      
           
