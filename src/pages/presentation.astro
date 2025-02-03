@@ -1,3 +1,8 @@
+---
+import themeConfig from '../../theme.config';
+
+const { logo } = themeConfig || {}; 
+---
 <html>
   <head>
     <title>Expectations and Outcomes Hub Theme</title>
@@ -7,7 +12,7 @@
   </head>
   <body>
     <div class="logo-card flex w-full px-1 py-2 text-center mb-2 justify-center bg-white drop-shadow-md">
-      <img src="/assets/images/logo.png" class="h-14" alt="logo" />
+      <img src={logo} class="h-14" alt="logo" />
     </div>
     <div class="reveal">
         <div class="slides">
