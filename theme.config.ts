@@ -7,6 +7,7 @@ const themeConfig = (config: {
   trackers: { name: string; url: string }[]; // Array of objects for trackers
   contentCollectionSort: string;
   staticFixedFolders: { parent: string; child: string[] }[]; // Array of objects for trackers
+  editLink: string;
 }) => {
   return {
     ...config,
@@ -25,8 +26,9 @@ export default themeConfig({
   ],
   contentCollectionSort: "true",
   staticFixedFolders: [
-    { parent: "progress", child: ["activity-logs","begin"] },
+    { parent: "progress", child: ["activity-logs"] },
     { parent: "outcomes", child: ["deliverables"] },
     { parent: "expectations", child: ["key-milestones","roles-and-responsibilities"] },
   ],
+  editLink: "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
 });

@@ -7,6 +7,7 @@ import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from '../../../theme.config';
+import LatestCommit from "../../components/git-commit/latestCommit.astro";
 
 const { contentCollectionSort } = themeConfig || {}; 
 
@@ -22,6 +23,7 @@ const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
 const slug = Astro.params.slug;
 const entry = await getEntry("outcomes", slug);
+const entryid = entry?.id;
 let slugval = "/outcomes/" + slug;
 if (!entry) {
   // Handle Error, for example:
@@ -71,6 +73,9 @@ const { Content } = await render(entry);
         </svg>
       </Breadcrumbs>
       <article class="prose max-w-screen-xl withbullet markdown-content">
+        <div class="flex justify-end text-sm">
+          <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
+        </div>  
         <Content />
       </article>
     </div>

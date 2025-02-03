@@ -9,6 +9,7 @@ import MarkdownEditor from "../../components/ContentEditor";
 import EditButton from "../../components/EditMarkdownButton";
 import themeConfig from '../../../theme.config';
 const { contentCollectionSort } = themeConfig || {}; 
+import LatestCommit from "../../components/git-commit/latestCommit.astro";
 
 
 const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx}", {
@@ -22,6 +23,7 @@ const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
 const slug = Astro.params.slug;
 const entry = await getEntry("expectations", slug);
+const entryid = entry?.id;
 let slugval = "/expectations/" + slug;
 if (!entry) {
   // Handle Error, for example:
@@ -99,6 +101,9 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
               </div>
             </span>
             <span id="html-content">
+              <div class="flex justify-end text-sm">
+          <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
+        </div>  
               <Content />
             </span>
           </article>
@@ -106,6 +111,9 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
       }
 
       <article class="prose max-w-screen-xl withbullet markdown-content">
+        <div class="flex justify-end text-sm">
+          <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
+        </div>  
         <Content />
       </article>
     </div>
