@@ -597,6 +597,74 @@ detailWhere={['first_name','last_name']}
 - The database file (`dbName`) must be present in the working directory.
 - Ensure your SQL query returns data in a format suitable for the selected layout.
 - The `detail` feature works only for `card` and `table` layouts.
+- If working in a local environment, place the database in `database-query-renderer-demo/employee.db`.
+
+Here’s a README section for your team list:
+
+---
+
+## Team List from Database
+
+The team list is rendered using the Astro component `DatabaseQueryRenderer`. This component fetches data from the database and displays it in a table format. To enable this feature, ensure the configuration in the `.env` file is updated correctly.
+
+### Configuration
+
+1. **Update `.env` File**  
+   Set the database file path and enable the team list feature by updating your `.env` file with the following variables:
+
+```env
+# TEAM DB Configuration
+PUBLIC_TEAM_DB="user_demo_db/resource-surveillance.sqlite.db"
+ENABLE_DB_TEAM=true
+```
+
+- `PUBLIC_TEAM_DB`: Path to the SQLite database file (can be placed in any folder).
+- `ENABLE_DB_TEAM`: Set to `true` to enable the team list functionality.
+
+2. **Placing the Database**  
+   The SQLite database is expected to be placed at the path defined in the `.env` file (`user_demo_db/resource-surveillance.sqlite.db`), or you can specify any other valid SQLite file path in the `.env` configuration.
+
+### Team List Display
+
+The team list is located in the file:
+
+```plaintext
+src/pages/team/index.astro
+```
+
+Within this file, the `DatabaseQueryRenderer` component is used to display the team members:
+
+```astro
+{
+  teamDBConfig.isEnableTeamDB == "true" ? (
+    <div class="p-6 pt-4 mt-3 mx-auto team-table-content">
+      <DatabaseQueryRenderer
+        identifier="user_card"
+        title="Team Members"
+        layout="table"
+        dbName={teamDBConfig.dbName}
+        table="uniform_resource_user"
+        fields={["*"]}
+        orderBy="Name asc"
+      />
+    </div>
+  ) : null
+}
+```
+
+- **identifier**: `user_card` – a unique identifier for the component.
+- **title**: The title for the table, set to "Team Members."
+- **layout**: Defines the layout of the data, in this case, "table."
+- **dbName**: The database name (set from the `.env` configuration).
+- **table**: The table to fetch data from (`uniform_resource_user`).
+- **fields**: Fetches all fields (`*`).
+- **orderBy**: Orders the results by the `Name` field in ascending order (`asc`).
+
+### How to Use
+
+1. Make sure the database is placed at the location specified in the `.env` file, or update the path accordingly.
+2. Ensure that the `.env` configuration has `ENABLE_DB_TEAM=true` to activate the database query.
+3. When visiting the team list page, the data will automatically be fetched and displayed in a table format from the specified database.
 
 
 ---
