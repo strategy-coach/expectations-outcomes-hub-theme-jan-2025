@@ -231,7 +231,7 @@ Replace xxxxx with the appropriate URL.
 
 ## Theme Configuration
 
-The `theme.config.ts` file allows you to customize certain aspects of the site's theme, including the logo, title, admin email and tracker details. These configurations are passed as an object to the `themeConfig` function.
+The `theme.config.ts` file allows you to customize certain aspects of the site's theme, including the logo, title, admin email, active project name and tracker details. These configurations are passed as an object to the `themeConfig` function.
 
 ### Example Configuration
 
@@ -242,6 +242,7 @@ const themeConfig = (config: {
   title: string;
   adminEmail: string;
   description: string;
+  activeProject: string,
   trackers: { name: string; url: string }[];
 }) => {
   return {
@@ -254,6 +255,7 @@ export default themeConfig({
   title: "EOH Astro 5 Site", // Title of the site
   adminEmail: "admin@example.com", // Admin email address
   description: "Welcome to the Expectations and Outcomes hub of EOH Astro 5 Site. This is your go-to resource to all activities regarding EOH Astro 5 Site products.", // site short description
+  activeProject: "EOH",
   trackers: [
     { name: "Product Bug Tracker", url: "https://example.com/bug-tracker" },
     { name: "Google Analytics", url: "https://analytics.google.com" },
