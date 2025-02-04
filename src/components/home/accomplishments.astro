@@ -25,9 +25,16 @@ const accomplishmentsList = Object.values(newFiles)
 {accomplishmentsList.length > 0 && (
   <div class="lg:col-span-12 bg-white shadow rounded-lg p-4">
     <h3 class="text-lg font-semibold text-slate-700">
-      <div class="flex gap-2 items-center text-xl">
-        <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>Accomplishments</span>
+      <div class="flex gap-2 items-center text-xl justify-between">
+        <div class="flex gap-2 items-center"><span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
+          <span>Accomplishments</span></div>
+        
+        <div><a href="/outcomes/milestone-achievements/achievements"><button
+        type="button"
+        class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black"
+      >
+        Read More
+      </button></a></div>
       </div>
     </h3>
     <div class="mt-2 space-y-0.5 ml-8 markdown-content">
@@ -51,6 +58,7 @@ const accomplishmentsList = Object.values(newFiles)
           ))}
         </tbody>
       </table>
+      
     </div>
   </div>
 )}
