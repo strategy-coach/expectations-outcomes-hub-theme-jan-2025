@@ -5,8 +5,8 @@ import Sidebar from "../../components/Sidebar";
 import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
-import MarkdownEditor from "../../components/ContentEditor";
-import EditButton from "../../components/EditMarkdownButton";
+// import MarkdownEditor from "../../components/ContentEditor";
+// import EditButton from "../../components/EditMarkdownButton";
 import themeConfig from '../../../theme.config';
 const { contentCollectionSort } = themeConfig || {}; 
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
@@ -31,7 +31,7 @@ if (!entry) {
 }
 const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 
-const rawMarkdownContent = entry.body; // Adjust if raw content is in another property
+// const rawMarkdownContent = entry.body; // Adjust if raw content is in another property
 
 ---
 <Layout>
@@ -75,13 +75,13 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
         </svg>
       </Breadcrumbs>
 
-      <div class="">
+      <!-- <div class="">
         <div class="flex items-center justify-end">
           <EditButton client:only="react" />
         </div>
-      </div>
+      </div> -->
 
-      {
+      <!-- {
         (
           <article class="prose max-w-screen-xl withbullet">
             <span id="markdown-content" style="display:none">
@@ -108,7 +108,7 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
             </span>
           </article>
         )
-      }
+      } -->
 
       <article class="prose max-w-screen-xl withbullet markdown-content">
         <div class="flex justify-end text-sm">
