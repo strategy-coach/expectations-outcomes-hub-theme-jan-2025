@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Gravatar } from "../profile/gravatar/Gravatar";
+import themeConfig from "../../../theme.config";
 
+const { title } = themeConfig || {};
 const projectId = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID;
 const token = import.meta.env.PUBLIC_ZITADEL_API_TOKEN;
 const organizationId = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID;
@@ -61,7 +63,7 @@ const TeamDetails = () => {
 
     return (
         <div className="p-6 pt-4 mt-3 mx-auto">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Team Members</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">{title} Members</h2>
             <div className="">
                 <div className="flex space-x-4">
 
