@@ -17,3 +17,8 @@ pnpm-debug.log*
 .env
 .env.production
 
+htmloutput/
+
+# demo db
+database-query-renderer-demo/employee.db
+user_demo_db/resource-surveillance.sqlite.db
