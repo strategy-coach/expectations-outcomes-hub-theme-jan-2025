@@ -4,6 +4,7 @@ const themeConfig = (config: {
   title: string;
   adminEmail: string;
   description: string;
+  activeProject: string;
   trackers: { name: string; url: string }[]; // Array of objects for trackers
   contentCollectionSort: string;
   staticFixedFolders: { parent: string; child: string[] }[]; // Array of objects for trackers
@@ -19,6 +20,7 @@ export default themeConfig({
   title: "EOH Astro 5 Site",
   adminEmail: "admin@example.com", 
   description: "Welcome to the Expectations and Outcomes hub of EOH Astro 5 Site. This is your go-to resource to all activities regarding EOH Astro 5 Site products.", 
+  activeProject: "EOH",
   trackers: [
     { name: "Product Bug Tracker", url: "https://example.com/bug-tracker" },
     { name: "Google Analytics", url: "https://analytics.google.com" },

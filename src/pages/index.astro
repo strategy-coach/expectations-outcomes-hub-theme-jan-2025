@@ -11,7 +11,7 @@ import Accomplishments from '../components/home/accomplishments.astro';
 import Teams from '../components/teams/teams';
 
 const trackers = themeConfig.trackers;
-const { title, description } = themeConfig || {}; 
+const { title, description, activeProject } = themeConfig || {}; 
 const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
 const dirName = "progress";
 const menuTree = buildMenuTree(files,dirName);
@@ -21,13 +21,13 @@ const menuTree = buildMenuTree(files,dirName);
     <div class="border-b border-slate-300 pb-3">
     <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Welcome to { title }</h1>
     <p class="text-slate-500 mt-1 font-semibold">{description}</p>
-    <p class="text-slate-500 mt-2 font-semibold">New to the Hub? <a target="_blank" href="/presentation">Click here</a> to view the overview presentation</p>
+    <p class="text-slate-500 mt-3 font-semibold">New to the Hub? <a target="_blank" href="/presentation">Click here</a> to view the overview presentation</p>
   </div>
 
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-6">
       <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
-
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
+        <span class="font-semibold">Active Project: </span>{activeProject}
+        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 mt-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span><img src="/assets/images/fi-rr-calendar.svg" class="w-4 h-4" alt=""></span>
