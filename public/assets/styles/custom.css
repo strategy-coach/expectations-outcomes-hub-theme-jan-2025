@@ -1,3 +1,11 @@
+main a {
+  color: #028db7;
+  text-decoration: none;
+}
+main a:hover {
+  color: #000!important;
+  text-decoration: none;
+}
 .policy_cmp {
   list-style: none !important;
 }
@@ -121,13 +129,13 @@ details[open] > .fst_mn .caret {
 
 .sidebar-left-menu details[open] summary {
   background: #f2f2f2 !important;
-  color: #18816a !important;
+  color: #028db7 !important;
   border-radius: 4px;
 }
 
 .inner-menu-select {
   background: #f2f2f2 !important;
-  color: #18816a !important;
+  color: #028db7 !important;
   border-radius: 4px;
 }
 
@@ -250,13 +258,13 @@ details[open] > .fst_mn .caret {
 
   /* :::::: markdown css ::::::> starts */
 .markdown-content a {
-  color: #18816a;
+  color: #028db7;
   text-decoration: none;
 }
 
 .markdown-content a:hover {
-  color: #18816a;
-  text-decoration: underline;
+  color: #000;
+  text-decoration: none;
 }
 
 .markdown-content .breadcrumb a {
@@ -266,15 +274,15 @@ details[open] > .fst_mn .caret {
 
 .markdown-content .breadcrumb a:hover {
   text-decoration: none;
-  color: #18816a !important;
+  color: #000 !important;
 }
 
 .markdown-content,
 .markdown-content p,
 .markdown-content ul,
 .markdown-content ol {
-  font-size: 16px !important;
-  line-height: 26px !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
   margin-bottom: 20px !important;
 }
 
@@ -419,11 +427,11 @@ details[open] > .fst_mn .caret {
 
 /* < accordion */
 .nav-menu-section .selected {
-  color: #18816a !important;
+  color: #028db7 !important;
 }
 
 .slide-over-content a {
-  color: #18816a !important;
+  color: #028db7 !important;
   text-decoration: none !important;
 }
 
@@ -432,7 +440,7 @@ details[open] > .fst_mn .caret {
 }
 
 .selected {
-  color: #18816a !important;
+  color: #028db7 !important;
 }
 
 h3.notify {
