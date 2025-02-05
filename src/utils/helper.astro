@@ -45,7 +45,7 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
         const title =
           extractTitle(frontmatter) ||
           formatName(part.replace(/\.(md|mdx)$/, "")); // Use title or formatted file name
-
+          const description =frontmatter.description;
        
         const filePath = path
           .replace("/src/content", "")
@@ -55,6 +55,7 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
           name: title, // Use extracted title or formatted name
           path: filePath, // File path without extension
           isFile: true,
+          description: description,
         });
       } else {
         // Format folder name

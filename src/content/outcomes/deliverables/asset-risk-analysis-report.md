@@ -4,7 +4,7 @@ date: "2025-01-15"
 home:
   skipTo: 
     category: "skipTo"
-
+description:  The document contains a project estimation sheet outlining tasks,effort hours, and timelines across key phases like analysis,design, development, testing, and project management. It includes metrics such as confidence factors, consumed hours, and completion dates.
 ---
 # Asset and Risk Analysis Report
 

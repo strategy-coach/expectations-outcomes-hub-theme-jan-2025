@@ -5,6 +5,7 @@ import { githubDiscussionsBlogLoader } from "github-discussions-blog-loader";
 const baseSchema = z.object({
   title: z.string(),
   date: z.string().optional(),
+  description: z.string().optional(),
   home: z
     .object({
       skipTo: z
