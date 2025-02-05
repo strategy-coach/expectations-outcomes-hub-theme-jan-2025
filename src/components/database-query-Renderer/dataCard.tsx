@@ -5,7 +5,7 @@ type CardData = {
     id: number;
     title: string;
     description: string;
-    imageUrl?: string; // Optional image for the card
+    image?: string; // Optional image for the card
 };
 
 type CardListProps = {
@@ -17,7 +17,12 @@ const CardList: React.FC<CardListProps> = ({ data }) => {
         <div style={styles.cardListContainer}>
             {data.map((item) => (
                 <div key={item.title} style={styles.card}>
-                    {/* If using HTML inside title, use dangerouslySetInnerHTML */}
+                    {/* Image */}
+                    {item.image && (
+                        <img src={item.image} alt={item.title} style={styles.cardImage} />
+                    )}
+
+                    {/* Title */}
                     {item.isDetail ? (
                         <h3 style={styles.cardTitle}>
                             <a href={item.detail_link} dangerouslySetInnerHTML={{ __html: item.title }} />
@@ -26,16 +31,33 @@ const CardList: React.FC<CardListProps> = ({ data }) => {
                         <h3 style={styles.cardTitle} dangerouslySetInnerHTML={{ __html: item.title }} />
                     )}
 
-                    {/* Corrected description rendering */}
-                    {item.description ? (
-                        <div dangerouslySetInnerHTML={{ __html: item.description }} />
-                    ) : null}
+                    {/* Description */}
+                    {item.description && (
+                        <div style={styles.cardDescription} dangerouslySetInnerHTML={{ __html: item.description }} />
+                    )}
+
+                    {/* Additional Fields */}
+                    <div style={styles.additionalFields}>
+                        {Object.entries(item)
+                            .filter(([key]) => !["title", "description", "image", "isDetail", "detail_link"].includes(key))
+                            .map(([key, value]) => (
+                                <p key={key}>
+                                    <b>{formatKey(key)}</b>: {value}
+                                </p>
+                            ))}
+                    </div>
                 </div>
             ))}
         </div>
     );
 };
 
+// Utility function to format key names (optional)
+const formatKey = (key: string) => {
+    return key
+        .replace(/_/g, " ") // Replace underscores with spaces
+        .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize first letter
+};
 
 // Styles for the card list and cards
 const styles: { [key: string]: React.CSSProperties } = {
@@ -58,6 +80,7 @@ const styles: { [key: string]: React.CSSProperties } = {
         height: "200px",
         objectFit: "cover",
         borderRadius: "8px",
+        marginBottom: "10px",
     },
     cardTitle: {
         fontSize: "18px",
@@ -66,6 +89,9 @@ const styles: { [key: string]: React.CSSProperties } = {
     cardDescription: {
         fontSize: "14px",
         color: "#555",
+    },
+    additionalFields: {
+        marginTop: "10px",
     },
 };
 

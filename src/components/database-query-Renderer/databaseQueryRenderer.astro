@@ -77,19 +77,14 @@ if (limit) {
   query += ` LIMIT ${limit}`;
 }
 
-
-// Check if database exists
-if (!fs.existsSync(dbPath)) {
-  throw new Error(`Database file not found: ${dbPath}`);
-}
-
 // Function to fetch data only if DB exists
 const getDataList = async (
   query: string
 ): Promise<Array<Record<string, any>> | string> => {
   return new Promise((resolve, reject) => {
+    // Check if database exists
     if (!fs.existsSync(dbPath)) {
-      resolve("Database not found. Please check the database name.");
+      resolve(`Database file not found: ${dbPath}`);
       return;
     }
 
