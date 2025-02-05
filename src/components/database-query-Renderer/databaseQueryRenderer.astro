@@ -82,6 +82,11 @@ const getDataList = async (
   query: string
 ): Promise<Array<Record<string, any>> | string> => {
   return new Promise((resolve, reject) => {
+    // Check if name is not null
+    if (dbName == null || dbName == "") {
+      resolve(`Database not found!!`);
+      return;
+    }
     // Check if database exists
     if (!fs.existsSync(dbPath)) {
       resolve(`Database file not found: ${dbPath}`);
