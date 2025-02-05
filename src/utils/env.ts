@@ -11,5 +11,5 @@ export const zitadelConfig = {
 
 export const teamDBConfig = {
     dbName: import.meta.env.PUBLIC_TEAM_DB,
-    isEnableTeamDB: import.meta.env.ENABLE_DB_TEAM
+    isEnableTeamDB: import.meta.env.ENABLE_DB_TEAM === 'true'
 };
