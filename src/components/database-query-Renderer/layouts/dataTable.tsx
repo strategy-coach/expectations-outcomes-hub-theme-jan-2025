@@ -22,8 +22,6 @@ const DataTables: React.FC<DataTableProps> = ({ data }) => {
             sortable: true, // Make columns sortable
         }));
     // Remove null entries (like isDetail)
-
-    console.log(columns)
     return (
         <>
             <DataTable
