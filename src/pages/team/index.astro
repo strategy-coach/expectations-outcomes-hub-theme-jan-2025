@@ -35,7 +35,7 @@ const { title } = themeConfig || {};
 
     <TeamDetails client:only="react" />
     {
-      teamDBConfig.isEnableTeamDB == "true" ? (
+      teamDBConfig.isEnableTeamDB ? (
         <div class="p-6 pt-4 mt-3 mx-auto team-table-content">
           <DatabaseQueryRenderer
             identifier="user_card"
