@@ -1,9 +1,9 @@
 ---
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
-import themeConfig from '../../theme.config';
+import themeConfig from "../../theme.config";
 
-const { baseHyperLinkColor } = themeConfig  || {}; 
+const { baseHyperLinkColor } = themeConfig || {};
 
 const enableOpenObserve =
   import.meta.env.ENABLE_OPEN_OBSERVE !== undefined
@@ -12,7 +12,7 @@ const enableOpenObserve =
 ---
 
 <!doctype html>
-<html lang="en" style={`--hyperlink-color: ${baseHyperLinkColor || '#007BFF'}`}>
+<html lang="en" style={`--hyperlink-color: ${baseHyperLinkColor || "#007BFF"}`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -24,21 +24,28 @@ const enableOpenObserve =
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css"
       rel="stylesheet"
     />
-    <link href="/htmloutput/pagefind/pagefind-ui.css" rel="stylesheet">
+    <link href="/htmloutput/pagefind/pagefind-ui.css" rel="stylesheet" />
     <script src="/htmloutput/pagefind/pagefind-ui.js" is:inline></script>
     <script
       src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
+    ></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"
     ></script>
 
     {
       enableOpenObserve == "true" && (
         <>
-          <script type="module" crossorigin src="/assets/scripts/index.28871fbc.js"></script>
+          <script
+            type="module"
+            crossorigin
+            src="/assets/scripts/index.28871fbc.js"
+          />
           <link rel="modulepreload" href="/assets/scripts/vendor.4c9b4c60.js" />
         </>
       )
     }
-    
+
     <meta name="generator" content={Astro.generator} />
     <title>Expectations and Outcomes Hub Theme</title>
   </head>
@@ -57,7 +64,7 @@ const enableOpenObserve =
     // Function to apply URL modification to links
     function updateLinks() {
       const resultLinks = document.querySelectorAll(
-        ".pagefind-ui__result-link",
+        ".pagefind-ui__result-link"
       );
       resultLinks.forEach((link) => {
         const originalHref = link.getAttribute("href");
@@ -68,7 +75,9 @@ const enableOpenObserve =
       });
 
       // Remove the class `pagefind-ui__result-thumb` from elements
-      const thumbElements = document.querySelectorAll(".pagefind-ui__result-thumb");
+      const thumbElements = document.querySelectorAll(
+        ".pagefind-ui__result-thumb"
+      );
       thumbElements.forEach((element) => {
         element.classList.remove("pagefind-ui__result-thumb");
       });
@@ -100,13 +109,11 @@ const enableOpenObserve =
 
 <style is:global>
   main a {
-    color: var(--hyperlink-color, #007BFF); 
+    color: var(--hyperlink-color, #007bff);
     text-decoration: none;
   }
   main a:hover {
-    color: #000!important;
+    color: #000 !important;
     text-decoration: none;
   }
-
-
 </style>
