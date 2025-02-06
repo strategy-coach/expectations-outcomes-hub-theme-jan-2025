@@ -79,15 +79,15 @@ function getTimeDifference(commitDate: string | number | Date) {
       <div class="flex">
         <span class="font-medium w-28">Created By</span>
         <span class="mr-1">:</span> 
-        <strong class="text-gray-500">{firstCommit.authorName}</strong> 
-        <span class="ml-1">{getTimeDifference(firstCommit.authorDate)}</span>
+        <strong class="text-gray-500">{firstCommit?.authorName}</strong> 
+        <span class="ml-1">{getTimeDifference(firstCommit?.authorDate)}</span>
       </div>
     
       <div class="flex">
         <span class="font-medium w-28">Last Updated By</span>
         <span class="mr-1">:</span> 
-        <strong class="text-gray-500">{lastCommit.authorName}</strong> 
-        <span class="ml-1">{getTimeDifference(lastCommit.authorDate)}</span>
+        <strong class="text-gray-500">{lastCommit?.authorName}</strong> 
+        <span class="ml-1">{getTimeDifference(lastCommit?.authorDate)}</span>
       </div>
     </div>
     
