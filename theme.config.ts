@@ -12,6 +12,8 @@ const themeConfig = (config: {
   editLink: string;
   baseHyperLinkColor: string;
   presentationBgColor: string;
+  excludedEditOptionPages: string[];
+  excludedEditOptionFolder: string[];
 }) => {
   return {
     ...config,
@@ -44,4 +46,6 @@ export default themeConfig({
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
   baseHyperLinkColor: "#028db7",
   presentationBgColor: "#1e3a47",
+  excludedEditOptionPages :["/blog","/my-profile","/expectations","/outcomes","/progress"],
+  excludedEditOptionFolder :["qualityfolio"],
 });
