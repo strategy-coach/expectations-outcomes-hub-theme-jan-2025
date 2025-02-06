@@ -63,6 +63,7 @@ const documentation = defineCollection({
   loader: glob({ base: "./src/content/documentation", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string().optional(),
+    draft: z.boolean().optional(),
   }),
 });
 const envData = import.meta.env;

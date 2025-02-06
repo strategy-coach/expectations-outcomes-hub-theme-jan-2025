@@ -1,0 +1,47 @@
+---
+draft: true
+---
+
+import DatabaseQueryRenderer from "../../../components/database-query-Renderer/databaseQueryRenderer.astro";
+
+<DatabaseQueryRenderer
+identifier="employee_card"
+title="Employee Card"
+layout="card"
+dbName="database-query-renderer-demo/employee.db"
+table="employees"
+fields={[
+    "first_name || ' ' || last_name AS title",
+    `"Lorem Ipsum is simply dummy text of the printing and typesetting industry..." AS description`
+  ]}
+where=""
+orderBy="first_name asc"
+limit="6"
+detail={true}
+detailWhere={['title']}
+/>
+
+<DatabaseQueryRenderer
+title="Employee List"
+layout="json"
+dbName="database-query-renderer-demo/employee.db"
+fields={['*']}
+table="employees"
+where=""
+orderBy=""
+limit="2"
+/>
+
+<DatabaseQueryRenderer
+identifier="employee_table"
+title="Employee Table"
+layout="table"
+dbName="database-query-renderer-demo/employee.db"
+fields={['*']}
+table="employees"
+where=""
+orderBy=""
+limit="2"
+detail={true}
+detailWhere={['first_name','last_name']}
+/> 
