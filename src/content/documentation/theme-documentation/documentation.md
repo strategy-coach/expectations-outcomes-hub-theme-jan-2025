@@ -497,6 +497,7 @@ Then, use it in your Astro template by passing the necessary props:
 
 ```tsx
 <DatabaseQueryRenderer
+  identifier="employee_list"
   title="Employee List"
   layout="json"
   dbName="database-query-renderer-demo/employee.db"
@@ -529,6 +530,9 @@ Then, use it in your Astro template by passing the necessary props:
 
 ![alt text](/assets/images/documentation-demo/image-2.png)
 
+**Employee Table Detail View**
+
+![alt text](/public/assets/images/documentation-demo/image-4.png)
 
 ## 📌 Examples
 
