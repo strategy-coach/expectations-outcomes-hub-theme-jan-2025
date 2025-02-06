@@ -11,6 +11,7 @@ const themeConfig = (config: {
   staticFixedFolders: { parent: string; child: string[] }[]; // Array of objects for trackers
   editLink: string;
   baseHyperLinkColor: string;
+  presentationBgColor: string;
 }) => {
   return {
     ...config,
@@ -42,4 +43,5 @@ export default themeConfig({
   editLink:
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
   baseHyperLinkColor: "#028db7",
+  presentationBgColor: "#1e3a47",
 });
