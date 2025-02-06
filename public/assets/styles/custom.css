@@ -1,3 +1,6 @@
+html, body {
+  font-size: inherit !important;
+}
 main a {
   color: #028db7;
   text-decoration: none;
