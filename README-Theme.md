@@ -473,6 +473,7 @@ Then, use it in your Astro template by passing the necessary props:
   detailWhere={["title"]}
 />
 ```
+
 ![alt text](/assets/images/documentation-demo/image.png)
 
 ### ⚠️ Important Notes
@@ -489,12 +490,14 @@ Then, use it in your Astro template by passing the necessary props:
 | `json`      | Renders the query result as a JSON list.       |
 | `card`      | Shows the data as a card-based layout.         |
 
+
 ### 🔹 More Examples
 
 #### **Employee List in JSON Format**
 
 ```tsx
 <DatabaseQueryRenderer
+  identifier="employee_list"
   title="Employee List"
   layout="json"
   dbName="database-query-renderer-demo/employee.db"
@@ -505,7 +508,7 @@ Then, use it in your Astro template by passing the necessary props:
   limit="2"
 />
 ```
-![alt text](/assets/images/documentation-demo/image-2.png)
+![alt text](/assets/images/documentation-demo/image-1.png)
 
 #### **Employee Table View with Detail View**
 
@@ -524,10 +527,14 @@ Then, use it in your Astro template by passing the necessary props:
   detailWhere={["first_name", "last_name"]}
 />
 ```
-![alt text](/assets/images/documentation-demo/image-1.png)
+
+![alt text](/assets/images/documentation-demo/image-2.png)
+
+**Employee Table Detail View**
+
+![alt text](/public/assets/images/documentation-demo/image-4.png)
 
 ## 📌 Examples
-
 
 
 ## ⚙️ Props
@@ -560,13 +567,11 @@ Then, use it in your Astro template by passing the necessary props:
 - The `detail` feature works only for `card` and `table` layouts.
 - If working in a local environment, place the database in `database-query-renderer-demo/employee.db`.
 
-Here’s a README section for your team list:
-
 ---
 
 ### DatabaseQueryRenderer Demo
 
-[View Demo](/documentation/theme-documentation/demo/)
+[View Demo](https://demo.hub.opsfolio.com/documentation/theme-documentation/demo/)
 
 ## Team List from Database
 
