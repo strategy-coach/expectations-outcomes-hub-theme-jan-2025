@@ -10,6 +10,7 @@ const themeConfig = (config: {
   contentCollectionSort: string;
   staticFixedFolders: { parent: string; child: string[] }[]; // Array of objects for trackers
   editLink: string;
+  baseHyperLinkColor: string;
 }) => {
   return {
     ...config,
@@ -21,7 +22,8 @@ export default themeConfig({
   title: "EOH Astro 5 Site",
   organization: "EOH Hub",
   adminEmail: "admin@example.com",
-  description: "Welcome to the Expectations and Outcomes hub of EOH Astro 5 Site. This is your go-to resource to all activities regarding EOH Astro 5 Site products.",
+  description:
+    "Welcome to the Expectations and Outcomes hub of EOH Astro 5 Site. This is your go-to resource to all activities regarding EOH Astro 5 Site products.",
   activeProject: "EOH",
   trackers: [
     { name: "Product Bug Tracker", url: "https://example.com/bug-tracker" },
@@ -32,7 +34,12 @@ export default themeConfig({
   staticFixedFolders: [
     { parent: "progress", child: ["activity-logs"] },
     { parent: "outcomes", child: ["deliverables"] },
-    { parent: "expectations", child: ["key-milestones", "roles-and-responsibilities"] },
+    {
+      parent: "expectations",
+      child: ["key-milestones", "roles-and-responsibilities"],
+    },
   ],
-  editLink: "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
+  editLink:
+    "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
+  baseHyperLinkColor: "#028db7",
 });
