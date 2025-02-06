@@ -551,7 +551,7 @@ Then, use it in your Astro template by passing the necessary props:
 
 **Employee Table Detail View**
 
-![alt text](/public/assets/images/documentation-demo/image-4.png)
+![alt text](/assets/images/documentation-demo/image-4.png)
 
 ## 📌 Examples
 
