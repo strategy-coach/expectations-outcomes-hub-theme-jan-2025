@@ -14,6 +14,7 @@ const themeConfig = (config: {
   presentationBgColor: string;
   excludedEditOptionPages: string[];
   excludedEditOptionFolder: string[];
+  headerMenu: { label: string; path: string; requiresAuth?: boolean }[];
 }) => {
   return {
     ...config,
@@ -46,6 +47,21 @@ export default themeConfig({
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
   baseHyperLinkColor: "#028db7",
   presentationBgColor: "#1e3a47",
-  excludedEditOptionPages :["/blog","/my-profile","/expectations","/outcomes","/progress"],
-  excludedEditOptionFolder :["qualityfolio"],
+  excludedEditOptionPages: [
+    "/blog",
+    "/my-profile",
+    "/expectations",
+    "/outcomes",
+    "/progress",
+  ],
+  excludedEditOptionFolder: ["qualityfolio"],
+  headerMenu: [
+    { label: "Home", path: "/" },
+    { label: "Documentation", path: "/documentation" },
+    { label: "Expectations", path: "/expectations", requiresAuth: true },
+    { label: "Outcomes", path: "/outcomes", requiresAuth: true },
+    { label: "Progress", path: "/progress", requiresAuth: true },
+    { label: "Qualityfolio", path: "/qualityfolio", requiresAuth: true },
+    { label: "Blog", path: "/blog" },
+  ],
 });
