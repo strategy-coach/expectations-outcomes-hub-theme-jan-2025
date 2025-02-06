@@ -11,11 +11,16 @@ import EditButton from "../../components/EditMarkdownButton";
 
 const { contentCollectionSort } = themeConfig || {}; 
 
-const files = import.meta.glob("/src/content/documentation/**/*.{md,mdx}", {
-  eager: true,
-});
-// Build the menu tree
-const menuTree = buildMenuTree(files, "documentation",contentCollectionSort,"asc");
+const files = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true });
+const dirName = "documentation";
+
+// Filter out draft files
+const publishedFiles = Object.fromEntries(
+  Object.entries(files).filter(([_, file]) => !file.frontmatter?.draft)
+);
+
+// Build the menu tree with only published files
+const menuTree = buildMenuTree(publishedFiles, dirName, contentCollectionSort, "asc");
 //const menuTree = buildMenuTree(files, "documentation");
 
 const slug = Astro.params.slug;
@@ -102,11 +107,7 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
             </span>
           </article>
         )
-      }
-
-      <article class="prose max-w-screen-xl withbullet markdown-content">
-        <Content />
-      </article>
+      }      
     </div>
   </main>
 </Layout>

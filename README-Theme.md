@@ -438,6 +438,200 @@ customizeListElements={[{ index: 1, remove: true }]}
 ```
 For more information, check out the [official documentation](https://docs.astro-breadcrumbs.kasimir.dev/start-here/getting-started/).
 
+
+# 📄 DatabaseQueryRenderer
+
+The `DatabaseQueryRenderer` component in Astro allows you to fetch data from an SQLite database and render it in different layouts such as **Table, JSON List, or Card List**. It also includes a **detail view** feature for `card` and `table` layouts.
+
+## 🚀 Usage
+
+Import the component in your Astro file:
+
+```tsx
+import DatabaseQueryRenderer from "../../../components/database-query-renderer/DatabaseQueryRenderer.astro";
+```
+
+Then, use it in your Astro template by passing the necessary props:
+
+### **Employee List in Card Format with Detail View**
+
+```tsx
+<DatabaseQueryRenderer
+  identifier="employee_card"
+  title="Employee Card"
+  layout="card"
+  dbName="database-query-renderer-demo/employee.db"
+  table="employees"
+  fields=[
+    "first_name || ' ' || last_name AS title",
+    `"Lorem Ipsum is simply dummy text of the printing and typesetting industry..." AS description`
+  ]
+  where=""
+  orderBy="first_name ASC"
+  limit="6"
+  detail={true}
+  detailWhere={["title"]}
+/>
+```
+![alt text](/assets/images/documentation-demo/image.png)
+
+### ⚠️ Important Notes
+
+- All layouts can use any query, but the **card layout** must have a `title` field in `fields`. The `description` field is optional.
+- **Detail view** is only available for `card` and `table` layouts.
+- The `detailWhere` prop determines which fields should be used to filter detail views.
+
+### 🎨 Layout Options
+
+| Layout Type | Description                                    |
+| ----------- | ---------------------------------------------- |
+| `table`     | Displays the query result in a tabular format. |
+| `json`      | Renders the query result as a JSON list.       |
+| `card`      | Shows the data as a card-based layout.         |
+
+### 🔹 More Examples
+
+#### **Employee List in JSON Format**
+
+```tsx
+<DatabaseQueryRenderer
+  title="Employee List"
+  layout="json"
+  dbName="database-query-renderer-demo/employee.db"
+  fields={['*']}
+  table="employees"
+  where=""
+  orderBy=""
+  limit="2"
+/>
+```
+![alt text](/assets/images/documentation-demo/image-2.png)
+
+#### **Employee Table View with Detail View**
+
+```tsx
+<DatabaseQueryRenderer
+  identifier="employee_table"
+  title="Employee Table"
+  layout="table"
+  dbName="database-query-renderer-demo/employee.db"
+  fields={['*']}
+  table="employees"
+  where=""
+  orderBy=""
+  limit="2"
+  detail={true}
+  detailWhere={["first_name", "last_name"]}
+/>
+```
+![alt text](/assets/images/documentation-demo/image-1.png)
+
+## 📌 Examples
+
+
+
+## ⚙️ Props
+
+| Prop         | Type       | Description                                    |
+| ------------ | ---------- | ---------------------------------------------- |
+| `identifier` | `string`   | Unique identifier for the instance.           |
+| `title`      | `string`   | Title of the section.                         |
+| `layout`     | `"table" \| "json" \| "card"` | Specifies the display format. |
+| `dbName`     | `string`   | Name of the SQLite database file.             |
+| `table`      | `string`   | Name of the table to query.                   |
+| `fields`     | `string[]` | Array of fields to select. Defaults to `*`.   |
+| `where`      | `string`   | SQL WHERE clause.                             |
+| `orderBy`    | `string`   | SQL ORDER BY clause.                          |
+| `limit`      | `number`   | Limit the number of results.                  |
+| `detail`     | `boolean`  | Enables detail view (only for `card` & `table`). |
+| `detailWhere` | `string[]` | Fields to use for filtering in the detail view. |
+
+## 🛠️ Error Handling
+
+- If the database does **not** exist, an error message will be displayed instead of crashing the app.
+- If `layout` is "card" and `fields` does not include a `title` field, an error will be thrown where the component is used.
+- If an invalid `layout` is provided, a **default message** is shown.
+- If `detail` is enabled for `json` layout, an error will be thrown.
+
+## 📌 Notes
+
+- The database file (`dbName`) must be present in the working directory.
+- Ensure your SQL query returns data in a format suitable for the selected layout.
+- The `detail` feature works only for `card` and `table` layouts.
+- If working in a local environment, place the database in `database-query-renderer-demo/employee.db`.
+
+Here’s a README section for your team list:
+
+---
+
+### DatabaseQueryRenderer Demo
+
+[View Demo](/documentation/theme-documentation/demo/)
+
+## Team List from Database
+
+The team list is rendered using the Astro component `DatabaseQueryRenderer`. This component fetches data from the database and displays it in a table format. To enable this feature, ensure the configuration in the `.env` file is updated correctly.
+
+### Configuration
+
+1. **Update `.env` File**  
+   Set the database file path and enable the team list feature by updating your `.env` file with the following variables:
+
+```env
+# TEAM DB Configuration
+PUBLIC_TEAM_DB="user_demo_db/resource-surveillance.sqlite.db"
+ENABLE_DB_TEAM=true
+```
+
+- `PUBLIC_TEAM_DB`: Path to the SQLite database file (can be placed in any folder).
+- `ENABLE_DB_TEAM`: Set to `true` to enable the team list functionality.
+
+2. **Placing the Database**  
+   The SQLite database is expected to be placed at the path defined in the `.env` file (`user_demo_db/resource-surveillance.sqlite.db`), or you can specify any other valid SQLite file path in the `.env` configuration.
+
+### Team List Display
+
+The team list is located in the file:
+
+```plaintext
+src/pages/team/index.astro
+```
+
+Within this file, the `DatabaseQueryRenderer` component is used to display the team members:
+
+```astro
+{
+  teamDBConfig.isEnableTeamDB == "true" ? (
+    <div class="p-6 pt-4 mt-3 mx-auto team-table-content">
+      <DatabaseQueryRenderer
+        identifier="user_card"
+        title="Team Members"
+        layout="table"
+        dbName={teamDBConfig.dbName}
+        table="uniform_resource_user"
+        fields={["*"]}
+        orderBy="Name asc"
+      />
+    </div>
+  ) : null
+}
+```
+
+- **identifier**: `user_card` – a unique identifier for the component.
+- **title**: The title for the table, set to "Team Members."
+- **layout**: Defines the layout of the data, in this case, "table."
+- **dbName**: The database name (set from the `.env` configuration).
+- **table**: The table to fetch data from (`uniform_resource_user`).
+- **fields**: Fetches all fields (`*`).
+- **orderBy**: Orders the results by the `Name` field in ascending order (`asc`).
+
+### How to Use
+
+1. Make sure the database is placed at the location specified in the `.env` file, or update the path accordingly.
+2. Ensure that the `.env` configuration has `ENABLE_DB_TEAM=true` to activate the database query.
+3. When visiting the team list page, the data will automatically be fetched and displayed in a table format from the specified database.
+
+
 ---
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  

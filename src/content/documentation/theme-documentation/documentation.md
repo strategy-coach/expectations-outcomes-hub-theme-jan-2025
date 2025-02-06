@@ -474,6 +474,8 @@ Then, use it in your Astro template by passing the necessary props:
 />
 ```
 
+![alt text](/assets/images/documentation-demo/image.png)
+
 ### ⚠️ Important Notes
 
 - All layouts can use any query, but the **card layout** must have a `title` field in `fields`. The `description` field is optional.
@@ -487,6 +489,7 @@ Then, use it in your Astro template by passing the necessary props:
 | `table`     | Displays the query result in a tabular format. |
 | `json`      | Renders the query result as a JSON list.       |
 | `card`      | Shows the data as a card-based layout.         |
+
 
 ### 🔹 More Examples
 
@@ -504,6 +507,7 @@ Then, use it in your Astro template by passing the necessary props:
   limit="2"
 />
 ```
+![alt text](/assets/images/documentation-demo/image-1.png)
 
 #### **Employee Table View with Detail View**
 
@@ -523,51 +527,11 @@ Then, use it in your Astro template by passing the necessary props:
 />
 ```
 
+![alt text](/assets/images/documentation-demo/image-2.png)
+
+
 ## 📌 Examples
 
-import DatabaseQueryRenderer from "../../../components/database-query-Renderer/databaseQueryRenderer.astro";
-
-<DatabaseQueryRenderer
-identifier="employee_card"
-title="Employee Card"
-layout="card"
-dbName="database-query-renderer-demo/employee.db"
-table="employees"
-fields={[
-    "first_name || ' ' || last_name AS title",
-    `"Lorem Ipsum is simply dummy text of the printing and typesetting industry..." AS description`
-  ]}
-where=""
-orderBy="first_name asc"
-limit="6"
-detail={true}
-detailWhere={['title']}
-/>
-
-<DatabaseQueryRenderer
-title="Employee List"
-layout="json"
-dbName="database-query-renderer-demo/employee.db"
-fields={['*']}
-table="employees"
-where=""
-orderBy=""
-limit="2"
-/>
-
-<DatabaseQueryRenderer
-identifier="employee_table"
-title="Employee Table"
-layout="table"
-dbName="database-query-renderer-demo/employee.db"
-fields={['*']}
-table="employees"
-where=""
-orderBy=""
-limit="2"
-detail={true}
-detailWhere={['first_name','last_name']}
-/> 
 
 ## ⚙️ Props
 
@@ -599,9 +563,11 @@ detailWhere={['first_name','last_name']}
 - The `detail` feature works only for `card` and `table` layouts.
 - If working in a local environment, place the database in `database-query-renderer-demo/employee.db`.
 
-Here’s a README section for your team list:
-
 ---
+
+### DatabaseQueryRenderer Demo
+
+[View Demo](https://demo.hub.opsfolio.com/documentation/theme-documentation/demo/)
 
 ## Team List from Database
 

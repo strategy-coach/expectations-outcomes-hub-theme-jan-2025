@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import MyContent from '../../content/documentation/theme-documentation/documentation.mdx';
+import MyContent from '../../content/documentation/theme-documentation/documentation.md';
 import Sidebar from '../../components/Sidebar';
 import { buildMenuTree } from '../../utils/helper.astro';
 import { Breadcrumbs } from "astro-breadcrumbs";
@@ -10,9 +10,15 @@ const { contentCollectionSort } = themeConfig || {};
 
 const files = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true });
 const dirName = "documentation";
-// Build the menu tree
-const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
-//const menuTree = buildMenuTree(files,dirName);
+
+// Filter out draft files
+const publishedFiles = Object.fromEntries(
+  Object.entries(files).filter(([_, file]) => !file.frontmatter?.draft)
+);
+
+// Build the menu tree with only published files
+const menuTree = buildMenuTree(publishedFiles, dirName, contentCollectionSort, "asc");
+
 ---
 <Layout>	
 	<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
