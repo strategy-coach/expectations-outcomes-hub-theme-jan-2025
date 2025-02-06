@@ -1,31 +1,40 @@
 ---
 import themeConfig from '../../theme.config';
-const { editLink } = themeConfig || {}; 
+const { editLink,excludedEditOptionPages,excludedEditOptionFolder } = themeConfig || {}; 
 
 const { url } = Astro;
 
 // Split the pathname into segments
 const pathSegments = url.pathname.split("/").filter(Boolean);
+const activeEdit = pathSegments.length;
 
 // Initialize edit URL as null
 let editUrl = null;
 
 // Condition 1: Only create an edit link if there are exactly 3 parameters in the URL
-if (pathSegments.length === 3) {
+if (pathSegments.length >= 2) {
   editUrl = `${editLink}${pathSegments.join("/")}.md`;
 }
 
-// Condition 2: Special case for "/test"
+// Condition 2: Special case for "/documentation"
 if (url.pathname === "/documentation") {
-  editUrl = `${editLink}documentation/theme-documentation/documentation.md`; // Specify the file you want to edit for `/test`
+  editUrl = `${editLink}documentation/theme-documentation/documentation.mdx`; // Specify the file you want to edit for `/test`
 }
+
+const currentFolder = Astro.url.pathname.split('/')[1];
+//const excludedFolders = ["qualityfolio"]; // Folders where the button should not appear
+//const excludedPages = ["/blog","/my-profile","/expectations","/outcomes","/progress"]; // Specific pages where the button should not appear
+
+const shouldShowEditButton = activeEdit > 0 && !excludedEditOptionFolder.includes(currentFolder) && !excludedEditOptionPages.includes(url.pathname);
 ---
+
 <footer class="flex items-center justify-between text-sm text-slate-700 bg-white border-t border-slate-200 pt-8 pb-6 px-4">
     <span class="flex-1 text-center">Copyright © 2025. All rights reserved.</span>
-    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-      <a href={editUrl} class="text-white-500 hover:underline ml-auto">
-        Edit Page
-    </a>  
-    </button>
-        
+    { shouldShowEditButton  && (
+      <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+        <a href={editUrl} class="text-white-500 hover:underline ml-auto">
+          Edit Page
+        </a>  
+      </button>
+    )}
 </footer>
