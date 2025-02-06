@@ -2,8 +2,10 @@
 import themeConfig from '../../theme.config';
 
 const { logo } = themeConfig || {}; 
+const bgColor = themeConfig?.presentationBgColor || '#FFFFFF'; // Default fallback
+
 ---
-<html>
+<html style={`--presentation-bg: ${bgColor};`}>
   <head>
     <title>Expectations and Outcomes Hub Theme</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
@@ -134,8 +136,8 @@ const { logo } = themeConfig || {};
 
     <style>
       ::marker {color: #07b2e4!important;}
-      
-      .reveal-viewport {background: #1e3a47!important;}
+    
+        .reveal-viewport {background: var(--presentation-bg)!important;}        
         .slides {overflow: hidden auto!important; padding-right: 20px!important; text-align: left;}
         .reveal p, .reveal ul { font-size: 30px!important;margin-top: 0px !important;}
         .reveal h2 {font-size: 38px!important;}
