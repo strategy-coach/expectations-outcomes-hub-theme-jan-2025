@@ -3,7 +3,9 @@ import * as fs from "fs";
 import LformWidget from "../lhc-forms-widget/index";
 
 const { fileName } = Astro.props;
-const filePath = `src/content/lforms/${fileName}`;
+let filePath = `dist/content/lforms/${fileName}`;
+if (process.env.NODE_ENV == "development")
+  filePath = `src/content/lforms/${fileName}`;
 const data = fs.readFileSync(filePath, "utf8");
 ---
 
