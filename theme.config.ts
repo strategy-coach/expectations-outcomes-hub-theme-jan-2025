@@ -65,7 +65,7 @@ export default themeConfig({
     "/outcomes",
     "/progress",
   ],
-  excludedEditOptionFolder: ["qualityfolio"],
+  excludedEditOptionFolder: ["qualityfolio","lforms"],
   headerMenu: [
     { label: "Home", path: "/" },
     { label: "Documentation", path: "/documentation" },
