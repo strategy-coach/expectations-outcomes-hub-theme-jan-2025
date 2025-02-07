@@ -20,12 +20,12 @@ if (pathSegments.length >= 2) {
 if (url.pathname === "/documentation") {
   editUrl = `${editLink}documentation/theme-documentation/documentation.md`; // Specify the file you want to edit for `/test`
 }
+const normalizedPath = Astro.url.pathname.replace(/\/$/, ""); // Removes trailing slash if present
+const currentFolder = normalizedPath.split("/")[1]; // Extracts the first segment after "/"
 
-const currentFolder = Astro.url.pathname.split('/')[1];
-//const excludedFolders = ["qualityfolio"]; // Folders where the button should not appear
-//const excludedPages = ["/blog","/my-profile","/expectations","/outcomes","/progress"]; // Specific pages where the button should not appear
+//console.log(currentFolder,'---currentFolder',Astro.url.pathname,Astro.url.pathname.split('/')[2])
 
-const shouldShowEditButton = activeEdit > 0 && !excludedEditOptionFolder.includes(currentFolder) && !excludedEditOptionPages.includes(url.pathname);
+const shouldShowEditButton = activeEdit > 0 && !excludedEditOptionFolder.includes(currentFolder) && !excludedEditOptionPages.includes(normalizedPath);
 ---
 
 <footer class="flex items-center justify-between text-sm text-slate-700 bg-white border-t border-slate-200 pt-8 pb-6 px-4">
