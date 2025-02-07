@@ -1,28 +1,37 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import {buildMenuTree} from '../utils/helper.astro';
-import MyContent from '../content/progress/activity-logs/activity-log.md';
-import LatestUpdates from '../components/LatestUpdates.astro';
-import themeConfig from '../../theme.config';
-import SkipTo from '../components/home/skipTo.astro';
-import KeyResources from '../components/home/keyReources.astro';
-import MeetingMinutes from '../components/home/meetingMinutes.astro';
-import Accomplishments from '../components/home/accomplishments.astro';
-import Teams from '../components/teams/teams';
+import Layout from "../layouts/Layout.astro";
+import { buildMenuTree } from "../utils/helper.astro";
+import MyContent from "../content/progress/activity-logs/activity-log.md";
+import LatestUpdates from "../components/LatestUpdates.astro";
+import themeConfig from "../../theme.config";
+import SkipTo from "../components/home/skipTo.astro";
+import KeyResources from "../components/home/keyReources.astro";
+import MeetingMinutes from "../components/home/meetingMinutes.astro";
+import Accomplishments from "../components/home/accomplishments.astro";
+import Teams from "../components/teams/teams";
 
 const trackers = themeConfig.trackers;
-const { title, description, activeProject } = themeConfig || {}; 
-const files = import.meta.glob('/src/content/progress/**/*.{md,mdx}', { eager: true });
+const { title, description, activeProject } = themeConfig || {};
+const files = import.meta.glob("/src/content/progress/**/*.{md,mdx}", {
+  eager: true,
+});
 const dirName = "progress";
-const menuTree = buildMenuTree(files,dirName);
+const menuTree = buildMenuTree(files, dirName);
+console.log(process.env.NODE_ENV,"xxx");
 ---
+
 <Layout>
- <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
+  <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
     <div class="border-b border-slate-300 pb-3">
-    <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">Welcome to { title }</h1>
-    <p class="text-slate-500 mt-1 font-semibold">{description}</p>
-    <p class="text-slate-500 mt-3 font-semibold">New to the Hub? <a target="_blank" href="/presentation">Click here</a> to view the overview presentation</p>
-  </div>
+      <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-2">
+        Welcome to {title}
+      </h1>
+      <p class="text-slate-500 mt-1 font-semibold">{description}</p>
+      <p class="text-slate-500 mt-3 font-semibold">
+        New to the Hub? <a target="_blank" href="/presentation">Click here</a> to
+        view the overview presentation
+      </p>
+    </div>
 
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-6">
       <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
@@ -30,7 +39,13 @@ const menuTree = buildMenuTree(files,dirName);
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 mt-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/fi-rr-calendar.svg" class="w-4 h-4" alt=""></span>
+              <span
+                ><img
+                  src="/assets/images/fi-rr-calendar.svg"
+                  class="w-4 h-4"
+                  alt=""
+                /></span
+              >
               <span>Timeline</span>
             </div>
           </div>
@@ -45,14 +60,23 @@ const menuTree = buildMenuTree(files,dirName);
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/fi-rr-list-check.svg" class="w-4 h-4" alt=""></span>
+              <span
+                ><img
+                  src="/assets/images/fi-rr-list-check.svg"
+                  class="w-4 h-4"
+                  alt=""
+                /></span
+              >
               <span>Stage</span>
             </div>
           </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex space-x-2 font-semibold">
-              <span class="bg-orange-100 text-sm px-2 py-1 rounded flex space-x-2 items-center">
-                <span><img src="/assets/images/ico-progress.svg" alt=""></span>
+              <span
+                class="bg-orange-100 text-sm px-2 py-1 rounded flex space-x-2 items-center"
+              >
+                <span><img src="/assets/images/ico-progress.svg" alt="" /></span
+                >
                 <span>In Progress</span>
               </span>
             </div>
@@ -62,14 +86,22 @@ const menuTree = buildMenuTree(files,dirName);
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/fi-rr-user.svg" class="w-4 h-4" alt=""></span>
+              <span
+                ><img
+                  src="/assets/images/fi-rr-user.svg"
+                  class="w-4 h-4"
+                  alt=""
+                /></span
+              >
               <span>Team Driver</span>
             </div>
           </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-3 font-semibold flex-wrap">
               <div class="text-sm rounded flex space-x-2 items-center">
-                <span class="rounded-full overflow-hidden w-4 h-4"><img src="/assets/images/avatar-img-1.jpg" alt=""></span>
+                <span class="rounded-full overflow-hidden w-4 h-4"
+                  ><img src="/assets/images/avatar-img-1.jpg" alt="" /></span
+                >
                 <span>Thomas Adams</span>
               </div>
             </div>
@@ -79,18 +111,28 @@ const menuTree = buildMenuTree(files,dirName);
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/users.svg" class="w-4 h-4" alt=""></span>
+              <span
+                ><img
+                  src="/assets/images/users.svg"
+                  class="w-4 h-4"
+                  alt=""
+                /></span
+              >
               <span>Eng Leads</span>
             </div>
           </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-3 font-semibold flex-wrap">
               <div class="text-sm rounded flex space-x-2 items-center">
-                <span class="rounded-full overflow-hidden w-4 h-4"><img src="/assets/images/avatar-img-1.jpg" alt=""></span>
+                <span class="rounded-full overflow-hidden w-4 h-4"
+                  ><img src="/assets/images/avatar-img-1.jpg" alt="" /></span
+                >
                 <span>George Roberts</span>
               </div>
               <div class="text-sm rounded flex space-x-2 items-center">
-                <span class="rounded-full overflow-hidden w-4 h-4"><img src="/assets/images/avatar-img-1.jpg" alt=""></span>
+                <span class="rounded-full overflow-hidden w-4 h-4"
+                  ><img src="/assets/images/avatar-img-1.jpg" alt="" /></span
+                >
                 <span>Daniel Hill</span>
               </div>
             </div>
@@ -101,14 +143,20 @@ const menuTree = buildMenuTree(files,dirName);
           <div class="col-span-12 md:col-span-4">
             <a href="/team">
               <div class="flex gap-2.5 items-center text-sm">
-                <span><img src="/assets/images/fi-rr-rec.svg" class="w-4 h-4" alt=""></span>
+                <span
+                  ><img
+                    src="/assets/images/fi-rr-rec.svg"
+                    class="w-4 h-4"
+                    alt=""
+                  /></span
+                >
                 <span>Teams</span>
               </div>
             </a>
-          </div>          
+          </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-3 font-semibold flex-wrap">
-              <Teams client:only="react"/>
+              <Teams client:only="react" />
             </div>
           </div>
         </aside>
@@ -116,7 +164,13 @@ const menuTree = buildMenuTree(files,dirName);
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/fi-rr-record-vinyl.svg" class="w-4 h-4" alt=""></span>
+              <span
+                ><img
+                  src="/assets/images/fi-rr-record-vinyl.svg"
+                  class="w-4 h-4"
+                  alt=""
+                /></span
+              >
               <span>Priority</span>
             </div>
           </div>
@@ -130,55 +184,71 @@ const menuTree = buildMenuTree(files,dirName);
         <aside class="grid grid-cols-12 gap-4 flex items-center mb-3">
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
-              <span><img src="/assets/images/fi-rr-plus.svg" class="w-4 h-4" alt=""></span>
+              <span
+                ><img
+                  src="/assets/images/fi-rr-plus.svg"
+                  class="w-4 h-4"
+                  alt=""
+                /></span
+              >
               <span>Add a property</span>
             </div>
           </div>
-          <div class="col-span-12 md:col-span-8">
-            
-          </div>
+          <div class="col-span-12 md:col-span-8"></div>
         </aside>
       </div>
 
       <SkipTo />
 
       <KeyResources />
-
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
-
       <Accomplishments />
 
       <LatestUpdates />
-      
-      {trackers.length > 0 && (
-        <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
-          <h3 class="text-lg font-semibold text-slate-700">
-            <div class="flex gap-2 items-center text-xl">
-              <span>
-                <img src="/assets/images/fi-rr-bug.svg" class="w-6 h-6" alt="Trackers Icon" />
-              </span>
-              <span>Trackers</span>
-            </div>
-          </h3>
-          <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-            {trackers.map((tracker) => (
-              <li>
-                <a href={tracker.url} target="_blank" class="text-sm hover:text-black">{tracker.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+
+      {
+        trackers.length > 0 && (
+          <div class="lg:col-span-6 bg-white shadow rounded-lg p-4">
+            <h3 class="text-lg font-semibold text-slate-700">
+              <div class="flex gap-2 items-center text-xl">
+                <span>
+                  <img
+                    src="/assets/images/fi-rr-bug.svg"
+                    class="w-6 h-6"
+                    alt="Trackers Icon"
+                  />
+                </span>
+                <span>Trackers</span>
+              </div>
+            </h3>
+            <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+              {trackers.map((tracker) => (
+                <li>
+                  <a
+                    href={tracker.url}
+                    target="_blank"
+                    class="text-sm hover:text-black"
+                  >
+                    {tracker.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
 
       <MeetingMinutes />
 
-      <div class="lg:col-span-12 bg-white shadow rounded-lg p-4 markdown-content">
+      <div
+        class="lg:col-span-12 bg-white shadow rounded-lg p-4 markdown-content"
+      >
         <details id="activityLog" data-persist-state="closed">
           <summary>Activity Log</summary>
           <MyContent />
-        </details>        
+        </details>
       </div>
     </section>
   </main>
