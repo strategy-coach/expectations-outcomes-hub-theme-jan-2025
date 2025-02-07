@@ -1,72 +1,68 @@
 {
-  "type": "Questionnaire",
-  "name": "SOC2 Certification Evidence Collection Form",
-  "templateOptions": {
-    "allowHTMLInInstructions": true
-  },
-  "items": [
+  "resourceType": "Questionnaire",
+  "title": "SOC2 Certification Evidence Collection Form",
+  "status": "draft",
+  "item": [
     {
-      "questionCode": "type0",
-      "codingInstructions": "simple text instructions",
-      "copyrightNotice": "A Copyright notice of the item 1",
-      "question": "Organization Name",
-      "linkId": "/type0",
-      "items": [
+      "type": "group",
+      "linkId": "323289382098",
+      "text": "General Information",
+      "item": [
         {
           "type": "string",
           "linkId": "843509936337",
-          "question": "Organization Name",
+          "text": "Organization Name",
           "required": true
         },
         {
           "type": "string",
           "linkId": "834824167845",
-          "question": "Organization Address",
+          "text": "Organization Address",
           "required": true
         },
         {
           "type": "string",
           "linkId": "574440750588",
-          "question": "Product Name",
+          "text": "Product Name",
           "required": true
         },
         {
           "type": "url",
           "linkId": "924260494641",
-          "question": "Website",
+          "text": "Website",
           "required": true
         },
         {
           "type": "string",
           "linkId": "403261366197",
-          "question": "Point of Contact",
+          "text": "Point of Contact",
           "required": true
         },
         {
           "type": "string",
           "linkId": "647686221633",
-          "question": "Contact Email",
+          "text": "Contact Email",
           "required": true
         },
         {
           "type": "dateTime",
           "linkId": "960033154529",
-          "question": "Date of Submission",
+          "text": "Date of Submission",
           "required": true
         }
       ]
     },
     {
-      "items": [
+      "item": [
         {
           "type": "string",
           "linkId": "916961188865",
-          "question": "Are core values are communicated from executive management to personnel through policies and the employee handbook?",
-          "items": [
+          "text": "Are core values are communicated from executive management to personnel through policies and the employee handbook?",
+          "item": [
             {
-              "linkId": "916961188865_helpquestion",
+              "linkId": "916961188865_helpText",
               "type": "display",
-              "question": "Employee Manual or Handbook",
+              "text": "Employee Manual or Handbook",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -78,7 +74,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -88,12 +84,12 @@
         {
           "type": "string",
           "linkId": "437867953689",
-          "question": "Is management's organizational structure with relevant reporting lines documented in an organization chart ?",
-          "items": [
+          "text": "Is management's organizational structure with relevant reporting lines documented in an organization chart ?",
+          "item": [
             {
-              "linkId": "437867953689_helpquestion",
+              "linkId": "437867953689_helpText",
               "type": "display",
-              "question": "Organizational chart",
+              "text": "Organizational chart",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -105,7 +101,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -115,12 +111,12 @@
         {
           "type": "string",
           "linkId": "916734346928",
-          "question": "Can management provide a sample of (5) company job descriptions?",
-          "items": [
+          "text": "Can management provide a sample of (5) company job descriptions?",
+          "item": [
             {
-              "linkId": "916734346928_helpquestion",
+              "linkId": "916734346928_helpText",
               "type": "display",
-              "question": "Roles and Responsibilities including CISO, CFO, Data Privacy and other roles",
+              "text": "Roles and Responsibilities including CISO, CFO, Data Privacy and other roles",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -132,7 +128,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -142,12 +138,12 @@
         {
           "type": "string",
           "linkId": "500058023412",
-          "question": "Is there an employee handbook in place, and does it include the organization's entity values and behavioral standards? If yes, how is it made available for all employees?",
-          "items": [
+          "text": "Is there an employee handbook in place, and does it include the organization's entity values and behavioral standards? If yes, how is it made available for all employees?",
+          "item": [
             {
-              "linkId": "500058023412_helpquestion",
+              "linkId": "500058023412_helpText",
               "type": "display",
-              "question": "Signed Employee Manual or Handbook",
+              "text": "Signed Employee Manual or Handbook",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -159,7 +155,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -169,12 +165,12 @@
         {
           "type": "string",
           "linkId": "342285387229",
-          "question": "Has management documented formal HR procedures that include the employee on-boarding process?",
-          "items": [
+          "text": "Has management documented formal HR procedures that include the employee on-boarding process?",
+          "item": [
             {
-              "linkId": "342285387229_helpquestion",
+              "linkId": "342285387229_helpText",
               "type": "display",
-              "question": "Hiring procedures",
+              "text": "Hiring procedures",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -186,7 +182,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -196,12 +192,12 @@
         {
           "type": "string",
           "linkId": "544312567864",
-          "question": "Are new hire checklists utilized, and activities documented to help facilitate new hire procedures?",
-          "items": [
+          "text": "Are new hire checklists utilized, and activities documented to help facilitate new hire procedures?",
+          "item": [
             {
-              "linkId": "544312567864_helpquestion",
+              "linkId": "544312567864_helpText",
               "type": "display",
-              "question": "Hiring checklist for a sample of employees",
+              "text": "Hiring checklist for a sample of employees",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -213,7 +209,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -223,12 +219,12 @@
         {
           "type": "string",
           "linkId": "674685581789",
-          "question": "How are candidates recruited for job openings? Evidence could include the recruitment policies and procedures; a PowerPoint deck, a questionnaire, job opening postings, or emails.",
-          "items": [
+          "text": "How are candidates recruited for job openings? Evidence could include the recruitment policies and procedures; a PowerPoint deck, a questionnaire, job opening postings, or emails.",
+          "item": [
             {
-              "linkId": "674685581789_helpquestion",
+              "linkId": "674685581789_helpText",
               "type": "display",
-              "question": "Evidence that a third party (if a third party is used for recruiting)",
+              "text": "Evidence that a third party (if a third party is used for recruiting)",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -240,7 +236,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -250,12 +246,12 @@
         {
           "type": "string",
           "linkId": "776917118548",
-          "question": "Are there any requirements for Continued Professional Education Training among employees?",
-          "items": [
+          "text": "Are there any requirements for Continued Professional Education Training among employees?",
+          "item": [
             {
-              "linkId": "776917118548_helpquestion",
+              "linkId": "776917118548_helpText",
               "type": "display",
-              "question": "Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
+              "text": "Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -267,7 +263,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -277,12 +273,12 @@
         {
           "type": "string",
           "linkId": "557797102950",
-          "question": "Is there a mentor program to develop personnel in place?",
-          "items": [
+          "text": "Is there a mentor program to develop personnel in place?",
+          "item": [
             {
-              "linkId": "557797102950_helpquestion",
+              "linkId": "557797102950_helpText",
               "type": "display",
-              "question": "Evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
+              "text": "Evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -294,7 +290,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -304,12 +300,12 @@
         {
           "type": "string",
           "linkId": "228967747513",
-          "question": "Has management documented formal HR procedures that include employee terminations?",
-          "items": [
+          "text": "Has management documented formal HR procedures that include employee terminations?",
+          "item": [
             {
-              "linkId": "228967747513_helpquestion",
+              "linkId": "228967747513_helpText",
               "type": "display",
-              "question": "Termination procedures",
+              "text": "Termination procedures",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -321,7 +317,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -331,12 +327,12 @@
         {
           "type": "string",
           "linkId": "493207479949",
-          "question": "Are termination checklists utilized, and activities documented to facilitate termination procedures?",
-          "items": [
+          "text": "Are termination checklists utilized, and activities documented to facilitate termination procedures?",
+          "item": [
             {
-              "linkId": "493207479949_helpquestion",
+              "linkId": "493207479949_helpText",
               "type": "display",
-              "question": "Termination checklist for a sample of employees",
+              "text": "Termination checklist for a sample of employees",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -348,7 +344,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -358,12 +354,12 @@
         {
           "type": "string",
           "linkId": "262931771345",
-          "question": "Can you provide a listing of executive management members?",
-          "items": [
+          "text": "Can you provide a listing of executive management members?",
+          "item": [
             {
-              "linkId": "262931771345_helpquestion",
+              "linkId": "262931771345_helpText",
               "type": "display",
-              "question": "Listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
+              "text": "Listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -375,7 +371,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -385,12 +381,12 @@
         {
           "type": "string",
           "linkId": "518099427510",
-          "question": "Are formal performance evaluations completed and documented? If yes, on what frequency and does this apply to all personnel? This includes executive management members such as CIO, CTO, CEO.",
-          "items": [
+          "text": "Are formal performance evaluations completed and documented? If yes, on what frequency and does this apply to all personnel? This includes executive management members such as CIO, CTO, CEO.",
+          "item": [
             {
-              "linkId": "518099427510_helpquestion",
+              "linkId": "518099427510_helpText",
               "type": "display",
-              "question": "Evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
+              "text": "Evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -402,7 +398,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -412,12 +408,12 @@
         {
           "type": "string",
           "linkId": "247838478051",
-          "question": "Do employees complete periodic information security training?",
-          "items": [
+          "text": "Do employees complete periodic information security training?",
+          "item": [
             {
-              "linkId": "247838478051_helpquestion",
+              "linkId": "247838478051_helpText",
               "type": "display",
-              "question": "Link to the employee training documentation",
+              "text": "Link to the employee training documentation",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -429,7 +425,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -439,12 +435,12 @@
         {
           "type": "string",
           "linkId": "940343922441",
-          "question": "Are employees cross-trained in roles and responsibilities? Evidence could include training materials; policies and procedures relating to training requirements; PowerPoint deck",
-          "items": [
+          "text": "Are employees cross-trained in roles and responsibilities? Evidence could include training materials; policies and procedures relating to training requirements; PowerPoint deck",
+          "item": [
             {
-              "linkId": "940343922441_helpquestion",
+              "linkId": "940343922441_helpText",
               "type": "display",
-              "question": "Link to the evidence of cross-training employees documentation",
+              "text": "Link to the evidence of cross-training employees documentation",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -456,7 +452,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -466,12 +462,12 @@
         {
           "type": "string",
           "linkId": "764868292621",
-          "question": "Is there an employee hotline in place?",
-          "items": [
+          "text": "Is there an employee hotline in place?",
+          "item": [
             {
-              "linkId": "764868292621_helpquestion",
+              "linkId": "764868292621_helpText",
               "type": "display",
-              "question": "Evidence of anonymous hotline in place (whistleblower line)",
+              "text": "Evidence of anonymous hotline in place (whistleblower line)",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -483,7 +479,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -491,11 +487,11 @@
           ]
         },
         {
-          "items": [
+          "item": [
             {
-              "linkId": "243582454429_helpquestion",
+              "linkId": "243582454429_helpText",
               "type": "display",
-              "question": "Policies/procedures on reporting unethical behavior, emails on reporting unethical behavior, PowerPoint deck, website)",
+              "text": "Policies/procedures on reporting unethical behavior, emails on reporting unethical behavior, PowerPoint deck, website)",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -507,7 +503,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -515,17 +511,17 @@
           ],
           "type": "string",
           "linkId": "243582454429",
-          "question": "Are employees, third-parties, and customers directed on how to report unethical behaviour in a confidential manner?"
+          "text": "Are employees, third-parties, and customers directed on how to report unethical behaviour in a confidential manner?"
         },
         {
           "type": "string",
           "linkId": "411515242412",
-          "question": "Does management maintain an Internal Controls Matrix that includes a list of implemented controls within the environment and technology infrastructure, ownership and operation of each control, control type (manual, automated, preventive, detective, corrective), frequency of operation (daily, weekly, monthly, quarterly, yearly, multiple times a day), and documentation of the relationship between business processes, relevant technologies, and controls securing those processes?",
-          "items": [
+          "text": "Does management maintain an Internal Controls Matrix that includes a list of implemented controls within the environment and technology infrastructure, ownership and operation of each control, control type (manual, automated, preventive, detective, corrective), frequency of operation (daily, weekly, monthly, quarterly, yearly, multiple times a day), and documentation of the relationship between business processes, relevant technologies, and controls securing those processes?",
+          "item": [
             {
-              "linkId": "411515242412_helpquestion",
+              "linkId": "411515242412_helpText",
               "type": "display",
-              "question": "Link to the Internal Controls Matrix",
+              "text": "Link to the Internal Controls Matrix",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -537,7 +533,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -547,12 +543,12 @@
         {
           "type": "string",
           "linkId": "256560910942",
-          "question": "Does management meet on a regular basis to discuss organizational goals and objectives? (This could be operations management, IT management, executive management, or a combination of these.)",
-          "items": [
+          "text": "Does management meet on a regular basis to discuss organizational goals and objectives? (This could be operations management, IT management, executive management, or a combination of these.)",
+          "item": [
             {
-              "linkId": "256560910942_helpquestion",
+              "linkId": "256560910942_helpText",
               "type": "display",
-              "question": "Example operational reports that show the operational/system performance and internal controls effectiveness",
+              "text": "Example operational reports that show the operational/system performance and internal controls effectiveness",
               "extension": [
                 {
                   "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
@@ -564,7 +560,7 @@
                         "display": "Help-Button"
                       }
                     ],
-                    "question": "Help-Button"
+                    "text": "Help-Button"
                   }
                 }
               ]
@@ -574,7 +570,7 @@
       ],
       "type": "group",
       "linkId": "671921888775",
-      "question": "Key Control"
+      "text": "Key Control"
     }
   ]
 }
