@@ -18,7 +18,7 @@ const dirName = "lforms";
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
 //const menuTree = buildMenuTree(files,dirName);
 
-const slug = Astro.params.slug;
+const slug = Astro.params.slug as string;
 ---
 
 <Layout>
@@ -63,9 +63,7 @@ const slug = Astro.params.slug;
         </h1>
       </div>
 
-      <LHCFormsWidget
-        fileName="SOC2-Certification-Evidence-Collection-Form.R4-v1.json"
-      />
+      <LHCFormsWidget fileName={slug} />
     </div>
   </main>
 </Layout>
