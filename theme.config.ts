@@ -42,6 +42,15 @@ export default themeConfig({
       parent: "expectations",
       child: ["key-milestones", "roles-and-responsibilities"],
     },
+    {
+      parent: "documentation",
+      child: [
+        "expectations-and-outcomes",
+        "theme-documentation",
+        "visualizing-expectations-outcomes",
+        "release-notes",
+      ],
+    },
   ],
   editLink:
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
