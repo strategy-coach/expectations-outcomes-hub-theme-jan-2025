@@ -5,7 +5,7 @@ import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from "../../../theme.config";
-import LHCFormsWidget from "../../components/lhc-forms-widget";
+import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
 
 const { contentCollectionSort } = themeConfig || {};
 
@@ -61,7 +61,7 @@ const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
       </div>
 
       <LHCFormsWidget
-        client:only="react"
+        
         fileName="SOC2-Certification-Evidence-Collection-Form.R4-v1.json"
       />
     </div>

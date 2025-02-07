@@ -1,30 +1,23 @@
 import React, { useEffect } from "react";
-import * as LForms from "lforms";
+
+const LForms = window.LForms;
 
 interface LHCFormsWidgetProps {
-    fileName: string;
+    data: string | number | boolean | null | Record<string, unknown> | unknown[];
 }
 
-const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ fileName }) => {
+const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data }) => {
 
     useEffect(() => {
-        // Use the fileName prop to dynamically load the JSON
-        if (fileName) {
-            fetch(`src/content/lforms/${fileName}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    const formContainer = document.getElementById("form-container");
-
-                    if (formContainer) {
-                        // Render the form inside the container
-                        LForms.Util.addFormToPage(data, formContainer);
-                    } else {
-                        console.error("Form container not found.");
-                    }
-                })
-                .catch((error) => console.error('Error fetching data:', error));
+        if (data) {
+            const formContainer = document.getElementById("form-container");
+            if (formContainer) {
+                LForms.Util.addFormToPage(data, formContainer); // Render the form from the data
+            } else {
+                console.error("Form container not found.");
+            }
         }
-    }, []);
+    }, [data]);
 
     return (<div id="form-container"></div>);
 };
