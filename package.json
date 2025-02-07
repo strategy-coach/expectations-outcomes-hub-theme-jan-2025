@@ -6,10 +6,9 @@
     "dev": "astro dev",
     "pagefind-search": "npx tsc ./pagefindtohtml/mrkdowntohtml.ts && mv ./pagefindtohtml/mrkdowntohtml.js ./pagefindtohtml/mrkdowntohtml.cjs && node ./pagefindtohtml/mrkdowntohtml.cjs",
     "latest-gitcommitdetails": "npx tsc ./gitcommit-details/gitLatest.json.ts && mv ./gitcommit-details/gitLatest.json.js ./gitcommit-details/gitLatest.json.cjs && node ./gitcommit-details/gitLatest.json.cjs",
-    "build": "npx pagefind --site htmloutput && npx shx cp -r htmloutput public && pnpm run latest-gitcommitdetails && astro build && pnpm run postbuild",
+    "build": "npx pagefind --site htmloutput && npx shx cp -r htmloutput public && pnpm run latest-gitcommitdetails && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "postbuild": "mkdir -p dist/content && cp -r src/content/lforms/ dist/content/lforms/"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.7",
