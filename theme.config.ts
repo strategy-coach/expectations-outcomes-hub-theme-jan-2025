@@ -15,6 +15,8 @@ const themeConfig = (config: {
   excludedEditOptionPages: string[];
   excludedEditOptionFolder: string[];
   headerMenu: { label: string; path: string; requiresAuth?: boolean }[];
+  unauthorizedPages: string[];
+  isHomePagePublic: boolean;
 }) => {
   return {
     ...config,
@@ -73,4 +75,12 @@ export default themeConfig({
     { label: "Qualityfolio", path: "/qualityfolio", requiresAuth: true },
     { label: "Blog", path: "/blog" },
   ],
+  unauthorizedPages: [
+    "documentation",
+    "blog",
+    "logout",
+    "no-permission",
+    "presentation",
+  ],
+  isHomePagePublic: true, // Set this to false if the homepage should require authentication
 });
