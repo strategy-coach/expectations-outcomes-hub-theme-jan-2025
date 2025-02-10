@@ -5,7 +5,10 @@ export async function POST({ request }: APIContext) {
     try {
         const { formData, fileName, userId } = await request.json();
         // Define the file path (modify as needed)
-        const filePath = `./src/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
+        let filePath = `./dist/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
+        if (process.env.NODE_ENV == "development") {
+            filePath = `./src/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
+        }
 
         // Write form data to a file
         await writeFile(filePath, JSON.stringify(formData, null, 2), 'utf-8');
