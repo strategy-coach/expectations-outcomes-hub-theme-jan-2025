@@ -9,4 +9,9 @@ if (process.env.NODE_ENV == "development")
 const data = fs.readFileSync(filePath, "utf8");
 ---
 
+<link
+  href="https://lhcforms-static.nlm.nih.gov/lforms-versions/34.0.0/webcomponent/styles.css"
+  media="screen"
+  rel="stylesheet"
+/>
 <LformWidget data={data} fileName={fileName} client:only="react" />
