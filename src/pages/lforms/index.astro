@@ -6,16 +6,35 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from "../../../theme.config";
 import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
+import { getFiledatails } from "./service";
 
 const { contentCollectionSort } = themeConfig || {};
-
+const zitadel_user_id = Astro.cookies.get("zitadel_user_id");
+const userId = zitadel_user_id?.value;
 const files = import.meta.glob("/src/content/lforms/**/*.{json,yml}", {
   eager: true,
 });
 const dirName = "lforms";
 // Build the menu tree
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
-//const menuTree = buildMenuTree(files,dirName);
+function removeSubmissions(menuTree: any[]): any[] {
+  return menuTree.filter((item) => item.name !== "Submissions");
+}
+const filteredMenuTree = removeSubmissions(menuTree);
+const fileName = filteredMenuTree[0].path.split("/").pop() || "";
+const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
+const data = await getFiledatails(filePath, fileName);
+
+const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
+
+const { searchParams } = Astro.url;
+const currentTab = searchParams.get("tab"); // Get 'tab' parameter
+
+const activeTabClass =
+  " text-blue-600 bg-gray-100 active dark:bg-gray-800 dark:text-blue-500";
+
+const inActiveTabClass =
+  "hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300";
 ---
 
 <Layout>
@@ -27,7 +46,7 @@ const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
       <div id="starlight__sidebar" class="sidebar-pane">
         <div class="sidebar-content">
           <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
-            <Sidebar menuTree={menuTree} />
+            <Sidebar menuTree={filteredMenuTree} />
           </div>
         </div>
       </div>
@@ -56,14 +75,68 @@ const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
       </Breadcrumbs>
       <div class="border-b border-slate-300 pb-3">
         <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 mt-4 mb-1">
-          Lforms
+          {title}
         </h1>
       </div>
 
-      <LHCFormsWidget
-        
-        fileName="SOC2-Certification-Evidence-Collection-Form.R4-v1.json"
-      />
+      <ul
+        class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+      >
+        <li class="me-2">
+          <a
+            href="?tab=form"
+            aria-current="page"
+            class=`inline-block p-4 rounded-t-lgc ${currentTab=='form' || currentTab == "" || currentTab == null ? activeTabClass: inActiveTabClass}`
+          >
+            Dashboard
+          </a>
+        </li>
+        <li class="me-2">
+          <a
+            href="?tab=data"
+            class=`inline-block p-4 rounded-t-lg ${currentTab=='data'? activeTabClass: inActiveTabClass}`
+          >
+            Submitted Entries
+          </a>
+        </li>
+      </ul>
+      {
+        currentTab == "form" || currentTab == "" || currentTab == null ? (
+          <div class="p-4">
+            <h2 class="text-lg font-bold">{title}</h2>
+            <LHCFormsWidget fileName={fileName} />
+          </div>
+        ) : (
+          ""
+        )
+      }
+
+      {
+        currentTab == "data" ? (
+          <div id="submitted-data" class="p-4">
+            <table>
+              <thead>
+                <tr>
+                  <th class="text-left p-2">File</th>
+                  <th class="text-left p-2"> Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item: { uri: string; file_date: string | number | Date; }, index: any) => (
+                  <tr>
+                    <td class="p-2 break-all"><a href="#">{item.uri.split("/").pop()}</a></td>
+                    <td class="p-2">
+                       {new Date(item.file_date).toDateString()} 
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          ""
+        )
+      }
     </div>
   </main>
 </Layout>
