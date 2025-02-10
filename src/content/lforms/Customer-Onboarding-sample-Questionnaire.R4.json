@@ -1,0 +1,199 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "Customer Onboarding sample Questionnaire",
+  "status": "draft",
+  "item": [
+    {
+      "type": "group",
+      "linkId": "135142763170",
+      "text": "Company & Business Information",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "398864695447",
+          "text": "What is your company name and primary industry?"
+        },
+        {
+          "type": "string",
+          "linkId": "545218844092",
+          "text": "What is the size of your organization (employee count)?"
+        },
+        {
+          "type": "string",
+          "linkId": "559557778067",
+          "text": "Where is your company headquartered, and do you have multiple locations?"
+        },
+        {
+          "type": "string",
+          "linkId": "658062147790",
+          "text": "What compliance frameworks are you currently following (SOC 2, HITRUST, ISO 27001, etc.)?"
+        },
+        {
+          "type": "string",
+          "linkId": "901805400560",
+          "text": "What are your key compliance challenges or pain points?"
+        }
+      ]
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "863637603675",
+          "text": "Are you currently undergoing any compliance audits or assessments?"
+        },
+        {
+          "type": "string",
+          "linkId": "540994793828",
+          "text": "Do you have an internal compliance team, or do you rely on external consultants?"
+        },
+        {
+          "type": "string",
+          "linkId": "209632195509",
+          "text": "What is your expected timeline for achieving compliance?"
+        },
+        {
+          "type": "string",
+          "linkId": "572736208830",
+          "text": "Have you previously completed any third-party compliance certifications?"
+        },
+        {
+          "type": "string",
+          "linkId": "381903006914",
+          "text": "What level of automation are you looking for in compliance management?"
+        }
+      ],
+      "type": "group",
+      "linkId": "418530414779",
+      "text": "Security & Compliance Requirements"
+    },
+    {
+      "type": "group",
+      "linkId": "440390208584",
+      "text": "Technical & Infrastructure Details",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "449669358372",
+          "text": "What cloud providers or hosting services does your application use (AWS, Azure, GCP, on-prem)?"
+        },
+        {
+          "type": "string",
+          "linkId": "742687626420",
+          "text": "Do you have a centralized identity and access management (IAM) system?"
+        },
+        {
+          "type": "string",
+          "linkId": "805447598257",
+          "text": "How do you currently track and manage security incidents?"
+        },
+        {
+          "type": "string",
+          "linkId": "932684953179",
+          "text": "What tools do you use for log management and monitoring (SIEM, CloudTrail, etc.)?"
+        },
+        {
+          "type": "string",
+          "linkId": "179684491436",
+          "text": "How do you handle vulnerability management and patching?"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "linkId": "472270936662",
+      "text": "Data Management & Privacy",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "820896759168",
+          "text": "What types of data do you store and process (PII, PHI, financial, etc.)?"
+        },
+        {
+          "type": "string",
+          "linkId": "582156066763",
+          "text": "Do you have data retention and deletion policies in place?"
+        },
+        {
+          "type": "string",
+          "linkId": "568033441869",
+          "text": "Are you subject to data privacy regulations like GDPR, CCPA, or HIPAA?"
+        },
+        {
+          "type": "string",
+          "linkId": "374572950765",
+          "text": "How do you currently track access to sensitive data?"
+        },
+        {
+          "type": "string",
+          "linkId": "986597332528",
+          "text": "Do you require data encryption at rest and in transit?"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "linkId": "532423061349",
+      "text": "Risk & Audit Management",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "462924988823",
+          "text": "How do you currently perform risk assessments?"
+        },
+        {
+          "type": "string",
+          "linkId": "412590522324",
+          "text": "Do you have an internal audit process for compliance monitoring?"
+        },
+        {
+          "type": "string",
+          "linkId": "838765898801",
+          "text": "What are your biggest risks related to compliance failures?"
+        },
+        {
+          "type": "string",
+          "linkId": "819358286083",
+          "text": "How do you track and respond to security incidents?"
+        },
+        {
+          "type": "string",
+          "linkId": "638210426576",
+          "text": "Do you have an established process for employee security training?"
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "linkId": "545741635917",
+      "text": "Integration & Reporting Needs",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "813101379811",
+          "text": "What other compliance tools or GRC platforms are you using?"
+        },
+        {
+          "type": "string",
+          "linkId": "283958050693",
+          "text": "Do you need API integrations with your existing security and IT tools?"
+        },
+        {
+          "type": "string",
+          "linkId": "403319946108",
+          "text": "How often do you generate compliance reports for stakeholders?"
+        },
+        {
+          "type": "string",
+          "linkId": "501476422804",
+          "text": "Who are the key stakeholders involved in compliance management?"
+        },
+        {
+          "type": "string",
+          "linkId": "148176990770",
+          "text": "What are your primary goals for using our compliance SaaS platform?"
+        }
+      ]
+    }
+  ]
+}
