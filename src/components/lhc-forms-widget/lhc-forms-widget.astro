@@ -9,4 +9,4 @@ if (process.env.NODE_ENV == "development")
 const data = fs.readFileSync(filePath, "utf8");
 ---
 
-<LformWidget data={data} client:only="react" />
+<LformWidget data={data} fileName={fileName} client:only="react" />
