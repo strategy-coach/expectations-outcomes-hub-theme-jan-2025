@@ -18,13 +18,23 @@ const files = import.meta.glob("/src/content/lforms/**/*.{json,yml}", {
 
 const slug = Astro.params.slug as string;
 const dirName = "lforms";
+
+function getPageFromSlug(slug: string): string {
+  const parts = slug.split("/");
+  // Find the index where a part contains 'component.css.map'
+  const index = parts.findIndex((part) => part.includes("component.css.map"));
+  return index > 0 ? parts[index - 1] : slug;
+}
+
+const pageSlug = getPageFromSlug(slug);
+
 // Build the menu tree
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
 function removeSubmissions(menuTree: any[]): any[] {
   return menuTree.filter((item) => item.name !== "Submissions");
 }
 const filteredMenuTree = removeSubmissions(menuTree);
-const fileName = slug.split("/").pop() || "";
+const fileName = pageSlug.split("/").pop() || "";
 const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
 const data = await getFiledatails(filePath, fileName);
 
@@ -109,7 +119,7 @@ const inActiveTabClass =
         currentTab == "form" || currentTab == "" || currentTab == null ? (
           <div class="p-4">
             <h2 class="text-lg font-bold">{title}</h2>
-            <LHCFormsWidget fileName={slug} />
+            <LHCFormsWidget fileName={pageSlug} />
           </div>
         ) : (
           ""
