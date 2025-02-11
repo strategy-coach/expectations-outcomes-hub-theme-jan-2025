@@ -4,19 +4,19 @@
   "status": "draft",
   "item": [
     {
-      "type": "group",
-      "linkId": "135142763170",
-      "text": "Company & Business Information",
       "item": [
         {
           "type": "string",
           "linkId": "398864695447",
-          "text": "What is your company name and primary industry?"
+          "text": "What is your company name and primary industry?",
+          "required": true
         },
         {
           "type": "string",
           "linkId": "545218844092",
-          "text": "What is the size of your organization (employee count)?"
+          "text": "What is the size of your organization (employee count)?",
+          "required": true,
+          "repeats": false
         },
         {
           "type": "string",
@@ -33,7 +33,10 @@
           "linkId": "901805400560",
           "text": "What are your key compliance challenges or pain points?"
         }
-      ]
+      ],
+      "type": "group",
+      "linkId": "135142763170",
+      "text": "Company & Business Information"
     },
     {
       "item": [
@@ -132,9 +135,6 @@
       ]
     },
     {
-      "type": "group",
-      "linkId": "532423061349",
-      "text": "Risk & Audit Management",
       "item": [
         {
           "type": "string",
@@ -161,12 +161,12 @@
           "linkId": "638210426576",
           "text": "Do you have an established process for employee security training?"
         }
-      ]
+      ],
+      "type": "group",
+      "linkId": "532423061349",
+      "text": "Risk & Audit Management"
     },
     {
-      "type": "string",
-      "linkId": "545741635917",
-      "text": "Integration & Reporting Needs",
       "item": [
         {
           "type": "string",
@@ -193,7 +193,28 @@
           "linkId": "148176990770",
           "text": "What are your primary goals for using our compliance SaaS platform?"
         }
-      ]
+      ],
+      "type": "string",
+      "linkId": "545741635917",
+      "text": "Integration & Reporting Needs"
+    },
+    {
+      "type": "group",
+      "linkId": "781600890727",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"The Customer Onboarding Questionnaire is designed to gather essential information from new customers to ensure a smooth and personalized onboarding experience. It helps businesses understand customer needs, preferences, and expectations, allowing for tailored services and a seamless transition\",\n    \"title\": \"The Customer Onboarding Questionnaire\",\n    \"organization\": \"Netspective\"\n}'>\n</div>"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
+            "valueString": "display:none"
+          }
+        ]
+      },
+      "readOnly": true
     }
   ]
 }
