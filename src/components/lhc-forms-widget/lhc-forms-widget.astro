@@ -45,7 +45,7 @@ const LHCFormData = JSON.parse(LHCFormString);
 
 // Function to extract meta information
 function getLHCFormMetaInformation(
-  lhcFormData: unknown,
+  lhcFormData: unknown
 ): LHCFormMetaInformation | null {
   // Validate and parse the input
   const parsedData = LHCFormDataSchema.safeParse(lhcFormData);
@@ -55,21 +55,21 @@ function getLHCFormMetaInformation(
     item._text?.extension?.some(
       (ext) =>
         ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml" &&
-        ext.valueString.includes('id="lhcFormMetaInformation"'),
-    ),
+        ext.valueString.includes('id="lhcFormMetaInformation"')
+    )
   );
 
   if (!metaInfoSection) return null;
 
   const xhtmlExtension = metaInfoSection._text?.extension?.find(
     (ext) =>
-      ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+      ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
   );
 
   if (!xhtmlExtension?.valueString) return null;
 
   const match = xhtmlExtension.valueString.match(
-    /id="lhcFormMetaInformation" value='([^']+)'/,
+    /id="lhcFormMetaInformation" value='([^']+)'/
   );
 
   try {
@@ -96,28 +96,55 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
     {metaInfo?.title}
   </h1>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
     <div>
-      <p class="font-semibold">Organization:</p>
-      <p class="text-gray-800">{metaInfo?.organization || "N/A"}</p>
+      <div>
+        <span class="font-semibold inline-block w-48">Organization:</span><span
+          class="inline-block">{metaInfo?.organization || "N/A"}</span
+        >
+      </div>
+      <!-- <p class="font-semibold">Organization:</p>
+      <p class="text-gray-800">{metaInfo?.organization || "N/A"}</p> -->
     </div>
     <div>
-      <p class="font-semibold">Created At:</p>
-      <p class="text-gray-800">{metaInfo?.createdAt || "N/A"}</p>
+      <div>
+        <span class="font-semibold inline-block w-48">Created At:</span><span
+          class="inline-block">{metaInfo?.createdAt || "N/A"}</span
+        >
+      </div>
+      <!-- <p class="font-semibold">Created At:</p>
+      <p class="text-gray-800">{metaInfo?.createdAt || "N/A"}</p> -->
     </div>
     <div>
-      <p class="font-semibold">Created By:</p>
-      <p class="text-gray-800">{metaInfo?.createdBy || "N/A"}</p>
+      <div>
+        <span class="font-semibold inline-block w-48">Created By:</span><span
+          class="inline-block">{metaInfo?.createdBy || "N/A"}</span
+        >
+      </div>
+      <!-- <p class="font-semibold">Created By:</p>
+      <p class="text-gray-800">{metaInfo?.createdBy || "N/A"}</p> -->
     </div>
     <div>
-      <p class="font-semibold">Title:</p>
-      <p class="text-gray-800">{metaInfo?.title || "N/A"}</p>
+      <div>
+        <span class="font-semibold inline-block w-48">Title:</span><span
+          class="inline-block">{metaInfo?.title || "N/A"}</span
+        >
+      </div>
+      <!-- <p class="font-semibold">Title:</p>
+      <p class="text-gray-800">{metaInfo?.title || "N/A"}</p> -->
     </div>
     <div class="md:col-span-2">
-      <p class="font-semibold">Description:</p>
+      <div class="mb-2">
+        <span class="font-semibold inline-block w-48">Description:</span><span
+          class="inline-block"
+        >
+          {metaInfo?.description || "No description available"}</span
+        >
+      </div>
+      <!-- <p class="font-semibold">Description:</p>
       <p class="text-gray-800 text-sm leading-relaxed">
         {metaInfo?.description || "No description available"}
-      </p>
+      </p> -->
     </div>
   </div>
   <LformWidget data={LHCFormString} fileName={fileName} client:only="react" />
