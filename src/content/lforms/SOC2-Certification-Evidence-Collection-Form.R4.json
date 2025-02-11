@@ -4,9 +4,6 @@
   "status": "draft",
   "item": [
     {
-      "type": "group",
-      "linkId": "323289382098",
-      "text": "General Information",
       "item": [
         {
           "type": "string",
@@ -50,7 +47,10 @@
           "text": "Date of Submission",
           "required": true
         }
-      ]
+      ],
+      "type": "group",
+      "linkId": "323289382098",
+      "text": "General Information"
     },
     {
       "item": [
@@ -487,6 +487,9 @@
           ]
         },
         {
+          "type": "string",
+          "linkId": "243582454429",
+          "text": "Are employees, third-parties, and customers directed on how to report unethical behaviour in a confidential manner?",
           "item": [
             {
               "linkId": "243582454429_helpText",
@@ -508,10 +511,7 @@
                 }
               ]
             }
-          ],
-          "type": "string",
-          "linkId": "243582454429",
-          "text": "Are employees, third-parties, and customers directed on how to report unethical behaviour in a confidential manner?"
+          ]
         },
         {
           "type": "string",
@@ -571,6 +571,23 @@
       "type": "group",
       "linkId": "671921888775",
       "text": "Key Control"
+    },
+    {
+      "type": "group",
+      "linkId": "381630354537",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
+            "valueString": "display:none"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"The SOC 2 Certification Evidence Collection process involves gathering and documenting the necessary artifacts to demonstrate compliance with SOC 2 security, availability, processing integrity, confidentiality, and privacy principles. This includes policies, access logs, security configurations, risk assessments, incident response plans, and employee training records. Proper evidence collection ensures that an organization can effectively prove its adherence to SOC 2 requirements during audits, reducing compliance risks and strengthening customer trust.\",\n    \"title\": \"SOC2 Certification Evidence Collection\",\n    \"organization\": \"Netspective\"\n}'>\n</div>"
+          }
+        ]
+      }
     }
   ]
 }

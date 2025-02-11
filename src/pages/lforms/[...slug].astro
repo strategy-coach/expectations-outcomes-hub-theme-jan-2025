@@ -120,7 +120,8 @@ const inActiveTabClass =
         currentTab == "data" ? (
           <div id="submitted-data" class="p-4">
             {submittedForm ? (
-              <LHCFormsResponseWidget fileName={submittedForm} />
+             
+             <h1>hello</h1>
             ) : (
               <table>
                 <thead>
@@ -133,7 +134,7 @@ const inActiveTabClass =
                   {data.map(
                     (
                       item: { uri: string; file_date: string | number | Date },
-                      index: any
+                      index: any,
                     ) => (
                       <tr>
                         <td class="p-2 break-all">
@@ -148,7 +149,7 @@ const inActiveTabClass =
                           {new Date(item.file_date).toDateString()}
                         </td>
                       </tr>
-                    )
+                    ),
                   )}
                 </tbody>
               </table>

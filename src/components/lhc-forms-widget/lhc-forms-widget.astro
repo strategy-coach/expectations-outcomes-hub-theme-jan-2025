@@ -1,17 +1,124 @@
 ---
 import * as fs from "fs";
+import { z } from "zod";
 import LformWidget from "../lhc-forms-widget/index";
+
+// Define the schema for the expected meta information structure
+const LHCFormMetaInformationSchema = z.object({
+  createdAt: z.string(),
+  createdBy: z.string(),
+  description: z.string(),
+  title: z.string(),
+  organization: z.string(),
+});
+
+// Define schemas for the structure of LHCFormData
+const LHCFormExtensionSchema = z.object({
+  url: z.string(),
+  valueString: z.string(),
+});
+
+const LHCFormItemSchema = z.object({
+  _text: z
+    .object({
+      extension: z.array(LHCFormExtensionSchema).optional(),
+    })
+    .optional(),
+});
+
+const LHCFormDataSchema = z.object({
+  item: z.array(LHCFormItemSchema),
+});
+
+// Define TypeScript types from Zod schemas
+type LHCFormMetaInformation = z.infer<typeof LHCFormMetaInformationSchema>;
+type LHCFormData = z.infer<typeof LHCFormDataSchema>;
 
 const { fileName } = Astro.props;
 let filePath = `dist/content/lforms/${fileName}`;
-if (process.env.NODE_ENV == "development")
+if (process.env.NODE_ENV == "development") {
   filePath = `src/content/lforms/${fileName}`;
-const data = fs.readFileSync(filePath, "utf8");
+}
+
+const LHCFormString = fs.readFileSync(filePath, "utf8");
+const LHCFormData = JSON.parse(LHCFormString);
+
+// Function to extract meta information
+function getLHCFormMetaInformation(
+  lhcFormData: unknown,
+): LHCFormMetaInformation | null {
+  // Validate and parse the input
+  const parsedData = LHCFormDataSchema.safeParse(lhcFormData);
+  if (!parsedData.success) return null;
+
+  const metaInfoSection = parsedData.data.item.find((item) =>
+    item._text?.extension?.some(
+      (ext) =>
+        ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml" &&
+        ext.valueString.includes('id="lhcFormMetaInformation"'),
+    ),
+  );
+
+  if (!metaInfoSection) return null;
+
+  const xhtmlExtension = metaInfoSection._text?.extension?.find(
+    (ext) =>
+      ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+  );
+
+  if (!xhtmlExtension?.valueString) return null;
+
+  const match = xhtmlExtension.valueString.match(
+    /id="lhcFormMetaInformation" value='([^']+)'/,
+  );
+
+  try {
+    const parsedMeta = match ? JSON.parse(match[1]) : null;
+    return parsedMeta ? LHCFormMetaInformationSchema.parse(parsedMeta) : null;
+  } catch {
+    return null;
+  }
+}
+
+const metaInfo = getLHCFormMetaInformation(LHCFormData);
 ---
 
-<link
-  href="https://lhcforms-static.nlm.nih.gov/lforms-versions/34.0.0/webcomponent/styles.css"
-  media="screen"
-  rel="stylesheet"
-/>
-<LformWidget data={data} fileName={fileName} client:only="react" />
+<head>
+  <link
+    href="https://lhcforms-static.nlm.nih.gov/lforms-versions/34.0.0/webcomponent/styles.css"
+    media="screen"
+    rel="stylesheet"
+  />
+</head>
+
+<div class="w-full max-w-10xl bg-white shadow-lg rounded-lg p-6">
+  <h1 class="text-2xl font-bold text-gray-900 border-b pb-3 mb-4">
+    {metaInfo?.title}
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
+    <div>
+      <p class="font-semibold">Organization:</p>
+      <p class="text-gray-800">{metaInfo?.organization || "N/A"}</p>
+    </div>
+    <div>
+      <p class="font-semibold">Created At:</p>
+      <p class="text-gray-800">{metaInfo?.createdAt || "N/A"}</p>
+    </div>
+    <div>
+      <p class="font-semibold">Created By:</p>
+      <p class="text-gray-800">{metaInfo?.createdBy || "N/A"}</p>
+    </div>
+    <div>
+      <p class="font-semibold">Title:</p>
+      <p class="text-gray-800">{metaInfo?.title || "N/A"}</p>
+    </div>
+    <div class="md:col-span-2">
+      <p class="font-semibold">Description:</p>
+      <p class="text-gray-800 text-sm leading-relaxed">
+        {metaInfo?.description || "No description available"}
+      </p>
+    </div>
+  </div>
+  <LformWidget data={LHCFormString} fileName={fileName} client:only="react" />
+</div>
