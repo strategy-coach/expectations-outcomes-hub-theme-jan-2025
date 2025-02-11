@@ -17,6 +17,7 @@ const themeConfig = (config: {
   headerMenu: { label: string; path: string; requiresAuth?: boolean }[];
   unauthorizedPages: string[];
   isHomePagePublic: boolean;
+  authorizedSlides: number[];
 }) => {
   return {
     ...config,
@@ -65,7 +66,7 @@ export default themeConfig({
     "/outcomes",
     "/progress",
   ],
-  excludedEditOptionFolder: ["qualityfolio","lforms"],
+  excludedEditOptionFolder: ["qualityfolio", "lforms"],
   headerMenu: [
     { label: "Home", path: "/" },
     { label: "Documentation", path: "/documentation" },
@@ -83,4 +84,5 @@ export default themeConfig({
     "presentation",
   ],
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
+  authorizedSlides: [5], // Example: Only slides 5 require authentication
 });
