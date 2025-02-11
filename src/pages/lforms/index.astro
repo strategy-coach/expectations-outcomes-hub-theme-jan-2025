@@ -7,6 +7,7 @@ import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from "../../../theme.config";
 import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
 import { getFiledatails } from "./service";
+import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-response-widget.astro";
 
 const { contentCollectionSort } = themeConfig || {};
 const zitadel_user_id = Astro.cookies.get("zitadel_user_id");
@@ -29,6 +30,8 @@ const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
 
 const { searchParams } = Astro.url;
 const currentTab = searchParams.get("tab"); // Get 'tab' parameter
+const url = Astro.url;
+const submittedForm = searchParams.get("submitted-form");
 
 const activeTabClass =
   " text-blue-600 bg-gray-100 active dark:bg-gray-800 dark:text-blue-500";
@@ -114,24 +117,39 @@ const inActiveTabClass =
       {
         currentTab == "data" ? (
           <div id="submitted-data" class="p-4">
-            <table>
-              <thead>
-                <tr>
-                  <th class="text-left p-2">File</th>
-                  <th class="text-left p-2"> Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item: { uri: string; file_date: string | number | Date; }, index: any) => (
+            {submittedForm ? (
+              <LHCFormsResponseWidget fileName={submittedForm} />
+            ) : (
+              <table>
+                <thead>
                   <tr>
-                    <td class="p-2 break-all"><a href="#">{item.uri.split("/").pop()}</a></td>
-                    <td class="p-2">
-                       {new Date(item.file_date).toDateString()} 
-                    </td>
+                    <th class="text-left p-2">File</th>
+                    <th class="text-left p-2"> Date</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data.map(
+                    (
+                      item: { uri: string; file_date: string | number | Date },
+                      index: any
+                    ) => (
+                      <tr>
+                        <td class="p-2 break-all">
+                          <a
+                            href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
+                          >
+                            {item.uri.split("/").pop()}
+                          </a>
+                        </td>
+                        <td class="p-2">
+                          {new Date(item.file_date).toDateString()}
+                        </td>
+                      </tr>
+                    )
+                  )}
+                </tbody>
+              </table>
+            )}
           </div>
         ) : (
           ""

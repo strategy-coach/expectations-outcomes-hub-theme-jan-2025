@@ -1,0 +1,20 @@
+---
+import * as fs from "fs";
+import LformWidget from "../lhc-forms-widget/index";
+
+const { fileName } = Astro.props;
+import { getFormData } from "../../../support/service";
+const data = await getFormData(fileName);
+---
+
+<link
+  href="https://lhcforms-static.nlm.nih.gov/lforms-versions/34.0.0/webcomponent/styles.css"
+  media="screen"
+  rel="stylesheet"
+/>
+<LformWidget
+fileName={fileName}
+showData={true}
+  data={JSON.stringify(data[0], null, 2)}
+  client:only="react"
+/>
