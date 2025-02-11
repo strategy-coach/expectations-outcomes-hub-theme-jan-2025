@@ -120,8 +120,7 @@ const inActiveTabClass =
         currentTab == "data" ? (
           <div id="submitted-data" class="p-4">
             {submittedForm ? (
-             
-             <h1>hello</h1>
+              <LHCFormsResponseWidget fileName={submittedForm} />
             ) : (
               <table>
                 <thead>
