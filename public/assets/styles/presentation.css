@@ -1,0 +1,51 @@
+::marker {color: #07b2e4!important;}
+    
+.reveal-viewport {background: var(--presentation-bg)!important;}        
+.slides {overflow: hidden auto!important; padding-right: 20px!important; text-align: left;}
+.reveal p, .reveal ul { font-size: 30px!important;margin-top: 0px !important;}
+.reveal h2 {font-size: 38px!important;}
+.reveal h3 {font-size: 36px!important;color: #07b2e4;padding-bottom: 15px;border-bottom: 1px solid #07b2e4;}
+.reveal h4 {font-size: 30px!important; color: #07b2e4; text-transform: capitalize!important;}
+.reveal ul {
+    list-style: none;
+    padding: 0;
+    padding-left: 45px;
+    background: #0e222c;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 0px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+.reveal li {
+    position: relative;
+    margin-bottom:8px;
+}
+
+.reveal li::before {
+    content: "✔";
+    color: #07b2e4;
+    font-weight: 400;
+    margin-right: 8px;
+    font-size: 25px;
+    position: absolute;
+    left: -30px;
+    top: 5px;;
+}
+.reveal p {
+    background: #0e222c;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+
+.reveal .controls .controls-arrow:after, .reveal .controls .controls-arrow:before { background-color: #07b2e4!important;}
+.reveal .progress span {background-color: #07b2e4!important;}
+.slides section {top:30px!important;}
+.reveal {height: calc(100% - 82px)!important;}
+.reveal img, .reveal video, .reveal iframe {max-width: 100%!important;}
+.reveal p.text-2xl {
+    font-size: 1.3rem!important;
+    line-height: 1.8rem!important;
+}

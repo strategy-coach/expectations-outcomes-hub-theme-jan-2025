@@ -82,7 +82,8 @@ export default themeConfig({
     "logout",
     "no-permission",
     "presentation",
+    "public-presentation",
   ],
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
-  authorizedSlides: [5], // Example: Only slides 5 require authentication
+  authorizedSlides: [4,5], // Example: Only slides 5 require authentication
 });

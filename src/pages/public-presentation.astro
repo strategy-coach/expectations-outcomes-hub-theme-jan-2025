@@ -11,6 +11,7 @@ const bgColor = themeConfig?.presentationBgColor || '#FFFFFF'; // Default fallba
     <title>Expectations and Outcomes Hub Theme</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/black.css">
+    
     <link rel="stylesheet" href="/assets/styles/presentation.css">
     <!-- Include Reveal.js -->
     <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
@@ -23,7 +24,7 @@ const bgColor = themeConfig?.presentationBgColor || '#FFFFFF'; // Default fallba
         <div class="slides">
 
             <section>
-                <h3>EOH Astro 5 Theme Overview</h3>
+                <h3>EOH Astro 5 Public Presentation Demo</h3>
                 <p>The EOH Astro 5 Theme is designed to support dynamic content creation, including blog collections, landing pages, static pages, Expectations & Outcomes Collection and GitHub Discussions integration. It provides customizable components to cater to various needs.</p>
                 <h3>Key Features</h3>
                 <div class="flex justify-center flex-wrap">
@@ -128,29 +129,7 @@ const bgColor = themeConfig?.presentationBgColor || '#FFFFFF'; // Default fallba
   </body>
 </html>
 <script>
-import themeConfig from "../../theme.config";
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Get userId from cookies
-  const userId =
-    document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("zitadel_user_id="))
-      ?.split("=")[1] || "";
-
-  const isAuthenticated = !!userId; // True if logged in, false otherwise
-
-  document.querySelectorAll(".slides section").forEach((slide, index) => {
-    if (themeConfig.authorizedSlides.includes(index + 1) && !isAuthenticated) {
-      slide.remove(); // Remove unauthorized slides
-    }
+  document.addEventListener("DOMContentLoaded", function () {
+    Reveal.initialize();
   });
-
-  // Initialize Reveal.js AFTER filtering slides
-  const deck = new Reveal();
-  deck.initialize();
-});
-
-
-
 </script>
