@@ -93,13 +93,14 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, showDat
                 </div>
             )}
             <div id="lhc-form-container" ref={formContainerRef}></div>
-            {!showData && <button
-                onClick={getLHCFormData}
-                type="button"
-                className="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 float-right"
-            >
-                Submit
-            </button>}
+            {!showData &&
+                <div className="w-full text-center "><button
+                    onClick={getLHCFormData}
+                    type="button"
+                    className="mt-3 text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-cyan-600 dark:hover:bg-cyan-700 focus:outline-none dark:focus:ring-cyan-800"
+                >
+                    Submit
+                </button></div>}
         </>
     );
 };
