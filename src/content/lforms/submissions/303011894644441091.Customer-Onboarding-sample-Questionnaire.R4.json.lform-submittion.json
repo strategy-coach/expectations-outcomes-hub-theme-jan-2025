@@ -1,0 +1,703 @@
+{
+  "lformsVersion": "34.0.0",
+  "PATH_DELIMITER": "/",
+  "code": null,
+  "codeList": null,
+  "identifier": null,
+  "name": "Customer Onboarding sample Questionnaire",
+  "template": "table",
+  "items": [
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Company & Business Information",
+      "questionCode": "135142763170",
+      "questionCodeSystem": "LinkId",
+      "linkId": "135142763170",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "What is your company name and primary industry?",
+          "questionCode": "398864695447",
+          "questionCodeSystem": "LinkId",
+          "linkId": "398864695447",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "XYZ Corp – a financial technology (FinTech) company specializing in digital payments and fraud prevention."
+        },
+        {
+          "dataType": "ST",
+          "question": "What is the size of your organization (employee count)?",
+          "questionCode": "545218844092",
+          "questionCodeSystem": "LinkId",
+          "linkId": "545218844092",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "Approximately 500 employees worldwide."
+        },
+        {
+          "dataType": "ST",
+          "question": "Where is your company headquartered, and do you have multiple locations?",
+          "questionCode": "559557778067",
+          "questionCodeSystem": "LinkId",
+          "linkId": "559557778067",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Headquartered in New York, NY, with regional offices in London and Singapore."
+        },
+        {
+          "dataType": "ST",
+          "question": "What compliance frameworks are you currently following (SOC 2, HITRUST, ISO 27001, etc.)?",
+          "questionCode": "658062147790",
+          "questionCodeSystem": "LinkId",
+          "linkId": "658062147790",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Currently following SOC 2 Type II and ISO 27001 compliance frameworks."
+        },
+        {
+          "dataType": "ST",
+          "question": "What are your key compliance challenges or pain points?",
+          "questionCode": "901805400560",
+          "questionCodeSystem": "LinkId",
+          "linkId": "901805400560",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Managing vendor risk assessments, automating evidence collection, and streamlining audit preparation."
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Security & Compliance Requirements",
+      "questionCode": "418530414779",
+      "questionCodeSystem": "LinkId",
+      "linkId": "418530414779",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "Are you currently undergoing any compliance audits or assessments?",
+          "questionCode": "863637603675",
+          "questionCodeSystem": "LinkId",
+          "linkId": "863637603675",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we are in the process of a SOC 2 Type II audit."
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you have an internal compliance team, or do you rely on external consultants?",
+          "questionCode": "540994793828",
+          "questionCodeSystem": "LinkId",
+          "linkId": "540994793828",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We have a dedicated internal compliance team but also work with external consultants for audits."
+        },
+        {
+          "dataType": "ST",
+          "question": "What is your expected timeline for achieving compliance?",
+          "questionCode": "209632195509",
+          "questionCodeSystem": "LinkId",
+          "linkId": "209632195509",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We aim to complete our SOC 2 audit by Q2 next year."
+        },
+        {
+          "dataType": "ST",
+          "question": "Have you previously completed any third-party compliance certifications?",
+          "questionCode": "572736208830",
+          "questionCodeSystem": "LinkId",
+          "linkId": "572736208830",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we have successfully completed ISO 27001 certification."
+        },
+        {
+          "dataType": "ST",
+          "question": "What level of automation are you looking for in compliance management?",
+          "questionCode": "381903006914",
+          "questionCodeSystem": "LinkId",
+          "linkId": "381903006914",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We are looking for a high level of automation, including real-time monitoring, automated evidence collection, and AI-driven compliance insights."
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Technical & Infrastructure Details",
+      "questionCode": "440390208584",
+      "questionCodeSystem": "LinkId",
+      "linkId": "440390208584",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "What cloud providers or hosting services does your application use (AWS, Azure, GCP, on-prem)?",
+          "questionCode": "449669358372",
+          "questionCodeSystem": "LinkId",
+          "linkId": "449669358372",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Our infrastructure is hosted on AWS, with some on-premise data centers for regulatory requirements."
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you have a centralized identity and access management (IAM) system?",
+          "questionCode": "742687626420",
+          "questionCodeSystem": "LinkId",
+          "linkId": "742687626420",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we use Okta for IAM and SSO across our applications."
+        },
+        {
+          "dataType": "ST",
+          "question": "How do you currently track and manage security incidents?",
+          "questionCode": "805447598257",
+          "questionCodeSystem": "LinkId",
+          "linkId": "805447598257",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We use a combination of SIEM (Splunk) and an internal incident response team to track and manage security incidents."
+        },
+        {
+          "dataType": "ST",
+          "question": "What tools do you use for log management and monitoring (SIEM, CloudTrail, etc.)?",
+          "questionCode": "932684953179",
+          "questionCodeSystem": "LinkId",
+          "linkId": "932684953179",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We use AWS CloudTrail, Splunk, and Datadog for log management and security monitoring."
+        },
+        {
+          "dataType": "ST",
+          "question": "How do you handle vulnerability management and patching?",
+          "questionCode": "179684491436",
+          "questionCodeSystem": "LinkId",
+          "linkId": "179684491436",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We use automated vulnerability scanning tools (Qualys, Nessus) and follow a structured patch management process via AWS Systems Manager."
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Data Management & Privacy",
+      "questionCode": "472270936662",
+      "questionCodeSystem": "LinkId",
+      "linkId": "472270936662",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "What types of data do you store and process (PII, PHI, financial, etc.)?",
+          "questionCode": "820896759168",
+          "questionCodeSystem": "LinkId",
+          "linkId": "820896759168",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We process personally identifiable information (PII) and financial transaction data."
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you have data retention and deletion policies in place?",
+          "questionCode": "582156066763",
+          "questionCodeSystem": "LinkId",
+          "linkId": "582156066763",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we follow a data retention policy aligned with GDPR and CCPA requirements."
+        },
+        {
+          "dataType": "ST",
+          "question": "Are you subject to data privacy regulations like GDPR, CCPA, or HIPAA?",
+          "questionCode": "568033441869",
+          "questionCodeSystem": "LinkId",
+          "linkId": "568033441869",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we must comply with GDPR, CCPA, and PCI DSS due to our industry."
+        },
+        {
+          "dataType": "ST",
+          "question": "How do you currently track access to sensitive data?",
+          "questionCode": "374572950765",
+          "questionCodeSystem": "LinkId",
+          "linkId": "374572950765",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Access is logged and monitored using AWS CloudTrail and SIEM tools"
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you require data encryption at rest and in transit?",
+          "questionCode": "986597332528",
+          "questionCodeSystem": "LinkId",
+          "linkId": "986597332528",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, all sensitive data is encrypted using AES-256 for data at rest and TLS 1.2+ for data in transit."
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Risk & Audit Management",
+      "questionCode": "532423061349",
+      "questionCodeSystem": "LinkId",
+      "linkId": "532423061349",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "How do you currently perform risk assessments?",
+          "questionCode": "462924988823",
+          "questionCodeSystem": "LinkId",
+          "linkId": "462924988823",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We conduct quarterly risk assessments using a risk management framework based on NIST guidelines."
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you have an internal audit process for compliance monitoring?",
+          "questionCode": "412590522324",
+          "questionCodeSystem": "LinkId",
+          "linkId": "412590522324",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we conduct internal audits twice a year, supplemented by third-party assessments annually."
+        },
+        {
+          "dataType": "ST",
+          "question": "What are your biggest risks related to compliance failures?",
+          "questionCode": "838765898801",
+          "questionCodeSystem": "LinkId",
+          "linkId": "838765898801",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Data breaches, regulatory fines, and reputational damage due to non-compliance."
+        },
+        {
+          "dataType": "ST",
+          "question": "How do you track and respond to security incidents?",
+          "questionCode": "819358286083",
+          "questionCodeSystem": "LinkId",
+          "linkId": "819358286083",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We use a SIEM system integrated with an incident response playbook to ensure rapid resolution."
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you have an established process for employee security training?",
+          "questionCode": "638210426576",
+          "questionCodeSystem": "LinkId",
+          "linkId": "638210426576",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we conduct mandatory security awareness training quarterly, with phishing simulations."
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "dataType": "ST",
+      "question": "Integration & Reporting Needs",
+      "questionCode": "545741635917",
+      "questionCodeSystem": "LinkId",
+      "linkId": "545741635917",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "What other compliance tools or GRC platforms are you using?",
+          "questionCode": "813101379811",
+          "questionCodeSystem": "LinkId",
+          "linkId": "813101379811",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We use Vanta for compliance automation and ServiceNow for risk management."
+        },
+        {
+          "dataType": "ST",
+          "question": "Do you need API integrations with your existing security and IT tools?",
+          "questionCode": "283958050693",
+          "questionCodeSystem": "LinkId",
+          "linkId": "283958050693",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Yes, we require integrations with our existing SIEM, IAM, and ticketing systems."
+        },
+        {
+          "dataType": "ST",
+          "question": "How often do you generate compliance reports for stakeholders?",
+          "questionCode": "403319946108",
+          "questionCodeSystem": "LinkId",
+          "linkId": "403319946108",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "We generate reports quarterly for internal stakeholders and annually for auditors."
+        },
+        {
+          "dataType": "ST",
+          "question": "Who are the key stakeholders involved in compliance management?",
+          "questionCode": "501476422804",
+          "questionCodeSystem": "LinkId",
+          "linkId": "501476422804",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Compliance team, IT security team, executive leadership, and external auditors."
+        },
+        {
+          "dataType": "ST",
+          "question": "What are your primary goals for using our compliance SaaS platform?",
+          "questionCode": "148176990770",
+          "questionCodeSystem": "LinkId",
+          "linkId": "148176990770",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "codeList": [],
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Streamlining compliance workflows, reducing audit preparation time, and improving real-time compliance monitoring."
+        }
+      ],
+      "codeList": [],
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      },
+      "value": "yes"
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Meta Information",
+      "obj_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"The Customer Onboarding Questionnaire is designed to gather essential information from new customers to ensure a smooth and personalized onboarding experience. It helps businesses understand customer needs, preferences, and expectations, allowing for tailored services and a seamless transition\",\n    \"title\": \"The Customer Onboarding Questionnaire\",\n    \"organization\": \"Netspective\"\n}'>\n</div>"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
+            "valueString": "display:none"
+          }
+        ]
+      },
+      "questionCode": "781600890727",
+      "questionCodeSystem": "LinkId",
+      "linkId": "781600890727",
+      "editable": "0",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    }
+  ],
+  "templateOptions": {
+    "showQuestionCode": false,
+    "showCodingInstruction": false,
+    "allowMultipleEmptyRepeatingItems": false,
+    "allowHTMLInInstructions": false,
+    "displayControl": {
+      "questionLayout": "vertical"
+    },
+    "viewMode": "auto",
+    "defaultAnswerLayout": {
+      "answerLayout": {
+        "type": "COMBO_BOX",
+        "columns": "0"
+      }
+    },
+    "hideTreeLine": false,
+    "hideIndentation": false,
+    "hideRepetitionNumber": false,
+    "displayScoreWithAnswerText": true
+  },
+  "hasSavedData": true,
+  "fhirVersion": "R4"
+}
