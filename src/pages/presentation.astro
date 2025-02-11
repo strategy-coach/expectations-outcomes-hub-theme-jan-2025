@@ -3,6 +3,7 @@ import themeConfig from '../../theme.config';
 
 const { logo } = themeConfig || {}; 
 const bgColor = themeConfig?.presentationBgColor || '#FFFFFF'; // Default fallback
+const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
 
 ---
 <html style={`--presentation-bg: ${bgColor};`}>
@@ -128,7 +129,18 @@ const bgColor = themeConfig?.presentationBgColor || '#FFFFFF'; // Default fallba
 
     <!-- Initialize Reveal.js AFTER the script is loaded -->
     <script>
+      import themeConfig from "../../theme.config";
       document.addEventListener('DOMContentLoaded', () => {
+        // Get userId from cookies (already defined in Astro script)
+        const userId = document.cookie.split('; ').find(row => row.startsWith('zitadel_user_id='))?.split('=')[1] || "";   
+        const isAuthenticated = !!userId; // True if logged in, false otherwise
+        document.querySelectorAll('.slides section').forEach((slide, index) => {
+          if (themeConfig.authorizedSlides.includes(index + 1) && !isAuthenticated) {
+            slide.remove(); // Remove unauthorized slides
+          }
+        });
+
+        // Initialize Reveal.js AFTER filtering slides
         const deck = new Reveal();
         deck.initialize();
       });

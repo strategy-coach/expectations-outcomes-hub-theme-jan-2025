@@ -280,6 +280,15 @@ export default themeConfig({
     { label: "Qualityfolio", path: "/qualityfolio", requiresAuth: true },
     { label: "Blog", path: "/blog" },
   ],
+   unauthorizedPages: [
+    "documentation",
+    "blog",
+    "logout",
+    "no-permission",
+    "presentation",
+  ],
+  isHomePagePublic: true, // Set this to false if the homepage should require authentication
+  authorizedSlides: [5], // Example: Only slides 5 require authentication
 });
 
 ```
