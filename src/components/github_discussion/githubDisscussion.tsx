@@ -13,6 +13,18 @@ const GithubDiscussion: React.FC<DiscussionsProps> = ({ discussions }) => {
 
     const [data, setData] = useState<Post | undefined>()
 
+    if (!discussions || discussions.length === 0) {
+      return (
+        <div className="text-left text-gray-500 mt-10">
+          💡 No discussions found. Please ensure your environment variables are
+          correctly set and contain discussions.
+          <br />
+          Refer to the <a href="https://demo.hub.opsfolio.com/documentation" target="_blank" 
+          >theme README </a> for GitHub Discussions setup and environment configuration.
+        </div>
+      );
+    }
+
     return (
         <>
             {data === undefined ? (<>{
