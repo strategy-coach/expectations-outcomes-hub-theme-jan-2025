@@ -81,6 +81,43 @@ function getLHCFormMetaInformation(
 }
 
 const metaInfo = getLHCFormMetaInformation(LHCFormData);
+
+function parseDate(dateStr) {
+  const parts = dateStr.split("-");
+  // Assuming DD-MM-YYYY format
+  const day = parseInt(parts[1], 10);
+  const month = parseInt(parts[0], 10) - 1; // Months are 0-indexed in JS
+  const year = parseInt(parts[2], 10);
+
+  return new Date(year, month, day);
+}
+
+function timeAgo(dateStr) {
+  const parts = dateStr.split("-");
+  // Assuming DD-MM-YYYY format
+  const day = parseInt(parts[1], 10);
+  const month = parseInt(parts[0], 10) - 1; // Months are 0-indexed in JS
+  const year = parseInt(parts[2], 10);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - new Date(year, month, day)) / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+
+  if (diffInDays >= 30) {
+    return `${Math.floor(diffInDays / 30)} month(s) ago`;
+  } else if (diffInDays >= 7) {
+    return `${Math.floor(diffInDays / 7)} week(s) ago`;
+  } else if (diffInDays > 0) {
+    return `${diffInDays} day(s) ago`;
+  } else if (diffInHours > 0) {
+    return `${diffInHours} hour(s) ago`;
+  } else if (diffInMinutes > 0) {
+    return `${diffInMinutes} minute(s) ago`;
+  } else {
+    return "Just now";
+  }
+}
 ---
 
 <head>
@@ -121,9 +158,8 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
         <div>
           <span class="font-semibold inline-block w-28">Created By:</span><span
             class="inline-block"
-            >{metaInfo?.createdBy || "N/A"} on {
-              metaInfo?.createdAt || "N/A"
-            }</span
+            >{metaInfo?.createdBy || "N/A"}
+            {timeAgo(metaInfo?.createdAt)}</span
           >
         </div>
         <!-- <div>
