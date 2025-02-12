@@ -92,60 +92,54 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
 </head>
 
 <div class="w-full max-w-10xl bg-white shadow-lg rounded-lg p-6">
-  <h1 class="text-2xl font-bold text-gray-900 border-b pb-3 mb-4">
-    {metaInfo?.title}
-  </h1>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
-    <div>
-      <div>
-        <span class="font-semibold inline-block w-48">Organization:</span><span
-          class="inline-block">{metaInfo?.organization || "N/A"}</span
-        >
-      </div>
-      <!-- <p class="font-semibold">Organization:</p>
-      <p class="text-gray-800">{metaInfo?.organization || "N/A"}</p> -->
+  <div
+    class="grid grid-cols-1 md:grid-cols-12 gap-4 border-b mb-2 items-center"
+  >
+    <div class="col-span-1 md:col-span-8">
+      <h1 class="text-2xl font-bold text-gray-900">
+        {metaInfo?.title}
+      </h1>
     </div>
-    <div>
-      <div>
-        <span class="font-semibold inline-block w-48">Created At:</span><span
-          class="inline-block">{metaInfo?.createdAt || "N/A"}</span
-        >
+    <div class="col-span-1 md:col-span-4">
+      <div class="flex justify-end">
+        <div class="">
+          <div>
+            <span class="font-semibold inline-block w-48"></span>
+            <span
+              class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset"
+              >{metaInfo?.organization || "N/A"}</span
+            >
+          </div>
+        </div>
       </div>
-      <!-- <p class="font-semibold">Created At:</p>
-      <p class="text-gray-800">{metaInfo?.createdAt || "N/A"}</p> -->
-    </div>
-    <div>
-      <div>
-        <span class="font-semibold inline-block w-48">Created By:</span><span
-          class="inline-block">{metaInfo?.createdBy || "N/A"}</span
-        >
-      </div>
-      <!-- <p class="font-semibold">Created By:</p>
-      <p class="text-gray-800">{metaInfo?.createdBy || "N/A"}</p> -->
-    </div>
-    <div>
-      <div>
-        <span class="font-semibold inline-block w-48">Title:</span><span
-          class="inline-block">{metaInfo?.title || "N/A"}</span
-        >
-      </div>
-      <!-- <p class="font-semibold">Title:</p>
-      <p class="text-gray-800">{metaInfo?.title || "N/A"}</p> -->
-    </div>
-    <div class="md:col-span-2">
-      <div class="mb-2">
-        <span class="font-semibold inline-block w-48">Description:</span><span
-          class="inline-block"
-        >
-          {metaInfo?.description || "No description available"}</span
-        >
-      </div>
-      <!-- <p class="font-semibold">Description:</p>
-      <p class="text-gray-800 text-sm leading-relaxed">
-        {metaInfo?.description || "No description available"}
-      </p> -->
     </div>
   </div>
-  <LformWidget data={LHCFormString} fileName={fileName} client:only="react" />
+
+  <div class="col-span-12">
+    <div class="flex justify-end text-xs text-gray-500">
+      <div class="">
+        <div>
+          <span class="font-semibold inline-block w-28">Created By:</span><span
+            class="inline-block"
+            >{metaInfo?.createdBy || "N/A"} on {
+              metaInfo?.createdAt || "N/A"
+            }</span
+          >
+        </div>
+        <!-- <div>
+          <span class="font-semibold inline-block w-28">Created At:</span><span
+            class="inline-block">{metaInfo?.createdAt || "N/A"}</span
+          >
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
+    <div class="md:col-span-2">
+      <div class="mb-2 mt-2">
+        {metaInfo?.description || "No description available"}
+      </div>
+    </div>
+  </div>
 </div>
+<LformWidget data={LHCFormString} fileName={fileName} client:only="react" />
