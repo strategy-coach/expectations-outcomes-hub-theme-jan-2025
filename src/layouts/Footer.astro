@@ -22,10 +22,12 @@ if (url.pathname === "/documentation") {
 }
 const normalizedPath = Astro.url.pathname.replace(/\/$/, ""); // Removes trailing slash if present
 const currentFolder = normalizedPath.split("/")[1]; // Extracts the first segment after "/"
+const getLastItem = normalizedPath.substring(normalizedPath.lastIndexOf('/') )
 
-//console.log(currentFolder,'---currentFolder',Astro.url.pathname,Astro.url.pathname.split('/')[2])
+//console.log(currentFolder,'---currentFolder',excludedEditOptionPages.includes(getLastItem),normalizedPath)
+//console.log(excludedEditOptionFolder,'---Folder',excludedEditOptionPages,getLastItem)
 
-const shouldShowEditButton = activeEdit > 0 && !excludedEditOptionFolder.includes(currentFolder) && !excludedEditOptionPages.includes(normalizedPath);
+const shouldShowEditButton = activeEdit > 0 && !excludedEditOptionFolder.includes(currentFolder) && !excludedEditOptionPages.includes(getLastItem);
 ---
 
 <footer class="flex items-center justify-between text-sm text-slate-700 bg-white border-t border-slate-200 pt-8 pb-6 px-4">

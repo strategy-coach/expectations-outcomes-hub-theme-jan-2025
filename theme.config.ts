@@ -65,6 +65,10 @@ export default themeConfig({
     "/expectations",
     "/outcomes",
     "/progress",
+    "/github-discussions",
+    "/lforms",
+    "/teams",
+    "/database-query-render",
   ],
   excludedEditOptionFolder: ["qualityfolio", "lforms"],
   headerMenu: [
