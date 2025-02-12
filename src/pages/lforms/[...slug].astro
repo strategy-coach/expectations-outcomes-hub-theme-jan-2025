@@ -118,7 +118,6 @@ const inActiveTabClass =
       {
         currentTab == "form" || currentTab == "" || currentTab == null ? (
           <div class="p-4">
-            <h2 class="text-lg font-bold">{title}</h2>
             <LHCFormsWidget fileName={pageSlug} />
           </div>
         ) : (
@@ -144,38 +143,46 @@ const inActiveTabClass =
               </div>
             ) : (
               <div id="submitted-data" class="p-4">
-                <table>
-                  <thead>
-                    <tr>
-                      <th class="text-left p-2">File</th>
-                      <th class="text-left p-2"> Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map(
-                      (
-                        item: {
-                          uri: string;
-                          file_date: string | number | Date;
-                        },
-                        index: any
-                      ) => (
-                        <tr>
-                          <td class="p-2 break-all">
-                            <a
-                              href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
-                            >
-                              {item.uri.split("/").pop()}
-                            </a>
-                          </td>
-                          <td class="p-2">
-                            {new Date(item.file_date).toDateString()}
-                          </td>
-                        </tr>
-                      )
-                    )}
-                  </tbody>
-                </table>
+                {data.length > 0 ? (
+                  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                      <tr>
+                        <th scope="col" class="px-6 py-3">
+                          File
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                          date
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map(
+                        (
+                          item: {
+                            uri: string;
+                            file_date: string | number | Date;
+                          },
+                          index: any
+                        ) => (
+                          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            <td class="p-2 break-all">
+                              <a
+                                href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
+                              >
+                                {item.uri.split("/").pop()}
+                              </a>
+                            </td>
+                            <td class="px-6 py-4">
+                              {new Date(item.file_date).toDateString()}
+                            </td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                ) : (
+                  <p>No data found</p>
+                )}
               </div>
             )}
           </>
