@@ -1,0 +1,3560 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "SOC2 Type I Certification Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "843509936337",
+          "text": "Organization Name",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "834824167845",
+          "text": "Organization Address",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "574440750588",
+          "text": "Product Name",
+          "required": true
+        },
+        {
+          "type": "url",
+          "linkId": "924260494641",
+          "text": "Website",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "403261366197",
+          "text": "Point of Contact",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "647686221633",
+          "text": "Contact Email",
+          "required": true
+        },
+        {
+          "type": "dateTime",
+          "linkId": "960033154529",
+          "text": "Date of Submission",
+          "required": true
+        }
+      ],
+      "type": "group",
+      "linkId": "323289382098",
+      "text": "General Information"
+    },
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "766948998506",
+              "text": "Please provide the URL to share the Employee Handbook or Manual.",
+              "enableWhen": [
+                {
+                  "question": "916961188865",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "766948998506_helpText",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, HRMS portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "256266245743",
+              "text": "If you don't have an employee handbook in place, we can use our standard version.",
+              "enableWhen": [
+                {
+                  "question": "916961188865",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "256266245743_helpText",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Employee Handbook <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "916961188865_helpText",
+              "type": "display",
+              "text": "As evidence, you can provide the Employee Handbook or Manual.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "916961188865",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0005"
+            }
+          ],
+          "text": "Are core values are communicated from executive management to personnel through policies and the employee handbook?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "display",
+              "linkId": "529236227520",
+              "text": "If you don't have an Organizational structure in place, you can refer the ",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "294993139324",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "611265960476",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Organizational structure <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "linkId": "850062740124",
+              "text": "Please provide the URL to share the Organizational structure.",
+              "enableWhen": [
+                {
+                  "question": "294993139324",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "758996476433",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "294993139324_helpText",
+              "type": "display",
+              "text": "As evidence, you can provide the Organizational structure.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "294993139324",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0003"
+            }
+          ],
+          "text": "Is management's organizational structure with relevant reporting lines documented in an organization chart?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "590639128215",
+              "text": "Please provide the URL to share sample of (5) company job descriptions.",
+              "enableWhen": [
+                {
+                  "question": "527640791166",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "480063497129",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "619691601565",
+              "text": "If you don't have an sample of (5) company job descriptions, you can refer our standard version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "527640791166",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "778534740532",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample of (5) company job descriptions <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "527640791166_helpText",
+              "type": "display",
+              "text": "You can provide roles and responsibilities as evidence, including those of the CISO, CFO, Data Privacy Officer, and other relevant roles.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "527640791166",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0004"
+            }
+          ],
+          "text": "Can management provide a sample of (5) company job descriptions?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "299388771480",
+              "text": "Please provide the URL to share the Employee Handbook or Manual.",
+              "enableWhen": [
+                {
+                  "question": "460559993229",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "775341028680",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "161725988339",
+              "text": "If you don't have an employee handbook in place, you can refer our standard version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "460559993229",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "961065284224",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Employee Handbook <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "347124323083",
+              "type": "display",
+              "text": "You can provide Employee Manual or Handbook.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "460559993229",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0005.1"
+            }
+          ],
+          "text": "Is there an employee handbook in place, and does it include the organization's entity values and behavioral standards? If yes, how is it made available for all employees?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "592488151622",
+              "text": "Please provide the URL to share the Hiring procedures.",
+              "enableWhen": [
+                {
+                  "question": "717681155587",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "889997111057",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "897271751233",
+              "text": "If you don't have an Hiring procedures in place, you can refer our standard version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "717681155587",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "583160772493",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample of Hiring procedures <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "289569131304",
+              "type": "display",
+              "text": "You can provide Hiring procedures.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "717681155587",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0004"
+            }
+          ],
+          "text": "Has management documented formal HR procedures that include the employee on-boarding process?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "268992988810",
+              "text": "Please provide the URL to share the hiring checklist for a sample of employees.",
+              "enableWhen": [
+                {
+                  "question": "195460520299",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "947780700524",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "423075359378",
+              "text": "If you don't have an hiring checklist for a sample of employees, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "195460520299",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "216171037132",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the hiring checklist for a sample of employees <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "850117590152",
+              "type": "display",
+              "text": "You can provide the hiring checklist for a sample of employees",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "195460520299",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0004"
+            }
+          ],
+          "text": "Are new hire checklists utilized, and activities documented to help facilitate new hire procedures?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "253597832407",
+              "text": "Please provide the URL to share the Hiring Policy.",
+              "enableWhen": [
+                {
+                  "question": "370468490673",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "448922027993",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "212718912052",
+              "text": "If you don't have an Hiring Policy, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "370468490673",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "371170586284",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Hiring Policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "661356300420",
+              "type": "display",
+              "text": "You can provide the evidence that a third party (if a third party is used for recruiting) or Hiring Policy",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "370468490673",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.3"
+            }
+          ],
+          "text": "How are candidates recruited for job openings? Evidence could include the recruitment policies and procedures; a PowerPoint deck, a questionnaire, job opening postings, or emails.",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "366142256337",
+              "text": "Please provide the URL to share the evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
+              "enableWhen": [
+                {
+                  "question": "625215329635",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "497890868029",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "143129622083",
+              "text": "If you don't have an Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet), you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "625215329635",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "260647295025",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence to track the Professional Education Training <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "166339955317",
+              "type": "display",
+              "text": "You can provide the evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "625215329635",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0004.2"
+            }
+          ],
+          "text": "Are there any requirements for Continued Professional Education Training among employees?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "249845764049",
+              "text": "Please provide the URL to share the evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
+              "enableWhen": [
+                {
+                  "question": "957772901302",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "639999941403",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "429632751874",
+              "text": "If you don't have an evidence could include a links to the mentor program guide; a PowerPoint deck; emails, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "957772901302",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "821206525966",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of the mentor program guide <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "459046186596",
+              "type": "display",
+              "text": "You can provide the evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "957772901302",
+          "code": [
+            {
+              "code": "FII-SCF-SAT-0002"
+            }
+          ],
+          "text": "Is there a mentor program to develop personnel in place?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "769716965665",
+              "text": "Please provide the URL to share the evidence as Termination procedures",
+              "enableWhen": [
+                {
+                  "question": "319319609491",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "426019701439",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "485012925103",
+              "text": "If you don't have an evidence as Termination procedures, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "319319609491",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "158560683500",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Termination procedures <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "442634832827",
+              "type": "display",
+              "text": "You can provide the evidence as Termination procedures",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "319319609491",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009"
+            }
+          ],
+          "text": "Has management documented formal HR procedures that include employee terminations?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "938972869777",
+              "text": "Please provide the URL to share the evidence as Termination checklist for a sample of employees",
+              "enableWhen": [
+                {
+                  "question": "935997113209",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "857226746736",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "340143268267",
+              "text": "If you don't have an evidence as Termination checklist for a sample of employees, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "935997113209",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "354540654533",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the Termination checklist for a sample of employees <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "113292712689",
+              "type": "display",
+              "text": "You can provide the evidence as Termination checklist for a sample of employees",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "935997113209",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.2"
+            }
+          ],
+          "text": "Are termination checklists utilized, and activities documented to facilitate termination procedures?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "444995333773",
+              "text": "Please provide the URL to share the evidence as listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
+              "enableWhen": [
+                {
+                  "question": "710547647178",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "512302810756",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "959436404500",
+              "text": "If you don't have an evidence as Listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "710547647178",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "971644057979",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of listing of Executive Management <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/key-management-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "767871626533",
+              "type": "display",
+              "text": "You can provide the evidence as listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "710547647178",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0002"
+            }
+          ],
+          "text": "Can you provide a listing of executive management members?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "912811701496",
+              "text": "Please provide the URL to share the evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
+              "enableWhen": [
+                {
+                  "question": "904763995104",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "435535481665",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "279251979325",
+              "text": "If you don't have an evidence of performance evaluation forms, tracking tool/spreadsheet, or certificates, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "904763995104",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "866069332871",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of performance evaluation forms <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "428080909354",
+              "type": "display",
+              "text": "You can provide the evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "904763995104",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0003.2"
+            }
+          ],
+          "text": "Are formal performance evaluations completed and documented? If yes, on what frequency and does this apply to all personnel? This includes executive management members such as CIO, CTO, CEO.",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "951162573926",
+              "text": "Please provide the URL to share the evidence could include employee training documentation",
+              "enableWhen": [
+                {
+                  "question": "398369140416",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "447060333583",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "947012786695",
+              "text": "If you don't have an evidence of employee training documentation, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "398369140416",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "192011198973",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of employee training documentation <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "744424251184",
+              "type": "display",
+              "text": "You can provide the evidence could include employee training documentation",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "398369140416",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0005"
+            }
+          ],
+          "text": "Do employees complete periodic information security training?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "945880403298",
+              "text": "Please provide the URL to share the evidence could include cross-training employees documentation",
+              "enableWhen": [
+                {
+                  "question": "441480275309",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "265258165661",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "466149180645",
+              "text": "If you don't have an evidence of cross-training employees documentation, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "441480275309",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "751462327768",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of cross-training employees documentation <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "452773432373",
+              "type": "display",
+              "text": "You can provide the evidence as cross-training employees documentation",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "441480275309",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0005.1"
+            }
+          ],
+          "text": "Are employees cross-trained in roles and responsibilities? Evidence could include training materials; policies and procedures relating to training requirements; PowerPoint deck",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "964464322774",
+              "text": "Please provide the URL to share the evidence of anonymous hotline in place (whistleblower line)",
+              "enableWhen": [
+                {
+                  "question": "472692576006",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "915687599356",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "381837758240",
+              "text": "If you don't have an evidence of anonymous hotline in place (whistleblower line), you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "472692576006",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "980007592888",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of Whistleblower policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/whistleblower-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "792435048661",
+              "type": "display",
+              "text": "You can provide the evidence of anonymous hotline in place (whistleblower line)",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "472692576006",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0005.1"
+            }
+          ],
+          "text": "Is there an employee hotline in place?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "277562966358",
+              "text": "Please provide the URL to share the evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website.",
+              "enableWhen": [
+                {
+                  "question": "765376425719",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "294030648493",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "851950410887",
+              "text": "If you don't have an evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "765376425719",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "665289846941",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of policies and procedures for reporting unethical behavior <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "863237236184",
+              "type": "display",
+              "text": "You can provide evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "765376425719",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0006.1"
+            }
+          ],
+          "text": "Are employees, third-parties, and customers directed on how to report unethical behaviour in a confidential manner?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "391935446035",
+              "text": "Please provide the URL to share the evidence of Internal Controls Matrix.",
+              "enableWhen": [
+                {
+                  "question": "122839727725",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "558564812687",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "783281060178",
+              "text": "If you don't have an evidence of Internal Controls Matrix, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "122839727725",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "424380040166",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of Internal Controls Matrix <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/leadership-governance-and-strategy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "222072239307",
+              "type": "display",
+              "text": "You can provide evidence of Internal Controls Matrix",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "122839727725",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0011"
+            }
+          ],
+          "text": "Does management maintain an Internal Controls Matrix that includes a list of implemented controls within the environment and technology infrastructure, ownership and operation of each control, control type (manual, automated, preventive, detective, corrective), frequency of operation (daily, weekly, monthly, quarterly, yearly, multiple times a day), and documentation of the relationship between business processes, relevant technologies, and controls securing those processes?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "796056107528",
+              "text": "Please provide the URL to share the evidence of operational reports that show the operational/system performance and internal controls effectiveness.",
+              "enableWhen": [
+                {
+                  "question": "387467035956",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "657338254165",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "509793170498",
+              "text": "If you don't have an evidence of operational reports that show the operational/system performance and internal controls effectiveness, you can refer our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "387467035956",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "646660208544",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample evidence of operational reports <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "619936506280",
+              "type": "display",
+              "text": "You can provide evidence of operational reports that show the operational/system performance and internal controls effectiveness",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "387467035956",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0001.1"
+            }
+          ],
+          "text": "Does management meet on a regular basis to discuss organizational goals and objectives? (This could be operations management, IT management, executive management, or a combination of these.)",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "671921888775",
+      "text": "Common Criteria Related to Control Environment"
+    },
+    {
+      "type": "group",
+      "linkId": "688660921201",
+      "text": "Common Criteria Related to Information and Communications ",
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "562687850605",
+              "text": "Please provide the URL to share the Description of system/services..",
+              "enableWhen": [
+                {
+                  "question": "683163909840",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "529001882135",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "521500592845",
+              "text": "If you don't have an description of system/services documentation, you can refer the ",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "683163909840",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "672045492674",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample description of system/services documentation <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/access-control-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "592330886531",
+              "type": "display",
+              "text": "As evidence, you can provide the Description of system/services..",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "683163909840",
+          "code": [
+            {
+              "code": "FII-SCF-AST-0004"
+            }
+          ],
+          "text": "Has management documented the description of their system for the services provided to their customers? A system description would include the following components used to provide services to their customers: Infrastructure (facilities, hardware, equipment), Software, People, Procedures, and Data.",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "542612221042",
+              "text": "Please provide the URL to share the Organizational structure.",
+              "enableWhen": [
+                {
+                  "question": "490498907662",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "210258347995",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "769306935484",
+              "text": "If you don't have an Organizational structure in place, you can refer the ",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "490498907662",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "252079424806",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Organizational structure <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "401090108606",
+              "type": "display",
+              "text": "As evidence, you can provide the Organizational structure.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "490498907662",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0006.1"
+            }
+          ],
+          "text": "Has management published the company's organizational structure?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "946994226499",
+              "text": "Please provide the URL to share the Privacy Policy.",
+              "enableWhen": [
+                {
+                  "question": "471582030921",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "776998638474",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "129196039837",
+              "text": "If you don't have an Privacy notice posted on website and software, you can refer the our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "471582030921",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "639067467952",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Privacy policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/privacy-management-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "884907262455",
+              "type": "display",
+              "text": "As evidence, you can provide the Privacy notice posted on website and software",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "471582030921",
+          "code": [
+            {
+              "code": "FII-SCF-PRI-0001"
+            }
+          ],
+          "text": "How are the entity's security/confidentiality responsibilities communicated to customers?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "390542572020",
+              "text": "Please provide the URL to share the procedures for reporting system failures and security breaches by customer.",
+              "enableWhen": [
+                {
+                  "question": "138462999411",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "583028397226",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "490525796362",
+              "text": "If you don't have an procedures for reporting system failures and security breaches by customer, you can refer the our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "138462999411",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "220439756069",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Escalation Processes <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/escalation-processes', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "216619441762",
+              "type": "display",
+              "text": "As evidence, you can provide that customers receive procedures for reporting system failures and security breaches (if not included in the contract).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "138462999411",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0010"
+            }
+          ],
+          "text": "How do customers report system failures and security breaches?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "736507258806",
+              "text": "Please provide the URL to share the Incident Response Policies and Procedures.",
+              "enableWhen": [
+                {
+                  "question": "296807821886",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "173286528419",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "342714132382",
+              "text": "If you don't have an Incident Response Policies and Procedures, you can refer the our sample version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "296807821886",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "402088098233",
+                  "type": "display",
+                  "_text": {
+                    "extension": [
+                      {
+                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                        "valueString": "<p>You can refer to the sample Incident Response Policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
+                      }
+                    ]
+                  },
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "725469154963",
+              "type": "display",
+              "text": "As evidence, you can provide that Incident Response Policies and Procedures.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "296807821886",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "Has management documented a formal Incident Response Policy?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "linkId": "781600890727",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"The SOC 2 Type-I Certification Evidence Collection Form is used to gather and document proof of an organization’s compliance with AICPA’s Trust Services Criteria (TSC) at a specific point in time. It includes evidence of implemented security controls, access management, incident response, data protection, and risk assessments to demonstrate adherence to SOC 2 Type-I requirements. This form streamlines the audit process by organizing necessary documentation for certification review.\",\n    \"title\": \"SOC2 Type-I Certification Evidence Collection Form\",\n    \"organization\": \"Netspective\"\n}'>\n</div>"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
+            "valueString": "display:none"
+          }
+        ]
+      },
+      "readOnly": true
+    }
+  ]
+}
