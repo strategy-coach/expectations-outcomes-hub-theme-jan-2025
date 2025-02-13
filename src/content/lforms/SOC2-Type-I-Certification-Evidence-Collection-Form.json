@@ -95,7 +95,14 @@
             {
               "type": "display",
               "linkId": "256266245743",
-              "text": "If you don't have an employee handbook in place, we can use our standard version.",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an employee handbook in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
               "enableWhen": [
                 {
                   "question": "916961188865",
@@ -103,35 +110,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "256266245743_helpText",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Employee Handbook <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -196,12 +174,11 @@
             {
               "type": "display",
               "linkId": "529236227520",
-              "text": "If you don't have an Organizational structure in place, you can refer the ",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Organizational structure in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\" onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -212,35 +189,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "611265960476",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Organizational structure <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -377,12 +325,11 @@
             {
               "type": "display",
               "linkId": "619691601565",
-              "text": "If you don't have an sample of (5) company job descriptions, you can refer our standard version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an sample of (5) company job descriptions, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -393,35 +340,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "778534740532",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample of (5) company job descriptions <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -522,12 +440,11 @@
             {
               "type": "display",
               "linkId": "161725988339",
-              "text": "If you don't have an employee handbook in place, you can refer our standard version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an employee handbook in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -538,35 +455,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "961065284224",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Employee Handbook <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -667,12 +555,11 @@
             {
               "type": "display",
               "linkId": "897271751233",
-              "text": "If you don't have an Hiring procedures in place, you can refer our standard version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Hiring procedures in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -683,35 +570,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "583160772493",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample of Hiring procedures <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -812,12 +670,11 @@
             {
               "type": "display",
               "linkId": "423075359378",
-              "text": "If you don't have an hiring checklist for a sample of employees, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an hiring checklist for a sample of employees, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -828,35 +685,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "216171037132",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the hiring checklist for a sample of employees <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -957,12 +785,11 @@
             {
               "type": "display",
               "linkId": "212718912052",
-              "text": "If you don't have an Hiring Policy, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Hiring Policy, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\" onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -973,35 +800,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "371170586284",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Hiring Policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1102,12 +900,11 @@
             {
               "type": "display",
               "linkId": "143129622083",
-              "text": "If you don't have an Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet), you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet), you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1118,35 +915,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "260647295025",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence to track the Professional Education Training <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1247,12 +1015,11 @@
             {
               "type": "display",
               "linkId": "429632751874",
-              "text": "If you don't have an evidence could include a links to the mentor program guide; a PowerPoint deck; emails, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence could include a links to the mentor program guide; a PowerPoint deck; emails, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1263,35 +1030,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "821206525966",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of the mentor program guide <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1392,12 +1130,11 @@
             {
               "type": "display",
               "linkId": "485012925103",
-              "text": "If you don't have an evidence as Termination procedures, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence as Termination procedures, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1408,35 +1145,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "158560683500",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Termination procedures <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1537,12 +1245,11 @@
             {
               "type": "display",
               "linkId": "340143268267",
-              "text": "If you don't have an evidence as Termination checklist for a sample of employees, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence as Termination checklist for a sample of employees, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1553,35 +1260,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "354540654533",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the Termination checklist for a sample of employees <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1682,12 +1360,11 @@
             {
               "type": "display",
               "linkId": "959436404500",
-              "text": "If you don't have an evidence as Listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence as Listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/key-management-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1698,35 +1375,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "971644057979",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of listing of Executive Management <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/key-management-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1827,12 +1475,11 @@
             {
               "type": "display",
               "linkId": "279251979325",
-              "text": "If you don't have an evidence of performance evaluation forms, tracking tool/spreadsheet, or certificates, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of performance evaluation forms, tracking tool/spreadsheet, or certificates, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1843,35 +1490,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "866069332871",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of performance evaluation forms <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1972,12 +1590,11 @@
             {
               "type": "display",
               "linkId": "947012786695",
-              "text": "If you don't have an evidence of employee training documentation, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of employee training documentation, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -1988,35 +1605,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "192011198973",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of employee training documentation <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2117,12 +1705,11 @@
             {
               "type": "display",
               "linkId": "466149180645",
-              "text": "If you don't have an evidence of cross-training employees documentation, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of cross-training employees documentation, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2133,35 +1720,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "751462327768",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of cross-training employees documentation <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2262,12 +1820,11 @@
             {
               "type": "display",
               "linkId": "381837758240",
-              "text": "If you don't have an evidence of anonymous hotline in place (whistleblower line), you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of anonymous hotline in place (whistleblower line), you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/whistleblower-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2278,35 +1835,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "980007592888",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of Whistleblower policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/whistleblower-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2407,12 +1935,11 @@
             {
               "type": "display",
               "linkId": "851950410887",
-              "text": "If you don't have an evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2423,35 +1950,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "665289846941",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of policies and procedures for reporting unethical behavior <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2552,12 +2050,11 @@
             {
               "type": "display",
               "linkId": "783281060178",
-              "text": "If you don't have an evidence of Internal Controls Matrix, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of Internal Controls Matrix, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/leadership-governance-and-strategy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2568,35 +2065,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "424380040166",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of Internal Controls Matrix <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/leadership-governance-and-strategy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2697,12 +2165,11 @@
             {
               "type": "display",
               "linkId": "509793170498",
-              "text": "If you don't have an evidence of operational reports that show the operational/system performance and internal controls effectiveness, you can refer our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an evidence of operational reports that show the operational/system performance and internal controls effectiveness, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\" onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2713,35 +2180,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "646660208544",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample evidence of operational reports <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2852,12 +2290,11 @@
             {
               "type": "display",
               "linkId": "521500592845",
-              "text": "If you don't have an description of system/services documentation, you can refer the ",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an description of system/services documentation, you can refer our sample version  <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/access-control-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2868,35 +2305,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "672045492674",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample description of system/services documentation <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/access-control-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -2997,12 +2405,11 @@
             {
               "type": "display",
               "linkId": "769306935484",
-              "text": "If you don't have an Organizational structure in place, you can refer the ",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Organizational structure in place, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -3013,35 +2420,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "252079424806",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Organizational structure <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -3142,12 +2520,11 @@
             {
               "type": "display",
               "linkId": "129196039837",
-              "text": "If you don't have an Privacy notice posted on website and software, you can refer the our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Privacy notice posted on website and software, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/privacy-management-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -3158,35 +2535,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "639067467952",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Privacy policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/privacy-management-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -3287,12 +2635,11 @@
             {
               "type": "display",
               "linkId": "490525796362",
-              "text": "If you don't have an procedures for reporting system failures and security breaches by customer, you can refer the our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an procedures for reporting system failures and security breaches by customer, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/escalation-processes', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -3303,35 +2650,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "220439756069",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Escalation Processes <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/escalation-processes', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -3432,12 +2750,11 @@
             {
               "type": "display",
               "linkId": "342714132382",
-              "text": "If you don't have an Incident Response Policies and Procedures, you can refer the our sample version.",
               "_text": {
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<a href=\"https://github.com/opsfolio/civco.hub.opsfolio.com/commit/b345d36127a107f2f18971f7001033efe8e5076e\" target=\"_blank\">sample</a>."
+                    "valueString": "<p>If you don't have an Incident Response Policies and Procedures, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -3448,35 +2765,6 @@
                   "answerCoding": {
                     "display": "No"
                   }
-                }
-              ],
-              "item": [
-                {
-                  "linkId": "402088098233",
-                  "type": "display",
-                  "_text": {
-                    "extension": [
-                      {
-                        "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                        "valueString": "<p>You can refer to the sample Incident Response Policy <span style=\"color:blue; text-decoration:none; cursor:pointer;\" \n onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
-                      }
-                    ]
-                  },
-                  "extension": [
-                    {
-                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-                      "valueCodeableConcept": {
-                        "coding": [
-                          {
-                            "system": "http://hl7.org/fhir/questionnaire-item-control",
-                            "code": "help",
-                            "display": "Help-Button"
-                          }
-                        ],
-                        "text": "Help-Button"
-                      }
-                    }
-                  ]
                 }
               ]
             },

@@ -7,10 +7,10 @@ const userId = Cookies.get('zitadel_user_id');
 interface LHCFormsWidgetProps {
     data: string | number | boolean | null | Record<string, unknown> | unknown[];
     fileName?: string;
-    showData?: boolean;
+    allowSubmit?: boolean;
 }
 
-const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, showData }) => {
+const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, allowSubmit }) => {
 
     const [notification, setNotification] = useState<{ show: boolean; color: string; message: string }>({
         show: false,
@@ -23,7 +23,7 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, showDat
 
     useEffect(() => {
         if (data && formContainerRef.current) {
-            LForms.Util.addFormToPage(data, formContainerRef.current); // Render the form from the data
+            LForms.Util.addFormToPage(data, formContainerRef.current, { "allowHTML": true }); // Render the form from the data
         }
     }, [data]);
 
@@ -93,7 +93,7 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, showDat
                 </div>
             )}
             <div id="lhc-form-container" ref={formContainerRef}></div>
-            {!showData &&
+            {!allowSubmit &&
                 <div className="w-full text-center "><button
                     onClick={getLHCFormData}
                     type="button"
