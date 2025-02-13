@@ -45,7 +45,7 @@ const LHCFormData = JSON.parse(LHCFormString);
 
 // Function to extract meta information
 function getLHCFormMetaInformation(
-  lhcFormData: unknown
+  lhcFormData: unknown,
 ): LHCFormMetaInformation | null {
   // Validate and parse the input
   const parsedData = LHCFormDataSchema.safeParse(lhcFormData);
@@ -55,21 +55,21 @@ function getLHCFormMetaInformation(
     item._text?.extension?.some(
       (ext) =>
         ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml" &&
-        ext.valueString.includes('id="lhcFormMetaInformation"')
-    )
+        ext.valueString.includes('id="lhcFormMetaInformation"'),
+    ),
   );
 
   if (!metaInfoSection) return null;
 
   const xhtmlExtension = metaInfoSection._text?.extension?.find(
     (ext) =>
-      ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml"
+      ext.url === "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
   );
 
   if (!xhtmlExtension?.valueString) return null;
 
   const match = xhtmlExtension.valueString.match(
-    /id="lhcFormMetaInformation" value='([^']+)'/
+    /id="lhcFormMetaInformation" value='([^']+)'/,
   );
 
   try {
@@ -122,7 +122,7 @@ function timeAgo(dateStr) {
 
 <head>
   <link
-    href="https://lhcforms-static.nlm.nih.gov/lforms-versions/34.0.0/webcomponent/styles.css"
+    href="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/webcomponent/styles.css"
     media="screen"
     rel="stylesheet"
   />
