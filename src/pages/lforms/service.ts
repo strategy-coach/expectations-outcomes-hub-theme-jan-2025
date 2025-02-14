@@ -1,8 +1,9 @@
 import sqlite3 from "sqlite3";
 import path from "path";
 import * as fs from "fs";
+import { lformDB } from "../../utils/env";
 
-const dbName = "resource-surveillance.sqlite.db";
+const dbName = lformDB.dbPath;
 const dbPath = path.resolve(process.cwd(), dbName);
 export const getFiledatails = async (filepath: string, fileName: string): Promise<Array<Record<string, any>> | string> => {
     return new Promise((resolve, reject) => {

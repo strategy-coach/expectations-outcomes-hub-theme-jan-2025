@@ -22,3 +22,9 @@ htmloutput/
 # demo db
 database-query-renderer-demo/employee.db
 user_demo_db/resource-surveillance.sqlite.db
+
+# db
+src/content/db/imap-mail-db/resource-surveillance.sqlite.db
+src/content/db/lforms/resource-surveillance.sqlite.db
+src/content/db/models/resource-surveillance.sqlite.db
+src/content/db/users/resource-surveillance.sqlite.db

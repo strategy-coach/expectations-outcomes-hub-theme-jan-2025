@@ -13,3 +13,7 @@ export const teamDBConfig = {
     dbName: import.meta.env.PUBLIC_TEAM_DB,
     isEnableTeamDB: import.meta.env.ENABLE_DB_TEAM === 'true'
 };
+
+export const lformDB = {
+    dbPath: import.meta.env.PUBLIC_LFORM_DB,
+};

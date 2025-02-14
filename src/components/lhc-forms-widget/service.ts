@@ -1,5 +1,6 @@
 import sqlite3 from "sqlite3";
-
+import path from 'path';
+import { lformDB } from "../../utils/env";
 interface FormDataType {
     content_fm_body_attrs: Text;
     content: Text;
@@ -9,11 +10,15 @@ interface FormDataType {
 export const getFormData = async (fileName: string): Promise<FormDataType[]> => {
     return new Promise((resolve, reject) => {
         try {
+            const dbName = lformDB.dbPath;
+            const dbPath = path.resolve(process.cwd(), dbName);
+
             const db = new sqlite3.Database(
-                "resource-surveillance.sqlite.db",
+                dbPath,
                 sqlite3.OPEN_READWRITE,
                 (err: Error | null) => {
                     if (err) {
+                        console.log(err)
                         console.error(`Database connection error: ${err.message}`);
                         return reject(err);
                     }

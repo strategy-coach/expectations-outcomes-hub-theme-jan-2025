@@ -1,0 +1,2862 @@
+{
+  "lformsVersion": "36.8.0",
+  "PATH_DELIMITER": "/",
+  "code": null,
+  "codeList": null,
+  "identifier": null,
+  "name": "SOC2 Type I Certification Evidence Collection Form",
+  "template": "table",
+  "items": [
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "General Information",
+      "questionCode": "323289382098",
+      "questionCodeSystem": "LinkId",
+      "linkId": "323289382098",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "Organization Name",
+          "questionCode": "843509936337",
+          "questionCodeSystem": "LinkId",
+          "linkId": "843509936337",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "Netspective"
+        },
+        {
+          "dataType": "ST",
+          "question": "Organization Address",
+          "questionCode": "834824167845",
+          "questionCodeSystem": "LinkId",
+          "linkId": "834824167845",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "Netspective Communications LLC, 1802 Brightseat Rd. Suite 101, Landover, MD 20785"
+        },
+        {
+          "dataType": "ST",
+          "question": "Product Name",
+          "questionCode": "574440750588",
+          "questionCodeSystem": "LinkId",
+          "linkId": "574440750588",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "Opsfolio Suite"
+        },
+        {
+          "dataType": "URL",
+          "question": "Website",
+          "questionCode": "924260494641",
+          "questionCodeSystem": "LinkId",
+          "linkId": "924260494641",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "https://suite.opsfolio.com/"
+        },
+        {
+          "dataType": "ST",
+          "question": "Point of Contact",
+          "questionCode": "403261366197",
+          "questionCodeSystem": "LinkId",
+          "linkId": "403261366197",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "Shahid Shah"
+        },
+        {
+          "dataType": "ST",
+          "question": "Contact Email",
+          "questionCode": "647686221633",
+          "questionCodeSystem": "LinkId",
+          "linkId": "647686221633",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "sales@netspective.com"
+        },
+        {
+          "dataType": "DTM",
+          "question": "Date of Submission",
+          "questionCode": "960033154529",
+          "questionCodeSystem": "LinkId",
+          "linkId": "960033154529",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "2025-02-13T04:33:06.527Z"
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Common Criteria Related to Control Environment",
+      "questionCode": "671921888775",
+      "questionCodeSystem": "LinkId",
+      "linkId": "671921888775",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "Are core values are communicated from executive management to personnel through policies and the employee handbook?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0005"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0005",
+          "linkId": "916961188865",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Employee Handbook or Manual.",
+              "questionCode": "766948998506",
+              "questionCodeSystem": "LinkId",
+              "linkId": "766948998506",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "916961188865",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, HRMS portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, HRMS portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an employee handbook in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "256266245743",
+              "questionCodeSystem": "LinkId",
+              "linkId": "256266245743",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "916961188865",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide the Employee Handbook or Manual.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide the Employee Handbook or Manual.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Is management's organizational structure with relevant reporting lines documented in an organization chart?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0003"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0003",
+          "linkId": "294993139324",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Organizational structure in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\" onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "529236227520",
+              "questionCodeSystem": "LinkId",
+              "linkId": "529236227520",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "294993139324",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Organizational structure.",
+              "questionCode": "850062740124",
+              "questionCodeSystem": "LinkId",
+              "linkId": "850062740124",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "294993139324",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide the Organizational structure.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide the Organizational structure.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Can management provide a sample of (5) company job descriptions?",
+          "codeList": [
+            {
+              "code": "FII-SCF-GOV-0004"
+            }
+          ],
+          "questionCode": "FII-SCF-GOV-0004",
+          "linkId": "527640791166",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share sample of (5) company job descriptions.",
+              "questionCode": "590639128215",
+              "questionCodeSystem": "LinkId",
+              "linkId": "590639128215",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "527640791166",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an sample of (5) company job descriptions, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "619691601565",
+              "questionCodeSystem": "LinkId",
+              "linkId": "619691601565",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "527640791166",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide roles and responsibilities as evidence, including those of the CISO, CFO, Data Privacy Officer, and other relevant roles.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide roles and responsibilities as evidence, including those of the CISO, CFO, Data Privacy Officer, and other relevant roles.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Is there an employee handbook in place, and does it include the organization's entity values and behavioral standards? If yes, how is it made available for all employees?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0005.1"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0005.1",
+          "linkId": "460559993229",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Employee Handbook or Manual.",
+              "questionCode": "299388771480",
+              "questionCodeSystem": "LinkId",
+              "linkId": "299388771480",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "460559993229",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an employee handbook in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "161725988339",
+              "questionCodeSystem": "LinkId",
+              "linkId": "161725988339",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "460559993229",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide Employee Manual or Handbook.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide Employee Manual or Handbook.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Has management documented formal HR procedures that include the employee on-boarding process?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0004"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0004",
+          "linkId": "717681155587",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Hiring procedures.",
+              "questionCode": "592488151622",
+              "questionCodeSystem": "LinkId",
+              "linkId": "592488151622",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "717681155587",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Hiring procedures in place, you can refer our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "897271751233",
+              "questionCodeSystem": "LinkId",
+              "linkId": "897271751233",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "717681155587",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide Hiring procedures.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide Hiring procedures.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are new hire checklists utilized, and activities documented to help facilitate new hire procedures?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0004"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0004",
+          "linkId": "195460520299",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the hiring checklist for a sample of employees.",
+              "questionCode": "268992988810",
+              "questionCodeSystem": "LinkId",
+              "linkId": "268992988810",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "195460520299",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an hiring checklist for a sample of employees, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "423075359378",
+              "questionCodeSystem": "LinkId",
+              "linkId": "423075359378",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "195460520299",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the hiring checklist for a sample of employees",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the hiring checklist for a sample of employees",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "How are candidates recruited for job openings? Evidence could include the recruitment policies and procedures; a PowerPoint deck, a questionnaire, job opening postings, or emails.",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0009.3"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0009.3",
+          "linkId": "370468490673",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Hiring Policy.",
+              "questionCode": "253597832407",
+              "questionCodeSystem": "LinkId",
+              "linkId": "253597832407",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "370468490673",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Hiring Policy, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\" onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/hiring-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "212718912052",
+              "questionCodeSystem": "LinkId",
+              "linkId": "212718912052",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "370468490673",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence that a third party (if a third party is used for recruiting) or Hiring Policy",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence that a third party (if a third party is used for recruiting) or Hiring Policy",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are there any requirements for Continued Professional Education Training among employees?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0004.2"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0004.2",
+          "linkId": "625215329635",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
+              "questionCode": "366142256337",
+              "questionCodeSystem": "LinkId",
+              "linkId": "366142256337",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "625215329635",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet), you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "143129622083",
+              "questionCodeSystem": "LinkId",
+              "linkId": "143129622083",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "625215329635",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet)",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Is there a mentor program to develop personnel in place?",
+          "codeList": [
+            {
+              "code": "FII-SCF-SAT-0002"
+            }
+          ],
+          "questionCode": "FII-SCF-SAT-0002",
+          "linkId": "957772901302",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
+              "questionCode": "249845764049",
+              "questionCodeSystem": "LinkId",
+              "linkId": "249845764049",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "957772901302",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence could include a links to the mentor program guide; a PowerPoint deck; emails, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "429632751874",
+              "questionCodeSystem": "LinkId",
+              "linkId": "429632751874",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "957772901302",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence could include a links to the mentor program guide; a PowerPoint deck; emails",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Has management documented formal HR procedures that include employee terminations?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0009"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0009",
+          "linkId": "319319609491",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence as Termination procedures",
+              "questionCode": "769716965665",
+              "questionCodeSystem": "LinkId",
+              "linkId": "769716965665",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "319319609491",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence as Termination procedures, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "485012925103",
+              "questionCodeSystem": "LinkId",
+              "linkId": "485012925103",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "319319609491",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence as Termination procedures",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence as Termination procedures",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are termination checklists utilized, and activities documented to facilitate termination procedures?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0009.2"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0009.2",
+          "linkId": "935997113209",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence as Termination checklist for a sample of employees",
+              "questionCode": "938972869777",
+              "questionCodeSystem": "LinkId",
+              "linkId": "938972869777",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "935997113209",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence as Termination checklist for a sample of employees, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/termination-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "340143268267",
+              "questionCodeSystem": "LinkId",
+              "linkId": "340143268267",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "935997113209",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence as Termination checklist for a sample of employees",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence as Termination checklist for a sample of employees",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Can you provide a listing of executive management members?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0002"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0002",
+          "linkId": "710547647178",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence as listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
+              "questionCode": "444995333773",
+              "questionCodeSystem": "LinkId",
+              "linkId": "444995333773",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "710547647178",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence as Listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/key-management-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "959436404500",
+              "questionCodeSystem": "LinkId",
+              "linkId": "959436404500",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "710547647178",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence as listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence as listing of Executive Management (e.g. President, CIO, CTO, CEO, CFO, etc.) Members",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are formal performance evaluations completed and documented? If yes, on what frequency and does this apply to all personnel? This includes executive management members such as CIO, CTO, CEO.",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0003.2"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0003.2",
+          "linkId": "904763995104",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
+              "questionCode": "912811701496",
+              "questionCodeSystem": "LinkId",
+              "linkId": "912811701496",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "904763995104",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of performance evaluation forms, tracking tool/spreadsheet, or certificates, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "279251979325",
+              "questionCodeSystem": "LinkId",
+              "linkId": "279251979325",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "904763995104",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence could include performance evaluation forms, tracking tool/spreadsheet, or certificates",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Do employees complete periodic information security training?",
+          "codeList": [
+            {
+              "code": "FII-SCF-GOV-0005"
+            }
+          ],
+          "questionCode": "FII-SCF-GOV-0005",
+          "linkId": "398369140416",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence could include employee training documentation",
+              "questionCode": "951162573926",
+              "questionCodeSystem": "LinkId",
+              "linkId": "951162573926",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "398369140416",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of employee training documentation, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "947012786695",
+              "questionCodeSystem": "LinkId",
+              "linkId": "947012786695",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "398369140416",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence could include employee training documentation",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence could include employee training documentation",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are employees cross-trained in roles and responsibilities? Evidence could include training materials; policies and procedures relating to training requirements; PowerPoint deck",
+          "codeList": [
+            {
+              "code": "FII-SCF-GOV-0005.1"
+            }
+          ],
+          "questionCode": "FII-SCF-GOV-0005.1",
+          "linkId": "441480275309",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence could include cross-training employees documentation",
+              "questionCode": "945880403298",
+              "questionCodeSystem": "LinkId",
+              "linkId": "945880403298",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "441480275309",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of cross-training employees documentation, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/security-awareness-and-training-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "466149180645",
+              "questionCodeSystem": "LinkId",
+              "linkId": "466149180645",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "441480275309",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence as cross-training employees documentation",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence as cross-training employees documentation",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Is there an employee hotline in place?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0005.1"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0005.1",
+          "linkId": "472692576006",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence of anonymous hotline in place (whistleblower line)",
+              "questionCode": "964464322774",
+              "questionCodeSystem": "LinkId",
+              "linkId": "964464322774",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "472692576006",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of anonymous hotline in place (whistleblower line), you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/whistleblower-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "381837758240",
+              "questionCodeSystem": "LinkId",
+              "linkId": "381837758240",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "472692576006",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide the evidence of anonymous hotline in place (whistleblower line)",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide the evidence of anonymous hotline in place (whistleblower line)",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are employees, third-parties, and customers directed on how to report unethical behaviour in a confidential manner?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0006.1"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0006.1",
+          "linkId": "765376425719",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website.",
+              "questionCode": "277562966358",
+              "questionCodeSystem": "LinkId",
+              "linkId": "277562966358",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "765376425719",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "851950410887",
+              "questionCodeSystem": "LinkId",
+              "linkId": "851950410887",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "765376425719",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide evidence of policies and procedures for reporting unethical behavior, emails related to reporting unethical behavior, a PowerPoint presentation, or a website.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Does management maintain an Internal Controls Matrix that includes a list of implemented controls within the environment and technology infrastructure, ownership and operation of each control, control type (manual, automated, preventive, detective, corrective), frequency of operation (daily, weekly, monthly, quarterly, yearly, multiple times a day), and documentation of the relationship between business processes, relevant technologies, and controls securing those processes?",
+          "codeList": [
+            {
+              "code": "FII-SCF-HRS-0011"
+            }
+          ],
+          "questionCode": "FII-SCF-HRS-0011",
+          "linkId": "122839727725",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence of Internal Controls Matrix.",
+              "questionCode": "391935446035",
+              "questionCodeSystem": "LinkId",
+              "linkId": "391935446035",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "122839727725",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of Internal Controls Matrix, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/leadership-governance-and-strategy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "783281060178",
+              "questionCodeSystem": "LinkId",
+              "linkId": "783281060178",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "122839727725",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide evidence of Internal Controls Matrix",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide evidence of Internal Controls Matrix",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Does management meet on a regular basis to discuss organizational goals and objectives? (This could be operations management, IT management, executive management, or a combination of these.)",
+          "codeList": [
+            {
+              "code": "FII-SCF-GOV-0001.1"
+            }
+          ],
+          "questionCode": "FII-SCF-GOV-0001.1",
+          "linkId": "387467035956",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the evidence of operational reports that show the operational/system performance and internal controls effectiveness.",
+              "questionCode": "796056107528",
+              "questionCodeSystem": "LinkId",
+              "linkId": "796056107528",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "387467035956",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, portal or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an evidence of operational reports that show the operational/system performance and internal controls effectiveness, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\" onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "509793170498",
+              "questionCodeSystem": "LinkId",
+              "linkId": "509793170498",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "387467035956",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "You can provide evidence of operational reports that show the operational/system performance and internal controls effectiveness",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "You can provide evidence of operational reports that show the operational/system performance and internal controls effectiveness",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Common Criteria Related to Information and Communications ",
+      "questionCode": "688660921201",
+      "questionCodeSystem": "LinkId",
+      "linkId": "688660921201",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "Has management documented the description of their system for the services provided to their customers? A system description would include the following components used to provide services to their customers: Infrastructure (facilities, hardware, equipment), Software, People, Procedures, and Data.",
+          "codeList": [
+            {
+              "code": "FII-SCF-AST-0004"
+            }
+          ],
+          "questionCode": "FII-SCF-AST-0004",
+          "linkId": "683163909840",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Description of system/services..",
+              "questionCode": "562687850605",
+              "questionCodeSystem": "LinkId",
+              "linkId": "562687850605",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "683163909840",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an description of system/services documentation, you can refer our sample version  <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/access-control-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "521500592845",
+              "questionCodeSystem": "LinkId",
+              "linkId": "521500592845",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "683163909840",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide the Description of system/services..",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide the Description of system/services..",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Has management published the company's organizational structure?",
+          "codeList": [
+            {
+              "code": "FII-SCF-NET-0006.1"
+            }
+          ],
+          "questionCode": "FII-SCF-NET-0006.1",
+          "linkId": "490498907662",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Organizational structure.",
+              "questionCode": "542612221042",
+              "questionCodeSystem": "LinkId",
+              "linkId": "542612221042",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "490498907662",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Organizational structure in place, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/human-resource-quality-infrastructure/employee-handbook', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "769306935484",
+              "questionCodeSystem": "LinkId",
+              "linkId": "769306935484",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "490498907662",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide the Organizational structure.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide the Organizational structure.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "How are the entity's security/confidentiality responsibilities communicated to customers?",
+          "codeList": [
+            {
+              "code": "FII-SCF-PRI-0001"
+            }
+          ],
+          "questionCode": "FII-SCF-PRI-0001",
+          "linkId": "471582030921",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Privacy Policy.",
+              "questionCode": "946994226499",
+              "questionCodeSystem": "LinkId",
+              "linkId": "946994226499",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "471582030921",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Privacy notice posted on website and software, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/privacy-management-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "129196039837",
+              "questionCodeSystem": "LinkId",
+              "linkId": "129196039837",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "471582030921",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide the Privacy notice posted on website and software",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide the Privacy notice posted on website and software",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "How do customers report system failures and security breaches?",
+          "codeList": [
+            {
+              "code": "FII-SCF-IRO-0010"
+            }
+          ],
+          "questionCode": "FII-SCF-IRO-0010",
+          "linkId": "138462999411",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the procedures for reporting system failures and security breaches by customer.",
+              "questionCode": "390542572020",
+              "questionCodeSystem": "LinkId",
+              "linkId": "390542572020",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "138462999411",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an procedures for reporting system failures and security breaches by customer, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/escalation-processes', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "490525796362",
+              "questionCodeSystem": "LinkId",
+              "linkId": "490525796362",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "138462999411",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide that customers receive procedures for reporting system failures and security breaches (if not included in the contract).",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide that customers receive procedures for reporting system failures and security breaches (if not included in the contract).",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Has management documented a formal Incident Response Policy?",
+          "codeList": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "questionCode": "FII-SCF-IRO-0001",
+          "linkId": "296807821886",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "items": [
+            {
+              "dataType": "ST",
+              "question": "Please provide the URL to share the Incident Response Policies and Procedures.",
+              "questionCode": "736507258806",
+              "questionCodeSystem": "LinkId",
+              "linkId": "736507258806",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "296807821886",
+                    "trigger": {
+                      "value": {
+                        "text": "Yes"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "items": [],
+              "codingInstructions": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codingInstructionsFormat": "text",
+              "codingInstructionsPlain": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            },
+            {
+              "dataType": "TITLE",
+              "obj_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have an Incident Response Policies and Procedures, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "questionCode": "342714132382",
+              "questionCodeSystem": "LinkId",
+              "linkId": "342714132382",
+              "questionCardinality": {
+                "max": "1",
+                "min": "1"
+              },
+              "skipLogic": {
+                "conditions": [
+                  {
+                    "source": "296807821886",
+                    "trigger": {
+                      "value": {
+                        "text": "No"
+                      }
+                    }
+                  }
+                ],
+                "action": "show"
+              },
+              "codeList": [],
+              "answerCardinality": {
+                "min": "0",
+                "max": "1"
+              }
+            }
+          ],
+          "codingInstructions": "As evidence, you can provide that Incident Response Policies and Procedures.",
+          "codingInstructionsFormat": "text",
+          "codingInstructionsPlain": "As evidence, you can provide that Incident Response Policies and Procedures.",
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "No"
+          }
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Meta Information",
+      "obj_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"The SOC 2 Type-I Certification Evidence Collection Form is used to gather and document proof of an organization’s compliance with AICPA’s Trust Services Criteria (TSC) at a specific point in time. It includes evidence of implemented security controls, access management, incident response, data protection, and risk assessments to demonstrate adherence to SOC 2 Type-I requirements. This form streamlines the audit process by organizing necessary documentation for certification review.\",\n    \"title\": \"SOC2 Type-I Certification Evidence Collection Form\",\n    \"organization\": \"Netspective\"\n}'>\n</div>"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-style",
+            "valueString": "display:none"
+          }
+        ]
+      },
+      "questionCode": "781600890727",
+      "questionCodeSystem": "LinkId",
+      "linkId": "781600890727",
+      "editable": "0",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    }
+  ],
+  "templateOptions": {
+    "showQuestionCode": false,
+    "showCodingInstruction": false,
+    "allowMultipleEmptyRepeatingItems": false,
+    "allowHTML": true,
+    "displayControl": {
+      "questionLayout": "vertical"
+    },
+    "viewMode": "auto",
+    "defaultAnswerLayout": {
+      "answerLayout": {
+        "type": "COMBO_BOX",
+        "columns": "0"
+      }
+    },
+    "hideTreeLine": false,
+    "hideIndentation": false,
+    "hideRepetitionNumber": false,
+    "displayScoreWithAnswerText": true,
+    "displayInvalidHTML": false,
+    "messageLevel": "error"
+  },
+  "hasSavedData": true,
+  "fhirVersion": "R4"
+}

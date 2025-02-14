@@ -25,7 +25,6 @@ const filteredMenuTree = removeSubmissions(menuTree);
 const fileName = filteredMenuTree[0].path.split("/").pop() || "";
 const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
 const data = await getFiledatails(filePath, fileName);
-
 const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
 
 const { searchParams } = Astro.url;
@@ -136,7 +135,7 @@ const inActiveTabClass =
             ) : (
               <div id="submitted-data" class="p-4">
                 <div class="relative overflow-x-auto">
-                  {data.length > 0 ? (
+                  {typeof data != "string" ? (
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -150,13 +149,10 @@ const inActiveTabClass =
                       </thead>
                       <tbody>
                         {data.map(
-                          (
-                            item: {
-                              uri: string;
-                              file_date: string | number | Date;
-                            },
-                            index: any
-                          ) => (
+                          (item: {
+                            uri: string;
+                            file_date: string | number | Date;
+                          }) => (
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                               <td class="p-2 break-all">
                                 <a
