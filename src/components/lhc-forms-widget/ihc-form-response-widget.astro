@@ -3,7 +3,7 @@ import * as fs from "fs";
 import LformWidget from "../lhc-forms-widget/index";
 
 const { fileName } = Astro.props;
-import { getFormData } from "../../../support/service";
+import { getFormData } from "./service";
 const data = await getFormData(fileName);
 ---
 
