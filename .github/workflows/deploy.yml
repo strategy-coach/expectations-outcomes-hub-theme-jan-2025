@@ -38,6 +38,7 @@ jobs:
           ENABLE_OPEN_OBSERVE: ${{ vars.ENABLE_OPEN_OBSERVE }}
           PUBLIC_TEAM_DB: ${{ vars.PUBLIC_TEAM_DB }}
           ENABLE_DB_TEAM: ${{ vars.ENABLE_DB_TEAM }}
+          PUBLIC_LFORM_DB: ${{ vars.PUBLIC_LFORM_DB }}
         run: |
           bash -x support/ci-cd.sh      
           
