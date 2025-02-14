@@ -664,6 +664,14 @@ Within this file, the `DatabaseQueryRenderer` component is used to display the t
 2. Ensure that the `.env` configuration has `ENABLE_DB_TEAM=true` to activate the database query.
 3. When visiting the team list page, the data will automatically be fetched and displayed in a table format from the specified database.
 
+### Comments
+
+To enable the comments section in specific markdown (.md or .mdx) files, set discussionsEnabled: true in the front matter.
+By default, the discussionsEnabled field is false, meaning the comments section will be hidden unless explicitly enabled.
+
+```
+discussionsEnabled: true
+```
 
 ---
 

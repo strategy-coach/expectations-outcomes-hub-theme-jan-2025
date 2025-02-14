@@ -6,7 +6,7 @@ const baseSchema = z.object({
   title: z.string(),
   date: z.string().optional(),
   description: z.string().optional(),
-  discussionsEnabled: z.boolean().optional(),
+  discussionsEnabled: z.boolean().optional().default(false),
   home: z
     .object({
       skipTo: z
@@ -28,7 +28,7 @@ const baseSchema = z.object({
         .object({
           category: z.string().optional(),
         })
-        .optional()
+        .optional(),
     })
     .optional(),
 });
