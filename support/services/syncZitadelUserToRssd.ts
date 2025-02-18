@@ -1,6 +1,7 @@
 import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 import * as z from "https://deno.land/x/zod@v3.23.8/mod.ts";
 import { DB } from "https://deno.land/x/sqlite@v3.9.1/mod.ts";
+import { parseArgs } from "jsr:@std/cli/parse-args";
 import axios from "axios";
 /**
  * Load and validate environment variables
@@ -20,6 +21,9 @@ if (!ZITADEL_API_TOKEN || !ZITADEL_ORGANIZATION_ID || !ZITADEL_AUTHORITY) {
  * Initialize SQLite database connection
  */
 const database = new DB("src/content/db/resource-surveillance.sqlite.db");
+
+const args = parseArgs(Deno.args);
+const syncUsersOnly = args.syncUsersOnly ?? "false";
 
 /**
  * Zod Schemas for Data Validation
@@ -360,15 +364,19 @@ async function main(): Promise<void> {
             license: "",
             registration_date: ""
         }];
-        insertRecords("contact_type", contactTypes, ["contact_type_id", "code", "value"]);
-        insertRecords("gender_type", genderData, ["gender_type_id", "code", "value"]);
-        insertRecords("sex_type", sexTypeData, ["sex_type_id", "code", "value"]);
+
+        if (syncUsersOnly === "false") {
+            insertRecords("contact_type", contactTypes, ["contact_type_id", "code", "value"]);
+            insertRecords("gender_type", genderData, ["gender_type_id", "code", "value"]);
+            insertRecords("sex_type", sexTypeData, ["sex_type_id", "code", "value"]);
+            insertRecords("person_type", personTypeData, ["person_type_id", "code", "value"]);
+            insertRecords("organization_role_type", organizationRoleTypes, ["organization_role_type_id", "code", "value"]);
+            insertRecords("organization", organizationData, ["organization_id", "party_id", "name", "alias", "description", "license", "registration_date"]);
+        }
+
         insertRecords("party", [...partyData, ...tenantData], ["party_id", "party_type_id", "party_name"]);
         insertRecords("contact_electronic", contactElectronics, ["contact_electronic_id", "contact_type_id", "party_id", "electronics_details"]);
-        insertRecords("person_type", personTypeData, ["person_type_id", "code", "value"]);
         insertRecords("person", personData, ["person_id", "party_id", "person_type_id", "person_first_name", "person_last_name", "gender_id", "sex_id"]);
-        insertRecords("organization_role_type", organizationRoleTypes, ["organization_role_type_id", "code", "value"]);
-        insertRecords("organization", organizationData, ["organization_id", "party_id", "name", "alias", "description", "license", "registration_date"]);
         insertRecords("organization_role", organizationRoleData, ["organization_role_id", "person_id", "organization_id", "organization_role_type_id"]);
     } catch (error) {
         console.error("Unexpected error in main execution:", error);
