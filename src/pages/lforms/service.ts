@@ -1,12 +1,16 @@
+// deno-lint-ignore-file require-await
 import sqlite3 from "sqlite3";
-import path from "path";
-import * as fs from "fs";
-import { lformDB } from "../../utils/env";
+import path from "node:path";
+import * as fs from "node:fs";
+import { lformDB } from "../../utils/env.ts";
+import process from "node:process";
+import { FileDetails } from "./types.ts";
+
 
 const dbName = lformDB.dbPath;
 const dbPath = path.resolve(process.cwd(), dbName);
-export const getFiledatails = async (filepath: string, fileName: string): Promise<Array<Record<string, any>> | string> => {
-    return new Promise((resolve, reject) => {
+export const getFiledatails = async (filepath: string): Promise<FileDetails[] | string> => {
+    return new Promise((resolve) => {
         const query = `SELECT uri,last_modified_at as file_date FROM uniform_resource WHERE uri LIKE '%${filepath}' AND nature='json'`;
 
         // Check if name is not null
