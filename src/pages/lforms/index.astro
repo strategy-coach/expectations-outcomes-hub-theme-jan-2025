@@ -8,6 +8,7 @@ import themeConfig from "../../../theme.config";
 import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
 import { getFiledatails } from "./service";
 import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-response-widget.astro";
+import { type FileDetails } from "./types";
 
 const { contentCollectionSort } = themeConfig || {};
 const zitadel_user_id = Astro.cookies.get("zitadel_user_id");
@@ -21,10 +22,13 @@ const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
 function removeSubmissions(menuTree: any[]): any[] {
   return menuTree.filter((item) => item.name !== "Submissions");
 }
+
 const filteredMenuTree = removeSubmissions(menuTree);
 const fileName = filteredMenuTree[0].path.split("/").pop() || "";
 const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
-const data = await getFiledatails(filePath, fileName);
+const data: FileDetails[] | string = await getFiledatails(
+  `${fileName}.lform-submittion.json`
+);
 const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
 
 const { searchParams } = Astro.url;
@@ -39,7 +43,7 @@ const inActiveTabClass =
 ---
 
 <Layout>
-  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs"
     >
@@ -47,7 +51,7 @@ const inActiveTabClass =
       <div id="starlight__sidebar" class="sidebar-pane">
         <div class="sidebar-content">
           <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
-            <Sidebar menuTree={filteredMenuTree} />
+            <Sidebar menuTree={filteredMenuTree} slugval="" />
           </div>
         </div>
       </div>
@@ -135,7 +139,7 @@ const inActiveTabClass =
             ) : (
               <div id="submitted-data" class="p-4">
                 <div class="relative overflow-x-auto">
-                  {typeof data != "string" ? (
+                  {typeof data != "string" && data.length > 0 ? (
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                       <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -148,25 +152,32 @@ const inActiveTabClass =
                         </tr>
                       </thead>
                       <tbody>
-                        {data.map(
-                          (item: {
-                            uri: string;
-                            file_date: string | number | Date;
-                          }) => (
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                              <td class="p-2 break-all">
-                                <a
-                                  href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
-                                >
-                                  {item.uri.split("/").pop()}
-                                </a>
-                              </td>
-                              <td class="px-6 py-4">
-                                {new Date(item.file_date).toDateString()}
-                              </td>
-                            </tr>
-                          )
-                        )}
+                        {data.map((item: FileDetails, index: number) => {
+                          if (typeof item === "string") {
+                            return (
+                              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td class="p-2 break-all" colspan={2}>
+                                  {item}
+                                </td>
+                              </tr>
+                            );
+                          } else {
+                            return (
+                              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td class="p-2 break-all">
+                                  <a
+                                    href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
+                                  >
+                                    {item.uri.split("/").pop()}
+                                  </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                  {new Date(item.file_date).toDateString()}
+                                </td>
+                              </tr>
+                            );
+                          }
+                        })}
                       </tbody>
                     </table>
                   ) : (
