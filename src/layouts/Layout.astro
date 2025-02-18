@@ -100,9 +100,12 @@ const enableOpenObserve =
         element.classList.remove("pagefind-ui__result-thumb");
       });
     }
-
-    // Add a keyup event listener to update existing links
-    window.addEventListener("keydown", function () {
+   
+      // Event delegation: Run only when search input is clicked
+  document.addEventListener("click", function (event) {
+    if (event.target.matches(".pagefind-ui__search-input")) {
+      // Add keyup event listeners only after search input is clicked
+      window.addEventListener("keydown", function () {
       setTimeout(updateLinks, 1500);
     });
     window.addEventListener("keyup", function () {
@@ -112,17 +115,13 @@ const enableOpenObserve =
     window.addEventListener("click", function () {
       setTimeout(updateLinks, 500);
     });
-
+    }
+  });
+    
     // Add a click event listener to handle "Load more Results" button
   });
 
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "/" || event.key === ".") {
-      console.log("you pressed the slash");
-      event.preventDefault();
-      document.querySelector("div#search input").focus();
-    }
-  });
+  
 </script>
 
 <style is:global>
