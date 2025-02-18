@@ -9,7 +9,9 @@
     "build": "npx pagefind --site htmloutput && npx shx cp -r htmloutput public && pnpm run latest-gitcommitdetails && astro build && pnpm run postbuild",
     "preview": "astro preview",
     "astro": "astro",
-    "postbuild": "mkdir -p dist/content && cp -r src/content/lforms/ dist/content/lforms/"
+    "postbuild": "mkdir -p dist/content && cp -r src/content/lforms/ dist/content/lforms/",
+    "create-db-models": "deno task gen-psql && deno run --allow-read --allow-env --allow-run --allow-write --allow-sys --unstable support/services/createDBFromModels.ts",
+    "sync-zitadel-users": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys --allow-run --unstable support/services/syncZitadelUserToRssd.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.8",
