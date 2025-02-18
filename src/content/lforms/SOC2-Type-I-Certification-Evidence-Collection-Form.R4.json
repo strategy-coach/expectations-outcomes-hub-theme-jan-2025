@@ -674,7 +674,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have an hiring checklist for a sample of employees, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/assets/hiring-and-on-boarding-checklist.xls', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have an hiring checklist for a sample of employees, you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/hiring-and-on-boarding-checklist.xls', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -904,7 +904,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have an Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet), you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/assets/professional-education-training-details.xlsx', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have an Evidence that Continued Professional Education Training is tracked and monitored for employees (e.g. tracking tool / spreadsheet), you can refer our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/professional-education-training-details.xlsx', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -2668,7 +2668,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have an Incident Response Policies and Procedures, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have an Incident Response Policies and Procedures, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -3199,7 +3199,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have a Policies are available to vendors/contractors as evidence, you can refer the our sample version of\n<span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/incident-management-policy', '_blank')\">Incident Management Policy </span>, \n<span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/change-management-policy', '_blank')\">Change Management Policy </span>, \n<span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/information-security-policy', '_blank')\">Information Security Policy </span></p>"
+                    "valueString": "<p>If you don't have a Policies are available to vendors/contractors as evidence, you can refer the our sample version of\n<span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/incident-management-policy', '_blank')\">Incident Management Policy </span>, \n<span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/change-management-policy', '_blank')\">Change Management Policy </span>, \n<span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/information-security-policy', '_blank')\">Information Security Policy </span></p>"
                   }
                 ]
               },
@@ -3500,6 +3500,14 @@
           ]
         },
         {
+          "type": "string",
+          "linkId": "777584296488",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0010.1"
+            }
+          ],
+          "text": "Contract (service agreement) for a sample of new customers",
           "item": [
             {
               "linkId": "145378887626",
@@ -3521,15 +3529,7 @@
                 }
               ]
             }
-          ],
-          "type": "string",
-          "linkId": "777584296488",
-          "code": [
-            {
-              "code": "FII-SCF-BCD-0010.1"
-            }
-          ],
-          "text": "Contract (service agreement) for a sample of new customers"
+          ]
         }
       ],
       "type": "group",
@@ -3698,7 +3698,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have Documented (1) compliance manager job description (2) audit manager job description and (3) risk management job description details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/general-role', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have Documented (1) compliance manager job description (2) audit manager job description and (3) risk management job description details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/general-role', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -3960,7 +3960,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have Up-to-date registry of regulatory, statutory, legislative and contractual requirements as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/compliance-regulatory-policy', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have Up-to-date registry of regulatory, statutory, legislative and contractual requirements as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/compliance-regulatory-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -4452,7 +4452,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have Business Continuity/Disaster Recover Plan details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/business-continuity-plan', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have Business Continuity/Disaster Recover Plan details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/business-continuity-plan', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -5183,7 +5183,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have Incident Response Policies and Procedures details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have Incident Response Policies and Procedures details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
@@ -6522,7 +6522,7 @@
                 "extension": [
                   {
                     "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
-                    "valueString": "<p>If you don't have Change control policies and procedures as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/netspective/information-technology-quality-infrastructure/change-control-policy', '_blank')\">here</span></p>"
+                    "valueString": "<p>If you don't have Change control policies and procedures as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/change-control-policy', '_blank')\">here</span></p>"
                   }
                 ]
               },
