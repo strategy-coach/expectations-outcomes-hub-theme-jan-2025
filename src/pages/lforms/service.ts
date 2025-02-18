@@ -12,8 +12,11 @@ const dbPath = path.resolve(process.cwd(), dbName);
 export const getFiledatails = async (filepath: string): Promise<FileDetails[] | string> => {
 
     return new Promise((resolve) => {
-        const query = `SELECT DISTINCT uri,last_modified_at as file_date FROM uniform_resource WHERE uri LIKE '%${filepath}' AND nature='json' ORDER BY last_modified_at DESC`;
-        console.log(query)
+        const query = `SELECT uri, MAX(last_modified_at) AS file_date
+                        FROM uniform_resource
+                        WHERE uri LIKE '%${filepath}' AND nature = 'json'
+                        GROUP BY uri
+                        ORDER BY file_date DESC;`;
         // Check if name is not null
         if (dbName == null) {
             resolve(`Database not found!!`);
