@@ -26,7 +26,9 @@ function removeSubmissions(menuTree: any[]): any[] {
 const filteredMenuTree = removeSubmissions(menuTree);
 const fileName = filteredMenuTree[0].path.split("/").pop() || "";
 const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
-const data: FileDetails[] | string = await getFiledatails(filePath);
+const data: FileDetails[] | string = await getFiledatails(
+  `${fileName}.lform-submittion.json`
+);
 const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
 
 const { searchParams } = Astro.url;
