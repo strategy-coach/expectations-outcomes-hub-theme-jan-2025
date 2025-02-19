@@ -6,7 +6,6 @@ export async function POST({ request }: APIContext) {
     try {
         const { formData, fileName, userId } = await request.json();
         // Define the file path (modify as needed)
-
         const filePath = `./src/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
         const dbIngestPath = `src/content/lforms/submissions`;
         const lformDBPath = `src/content/db/lforms`;

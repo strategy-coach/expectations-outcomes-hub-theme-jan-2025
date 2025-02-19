@@ -46,7 +46,7 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, isUpdat
         try {
             const validationResult = LForms.Util.getFormData(elementId, false, false, true);
 
-            const response = await fetch("/api/saveForm", {
+            const response = await fetch("/api/saveLHCForm", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ formData: validationResult, userId, fileName }),

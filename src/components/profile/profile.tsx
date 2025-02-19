@@ -5,19 +5,30 @@ import { getUserInfo, getUserMetaData } from "./userService"
 import type { ProfileInformation, UserMeta } from "./userService"
 
 const userId = Cookie.get("zitadel_user_id") || ""
+let userRoles = Cookie.get("zitadel_user_roles") || "[]";
+userRoles = JSON.parse(userRoles);
+let isAdmin = false;
+
+if (userRoles.includes('admin')) {
+    isAdmin = true;
+}
 
 const handleEditProfile = (): void => {
     window.location.href = "/edit-profile";
 };
 
 const Profile: React.FC = () => {
+
     const [userNotificationStatus, setNotificationStatus] = useState<string>();;
     const [userBio, setUserBio] = useState<string>("");
-    const [user, setUser] = useState<ProfileInformation | undefined>()
+    const [loading, setLoading] = useState<string | null>(null);
+    const [user, setUser] = useState<ProfileInformation | undefined>();
+
     useEffect(() => {
         getUserInfo(userId).then((response) => {
             setUser(response)
-        })
+        });
+
         getUserMetaData(userId).then((response) => {
             const metadata = response as UserMeta
             metadata.result?.map((res) => {
@@ -30,13 +41,31 @@ const Profile: React.FC = () => {
                     setUserBio(decodedValue)
                 }
             })
-        })
+        });
     }, [])
 
+    const handleSync = async (type: "models-users" | "users-only") => {
+
+        if (isAdmin === true) {
+            if (loading) return; // Prevent double-click while the request is in progress
+            setLoading(type);
+            try {
+                const response = await fetch("/api/syncZitadelUsers", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ role: 'admin', userId, type }),
+                });
+                if (!response.ok) throw new Error("Failed to sync user data");
+            } catch (error) {
+                console.error("Sync failed:", error);
+            } finally {
+                setLoading(null); // Reset loading state after completion
+            }
+        }
+    };
 
     return (
         <>
-
             <section className="px-2 pt-3">
                 {user && <div className="grid grid-cols-1 md:grid-cols-12 gap-6 ">
                     <div className="col-span-1 md:col-span-8 border rounded-lg bg-white">
@@ -199,7 +228,7 @@ const Profile: React.FC = () => {
                         </article>
                     </div>
                     <div className="col-span-1 md:col-span-4 ">
-                        {" "}
+
                         <article className="bg-white border rounded-lg">
                             <div className="border-b">
                                 <h2 className="text-xl font-semibold px-6 py-4">
@@ -227,6 +256,53 @@ const Profile: React.FC = () => {
                                 </aside>
                             </div>
                         </article>
+                        {isAdmin ? <article className="bg-white border rounded-lg mt-2">
+                            <div className="border-b">
+                                <h2 className="text-xl font-semibold px-6 py-4">
+                                    Synchronize Data Models and Zitadel Users
+                                </h2>
+                            </div>
+                            <div className="px-6 py-4">
+                                <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
+                                    <div className="col-span-1 md:col-span-8 font-semibold">
+                                        Synchronize Data Models and Zitadel Users
+                                    </div>
+                                    <div className="col-span-1 md:col-span-4 flex">
+                                        <button
+                                            type="button"
+                                            onClick={() => handleSync("models-users")}
+                                            disabled={loading !== null}
+                                            className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 
+                        font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
+                        focus:outline-none dark:focus:ring-blue-800 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                                                }`}
+                                        >
+                                            {loading === "models-users" ? "Syncing..." : "Sync Now"}
+                                        </button>
+                                    </div>
+                                </aside>
+
+                                <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
+                                    <div className="col-span-1 md:col-span-8 font-semibold">
+                                        Synchronize Zitadel Users Only
+                                    </div>
+                                    <div className="col-span-1 md:col-span-4 flex">
+                                        <button
+                                            type="button"
+                                            onClick={() => handleSync("users-only")}
+                                            disabled={loading !== null}
+                                            className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 
+                        font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
+                        focus:outline-none dark:focus:ring-blue-800 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                                                }`}
+                                        >
+                                            {loading === "users-only" ? "Syncing..." : "Sync Now"}
+                                        </button>
+                                    </div>
+                                </aside>
+                            </div>
+
+                        </article> : undefined}
                     </div>
                 </div>}
             </section>
