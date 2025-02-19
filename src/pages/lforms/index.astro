@@ -29,8 +29,6 @@ const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submit
 const data: FileDetails[] | string = await getFiledatails(
   `${fileName}.lform-submittion.json`
 );
-console.log("-------------------");
-console.log(data);
 const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
 
 const { searchParams } = Astro.url;
