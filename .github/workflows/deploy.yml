@@ -39,6 +39,13 @@ jobs:
           PUBLIC_TEAM_DB: ${{ vars.PUBLIC_TEAM_DB }}
           ENABLE_DB_TEAM: ${{ vars.ENABLE_DB_TEAM }}
           PUBLIC_LFORM_DB: ${{ vars.PUBLIC_LFORM_DB }}
+          ENABLE_IMAP_DB_PREPARE: ${{ vars.ENABLE_IMAP_DB_PREPARE }}
+          ENABLE_IMAP_VIEW: ${{ vars.ENABLE_IMAP_VIEW  }}
+          PUBLIC_IMAP_DB: ${{ vars.PUBLIC_IMAP_DB }}
+          IMAP_FOLDER: ${{ vars.IMAP_FOLDER }}
+          IMAP_USER_NAME: ${{ vars.IMAP_USER_NAME }}
+          IMAP_PASS: ${{ vars.IMAP_PASS }}
+          IMAP_HOST: ${{ vars.IMAP_HOST }}
         run: |
           bash -x support/ci-cd.sh      
           
