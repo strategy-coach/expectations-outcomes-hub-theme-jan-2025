@@ -1,9 +1,11 @@
 # EOH Astro 5 Theme  
 
 ## Overview  
+
 The **EOH Astro 5 Theme** is a highly customizable and versatile Astro-based theme. It comes equipped with essential components like breadcrumbs, headers, footers, and sidebars for seamless navigation. The theme supports dynamic content creation, including features such as blog collections, landing pages, static pages, and GitHub Discussions integration.
 
 ## Features  
+
 - **Header and Footer**: Easily customizable components.  
 - **Blog Pages**:  
   - Blog listing page.  
@@ -22,6 +24,7 @@ This theme demonstrates integration with GitHub Discussions using the `github-di
 
 1. **Copy Environment Variables**:  
    Copy `.env.example` to `.env`:  
+
    ```bash
    cp .env.example .env
    ```
@@ -33,6 +36,7 @@ This theme demonstrates integration with GitHub Discussions using the `github-di
    - `PUBLIC_GITHUB_OWNER_NAME`: Repository owner (user or organization).  
 
    Example:
+
    ```env
    PUBLIC_GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxx
    PUBLIC_GITHUB_REPO_NAME=your-repo-name
@@ -41,6 +45,7 @@ This theme demonstrates integration with GitHub Discussions using the `github-di
 
 3. **Use the GitHub Discussion Loader Component**:  
    Import and include the component in your Astro templates:  
+
    ```astro
    ---
    import GithubDiscussionLoader from "../components/github_discussion/githubDiscussion.astro";
@@ -54,6 +59,7 @@ Easily integrate ZITADEL authentication into your project.
 
 1. **Update Environment Variables**:  
    Add the following to the `.env` file:  
+
    ```env
    PUBLIC_ZITADEL_CLIENT_ID="your-client-id"
    PUBLIC_ZITADEL_AUTHORITY="your-authority"
@@ -67,6 +73,7 @@ Easily integrate ZITADEL authentication into your project.
 
 2. **Use the Authentication Component**:  
    Import and use it in your templates:  
+
    ```astro
    ---
    import { Authentication } from "../components/zitadel-authentication";
@@ -85,10 +92,13 @@ Easily integrate ZITADEL authentication into your project.
 
 3. **Example Usage**:  
    - **Login**:  
+
      ```astro
      <Authentication operation="login" />
      ```
+
    - **Logout**:  
+
      ```astro
      <Authentication operation="logout" />
      ```
@@ -102,25 +112,30 @@ Easily integrate ZITADEL authentication into your project.
 ## Getting Started  
 
 1. **Clone the Repository**  
+
    ```bash
    git clone <repository-url>  
    cd <repository-directory>
    
 2. **Install Dependencies**  
+
    ```bash
    pnpm install
 
    
 3. **To enable search in local run the following command**
+
    ```bash
    pnpm run pagefind-search
 
 4. **Start the development server**  
+
    ```bash
    pnpm run dev
    
 
 5. **Build the site**  
+
    ```bash
    pnpm run build
    ```
@@ -212,14 +227,11 @@ Easily integrate ZITADEL authentication into your project.
 └── visualizing-expectations-outcomes.md
 ```
 
-
 ## Qualityfolio Configuration
 
-To configure Qualityfolio, add the URL to your environment variables: 
+To configure Qualityfolio, add the URL to your environment variables:
 
-```
-PUBLIC_QUALITYFOLIO_URL="xxxxx"
-```
+``` PUBLIC_QUALITYFOLIO_URL="xxxxx" ```
 
 Replace xxxxx with the appropriate URL.
 
@@ -293,7 +305,6 @@ export default themeConfig({
 
 ```
 
-
 ## Home Page Widgets
 
 Theme includes widgets designed for the home page: **Skip To**, **Key Resources**, **Meeting Minutes**, **Accomplishments** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
@@ -303,59 +314,59 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 ### 1\. **Skip To**
 
-*   Displays a list of titles from Markdown files configured with the skipTo frontmatter.
-    
-*   ```
+- Displays a list of titles from Markdown files configured with the skipTo frontmatter.
+
+- ```
       home:
          skipTo: 
             category: "skipTo"
     ```
-*   You can add multiple Markdown files with this configuration, and their titles will appear under the **Skip To** card.
-    
+
+- You can add multiple Markdown files with this configuration, and their titles will appear under the **Skip To** card.
 
 ### 2\. **Key Resources**
 
-*   Displays a list of titles from Markdown files configured with the keyResources frontmatter.
-    
-*    ```
+- Displays a list of titles from Markdown files configured with the keyResources frontmatter.
+
+- ```
       home:
          keyResources: 
             category: "keyResources"
      ```
-*   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Key Resources** card.
-    
+
+- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Key Resources** card.
 
 ### 3\. **Latest Accomplishments**
 
-*   Displays a list of content items sorted by date. The content is sourced from Markdown files with a date field in the frontmatter.
-    
-*   date: "2025-01-01"
-    
-*   Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
-    
+- Displays a list of content items sorted by date. The content is sourced from Markdown files with a date field in the frontmatter.
+
+- date: "2025-01-01"
+
+- Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
 
 ### 5\. **Accomplishments**
 
-*   Displays a list of titles from Markdown files configured with the accomplishments frontmatter.
-    
-*    ```
+- Displays a list of titles from Markdown files configured with the accomplishments frontmatter.
+
+- ```
       home:
          accomplishments: 
             category: "accomplishments"
      ```
-*   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Accomplishments** card.
+
+- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Accomplishments** card.
 
 ### 4\. **Meeting Minutes**
 
-*   Displays a list of titles from Markdown files configured with the meetingMinutes frontmatter.
-    
-*    ```
+- Displays a list of titles from Markdown files configured with the meetingMinutes frontmatter.
+
+- ```
       home:
          meetingMinutes: 
             category: "meetingMinutes"
      ```
-*   Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
-    
+
+- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
 
 **Combination Frontmatter**
 ---------------------------
@@ -369,19 +380,16 @@ home:
   skipTo: 
     category: "skipTo"
 ```
+
 This configuration allows the file to be listed under both the **Key Resources** and **Skip To** widgets.
 
-
-
 ## Observability
-
 
 To enable observabilty and tracking, set the env variable as true
 
 ```
 ENABLE_OPEN_OBSERVE=true
 ```
-
 
 ## Sorting Functionality
 
@@ -390,7 +398,8 @@ To enable side menu sorting set the variable as true in theme.config
 ```
 contentCollectionSort=true
 ```
-In order specify which all folders must be at the top in side menu, we can specify in theme.config like below 
+
+In order specify which all folders must be at the top in side menu, we can specify in theme.config like below
 
 ```
 staticFixedFolders: [
@@ -399,9 +408,10 @@ staticFixedFolders: [
     { parent: "expectations", child: ["key-milestones","roles-and-responsibilities"] },
   ],
 ```
+
 Here the folders specified in child will come at the top.
 
-We call the side menu like this - 
+We call the side menu like this -
 
 const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
@@ -409,7 +419,6 @@ const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
 Allows users to create slide-based presentations directly within the theme.
 Help icon in the header opens the presentaion url and slide content can be updated in the src/pages/presentation.astro
-
 
 ## Breadcrumbs Implementation
 
@@ -456,6 +465,7 @@ customizeLinks={[
 ]}
 
 ```
+
 ### Removing Breadcrumbs  
 
 To remove a specific breadcrumb, set the `index` of the crumb you want to remove and use `customizeListElements`:
@@ -464,8 +474,8 @@ To remove a specific breadcrumb, set the `index` of the crumb you want to remove
 customizeListElements={[{ index: 1, remove: true }]}
 
 ```
-For more information, check out the [official documentation](https://docs.astro-breadcrumbs.kasimir.dev/start-here/getting-started/).
 
+For more information, check out the [official documentation](https://docs.astro-breadcrumbs.kasimir.dev/start-here/getting-started/).
 
 # 📄 DatabaseQueryRenderer
 
@@ -518,7 +528,6 @@ Then, use it in your Astro template by passing the necessary props:
 | `json`      | Renders the query result as a JSON list.       |
 | `card`      | Shows the data as a card-based layout.         |
 
-
 ### 🔹 More Examples
 
 #### **Employee List in JSON Format**
@@ -536,6 +545,7 @@ Then, use it in your Astro template by passing the necessary props:
   limit="2"
 />
 ```
+
 ![alt text](/assets/images/documentation-demo/image-1.png)
 
 #### **Employee Table View with Detail View**
@@ -563,7 +573,6 @@ Then, use it in your Astro template by passing the necessary props:
 ![alt text](/assets/images/documentation-demo/image-4.png)
 
 ## 📌 Examples
-
 
 ## ⚙️ Props
 
@@ -674,5 +683,93 @@ discussionsEnabled: true
 ```
 
 ---
+
+
+# **IMAP Mail Box Component**  
+
+The **imap-mail-box** component is an Astro component used to display ingested emails from any mail source in **EOH**.  
+
+---
+
+## **Environment Configuration**  
+
+Before using the component, set up the required **environment variables**:  
+
+### **Required Environment Variables**  
+
+| Variable            | Description                                         | Example Value |
+|--------------------|-------------------------------------------------|--------------|
+| `ENABLE_IMAP_VIEW` | Enable or disable IMAP ingestion (`true/false`). If `true`, it will ingest mail content. | `true` |
+| `PUBLIC_IMAP_DB`   | Path to the IMAP database. **Do not change this path.** | `src/content/db/imap-mail-db/resource-surveillance.sqlite.db` |
+| `IMAP_FOLDER`      | The IMAP folder to fetch emails from. | `Inbox` |
+| `IMAP_USER_NAME`   | IMAP account username. | `your_email@example.com` |
+| `IMAP_PASS`        | IMAP account password. | `your_password` |
+| `IMAP_HOST`        | IMAP server host. | `imap.example.com` |
+
+---
+
+## **Setup & Running Locally**  
+
+### **1. Install Surveilr**  
+
+To complete **IMAP ingestion**, make sure you have **Surveilr** installed. If not, follow the installation guide:  
+
+📖 [Surveilr Installation Guide](https://www.surveilr.com/docs/core/installation/)  
+
+### **2. Prepare the Database**  
+
+After setting up the environment variables, run the following command in the **root terminal**:  
+
+```sh
+pnpm run prepare-imap-db
+```
+  
+This command will automatically create the database in the specified directory.  
+
+⚠️ **Make sure the target directory exists before running the command.**  
+
+---
+
+## **Using the Component in Astro**  
+
+### **Astro SSR Requirement**  
+
+The **imap-mail-box** component is built for **Astro Server-Side Rendering (SSR)** and **will only work in SSR mode**.  
+
+### **Importing the Component**  
+
+To use the component in an **Astro page**, import it as follows:  
+
+```astro
+import MailBox from "../../components/imap-mail-box/mailBox.astro";
+
+<MailBox />
+```
+
+---
+
+## **Query Parameters**  
+
+- If **no `account` ID** is passed in the URL (`?account=****&view=list`), the component will **automatically select** the first ingested account.  
+- **Required query parameters:**  
+  - `account` → Specifies the account ID.  
+  - `view=list` → Must be set to `"list"`.  
+
+**Example URL:**  
+
+``` http://localhost:3000/?account=1234&view=list ```
+
+⚠️ **Ensure you follow the correct query parameter names to prevent bugs.**  
+
+---
+
+## **Notes**  
+
+- The component will **only display ingested emails** if `ENABLE_IMAP_VIEW` is set to `true`.  
+- Ensure that **Surveilr is installed and configured correctly** before running the ingestion process.  
+- Provide valid IMAP credentials and database configurations for successful ingestion.  
+
+---
+
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  

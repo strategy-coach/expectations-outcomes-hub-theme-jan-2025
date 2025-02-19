@@ -1,0 +1,276 @@
+---
+import { eq, sql } from "drizzle-orm";
+import moment from 'moment';
+import {connectionDB} from "../../db/db";
+import { imapDBPath } from "../../utils/env.ts";
+import {
+  urIngestSessionImapAccount,
+  urIngestSessionImapAcctFolder,
+  urIngestSessionImapAcctFolderMessage,
+  uniformResource
+} from "./schema";
+
+const params = Astro.url.searchParams;
+const view = params.get("view");
+const accountId = params.get("account");
+const folderId = params.get("folder");
+const mailId = params.get("mail-id");
+const page = parseInt(params.get("page") || "1", 10);
+
+const mailPerPge = 10;
+
+const db = connectionDB(imapDBPath)
+
+const accounts = await db.select().from(urIngestSessionImapAccount);
+
+const folderList = await db
+  .select()
+  .from(urIngestSessionImapAcctFolder)
+  .where(eq(urIngestSessionImapAcctFolder.ingestAccountId, `${accountId}`));
+
+  const currentFolder = await db
+  .select({
+    folderName: urIngestSessionImapAcctFolder.folderName,
+  })
+  .from(urIngestSessionImapAcctFolder)
+  .where(eq(urIngestSessionImapAcctFolder.urIngestSessionImapAcctFolderId, `${folderId}`)).then((rows) => rows[0]);
+
+async function getPaginatedMail(page = 1, limit = 5, dataSchema:any) {
+  const offset = (page - 1) * limit;
+  const data = await db
+    .select()
+    .from(dataSchema)
+    .where(eq(dataSchema.ingestImapAcctFolderId, folderId))
+    .limit(limit)
+    .offset(offset);
+  const total = await db
+    .select({ count: sql<number>`COUNT(*)` })
+    .from(urIngestSessionImapAcctFolderMessage)
+    .where(
+      eq(urIngestSessionImapAcctFolderMessage.ingestImapAcctFolderId, `${folderId}`)
+    );
+  const totalCount = total[0]?.count || 0;
+
+  return {
+    data,
+    total: totalCount,
+    totalPages: Math.ceil(totalCount / limit),
+    currentPage: page,
+  };
+}
+
+const { data, total, totalPages, currentPage } = await getPaginatedMail(
+  page,
+ mailPerPge,
+  urIngestSessionImapAcctFolderMessage
+);
+
+
+function createDynamicLink(params: Record<string, string>) {
+  // Clone search parameters to modify them
+  const urlParams = new URLSearchParams(Astro.url.searchParams);
+
+  // Iterate over each key-value pair and update the URL parameters
+  Object.entries(params).forEach(([key, value]) => {
+    if(key=='folder'){
+      urlParams.delete('mail-id');
+      urlParams.delete('mail-id'); 
+      urlParams.delete('page');
+    }
+    if(key=='view' && value=='list'){
+      urlParams.delete('mail-id');
+    }
+    urlParams.delete(key); // Remove existing value
+    urlParams.set(key, value); // Set new value
+  });
+
+  // Return the new URL string with updated parameters
+  return `?${urlParams.toString()}`;
+}
+
+type MailData = {
+  uniformResourceId: string;
+  subject: string;
+  mailFrom: string;
+  mailContent: string; 
+  mail_date: string;// Ensure this matches the expected type
+};
+
+let mailData: MailData | null = null;
+
+if (view === 'detail' && mailId) {
+  mailData = await db.select({
+    uniformResourceId: uniformResource.uniformResourceId,
+    subject: urIngestSessionImapAcctFolderMessage.subject,
+    mailFrom: urIngestSessionImapAcctFolderMessage.fromAddress,
+    mailContent: sql`json_extract(${uniformResource.content}, '$.parts[2].body.Html')`.as("mailContent"),
+    mail_date: uniformResource.mail_date,
+  }).from(uniformResource)
+    .innerJoin(urIngestSessionImapAcctFolderMessage, eq(uniformResource.ingestSessionImapAcctFolderMessage, urIngestSessionImapAcctFolderMessage.urIngestSessionImapAcctFolderMessageId))
+    .where(sql`${uniformResource.ingestSessionImapAcctFolderMessage} = ${mailId} AND ${uniformResource.nature}='json'`)
+    .then((rows) => rows[0] as MailData || null); // Cast the result to MailData
+}
+---
+
+<div class="flex bg-gray-100 mt-3">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white shadow-md p-4 flex flex-col">
+    <!-- Account Selector -->
+    <label for="account" class="font-semibold text-xs text-gray-500 mb-1"
+      >Select Account</label
+    >
+    <select id="account" class="p-2 py-1 w-full border border-gray-300 rounded text-sm mb-4">
+      <option value="">Select</option>
+      {
+        accounts.map((account) => (
+          <option
+            value={account.urIngestSessionImapAccountId}
+            selected={
+              accountId === account.urIngestSessionImapAccountId
+                ? true
+                : undefined
+            }
+          >
+            {account.email}
+          </option>
+        ))
+      }
+    </select>
+
+    <!-- Mail Folders -->
+     <hr class="mb-2">
+     <label for="account" class="font-semibold text-xs text-gray-500 mb-1"
+      >Folders</label
+    <nav class="space-y-2">
+      {
+        folderList.map((folder) => (
+          <a
+            href={`${createDynamicLink({ folder: folder.urIngestSessionImapAcctFolderId, view: "list" })}`}
+            class={`block p-2 rounded 
+            ${folderId === folder.urIngestSessionImapAcctFolderId ? "bg-sky-500 text-sm pl-4 py-1 text-white" : "hover:bg-gray-200"}`}
+          >
+            {folder.folderName}
+          </a>
+        ))
+      }
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  {view=='list' && data.length > 0 ? ( <main class="flex-1 p-6 bg-white shadow-md">
+    <!-- Mail List -->
+    <h2 class="text-lg font-semibold mb-4">{currentFolder.folderName}</h2>
+    {
+      data ? (
+        
+        <ul class="space-y-3 overflow-auto pr-2" style="height: calc(100vh - 365px);">
+          {data.map((mail) => {
+           
+           const formattedDate =  moment([mail.date]).fromNow();
+
+            return (
+              <li class="px-3 py-2 border rounded shadow-sm cursor-pointer hover:bg-gray-100">
+                <a
+                  href={`${createDynamicLink({ "mail-id": mail.urIngestSessionImapAcctFolderMessageId, view: "detail" })}`}
+                >
+                  <div class="flex">
+                    <div class="basis-full leading-3">
+                      <span class="text-sm text-gray-800">{mail.fromAddress}</span>
+                      <span class="text-sm text-gray-300 mx-2">|</span>
+                      <span class="font-bold text-sm">{mail.subject}</span>
+                    </div>
+                    <div><span class="text-xs text-gray-400 ml-1"> {formattedDate}</span></div>
+
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      ) :  (
+        <p>This email folder is currently empty. </p>
+      )
+    }
+    <div class="text-right pt-3 pb-1 text-base">
+    
+
+<nav aria-label="Page navigation example">
+  <ul class="inline-flex -space-x-px text-sm">
+{
+      currentPage > 1 && (
+    <li>
+      <a href={`${createDynamicLink({ page: (currentPage - 1).toString() })}`} class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Prev</a>
+    </li>
+     )
+    }
+    <li>
+      <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Page {currentPage} of {totalPages}</a>
+    </li>
+    {
+      currentPage < totalPages && (
+    <li>
+      <a href={`${createDynamicLink({ page: (currentPage + 1).toString() })}`} class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+    </li>
+     )
+    }
+  </ul>
+</nav>
+
+    </div>
+  </main>):view === 'detail' && mailData? ( 
+        <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg" >
+          <div class="border-b pb-4 mb-4">
+           <div class="text-right">
+              <a href={createDynamicLink({ view: "list" })}>
+                <span class="inline-flex items-center rounded-full bg-gray-50 pl-1 pr-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                  <img src="/assets/images/arrow-left.svg" style="width: 20px!important;"> Back
+                </span>
+              </a>
+            </div>
+                <h2 class="text-base font-semibold text-gray-800">{mailData.subject}</h2>
+                <div class="flex w-full">
+                  <div class="text-sm font-medium text-gray-700 basis-full">
+                    {mailData.mailFrom}
+                </div>
+                <div class="text-xs text-gray-500 text-right" style="width:200px;">{moment([mailData.mail_date]).format("ddd, MMM D, YYYY, h:mm A")}</div>
+                </div>
+            </div>
+        <div class="overflow-auto mt-3" style="height: calc(100vh - 365px);" set:html={mailData.mailContent}></div>
+        </div>
+) : null}
+ 
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const accountSelector = document.getElementById("account"); // 
+    const newUrl = new URL(window.location.href);
+    const params = new URLSearchParams(window.location.search); 
+    const accountId = params.get('account');
+
+    if(accountId=='' || accountId== null){
+      newUrl.searchParams.delete("mail-id");
+      newUrl.searchParams.delete("folder");
+      newUrl.searchParams.delete('page');
+      newUrl.searchParams.set("view", "list");
+      const firstAccountId = (accountSelector?.querySelector("option[value]:not([value=''])") as HTMLOptionElement)?.value;
+      newUrl.searchParams.set("account", firstAccountId);
+      window.history.pushState({}, "", newUrl);
+      location.reload();
+    }
+
+    if (accountSelector instanceof HTMLSelectElement) {
+      // Update URL when selection changes
+      accountSelector.addEventListener("change", function () {
+        const selectedId = accountSelector.value;
+        newUrl.searchParams.delete("mail-id");
+        newUrl.searchParams.delete("folder");
+        newUrl.searchParams.delete('page');
+        newUrl.searchParams.set("account", selectedId);
+        newUrl.searchParams.set("view", "list");
+        window.history.pushState({}, "", newUrl);
+        location.reload();
+      });
+    }
+  });
+</script>
