@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Gravatar } from "../profile/gravatar/Gravatar";
+import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
+import { zitadelConfig } from "../../utils/env.ts"
 
-const projectId = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID
-const token = import.meta.env.PUBLIC_ZITADEL_API_TOKEN;
-const organizationId = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID;
-const authority = import.meta.env.PUBLIC_ZITADEL_AUTHORITY;
+const projectId = zitadelConfig.projectId;
+const token = zitadelConfig.zitalAPIToken;
+const organizationId = zitadelConfig.organizationId;
+const authority = zitadelConfig.authority;
 
 type TeamMember = {
     userId: string;
@@ -65,7 +66,7 @@ const Teams = () => {
                 visibleTeam.map((member) => (
                     <div key={member.userId} className="text-sm rounded flex space-x-2 items-center">
                         <span className="rounded-full overflow-hidden w-4 h-4">
-                         <Gravatar userEmail={member.email} height={5} width={5} />
+                            <Gravatar userEmail={member.email} height={5} width={5} />
                         </span>
                         <span>{member.displayName}</span>
                     </div>

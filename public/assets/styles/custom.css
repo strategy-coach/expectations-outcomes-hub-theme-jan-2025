@@ -1,6 +1,15 @@
 html, body {
   font-size: inherit !important;
 }
+h2 {
+  font-size: inherit !important;
+  color: inherit !important;
+
+  font-size: inherit !important;
+  font-style: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+}
 main a {
   color: #028db7;
   text-decoration: none;

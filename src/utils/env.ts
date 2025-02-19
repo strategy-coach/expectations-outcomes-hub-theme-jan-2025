@@ -7,6 +7,7 @@ export const zitadelConfig = {
     postLogoutRedirectUri: import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI,
     organizationId: import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID,
     projectId: import.meta.env.PUBLIC_ZITADEL_PROJECT_ID,
+    zitalAPIToken: import.meta.env.PUBLIC_ZITADEL_API_TOKEN,
 };
 
 export const teamDBConfig = {
@@ -17,3 +18,6 @@ export const teamDBConfig = {
 export const lformDB = {
     dbPath: import.meta.env.PUBLIC_LFORM_DB,
 };
+
+export const isIMAPViewEnabled = import.meta.env.ENABLE_IMAP_VIEW === 'true';
+export const imapDBPath = import.meta.env.PUBLIC_IMAP_DB;
