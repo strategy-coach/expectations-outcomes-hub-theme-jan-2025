@@ -9,7 +9,7 @@ export async function POST({ request }: APIContext) {
 
         const filePath = `./src/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
         const dbIngestPath = `src/content/lforms/submissions`;
-        const dbPath = `src/content/db/lforms`;
+        const lformDBPath = `src/content/db/lforms`;
         // Write form data to a file
         await writeFile(filePath, JSON.stringify(formData, null, 2), 'utf-8');
 
@@ -25,7 +25,7 @@ export async function POST({ request }: APIContext) {
             }
 
             // Move the file only if the ingest command succeeded
-            exec(`mv ${dbIngestPath}/resource-surveillance.sqlite.db ${dbPath}`, (mvError, _mvStdout, mvStderr) => {
+            exec(`mv ${dbIngestPath}/resource-surveillance.sqlite.db ${lformDBPath}`, (mvError, _mvStdout, mvStderr) => {
                 if (mvError) {
                     console.error(`Failed to move file: ${mvError.message}`);
                     return;
@@ -35,6 +35,20 @@ export async function POST({ request }: APIContext) {
                     console.error(`Move command error: ${mvStderr}`);
                     return;
                 }
+
+                exec(`cp ${lformDBPath}/resource-surveillance.sqlite.db src/content/db/resource-surveillance-copy.sqlite.db && cd src/content/db && surveilr admin merge && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db`, (mvError, _mvStdout, mvStderr) => {
+                    if (mvError) {
+                        console.error(`Failed to move file: ${mvError.message}`);
+                        return;
+                    }
+
+                    if (mvStderr.trim()) {
+                        console.error(`Move command error: ${mvStderr}`);
+                        return;
+                    }
+
+                    console.log(`Merge command executed successfully`);
+                });
 
                 console.log(`Merge command executed successfully`);
             });
