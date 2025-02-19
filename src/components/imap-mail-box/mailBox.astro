@@ -179,7 +179,7 @@ if (view === 'detail' && mailId) {
                       <span class="text-sm text-gray-300 mx-2">|</span>
                       <span class="font-bold text-sm">{mail.subject}</span>
                     </div>
-                    <div><span class="text-xs text-gray-400 ml-1"> {formattedDate}</span></div>
+                    <div class="min-w-[100px] text-right"><span class="text-xs text-gray-400 ml-1"> {formattedDate}</span></div>
 
                   </div>
                 </a>
@@ -232,7 +232,7 @@ if (view === 'detail' && mailId) {
                   <div class="text-sm font-medium text-gray-700 basis-full">
                     {mailData.mailFrom}
                 </div>
-                <div class="text-xs text-gray-500 text-right" style="width:200px;">{moment([mailData.mail_date]).format("ddd, MMM D, YYYY, h:mm A")}</div>
+                <div class="text-xs text-gray-500 text-right min-w-[200px]" >{moment([mailData.mail_date]).format("ddd, MMM D, YYYY, h:mm A")}</div>
                 </div>
             </div>
         <div class="overflow-auto mt-3" style="height: calc(100vh - 365px);" set:html={mailData.mailContent}></div>
