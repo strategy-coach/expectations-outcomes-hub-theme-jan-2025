@@ -14,7 +14,7 @@ const data = await getFormData(fileName);
 />
 <LformWidget
   fileName={fileName}
-  allowSubmit={true}
+  isUpdate={true}
   data={JSON.stringify(data[0], null, 2)}
   client:only="react"
 />
