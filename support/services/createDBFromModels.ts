@@ -55,7 +55,7 @@ exec(`sqlite3 ${databasePath} ""`, (error, _stdout, stderr) => {
 
                 console.log(`models.auto.sql removed successfully`);
 
-                exec(`cd src/content/db && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" && rm -rf resource-surveillance.sqlite.db && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db`, (error, _stdout, stderr) => {
+                exec(`cd src/content/db && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" && rm -rf resource-surveillance.sqlite.db && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf models.db`, (error, _stdout, stderr) => {
                     if (error) {
                         console.error(`Failed to execute merge command: ${error.message}`);
                         return;
