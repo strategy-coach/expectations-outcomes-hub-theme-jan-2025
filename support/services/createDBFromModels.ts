@@ -1,7 +1,7 @@
 import { exec } from "node:child_process";
 
-const databasePath = "src/content/db/models/models.db";
-const sqlFilePath = "src/content/db/models/models.auto.sql";
+const databasePath = "src/content/db/dbModels/models.db";
+const sqlFilePath = "src/content/db/dbModels/models.auto.sql";
 
 exec(`sqlite3 ${databasePath} ""`, (error, _stdout, stderr) => {
     if (error) {
@@ -29,7 +29,7 @@ exec(`sqlite3 ${databasePath} ""`, (error, _stdout, stderr) => {
 
         console.log(`SQL file successfully imported into SQLite database`);
 
-        exec(`mv src/content/db/models/models.db src/content/db/`, (error, _stdout, stderr) => {
+        exec(`mv src/content/db/dbModels/models.db src/content/db/`, (error, _stdout, stderr) => {
             if (error) {
                 console.error(`Failed to move models.db: ${error.message}`);
                 return;
@@ -42,7 +42,7 @@ exec(`sqlite3 ${databasePath} ""`, (error, _stdout, stderr) => {
 
             console.log(`models.db moved successfully`);
 
-            exec(`rm -rf src/content/db/models/models.auto.sql`, (error, _stdout, stderr) => {
+            exec(`rm -rf src/content/db/dbModels/models.auto.sql`, (error, _stdout, stderr) => {
                 if (error) {
                     console.error(`Failed to remove models.auto.sql: ${error.message}`);
                     return;
