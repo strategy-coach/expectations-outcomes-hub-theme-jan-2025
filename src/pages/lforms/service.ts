@@ -17,23 +17,30 @@ export const getFiledatails = async (filepath: string): Promise<FileDetails[] | 
                         WHERE uri LIKE '%${filepath}' AND nature = 'json'
                         GROUP BY uri
                         ORDER BY file_date DESC;`;
+        console.log("1:")
+        console.log(query)
         // Check if name is not null
         if (dbName == null) {
+            console.log("2:")
             resolve(`Database not found!!`);
             return;
         }
         // Check if database exists
         if (!fs.existsSync(dbPath)) {
+            console.log("3:")
             resolve(`Database file not found: ${dbPath}`);
             return;
         }
 
         const db = new sqlite3.Database(dbPath);
         db.all(query, [], (err, rows: []) => {
+            console.log("4:")
             db.close();
             if (err) {
+                console.log("5:")
                 resolve(`Error executing query: ${err.message}`);
             } else {
+                console.log("6:")
                 resolve(rows);
             }
         });
