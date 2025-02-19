@@ -303,6 +303,7 @@ async function main(): Promise<void> {
         }
         const personType = partyTypes.find((p) => p.code === "PERSON");
         const organizationType = partyTypes.find((p) => p.code === "ORGANIZATION");
+        let organizationData: RecordType[] = [];
         if (syncUsersOnly === "false") {
             const organization = await getTenantData();
             tenantData = [{
@@ -310,7 +311,7 @@ async function main(): Promise<void> {
                 party_type_id: organizationType?.id,
                 party_name: organization ? organization?.org.name : "",
             }];
-            const organizationData = [{
+            organizationData = [{
                 organization_id: organization ? organization?.org.id : "",
                 party_id: organization ? organization?.org.id : "",
                 name: organization ? organization?.org.name : "",
@@ -319,7 +320,6 @@ async function main(): Promise<void> {
                 license: "",
                 registration_date: ""
             }];
-            insertRecords("organization", organizationData, ["organization_id", "party_id", "name", "alias", "description", "license", "registration_date"]);
         }
         const partyData = users?.map((user) => ({
             party_id: user.id,
@@ -370,6 +370,7 @@ async function main(): Promise<void> {
             insertRecords("gender_type", genderData, ["gender_type_id", "code", "value"]);
             insertRecords("sex_type", sexTypeData, ["sex_type_id", "code", "value"]);
             insertRecords("person_type", personTypeData, ["person_type_id", "code", "value"]);
+            insertRecords("organization", organizationData, ["organization_id", "party_id", "name", "alias", "description", "license", "registration_date"]);
             insertRecords("organization_role_type", organizationRoleTypes, ["organization_role_type_id", "code", "value"]);
         }
 
