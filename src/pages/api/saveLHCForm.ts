@@ -35,7 +35,7 @@ export async function POST({ request }: APIContext) {
                     return;
                 }
 
-                exec(`cp ${lformDBPath}/resource-surveillance.sqlite.db src/content/db/resource-surveillance-copy.sqlite.db && cd src/content/db && surveilr admin merge && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db`, (mvError, _mvStdout, mvStderr) => {
+                exec(`cp ${lformDBPath}/resource-surveillance.sqlite.db src/content/db/rssd/resource-surveillance-copy.sqlite.db && cd src/content/db/rssd && surveilr admin merge && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db`, (mvError, _mvStdout, mvStderr) => {
                     if (mvError) {
                         console.error(`Failed to move file: ${mvError.message}`);
                         return;
