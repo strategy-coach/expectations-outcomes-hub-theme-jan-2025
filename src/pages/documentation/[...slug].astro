@@ -38,7 +38,7 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
 <Layout>
   <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6">
     <div
-      class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white p-3 shadow-xs"
+      class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs"
     >
       <div id="starlight__sidebar" class="sidebar-pane">
         <div class="sidebar-content">
@@ -49,7 +49,7 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
       </div>
     </div>
     <div
-      class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5"
+      class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300"
     >
       <Breadcrumbs
         linkTextFormat="capitalized"
@@ -84,7 +84,7 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
 
       {
         (
-          <article class="prose max-w-screen-xl withbullet">
+          <article class="prose max-w-screen-xl withbullet markdown-content-doc">
             <span id="markdown-content" style="display:none">
               <MarkdownEditor
                 bodyContent={rawMarkdownContent}

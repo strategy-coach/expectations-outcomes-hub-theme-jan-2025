@@ -63,7 +63,7 @@ const TeamDetails = () => {
 
     return (
         <div className="p-6 pt-4 mt-3 mx-auto">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">{organization} Members</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-300 mb-4">{organization} Members</h2>
             <div className="">
                 <div className="flex space-x-4">
 
@@ -94,21 +94,21 @@ const TeamDetails = () => {
                 {gridView ? (
                     <div className="grid grid-cols-12 gap-4 mt-6">
                         {team.map((member) => (
-                            <div key={member.userId} className=" leading-[3rem] col-span-3 md:col-span-3 bg-white p-4 rounded-lg shadow-lg shadow-gray-400">
+                            <div key={member.userId} className=" leading-[3rem] col-span-3 md:col-span-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
                                 <div className="flex items-center gap-3">
                                     <Gravatar userEmail={member.email} width={20} height={20} />
                                     <div>
-                                        <h3 className="text-lg font-medium text-gray-700">{member.displayName}</h3>
-                                        <p className="text-sm text-gray-600">
+                                        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300">{member.displayName}</h3>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300">
                                             <strong>Role:</strong> {member.roleKeys[0]}
                                         </p>
-                                        <p className="text-sm text-gray-600">
+                                        <p className="text-sm text-gray-600 dark:text-gray-300">
                                             <strong>Email:</strong>{" "}
                                             <a href={`mailto:${member.email}`} className="text-blue-500 hover:underline">
                                                 {member.email}
                                             </a>
                                         </p>
-                                        <p className="text-sm text-gray-600">
+                                        <p className="text-sm text-gray-600 dark:text-gray-300">
                                             <strong>Organization:</strong> {member.orgName}
                                         </p>
                                     </div>
@@ -117,24 +117,24 @@ const TeamDetails = () => {
                         ))}
                     </div>) :
                     <div className="mt-4">
-                        <table className="border-collapse border border-gray-300 w-full">
+                        <table className="border-collapse border border-gray-300 dark:border-gray-600 w-full">
                             <thead>
-                                <tr className="bg-gray-100">
-                                    <th className="border border-gray-300 px-4 py-2 text-left">Name</th>
-                                    <th className="border border-gray-300 px-4 py-2 text-left">Email</th>
-                                    <th className="border border-gray-300 px-4 py-2 text-left">Role</th>
-                                    <th className="border border-gray-300 px-4 py-2 text-left">Organization</th>
+                                <tr className="bg-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Name</th>
+                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Email</th>
+                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Role</th>
+                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Organization</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {team.map((member) => (
-                                    <tr className="hover:bg-gray-50">
-                                        <td className="border border-gray-300 px-4 py-2 flex">
+                                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-600 dark:bg-gray-700">
+                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 flex">
                                             <Gravatar userEmail={member.email} width={5} height={5} /> <span className="ml-2"> {member.displayName}</span>
                                         </td>
-                                        <td className="border border-gray-300 px-4 py-2">{member.email}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{member.roleKeys[0]}</td>
-                                        <td className="border border-gray-300 px-4 py-2">{member.orgName}</td>
+                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.email}</td>
+                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.roleKeys[0]}</td>
+                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.orgName}</td>
                                     </tr>
                                 ))}
                             </tbody>

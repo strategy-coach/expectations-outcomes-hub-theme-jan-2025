@@ -4,8 +4,8 @@ const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
 });
 
 
-const meetingMinutesList = Object.values(newFiles)
-  .filter((file) => file.frontmatter?.home?.meetingMinutes?.category === "meetingMinutes") // Filter by "skipTo" category
+const ItGovernanceList = Object.values(newFiles)
+  .filter((file) => file.frontmatter?.home?.ItGovernance?.category === "it-governance") // Filter by "skipTo" category
   .map((file) => {
     // Remove the base path '/src/content' from the file path
     const relativePath = file.file
@@ -23,17 +23,17 @@ const meetingMinutesList = Object.values(newFiles)
 
 ---
 
-{meetingMinutesList.length > 0 && (
+{ItGovernanceList.length > 0 && (
   <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
       <div class="flex gap-2 items-center text-xl">
-        <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>Meeting Notes</span>
+        <span><img src="/assets/images/fi-rr-shield-check.svg" class="w-6 h-6" alt="" /></span>
+        <span>IT Governance, Risk and Compliance </span>
       </div>
     </h3>
 
     <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {meetingMinutesList.map((file) => {
+      {ItGovernanceList.map((file) => {
         return (
           <li>
             <a href={file.path} class="text-sm hover:text-black">

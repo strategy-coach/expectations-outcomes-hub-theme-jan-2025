@@ -18,7 +18,7 @@ const CardList: React.FC<CardListProps> = ({ data }) => {
         <div className="card-list-container">
             {data.map((item) => (
 
-                <div key={item.title} className="card">
+                <div key={item.title} className="card dark:bg-gray-800">
                     {/* Image */}
                     {item.image && <img src={item.image} alt={item.title} className="card-image" />}
 
@@ -33,7 +33,7 @@ const CardList: React.FC<CardListProps> = ({ data }) => {
 
                     {/* Description */}
                     {item.description && (
-                        <div className="card-description" dangerouslySetInnerHTML={{ __html: item.description }} />
+                        <div className="card-description dark:text-gray-300" dangerouslySetInnerHTML={{ __html: item.description }} />
                     )}
 
                     {/* Additional Fields */}
