@@ -1,7 +1,7 @@
 {
     "tasks": {
-        "gen-psql": "deno run -A src/content/db/models/models.ts sql > src/content/db/dbModels/models.auto.sql",
-        "gen-puml": "deno run -A src/content/db/models/models.ts diagram > src/content/db/dbModels/models.auto.puml",
+        "gen-psql": "deno run -A src/content/db/models/models.ts sql > src/content/db/models/models.auto.sql",
+        "gen-puml": "deno run -A src/content/db/models/models.ts diagram > src/content/db/models/models.auto.puml",
         "gen-all": "deno task gen-psql && deno task gen-puml"
     }
 }

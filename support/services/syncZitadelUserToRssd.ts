@@ -20,7 +20,7 @@ if (!ZITADEL_API_TOKEN || !ZITADEL_ORGANIZATION_ID || !ZITADEL_AUTHORITY) {
 /**
  * Initialize SQLite database connection
  */
-const database = new DB("src/content/db/resource-surveillance.sqlite.db");
+const database = new DB("src/content/db/rssd/resource-surveillance.sqlite.db");
 const args = parseArgs(Deno.args);
 const syncUsersOnly = args.syncUsersOnly ?? "false";
 
