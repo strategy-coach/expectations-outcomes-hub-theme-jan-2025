@@ -415,18 +415,18 @@ const EditProfile: React.FC = () => {
                 </div>
             ) : undefined}
 
-            <h1 className="text-3xl font-semibold mb-4">Edit Profile</h1>
+            <h1 className="text-3xl font-semibold mb-4 text-slate-700 dark:text-gray-300">Edit Profile</h1>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <div className="col-span-1 md:col-span-8 border rounded-lg">
-                    <article className="border-b">
-                        <h2 className="text-2xl font-semibold px-6 py-4">
+                <div className="col-span-1 md:col-span-8 border dark:border-gray-600 rounded-lg">
+                    <article className="border-b dark:border-gray-600 ">
+                        <h2 className="text-2xl font-semibold px-6 py-4 text-slate-700 dark:text-gray-300">
                             Personal Information
                         </h2>
                     </article>
                     <article className="p-6">
                         <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
                             <div className="col-span-1 md:col-span-6 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     First Name
                                     <span className="text-red-500">*</span>
                                 </label>
@@ -473,7 +473,7 @@ const EditProfile: React.FC = () => {
                             </div>
 
                             <div className="col-span-1 md:col-span-6 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     Last Name
                                     <span className="text-red-500">*</span>
                                 </label>
@@ -517,7 +517,7 @@ const EditProfile: React.FC = () => {
                             </div>
 
                             <div className="col-span-1 md:col-span-6 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     Nick Name
                                 </label>
                                 <div className="mt-2">
@@ -559,7 +559,7 @@ const EditProfile: React.FC = () => {
                             </div>
 
                             <div className="col-span-1 md:col-span-6 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     Display Name
                                     <span className="text-red-500">*</span>
                                 </label>
@@ -602,7 +602,7 @@ const EditProfile: React.FC = () => {
                             </div>
 
                             <div className="col-span-1 md:col-span-6 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     Email Address
                                 </label>
                                 <div className="mt-2">
@@ -619,7 +619,7 @@ const EditProfile: React.FC = () => {
                             </div>
 
                             <div className="col-span-1 md:col-span-6 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     Phone Number
                                 </label>
                                 <div className="mt-2">
@@ -662,7 +662,7 @@ const EditProfile: React.FC = () => {
                             </div>
 
                             <div className="col-span-1 md:col-span-12 font-semibold mb-3">
-                                <label className="block text-base font-medium leading-6 text-gray-900">
+                                <label className="block text-base font-medium leading-6 text-gray-900 dark:text-gray-300">
                                     About Me
                                 </label>
                                 <div className="mt-2">
@@ -721,7 +721,7 @@ const EditProfile: React.FC = () => {
                                                 ></input>
                                             </div>
                                             <div className="ml-3">
-                                                <span className="">Recieve Notifications</span>
+                                                <span className="text-slate-700 dark:text-gray-300">Recieve Notifications</span>
                                             </div>
                                         </div>
                                     </div>
@@ -729,10 +729,10 @@ const EditProfile: React.FC = () => {
                             </div>
                         </aside>
                     </article>
-                    <article className="border-t px-6 py-6 flex gap-3 justify-end">
+                    <article className="border-t dark:border-gray-600  px-6 py-6 flex gap-3 justify-end">
                         <button
                             onClick={handleCancel}
-                            className="bg-white text-black border border-gray-300 py-2 px-4 h-10 rounded"
+                            className="bg-white text-slate-700 border border-gray-300 py-2 px-4 h-10 rounded"
                         >
                             Cancel
                         </button>
@@ -749,17 +749,17 @@ const EditProfile: React.FC = () => {
                 </div>
                 <div className="col-span-1 md:col-span-4">
                     {" "}
-                    <article className="border rounded-lg">
-                        <div className="border-b">
-                            <h2 className="text-xl font-semibold px-6 py-4">Profile Image</h2>
+                    <article className="border rounded-lg dark:border-gray-600 ">
+                        <div className="border-b dark:border-gray-600 ">
+                            <h2 className="text-xl text-slate-700 dark:text-gray-300 font-semibold px-6 py-4">Profile Image</h2>
                         </div>
-                        <article className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b p-6">
+                        <article className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b dark:border-gray-600  p-6">
                             <div className="col-span-1 md:col-span-3 flex flex-col justify-center">
                                 <Gravatar userEmail={email} height={55} width={55} />
                             </div>
                             <div className="col-span-1 md:col-span-8 flex flex-col justify-center">
                                 <h2 className="text-xl font-semibold"></h2>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 dark:text-gray-300">
                                     This is the Profile image linked to your Gravatar account. You
                                     can change your avatar at{" "}
                                     <a
@@ -774,26 +774,26 @@ const EditProfile: React.FC = () => {
                             <div className="col-span-1 md:col-span-6 flex items-end justify-end"></div>
                         </article>
                     </article>
-                    <article className="border rounded-lg mt-5">
-                        <div className="border-b">
-                            <h2 className="text-xl font-semibold px-6 py-4">
+                    <article className="border rounded-lg mt-5 dark:border-gray-600 ">
+                        <div className="border-b dark:border-gray-600 ">
+                            <h2 className="text-xl font-semibold px-6 py-4 text-slate-700 dark:text-gray-300">
                                 Account Information
                             </h2>
                         </div>
                         <div className="px-6 py-4">
                             <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
-                                <div className="col-span-1 md:col-span-4 font-semibold">
+                                <div className="col-span-1 md:col-span-4 font-semibold text-slate-700 dark:text-gray-300">
                                     Email
                                 </div>
-                                <div className="col-span-1 md:col-span-8 flex">
+                                <div className="col-span-1 md:col-span-8 flex text-slate-700 dark:text-gray-300">
                                     {formData.userEmail}
                                 </div>
                             </aside>
                             <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
-                                <div className="col-span-1 md:col-span-4 font-semibold">
+                                <div className="col-span-1 md:col-span-4 font-semibold text-slate-700 dark:text-gray-300">
                                     Username
                                 </div>
-                                <div className="col-span-1 md:col-span-8 flex break-all">
+                                <div className="col-span-1 md:col-span-8 flex break-all text-slate-700 dark:text-gray-300">
                                     {loginUserName}
                                 </div>
                             </aside>

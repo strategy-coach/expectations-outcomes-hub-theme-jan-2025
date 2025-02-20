@@ -69,8 +69,8 @@ const Profile: React.FC = () => {
         <>
             <section className="px-2 pt-3">
                 {user && <div className="grid grid-cols-1 md:grid-cols-12 gap-6 ">
-                    <div className="col-span-1 md:col-span-8 border rounded-lg bg-white">
-                        <article className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b p-6">
+                    <div className="col-span-1 md:col-span-8 border dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-300">
+                        <article className="grid grid-cols-1 md:grid-cols-12 gap-4 border-b p-6 dark:border-gray-600">
                             <div className="col-span-1 md:col-span-2 flex flex-col justify-center">
                                 <Gravatar userEmail={user.user.human.email.email} height={35} width={35} />
                             </div>
@@ -230,8 +230,8 @@ const Profile: React.FC = () => {
                     </div>
                     <div className="col-span-1 md:col-span-4 ">
 
-                        <article className="bg-white border rounded-lg">
-                            <div className="border-b">
+                        <article className="bg-white border dark:border-gray-600 rounded-lg dark:text-gray-300 dark:bg-gray-700">
+                            <div className="border-b dark:border-gray-600">
                                 <h2 className="text-xl font-semibold px-6 py-4">
                                     Account Information
                                 </h2>
@@ -257,8 +257,8 @@ const Profile: React.FC = () => {
                                 </aside>
                             </div>
                         </article>
-                        {isAdmin ? <article className="bg-white border rounded-lg mt-2">
-                            <div className="border-b">
+                        {isAdmin ? <article className="bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-lg mt-2 dark:text-gray-300">
+                            <div className="border-b dark:border-gray-600">
                                 <h2 className="text-xl font-semibold px-6 py-4">
                                     Synchronize Data Models and Zitadel Users
                                 </h2>

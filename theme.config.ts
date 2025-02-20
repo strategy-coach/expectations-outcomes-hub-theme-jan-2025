@@ -1,6 +1,7 @@
 // theme.config.ts
 const themeConfig = (config: {
   logo: string;
+  darkmodeLogo: string;
   title: string;
   organization: string;
   adminEmail: string;
@@ -26,6 +27,7 @@ const themeConfig = (config: {
 
 export default themeConfig({
   logo: "/assets/images/logo.png",
+  darkmodeLogo: "/assets/images/EOH-Whitemode.png",
   title: "EOH Astro 5 Site",
   organization: "EOH Hub",
   adminEmail: "admin@example.com",

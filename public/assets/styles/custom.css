@@ -267,8 +267,34 @@ details[open] > .fst_mn .caret {
 
 /* / Pagefind ui css ends  / */
 
-
+.dark main a:hover, .dark a.menu-link:hover  {
+  color: #fefbfb!important;
+}
   /* :::::: markdown css ::::::> starts */
+/* .markdown-content.dark-mode, .markdown-content.dark-mode a, .markdown-content.dark-mode .breadcrumb a, .markdown-content.dark-mode h1, .markdown-content.dark-mode h2, .markdown-content.dark-mode h4, .markdown-content.dark-mode ul li::marker, .markdown-content.dark-mode details[open] summary   {
+ color: #d1d5db!important;
+} */
+
+.dark .markdown-content, .dark .markdown-content a, .dark .markdown-content p, .dark .markdown-content .breadcrumb a, .dark .markdown-content h1, .dark .markdown-content h2, .dark .markdown-content h3, .dark .markdown-content h4, .dark .markdown-content ul li::marker, .dark .markdown-content details[open] summary, .dark .markdown-content b, .dark .markdown-content strong, .dark .markdown-content blockquote, .dark .markdown-content code   {
+  color: #d1d5db!important;
+ }
+ .dark .markdown-content hr, .dark .markdown-content h1{
+  border-color: #4b5563!important;
+ }
+
+ .dark .sidebar-left-menu details[open] summary, .dark .inner-menu-select, 
+ .dark .sidebar-left-menu details summary:hover, 
+ .dark .sidebar-left-menu details[open] summary:hover, 
+ .dark .sidebar-left-menu ul ul li a:hover{
+  background: #0d1218!important;
+ }
+.dark .markdown-content table, .dark .markdown-content th, .dark .markdown-content td {
+  background-color: #374151!important;
+  border-color: #4b5563!important;
+  color:  #d1d5db!important;
+}
+/* light version css */
+
 .markdown-content a {
   color: #028db7;
   text-decoration: none;
@@ -429,6 +455,25 @@ details[open] > .fst_mn .caret {
   left: 0px;
 }
 
+.dark .markdown-content summary::after {
+  content: " ";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('/assets/images/ico-right-arrow-white.png') no-repeat center center;
+  background-size: 24px;
+  position: absolute;
+  left: 0px;
+}
+.dark .markdown-content details[open] summary:after {
+  background: url('/assets/images/ico-down-arrow-white.png') no-repeat center center;
+  width: 24px;
+  height: 24px;
+  background-size: 24px;
+  position: absolute;
+  left: 0px;
+}
+
 .sql-content summary::after {
   top: 1px;
 }
@@ -481,5 +526,19 @@ h3.notify {
 }
 
 /* :::::: markdown css ::::::> ends */
+.dark .markdown-content-doc, .dark .markdown-content-doc .breadcrumb a, .dark .markdown-content-doc h1, .dark .markdown-content-doc h2, .dark .markdown-content-doc h3, .dark .markdown-content-doc h4, .dark .markdown-content-doc ul li::marker, .dark .markdown-content-doc b, .dark .markdown-content-doc strong, .dark .markdown-content-doc blockquote, .dark .markdown-content-doc code   {
+  color: #d1d5db!important;
 
-  
+}
+.dark .markdown-content-doc hr, .dark .markdown-content-doc h1{
+  border-color: #4b5563!important;
+ }
+ .dark .markdown-content-doc table, .dark .markdown-content-doc thead, .dark .markdown-content-doc tr, .dark .markdown-content-doc td, .dark .markdown-content-doc th {
+  background-color: #374151!important;
+  border-color: #4b5563!important;
+  color:  #d1d5db!important;
+}
+.dark .markdown-content-doc a{
+  color: #028db7!important; 
+}
+

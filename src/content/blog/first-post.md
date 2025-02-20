@@ -1,7 +1,7 @@
 ---
 title: 'Blog title'
 description: 'Lorem ipsum dolor sit amet'
-heroImage: '/assets/images/blog-placeholder-2.jpg'
+heroImage: '/assets/images/blog-thumb.jpg'
 ---
 # Blog title
 

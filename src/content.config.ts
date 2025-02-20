@@ -29,6 +29,11 @@ const baseSchema = z.object({
           category: z.string().optional(),
         })
         .optional(),
+        ItGovernance: z
+        .object({
+          category: z.string().optional(),
+        })
+        .optional(),
     })
     .optional(),
 });
