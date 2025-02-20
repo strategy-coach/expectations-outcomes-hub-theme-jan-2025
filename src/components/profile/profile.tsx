@@ -24,25 +24,26 @@ const Profile: React.FC = () => {
     const [loading, setLoading] = useState<string | null>(null);
     const [user, setUser] = useState<ProfileInformation | undefined>();
 
+
     useEffect(() => {
-        getUserInfo(userId).then((response) => {
-            setUser(response)
-        });
-
-        getUserMetaData(userId).then((response) => {
-            const metadata = response as UserMeta
-            metadata.result?.map((res) => {
-                if (res.key == "notifications") {
-                    const decodedValue = atob(res.value)
-                    setNotificationStatus(decodedValue)
-
-                } else if (res.key == "bio") {
-                    const decodedValue = atob(res.value)
-                    setUserBio(decodedValue)
+        if (!userId) return;
+        const fetchUserData = async () => {
+            const [userResponse, metadataResponse] = await Promise.all([
+                getUserInfo(userId),
+                getUserMetaData(userId)
+            ]);
+            setUser(userResponse);
+            (metadataResponse as UserMeta).result?.forEach(({ key, value }) => {
+                const decodedValue = atob(value);
+                if (key === "notifications") {
+                    setNotificationStatus(decodedValue);
+                } else if (key === "bio") {
+                    setUserBio(decodedValue);
                 }
-            })
-        });
-    }, [])
+            });
+        };
+        fetchUserData();
+    }, [userId]);
 
     const handleSync = async (type: "models-users" | "users-only") => {
 
