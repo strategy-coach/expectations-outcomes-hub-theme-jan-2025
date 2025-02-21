@@ -25,6 +25,22 @@ const openDatabase = (): sqlite3.Database => {
     });
 };
 
+export function getPageFromSlug(input: string) {
+    return input.replace(/\/[^/]*component\.css\.map$/, '');
+}
+
+export function slugify(text: string) {
+    return text
+        .toString()
+        .trim()
+        .toLowerCase()
+        .normalize("NFD") // Normalize special characters
+        .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+        .replace(/[^a-z0-9-.]/g, "") // Remove non-alphanumeric characters except - and .
+        .replace(/-{2,}/g, "-") // Remove duplicate dashes
+        .replace(/\.{2,}/g, "."); // Remove duplicate dots
+}
+
 export const getFormData = async (digest: string): Promise<LHCFormDataType[]> => {
     return new Promise((resolve, reject) => {
         const db = openDatabase();
