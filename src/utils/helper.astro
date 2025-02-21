@@ -1,14 +1,14 @@
 ---
-import themeConfig from '../../theme.config';
+import themeConfig from "../../theme.config";
 
 const staticFixedFolders = themeConfig.staticFixedFolders;
 
-
 // Define the getPriorityFolders function
 export function getPriorityFolders(dirName) {
-  
-const config = themeConfig.staticFixedFolders.find((item) => item.parent === dirName);
-return config ? config.child : [];
+  const config = themeConfig.staticFixedFolders.find(
+    (item) => item.parent === dirName
+  );
+  return config ? config.child : [];
 }
 
 export function extractTitle(frontmatter) {
@@ -18,18 +18,19 @@ export function extractTitle(frontmatter) {
 
 export function formatName(name) {
   return name
+    .replace(/\.lhc-form/, "")
     .split(/[-_]/) // Split by hyphens or underscores
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter
     .join(" "); // Join words with spaces
 }
 
-export function buildMenuTree(files, dirName,sorting,sortOrder) {
+export function buildMenuTree(files, dirName, sorting, sortOrder) {
   const tree = [];
-     // Normalize name helper function
-   const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, '-');
+  // Normalize name helper function
+  const normalizeName = (name) => name.toLowerCase().replace(/\s+/g, "-");
 
-//   // Get priority folders from config
-   const priorityFolders = getPriorityFolders(dirName).map(normalizeName);
+  //   // Get priority folders from config
+  const priorityFolders = getPriorityFolders(dirName).map(normalizeName);
 
   for (const path in files) {
     const parts = path.replace(`/src/content/${dirName}/`, "").split("/"); // Remove base path and split by "/"
@@ -45,8 +46,8 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
         const title =
           extractTitle(frontmatter) ||
           formatName(part.replace(/\.(md|mdx|json|yml)$/, "")); // Use title or formatted file name
-          const description =frontmatter.description;
-       
+        const description = frontmatter.description;
+
         const filePath = path
           .replace("/src/content", "")
           .replace(/\.(md|mdx)$/, "");
@@ -94,7 +95,7 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
 
       // Default sorting: folders first, then files
       if (a.isFile !== b.isFile) return a.isFile ? 1 : -1;
-//console.log(sortOrder,'--')
+      //console.log(sortOrder,'--')
       return sortOrder === "asc"
         ? a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
         : b.name.localeCompare(a.name, undefined, { sensitivity: "base" });
@@ -113,8 +114,6 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
 
   return tree;
 }
-
-
 
 // export function buildMenuTree(files, dirName, sorting = false, sortOrder = "asc") {
 //   const tree = [];
@@ -146,7 +145,6 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
 //         const frontmatter = fileModule?.frontmatter || {};
 //         const title = extractTitle(frontmatter) || formatName(part.replace(/\.(md|mdx)$/, ""));
 //         const filePath = path.replace("src/content", "").replace(/\.(md|mdx)$/, "");
-        
 
 //         currentLevel.push({
 //           name: title,
@@ -210,11 +208,4 @@ export function buildMenuTree(files, dirName,sorting,sortOrder) {
 //   // 🚀 Return only the children array, not the parent object
 //   return parentFolder.children;
 // }
-
-
-
-
-
-
-
 ---

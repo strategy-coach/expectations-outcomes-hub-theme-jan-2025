@@ -119,7 +119,10 @@ const inActiveTabClass =
       {
         currentTab == "form" || currentTab == "" || currentTab == null ? (
           <div class="p-4">
-            <LHCFormsWidget fileName={pageSlug} />
+            <LHCFormsWidget
+              fileName={fileName}
+              folderPath="lforms"
+            />
           </div>
         ) : (
           ""

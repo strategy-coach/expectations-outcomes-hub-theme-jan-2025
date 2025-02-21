@@ -1,0 +1,686 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "Confidentiality and Availability Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "175799447721",
+              "text": "Please provide the URL to Confidentiality policy.",
+              "enableWhen": [
+                {
+                  "question": "406468720342",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "969142870719",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "299957164239",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Confidentiality policy\n as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/confidentiality-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "406468720342",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "892920914989",
+              "type": "display",
+              "text": "As evidence, you can provide Confidentiality policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "406468720342",
+          "code": [
+            {
+              "code": "FII-SCF-PRI-0004"
+            }
+          ],
+          "text": "Are there confidentiality policies and procedures with revision history that describe: - defining, identifying and designating information as confidential; - protecting confidential information from erasure or destruction; - storing confidential data; - retaining confidential information for only as long as is required to achieve the purpose for which the confidential data was collected and processed - processes in place to delete conï¬dential information in accordance with speciï¬c retention requirements",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "498533976457",
+              "text": "Please provide the URL to Confidential Asset register.",
+              "enableWhen": [
+                {
+                  "question": "291400123841",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "428072368278",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "955733667060",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Confidential Asset register\n as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "291400123841",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "217326151084",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential Asset register.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "291400123841",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0002"
+            }
+          ],
+          "text": "Do you maintain an inventory listing noting assets that maintain confidential data?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "854424922328",
+              "text": "Please provide the URL to Population of Confidential data.",
+              "enableWhen": [
+                {
+                  "question": "330952154280",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "145979135287",
+                  "type": "display",
+                  "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds the inventory listing of confidential data, including its classification and retention period.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "625782737065",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Population of Confidential data\n as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/data-retention-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "330952154280",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "805141757606",
+              "type": "display",
+              "text": "As evidence, you can provide Population of Confidential data.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "330952154280",
+          "code": [
+            {
+              "code": "FII-SCF-PRI-0004.1"
+            }
+          ],
+          "text": "Will you be able to provide an inventory listing of confidential data within assets, including their classification and retention period?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "766867466841",
+              "text": "Please provide the URL to Confidential information maintenance policy.",
+              "enableWhen": [
+                {
+                  "question": "749007702018",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "952141019053",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "638189727702",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Confidential information maintenance policy as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/confidentiality-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "749007702018",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "490103653051",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential information maintenance policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "749007702018",
+          "code": [
+            {
+              "code": "FII-SCF-PRI-0005"
+            }
+          ],
+          "text": "Have you documented confidential information maintenance policies and procedures?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "137452157169",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0022"
+            }
+          ],
+          "text": "During the audit we will select a sample of files/documents marked as confidential and evidence of the file / directory access permissions and the list of users with access to the confidential file/document were property limited.",
+          "item": [
+            {
+              "linkId": "454907289554",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds a sample of confidential files, access permissions, and the corresponding user list.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "918645500105",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0021"
+            }
+          ],
+          "text": "During the audit we will ask for a population of confidential data that required disposal. For a sample of files/documents marked as confidential that required disposal, can you provide evidence that the file/document was disposed following the procedures documented in the Confidentiality and/or Data Disposal policies?",
+          "item": [
+            {
+              "linkId": "169057933905",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds sample records demonstrating proper disposal of confidential files/documents per your policies.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "315750093252",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0005"
+            }
+          ],
+          "text": "Can you provide evidence that confidential information is stored in an encrypted, secure environment?",
+          "item": [
+            {
+              "linkId": "219404963015",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation confirming that confidential information is stored in an encrypted, secure environment.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "634968453971",
+      "text": "Confidentiality"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "457859126554",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0012"
+            }
+          ],
+          "text": "Does the organization meet its availability requirements by conducting annual backup restoration testing?",
+          "item": [
+            {
+              "linkId": "122325712848",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds the annual backup restoration testing report.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "507712339527",
+          "code": [
+            {
+              "code": "FII-SCF-TPM-0001"
+            }
+          ],
+          "text": "Third party data centers most recent SOC report",
+          "item": [
+            {
+              "linkId": "188422931956",
+              "type": "display",
+              "text": "Please attach a URL along with details from any secure storage platform (e.g., Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, etc.) where your Vendor SOC Reports are stored. This may include documents such as your AWS SOC2 certification report, ISO certification report, or similar evidence verifying the cloud server's compliance.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "679518609812",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Does the organization meet its availability requirements by effectively utilizing hardware usage monitoring and usage alerts?",
+          "item": [
+            {
+              "linkId": "701861460401",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation or screenshots demonstrating hardware usage monitoring and usage alerts.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "121005996834",
+      "text": "Availability"
+    },
+    {
+      "type": "group",
+      "linkId": "363745865812",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Confidentiality and Availability informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Confidentiality and Availability\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 import * as fs from "fs";
 import { z } from "zod";
 import LformWidget from "../lhc-forms-widget/index";
+import moment from "moment";
+import { existsSync } from "fs";
 
 // Define the schema for the expected meta information structure
 const LHCFormMetaInformationSchema = z.object({
@@ -34,10 +36,24 @@ const LHCFormDataSchema = z.object({
 type LHCFormMetaInformation = z.infer<typeof LHCFormMetaInformationSchema>;
 type LHCFormData = z.infer<typeof LHCFormDataSchema>;
 
-const { fileName } = Astro.props;
-let filePath = `dist/content/lforms/${fileName}`;
+const { fileName, folderPath } = Astro.props;
+
+function isLhcFormJson(filename: string): boolean {
+  const regex = /\.lhc-form\./; // Matches ".lhc-form." anywhere in the filename
+  return regex.test(filename);
+}
+
+if (!isLhcFormJson(fileName)) {
+  return "Invalid file: The filename must follow the pattern '<name>.lhc-form.json'. Please check and rename the file accordingly.";
+}
+
+let filePath = `dist/content/${folderPath}/${fileName}`;
 if (process.env.NODE_ENV == "development") {
-  filePath = `src/content/lforms/${fileName}`;
+  filePath = `src/content/${folderPath}/${fileName}`;
+}
+
+if (!existsSync(filePath)) {
+  return `File not found: ${filePath}. Please check the path.`;
 }
 
 const LHCFormString = fs.readFileSync(filePath, "utf8");
@@ -81,43 +97,6 @@ function getLHCFormMetaInformation(
 }
 
 const metaInfo = getLHCFormMetaInformation(LHCFormData);
-
-function parseDate(dateStr) {
-  const parts = dateStr.split("-");
-  // Assuming DD-MM-YYYY format
-  const day = parseInt(parts[1], 10);
-  const month = parseInt(parts[0], 10) - 1; // Months are 0-indexed in JS
-  const year = parseInt(parts[2], 10);
-
-  return new Date(year, month, day);
-}
-
-function timeAgo(dateStr) {
-  const parts = dateStr.split("-");
-  // Assuming DD-MM-YYYY format
-  const day = parseInt(parts[1], 10);
-  const month = parseInt(parts[0], 10) - 1; // Months are 0-indexed in JS
-  const year = parseInt(parts[2], 10);
-  const now = new Date();
-  const diffInSeconds = Math.floor((now - new Date(year, month, day)) / 1000);
-  const diffInMinutes = Math.floor(diffInSeconds / 60);
-  const diffInHours = Math.floor(diffInMinutes / 60);
-  const diffInDays = Math.floor(diffInHours / 24);
-
-  if (diffInDays >= 30) {
-    return `${Math.floor(diffInDays / 30)} month(s) ago`;
-  } else if (diffInDays >= 7) {
-    return `${Math.floor(diffInDays / 7)} week(s) ago`;
-  } else if (diffInDays > 0) {
-    return `${diffInDays} day(s) ago`;
-  } else if (diffInHours > 0) {
-    return `${diffInHours} hour(s) ago`;
-  } else if (diffInMinutes > 0) {
-    return `${diffInMinutes} minute(s) ago`;
-  } else {
-    return "Just now";
-  }
-}
 ---
 
 <head>
@@ -156,11 +135,15 @@ function timeAgo(dateStr) {
     <div class="flex justify-end text-xs text-gray-500">
       <div class="">
         <div>
-          <span class="font-semibold inline-block w-28">Created By:</span><span
-            class="inline-block"
-            >{metaInfo?.createdBy || "N/A"}
-            {metaInfo?.createdAt ? timeAgo(metaInfo?.createdAt) : ""}</span
-          >
+          <span class="font-semibold inline-block w-28">Created By: </span>
+          <span class="inline-block">
+            {metaInfo?.createdBy || "N/A"}
+            {
+              metaInfo?.createdAt
+                ? moment(moment(metaInfo?.createdAt, "MM-DD-Y")).fromNow()
+                : ""
+            }
+          </span>
         </div>
         <!-- <div>
           <span class="font-semibold inline-block w-28">Created At:</span><span
