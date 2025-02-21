@@ -36,8 +36,8 @@ const LHCFormDataSchema = z.object({
 type LHCFormMetaInformation = z.infer<typeof LHCFormMetaInformationSchema>;
 type LHCFormData = z.infer<typeof LHCFormDataSchema>;
 
-const { fileName, folderPath } = Astro.props;
-
+const { fileName, folderPath,pageSlug } = Astro.props;
+console.log(folderPath+fileName)
 function isLhcFormJson(filename: string): boolean {
   const regex = /\.lhc-form\./; // Matches ".lhc-form." anywhere in the filename
   return regex.test(filename);
@@ -163,4 +163,4 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
     </div>
   </div>
 </div>
-<LformWidget data={LHCFormString} fileName={fileName} client:only="react" />
+<LformWidget data={LHCFormString} fileName={pageSlug} client:only="react" />

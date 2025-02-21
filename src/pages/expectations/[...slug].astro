@@ -10,7 +10,7 @@ import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-r
 import themeConfig from "../../../theme.config";
 import SubmittedFormList from "../../components/lhc-forms-widget/submitted-form-list.astro";
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
-import {getPageFromSlug} from "../../components/lhc-forms-widget/service";
+import {getPageFromSlug,slugify} from "../../components/lhc-forms-widget/service";
 
 const { contentCollectionSort } = themeConfig || {};
 const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
@@ -154,6 +154,7 @@ if (isLform) {
            <LHCFormsWidget
               fileName={fileName}
               folderPath={folderPath}
+              pageSlug={slugify(pageSlug)}
             />
           </div>
         ) : (
@@ -176,7 +177,7 @@ if (isLform) {
                 </div>
                 <LHCFormsResponseWidget fileName={submittedForm} />
               </div>
-            ) : <SubmittedFormList fileName={`${fileName}.lform-submittion.json`} />}
+            ) : <SubmittedFormList fileName={`${slugify(pageSlug)}.lform-submittion.json`} />}
           </>
         ) : (
           ""
