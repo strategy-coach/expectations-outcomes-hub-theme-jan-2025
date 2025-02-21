@@ -181,17 +181,3 @@ const userName = Astro.cookies.get("zitadel_user_name");
     });
   });
 </script>
-<script>
-  const themeToggle = document.getElementById('toggle-theme');
-  const htmlElement= document.documentElement;
-
-  if(localStorage.getItem('theme')==='dark'){
-    htmlElement.classList.add('dark')
-  }
-
-  themeToggle?.addEventListener('click',()=>{
-    htmlElement.classList.toggle('dark');
-    const newTheme = htmlElement.classList.contains('dark')?'dark':'light';		
-    localStorage.setItem('theme', newTheme)	
-  })
-</script>

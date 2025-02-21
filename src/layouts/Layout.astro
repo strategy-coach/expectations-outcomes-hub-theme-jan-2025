@@ -63,12 +63,31 @@ const enableOpenObserve =
         </>
       )
     }
-
+<script is:inline>
+  // Apply dark mode before rendering to prevent the white flash
+  (function () {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
     <meta name="generator" content={Astro.generator} />
     <title>Expectations and Outcomes Hub Theme</title>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 dark:text-white">
     <Header />
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const themeToggle = document.getElementById('toggle-theme');
+        const htmlElement = document.documentElement;
+  
+        themeToggle?.addEventListener('click', () => {
+          htmlElement.classList.toggle('dark');
+          const newTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+          localStorage.setItem('theme', newTheme);
+        });
+      });
+    </script>
     <slot />
     <Footer />
   </body>
