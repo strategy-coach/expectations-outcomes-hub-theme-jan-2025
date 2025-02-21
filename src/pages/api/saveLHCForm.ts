@@ -24,7 +24,7 @@ export async function POST({ request }: APIContext) {
             }
 
             // Move the file only if the ingest command succeeded
-            exec(`mv ${dbIngestPath}/resource-surveillance.sqlite.db ${lformDBPath}`, (mvError, _mvStdout, mvStderr) => {
+            exec(`cp ${dbIngestPath}/resource-surveillance.sqlite.db ${lformDBPath}/resource-surveillance-copy.sqlite.db && cd ${lformDBPath} && surveilr admin merge && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db`, (mvError, _mvStdout, mvStderr) => {
                 if (mvError) {
                     console.error(`Failed to move file: ${mvError.message}`);
                     return;

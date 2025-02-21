@@ -1,0 +1,96 @@
+---
+import { getFileDetails } from "./service";
+import { type FileDetails } from "./service";
+import SubmittedHistory from "./submitted-history.astro";
+
+const { fileName } = Astro.props;
+const currentURL = Astro.url;
+const submittedFiles: FileDetails[] | string = await getFileDetails(
+  fileName
+);
+---
+
+<div id="submitted-data" class="p-4">
+  <div class="relative overflow-x-auto">
+    {typeof submittedFiles !== "string" && submittedFiles.length > 0 ? (
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">File</th>
+            <th scope="col" class="px-6 py-3">Submitted By</th>
+            <th scope="col" class="px-6 py-3">Date</th>
+            <th scope="col" class="px-6 py-3">History</th>
+          </tr>
+        </thead>
+        <tbody>
+          {submittedFiles.map((item, index) => (
+            <>
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                <td class="p-2 break-all">
+                  <a href={`${currentURL}&submitted-form=${item.content_digest}`}>{item.uri.split("/").pop()}</a>
+                </td>
+                 <td class="px-6 py-4">
+                  {item.party_name}
+                 </td>
+                <td class="px-6 py-4">
+                  {new Date(item.file_date).toDateString()}
+                </td>
+                <td class="px-6 py-2">
+                  <svg
+                    class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white lform-history-toggle-view"
+                    data-index={index}
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-width="2"
+                      d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z"
+                    />
+                    <path
+                      stroke="currentColor"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>
+                </td>
+              </tr>
+              <tr class="lform-submitted-history hidden" data-row={index}>
+                <td colspan="3" class="p-4">
+                  <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-md shadow">
+                   <SubmittedHistory fileName={item.uri.split("/").pop()}/>
+                  </div>
+                </td>
+              </tr>
+            </>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <p>No data found</p>
+    )}
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".lform-history-toggle-view").forEach((icon) => {
+    icon.addEventListener("click", function (event) {
+      const target = (event.target as HTMLElement)?.closest("svg"); // Ensure correct element selection
+      if (!target) return;
+
+      const index = target.getAttribute("data-index"); // Get the corresponding row index
+      const detailsRow = document.querySelector(`.lform-submitted-history[data-row='${index}']`);
+
+      if (detailsRow) {
+        detailsRow.classList.toggle("hidden");
+      }
+    });
+  });
+});
+
+</script>

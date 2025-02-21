@@ -1,9 +1,9 @@
 ---
-import * as fs from "fs";
+
 import LformWidget from "../lhc-forms-widget/index";
+import { getFormData } from "./service";
 
 const { fileName } = Astro.props;
-import { getFormData } from "./service";
 const data = await getFormData(fileName);
 ---
 
@@ -13,8 +13,8 @@ const data = await getFormData(fileName);
   rel="stylesheet"
 />
 <LformWidget
-  fileName={fileName}
+  fileName={data[0].uri.split("/").pop()}
   isUpdate={true}
-  data={JSON.stringify(data[0], null, 2)}
+  data={JSON.stringify(data[0].content, null, 2)}
   client:only="react"
 />
