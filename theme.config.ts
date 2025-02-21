@@ -71,9 +71,9 @@ export default themeConfig({
     "/lforms",
     "/teams",
     "/database-query-render",
-    "/imap-mail",
+    "/imap-mail",    
   ],
-  excludedEditOptionFolder: ["qualityfolio", "lforms"],
+  excludedEditOptionFolder: ["qualityfolio", "lforms","questionnaire"],
   headerMenu: [
     { label: "Home", path: "/" },
     { label: "Documentation", path: "/documentation" },
