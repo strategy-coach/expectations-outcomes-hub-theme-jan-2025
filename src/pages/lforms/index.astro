@@ -24,7 +24,8 @@ function removeSubmissions(menuTree: any[]): any[] {
 }
 
 const filteredMenuTree = removeSubmissions(menuTree);
-const fileName = filteredMenuTree[0].path.split("/").pop() || "";
+const fileName =
+  filteredMenuTree.length > 0 ? filteredMenuTree[0].path.split("/").pop() || "" : "";
 const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
 const data: FileDetails[] | string = await getFiledatails(
   `${fileName}.lform-submittion.json`
@@ -113,7 +114,7 @@ const inActiveTabClass =
       {
         currentTab == "form" || currentTab == "" || currentTab == null ? (
           <div class="p-4">
-            <LHCFormsWidget fileName={fileName} />
+            <LHCFormsWidget fileName={fileName} folderPath="lforms" />
           </div>
         ) : (
           ""

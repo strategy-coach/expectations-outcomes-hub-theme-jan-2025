@@ -1,0 +1,610 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "Common Criteria Related to Control Activities",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "182220749412",
+              "text": "Please provide the URL to Most recently completed risk assessment details.",
+              "enableWhen": [
+                {
+                  "question": "774380425039",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "793781088156",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "695675007543",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Most recently completed risk assessment details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/risk-rgister.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "774380425039",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "983136320443",
+              "type": "display",
+              "text": "As evidence, you can provide Most recently completed risk assessment details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "774380425039",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0002"
+            }
+          ],
+          "text": "Are controls within the environment modified and implemented to mitigate identified vulnerabilities, deviations and control gaps?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "343863405607",
+              "text": "Please provide the URL to Sample incident response ticket details.",
+              "enableWhen": [
+                {
+                  "question": "891832847393",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "575560286466",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "566162270051",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Sample incident response ticket details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/security-incident.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "891832847393",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "894748274098",
+              "type": "display",
+              "text": "As evidence, you can provide Sample incident response ticket details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "891832847393",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0002"
+            }
+          ],
+          "text": "Are performance of the internal controls implemented within the environment assigned to appropriate process owners and operational personnel based on roles and responsibilities?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "337014092254",
+              "text": "Please provide the URL to Incident Response Policies and Procedures.",
+              "enableWhen": [
+                {
+                  "question": "194565767265",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "965206994688",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "300305068205",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Incident Response Policies and Procedures as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/incident-management-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "194565767265",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "906359236789",
+              "type": "display",
+              "text": "As evidence, you can provide Incident Response Policies and Procedures.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "194565767265",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "Are incidents formally documented?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "898831616020",
+              "text": "Please provide the URL to Sample incident response ticket details.",
+              "enableWhen": [
+                {
+                  "question": "815387559803",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "693296319467",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "292720310693",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Sample incident response ticket details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/security-incident.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "815387559803",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "609262980156",
+              "type": "display",
+              "text": "As evidence, you can provide Sample incident response ticket details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "815387559803",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0004"
+            }
+          ],
+          "text": "Are incidents resolved in a timely manner?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "197764326039",
+              "text": "Please provide the URL to Incident Response Policies and Procedures details.",
+              "enableWhen": [
+                {
+                  "question": "144044243803",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "931673942256",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "165569592534",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Incident Response Policies and Procedures details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/incident-response-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "144044243803",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "406108676917",
+              "type": "display",
+              "text": "As evidence, you can provide Incident Response Policies and Procedures details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "144044243803",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0004.1"
+            }
+          ],
+          "text": "Is the resolution and closure of incidents documented and communicated to affected users?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "880644372287",
+      "text": "Common Criteria Related to Control Activities",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Control Activities informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Control Activities\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "type": "string",
+      "linkId": "654590132458",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Control Activities informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Control Activities\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

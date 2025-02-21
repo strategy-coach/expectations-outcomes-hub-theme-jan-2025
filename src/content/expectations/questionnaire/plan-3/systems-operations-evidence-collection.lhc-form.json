@@ -1,0 +1,373 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "Common Criteria Related to Systems Operations",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "140275982976",
+              "text": "Please provide the URL to Backup policies and procedures.",
+              "enableWhen": [
+                {
+                  "question": "555490812889",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "384449752172",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "498747938997",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Backup policies and procedures as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "555490812889",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "800187110502",
+              "type": "display",
+              "text": "As evidence, you can provide Backup policies and procedures.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "555490812889",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0011"
+            }
+          ],
+          "text": "Are backups of critical data performed regularly (e.g., daily, weekly, monthly)?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "692081850212",
+              "text": "Please provide the URL to Backup policies and procedures.",
+              "enableWhen": [
+                {
+                  "question": "501639742652",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "829427823362",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "332041350641",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Backup policies and procedures as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/availability-policy', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "501639742652",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "770356421038",
+              "type": "display",
+              "text": "As evidence, you can provide Backup policies and procedures.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "501639742652",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0011.2"
+            }
+          ],
+          "text": "Are backups replicated offsite either virtually or via tape in case of natural disaster?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "728798644373",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0011.1"
+            }
+          ],
+          "text": "Are backup restoration tests performed regularly to validate data can be restored if needed?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ],
+          "item": [
+            {
+              "linkId": "444580804970",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation demonstrating the successful backup restore test result.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "609902307765",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.5"
+            }
+          ],
+          "text": "Is there an IDS or IPS in place?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ],
+          "item": [
+            {
+              "linkId": "845563657266",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation showing the Intrusion Detection System/Intrusion Prevention System log or dashboard details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "325644455080",
+      "text": "Common Criteria Related to Systems Operations",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Systems Operations informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Systems Operations\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "type": "group",
+      "linkId": "422438490716",
+      "text": "Meta Information"
+    }
+  ]
+}

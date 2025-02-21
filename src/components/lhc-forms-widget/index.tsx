@@ -52,6 +52,8 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, isUpdat
                 body: JSON.stringify({ formData: validationResult, userId, fileName }),
             });
 
+            console.log(response)
+
             if (!response.ok) throw new Error("Failed to save form data");
 
             const result = await response.json();

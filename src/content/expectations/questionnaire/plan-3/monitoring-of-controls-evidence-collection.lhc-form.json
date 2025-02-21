@@ -1,0 +1,123 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "Common Criteria Related to Monitoring of Controls",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "883697782059",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001"
+            }
+          ],
+          "text": "Are tools in place to monitor system performance, capacity, utilization and unusual system activity?",
+          "item": [
+            {
+              "linkId": "608547454462",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation demonstrating a system for monitoring performance, capacity, utilization, and unusual system activity.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "251687735852",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0001.1"
+            }
+          ],
+          "text": "Are vulnerability scans or penetration testing performed on a periodic basis?",
+          "item": [
+            {
+              "linkId": "650226868798",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation for the most recently completed penetration test results details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "320324981064",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Is there file integrity monitoring software in place?",
+          "item": [
+            {
+              "linkId": "885181295433",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation confirming file integrity monitoring software is in place, including evidence of monitoring alerts from the software or log.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "785142250198",
+      "text": "Common Criteria Related to Monitoring of Controls"
+    },
+    {
+      "type": "group",
+      "linkId": "662296423950",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Monitoring of Controls informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Monitoring of Controls\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

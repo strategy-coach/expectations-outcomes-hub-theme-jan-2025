@@ -1,0 +1,1167 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "Risk Assessment, Monitoring of Controls and  Control Activities Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "497932254538",
+              "text": "Please provide the URL to Documented (1) compliance manager job description (2) audit manager job description and (3) risk management job description details.",
+              "enableWhen": [
+                {
+                  "question": "511150511982",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "659054713741",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "879384515419",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Documented (1) compliance manager job description (2) audit manager job description and (3) risk management job description details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/general-role', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "511150511982",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "222775951498",
+              "type": "display",
+              "text": "As evidence, you can provide Documented (1) compliance manager job description (2) audit manager job description and (3) risk management job description details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "511150511982",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0003"
+            }
+          ],
+          "text": "Are there documented position descriptions for Risk Manager or Audit Manager?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "955976295603",
+              "text": "Please provide the URL to Organizational business plans, records of budgets kept, etc.",
+              "enableWhen": [
+                {
+                  "question": "622544475164",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "636270141315",
+                  "type": "display",
+                  "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation such as organizational business plans (meeting minutes) and records of budgets kept.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "108912595610",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Organizational business plans, records of budgets kept, etc. as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/management-review-meeting.docx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "622544475164",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "766528483769",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation such as organizational business plans (meeting minutes) and records of budgets kept.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "622544475164",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0006"
+            }
+          ],
+          "text": "Does entity maintain organizational business plans and budgets?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "915675977204",
+          "code": [
+            {
+              "code": "FII-SCF-CPL-0001"
+            }
+          ],
+          "text": "Is entity's control framework based on a recognized (NIST 800-53; COBIT; ISO; COSA) framework?",
+          "item": [
+            {
+              "linkId": "977332566339",
+              "type": "display",
+              "text": "As evidence, you can provide report; certification; policies/procedures/ PowerPoint deck.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "350361450291",
+              "text": "Please provide the URL to Master list of system components (servers, Operating systems, databases, etc.)",
+              "enableWhen": [
+                {
+                  "question": "852930816404",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "180494544271",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "896154705473",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Master list of system components (servers, Operating systems, databases, etc.) as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/asset-list.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "852930816404",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "722608167626",
+              "type": "display",
+              "text": "As evidence, you can provide Master list of system components (servers, Operating systems, databases, etc.)",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "852930816404",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.1"
+            }
+          ],
+          "text": "Does management maintain an asset inventory?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "770288783839",
+              "text": "Please provide the URL to Most recently completed risk assessment details.",
+              "enableWhen": [
+                {
+                  "question": "483977777111",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "847825518266",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "351189429724",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Most recently completed risk assessment details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/risk-rgister.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "483977777111",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "723211870273",
+              "type": "display",
+              "text": "As evidence, you can provide Most recently completed risk assessment details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "483977777111",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0003"
+            }
+          ],
+          "text": "Can management provide the most recently completed risk assessment?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "835534492455",
+              "text": "Please provide the URL to Most recently completed fraud assessment details.",
+              "enableWhen": [
+                {
+                  "question": "782945372513",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "623631307653",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "846103061828",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Most recently completed fraud assessment details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/fraud-assessment-review.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "782945372513",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "878288739022",
+              "type": "display",
+              "text": "As evidence, you can provide Most recently completed fraud assessment details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "782945372513",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0004.1"
+            }
+          ],
+          "text": "Can management provide the most recently completed risk assessment that includes fraud risk factors? including evidence that the assessment:- identifies and assesses the types of fraud that could impact business and operations (e.g. fraudulent reporting, loss of assets, unauthorized system access, overriding con",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "154887827645",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0006"
+            }
+          ],
+          "text": "Are vulnerability scans or penetration testing performed on a periodic basis?",
+          "item": [
+            {
+              "linkId": "903261752170",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds the most recent network internal and external vulnerability scan/penetration test reports.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "757635013794",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0002.3"
+            }
+          ],
+          "text": "Is the disaster recovery program tested on a periodic basis to ensure adequate recovery?",
+          "item": [
+            {
+              "linkId": "663733395217",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation for the most recently completed disaster recovery tests details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/questionnaire-item-control",
+                "code": "radio-button",
+                "display": "Radio Button"
+              }
+            ]
+          }
+        }
+      ],
+      "linkId": "177288750351",
+      "text": "Common Criteria Related to Risk Assessment"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "883697782059",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001"
+            }
+          ],
+          "text": "Are tools in place to monitor system performance, capacity, utilization and unusual system activity?",
+          "item": [
+            {
+              "linkId": "608547454462",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation demonstrating a system for monitoring performance, capacity, utilization, and unusual system activity.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "251687735852",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0001.1"
+            }
+          ],
+          "text": "Are vulnerability scans or penetration testing performed on a periodic basis?",
+          "item": [
+            {
+              "linkId": "650226868798",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation for the most recently completed penetration test results details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "320324981064",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Is there file integrity monitoring software in place?",
+          "item": [
+            {
+              "linkId": "885181295433",
+              "type": "display",
+              "text": "As evidence, you may include a URL along with details from Dropbox, Box, Google Drive, Portal, JIRA, Confluence, GitHub, or any other storage platform that holds documentation confirming file integrity monitoring software is in place, including evidence of monitoring alerts from the software or log.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "785142250198",
+      "text": "Common Criteria Related to Monitoring of Controls"
+    },
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "182220749412",
+              "text": "Please provide the URL to Most recently completed risk assessment details.",
+              "enableWhen": [
+                {
+                  "question": "774380425039",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "793781088156",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "695675007543",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Most recently completed risk assessment details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/risk-rgister.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "774380425039",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "983136320443",
+              "type": "display",
+              "text": "As evidence, you can provide Most recently completed risk assessment details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "774380425039",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0002"
+            }
+          ],
+          "text": "Are controls within the environment modified and implemented to mitigate identified vulnerabilities, deviations and control gaps?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "343863405607",
+              "text": "Please provide the URL to Sample incident response ticket details.",
+              "enableWhen": [
+                {
+                  "question": "891832847393",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "575560286466",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "566162270051",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Sample incident response ticket details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/security-incident.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "891832847393",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "894748274098",
+              "type": "display",
+              "text": "As evidence, you can provide Sample incident response ticket details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "891832847393",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0002"
+            }
+          ],
+          "text": "Are performance of the internal controls implemented within the environment assigned to appropriate process owners and operational personnel based on roles and responsibilities?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "898831616020",
+              "text": "Please provide the URL to Sample incident response ticket details.",
+              "enableWhen": [
+                {
+                  "question": "815387559803",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "693296319467",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "292720310693",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have Sample incident response ticket details as evidence, you can refer the our sample version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/assets/security-incident.xlsx', '_blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "815387559803",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "609262980156",
+              "type": "display",
+              "text": "As evidence, you can provide Sample incident response ticket details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "815387559803",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0004"
+            }
+          ],
+          "text": "Are incidents resolved in a timely manner?",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "880644372287",
+      "text": "Common Criteria Related to Control Activities"
+    },
+    {
+      "type": "string",
+      "linkId": "305112105026",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 1 for the SOC 2 Type 1 audit, this questionnaire helps prepare for a fixed-price SOC 2 Type 1 audit and offers guidance for ongoing SOC 2 Type 2 coaching, mentoring, and monitoring to maintain continuous compliance and mitigate risks. Designed for startups and small businesses, it assists in evaluating existing policies, procedures, and security controls to ensure alignment with SOC 2 requirements. The following questionnaire is intended to collect Risk Assessment, Monitoring of Controls and Control Activities informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Risk Assessment, Monitoring of Controls and Control Activities\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

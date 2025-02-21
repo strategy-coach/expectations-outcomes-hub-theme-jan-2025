@@ -1,0 +1,89 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "General Information Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "843509936337",
+          "text": "Organization Name",
+          "required": true,
+          "initial": [
+            {
+              "valueString": "The Alim Foundation"
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "834824167845",
+          "text": "Organization Address",
+          "required": true,
+          "initial": [
+            {
+              "valueString": "14804 First Baptist Lane, Laurel, Maryland 20707, USA"
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "574440750588",
+          "text": "Product Name",
+          "required": true,
+          "initial": [
+            {
+              "valueString": "Alim"
+            }
+          ]
+        },
+        {
+          "type": "url",
+          "linkId": "924260494641",
+          "text": "Website",
+          "required": true,
+          "initial": [
+            {
+              "valueUri": "https://www.alim.org/"
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "403261366197",
+          "text": "Point of Contact",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "647686221633",
+          "text": "Contact Email",
+          "required": true
+        },
+        {
+          "type": "date",
+          "linkId": "960033154529",
+          "text": "Date of Submission",
+          "required": true
+        }
+      ],
+      "type": "group",
+      "linkId": "323289382098",
+      "text": "General Information"
+    },
+    {
+      "type": "group",
+      "linkId": "333449738064",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect key organizational information and assess readiness for SOC 2 compliance.\",\n    \"title\": \"General Information\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}
