@@ -551,7 +551,11 @@ h3.notify {
   color: #028db7 !important;
   border-radius: 4px;
 }
-
+.dark .sidebar-left-menu .sub-folder details[open] summary {
+  background: #000000d9 !important;
+  color: #028db7 !important;
+  border-radius: 4px;
+}
 .pagefind-ui__search-input.svelte-e9gkc3 {
   height: 36px !important;
 }
