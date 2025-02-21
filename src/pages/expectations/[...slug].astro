@@ -5,16 +5,15 @@ import Sidebar from "../../components/Sidebar";
 import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
-// import MarkdownEditor from "../../components/ContentEditor";
-// import EditButton from "../../components/EditMarkdownButton";
 import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
 import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-response-widget.astro";
 import themeConfig from "../../../theme.config";
-const { contentCollectionSort } = themeConfig || {};
+import SubmittedFormList from "../../components/lhc-forms-widget/submitted-form-list.astro";
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
 import { getFiledatails } from "../lforms/service";
 import { type FileDetails } from "../lforms/types";
 
+const { contentCollectionSort } = themeConfig || {};
 const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
   eager: true,
 });
@@ -178,56 +177,7 @@ if (isLform) {
                 </div>
                 <LHCFormsResponseWidget fileName={submittedForm} />
               </div>
-            ) : (
-              <div id="submitted-data" class="p-4">
-                <div class="relative overflow-x-auto">
-                  {typeof data != "string" && data.length > 0 ? (
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                          <th scope="col" class="px-6 py-3">
-                            File
-                          </th>
-                          <th scope="col" class="px-6 py-3">
-                            date
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {data.map((item: FileDetails, index: number) => {
-                          if (typeof item === "string") {
-                            return (
-                              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                                <td class="p-2 break-all" colspan={2}>
-                                  {item}
-                                </td>
-                              </tr>
-                            );
-                          } else {
-                            return (
-                              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                                <td class="p-2 break-all">
-                                  <a
-                                    href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
-                                  >
-                                    {item.uri.split("/").pop()}
-                                  </a>
-                                </td>
-                                <td class="px-6 py-4">
-                                  {new Date(item.file_date).toDateString()}
-                                </td>
-                              </tr>
-                            );
-                          }
-                        })}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <p>No data found</p>
-                  )}
-                </div>
-              </div>
-            )}
+            ) : <SubmittedFormList fileName={`${fileName}.lform-submittion.json`} />}
           </>
         ) : (
           ""
