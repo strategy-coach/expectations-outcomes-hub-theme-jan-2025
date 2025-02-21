@@ -7,6 +7,7 @@ import themeConfig from "../../theme.config";
 import SkipTo from "../components/home/skipTo.astro";
 import KeyResources from "../components/home/keyReources.astro";
 import MeetingMinutes from "../components/home/meetingMinutes.astro";
+import LatestBlogs from "../components/home/blogLatest.astro";
 import Accomplishments from "../components/home/accomplishments.astro";
 import ItGovernance from "../components/home/itGovernance.astro";
 import Teams from "../components/teams/teams";
@@ -241,6 +242,7 @@ const menuTree = buildMenuTree(files, dirName);
       }
 
       <MeetingMinutes />
+      <LatestBlogs />
 
       <div
         class="lg:col-span-12 bg-white dark:bg-gray-800 shadow rounded-lg p-4 markdown-content"
