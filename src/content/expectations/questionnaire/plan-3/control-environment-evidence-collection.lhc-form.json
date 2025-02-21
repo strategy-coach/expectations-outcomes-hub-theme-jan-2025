@@ -2193,7 +2193,12 @@
       ],
       "type": "group",
       "linkId": "671921888775",
-      "text": "Common Criteria Related to Control Environment",
+      "text": "Common Criteria Related to Control Environment"
+    },
+    {
+      "type": "group",
+      "linkId": "273825864418",
+      "text": "Meta Information",
       "_text": {
         "extension": [
           {
@@ -2202,11 +2207,6 @@
           }
         ]
       }
-    },
-    {
-      "type": "group",
-      "linkId": "273825864418",
-      "text": "Meta Information"
     }
   ]
 }
