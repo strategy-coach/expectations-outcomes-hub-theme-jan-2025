@@ -109,12 +109,12 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
   />
 </head>
 
-<div class="w-full max-w-10xl bg-white shadow-lg rounded-lg p-6">
+<div class="w-full max-w-10xl bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6">
   <div
-    class="grid grid-cols-1 md:grid-cols-12 gap-4 border-b mb-2 items-center"
+    class="grid grid-cols-1 md:grid-cols-12 gap-4 border-b dark:border-gray-600 mb-2 items-center"
   >
     <div class="col-span-1 md:col-span-8">
-      <h1 class="text-2xl font-bold text-gray-900">
+      <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-300">
         {metaInfo?.title}
       </h1>
     </div>
@@ -124,7 +124,7 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
           <div>
             <span class="font-semibold inline-block w-48"></span>
             <span
-              class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-sm font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset"
+              class="inline-flex items-center rounded-md bg-gray-50 dark:bg-gray-900 px-2 py-1 text-sm font-medium text-gray-600 dark:text-gray-300 ring-1 ring-gray-500/10 ring-inset"
               >{metaInfo?.organization || "N/A"}</span
             >
           </div>
@@ -134,7 +134,7 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
   </div>
 
   <div class="col-span-12">
-    <div class="flex justify-end text-xs text-gray-500">
+    <div class="flex justify-end text-xs text-gray-500 dark:text-gray-300">
       <div class="">
         <div>
           <span class="font-semibold inline-block w-28">Created By: </span>
@@ -155,7 +155,7 @@ const metaInfo = getLHCFormMetaInformation(LHCFormData);
       </div>
     </div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-700 dark:text-gray-300">
     <div class="md:col-span-2">
       <div class="mb-2 mt-2">
         {metaInfo?.description || "No description available"}
