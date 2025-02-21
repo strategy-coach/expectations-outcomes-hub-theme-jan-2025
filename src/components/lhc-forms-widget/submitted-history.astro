@@ -1,0 +1,41 @@
+---
+import { getFileHistory } from "./service";
+import { type FileDetails } from "./service";
+
+const { fileName } = Astro.props;
+const currentURL = Astro.url;
+const fileHistory: FileDetails[] | string = await getFileHistory(fileName);
+---
+
+<div id="submitted-lform-history" class="p-4">
+  <div class="relative overflow-x-auto">
+    <h2 class="text-lg font-semibold mb-4">Submission History</h2>
+
+    {typeof fileHistory === "string" ? (
+      <p class="text-red-500">No history found</p>
+    ) : (
+      <table class="w-full text-sm text-left text-gray-500 border border-gray-200">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+          <tr>
+            <th class="px-6 py-3 border">#</th>
+            <th class="px-6 py-3 border">URI</th>
+            <th class="px-6 py-3 border">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {fileHistory.map((item, index) => (
+            <tr class="bg-white border-b hover:bg-gray-50">
+              <td class="px-6 py-3 border">{index + 1}</td>
+              <td class="px-6 py-3 border">
+                 <a href={`${currentURL}&submitted-form=${item.content_digest}`}>{item.uri.split("/").pop()}</a>
+              </td>
+              <td class="px-6 py-3 border">
+                  {new Date(item.file_date).toDateString()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+  </div>
+</div>

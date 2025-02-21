@@ -1,62 +1,102 @@
 import sqlite3 from "sqlite3";
-import path from 'path';
+import path from "path";
+import fs from "fs";
 import { lformDB } from "../../utils/env";
-interface FormDataType {
-    content_fm_body_attrs: Text;
-    content: Text;
-    nature: string;
+
+interface LHCFormDataType {
+    content: unknown;
+    uri: string;
 }
 
-export const getFormData = async (fileName: string): Promise<FormDataType[]> => {
-    return new Promise((resolve, reject) => {
-        try {
-            const dbName = lformDB.dbPath;
-            const dbPath = path.resolve(process.cwd(), dbName);
+export type FileDetails = {
+    uri: string;
+    file_date: string;
+    content_digest: string;
+    party_name: string;
+};
 
-            const db = new sqlite3.Database(
-                dbPath,
-                sqlite3.OPEN_READWRITE,
-                (err: Error | null) => {
-                    if (err) {
-                        console.log(err)
-                        console.error(`Database connection error: ${err.message}`);
-                        return reject(err);
-                    }
+const dbPath = path.resolve(process.cwd(), lformDB.dbPath);
 
-                    const query = `
-                        SELECT content FROM uniform_resource where uri like "%${fileName}%" and nature="json";`;
-
-                    db.all(query, (err: Error | null, rows: FormDataType[]) => {
-                        if (err) {
-                            console.error(`Error executing query: ${err.message}`);
-                            return reject(err);
-                        }
-                        const parsedData = rows.map((row) => {
-                            try {
-                                if (typeof row.content === 'string') {
-
-                                    return JSON.parse(row.content);
-                                }
-                                return row.content;
-                            } catch (parseError) {
-                                console.error(`Error parsing data`);
-                                return null;
-                            }
-                        }).filter(item => item !== null);
-
-                        resolve(parsedData);
-                    });
-
-                    db.close((err: Error | null) => {
-                        if (err) {
-                            console.error(`Error closing database: ${err.message}`);
-                        }
-                    });
-                }
-            );
-        } catch (error) {
-            console.error(`Unexpected error: ${(error as Error).message}`);
-            reject(error);
+const openDatabase = (): sqlite3.Database => {
+    return new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
+        if (err) {
+            console.error(`Database connection error: ${err.message}`);
         }
     });
+};
+
+export const getFormData = async (digest: string): Promise<LHCFormDataType[]> => {
+    return new Promise((resolve, reject) => {
+        const db = openDatabase();
+        const query = `SELECT content, uri FROM uniform_resource WHERE content_digest = ?`;
+
+        db.all(query, [digest], (err, rows: { content: string; uri: string }[]) => {
+            db.close();
+            if (err) {
+                console.error(`Error executing query: ${err.message}`);
+                return reject(err);
+            }
+
+            const parsedData: LHCFormDataType[] = rows
+                .map(({ content, uri }: { content: string; uri: string }) => {
+                    try {
+                        return { content: JSON.parse(content), uri };
+                    } catch (parseError) {
+                        console.error(`Error parsing JSON for URI ${uri}: ${parseError}`);
+                        return null;
+                    }
+                })
+                .filter((item): item is LHCFormDataType => item !== null);
+
+            resolve(parsedData);
+        });
+    });
+};
+
+const executeQuery = (query: string): Promise<FileDetails[] | string> => {
+    return new Promise((resolve) => {
+        if (!fs.existsSync(dbPath)) {
+            return resolve(`Database file not found: ${dbPath}`);
+        }
+
+        const db = openDatabase();
+        db.all(query, [], (err, rows: FileDetails[]) => {
+            db.close();
+            if (err) {
+                return resolve(`Error executing query: ${err.message}`);
+            }
+            resolve(rows);
+        });
+    });
+};
+
+
+export const getFileDetails = (filepath: string): Promise<FileDetails[] | string> => {
+    const query = `SELECT 
+    ur.uri, 
+    ur.content_digest, 
+    MAX(ur.last_modified_at) AS file_date, 
+    p.party_name
+    FROM uniform_resource ur
+    JOIN party p 
+        ON p.party_id = CAST(
+            SUBSTR(
+                ur.uri, 
+                INSTR(ur.uri, 'submissions/') + LENGTH('submissions/'), 
+                INSTR(SUBSTR(ur.uri, INSTR(ur.uri, 'submissions/') + LENGTH('submissions/')), '.') - 1
+            ) AS TEXT
+        )
+    WHERE ur.uri LIKE '%${filepath}' 
+        AND ur.nature = 'json'
+    GROUP BY ur.uri
+    ORDER BY file_date DESC;`;
+    return executeQuery(query);
+};
+
+export const getFileHistory = (filepath: string): Promise<FileDetails[] | string> => {
+    const query = `SELECT uri, content_digest, last_modified_at AS file_date
+    FROM uniform_resource
+    WHERE uri LIKE '%${filepath}' AND nature = 'json'
+    ORDER BY file_date DESC;`;
+    return executeQuery(query);
 };

@@ -6,13 +6,10 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from "../../../theme.config";
 import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
-import { getFiledatails } from "./service";
 import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-response-widget.astro";
-import { type FileDetails } from "./types";
+import SubmittedFormList from "../../components/lhc-forms-widget/submitted-form-list.astro";
 
 const { contentCollectionSort } = themeConfig || {};
-const zitadel_user_id = Astro.cookies.get("zitadel_user_id");
-const userId = zitadel_user_id?.value;
 const files = import.meta.glob("/src/content/lforms/**/*.{json,yml}", {
   eager: true,
 });
@@ -36,14 +33,9 @@ function removeSubmissions(menuTree: any[]): any[] {
 }
 const filteredMenuTree = removeSubmissions(menuTree);
 const fileName = pageSlug.split("/").pop() || "";
-const filePath = `/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
-const data = await getFiledatails(`${fileName}.lform-submittion.json`);
-
 const title = fileName.replace(/\.(json|yml)$/, "").replace(/[-_.]+/g, " ");
-
 const { searchParams } = Astro.url;
 const currentTab = searchParams.get("tab");
-const url = Astro.url; // Get 'tab' parameter
 const submittedForm = searchParams.get("submitted-form");
 
 const activeTabClass =
@@ -145,56 +137,7 @@ const inActiveTabClass =
                 </div>
                 <LHCFormsResponseWidget fileName={submittedForm} />
               </div>
-            ) : (
-              <div id="submitted-data" class="p-4">
-                <div class="relative overflow-x-auto">
-                  {typeof data != "string" && data.length > 0 ? (
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                      <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                          <th scope="col" class="px-6 py-3">
-                            File
-                          </th>
-                          <th scope="col" class="px-6 py-3">
-                            date
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {data.map((item: FileDetails) => {
-                          if (typeof item === "string") {
-                            return (
-                              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                                <td class="p-2 break-all" colspan={2}>
-                                  {item}
-                                </td>
-                              </tr>
-                            );
-                          } else {
-                            return (
-                              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                                <td class="p-2 break-all">
-                                  <a
-                                    href={`${url}&submitted-form=${item.uri.split("/").pop()}`}
-                                  >
-                                    {item.uri.split("/").pop()}
-                                  </a>
-                                </td>
-                                <td class="px-6 py-4">
-                                  {new Date(item.file_date).toDateString()}
-                                </td>
-                              </tr>
-                            );
-                          }
-                        })}
-                      </tbody>
-                    </table>
-                  ) : (
-                    <p>No data found</p>
-                  )}
-                </div>
-              </div>
-            )}
+            ) : <SubmittedFormList fileName={`${fileName}.lform-submittion.json`} /> }
           </>
         ) : (
           ""
