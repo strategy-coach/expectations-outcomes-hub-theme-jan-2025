@@ -8,6 +8,7 @@ import themeConfig from "../../../theme.config";
 import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.astro";
 import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-response-widget.astro";
 import SubmittedFormList from "../../components/lhc-forms-widget/submitted-form-list.astro";
+import {getPageFromSlug,slugify} from "../../components/lhc-forms-widget/service";
 
 const { contentCollectionSort } = themeConfig || {};
 const files = import.meta.glob("/src/content/lforms/**/*.{json,yml}", {
@@ -17,14 +18,9 @@ const files = import.meta.glob("/src/content/lforms/**/*.{json,yml}", {
 const slug = Astro.params.slug as string;
 const dirName = "lforms";
 
-function getPageFromSlug(slug: string): string {
-  const parts = slug.split("/");
-  // Find the index where a part contains 'component.css.map'
-  const index = parts.findIndex((part) => part.includes("component.css.map"));
-  return index > 0 ? parts[index - 1] : slug;
-}
 
-const pageSlug = getPageFromSlug(slug);
+
+const pageSlug = getPageFromSlug(slug as string);
 
 // Build the menu tree
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
@@ -114,6 +110,7 @@ const inActiveTabClass =
             <LHCFormsWidget
               fileName={fileName}
               folderPath="lforms"
+              pageSlug={slugify(pageSlug)}
             />
           </div>
         ) : (
@@ -137,7 +134,7 @@ const inActiveTabClass =
                 </div>
                 <LHCFormsResponseWidget fileName={submittedForm} />
               </div>
-            ) : <SubmittedFormList fileName={`${fileName}.lform-submittion.json`} /> }
+            ) : <SubmittedFormList fileName={`${slugify(pageSlug)}.lform-submittion.json`} />}
           </>
         ) : (
           ""

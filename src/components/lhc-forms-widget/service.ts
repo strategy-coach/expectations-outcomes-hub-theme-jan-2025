@@ -36,6 +36,7 @@ export function slugify(text: string) {
         .toLowerCase()
         .normalize("NFD") // Normalize special characters
         .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
+        .replace(/\//g, "-") // Replace / with -
         .replace(/[^a-z0-9-.]/g, "") // Remove non-alphanumeric characters except - and .
         .replace(/-{2,}/g, "-") // Remove duplicate dashes
         .replace(/\.{2,}/g, "."); // Remove duplicate dots
