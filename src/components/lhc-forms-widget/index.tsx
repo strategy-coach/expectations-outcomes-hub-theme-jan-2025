@@ -96,7 +96,7 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, isUpdat
 
             <div className="relative">
                 {showLoader && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-50 z-10">
+                    <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-gray-900 bg-opacity-50 z-10">
                         <div role="status">
                             <svg
                                 aria-hidden="true"
