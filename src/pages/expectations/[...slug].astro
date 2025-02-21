@@ -21,7 +21,7 @@ const dirName = "expectations";
 
 // Build the menu tree
 //const menuTree = buildMenuTree(files, dirName);
-const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "desc");
+const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
 function hasJsonOrYamlExtension(url: string): boolean {
   return /\.(json|ya?ml)(\?.*|#.*|$)/i.test(url);
 }

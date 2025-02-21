@@ -13,7 +13,7 @@ const { contentCollectionSort } = themeConfig || {};
 const files = import.meta.glob('/src/content/expectations/**/*.{md,mdx,json}', { eager: true });
 const dirName = "expectations";
 // Build the menu tree
-const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"desc");
+const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 //const menuTree = buildMenuTree(files,dirName);
 
 ---
