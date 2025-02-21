@@ -354,7 +354,12 @@
       ],
       "type": "group",
       "linkId": "325644455080",
-      "text": "Common Criteria Related to Systems Operations",
+      "text": "Common Criteria Related to Systems Operations"
+    },
+    {
+      "type": "group",
+      "linkId": "422438490716",
+      "text": "Meta Information",
       "_text": {
         "extension": [
           {
@@ -363,11 +368,6 @@
           }
         ]
       }
-    },
-    {
-      "type": "group",
-      "linkId": "422438490716",
-      "text": "Meta Information"
     }
   ]
 }
