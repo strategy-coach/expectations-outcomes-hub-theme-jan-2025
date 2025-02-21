@@ -541,4 +541,36 @@ h3.notify {
 .dark .markdown-content-doc a{
   color: #028db7!important; 
 }
+/* -- */
+.sidebar-left-menu .sub-folder details summary {
+  background: transparent!important;
+  padding-left:18px;
+}
+.sidebar-left-menu .sub-folder details[open] summary {
+  background: #f2f2f2 !important;
+  color: #028db7 !important;
+  border-radius: 4px;
+}
 
+.pagefind-ui__search-input.svelte-e9gkc3 {
+  height: 36px !important;
+}
+.pagefind-ui__form.svelte-e9gkc3:before {
+  top: 12px !important;
+}
+.dark .pagefind-ui__search-input.svelte-e9gkc3 {
+  background-color: #1f2937!important;
+  border-color: #2b3646!important;
+  color: #d1d5db!important;
+}
+.dark .pagefind-ui__form.svelte-e9gkc3:before {
+  background-color: #d1d5db;  
+}
+.dark .pagefind-ui__form.svelte-e9gkc3::placeholder {
+  color: #d1d5db!important;
+}
+
+/* lhc-forms */
+#lhc-form-container {
+  color: #000;
+}
