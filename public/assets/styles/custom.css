@@ -541,4 +541,13 @@ h3.notify {
 .dark .markdown-content-doc a{
   color: #028db7!important; 
 }
-
+/* -- */
+.sidebar-left-menu .sub-folder details summary {
+  background: transparent!important;
+  padding-left:18px;
+}
+.sidebar-left-menu .sub-folder details[open] summary {
+  background: #f2f2f2 !important;
+  color: #028db7 !important;
+  border-radius: 4px;
+}
