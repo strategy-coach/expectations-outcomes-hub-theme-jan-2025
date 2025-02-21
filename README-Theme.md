@@ -307,7 +307,7 @@ export default themeConfig({
 
 ## Home Page Widgets
 
-Theme includes widgets designed for the home page: **Skip To**, **Key Resources**, **Meeting Minutes**, **Accomplishments** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
+Theme includes widgets designed for the home page: **Skip To**, **Key Resources**, **Meeting Minutes**, **Accomplishments**, **IT Governance, Risk and Compliance** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
 
 **Widgets Overview**
 --------------------
@@ -344,7 +344,7 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 - Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
 
-### 5\. **Accomplishments**
+### 4\. **Accomplishments**
 
 - Displays a list of titles from Markdown files configured with the accomplishments frontmatter.
 
@@ -356,7 +356,19 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 - Multiple Markdown files can be added with this configuration, and their titles will appear under the **Accomplishments** card.
 
-### 4\. **Meeting Minutes**
+### 5\. **IT Governance, Risk and Compliance**
+
+- Displays a list of titles from Markdown files configured with the ItGovernance frontmatter.
+
+- ```
+      home:
+         ItGovernance: 
+            category: "it-governance"
+     ```
+
+- Multiple Markdown files can be added with this configuration, and their titles will appear under the **IT Governance, Risk and Compliance** card.
+
+### 6\. **Meeting Minutes**
 
 - Displays a list of titles from Markdown files configured with the meetingMinutes frontmatter.
 
