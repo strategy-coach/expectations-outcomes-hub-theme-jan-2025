@@ -47,10 +47,12 @@ if (!isLhcFormJson(fileName)) {
   return "Invalid file: The filename must follow the pattern '<name>.lhc-form.json'. Please check and rename the file accordingly.";
 }
 
-let filePath = `dist/content/${folderPath}/${fileName}`;
-if (process.env.NODE_ENV == "development") {
-  filePath = `src/content/${folderPath}/${fileName}`;
-}
+// let filePath = `dist/content/${folderPath}/${fileName}`;
+// if (process.env.NODE_ENV == "development") {
+//   filePath = `src/content/${folderPath}/${fileName}`;
+// }
+
+const filePath = `src/content/${folderPath}/${fileName}`;
 
 if (!existsSync(filePath)) {
   return `File not found: ${filePath}. Please check the path.`;
