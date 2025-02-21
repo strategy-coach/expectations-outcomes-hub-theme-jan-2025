@@ -28,7 +28,6 @@ function hasJsonOrYamlExtension(url: string): boolean {
 }
 
 const slug = Astro.params.slug;
-// console.log("slug : ", slug, hasJsonOrYamlExtension(slug));
 
 let isLform = false;
 if (hasJsonOrYamlExtension(`expectations/${slug}`)) {
