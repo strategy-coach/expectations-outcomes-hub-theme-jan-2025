@@ -1,0 +1,69 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "General Information Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "843509936337",
+          "text": "Organization Name",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "834824167845",
+          "text": "Organization Address",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "574440750588",
+          "text": "Product Name",
+          "required": true
+        },
+        {
+          "type": "url",
+          "linkId": "924260494641",
+          "text": "Website",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "403261366197",
+          "text": "Point of Contact",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "647686221633",
+          "text": "Contact Email",
+          "required": true
+        },
+        {
+          "type": "date",
+          "linkId": "960033154529",
+          "text": "Date of Submission",
+          "required": true
+        }
+      ],
+      "type": "group",
+      "linkId": "323289382098",
+      "text": "General Information"
+    },
+    {
+      "type": "group",
+      "linkId": "333449738064",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 2, this option provides a balanced compliance approach by allowing organizations to retain their own IT and HR policies while leveraging our technical policies to meet SOC 2 requirements. Designed for organizations seeking a structured yet flexible compliance framework, it ensures alignment with SOC 2 standards while maintaining existing operational policies. This approach helps streamline audit preparation by integrating proven technical controls with an organization’s established policies. The following questionnaire is intended to collect key organizational information and assess readiness for SOC 2 compliance.\",\n    \"title\": \"General Information\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}
