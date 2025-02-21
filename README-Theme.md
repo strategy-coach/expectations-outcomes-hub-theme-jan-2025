@@ -380,6 +380,17 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 - Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
 
+### 7\. **Featured Blogs**
+
+- Displays a list of titles from Blog files configured with the featured frontmatter.
+
+- ```
+      home:
+        featuredBlog: true
+  ```
+
+* Multiple Markdown files can be added with this configuration, and their titles will appear under the **Featured Blogs** card.
+
 **Combination Frontmatter**
 ---------------------------
 

@@ -346,7 +346,7 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 - Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
 
-### 5\. **Accomplishments**
+### 4\. **Accomplishments**
 
 - Displays a list of titles from Markdown files configured with the accomplishments frontmatter.
 
@@ -356,9 +356,19 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
             category: "accomplishments"
      ```
 
-* Multiple Markdown files can be added with this configuration, and their titles will appear under the **Accomplishments** card.
+### 5\. **IT Governance, Risk and Compliance**
 
-### 4\. **Meeting Minutes**
+- Displays a list of titles from Markdown files configured with the ItGovernance frontmatter.
+
+- ```
+      home:
+         ItGovernance: 
+            category: "it-governance"
+     ```
+
+- Multiple Markdown files can be added with this configuration, and their titles will appear under the **IT Governance, Risk and Compliance** card.
+
+### 6\. **Meeting Minutes**
 
 - Displays a list of titles from Markdown files configured with the meetingMinutes frontmatter.
 
@@ -368,7 +378,18 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
             category: "meetingMinutes"
      ```
 
-* Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
+- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
+
+### 7\. **Featured Blogs**
+
+- Displays a list of titles from Blog files configured with the featured frontmatter.
+
+- ```
+      home:
+        featuredBlog: true
+  ```
+
+* Multiple Markdown files can be added with this configuration, and their titles will appear under the **Featured Blogs** card.
 
 **Combination Frontmatter**
 ---------------------------
