@@ -29,7 +29,12 @@ const baseSchema = z.object({
           category: z.string().optional(),
         })
         .optional(),
-        ItGovernance: z
+      ItGovernance: z
+        .object({
+          category: z.string().optional(),
+        })
+        .optional(),
+      featuredBlogs: z
         .object({
           category: z.string().optional(),
         })
@@ -44,6 +49,11 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     heroImage: z.string().optional(),
+    home: z
+      .object({
+        featuredBlog: z.boolean().optional(), 
+      })
+      .optional(), 
   }),
 });
 
