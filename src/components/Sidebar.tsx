@@ -25,7 +25,7 @@ const renderMenu = (menu: MenuNode[], slugval: string) => {
         const isSelected = item.path === slugval; // Check if the current folder is selected
 
         return (
-          <li key={item.path} className={`policy_cmp ${isSelected ? "bg-gray-300 dark:bg-gray-700" : ""}`}>
+          <li key={item.path} className={`policy_cmp ${isSelected ? "bg-white dark:bg-gray-800" : ""}`}>
             {item.isFile ? (
               <a
                 href={`${item.path}/`}
