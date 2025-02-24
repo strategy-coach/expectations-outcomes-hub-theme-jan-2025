@@ -357,3 +357,61 @@ By combining AI with `surveilr`’s powerful integration capabilities, EOH admin
 ---
 
 This architecture and technology strategy provides a robust foundation for creating scalable, maintainable Customer Hub microsites. By leveraging modern frameworks like Astro, a TypeScript-first approach, and reusable components, the strategy ensures efficiency and adaptability in a MIMT environment. With a focus on the DRY principle, modular design, and balanced use of SSR and SSG, the approach minimizes duplication, promotes consistency, and supports seamless scaling as the customer base grows.
+
+# Zytadel User Synchronization and Database Setup
+
+## Overview
+This provides instructions for setting up a database and synchronizing Zytadel users with the created database. It also details the required dependencies and volume bindings for persistent storage.
+
+## Environment Variable Configuration
+To specify the database path, define an environment variable:
+```sh
+export PUBLIC_SURVEILR_DB="src/content/db/rssd/resource-surveillance.sqlite.db"
+export PUBLIC_ZITADEL_API_TOKEN="YOUR-ZITADEL-TOKEN"
+export PUBLIC_ZITADEL_ORGANIZATION_ID="YOUR-ZITADEL-ORGANIZATIONID"
+export PUBLIC_ZITADEL_AUTHORITY="https://idi.opsfolio.com"
+```
+
+## Folder Structure
+The project follows the directory structure below:
+
+- **`src/content/db/`** (Root database directory)
+  - **`imap-mail-db/`**: Stores the IMAP mailbox-related database.
+  - **`lforms/`**: Contains the LForms submitted data as a database.
+  - **`models/`**: Includes `models.ts`, where database models such as `party_types` and `communication` are defined. Additional tables or views can be added using SQLite.
+  - **`rssd/`**: The final consolidated database containing all models and merged data from the above databases. This database is referenced in the environment variable as the main database path.
+
+## Generating the Database
+To generate database models and synchronize Zytadel users, execute:
+```sh
+pnpm run sync-db-and-users
+```
+If additional tables or views are added, rerun the above command as needed.
+
+To synchronize only Zytadel users without modifying database models, run:
+```sh
+pnpm run sync-users
+```
+
+### Prerequisites
+Ensure the following dependencies are installed on the server before executing these commands:
+- **Deno** (Latest version)
+- **Surveilr** (Version 1.4.3)
+- **pnpm** (Version 8.15.9)
+- **SQLite3**
+
+## Volume Bindings
+All volume bindings are organized under the root path: `/opt/data`.
+
+| Volume Name                          | Container Path                                      |
+|--------------------------------------|---------------------------------------------------|
+| `dist`                               | `/opt/data/dist`                                  |
+| `lforms`                             | `/opt/data/src/content/db/lforms/`               |
+| `submissions`                        | `/opt/data/src/content/lforms/submissions/`      |
+| `imap-mail-db`                       | `/opt/data/src/content/db/imap-mail-db/`         |
+| `rssd`                               | `/opt/data/src/content/db/rssd/`                 |
+
+These volumes ensure persistent storage for critical application components.
+
+## Build Process
+Each build process generates the application build, which is then copied to the `dist` directory. Afterwards, the server restarts in SSR (Server-Side Rendering) mode to apply the latest changes.
