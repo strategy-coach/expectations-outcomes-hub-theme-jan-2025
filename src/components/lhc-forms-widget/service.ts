@@ -1,7 +1,9 @@
+// deno-lint-ignore-file
 import sqlite3 from "sqlite3";
-import path from "path";
-import fs from "fs";
-import { lformDB } from "../../utils/env";
+import path from "node:path";
+import fs from "node:fs";
+import { lformDB } from "../../utils/env.ts";
+import process from "node:process";
 
 interface LHCFormDataType {
     content: unknown;
@@ -15,9 +17,24 @@ export type FileDetails = {
     party_name: string;
 };
 
-const dbPath = path.resolve(process.cwd(), lformDB.dbPath);
+function getDBPath(): string | null {
+    try {
+        if (!lformDB || !lformDB.dbPath) {
+            throw new Error("PUBLIC_LFORM_DB environment variable is not set. Please check your environment configuration.");
+        }
+        return path.resolve(process.cwd(), lformDB.dbPath);
+    } catch (error) {
+        console.error("Error in getDBPath:", error.message);
+        return null; // Allow execution to continue
+    }
+}
+
+
+
+
 
 const openDatabase = (): sqlite3.Database => {
+    const dbPath = getDBPath();
     return new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
         if (err) {
             console.error(`Database connection error: ${err.message}`);
@@ -72,6 +89,7 @@ export const getFormData = async (digest: string): Promise<LHCFormDataType[]> =>
 
 const executeQuery = (query: string): Promise<FileDetails[] | string> => {
     return new Promise((resolve) => {
+        const dbPath = getDBPath()
         if (!fs.existsSync(dbPath)) {
             return resolve(`Database file not found: ${dbPath}`);
         }
