@@ -396,7 +396,7 @@ pnpm run sync-users
 ### Prerequisites
 Ensure the following dependencies are installed on the server before executing these commands:
 - **Deno** (Latest version)
-- **Surveilr** (Version 1.4.3)
+- **Surveilr** (Version ^1.7.6)
 - **pnpm** (Version 8.15.9)
 - **SQLite3**
 
