@@ -156,6 +156,85 @@ const personTypeData = [
     { person_type_id: 2, code: "PROFESSIONAL", value: "Professional" },
 ];
 
+const activityTypeData = [
+    { activity_type_id: "1", code: "ADD_COMMENT", value: "Add Comment" },
+    { activity_type_id: "2", code: "DELETE_COMMENT", value: "Delete Comment" },
+    { activity_type_id: "3", code: "EDIT_COMMENT", value: "Edit Comment" },
+];
+
+// const reactionType = [
+//     { reaction_type_id: 1, reaction_name: "thumbs_up" },
+//     { reaction_type_id: 2, reaction_name: "heart" },
+//     { reaction_type_id: 3, reaction_name: "laugh" },
+//     { reaction_type_id: 4, reaction_name: "sad" },
+//     { reaction_type_id: 5, reaction_name: "clap" },
+//     { reaction_type_id: 6, reaction_name: "eyes" },
+//     { reaction_type_id: 7, reaction_name: "eye_glasses" },
+//     { reaction_type_id: 8, reaction_name: "thumbs_down" },
+//     { reaction_type_id: 9, reaction_name: "perfect_score" },
+// ];
+
+const communicationTypes = [
+    {
+        communication_type_id: 1,
+        code: "INDIVIDUAL_MESSAGE",
+        value: "Individual Message",
+    },
+    {
+        communication_type_id: 2,
+        code: "GROUP_MESSAGE",
+        value: "Group Message",
+    },
+    {
+        communication_type_id: 3,
+        code: "COMMENT",
+        value: "Comment",
+    },
+];
+
+
+const communicationPlatforms = [
+    {
+        communication_platform_id: 1,
+        code: "EOH",
+        value: "Eoh",
+    },
+    {
+        communication_platform_id: 2,
+        code: "SLACK",
+        value: "Slack",
+    },
+    {
+        communication_platform_id: 3,
+        code: "DISCORD",
+        value: "Discord",
+    },
+    {
+        communication_platform_id: 4,
+        code: "WHATSAPP",
+        value: "WhatsApp",
+    },
+    {
+        communication_platform_id: 5,
+        code: "SKYPE",
+        value: "Skype",
+    },
+    {
+        communication_platform_id: 6,
+        code: "TWITTER",
+        value: "Twitter",
+    },
+    {
+        communication_platform_id: 7,
+        code: "EMAIL",
+        value: "Email",
+    },
+    {
+        communication_platform_id: 8,
+        code: "GITHUB",
+        value: "Github",
+    },
+];
 
 /**
  * API Request Function
@@ -373,7 +452,21 @@ async function main(): Promise<void> {
             insertRecords("organization", organizationData, ["organization_id", "party_id", "name", "alias", "description", "license", "registration_date"]);
             insertRecords("organization_role_type", organizationRoleTypes, ["organization_role_type_id", "code", "value"]);
         }
-
+        insertRecords("communication_platform", communicationPlatforms, [
+            "communication_platform_id",
+            "code",
+            "value",
+        ]);
+        insertRecords("communication_type", communicationTypes, [
+            "communication_type_id",
+            "code",
+            "value",
+        ]);
+        insertRecords("activity_type", activityTypeData, [
+            "activity_type_id",
+            "code",
+            "value",
+        ]);
         insertRecords("contact_electronic", contactElectronics, ["contact_electronic_id", "contact_type_id", "party_id", "electronics_details"]);
         insertRecords("person", personData, ["person_id", "party_id", "person_type_id", "person_first_name", "person_last_name", "gender_id", "sex_id"]);
         insertRecords("organization_role", organizationRoleData, ["organization_role_id", "person_id", "organization_id", "organization_role_type_id"]);
