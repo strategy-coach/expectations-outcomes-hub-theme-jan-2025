@@ -908,4 +908,76 @@ import MailBox from "../../components/imap-mail-box/mailBox.astro";
 
 ---
 
+# Handling the Order of the Menu in Expectations/Questionnaire
+
+## Overview
+
+This feature allows users to manage the order of menu items in the expectations/questionnaire section. Previously, the names of JSON files were displayed by the file order. With this new enhancement, users can now define the order according to their preferences.
+
+## Order File
+
+A JSON file named `order.json` (do not change the filename) has been created to handle the menu order. This file is located at:
+
+``` src/pages/expectations/order.json ```
+
+The `order.json` file is generated using the **NML Form Builder** (National Library of Medicine). To edit this form, follow the steps below:
+
+## Editing the Order JSON
+
+1. Navigate to the NML Form Builder: [https://formbuilder.nlm.nih.gov/](https://formbuilder.nlm.nih.gov/)
+2. Import the existing `order.json` file from:
+
+   ``` src/pages/expectations/order.json ```
+![alt text](public/assets/images/documentation-demo/nlc-form/image-1.png){width=800 height=400}
+![alt text](image-1.png)
+3. Make necessary changes **without altering the existing structure**.
+4. You **can add more menus**, but keep the existing format unchanged.
+
+### Example Structure
+
+The `questionnaire` menu contains submenus such as:
+
+``` Plan 1, Plan 2, Plan 3 ```
+
+These are folders that contain JSON files inside:
+
+``` src/content/expectations/questionnaire/plan-1 ```
+
+When adding folders as groups:
+
+- Fill the field **`Question text`** (menu name)
+- Set **`Data type`** to **`group`**
+  
+  ![alt text](public/assets/images/documentation-demo/nlc-form/image-2.png)
+
+### Creating Each Menu (e.g., General Information, Evidence Collection)
+
+1. Click the **three dots** next to `Plan 1` in the dropdown menu.
+2. Select **`Insert a new child item`**.
+3. In the form filler that appears, fill:
+   - **`Question text`** → Menu name (e.g., General Information, Evidence Collection)
+   - **`Data type`** → `text`
+   - **`Initial value`** → Path to the JSON file, e.g.,
+
+     ``` /expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json ```
+
+4. **Do not fill any other fields** not mentioned in this README.
+
+![alt text](public/assets/images/documentation-demo/nlc-form/image-3.png)
+
+## Exporting the Updated Order JSON
+
+1. Click the **Export** button.
+2. Select **`Export to file in FHIR R4 format`**.
+3. The updated JSON file will download to your local `Downloads` directory.
+4. Rename the downloaded file to:
+
+   ``` order.json ```
+
+5. Place the renamed file in:
+
+   ``` src/pages/expectations ```
+
+By following these steps, you can effectively manage the order of the menu while ensuring consistency in the JSON structure.
+
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
