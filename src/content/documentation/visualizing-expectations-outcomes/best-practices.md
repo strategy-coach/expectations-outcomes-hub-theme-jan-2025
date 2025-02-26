@@ -1,3 +1,6 @@
+---
+title: Best Practices for Visualizing Expectations and Outcomes
+---
 # **Best Practices for Visualizing Expectations and Outcomes**
 
 The success of an Expectations and Outcomes Hub (EOH) relies heavily on its ability to present data in a clear, actionable, and visually compelling manner. Dashboards and reports must communicate key insights about project expectations, progress, and outcomes to stakeholders efficiently. This document outlines the best practices and prescriptive strategies for visualizing expectations and outcomes, ensuring that decision-makers and teams can derive maximum value from the EOH.
