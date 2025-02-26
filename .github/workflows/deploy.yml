@@ -46,6 +46,8 @@ jobs:
           IMAP_USER_NAME: ${{ vars.IMAP_USER_NAME }}
           IMAP_PASS: ${{ vars.IMAP_PASS }}
           IMAP_HOST: ${{ vars.IMAP_HOST }}
+          PUBLIC_OPENOBSERVE_URL: ${{ vars.PUBLIC_OPENOBSERVE_URL }}
+          PUBLIC_OPENOBSERVE_TOKEN: ${{ vars.PUBLIC_OPENOBSERVE_TOKEN }}
         run: |
           bash -x support/ci-cd.sh      
           
