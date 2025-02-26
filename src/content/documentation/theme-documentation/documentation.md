@@ -1,3 +1,6 @@
+---
+title: "EOH Astro 5 Theme Documentation"
+---
 # EOH Astro 5 Theme  
 
 ## Overview  
