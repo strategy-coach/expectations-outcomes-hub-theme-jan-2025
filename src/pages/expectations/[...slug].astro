@@ -11,6 +11,67 @@ import themeConfig from "../../../theme.config";
 import SubmittedFormList from "../../components/lhc-forms-widget/submitted-form-list.astro";
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
 import {getPageFromSlug,slugify} from "../../components/lhc-forms-widget/service";
+import order from "./order.json"
+
+interface InitialValue {
+  valueString: string;
+}
+
+interface BaseQuestionnaireItem {
+  type: string;
+  linkId: string;
+  text: string;
+  readOnly?: boolean;
+  initial?: InitialValue[];
+}
+
+interface QuestionnaireItem extends BaseQuestionnaireItem {
+  item?: QuestionnaireItem[]; // Nested items inside a question (optional)
+}
+
+interface QuestionnaireGroup {
+  type: "group"; // Ensures only "group" type for groups
+  linkId: string;
+  text: string;
+  readOnly: boolean;
+  item: QuestionnaireItem[]; // Groups contain questions/items
+}
+
+interface Questionnaire {
+  resourceType: "Questionnaire"; // Must be exactly "Questionnaire"
+  title: string;
+  status: string;
+  item: QuestionnaireGroup[]; // Only groups at the top level
+}
+
+
+interface OutputNode {
+  name: string;
+  path: string;
+  isFile: boolean;
+  children?: OutputNode[];
+}
+
+const orderJson = order;
+const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
+
+function convertQuestionnaire(json: Questionnaire): OutputNode {
+  return {
+    name: json.resourceType,
+    path: "/expectations/questionnaire/",
+    isFile: false,
+    children: json.item.map(plan => ({
+      name: plan.text,
+      path: `/expectations/questionnaire/${plan.text.toLowerCase().replace(/\s+/g, "-")}/`,
+      isFile: false,
+      children: plan.item.map(entry => ({
+        name: entry.text,
+        path: entry.initial?.[0]?.valueString || "",
+        isFile: true,
+      }))
+    }))
+  };
+}
 
 const { contentCollectionSort } = themeConfig || {};
 const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
@@ -21,6 +82,15 @@ const dirName = "expectations";
 // Build the menu tree
 //const menuTree = buildMenuTree(files, dirName);
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
+
+function replaceQuestionnaire(menuTree: any[], newObject: any): any[] { // To replace the Questionnaire menu using order json
+  return menuTree.map(item => 
+    item.name === "Questionnaire" ? newObject : item
+  );
+}
+const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
+
+
 function hasJsonOrYamlExtension(url: string): boolean {
   return /\.(json|ya?ml)(\?.*|#.*|$)/i.test(url);
 }
@@ -85,7 +155,7 @@ if (isLform) {
       <div id="starlight__sidebar" class="sidebar-pane">
         <div class="sidebar-content">
           <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
-            <Sidebar menuTree={menuTree} slugval={slugval} />
+            <Sidebar menuTree={updatedMenuTree} slugval={slugval} />
           </div>
         </div>
       </div>
