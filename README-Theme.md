@@ -822,8 +822,8 @@ project-root/
 - The component will dynamically render the provided form as HTML.
 - Submitted form responses can be ingested into Surveilr for further processing..
 
-
 ---
+
 # **IMAP Mail Box Component**  
 
 The **imap-mail-box** component is an Astro component used to display ingested emails from any mail source in **EOH**.  
@@ -928,10 +928,10 @@ The `order.json` file is generated using the **NML Form Builder** (National Libr
 2. Import the existing `order.json` file from:
 
    ``` src/pages/expectations/order.json ```
-![alt text](public/assets/images/documentation-demo/nlc-form/image-1.png){width=800 height=400}
-![alt text](image-1.png)
-3. Make necessary changes **without altering the existing structure**.
-4. You **can add more menus**, but keep the existing format unchanged.
+![alt text](public/assets/images/documentation-demo/nlc-form/image-1.png)
+
+1. Make necessary changes **without altering the existing structure**.
+2. You **can add more menus**, but keep the existing format unchanged.
 
 ### Example Structure
 
