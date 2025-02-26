@@ -1,0 +1,8 @@
+---
+import ActivityLog from '../../components/home/activityLog.astro';
+import Layout from '../../layouts/Layout.astro';
+
+---
+<Layout title="Activity Log">
+	<ActivityLog recordsLimit={100} hoursToFetch={48} />
+</Layout>
