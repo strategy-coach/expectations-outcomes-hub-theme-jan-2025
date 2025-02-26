@@ -16,11 +16,12 @@ jobs:
           ref: main
           fetch-depth: 0
           
-      - name: Node and npm versions
+      - name: Node and pnpm versions
         run: |
           node --version
           pnpm --version
-      - name: Execute DB variables
+
+      - name: Execute Environment variables
         env:
           PUBLIC_GITHUB_TOKEN: ${{ vars.PUBLIC_GITHUB_TOKEN }}
           PUBLIC_GITHUB_REPO_NAME: ${{ vars.PUBLIC_GITHUB_REPO_NAME }}
