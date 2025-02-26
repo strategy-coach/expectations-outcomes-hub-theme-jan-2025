@@ -1,0 +1,43 @@
+---
+import { Breadcrumbs } from "astro-breadcrumbs";
+import MyContent from '../content/reports/securityreport.mdx';
+
+
+//import Layout from "../../layouts/Layout.astro";
+//import "astro-breadcrumbs/breadcrumbs.css";
+
+---
+<head>
+    <link rel="stylesheet" href="/assets/styles/tailwind.min.css" />
+    <link rel="stylesheet" href="/assets/styles/basic.css" />
+    <link rel="stylesheet" href="/assets/styles/custom.css" />
+</head>
+<!-- <body>
+    <div class="min-h-screen h-full">
+    
+        <article class="prose max-w-screen-xl withbullet markdown-content">
+            
+             <MyContent />
+          </article>    
+    
+    
+      </div>
+</body> -->
+<body class="bg-gray-50 dark:bg-gray-900 dark:text-white">
+    <div class="w-full mx-auto flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
+       <!-- Main Content -->
+       <main
+         class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]"
+       >
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <article class="prose max-w-screen-xl withbullet markdown-content">
+            <MyContent />
+           </article>
+         </div>
+       </main>
+     </div>
+   </body>
+
+  
+
+

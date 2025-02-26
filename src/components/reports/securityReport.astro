@@ -1,0 +1,88 @@
+---
+import sqlite3 from "sqlite3";
+import { nmapDBPath } from "../../utils/env.ts";
+
+
+interface LintProps {
+  state_state: Text;
+  state_reason: Text;
+  service_name: Text;
+}
+let query = "";
+
+function getContentDetails(tenantId = ""): Promise<LintProps | null> {
+  return new Promise((resolve, reject) => {
+    const db = new sqlite3.Database(
+        nmapDBPath,
+      sqlite3.OPEN_READWRITE,
+      (err: Error | null) => {
+        if (err) {
+          reject(err);
+        } else {
+          query = `SELECT port_id as Port,state_state, state_reason, service_name as Service,name
+                   FROM ports p JOIN host_names h ON h.host_id=p.host_id GROUP BY Port;`;
+          db.all(query, (err: Error | null, row: LintProps) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(row);
+            }
+          });
+        }
+      },
+    );
+
+    db.close((err: Error | null) => {
+      if (err) {
+        console.error(`Error closing database: ${err.message}`);
+      }
+    });
+  });
+}
+
+async function fetchData() {
+  try {
+    const details = await getContentDetails();
+    return details;
+  } catch (error) {
+    console.error("Error fetching content details:", error);
+  }
+}
+
+let response = await fetchData();
+//console.log(Response,'---response')
+---
+
+
+  <div class="card-wrapper">
+    <!-- <h1 class="text-lg font-semibold text-slate-700 dark:text-gray-300 mb-2">Security Report Results</h1> -->
+    <div class="mt-4">
+      <table class="border-collapse border border-gray-300 dark:border-gray-600 w-full">
+          <thead>
+              <tr class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Port</th>
+                <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Service</th>
+                  <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Host Name</th>
+                  <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">State</th>
+                  <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Reason</th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+              {response.map((member) => (
+                  <tr class="hover:bg-gray-50 dark:hover:bg-gray-600 dark:bg-gray-700">
+                      <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.Port}</td>
+                      <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.Service}</td>
+                      <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.name}</td>
+                      <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.state_state}</td>
+                      <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.state_reason}</td>
+                      
+                  </tr>
+              ))}
+          </tbody>
+      </table>
+  </div>
+
+  </div>
+
+

@@ -21,3 +21,4 @@ export const lformDB = {
 
 export const isIMAPViewEnabled = import.meta.env.ENABLE_IMAP_VIEW === 'true';
 export const imapDBPath = import.meta.env.PUBLIC_IMAP_DB;
+export const nmapDBPath = import.meta.env.PUBLIC_NMAP_DB;
