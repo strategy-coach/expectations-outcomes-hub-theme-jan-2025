@@ -3,6 +3,11 @@ import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import themeConfig from "../../theme.config";
 
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 const { baseHyperLinkColor } = themeConfig || {};
 
 const enableOpenObserve =
@@ -45,6 +50,9 @@ const enableOpenObserve =
       crossorigin="anonymous"
       src="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/fhir/R4/lformsFHIR.min.js"
     ></script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    </script>
     
     <script
       src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
@@ -72,7 +80,7 @@ const enableOpenObserve =
   })();
 </script>
     <meta name="generator" content={Astro.generator} />
-    <title>Expectations and Outcomes Hub Theme</title>
+    <title>{title}</title>
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 dark:text-white">
     <Header />
