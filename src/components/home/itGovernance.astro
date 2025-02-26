@@ -5,17 +5,16 @@ const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
 
 
 const ItGovernanceList = Object.values(newFiles)
-  .filter((file) => file.frontmatter?.home?.ItGovernance?.category === "it-governance") // Filter by "skipTo" category
+  .filter((file) => file.frontmatter?.home?.ItGovernance?.category === "it-governance")
   .map((file) => {
-    // Remove the base path '/src/content' from the file path
+    // Remove the base path '/src/content' and file extensions (.md or .mdx)
     const relativePath = file.file
       .replace(/^.*\/src\/content/, '')  // Remove everything up to '/src/content'
-      .replace('.md', '')               // Remove the '.md' extension
-      .replace('.mdx', '');             // Remove the '.mdx' extension
+      .replace(/\.(md|mdx)$/, '');       // Remove '.md' or '.mdx' extensions
     
     return {
       title: file.frontmatter?.title, // Get the title
-      path: `${relativePath}` // Correct the path to be relative
+      path: relativePath // Correct the path to be relative
     };
   })
   .filter((file) => file.title && file.path); // Ensure title and path exist
