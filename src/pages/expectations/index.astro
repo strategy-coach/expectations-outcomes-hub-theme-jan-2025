@@ -1,72 +1,19 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import { render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Sidebar from "../../components/Sidebar";
 import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from "../../../theme.config";
+import type { Questionnaire } from "./typs";
+import {
+  convertQuestionnaire,
+  replaceQuestionnaire,
+} from "./questionnaireOrder";
 import order from "./order.json";
-
-interface InitialValue {
-  valueString: string;
-}
-
-interface BaseQuestionnaireItem {
-  type: string;
-  linkId: string;
-  text: string;
-  readOnly?: boolean;
-  initial?: InitialValue[];
-}
-
-interface QuestionnaireItem extends BaseQuestionnaireItem {
-  item?: QuestionnaireItem[]; // Nested items inside a question (optional)
-}
-
-interface QuestionnaireGroup {
-  type: "group"; // Ensures only "group" type for groups
-  linkId: string;
-  text: string;
-  readOnly: boolean;
-  item: QuestionnaireItem[]; // Groups contain questions/items
-}
-
-interface Questionnaire {
-  resourceType: "Questionnaire"; // Must be exactly "Questionnaire"
-  title: string;
-  status: string;
-  item: QuestionnaireGroup[]; // Only groups at the top level
-}
-
-interface OutputNode {
-  name: string;
-  path: string;
-  isFile: boolean;
-  children?: OutputNode[];
-}
 
 const orderJson = order;
 const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
-
-function convertQuestionnaire(json: Questionnaire): OutputNode {
-  return {
-    name: json.resourceType,
-    path: "/expectations/questionnaire/",
-    isFile: false,
-    children: json.item.map((plan) => ({
-      name: plan.text,
-      path: `/expectations/questionnaire/${plan.text.toLowerCase().replace(/\s+/g, "-")}/`,
-      isFile: false,
-      children: plan.item.map((entry) => ({
-        name: entry.text,
-        path: entry.initial?.[0]?.valueString || "",
-        isFile: true,
-      })),
-    })),
-  };
-}
 
 const { contentCollectionSort } = themeConfig || {};
 
@@ -76,18 +23,12 @@ const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
 const dirName = "expectations";
 // Build the menu tree
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
-function replaceQuestionnaire(menuTree: any[], newObject: any): any[] {
-  // To replace the Questionnaire menu using order json
-  return menuTree.map((item) =>
-    item.name === "Questionnaire" ? newObject : item
-  );
-}
+
 const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
-//const menuTree = buildMenuTree(files,dirName);
 ---
 
 <Layout title="Expectations">
-  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs"
     >
@@ -95,7 +36,7 @@ const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
       <div id="starlight__sidebar" class="sidebar-pane">
         <div class="sidebar-content">
           <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
-            <Sidebar menuTree={updatedMenuTree} />
+            <Sidebar menuTree={updatedMenuTree} slugval="" />
           </div>
         </div>
       </div>
@@ -136,11 +77,11 @@ const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
             // Check if it's a folder and has children
             const firstFilePath =
               !page.isFile && page.children
-                ? page.children.find((child) => child.isFile)?.path // Get the path of the first file
+                ? page.children.find((child: { isFile: any; }) => child.isFile)?.path // Get the path of the first file
                 : page.path;
             const firstFileDescription =
               !page.isFile && page.children
-                ? page.children.find((child) => child.isFile)?.description // Get the path of the first file
+                ? page.children.find((child: { isFile: any; }) => child.isFile)?.description // Get the path of the first file
                 : page.description;
 
             return (
