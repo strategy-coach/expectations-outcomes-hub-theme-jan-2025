@@ -11,6 +11,7 @@ import LatestBlogs from "../components/home/blogLatest.astro";
 import Accomplishments from "../components/home/accomplishments.astro";
 import ItGovernance from "../components/home/itGovernance.astro";
 import Teams from "../components/teams/teams";
+import ActivityLog from "../components/home/activityLog.astro";
 
 const trackers = themeConfig.trackers;
 const { title, description, activeProject } = themeConfig || {};
@@ -243,15 +244,8 @@ const menuTree = buildMenuTree(files, dirName);
 
       <MeetingMinutes />
       <LatestBlogs />
-
-      <div
-        class="lg:col-span-12 bg-white dark:bg-gray-800 shadow rounded-lg p-4 markdown-content"
-      >
-        <details id="activityLog" data-persist-state="closed">
-          <summary class="dark:text-gray-300">Activity Log</summary>
-          <MyContent />
-        </details>
-      </div>
+      <ActivityLog recordsLimit={10} showViewMoreButton={true} hoursToFetch={1}/>
+      
     </section>
   </main>
 </Layout>
