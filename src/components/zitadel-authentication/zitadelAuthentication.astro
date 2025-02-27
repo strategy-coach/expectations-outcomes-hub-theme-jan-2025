@@ -63,6 +63,8 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
         .replace("<Token>", localStorage.getItem("zitadel_token"))
         .replace("<State>", localStorage.getItem("zitadel_state"));
 
+      localStorage.removeItem("zitadel_token");
+      localStorage.removeItem("zitadel_state");
       // Clear cookies, localStorage, and sessionStorage
       const cookiesToDelete = [
         "zitadel_state",
@@ -90,7 +92,6 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       deleteCookie("tenantId");
       deleteCookie("organizationName");
       // end : Need to remove shortly
-
 
       localStorage.clear();
       sessionStorage.clear();
