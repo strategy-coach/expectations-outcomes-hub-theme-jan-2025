@@ -1,0 +1,22 @@
+---
+import CommentLog from "./commentLog";
+import ServerDataService from "../../../support/services/serverDataService";
+
+const path = Astro.url.pathname;
+const comments = await ServerDataService.getComments(path);
+const activities = await ServerDataService.getActivityLogs(path);
+
+const commentData = [...activities, ...comments];
+commentData.sort((a, b) => {
+  return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+});
+const {source,activityTitle,discussionEnabled}=Astro.props
+
+---
+ {discussionEnabled && <CommentLog
+        data={commentData}
+        url={path}
+        source={source}
+        activityTitle={activityTitle}
+        client:only="react"      
+      />}

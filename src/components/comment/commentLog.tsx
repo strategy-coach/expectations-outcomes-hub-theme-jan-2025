@@ -3,13 +3,12 @@ import Comment from "./comment.tsx";
 import type { LogType } from "../../../support/services/serverDataService.ts";
 
 
-interface ActivityLogProps {
+interface CommentLogProps {
     auditType?: string;
     data: LogType[];
     activityTitle?: string;
     url: string;
     source: string;
-    sessionName?: string;
     evidenceCount?: number;
 }
 
@@ -41,12 +40,11 @@ export function validateSpecialCharacters(inputString: string): boolean {
     const specialCharactersPattern = /^[!"#$%&'()*+,./:;<=>?@[\\\]^_{|}]+$/;
     return specialCharactersPattern.test(inputString);
 }
-const ActivityLog: React.FC<ActivityLogProps> = ({
+const CommentLog: React.FC<CommentLogProps> = ({
     data,
     activityTitle,
     url,
-    source,
-    sessionName
+    source
 }) => {
     const [loadMore, setLoadMore] = useState(false);
     const closeActivityMoreModal = (): void => {
@@ -74,11 +72,11 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                         <div className="flex h-full flex-col bg-white shadow-2xl">
                                             <div className="px-7 pt-5">
                                                 <div className="flex items-start justify-between">
-                                                    {activityTitle !== null && (
-                                                        <h2 className="text-lg font-bold leading-6 text-gray-900">
-                                                            <span id="auditType">{activityTitle}</span>
-                                                        </h2>
-                                                    )}
+                                                    {/* {activityTitle !== null && (
+                                                        <h1 className="text-lg font-bold leading-6 text-gray-900">
+                                                            {activityTitle}
+                                                        </h1>
+                                                    )} */}
 
                                                     <div className="ml-3 flex h-7 items-center">
                                                         <a
@@ -117,8 +115,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                                         source={source}
                                                         setLoadMore={handleLoadMore}
                                                         activityTitle={activityTitle}
-                                                        sessionName={sessionName}
-
                                                     />
                                                 </div>
                                             </div>
@@ -131,12 +127,12 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 </>
             ) : (
                 <div className="">
-                    {activityTitle !== null && (
+                    {/* {activityTitle !== null && (
                         <h2 className="text-xl font-bold">
                             <span id="auditType">{activityTitle}</span>
                         </h2>
                     )}
-                    <br />
+                    <br /> */}
                     <Comment
                         activities={data}
                         loadMore={loadMore}
@@ -144,7 +140,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         source={source}
                         setLoadMore={handleLoadMore}
                         activityTitle={activityTitle}
-                        sessionName={sessionName}
 
                     />
                 </div>
@@ -153,4 +148,4 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     );
 };
 
-export default ActivityLog;
+export default CommentLog;
