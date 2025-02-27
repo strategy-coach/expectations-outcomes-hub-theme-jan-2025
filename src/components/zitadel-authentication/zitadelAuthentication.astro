@@ -77,6 +77,12 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       cookiesToDelete.forEach((key) => deleteCookie(key));
       deleteCookie("__Secure-zitadel.useragent", "idi.opsfolio.com");
 
+      document.cookie.split(";").forEach(function (c) {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      });
+
       // start : Need to remove shortly
       deleteCookie("authState");
       deleteCookie("user_roles");
