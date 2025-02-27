@@ -28,12 +28,11 @@ const buildTree = (activities: LogType[]): LogType[] => {
 
 
 
-interface ActivityLogProps {
+interface CommentProps {
     source: string;
     url: string;
     setLoadMore: () => void;
     loadMore: boolean;
-    sessionName: string | undefined;
     activityTitle?: string;
 
 }
@@ -62,8 +61,8 @@ export function FormatTimeDifference(date: Date): string {
     }
 }
 
-const Activity: React.FC<
-    ActivityLogProps & {
+const Comment: React.FC<
+    CommentProps & {
         activities: LogType[];
     }
 > = ({
@@ -72,9 +71,6 @@ const Activity: React.FC<
     source,
     setLoadMore,
     loadMore,
-    sessionName,
-
-
 }) => {
         const [submitOption, setSubmitOption] = useState("add");
         const [showReplies, setShowReplies] = useState<Record<string, boolean>>({});
@@ -227,18 +223,6 @@ const Activity: React.FC<
                         if (!response.ok) {
                             throw new Error("Failed to add comment");
                         }
-                        const event = new CustomEvent("add-comment", {
-                            detail: {
-                                description: "Comment Added",
-                                details: {
-                                    activity: "Add comment",
-                                    comment: comment.trim(),
-                                    sessionName,
-                                    source,
-                                },
-                            },
-                        });
-                        document.dispatchEvent(event);
                         setComment("");
                         setNotification({
                             show: false,
@@ -255,7 +239,7 @@ const Activity: React.FC<
                         const postBody = {
                             type: "editLog",
                             description: comment,
-                            source: "Expectations",
+                            source: source,
                             logMessage: `"${commentToEdit}" edited to "${comment}"`,
                             userId: userId,
                             url: url,
@@ -355,17 +339,6 @@ const Activity: React.FC<
 
             if (isConfirmed) {
                 await deleteLog(parentMessageId, timestamp, id, userID, description);
-                const event = new CustomEvent("delete-comment", {
-                    detail: {
-                        description: "Delete Comment",
-                        details: {
-                            activity: "Comment Deleted",
-                            sessionName,
-                            comment: description,
-                        },
-                    },
-                });
-                document.dispatchEvent(event);
             }
             const currentWindow: Window = window;
             currentWindow.location.reload();
@@ -393,7 +366,7 @@ const Activity: React.FC<
                         timeStamp: timestamp,
                         userId: userID,
                         updatedBy: userId,
-                        source: "Expectations",
+                        source: source,
                         url: url,
                         activityType: 2,
                         messageId: id,
@@ -827,4 +800,4 @@ const Activity: React.FC<
         );
     };
 
-export default Activity;
+export default Comment;
