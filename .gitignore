@@ -18,6 +18,7 @@ pnpm-debug.log*
 .env.production
 
 htmloutput/
+public/htmloutput/
 
 # demo db
 database-query-renderer-demo/employee.db
