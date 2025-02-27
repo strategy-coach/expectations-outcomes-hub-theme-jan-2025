@@ -17,9 +17,12 @@ const folderId = params.get("folder");
 const mailId = params.get("mail-id");
 const page = parseInt(params.get("page") || "1", 10);
 
-const mailPerPge = 10;
+const mailPerPge = 14;
 
 const db = connectionDB(imapDBPath)
+if (!db) {
+  throw new Error("Database connection failed or file not found.");
+}
 
 const accounts = await db.select().from(urIngestSessionImapAccount);
 
@@ -35,7 +38,11 @@ const folderList = await db
   .from(urIngestSessionImapAcctFolder)
   .where(eq(urIngestSessionImapAcctFolder.urIngestSessionImapAcctFolderId, `${folderId}`)).then((rows) => rows[0]);
 
+  
 async function getPaginatedMail(page = 1, limit = 5, dataSchema:any) {
+  if (!db) {
+  throw new Error("Database connection failed or file not found.");
+}
   const offset = (page - 1) * limit;
   const data = await db
     .select()
@@ -64,6 +71,45 @@ const { data, total, totalPages, currentPage } = await getPaginatedMail(
  mailPerPge,
   urIngestSessionImapAcctFolderMessage
 );
+
+function removeEmailHeaders(emailContent: string): string {
+    // Remove everything before the first empty line (headers)
+    let emailBody = emailContent.split(/\r?\n\r?\n/).slice(1).join("\n").trim();
+
+    // Remove MIME boundaries (e.g., ------=_NextPart_XXXX)
+    emailBody = emailBody.replace(/^------=_NextPart_.*$/gm, "");
+
+    // Remove MIME headers (e.g., Content-Type, Content-Transfer-Encoding, MIME-Version, charset)
+    emailBody = emailBody.replace(/^(Content-Type|Content-Transfer-Encoding|MIME-Version|charset)=?.*$/gim, "");
+
+    // Remove the "This is a multi-part message in MIME format." line
+    emailBody = emailBody.replace(/This is a multi-part message in MIME format\./gi, "");
+
+    // Remove large dashes or separators often seen in emails
+    emailBody = emailBody.replace(/^[-=_]{5,}.*$/gm, "");
+
+    // Remove standalone URLs that are likely tracking links or web views
+    emailBody = emailBody.replace(/^https?:\/\/\S+/gm, "");
+
+    // Remove unsubscribe-related sections
+    emailBody = emailBody.replace(/To unsubscribe.*?(?=\n\n|\r\n\r\n)/gis, "");
+    // Remove HTML tags
+    emailBody = emailBody.replace(/<\/?[^>]+(>|$)/g, ""); // Strips all HTML tags
+
+    // Remove excessive newlines (keep at most two consecutive newlines)
+    emailBody = emailBody.replace(/\n{3,}/g, "\n\n");
+  // Trim and enforce a 50-character limit, ensuring it doesn’t cut words
+    emailBody = emailBody.trim();
+    if (emailBody.length > 100) {
+        let shortened = emailBody.slice(0, 100);
+        let lastSpaceIndex = shortened.lastIndexOf(" ");
+        if (lastSpaceIndex !== -1) {
+            shortened = shortened.slice(0, lastSpaceIndex); // Cut at the last full word
+        }
+        emailBody = shortened + "..."; // Indicate that content is truncated
+    }
+    return emailBody.trim();
+}
 
 
 function createDynamicLink(params: Record<string, string>) {
@@ -144,9 +190,10 @@ if (view === 'detail' && mailId) {
     <nav class="space-y-2">
       {
         folderList.map((folder) => (
-          <a
+          <a 
+            id={folder.urIngestSessionImapAcctFolderId}
             href={`${createDynamicLink({ folder: folder.urIngestSessionImapAcctFolderId, view: "list" })}`}
-            class={`block p-2 rounded 
+            class={`folderClass block p-2 rounded 
             ${folderId === folder.urIngestSessionImapAcctFolderId ? "bg-sky-500 text-sm pl-4 py-1 text-white" : "hover:bg-gray-200"}`}
           >
             {folder.folderName}
@@ -163,21 +210,24 @@ if (view === 'detail' && mailId) {
     {
       data ? (
         
-        <ul class="space-y-3 overflow-auto pr-2" style="height: calc(100vh - 365px);">
+        <ul class="overflow-auto pr-2" style="height: calc(100vh - 365px);">
           {data.map((mail) => {
-           
            const formattedDate =  moment([mail.date]).fromNow();
 
             return (
-              <li class="px-3 py-2 border rounded shadow-sm cursor-pointer hover:bg-gray-100">
+              <li class="px-3 bg-gray-50 py-2 border-b shadow-sm cursor-pointer hover:bg-gray-100">
                 <a
                   href={`${createDynamicLink({ "mail-id": mail.urIngestSessionImapAcctFolderMessageId, view: "detail" })}`}
                 >
-                  <div class="flex">
+                  <div class="flex h-[22px] overflow-hidden">
                     <div class="basis-full leading-3">
                       <span class="text-sm text-gray-800">{mail.fromAddress}</span>
                       <span class="text-sm text-gray-300 mx-2">|</span>
-                      <span class="font-bold text-sm">{mail.subject}</span>
+                      <span class="text-sm text-gray-800">{mail.subject}</span>
+                      <span class="text-sm text-gray-300">-</span>
+                      <span class="text-xs text-gray-400">
+                      {removeEmailHeaders(mail.message)}  
+                      </span>
                     </div>
                     <div class="min-w-[100px] text-right"><span class="text-xs text-gray-400 ml-1"> {formattedDate}</span></div>
 
@@ -247,6 +297,7 @@ if (view === 'detail' && mailId) {
     const newUrl = new URL(window.location.href);
     const params = new URLSearchParams(window.location.search); 
     const accountId = params.get('account');
+    const folderId = params.get('folder');
 
     if(accountId=='' || accountId== null){
       newUrl.searchParams.delete("mail-id");
@@ -257,6 +308,14 @@ if (view === 'detail' && mailId) {
       newUrl.searchParams.set("account", firstAccountId);
       window.history.pushState({}, "", newUrl);
       location.reload();
+    }
+
+    if ((accountId !== '' && accountId !== null) && (folderId === '' || folderId === null)) {
+      const element = document.querySelector('.folderClass');
+        const folderFiresId = element ? element.getAttribute('id') : "";
+        newUrl.searchParams.set("folder", folderFiresId? folderFiresId : "");
+        window.history.pushState({}, "", newUrl);
+        location.reload();
     }
 
     if (accountSelector instanceof HTMLSelectElement) {

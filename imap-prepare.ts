@@ -98,7 +98,7 @@ if (import.meta.main) {
         "surveilr",
         "ingest",
         "imap",
-        `-f=${Deno.env.get("IMAP_FOLDER")}`,
+        ...(Deno.env.get("IMAP_FOLDER") ? [`-f=${Deno.env.get("IMAP_FOLDER")}`] : []),
         `-u=${Deno.env.get("IMAP_USER_NAME")}`,
         `-p=${Deno.env.get("IMAP_PASS")}`,
         `-a=${Deno.env.get("IMAP_HOST")}`,
