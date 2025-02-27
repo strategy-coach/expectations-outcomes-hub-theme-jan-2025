@@ -73,7 +73,7 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
         "zitadel_tenant_id",
         "zitadel_user_email",
       ];
-
+      localStorage.removeItem("zitadel_token");
       cookiesToDelete.forEach((key) => deleteCookie(key));
       deleteCookie("__Secure-zitadel.useragent", "idi.opsfolio.com");
 
@@ -90,7 +90,6 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       deleteCookie("tenantId");
       deleteCookie("organizationName");
       // end : Need to remove shortly
-
 
       localStorage.clear();
       sessionStorage.clear();
