@@ -54,15 +54,25 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       : cookieString;
   };
 
+  console.log("-------------------------");
+  console.log(operation);
   if (operation === "logout") {
+    console.log("-------------------------");
+    console.log("1");
     const logoutAndClearData = () => {
+      console.log("-------------------------");
+      console.log("2");
       let logoutPath = zitadelLogoutUrl;
-
+      console.log("-------------------------");
+      console.log("3");
       // Replace placeholders with actual values
       logoutPath = decodeURI(logoutPath)
         .replace("<Token>", localStorage.getItem("zitadel_token"))
         .replace("<State>", localStorage.getItem("zitadel_state"));
 
+      console.log("-------------------------");
+      console.log("4");
+      console.log("logoutPath:", logoutPath);
       // Clear cookies, localStorage, and sessionStorage
       const cookiesToDelete = [
         "zitadel_state",
