@@ -71,10 +71,10 @@ export default themeConfig({
     "/lforms",
     "/teams",
     "/database-query-render",
-    "/imap-mail",   
-    "/penetration-testing-services" ,
+    "/imap-mail",
+    "/penetration-testing-services",
   ],
-  excludedEditOptionFolder: ["qualityfolio", "lforms","questionnaire","reports"],
+  excludedEditOptionFolder: ["qualityfolio", "lforms", "questionnaire", "reports"],
   headerMenu: [
     { label: "Home", path: "/" },
     { label: "Documentation", path: "/documentation" },
@@ -91,6 +91,7 @@ export default themeConfig({
     "no-permission",
     "presentation",
     "public-presentation",
+    "clear-cache",
   ],
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
