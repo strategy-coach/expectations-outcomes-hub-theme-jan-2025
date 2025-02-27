@@ -55,7 +55,6 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
   };
 
   if (operation === "logout") {
-    localStorage.removeItem("zitadel_token");
     const logoutAndClearData = () => {
       let logoutPath = zitadelLogoutUrl;
 
@@ -91,6 +90,7 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       deleteCookie("tenantId");
       deleteCookie("organizationName");
       // end : Need to remove shortly
+
 
       localStorage.clear();
       sessionStorage.clear();
