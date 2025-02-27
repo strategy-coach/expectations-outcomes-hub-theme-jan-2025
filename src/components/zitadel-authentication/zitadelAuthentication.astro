@@ -54,25 +54,15 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       : cookieString;
   };
 
-  alert("-------------------------");
-  alert(operation);
   if (operation === "logout") {
-    alert("-------------------------");
-    alert("1");
     const logoutAndClearData = () => {
-      alert("-------------------------");
-      alert("2");
       let logoutPath = zitadelLogoutUrl;
-      alert("-------------------------");
-      alert("3");
+
       // Replace placeholders with actual values
       logoutPath = decodeURI(logoutPath)
         .replace("<Token>", localStorage.getItem("zitadel_token"))
         .replace("<State>", localStorage.getItem("zitadel_state"));
 
-      alert("-------------------------");
-      alert("4");
-      alert("logoutPath:", logoutPath);
       // Clear cookies, localStorage, and sessionStorage
       const cookiesToDelete = [
         "zitadel_state",
@@ -83,15 +73,9 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
         "zitadel_tenant_id",
         "zitadel_user_email",
       ];
-      localStorage.removeItem("zitadel_token");
+
       cookiesToDelete.forEach((key) => deleteCookie(key));
       deleteCookie("__Secure-zitadel.useragent", "idi.opsfolio.com");
-
-      document.cookie.split(";").forEach(function (c) {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-      });
 
       // start : Need to remove shortly
       deleteCookie("authState");
@@ -107,6 +91,7 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       deleteCookie("organizationName");
       // end : Need to remove shortly
 
+
       localStorage.clear();
       sessionStorage.clear();
 
@@ -115,7 +100,6 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
     };
 
     if (localStorage.getItem("zitadel_token")) {
-      alert("common");
       setTimeout(logoutAndClearData, 1000);
     }
   }

@@ -1,0 +1,44 @@
+---
+
+---
+
+<script>
+  function clearAllData() {
+    // Clear Local Storage
+    localStorage.clear();
+
+    // Clear Session Storage
+    sessionStorage.clear();
+
+    // Clear Cookies
+    document.cookie.split(";").forEach((cookie) => {
+      document.cookie = cookie
+        .replace(/^ +/, "")
+        .replace(/=.*/, `=; expires=${new Date(0).toUTCString()}; path=/`);
+    });
+
+    // Clear IndexedDB
+    window.indexedDB.databases().then((databases) => {
+      databases.forEach((db) => {
+        if (db.name) {
+          window.indexedDB.deleteDatabase(db.name);
+        }
+      });
+    });
+
+    // Clear Cache Storage
+    if ("caches" in window) {
+      caches.keys().then((names) => {
+        names.forEach((name) => caches.delete(name));
+      });
+    }
+
+    console.log(
+      "✅ All session, cookies, localStorage, IndexedDB, and cache data cleared!"
+    );
+    window.location.href = "/";
+  }
+
+  // Call the function to clear all data
+  clearAllData();
+</script>
