@@ -94,23 +94,23 @@ const TeamDetails = () => {
                 {gridView ? (
                     <div className="grid grid-cols-12 gap-4 mt-6">
                         {team.map((member) => (
-                            <div key={member.userId} className=" leading-[3rem] col-span-3 md:col-span-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                            <div key={member.userId} className=" leading-[3rem] col-span-4 md:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
                                 <div className="flex items-center gap-3">
                                     <Gravatar userEmail={member.email} width={20} height={20} />
                                     <div>
-                                        <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300">{member.displayName}</h3>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                                            <strong>Role:</strong> {member.roleKeys[0]}
-                                        </p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                                            <strong>Email:</strong>{" "}
-                                            <a href={`mailto:${member.email}`} className="text-blue-500 hover:underline">
+                                        <h3 className="text-lg mb-0 mt-0 font-medium text-gray-700 dark:text-gray-300">{member.displayName}</h3>
+                                        <div className="text-sm mb-0.5 text-gray-600 dark:text-gray-300">
+                                            <strong className="text-gray-600">Role:</strong> {member.roleKeys[0]}
+                                        </div>
+                                        <div className="text-sm mb-0.5 text-gray-600 dark:text-gray-300">
+                                            <strong className="text-gray-600">Email:</strong>{" "}
+                                            <a href={`mailto:${member.email}`} className="text-[#028db7] break-all hover:underline">
                                                 {member.email}
                                             </a>
-                                        </p>
-                                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                                            <strong>Organization:</strong> {member.orgName}
-                                        </p>
+                                        </div>
+                                        <div className="text-sm mb-0.5 text-gray-600 dark:text-gray-300">
+                                            <strong className="text-gray-600">Organization:</strong> {member.orgName}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
