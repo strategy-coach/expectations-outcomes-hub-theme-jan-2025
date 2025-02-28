@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Cookie from "js-cookie";
-import type { LogType } from "../../../support/services/serverDataService.ts";
+import type { LogType } from "./commentService.ts";
 // import MessageReaction from "./message-reaction/messageReaction.tsx";
 
 //import type { AuditMember } from "../../../../../support/services/auditTypes";
@@ -92,6 +92,7 @@ const Comment: React.FC<
         const textAreaRef = useRef<any>(null);
 
         const userId = Cookie.get("zitadel_user_id");
+        const tenantId = Cookie.get("zitadel_tenant_id")
         const handleReplyClick = (logId: number, description: string): void => {
             setReply({ parentId: logId, message: description });
 
@@ -216,7 +217,7 @@ const Comment: React.FC<
                             activityType: 3,
                             platform: 1,
                         };
-                        const response = await fetch("/post-data", {
+                        const response = await fetch("/api/comment", {
                             method: "POST",
                             body: JSON.stringify(postBody),
                         });
@@ -240,13 +241,14 @@ const Comment: React.FC<
                             type: "editLog",
                             description: comment,
                             source: source,
+                            tenantId,
                             logMessage: `"${commentToEdit}" edited to "${comment}"`,
                             userId: userId,
                             url: url,
                             activityType: 3,
                             logId: editLogId,
                         };
-                        const response = await fetch("/post-data", {
+                        const response = await fetch("/api/comment", {
                             method: "POST",
                             body: JSON.stringify(postBody),
                         });
@@ -364,6 +366,7 @@ const Comment: React.FC<
                         description: description,
                         parentMessageId: parentMessageID,
                         timeStamp: timestamp,
+                        tenantId,
                         userId: userID,
                         updatedBy: userId,
                         source: source,
@@ -371,7 +374,7 @@ const Comment: React.FC<
                         activityType: 2,
                         messageId: id,
                     };
-                    const response = await fetch("/post-data", {
+                    const response = await fetch("/api/comment", {
                         method: "POST",
                         body: JSON.stringify(postActivityBody),
                     });

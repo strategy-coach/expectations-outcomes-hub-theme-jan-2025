@@ -1,11 +1,11 @@
 ---
 import CommentLog from "./commentLog";
-import ServerDataService from "../../../support/services/serverDataService";
+import CommentService from "../../components/comment/commentService";
 
 const path = Astro.url.pathname;
-const comments = await ServerDataService.getComments(path);
-const activities = await ServerDataService.getActivityLogs(path);
-
+const comments = await CommentService.getComments(path);
+const activities = await CommentService.getActivityLogs(path);
+const user = Astro.cookies.get("zitadel_user_id")
 const commentData = [...activities, ...comments];
 commentData.sort((a, b) => {
   return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
@@ -13,10 +13,16 @@ commentData.sort((a, b) => {
 const {source,activityTitle,discussionEnabled}=Astro.props
 
 ---
- {discussionEnabled && <CommentLog
-        data={commentData}
-        url={path}
-        source={source}
-        activityTitle={activityTitle}
-        client:only="react"      
-      />}
+{user && user.value && discussionEnabled ? (
+  <CommentLog
+    data={commentData}
+    url={path}
+    source={source}
+    activityTitle={activityTitle}
+    client:only="react"
+  />
+) : (
+ 
+    <p class="text-md mt-1">You must be logged in to view comments.</p>
+
+)}
