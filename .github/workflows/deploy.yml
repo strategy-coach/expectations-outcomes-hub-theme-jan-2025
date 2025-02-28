@@ -49,7 +49,8 @@ jobs:
           IMAP_HOST: ${{ vars.IMAP_HOST }}
           PUBLIC_OPENOBSERVE_URL: ${{ vars.PUBLIC_OPENOBSERVE_URL }}
           PUBLIC_OPENOBSERVE_TOKEN: ${{ vars.PUBLIC_OPENOBSERVE_TOKEN }}
-          PUBLIC_NMAP_DB: ${{ vars.PUBLIC_NMAP_DB }}  
+          PUBLIC_NMAP_DB: ${{ vars.PUBLIC_NMAP_DB }}
+          PUBLIC_RSSD_DB: ${{ vars.PUBLIC_RSSD_DB }}  
         run: |
           bash -x support/ci-cd.sh      
           
