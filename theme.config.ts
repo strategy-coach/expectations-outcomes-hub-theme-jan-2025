@@ -13,8 +13,6 @@ const themeConfig = (config: {
   editLink: string;
   baseHyperLinkColor: string;
   presentationBgColor: string;
-  excludedEditOptionPages: string[];
-  excludedEditOptionFolder: string[];
   headerMenu: { label: string; path: string; requiresAuth?: boolean }[];
   unauthorizedPages: string[];
   isHomePagePublic: boolean;
@@ -61,20 +59,6 @@ export default themeConfig({
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
   baseHyperLinkColor: "#028db7",
   presentationBgColor: "#1e3a47",
-  excludedEditOptionPages: [
-    "/blog",
-    "/my-profile",
-    "/expectations",
-    "/outcomes",
-    "/progress",
-    "/github-discussions",
-    "/lforms",
-    "/teams",
-    "/database-query-render",
-    "/imap-mail",
-    "/penetration-testing-services",
-  ],
-  excludedEditOptionFolder: ["qualityfolio", "lforms", "questionnaire", "reports"],
   headerMenu: [
     { label: "Home", path: "/" },
     { label: "Documentation", path: "/documentation" },
