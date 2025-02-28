@@ -275,14 +275,6 @@ export default themeConfig({
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/edit/main/src/content/",
   baseHyperLinkColor: "#028db7",
   presentationBgColor: "#1e3a47",
-  excludedEditOptionPages: [
-    "/blog",
-    "/my-profile",
-    "/expectations",
-    "/outcomes",
-    "/progress",
-  ],
-  excludedEditOptionFolder: ["qualityfolio"],
   headerMenu: [
     { label: "Home", path: "/" },
     { label: "Documentation", path: "/documentation" },
@@ -979,5 +971,18 @@ When adding folders as groups:
    ``` src/pages/expectations ```
 
 By following these steps, you can effectively manage the order of the menu while ensuring consistency in the JSON structure.
+
+## Edit Option
+
+Provides a direct link to edit the page in the GitHub repository. 
+
+This can be configured in the Markdown file using the following frontmatter:
+
+```
+enableEditButton: true
+```
+
+When set to true, an "Edit" button will appear in the footer of the page, allowing users to quickly access and modify the content on GitHub.
+
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
