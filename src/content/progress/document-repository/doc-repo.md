@@ -1,5 +1,7 @@
 ---
 title: Centralized storage for SOWs, designs and reports
+enableEditButton: true
+
 ---
 # Centralized storage for SOWs, designs and reports
 

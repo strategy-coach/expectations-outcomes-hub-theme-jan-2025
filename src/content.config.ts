@@ -7,6 +7,7 @@ const baseSchema = z.object({
   date: z.string().optional(),
   description: z.string().optional(),
   discussionsEnabled: z.boolean().optional().default(false),
+  enableEditButton: z.boolean().optional().default(false),
   home: z
     .object({
       skipTo: z
@@ -76,10 +77,14 @@ const outcomes = defineCollection({
 });
 
 const documentation = defineCollection({
-  loader: glob({ base: "./src/content/documentation", pattern: "**/*.{md,mdx}" }),
+  loader: glob({
+    base: "./src/content/documentation",
+    pattern: "**/*.{md,mdx}",
+  }),
   schema: z.object({
     title: z.string().optional(),
     draft: z.boolean().optional(),
+    enableEditButton: z.boolean().optional().default(false),
   }),
 });
 const envData = import.meta.env;

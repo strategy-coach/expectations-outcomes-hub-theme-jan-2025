@@ -4,6 +4,8 @@ home:
   accomplishments: 
     category: "accomplishments"
 date: "2025-01-07"
+enableEditButton: true
+
 ---
 # Achievements
 

@@ -1,5 +1,6 @@
 ---
 title: Team Members & Contacts
+enableEditButton: true
 
 ---
 # Team Members & Contacts

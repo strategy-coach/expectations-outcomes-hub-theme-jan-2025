@@ -13,7 +13,7 @@ if (!entry) {
 const { Content } = await render(entry);
 ---
 
-<Layout {...entry.data}>
+<Layout {...entry.data} enableEditButton={true}>
   <div class="w-full mx-auto flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
     <!-- Main Content -->
     <main

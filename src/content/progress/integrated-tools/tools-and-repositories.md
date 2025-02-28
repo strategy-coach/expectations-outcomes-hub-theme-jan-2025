@@ -1,5 +1,7 @@
 ---
 title: Software Tools and Repositories
+enableEditButton: true
+
 ---
 # Software Tools and Repositories
 
