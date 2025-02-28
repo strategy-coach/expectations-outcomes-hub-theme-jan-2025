@@ -1,5 +1,7 @@
 ---
 title: Best Practices for Visualizing Expectations and Outcomes
+enableEditButton: true
+
 ---
 # **Best Practices for Visualizing Expectations and Outcomes**
 

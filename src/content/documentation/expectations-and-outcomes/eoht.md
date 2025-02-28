@@ -1,5 +1,7 @@
 ---
 title: EOHT
+enableEditButton: true
+
 ---
 # The Importance of Capturing Client and Project Expectations and Outcomes
 

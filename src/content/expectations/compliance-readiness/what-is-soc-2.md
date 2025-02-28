@@ -4,6 +4,8 @@ home:
   ItGovernance:
     category: "it-governance"
 description:  SOC 2 (Service Organization Control 2) is a widely recognized framework designed to evaluate and enhance the security, availability, processing integrity, confidentiality, and privacy of service organizations. This guide provides an in-depth understanding of SOC 2, its importance, compliance requirements, and how to achieve certification.
+enableEditButton: true
+
 ---
 # What is SOC 2? | Guide to SOC 2 Compliance & Certification
 

@@ -20,7 +20,7 @@ const publishedFiles = Object.fromEntries(
 const menuTree = buildMenuTree(publishedFiles, dirName, contentCollectionSort, "asc");
 
 ---
-<Layout title='Documentation'>	
+<Layout title='Documentation' enableEditButton={true}>	
 	<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
     <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs">
       <!-- Left Menu Content Goes Here -->

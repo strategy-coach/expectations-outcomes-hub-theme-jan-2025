@@ -1,5 +1,7 @@
 ---
 title: "Authenticated Pages Presentation Demo"
+enableEditButton: true
+
 ---
 
 # Welcome to the Secure Presentation 🔒  

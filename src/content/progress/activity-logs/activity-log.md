@@ -3,6 +3,8 @@ title: Recent Activity Log
 home:
   meetingMinutes: 
     category: "meetingMinutes"
+enableEditButton: true
+
 ---
 # Recent Activity Log
 

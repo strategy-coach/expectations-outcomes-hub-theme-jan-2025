@@ -1,5 +1,7 @@
 ---
 title: "Anonymous Pages Presentation Demo"
+enableEditButton: true
+
 ---
 
 # Welcome to the Public Presentation! 🎉

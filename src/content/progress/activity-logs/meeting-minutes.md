@@ -3,6 +3,8 @@ title: Meeting Minutes
 home:
   meetingMinutes: 
     category: "meetingMinutes"
+enableEditButton: true
+
 ---
 # Meeting Minutes
 

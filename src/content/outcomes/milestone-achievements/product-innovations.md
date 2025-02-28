@@ -5,6 +5,8 @@ home:
     category: "accomplishments"
 date: "2025-01-25"
 description:  The document contains a project estimation sheet outlining tasks,effort hours, and timelines across key phases like analysis,design, development, testing, and project management. It includes metrics such as confidence factors, consumed hours, and completion dates.
+enableEditButton: true
+
 ---
 
 

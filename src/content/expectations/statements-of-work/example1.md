@@ -4,6 +4,7 @@ title: Statement of Work (SOW)
 home:
   skipTo: 
     category: "skipTo"
+enableEditButton: true
 
 ---
 # Statement of Work (SOW)

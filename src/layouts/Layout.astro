@@ -5,10 +5,12 @@ import themeConfig from "../../theme.config";
 
 interface Props {
   title: string;
+  enableEditButton?: boolean;
 }
 
 const { title } = Astro.props;
 const { baseHyperLinkColor } = themeConfig || {};
+const { enableEditButton } = Astro.props;
 
 const enableOpenObserve =
   import.meta.env.ENABLE_OPEN_OBSERVE !== undefined
@@ -97,7 +99,7 @@ const enableOpenObserve =
       });
     </script>
     <slot />
-    <Footer />
+    <Footer enableEditButton={enableEditButton} />
   </body>
 </html>
 <script is:inline>
