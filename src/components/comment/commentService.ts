@@ -137,7 +137,7 @@ const getFirstRow = <T = Record<string, unknown>>(
     });
 };
 
-const ServerDataService = {
+const commentService = {
 
 
     addComment: (param: ActivityLogType): Promise<void> => {
@@ -478,4 +478,4 @@ const ServerDataService = {
     },
 };
 
-export default ServerDataService;
+export default commentService;
