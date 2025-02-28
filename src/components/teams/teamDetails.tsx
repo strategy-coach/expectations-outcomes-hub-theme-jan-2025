@@ -120,21 +120,21 @@ const TeamDetails = () => {
                         <table className="border-collapse border border-gray-300 dark:border-gray-600 w-full">
                             <thead>
                                 <tr className="bg-gray-100 dark:bg-gray-700 dark:text-gray-300">
-                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Name</th>
-                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Email</th>
-                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Role</th>
-                                    <th className="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Organization</th>
+                                    <th className="border-r border-gray-200 dark:border-gray-600 px-4 py-2 text-left">Name</th>
+                                    <th className="border-r border-gray-200 dark:border-gray-600 px-4 py-2 text-left">Email</th>
+                                    <th className="border-r border-gray-200 dark:border-gray-600 px-4 py-2 text-left">Role</th>
+                                    <th className="px-4 py-2 text-left">Organization</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {team.map((member) => (
                                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-600 dark:bg-gray-700">
-                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2 flex">
+                                        <td className="border-r border-gray-200 dark:border-gray-600 px-4 py-2 flex">
                                             <Gravatar userEmail={member.email} width={5} height={5} /> <span className="ml-2"> {member.displayName}</span>
                                         </td>
-                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.email}</td>
-                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.roleKeys[0]}</td>
-                                        <td className="border border-gray-300 dark:border-gray-600 px-4 py-2">{member.orgName}</td>
+                                        <td className="border-r border-gray-200 dark:border-gray-600 px-4 py-2">{member.email}</td>
+                                        <td className="border-r border-gray-200 dark:border-gray-600 px-4 py-2">{member.roleKeys[0]}</td>
+                                        <td className="px-4 py-2">{member.orgName}</td>
                                     </tr>
                                 ))}
                             </tbody>
