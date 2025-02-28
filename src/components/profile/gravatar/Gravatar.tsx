@@ -20,7 +20,7 @@ export function Gravatar({
 
     return (
         <img
-            className={`h-${height} w-${width} rounded-full`}
+            className={`h-${height} w-${width} rounded-full mt-0 mb-0`}
             src={avatarUrl}
             alt=""
         />
