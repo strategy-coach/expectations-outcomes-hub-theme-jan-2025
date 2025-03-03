@@ -109,7 +109,7 @@ pageUrl: ${currentURL}
 
     const urlObj = new URL(currentURL);
     const hostnameParts = urlObj.hostname.split("."); // Split hostname by dots
-    let siteLabel = hostnameParts[0];
+    let siteLabel = hostnameParts[0] +" hub";
 
         try {
             const response = await fetch(
@@ -158,7 +158,7 @@ pageUrl: ${currentURL}
               name: "eoh-support-and-feedback-admin",
               to: {
                 subscriberId: window.widgetConfig.NOVU_SUBSCRIBER_ID,  
-                email: "rejinakp81@gmail.com",             
+                email: "admin@opsfolio.com",             
               },
               payload: payload,
             }),
