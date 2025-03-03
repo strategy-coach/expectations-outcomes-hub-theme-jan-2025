@@ -50,7 +50,16 @@ jobs:
           PUBLIC_OPENOBSERVE_URL: ${{ vars.PUBLIC_OPENOBSERVE_URL }}
           PUBLIC_OPENOBSERVE_TOKEN: ${{ vars.PUBLIC_OPENOBSERVE_TOKEN }}
           PUBLIC_NMAP_DB: ${{ vars.PUBLIC_NMAP_DB }}
-          PUBLIC_RSSD_DB: ${{ vars.PUBLIC_RSSD_DB }}  
+          PUBLIC_RSSD_DB: ${{ vars.PUBLIC_RSSD_DB }}
+          PUBLIC_NOVU_API_URL: ${{ vars.PUBLIC_NOVU_API_URL }}
+          PUBLIC_NOVU_SUBSCRIBER_ID: ${{ vars.PUBLIC_NOVU_SUBSCRIBER_ID }}
+          PUBLIC_NOVU_API_KEY: ${{ vars.PUBLIC_NOVU_API_KEY }}
+          PUBLIC_NOVU_CONTACTUS_TEMPLATE: ${{ vars.PUBLIC_NOVU_CONTACTUS_TEMPLATE }}
+          PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL: ${{ vars.PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL }}
+          PUBLIC_NOVU_ADMIN_TEMPLATE: ${{ vars.PUBLIC_NOVU_ADMIN_TEMPLATE }}
+          PUBLIC_GITHUB_PAT: ${{ secrets.PUBLIC_GITHUB_PAT }}
+          PUBLIC_GITHUB_OWNER: ${{ vars.PUBLIC_GITHUB_OWNER }}
+          PUBLIC_GITHUB_REPO: ${{ vars.PUBLIC_GITHUB_REPO }}
         run: |
           bash -x support/ci-cd.sh      
           
