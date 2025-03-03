@@ -1,0 +1,205 @@
+---
+import { Sequelize } from "sequelize";
+import type { IGridStyle, IList } from "../../types";
+
+import { decodeEntities } from "../../utils/decodeEntities";
+import Table from "../Table/Table";
+import AgGridComponent from "../AgGrid/AgGridComponent";
+import { nmapDBPath,reportConfig } from "../../utils/env.ts";
+import sqlFormatter from "@sqltools/formatter";
+
+export interface Props {
+  title: string;
+  gridStyle: IGridStyle;
+  connection: string;
+  query: string;  
+  page: string;
+}
+
+const {title,gridStyle = "xhtml",connection,page,} = Astro.props;
+let cnMsg = "";
+let sequelize: Sequelize | null = null;
+
+
+const agGridSupportThemes = [
+  "aggrid-default",
+  "ag-theme-alpine",
+  "ag-theme-material",
+];
+
+let children = "";
+let errorlist = false;
+let dataresult = false;
+let list = [];
+
+if (Astro.slots.has("default")) {
+  children = String(await Astro.slots.render("default"));
+}
+let decodedChildren = decodeEntities(children);
+
+//console.log("Connection key:", connection);
+//console.log("Database path:", reportConfig[connection]);
+
+await createSequelize();
+
+async function createSequelize() {
+  try {
+    if (!reportConfig[connection] || typeof reportConfig[connection] !== "string") {
+      throw new Error(`Invalid database path: ${reportConfig[connection]}`);
+    }
+
+    // Trim the connection string to remove accidental spaces
+    const dbPath = reportConfig[connection].trim();
+    //console.log("Using DB Path:", dbPath);
+
+    sequelize = new Sequelize(`sqlite:${dbPath}`);
+
+    //console.log("Database connection successful");
+  } catch (error) {
+    cnMsg = "Error connecting to the database";
+    console.error("Error connecting to the database:", error);
+  }
+}
+
+
+if (!sequelize) {
+  console.error("Sequelize instance is null. Cannot execute query.");
+  return;
+}
+
+list = await sequelize.query(decodedChildren)
+  .then((response) => {
+    if (response.length > 0) {
+      const returnArray: IList = { keys: [] };
+      if (response[0][0] !== undefined) {
+        const keys = Object.keys(response[0][0] as object);
+        const responsetotype = response[0] as string[];
+        returnArray.keys = keys;
+        returnArray.array = responsetotype;
+        return returnArray;
+      } else {
+        dataresult = true;
+      }
+    }
+    return null;
+  })
+  .catch((err) => {
+    console.error("Query execution error:", err);
+    cnMsg = "Error executing the query";
+  });
+
+var linesnum = sqlFormatter.format(decodedChildren).split("\n");
+---
+
+<li class="link-card">
+  <div class="card-wrapper">
+    <h2>
+      {title}
+      <span>&rarr;</span>
+    </h2>
+
+    {
+      errorlist ? (
+        <div>
+          <b> {"Database error please contact administrator!"}</b>
+        </div>
+      ) : dataresult ? (
+        <div>
+          <b> {"No data to display!"}</b>
+        </div>
+      ) : cnMsg ? (
+        <div>
+          <b> {cnMsg}</b>
+        </div>
+      ) : (
+      <div class="sql-content">
+         {agGridSupportThemes.includes(gridStyle) ? (
+    <AgGridComponent rowData={list.array} page={page} client:only="react"  />
+    <details
+              id={title}
+              class="mt-5 break-words"
+              data-persist-state="closed"
+            >
+              <summary class="w-full">View SQL</summary>
+              <div
+                class={
+                  linesnum.length > 3
+                    ? "sql_style sql-format-color-shadow"
+                    : "sql_style_1 sql-format-color-shadow"
+                }
+              >
+                {sqlFormatter.format(decodedChildren.trim())}
+              </div>
+            </details>
+  ) : (
+    <Table list={list} />
+  )}
+          
+        
+      </div>
+      )
+    }
+  </div>
+</li>
+
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    padding: 0.15rem;
+    background-color: rgba(223, 214, 214, 0.17);
+    background-image: var(--accent-gradient);
+    background-size: 400%;
+    border-radius: 0.5rem;
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow:
+      0 4px 6px -1px rgba(39, 39, 39, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+  }
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent));
+  }
+
+  .card-wrapper {
+    padding: 10px;
+    width: 100%;
+  }
+  .sql-format-color-shadow {
+    color: white !important;
+    text-shadow: none !important;
+    background-color: var(--tw-prose-pre-bg) !important;
+  }
+  .sql_style {
+    z-index: 1;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    word-wrap: normal;
+    white-space: pre;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    text-shadow: none;
+    padding: 20px;
+  }
+  .sql_style_1 {
+    z-index: 1;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    word-wrap: normal;
+    white-space: pre-line;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    text-shadow: none;
+    padding: 20px;
+  }
+</style>

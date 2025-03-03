@@ -1,0 +1,72 @@
+---
+import type { IList } from "../../../types";
+
+export interface Props {
+  list: IList;
+  gridStyle: string;
+}
+
+const { list, gridStyle } = Astro.props;
+const randomId =
+  "qr-aggrid-" + Math.floor(Math.random() * 6) + 1 + String(Date.now());
+---
+
+<ag-grid data-list={JSON.stringify(list)} data-identity={randomId}>
+  <div
+    id={randomId}
+    class={gridStyle === "aggrid-default" ? "ag-theme-alpine" : gridStyle}
+    style={{ height: "500px", width: "100%" }}
+  >
+  </div>
+</ag-grid>
+
+<script type="module">
+  class AgGrid extends HTMLElement {
+    constructor() {
+      super();
+      const list = this.dataset.list && JSON.parse(this.dataset.list);
+      const identity = this.dataset.identity || "";
+      const listArray = list.array;
+      const listKeys = list.keys;
+      const columnDefs = [];
+      listKeys.map((key) => {
+        columnDefs.push({ field: key });
+      });
+      const gridOptions = {
+        columnDefs: columnDefs,
+        enableCellTextSelection: true,
+        defaultColDef: {
+          sortable: true,
+          filter: true,
+          resizable: true,
+          autoHeight: true,
+          cellRenderer: "htmlRenderer",
+        },
+        rowSelection: "multiple",
+        pagination: true,
+        animateRows: true,
+        components: {
+          htmlRenderer: function (params) {
+            const value = params.value || "";
+            const element = document.createElement("div");
+            element.style.setProperty("line-height", "24px");
+            element.style.setProperty("white-space", "normal");
+            element.innerHTML = value
+              .replace(/\n/g, " <br> ")
+              .replace("<br/>", "");
+            return element;
+          },
+        },
+        onCellClicked: (params) => {
+          console.log("cell was clicked", params);
+        },
+      };
+
+      const eGridDiv = document.getElementById(identity);
+      new window.agGrid.Grid(eGridDiv, gridOptions);
+      gridOptions.api.setRowData(listArray);
+    }
+  }
+
+  customElements.define("ag-grid", AgGrid);
+</script>
