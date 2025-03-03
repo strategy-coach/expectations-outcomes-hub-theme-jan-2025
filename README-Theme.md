@@ -984,5 +984,32 @@ enableEditButton: true
 
 When set to true, an "Edit" button will appear in the footer of the page, allowing users to quickly access and modify the content on GitHub.
 
+##  Support & Feedback Widget  
+
+A JavaScript-based widget that allows users to submit feedback or support requests via a GitHub issue and send email notifications using Novu API.
+
+## 🚀 Features
+
+- Capture and upload screenshots to GitHub issues
+- Create GitHub issues with user-submitted feedback
+- Send email notifications to admins via Novu
+- Acknowledge users with an automated email respons 
+
+Before using the widget, configure the following environment variables:  
+
+```
+PUBLIC_NOVU_API_URL="novu-api-url"
+PUBLIC_NOVU_SUBSCRIBER_ID="your-subscriber-id"
+PUBLIC_NOVU_API_KEY="your-api-key"
+PUBLIC_NOVU_CONTACTUS_TEMPLATE="contact-us-template"
+PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL="admin-email"
+PUBLIC_NOVU_ADMIN_TEMPLATE="novu-admin-template-id"
+PUBLIC_GITHUB_PAT = "your-personal-access-token"
+PUBLIC_GITHUB_OWNER = "your-github-username"
+PUBLIC_GITHUB_REPO = "your-repository-name"
+ENABLE_SUPPORT_AND_FEEDBACK=true
+
+```
+You can enable or disable support and feedback widget by setting the `ENABLE_SUPPORT_AND_FEEDBACK` variable to `true` or `false`.
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
