@@ -7,6 +7,7 @@ date: "2025-02-26"
 ---
 
 import SecurityReport from "../../../components/reports/securityReport.astro";
+import QueryResult from "../../../components/QueryResult/QueryResult.astro";
 
 
 
@@ -69,7 +70,12 @@ The following scans were conducted to gather information about the target:
 #### **3.2.1 Nmap Scan Results**
 **Key open ports and services detected:**
 
-<SecurityReport />
+<QueryResult title="Nmap Ports" gridStyle="aggrid-default" connection="nmap">
+    {`SELECT port_id as Port,state_state, state_reason, service_name as Service,name
+        FROM ports p JOIN host_names h ON h.host_id=p.host_id GROUP BY Port;`}
+</QueryResult>
+
+
 
 ### **3.3 Web Application Scanning**
 
