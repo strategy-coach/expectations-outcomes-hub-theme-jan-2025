@@ -1024,4 +1024,43 @@ ENABLE_SUPPORT_AND_FEEDBACK=true
 ```
 You can enable or disable support and feedback widget by setting the `ENABLE_SUPPORT_AND_FEEDBACK` variable to `true` or `false`.
 
+## Comment Integration
+
+The *Comment* component allows users to add, view, and engage in discussions. It is integrated into the application and can be enabled or disabled based on the `discussionEnabled` flag.
+
+## Installation & Setup
+
+Ensure that the `PUBLIC_RSSD_DB` environment variable is set in your `.env` file:
+
+```	
+PUBLIC_RSSD_DB=src/content/db/rssd/resource-surveillance.sqlite.db
+
+```
+
+## Usage
+
+To integrate the *Comment* component, import it and configure the required properties:
+
+```	
+import Comment from "../../../components/comment/comment.astro";
+
+<Comment source="EOH" discussionEnabled={true} />
+
+```	
+
+If discussionEnabled is true, the Comment component will be displayed, allowing users to engage in discussions.
+
+If discussionEnabled is false, the Comment component will be hidden, and no discussion-related features will be available.
+
+Source could be a site name, module name, or specific section where the comments belong.
+
+If using multiple sources, it ensures comments are grouped accordingly.
+
+## ⚠️ Note
+
+For the *Comment* component to function properly, make sure:
+
+- The *database is generated* before using the comments feature.
+- The `PUBLIC_RSSD_DB` environment variable is correctly set in the `.env` file.
+
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
