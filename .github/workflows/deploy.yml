@@ -60,6 +60,7 @@ jobs:
           PUBLIC_GITHUB_PAT: ${{ secrets.PUBLIC_GITHUB_PAT }}
           PUBLIC_GITHUB_OWNER: ${{ vars.PUBLIC_GITHUB_OWNER }}
           PUBLIC_GITHUB_REPO: ${{ vars.PUBLIC_GITHUB_REPO }}
+          ENABLE_SUPPORT_AND_FEEDBACK: ${{ vars.ENABLE_SUPPORT_AND_FEEDBACK }}  
         run: |
           bash -x support/ci-cd.sh      
           
