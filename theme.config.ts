@@ -76,6 +76,7 @@ export default themeConfig({
     "presentation",
     "public-presentation",
     "clear-cache",
+    "contact",
   ],
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
