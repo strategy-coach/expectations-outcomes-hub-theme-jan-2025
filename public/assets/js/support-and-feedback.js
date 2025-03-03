@@ -155,10 +155,10 @@ pageUrl: ${currentURL}
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              name: "eoh-support-and-feedback-admin",
+              name: window.widgetConfig.NOVU_CONTACT_ADMIN_TEMPLATE,
               to: {
                 subscriberId: window.widgetConfig.NOVU_SUBSCRIBER_ID,  
-                email: "admin@opsfolio.com",             
+                email: `${window.widgetConfig.CONTACTUS_ADMIN_EMAIL}`,            
               },
               payload: payload,
             }),
