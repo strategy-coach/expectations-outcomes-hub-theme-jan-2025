@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Comment from "./comment.tsx";
-import type { LogType } from "../../../support/services/serverDataService.ts";
+import type { LogType } from "./commentService.ts";
 
 
 interface CommentLogProps {
