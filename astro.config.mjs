@@ -5,9 +5,17 @@ import tailwind from '@astrojs/tailwind';
 
 import react from '@astrojs/react';
 import mdx from "@astrojs/mdx";
+import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react(), mdx()],
+  markdown: {
+    remarkPlugins: [
+      
+      remarkPlantUML,
+     
+    ],
+  },
   output: "server",
   // adapter: deno({
   //   mode: 'middleware' // or 'standalone'

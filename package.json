@@ -17,6 +17,7 @@
     "prepare-imap-db": "deno run -A imap-prepare.ts"
   },
   "dependencies": {
+    "@akebifiky/remark-simple-plantuml": "^1.0.2",
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/node": "^9.0.2",
     "@astrojs/react": "^4.2.0",
@@ -35,6 +36,7 @@
     "jwt-decode": "^4.0.0",
     "markdown-it": "^14.1.0",
     "marked": "^15.0.6",
+    "mermaid": "^11.4.1",
     "oidc-react": "^3.4.1",
     "path": "^0.12.7",
     "querystring": "^0.2.1",
