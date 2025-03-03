@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
 import Database from "better-sqlite3";
 import z from "zod"
-
+const dbPath = import.meta.env.PUBLIC_RSSD_DB
 
 const activityLog = z.object({
     messageId: z.string().optional(),
@@ -45,7 +45,6 @@ type SQLiteRow<T = Record<string, unknown>> = T;
 export type LogType = z.infer<typeof logParam>;
 export type ActivityLogType = z.infer<typeof activityLog>;
 
-const dbPath = "src/content/db/rssd/resource-surveillance.sqlite.db"
 
 type QueryParams = (string | number | boolean | null)[];
 
