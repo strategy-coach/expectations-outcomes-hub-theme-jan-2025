@@ -38,6 +38,10 @@ const envData = {
   NOVU_SUBSCRIBER_ID: import.meta.env.PUBLIC_NOVU_SUBSCRIBER_ID as string,
   GOOGLE_CAPTCHA_SITE_KEY: import.meta.env.GOOGLE_CAPTCHA_SITE_KEY as string,
 };
+const enableSupportAndFeedback =
+  import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined
+    ? import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK
+    : false;
 ---
 
 <!doctype html>
@@ -128,9 +132,12 @@ const envData = {
         GOOGLE_CAPTCHA_SITE_KEY: envData.GOOGLE_CAPTCHA_SITE_KEY,
       };
     </script>
-    <script
-    src="/assets/js/support-and-feedback.js"
-    is:inline></script>
+    {
+      enableSupportAndFeedback == "true" && (
+      <script src="/assets/js/support-and-feedback.js" is:inline></script>
+      )
+    }
+    
     <script is:inline>
       document.addEventListener('DOMContentLoaded', () => {
         const themeToggle = document.getElementById('toggle-theme');
