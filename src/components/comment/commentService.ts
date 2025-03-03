@@ -63,16 +63,12 @@ let queue: Promise<any> = Promise.resolve();
 function resolveQueue<T>(fn: () => Promise<T>): Promise<T> {
     queue = queue.then(() =>
         fn().catch((error) => {
-            console.error(error);
-            // throw error if you want the caller to handle it
-            // throw error;
+            console.error(error)
         })
     );
-    return queue as Promise<T>; // Cast the queue as Promise<T> to propagate the correct type
+    return queue as Promise<T>;
 }
 
-
-// Function to get all rows from a query
 const getAll = <T = Record<string, unknown>>(
     db: sqlite3.Database,
     query: string,
@@ -268,26 +264,21 @@ const commentService = {
 
             const query = `
         SELECT
-          activity_log.activity_log_id as logId,
-          activity_log.data_origin as url,
-          activity_log.data_source as source,
-          activity_log.description as description,
-          activity_log.data_updated_by as userId,
-          activity_log.created_at as timestamp,
-          activity_type.value as activityType,
-          party.party_name as name,
-          reference_number as messageId,
-          activity_log.updated_by as deletedUserId,
-          deleted_by_user.party_name as deletedBy,
-          ce.electronics_details as email
-      FROM activity_log
-      LEFT JOIN activity_type ON activity_type.activity_type_id = activity_log.activity_type
-      LEFT JOIN party AS deleted_by_user ON deleted_by_user.party_id = activity_log.updated_by
-      LEFT JOIN party ON party.party_id = activity_log.data_updated_by
-      LEFT JOIN contact_electronic as ce ON ce.party_id=party.party_id
-    WHERE url LIKE ?;
+                log_id as logId,
+                url,
+                source,
+                description,
+                user_id as userId,
+                timestamp,
+                activity_type as activityType,
+                name,
+                message_id as messageId,
+                deleted_by as deletedBy,
+                deleted_user_id as deletedUserId,
+                email
+            FROM activity_logs
+            WHERE url LIKE ?;
         `
-
             const rows = db.prepare(query).all(`%${url}%`) as LogType[];
 
             db.close();
@@ -311,21 +302,16 @@ const commentService = {
                     } else {
                         const query = `
                         SELECT
-          message.message_id AS logId,
-          message.parent_message_id AS parentId,
-          cm.provenance AS url,
-          message.content AS description,
-          message.sender_id AS userId,
-          message.sent_at AS timestamp,
-          ct.value AS activityType,
-          party.party_name AS name,
-          ce.electronics_details as email
-      FROM message
-      LEFT JOIN communication AS cm ON message.communication_id = cm.communication_id
-      LEFT JOIN communication_type AS ct ON cm.communication_type = ct.communication_type_id
-      LEFT JOIN party ON party.party_id = message.sender_id
-    LEFT JOIN contact_electronic as ce ON ce.party_id=party.party_id
-      WHERE ct.value = "Comment" AND url LIKE '%${url}%';`
+                            log_id as logId,
+                            url,
+                            parentId,
+                            description,
+                            user_id as userId,
+                            timestamp,
+                            activity_type as activityType,
+                            name,email,reactions
+                        FROM comments
+                        WHERE url LIKE '%${url}%'; `
 
                         db.all(query, [], (err, rows: LogType[]) => {
                             if (err) {
@@ -359,7 +345,7 @@ const commentService = {
 
             db.close((err: Error | null) => {
                 if (err) {
-                    reject(`Error closing database: ${err.message}`);
+                    reject(`Error closing database: ${err.message} `);
                 }
             });
         });
@@ -379,14 +365,14 @@ const commentService = {
 
             try {
                 const getMessageReactionQuery =
-                    `SELECT * FROM message_reaction WHERE message_id = ? AND user_id = ?`;
+                    `SELECT * FROM message_reaction WHERE message_id = ? AND user_id = ? `;
                 const reactions = await getAll(db, getMessageReactionQuery, [
                     messageId,
                     userId,
                 ]);
 
                 const getMessageIdReactionQuery =
-                    `SELECT * FROM message_reaction WHERE message_id = ? AND user_id = ? AND reaction_type_id = ?`;
+                    `SELECT * FROM message_reaction WHERE message_id = ? AND user_id = ? AND reaction_type_id = ? `;
                 const reactionsById = await getAll(
                     db,
                     getMessageIdReactionQuery,
@@ -396,7 +382,7 @@ const commentService = {
                     await beginTransaction(db);
                     await runQuery(
                         db,
-                        `DELETE FROM message_reaction WHERE message_id = ? AND user_id = ? AND reaction_type_id = ?`,
+                        `DELETE FROM message_reaction WHERE message_id = ? AND user_id = ? AND reaction_type_id = ? `,
                         [messageId, userId, reactionTypeId],
                     );
                     await commitTransaction(db);
@@ -404,12 +390,12 @@ const commentService = {
                     await beginTransaction(db);
                     await runQuery(
                         db,
-                        `DELETE FROM message_reaction WHERE message_id = ? AND user_id = ?`,
+                        `DELETE FROM message_reaction WHERE message_id = ? AND user_id = ? `,
                         [messageId, userId],
                     );
                     await runQuery(
                         db,
-                        `INSERT INTO message_reaction (message_reaction_id, message_id, user_id, reaction_type_id) VALUES (?, ?, ?, ?)`,
+                        `INSERT INTO message_reaction(message_reaction_id, message_id, user_id, reaction_type_id) VALUES(?, ?, ?, ?)`,
                         [reactionId, messageId, userId, reactionTypeId],
                     );
                     await commitTransaction(db);
@@ -417,7 +403,7 @@ const commentService = {
                     await beginTransaction(db);
                     await runQuery(
                         db,
-                        `INSERT INTO message_reaction (message_reaction_id, message_id, user_id, reaction_type_id) VALUES (?, ?, ?, ?)`,
+                        `INSERT INTO message_reaction(message_reaction_id, message_id, user_id, reaction_type_id) VALUES(?, ?, ?, ?)`,
                         [reactionId, messageId, userId, reactionTypeId],
                     );
                     await commitTransaction(db);
@@ -443,7 +429,7 @@ const commentService = {
                 );
                 db.pragma("journal_mode = WAL");
                 const stmt = db.prepare(
-                    `UPDATE message SET content = ? WHERE message_id = ?`,
+                    `UPDATE message SET content = ? WHERE message_id = ? `,
                 );
                 stmt.run(String(updatedComment), String(messageId));
                 db.close();
@@ -465,7 +451,7 @@ const commentService = {
                 );
                 db.pragma("journal_mode = WAL");
                 const stmt = db.prepare(
-                    `DELETE FROM message WHERE message_id = ?`,
+                    `DELETE FROM message WHERE message_id = ? `,
                 );
                 stmt.run(String(messageId));
 

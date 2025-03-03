@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import Cookie from "js-cookie";
 import type { LogType } from "./commentService.ts";
-// import MessageReaction from "./message-reaction/messageReaction.tsx";
+import MessageReaction from "./message-reaction/messageReaction.tsx";
 
-//import type { AuditMember } from "../../../../../support/services/auditTypes";
-//import type { LogType } from "../../../../../support/services/dataService";
 import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
 
 const buildTree = (activities: LogType[]): LogType[] => {
@@ -469,7 +467,7 @@ const Comment: React.FC<
                             )}
                             <div className="flex min-w-0 flex-1 justify-between  pt-1.5">
                                 <div className="">
-                                    <div className="text-sm">
+                                    <div className="text-sm mb-2">
                                         {userId != undefined &&
                                             (userId === item.userId ? (
                                                 <span className="font-medium text-sm">You</span>
@@ -516,14 +514,14 @@ const Comment: React.FC<
                                         <div>
                                             <div className="text-[13px]">
                                                 {FormatTimeDifference(item.timestamp)}
-                                                {/* <div className="mt-2">
+                                                <div className="mt-2">
                                                     {item.reactions && (
                                                         <MessageReaction
                                                             messageId={item.logId}
                                                             reactions={item.reactions}
                                                         />
                                                     )}
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="ml-2 mt-1">

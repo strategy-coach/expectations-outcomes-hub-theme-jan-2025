@@ -162,17 +162,17 @@ const activityTypeData = [
     { activity_type_id: "3", code: "EDIT_COMMENT", value: "Edit Comment" },
 ];
 
-// const reactionType = [
-//     { reaction_type_id: 1, reaction_name: "thumbs_up" },
-//     { reaction_type_id: 2, reaction_name: "heart" },
-//     { reaction_type_id: 3, reaction_name: "laugh" },
-//     { reaction_type_id: 4, reaction_name: "sad" },
-//     { reaction_type_id: 5, reaction_name: "clap" },
-//     { reaction_type_id: 6, reaction_name: "eyes" },
-//     { reaction_type_id: 7, reaction_name: "eye_glasses" },
-//     { reaction_type_id: 8, reaction_name: "thumbs_down" },
-//     { reaction_type_id: 9, reaction_name: "perfect_score" },
-// ];
+const reactionType = [
+    { reaction_type_id: 1, reaction_name: "thumbs_up" },
+    { reaction_type_id: 2, reaction_name: "heart" },
+    { reaction_type_id: 3, reaction_name: "laugh" },
+    { reaction_type_id: 4, reaction_name: "sad" },
+    { reaction_type_id: 5, reaction_name: "clap" },
+    { reaction_type_id: 6, reaction_name: "eyes" },
+    { reaction_type_id: 7, reaction_name: "eye_glasses" },
+    { reaction_type_id: 8, reaction_name: "thumbs_down" },
+    { reaction_type_id: 9, reaction_name: "perfect_score" },
+];
 
 const communicationTypes = [
     {
@@ -467,8 +467,12 @@ async function main(): Promise<void> {
             "code",
             "value",
         ]);
-        insertRecords("contact_electronic", contactElectronics, ["contact_electronic_id", "contact_type_id", "party_id", "electronics_details"]);
+        insertRecords("reaction_type", reactionType, [
+            "reaction_type_id",
+            "reaction_name",
+        ]);
         insertRecords("person", personData, ["person_id", "party_id", "person_type_id", "person_first_name", "person_last_name", "gender_id", "sex_id"]);
+        insertRecords("contact_electronic", contactElectronics, ["contact_electronic_id", "contact_type_id", "party_id", "electronics_details"]);
         insertRecords("organization_role", organizationRoleData, ["organization_role_id", "person_id", "organization_id", "organization_role_type_id"]);
     } catch (error) {
         console.error("Unexpected error in main execution:", error);

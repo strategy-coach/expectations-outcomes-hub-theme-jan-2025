@@ -6,24 +6,19 @@ export async function POST({ request }: APIContext) {
 
     try {
         const data = await request.json();
-        console.log("Received Data:", data); // Log the request data
-
         const { userId, type, tenantId, activityType, description, url, messageId, parentId, parentMessageId, updatedBy, timeStamp, reactionTypeId, logId, platform, source } = data;
-
         switch (type) {
             case "addComment":
-                console.log("Calling addComment...");
+
                 if (!userId || !description) {
-                    console.error("Missing required fields for addComment.");
                     return new Response(JSON.stringify({ error: "Missing required fields" }), { status: 400 });
                 }
                 await CommentService.addComment({ userId, platform, activityType, parentId, description, url });
-                console.log("Comment added successfully.");
                 break;
 
-            // case "addMessageReaction":
-            //     await CommentService.addMessageReaction(userID, messageId, reactionTypeId);
-            //     break;
+            case "addMessageReaction":
+                await CommentService.addMessageReaction(userId, messageId, reactionTypeId);
+                break;
 
             case "deleteComment":
 
