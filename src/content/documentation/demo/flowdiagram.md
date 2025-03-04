@@ -7,9 +7,30 @@ enableMermaid: true
 
 # Diagrams
 
+Mermaid.js and PlantUML are tools for creating diagrams using simple text-based syntax. This document provides a guide on how to use both tools effectively in  Markdown files.
+
 ## Mermaid Diagram
 
-Use the following sample code snippet to add a Mermaid diagram in mark down:
+#### ✅ How to Enable Mermaid
+To enable Mermaid diagrams in any page, add enableMermaid: true in the frontmatter of your Markdown (.md)
+
+#### Example: Using Mermaid in Markdown (.md)
+
+```
+---
+title: "Flowchart Example"
+enableMermaid: true
+---
+
+<p class="mermaid">
+graph TD;
+  A --> B;
+  B --> C;
+</p>
+```
+
+Use the following sample code snippet to add a Mermaid diagram in a Markdown file and generate the corresponding diagram:
+
 ```
 <p class="mermaid">
 sequenceDiagram
@@ -71,7 +92,7 @@ sequenceDiagram
 
 ## Plantuml Diagram
 
-Use the following code snippet to add a Plantuml diagram in mark down:
+Use the following code snippet to add a Plantuml diagram in mark down file and generate the corresponding diagram:
 
 
 ```
