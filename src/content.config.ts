@@ -8,6 +8,7 @@ const baseSchema = z.object({
   description: z.string().optional(),
   discussionsEnabled: z.boolean().optional().default(false),
   enableEditButton: z.boolean().optional().default(false),
+  enableMermaid: z.boolean().optional().default(false),
   home: z
     .object({
       skipTo: z
@@ -85,6 +86,7 @@ const documentation = defineCollection({
     title: z.string().optional(),
     draft: z.boolean().optional(),
     enableEditButton: z.boolean().optional().default(false),
+    enableMermaid: z.boolean().optional().default(false),
   }),
 });
 const envData = import.meta.env;
