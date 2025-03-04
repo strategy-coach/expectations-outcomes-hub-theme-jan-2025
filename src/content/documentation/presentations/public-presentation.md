@@ -8,6 +8,12 @@ enableEditButton: true
 
 This is an open-access presentation that anyone can view. No login is required.
 
+Allows users to create slide-based presentations directly within the theme.
+
+Slide content is managed in **src/pages/presentation.astro**.
+Each `<section>` inside the file corresponds to a separate slide.
+
+
 
 ## Demo  
 

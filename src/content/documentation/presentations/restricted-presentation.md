@@ -12,6 +12,12 @@ On clicking the demo link below, you will be able to navigate through the slides
 
 To view restricted slides, please log in.  
 
+This Feature allows users to create slide-based presentations directly within the theme.
+
+Slide content is managed in **src/pages/presentation.astro**.
+Each `<section>` inside the file corresponds to a separate slide.
+
+
 ## Slide-Specific Authentication  
 
 You can configure authentication for specific slides in the `theme.config.ts` file.  
