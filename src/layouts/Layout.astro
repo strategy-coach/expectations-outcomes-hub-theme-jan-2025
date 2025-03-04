@@ -6,6 +6,7 @@ import themeConfig from "../../theme.config";
 interface Props {
   title: string;
   enableEditButton?: boolean;
+  enableMermaid?: boolean;
 }
 
 const { title } = Astro.props;
@@ -42,6 +43,8 @@ const enableSupportAndFeedback =
   import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined
     ? import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK
     : false;
+const { enableMermaid } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -82,9 +85,13 @@ const enableSupportAndFeedback =
       crossorigin="anonymous"
       src="https://lhcforms-static.nlm.nih.gov/lforms-versions/36.8.0/fhir/R4/lformsFHIR.min.js"
     ></script>
-    <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    </script>
+
+    {enableMermaid && (
+      <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      </script>
+    )}
+   
     <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"

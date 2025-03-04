@@ -1,6 +1,7 @@
 ---
 title: Diagrams
 description: Mermaid Diagram, Plantuml Diagram
+enableMermaid: true
 
 ---
 
