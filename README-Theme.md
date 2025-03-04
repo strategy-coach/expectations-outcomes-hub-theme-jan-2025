@@ -1051,4 +1051,27 @@ For the *Comment* component to function properly, make sure:
 - The *database is generated* before using the comments feature.
 - The `PUBLIC_RSSD_DB` environment variable is correctly set in the `.env` file.
 
+
+## Using Mermaid.js in This Theme
+Theme supports Mermaid.js for rendering flowcharts, sequence diagrams, and more.
+
+#### ✅ How to Enable Mermaid
+To enable Mermaid diagrams in any page, add enableMermaid: true in the frontmatter of your Markdown (.md)
+
+#### Example: Using Mermaid in Markdown (.md)
+
+```
+---
+title: "Flowchart Example"
+enableMermaid: true
+---
+
+<p class="mermaid">
+graph TD;
+  A --> B;
+  B --> C;
+</p>
+```
+The **enableMermaid** frontmatter is passed to Layout.astro to conditionally load the script. This improves performance by not loading Mermaid.js on pages that don't need it.
+
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
