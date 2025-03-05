@@ -525,6 +525,10 @@ a h3 {
   margin-top: 0px !important;
 }
 
+#soc2-plans h3 {
+  margin-top: 0px !important;
+}
+
 /*::: media query starts :::> */
 @media (max-width: 576px) {
   .markdown-content h1 {
