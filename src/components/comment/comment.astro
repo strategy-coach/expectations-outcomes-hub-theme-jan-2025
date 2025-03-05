@@ -13,16 +13,10 @@ commentData.sort((a, b) => {
 const {source,activityTitle,discussionEnabled}=Astro.props
 
 ---
-{user && user.value && discussionEnabled ? (
-  <CommentLog
-    data={commentData}
-    url={path}
-    source={source}
-    activityTitle={activityTitle}
-    client:only="react"
-  />
-) : (
- 
+{discussionEnabled ? (
+  user && user.value ? (
+    <CommentLog data={commentData} url={path} activityTitle={activityTitle} source={source}  client:only="react"/>
+  ) : (
     <p class="text-md mt-1">You must be logged in to view comments.</p>
-
-)}
+  )
+) : null}
