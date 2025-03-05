@@ -230,10 +230,10 @@ details[open] > .fst_mn .caret {
   right: 0%;
   z-index: 10;
   background-color: #fff;
-  border: 1px solid #ccc; 
-  border-radius: 0 0 8px 8px; 
+  border: 1px solid #ccc;
+  border-radius: 0 0 8px 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-height: 300px; 
+  max-height: 300px;
   overflow-y: auto;
 }
 
@@ -245,7 +245,7 @@ details[open] > .fst_mn .caret {
 
 .pagefind-ui__result {
   padding: 8px;
-  border-bottom: 1px solid #ccc; 
+  border-bottom: 1px solid #ccc;
 }
 
 .pagefind-ui__result:last-child {
@@ -282,9 +282,9 @@ details[open] > .fst_mn .caret {
   border-color: #4b5563!important;
  }
 
- .dark .sidebar-left-menu details[open] summary, .dark .inner-menu-select, 
- .dark .sidebar-left-menu details summary:hover, 
- .dark .sidebar-left-menu details[open] summary:hover, 
+ .dark .sidebar-left-menu details[open] summary, .dark .inner-menu-select,
+ .dark .sidebar-left-menu details summary:hover,
+ .dark .sidebar-left-menu details[open] summary:hover,
  .dark .sidebar-left-menu ul ul li a:hover{
   background: #0d1218!important;
  }
@@ -521,6 +521,10 @@ h3.notify {
     font-weight: bold!important;
 }
 
+a h3 {
+  margin-top: 0px !important;
+}
+
 /*::: media query starts :::> */
 @media (max-width: 576px) {
   .markdown-content h1 {
@@ -548,7 +552,7 @@ h3.notify {
   color:  #d1d5db!important;
 }
 .dark .markdown-content-doc a{
-  color: #028db7!important; 
+  color: #028db7!important;
 }
 /* -- */
 .sidebar-left-menu .sub-folder details summary {
@@ -577,7 +581,7 @@ h3.notify {
   color: #d1d5db!important;
 }
 .dark .pagefind-ui__form.svelte-e9gkc3:before {
-  background-color: #d1d5db;  
+  background-color: #d1d5db;
 }
 .dark .pagefind-ui__form.svelte-e9gkc3::placeholder {
   color: #d1d5db!important;
