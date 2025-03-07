@@ -2,8 +2,19 @@ import React, { useState, useRef, useEffect } from "react";
 import Cookie from "js-cookie";
 import type { LogType } from "./commentService.ts";
 import MessageReaction from "./message-reaction/messageReaction.tsx";
-
+import axios from "axios"
 import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
+import { zitadelConfig } from "../../utils/env.ts"
+
+const projectId = zitadelConfig.projectId;
+const token = zitadelConfig.zitalAPIToken;
+const organizationId = zitadelConfig.organizationId;
+const authority = zitadelConfig.authority;
+
+interface MemberType {
+    displayName: string;
+    email: string;
+}
 
 const buildTree = (activities: LogType[]): LogType[] => {
 
@@ -80,6 +91,9 @@ const Comment: React.FC<
         const [comments, setComments] = useState<LogType[] | undefined>();
         const [commentToEdit, setCommentToEdit] = useState("");
         const [editLogId, setEditLogId] = useState<number>();
+        const [filteredMembers, setFilteredMembers] = useState<MemberType[]>();
+        const [members, setMembers] = useState<MemberType[]>()
+        const [showUser, setShowUser] = useState(false);
         const userRole = Cookie.get("user_roles");
         const [notification, setNotification] = useState({
             isError: false,
@@ -88,6 +102,113 @@ const Comment: React.FC<
         });
         const cardRef = useRef<any>(null);
         const textAreaRef = useRef<any>(null);
+
+        const handleSelectUser = (user: MemberType): void => {
+            const username = user.displayName;
+            const cursorPosition = textAreaRef.current?.selectionStart ?? 0;
+
+            const beforeCursor = comment.slice(0, cursorPosition);
+            const afterCursor = comment.slice(cursorPosition);
+
+            const match = beforeCursor.match(/(?:^|\s)@(\w*)$/);
+
+            if (match?.index !== undefined) {
+                const updatedText =
+                    beforeCursor.slice(0, match.index + match[0].length - match[1].length) +
+                    username +
+                    " " +
+                    afterCursor;
+
+                setComment(updatedText);
+
+                setTimeout(() => {
+                    if (textAreaRef.current && match.index !== undefined) {
+                        textAreaRef.current.selectionStart =
+                            textAreaRef.current.selectionEnd =
+                            match.index +
+                            match[0].length -
+                            match[1].length +
+                            username.length +
+                            1;
+
+                        textAreaRef.current.focus();
+                    }
+                }, 0);
+            }
+
+            setShowUser(false);
+        };
+
+        useEffect(() => {
+            if (comment.length === 0) {
+                setShowUser(false);
+                return;
+            }
+            const cursorPosition = textAreaRef.current?.selectionStart;
+            const beforeCursor = comment.slice(0, cursorPosition);
+            const match = beforeCursor.match(/(?:^|\s)@(\w*)$/);
+
+            if (match) {
+                const searchTerm = match[1].toLowerCase();
+
+                const filtered =
+                    searchTerm === ""
+                        ? members
+                        : members?.filter((member) =>
+                            member.displayName.toLowerCase().startsWith(searchTerm),
+                        );
+
+                setFilteredMembers(filtered);
+                setShowUser(filtered !== undefined && filtered.length > 0);
+            } else {
+                setShowUser(false);
+            }
+        }, [comment, members]);
+
+        useEffect(() => {
+            const fetchTeam = async () => {
+                try {
+                    let data = JSON.stringify({
+                        "queries": [
+                            {
+                                "projectIdQuery": {
+                                    "projectId": projectId
+                                }
+                            }
+                        ]
+                    });
+                    const response = await axios.post(
+                        `${authority}/management/v1/users/grants/_search`,
+                        data,
+                        {
+                            headers: {
+                                "x-zitadel-orgid": organizationId,
+                                Authorization: `Bearer ${token}`,
+                            },
+                        }
+                    );
+                    setMembers(response.data.result);
+                } catch (err) {
+                    console.log(err)
+                }
+            };
+
+            fetchTeam();
+        }, [comment]);
+
+        const highlightUsersInComment = (text: string): string => {
+            if (text.length === 0 || (members && members.length === 0))
+                return text;
+            const regex = new RegExp(
+                `@(${members
+                    ?.map((user) => user.displayName.replaceAll(/\s+/g, "\\s+"))
+                    .join("|")})`,
+                "g",
+            );
+            return text.replace(regex, (match) => {
+                return `<strong>${match}</strong>`;
+            });
+        };
 
         const userId = Cookie.get("zitadel_user_id");
         const tenantId = Cookie.get("zitadel_tenant_id")
@@ -486,7 +607,7 @@ const Comment: React.FC<
                                                 switch (item.activityType) {
                                                     case "Comment":
                                                         return (
-                                                            <span dangerouslySetInnerHTML={{ __html: item.description }} />
+                                                            <span dangerouslySetInnerHTML={{ __html: highlightUsersInComment(item.description) }} />
                                                         );
 
                                                     case "Delete Comment":
@@ -724,6 +845,31 @@ const Comment: React.FC<
                                             </button>
                                         </div>
                                     </div>
+                                )}
+                                {showUser && (
+                                    <ul className="flex flex-col p-2 mt-0 mb-1 border rounded-md shadow-md " >
+                                        {filteredMembers &&
+                                            filteredMembers.length > 0 &&
+                                            filteredMembers.map((member) => {
+                                                return (
+                                                    <>
+                                                        <li
+                                                            className="flex gap-2 p-1 mt-0 mb-0 shadow-sm cursor-pointer"
+                                                            onClick={() => {
+                                                                handleSelectUser(member);
+                                                            }}
+                                                        >
+                                                            <Gravatar
+                                                                userEmail={member.email}
+                                                                width={5}
+                                                                height={5}
+                                                            />
+                                                            <span>{member.displayName}</span>
+                                                        </li>
+                                                    </>
+                                                );
+                                            })}
+                                    </ul>
                                 )}
 
                                 <textarea
