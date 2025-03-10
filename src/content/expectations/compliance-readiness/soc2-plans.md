@@ -61,21 +61,21 @@ existing compliance structure.
     <div class="grid grid-cols-4 md:grid-cols-4 gap-x-16 bg-gray-50 dark:bg-gray-800 p-8 pt-0 rounded-t-lg">
       <div class="md:block"></div>
       <div class="mb-8 md:mb-0">
-        <a href="../questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/">
+        <a href="/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/">
         <button
           class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
         >
           Select Plan</button></a>
       </div>
       <div class="mb-8 md:mb-0">
-        <a href="../questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
+        <a href="/expectations/questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
         <button
           class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
         >
           Select Plan</button></a>
       </div>
       <div class="mb-3 md:mb-0">
-        <a href="../questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
+        <a href="/expectations/questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
         <button
           class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
         >
