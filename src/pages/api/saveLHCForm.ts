@@ -5,10 +5,12 @@ import { exec } from "node:child_process";
 export async function POST({ request }: APIContext) {
     try {
         const { formData, fileName, userId } = await request.json();
+        let sanitizedFileName = fileName
+            .replace(new RegExp(`^${userId}\\.?`), '')  // Remove leading userId if exists
+            .replace(/\.lform-submittion\.json$/, '');
         // Define the file path (modify as needed)
-        const filePath = `./src/content/lforms/submissions/${userId}.${fileName}.lform-submittion.json`;
+        const filePath = `./src/content/lforms/submissions/${userId}.${sanitizedFileName}.lform-submittion.json`;
         const dbIngestPath = `src/content/lforms/submissions`;
-        const lformDBPath = `src/content/db/lforms`;
         // Write form data to a file
         await writeFile(filePath, JSON.stringify(formData, null, 2), 'utf-8');
 
@@ -24,7 +26,8 @@ export async function POST({ request }: APIContext) {
             }
 
             // Move the file only if the ingest command succeeded
-            exec(`cp ${dbIngestPath}/resource-surveillance.sqlite.db ${lformDBPath}/resource-surveillance-copy.sqlite.db && cd ${lformDBPath} && surveilr admin merge && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db`, (mvError, _mvStdout, mvStderr) => {
+
+            exec(`cp ${dbIngestPath}/resource-surveillance.sqlite.db src/content/db/rssd/resource-surveillance-copy.sqlite.db && cd src/content/db/rssd && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db && pnpm run generate-db-views`, (mvError, _mvStdout, mvStderr) => {
                 if (mvError) {
                     console.error(`Failed to move file: ${mvError.message}`);
                     return;
@@ -35,22 +38,11 @@ export async function POST({ request }: APIContext) {
                     return;
                 }
 
-                exec(`cp ${lformDBPath}/resource-surveillance.sqlite.db src/content/db/rssd/resource-surveillance-copy.sqlite.db && cd src/content/db/rssd && surveilr admin merge && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf resource-surveillance-copy.sqlite.db`, (mvError, _mvStdout, mvStderr) => {
-                    if (mvError) {
-                        console.error(`Failed to move file: ${mvError.message}`);
-                        return;
-                    }
-
-                    if (mvStderr.trim()) {
-                        console.error(`Move command error: ${mvStderr}`);
-                        return;
-                    }
-
-                    console.log(`Merge command executed successfully`);
-                });
-
                 console.log(`Merge command executed successfully`);
             });
+
+            console.log(`Merge command executed successfully`);
+
         });
 
         return new Response(JSON.stringify({ message: "Form data saved successfully!" }), {
