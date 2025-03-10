@@ -5,11 +5,14 @@ import MessageReaction from "./message-reaction/messageReaction.tsx";
 import axios from "axios"
 import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
 import { zitadelConfig } from "../../utils/env.ts"
+import novuApiCall from "./novu-mail-api/index.tsx";
 
 const projectId = zitadelConfig.projectId;
 const token = zitadelConfig.zitalAPIToken;
 const organizationId = zitadelConfig.organizationId;
 const authority = zitadelConfig.authority;
+const productionUrl = import.meta.env.PUBLIC_PRODUCTION_URL
+const adminEmail = import.meta.env.public_novu_contactus_admin_email
 
 interface MemberType {
     displayName: string;
@@ -212,6 +215,8 @@ const Comment: React.FC<
 
         const userId = Cookie.get("zitadel_user_id");
         const tenantId = Cookie.get("zitadel_tenant_id")
+        const userName = Cookie.get("zitadel_user_name")
+
         const handleReplyClick = (logId: number, description: string): void => {
             setReply({ parentId: logId, message: description });
 
@@ -343,6 +348,25 @@ const Comment: React.FC<
                         if (!response.ok) {
                             throw new Error("Failed to add comment");
                         }
+                        const mentionedMembers = members
+                            ?.filter(member => comment.includes(`@${member.displayName} `))
+                            .map(member => member.email);
+                        if (mentionedMembers && mentionedMembers.length > 0) {
+                            if (mentionedMembers.length > 0) {
+                                const payload = {
+                                    commentContent: comment,
+                                    commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
+                                    commenterName: userName
+                                };
+                                await novuApiCall(
+                                    "eoh-comment-notification",
+                                    payload,
+                                    adminEmail,
+                                    mentionedMembers
+                                );
+                            }
+                        }
+
                         setComment("");
                         setNotification({
                             show: false,
@@ -373,6 +397,24 @@ const Comment: React.FC<
                         });
                         if (!response.ok) {
                             throw new Error("Failed to edit comment");
+                        }
+                        const mentionedMembers = members
+                            ?.filter(member => comment.includes(`@${member.displayName} `))
+                            .map(member => member.email);
+                        if (mentionedMembers && mentionedMembers.length > 0) {
+                            if (mentionedMembers.length > 0) {
+                                const payload = {
+                                    commentContent: comment,
+                                    commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
+                                    commenterName: userName
+                                };
+                                await novuApiCall(
+                                    "eoh-comment-notification",
+                                    payload,
+                                    adminEmail,
+                                    mentionedMembers
+                                );
+                            }
                         }
                         setComment("");
                         setSubmitOption("add");
@@ -850,10 +892,11 @@ const Comment: React.FC<
                                     <ul className="flex flex-col p-2 mt-0 mb-1 border rounded-md shadow-md " >
                                         {filteredMembers &&
                                             filteredMembers.length > 0 &&
-                                            filteredMembers.map((member) => {
+                                            filteredMembers.map((member, index) => {
                                                 return (
                                                     <>
                                                         <li
+                                                            key={index}
                                                             className="flex gap-2 p-1 mt-0 mb-0 shadow-sm cursor-pointer"
                                                             onClick={() => {
                                                                 handleSelectUser(member);
