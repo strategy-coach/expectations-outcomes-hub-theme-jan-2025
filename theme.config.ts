@@ -1,5 +1,7 @@
 // theme.config.ts
 const themeConfig = (config: {
+  version: string;
+  themeReleaseNotesLink: string;
   logo: string;
   darkmodeLogo: string;
   title: string;
@@ -24,6 +26,8 @@ const themeConfig = (config: {
 };
 
 export default themeConfig({
+  version: "v1.0.10.2",
+  themeReleaseNotesLink:"https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/releases",
   logo: "/assets/images/logo.png",
   darkmodeLogo: "/assets/images/EOH-Whitemode.png",
   title: "EOH Astro 5 Site",
