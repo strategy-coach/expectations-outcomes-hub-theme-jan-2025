@@ -24,7 +24,7 @@ const allUpdates = [...collection1, ...collection2, ...collection3]
     </h3>
 <ul class="mt-2 space-y-0.5 font-semibold ml-8">
   {allUpdates.map((update) => {
-    const url = update.filePath ? `/${update.filePath.replace('src/content/', '').replace('.md', '')}` : '#';
+    const url = update.filePath ? `/${update.filePath.replace('src/content/', '').replace(/\.(md|mdx)$/, '')}` : '#';
 
     return (
       <li>
