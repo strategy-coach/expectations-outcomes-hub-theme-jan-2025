@@ -13,6 +13,7 @@ const organizationId = zitadelConfig.organizationId;
 const authority = zitadelConfig.authority;
 const productionUrl = import.meta.env.PUBLIC_PRODUCTION_URL
 const adminEmail = import.meta.env.public_novu_contactus_admin_email
+const commentNotificationTemplate = import.meta.env.PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE
 
 interface MemberType {
     displayName: string;
@@ -359,7 +360,7 @@ const Comment: React.FC<
                                     commenterName: userName
                                 };
                                 await novuApiCall(
-                                    "eoh-comment-notification",
+                                    commentNotificationTemplate,
                                     payload,
                                     adminEmail,
                                     mentionedMembers
