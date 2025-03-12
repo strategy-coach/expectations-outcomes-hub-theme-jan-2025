@@ -201,18 +201,19 @@ const Comment: React.FC<
         }, [comment]);
 
         const highlightUsersInComment = (text: string): string => {
-            if (text.length === 0 || (members && members.length === 0))
-                return text;
+
+            if (!text || text.length === 0 || !members || members.length === 0) return text;
+
             const regex = new RegExp(
                 `@(${members
-                    ?.map((user) => user.displayName.replaceAll(/\s+/g, "\\s+"))
+                    .map((user) => (user.displayName || "").replaceAll(/\s+/g, "\\s+"))
                     .join("|")})`,
-                "g",
+                "g"
             );
-            return text.replace(regex, (match) => {
-                return `<strong>${match}</strong>`;
-            });
+
+            return text.replace(regex, (match) => `<strong>${match}</strong>`);
         };
+
 
         const userId = Cookie.get("zitadel_user_id");
         const tenantId = Cookie.get("zitadel_tenant_id")
@@ -367,7 +368,6 @@ const Comment: React.FC<
                                 );
                             }
                         }
-
                         setComment("");
                         setNotification({
                             show: false,
