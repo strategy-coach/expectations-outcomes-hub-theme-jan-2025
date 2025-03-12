@@ -1,7 +1,22 @@
 ---
+import moment from 'moment';
+
+// Extract Astro props
+const { showViewMoreButton } = Astro.props;
+
 const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
+const getIconAndColor = (operation: string) => {
+  return operation === 'element-click'
+    ? { icon: '🔘', color: 'bg-emerald-500' }
+    : { icon: '📄', color: 'bg-blue-500' };
+};
+
+const getRelativeTime = (dateString: string) => {
+  const timestamp = new Date(dateString).getTime(); // Convert to timestamp
+  return moment(timestamp).fromNow();
+};
 
 const accomplishmentsList = Object.values(newFiles)
   .filter((file) => file.frontmatter?.home?.accomplishments?.category === "accomplishments") // Filter by category
@@ -18,11 +33,55 @@ const accomplishmentsList = Object.values(newFiles)
       path: `${relativePath}`         // Correct the path to be relative
     };
   })
-  .filter((file) => file.title && file.path); // Ensure title, path, and date exist
+  .filter((file) => file.title && file.path) // Ensure title, path, and date exist
+  .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date descending
 
 ---
 
-{accomplishmentsList.length > 0 && (
+<div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+  <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
+    <div class="flex gap-2 items-center">
+      <img src="/assets/images/fi-rr-calendar.svg" class="w-6 h-6" alt="Calendar Icon" />
+      <span>Accomplishments</span>
+    </div>
+    {showViewMoreButton && (
+      <a href="/outcomes/dashboard">
+        <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white">
+          View More
+        </button>
+      </a>
+    )}
+  </h3>
+
+  {accomplishmentsList.length > 0 ? (
+    <ul role="feed" class="relative flex flex-col gap-6 py-6 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed">
+      {accomplishmentsList.map((log) => {
+        const { icon, color } = getIconAndColor(log.title);
+        
+        return (
+          <li role="article" class="relative pl-8">
+            <span class={`absolute left-0 z-10 flex items-center justify-center w-8 h-8 text-white -translate-x-1/2 rounded-full ring-2 ring-white ${color}`}>
+              {icon}
+            </span>
+            <div class="flex flex-col flex-1 gap-0">
+              {showViewMoreButton === undefined ? (
+              <a href={(log.path)}>
+                <h4 class="text-sm font-medium text-slate-700" set:html={(log.title)}></h4>
+              </a>
+            ) : (
+              <h4 class="text-sm font-medium text-slate-700" set:html={(log.title)}></h4>
+            )}
+              <p class="text-xs text-slate-500">{getRelativeTime(log.date)}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <p class="text-gray-600">No activity log available.</p>
+  )}
+
+<!-- {accomplishmentsList.length > 0 && (
   <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
       <div class="flex gap-2 items-center text-xl justify-between">
@@ -61,4 +120,4 @@ const accomplishmentsList = Object.values(newFiles)
       
     </div>
   </div>
-)}
+)} -->
