@@ -17,7 +17,12 @@ enableEditButton: true
       Find the perfect compliance solution tailored to your business needs, whether you're a startup, growing company, or an established enterprise.<br />Our flexible plans ensure you meet all necessary standards while fitting seamlessly into your existing structure.
     </p>
     <div class="grid grid-cols-4 md:grid-cols-4 gap-x-16 bg-gray-50 dark:bg-gray-800 p-8 rounded-t-lg">
-      <div class="md:block"></div>
+      <div class="md:block">
+        <div class="block w-full p-5 border-gray-200 rounded-lg bg-gray-200 dark:border-gray-600 dark:bg-gray-700"><h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">Not Sure Which Plan is Right for You?</h3>
+                  <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">If you're unsure which plan best fits your business needs, our sales team is here to help guide you in selecting the perfect compliance solution. Contact us today!</p>
+          <a href="https://opsfolio.com/contact" target="_new">
+          <button class="block w-full px-6 py-2 font-medium text-l text-center text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-gray-100 hover:bg-gray-100 hover:text-gray-700 dark: dark:hover:bg-gray-700 focus:outline-none focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">Contact Sales</button></a></div>
+      </div>
       <div class="mb-8 md:mb-0">
         <span
           class="block text-xl text-gray-900 dark:text-white"
