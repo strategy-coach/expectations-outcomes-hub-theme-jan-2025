@@ -32,20 +32,37 @@ let errorlist = false;
 let dataresult = false;
 let list = [];
 
-if (Astro.slots.has("default")) {
-  children = String(await Astro.slots.render("default"));
+if (!Astro.slots.has("default")) {
+  console.error("No children found in the slot.");
+  //return new Response("No database connection", { status: 500 }); // Return an empty string if there's no content
 }
-let decodedChildren = decodeEntities(children);
 
+children = String(await Astro.slots.render("default"));
+console.log("Inside slot rendering");
+
+let decodedChildren = decodeEntities(children);
+console.log("Decoded children:", decodedChildren);
+
+// Check if the connection exists in the config
+if (!reportConfig[connection]) {
+  console.error("No database connection available.");
+  //return new Response("No database connection", { status: 500 });
+}
 //console.log("Connection key:", connection);
 //console.log("Database path:", reportConfig[connection]);
 
-await createSequelize();
+if( reportConfig[connection]!== undefined){
+  await createSequelize();
+}else{
+  cnMsg = "No database connection available.";
+  //throw new Error("bar");
+}
 
 async function createSequelize() {
   try {
     if (!reportConfig[connection] || typeof reportConfig[connection] !== "string") {
       throw new Error(`Invalid database path: ${reportConfig[connection]}`);
+      //cnMsg = "No connection to the database ";
     }
 
     // Trim the connection string to remove accidental spaces
@@ -64,10 +81,10 @@ async function createSequelize() {
 
 if (!sequelize) {
   console.error("Sequelize instance is null. Cannot execute query.");
-  return;
-}
+  //return;
+}else{
 
-list = await sequelize.query(decodedChildren)
+  list = await sequelize.query(decodedChildren)
   .then((response) => {
     if (response.length > 0) {
       const returnArray: IList = { keys: [] };
@@ -87,9 +104,9 @@ list = await sequelize.query(decodedChildren)
     console.error("Query execution error:", err);
     cnMsg = "Error executing the query";
   });
-
+}
   
-  const chartData = JSON.stringify(list);
+const chartData = JSON.stringify(list);
 var linesnum = sqlFormatter.format(decodedChildren).split("\n");
 ---
 
