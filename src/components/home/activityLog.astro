@@ -29,7 +29,7 @@ const ActivityLogSchema = z.object({
 // Extract Astro props
 const { recordsLimit, showViewMoreButton, hoursToFetch } = Astro.props;
 const page = Number(Astro.url.searchParams.get('page')) || 1;
-const recordPerPage = 20;
+let recordPerPage = 20;
 
 // Environment variables
 const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID;
@@ -71,6 +71,7 @@ const totalActivityRecords = countData?.total ?? 0;
 const totalPages = Math.ceil(totalActivityRecords / recordPerPage);
 
 // Fetch activity log data
+recordPerPage = recordsLimit < recordPerPage ?recordsLimit:recordPerPage;
 const responseData = await fetchActivityLog(activityLogQuery, recordPerPage, offset);
 const parsedActivityData = ActivityLogSchema.safeParse(responseData);
 const activityLogEntries = parsedActivityData.success ? parsedActivityData.data.hits : [];
