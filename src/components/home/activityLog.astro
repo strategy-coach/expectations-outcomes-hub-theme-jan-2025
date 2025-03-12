@@ -126,8 +126,8 @@ const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow
               {icon}
             </span>
             <div class="flex flex-col flex-1 gap-0">
-              <h4 class="text-sm font-medium text-slate-700" set:html={getActivityMessage(log)}></h4>
-              <p class="text-xs text-slate-500">{getRelativeTime(log.timestamp)}</p>
+              <h4 class="text-sm font-medium dark:text-gray-300" set:html={getActivityMessage(log)}></h4>
+              <p class="text-xs dark:text-gray-300 ">{getRelativeTime(log.timestamp)}</p>
             </div>
           </li>
         );

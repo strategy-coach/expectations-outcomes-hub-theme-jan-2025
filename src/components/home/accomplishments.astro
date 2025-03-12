@@ -66,12 +66,12 @@ const accomplishmentsList = Object.values(newFiles)
             <div class="flex flex-col flex-1 gap-0">
               {showViewMoreButton === undefined ? (
               <a href={(log.path)}>
-                <h4 class="text-sm font-medium text-slate-700" set:html={(log.title)}></h4>
+                <h4 class="text-sm font-medium dark:text-gray-300" set:html={(log.title)}></h4>
               </a>
             ) : (
-              <h4 class="text-sm font-medium text-slate-700" set:html={(log.title)}></h4>
+              <h4 class="text-sm font-medium dark:text-gray-300" set:html={(log.title)}></h4>
             )}
-              <p class="text-xs text-slate-500">{getRelativeTime(log.date)}</p>
+              <p class="text-xs dark:text-gray-300">{getRelativeTime(log.date)}</p>
             </div>
           </li>
         );
