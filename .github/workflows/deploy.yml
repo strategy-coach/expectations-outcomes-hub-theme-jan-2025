@@ -63,7 +63,6 @@ jobs:
           ENABLE_SUPPORT_AND_FEEDBACK: ${{ vars.ENABLE_SUPPORT_AND_FEEDBACK }}
           PUBLIC_PRODUCTION_URL: ${{ vars.PUBLIC_PRODUCTION_URL }}
           PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE: ${{ vars.PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE }}
-          PUBLIC_ALIM_ZAP_DB: ${{ vars.PUBLIC_ALIM_ZAP_DB }}
           PUBLIC_SQLMAP_DB: ${{ vars.PUBLIC_SQLMAP_DB }}  
         run: |
           bash -x support/ci-cd.sh      
