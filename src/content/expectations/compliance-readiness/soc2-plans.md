@@ -20,8 +20,12 @@ enableEditButton: true
       <div class="md:block"></div>
       <div class="mb-8 md:mb-0">
         <span
-          class="block mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+          class="block text-xl text-gray-900 dark:text-white"
           >Plan 1</span
+        >
+        <span
+          class="block mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+          >Essentials</span
         >
         <h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">
           Ideal for startups and small businesses.
@@ -33,8 +37,12 @@ Type 2 coaching, mentoring, and monitoring.
         </p>
       </div>
       <div class="mb-8 md:mb-0">
-        <span class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+        <span
+          class="block text-xl text-gray-900 dark:text-white"
           >Plan 2</span
+        >
+        <span class="block mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
+          >Flex</span
         >
         <h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">
           Balanced compliance for growing businesses.
@@ -46,8 +54,12 @@ flexible compliance approach.
       </div>
       <div class="mb-3 md:mb-0">
         <span
+          class="block text-xl text-gray-900 dark:text-white"
+          >Plan 3</span
+        >
+        <span
           class="block mb-4 text-4xl font-extrabold text-gray-900 dark:text-white"
-          >Plan 3</span>
+          >Enterprise</span>
         <h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">
           Fully customizable for enterprises and organizations with
 existing frameworks.
@@ -65,33 +77,33 @@ existing compliance structure.
         <button
           class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
         >
-          Select Plan</button></a>
+          Select Essentials</button></a>
       </div>
       <div class="mb-8 md:mb-0">
         <a href="/expectations/questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-purple-700 dark:bg-purple-600 hover:bg-purple-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 dark:hover:bg-purple-700 md:mr-5 md:mb-0"
         >
-          Select Plan</button></a>
+          Select Flex</button></a>
       </div>
       <div class="mb-3 md:mb-0">
         <a href="/expectations/questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-pink-700 dark:bg-pink-600 hover:bg-pink-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-pink-300 dark:hover:bg-pink-700 md:mr-5 md:mb-0"
         >
-          Select Plan</button></a>
+          Select Enterprise</button></a>
       </div>
     </div>
-    <div class="py-8 text-lg font-normal text-blue-700 dark:text-blue-600 lg:text-center lg:text-xl">Detailed Plan Comparison</div>
+    <div class="py-8 text-3xl font-bold text-gray-700 dark:text-gray-600 lg:text-center lg:text-xl">Detailed Plan Comparison</div>
     <div class="overflow-x-auto">
       <div class="overflow-hidden">
         <div
           class="grid grid-cols-4 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-b border-gray-200 gap-x-16 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         >
           <div class="text-xl">Feature</div>
-          <div class="text-xl font-bold">Plan 1</div>
-          <div class="text-xl font-bold">Plan 2</div>
-          <div class="text-xl font-bold">Plan 3</div>
+          <div class="text-xl font-bold">Plan 1: Essentials</div>
+          <div class="text-xl font-bold">Plan 2: Flex</div>
+          <div class="text-xl font-bold">Plan 3: Enterprise</div>
         </div>
         <div
           class="grid grid-cols-4 px-4 py-5 text-sm text-gray-700 border-b border-gray-200 gap-x-16 dark:border-gray-700"
@@ -140,25 +152,25 @@ existing compliance structure.
     <div class="grid grid-cols-4 md:grid-cols-4 gap-x-16 bg-gray-50 dark:bg-gray-800 p-8 rounded-t-lg">
       <div class="md:block"></div>
       <div class="mb-8 md:mb-0">
-        <a href="../questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/">
+        <a href="/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/">
         <button
           class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
         >
-          Select Plan</button></a>
+          Select Essentials</button></a>
       </div>
       <div class="mb-8 md:mb-0">
-        <a href="../questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
+        <a href="/expectations/questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-purple-700 dark:bg-purple-600 hover:bg-purple-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 dark:hover:bg-purple-700 md:mr-5 md:mb-0"
         >
-          Select Plan</button></a>
+          Select Flex</button></a>
       </div>
       <div class="mb-3 md:mb-0">
-        <a href="../questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
+        <a href="/expectations/questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-pink-700 dark:bg-pink-600 hover:bg-pink-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-pink-300 dark:hover:bg-pink-700 md:mr-5 md:mb-0"
         >
-          Select Plan</button></a>
+          Select Enterprise</button></a>
       </div>
     </div>
   </div>
