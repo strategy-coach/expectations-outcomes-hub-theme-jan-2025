@@ -64,6 +64,7 @@ jobs:
           PUBLIC_PRODUCTION_URL: ${{ vars.PUBLIC_PRODUCTION_URL }}
           PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE: ${{ vars.PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE }}
           PUBLIC_SQLMAP_DB: ${{ vars.PUBLIC_SQLMAP_DB }}  
+          PUBLIC_FLEETFOLIO_URL: ${{ vars.PUBLIC_FLEETFOLIO_URL }}  
         run: |
           bash -x support/ci-cd.sh      
           
