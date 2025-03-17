@@ -1058,74 +1058,39 @@ For the *Comment* component to function properly, make sure:
 - The *database is generated* before using the comments feature.
 - The `PUBLIC_RSSD_DB` environment variable is correctly set in the `.env` file.
 
+## Diagrams
+
+Mermaid and Planthtml are tools for creating diagrams using simple text-based syntax. This document provides a guide on how to use both tools effectively in Markdown files.
+
 ## To add Mermaid Diagram and Plantuml Diagram
 
-- Mermaid Diagram
-Install `mermaid` package using pnpm:
-`pnpm install mermaid`
-
-Add the below script in `src/layouts/Layout.astro`
-
-` <script type="module">
-      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-  </script>`
-
-Use the following code snippet to add a Mermaid diagram:
-```
-<p class="mermaid">
-sequenceDiagram
-    participant web as Web Browser
-    participant blog as Blog Service
-    participant account as Account Service
-    participant mail as Mail Service
-    participant db as Storage
-    Note over web,db: The user must be logged in to submit blog posts
-    web->>+account: Logs in using credentials
-    account->>db: Query stored accounts
-    db->>account: Respond with query result
-    alt Credentials not found
-        account->>web: Invalid credentials
-    else Credentials found
-        account->>-web: Successfully logged in
-        Note over web,db: When the user is authenticated, they can now submit new posts
-        web->>+blog: Submit new post
-        blog->>db: Store post data
-        par Notifications
-            blog--)mail: Send mail to blog subscribers
-            blog--)db: Store in-site notifications
-        and Response
-            blog-->>-web: Successfully posted
-        end
-    end
-
-</p>
-
-```
-
-
-## Using Mermaid.js in This Theme
-Theme supports Mermaid.js for rendering flowcharts, sequence diagrams, and more.
-
-#### ✅ How to Enable Mermaid
-To enable Mermaid diagrams in any page, add enableMermaid: true in the frontmatter of your Markdown (.md)
+- **Mermaid Diagram**
 
 #### Example: Using Mermaid in Markdown (.md)
 
 ```
 ---
 title: "Flowchart Example"
-enableMermaid: true
 ---
 
-<p class="mermaid">
-graph TD;
-  A --> B;
-  B --> C;
-</p>
+```mermaid
+graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B
 ```
-The **enableMermaid** frontmatter is passed to Layout.astro to conditionally load the script. This improves performance by not loading Mermaid.js on pages that don't need it.
 
-- Plantuml Diagram
+
+```mermaid
+graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B
+```
+
+- **Plantuml Diagram**
 Install `pnpm install @akebifiky/remark-simple-plantuml` package using pnpm:
 
 Add the below code snippet in `astro.config.mjs`
