@@ -34,7 +34,7 @@ const { Content } = await render(entry);
 const rawMarkdownContent = entry.body; // Adjust if raw content is in another property
 ---
 
-<Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton} enableMermaid={entry.data.enableMermaid}>
+<Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton}>
   <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs"
