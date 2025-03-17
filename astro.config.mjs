@@ -1,20 +1,23 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import node from "@astrojs/node";
-import tailwind from '@astrojs/tailwind';
+import tailwind from "@astrojs/tailwind";
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
+import rehypeMermaid from "rehype-mermaid";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react(), mdx()],
   markdown: {
-    remarkPlugins: [
-      
-      remarkPlantUML,
-     
-    ],
+    syntaxHighlight: {
+      type: "shiki",
+      excludeLangs: ["mermaid", "math"],
+    },
+    remarkPlugins: [remarkPlantUML],
+    rehypePlugins: [rehypeMermaid],
   },
   output: "server",
   // adapter: deno({
@@ -22,5 +25,5 @@ export default defineConfig({
   // }),
   adapter: node({
     mode: "standalone", // or 'middleware'
-  })
+  }),
 });

@@ -7,6 +7,21 @@ enableMermaid: true
 
 # Diagrams
 
+
+
+
+
+```mermaid
+graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B
+```
+
+
+
+
 Mermaid.js and PlantUML are tools for creating diagrams using simple text-based syntax. This document provides a guide on how to use both tools effectively in  Markdown files.
 
 ## Mermaid Diagram
