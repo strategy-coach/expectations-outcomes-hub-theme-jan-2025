@@ -1102,6 +1102,8 @@ graph TD
     D --> B
 ```
 
+**ℹ️ Info:** Mermaid requires Node.js v20.9.0 or later to function properly.
+
 - **Plantuml Diagram**
 
 Install `pnpm install @akebifiky/remark-simple-plantuml` package using pnpm:
