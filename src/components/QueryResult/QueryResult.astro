@@ -114,8 +114,8 @@ var linesnum = sqlFormatter.format(decodedChildren).split("\n");
       ) : (
       <div class="sql-content">
          {agGridSupportThemes.includes(gridStyle) ? (
-    <AgGridComponent rowData={list.array} page={page} client:only="react"  />
-    <details
+      <AgGridComponent rowData={list.array} page={page} connection={connection} filter={(connection=="sqlmap") || (connection== "zap")?true:false } client:only="react"  />
+      <details
               id={title}
               class="mt-5 break-words"
               data-persist-state="closed"
