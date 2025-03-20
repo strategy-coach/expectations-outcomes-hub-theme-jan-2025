@@ -3,13 +3,14 @@ import Layout from "../../layouts/Layout.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
+
 ---
 
 <Layout title="Fleetfolio">
-    <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
-     <div
+  <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
+    <div
       class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300"
-    > 
+    >
       <Breadcrumbs
         linkTextFormat="capitalized"
         ariaLabel="Site navigation"
@@ -37,7 +38,6 @@ const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
         </h1>
       </div> -->
       {proxiedHtml && <div class="proxied-container" set:html={proxiedHtml} />}
-    </div> 
-    
+    </div>
   </main>
 </Layout>
