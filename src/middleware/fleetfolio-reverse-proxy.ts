@@ -44,6 +44,11 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
                     `<a $1href="/fleetfolio/$2"`
                 );
 
+                // ✅ Remove empty <h1> tags (including attributes)
+                html = html.replace(/<h1[^>]*>\s*<\/h1>/g, "");
+                // ✅ Remove <nav> elements (including content inside)
+                html = html.replace(/<nav[^>]*>[\s\S]*?<\/nav>/g, "");
+
                 // ✅ Pass HTML to layout via `locals`
                 context.locals.proxiedHtml = html;
 

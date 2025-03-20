@@ -6,10 +6,10 @@ const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
 ---
 
 <Layout title="Fleetfolio">
-  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6">
-    <div
+    <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
+     <div
       class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300"
-    >
+    > 
       <Breadcrumbs
         linkTextFormat="capitalized"
         ariaLabel="Site navigation"
@@ -29,15 +29,15 @@ const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>
-      <div class="border-b border-slate-300 dark:border-gray-600 pb-3">
+      <!-- <div class="border-b border-slate-300 dark:border-gray-600 pb-3">
         <h1
           class="text-2xl lg:text-4xl font-bold text-slate-700 dark:text-gray-300 mt-4 mb-1"
         >
           Fleetfolio
         </h1>
-      </div>
+      </div> -->
       {proxiedHtml && <div class="proxied-container" set:html={proxiedHtml} />}
-    </div>
+    </div> 
     
   </main>
 </Layout>
