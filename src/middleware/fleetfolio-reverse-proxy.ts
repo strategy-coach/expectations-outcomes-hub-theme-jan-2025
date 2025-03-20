@@ -21,6 +21,7 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
 
         try {
             const response = await fetch(targetUrl, { redirect: "manual" });
+
             if (!response.ok) {
                 return new Response(`Failed to fetch ${targetUrl}`, { status: response.status });
             }
@@ -29,6 +30,7 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
 
             if (contentType.includes("text/html")) {
                 let html = await response.text();
+                html = html.replace(/;+\s*$/, "");
                 const baseUrl = new URL(TARGET_URL).origin;
 
                 // ✅ Fix relative paths in the HTML
