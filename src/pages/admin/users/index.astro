@@ -1,0 +1,43 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import AdminSidebar from "../../../layouts/AdminSidebar.astro";
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+import UserList from "../../../components/native/admin/userList";
+---
+
+<Layout title="Admin Dashboard">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <AdminSidebar />
+
+    <!-- Main Content -->
+    <div class="flex-1 p-7 bg-white dark:bg-gray-800 dark:text-gray-300">
+      <Breadcrumbs
+        linkTextFormat="capitalized"
+        ariaLabel="Site navigation"
+        separatorAriaHidden={false}
+      >
+        <svg
+          slot="separator"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </Breadcrumbs>
+
+      <!-- Page Content -->
+      <h1 class="text-2xl font-semibold mt-5">
+        <UserList client:only="react" />
+      </h1>
+    </div>
+  </div>
+</Layout>
