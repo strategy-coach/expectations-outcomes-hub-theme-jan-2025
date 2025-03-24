@@ -8,13 +8,13 @@ const TARGET_URL = fleetfolioUrl;
 export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddleware(async (context, next) => {
     const { pathname, search } = context.url;
 
-    if (pathname.startsWith("/fleetfolio")) {
+    if (pathname.startsWith("/fleetfolio-service")) {
         let targetUrl;
 
-        if (pathname === "/fleetfolio") {
-            targetUrl = `${TARGET_URL}${pathname.replace("/fleetfolio", "")}${search}`;
+        if (pathname === "/fleetfolio-service") {
+            targetUrl = `${TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
         } else {
-            targetUrl = `${BASE_TARGET_URL}${pathname.replace("/fleetfolio", "")}${search}`;
+            targetUrl = `${BASE_TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
         }
 
         console.log(`Proxying request to: ${targetUrl}`);
@@ -43,7 +43,7 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
                 // ✅ Fix internal links
                 html = html.replace(
                     /<a\s+(.*?)href="\/(eoh-fleetfolio\/[^"]+)"/g,
-                    `<a $1href="/fleetfolio/$2"`
+                    `<a $1href="/fleetfolio-service/$2"`
                 );
 
                 // ✅ Remove empty <h1> tags (including attributes)
