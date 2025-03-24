@@ -52,7 +52,7 @@ const UserList: React.FC = () => {
 
                 setUsers(mappedUsers);
             } catch (err) {
-                setError("Failed to fetch team members.");
+                setError("No Users Found...");
             } finally {
                 setLoading(false);
             }
