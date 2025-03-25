@@ -2,12 +2,26 @@
 import type { APIRoute } from "astro";
 import type { AxiosResponse } from "axios";
 import axios from "axios";
-import { getOrganizationUsers } from "../../components/signup/service.ts";
+import { z } from "zod";
+import { getOrganizationUsers } from "../../services/zitadel.services.ts";
 import type { SignUpFormData } from "../../components/signup/signup.tsx";
+
+const UserGrantSchema = z.object({
+    userGrantId: z.string(),
+    details: z.object({
+        sequence: z.string(),
+        creationDate: z.string(),
+        changeDate: z.string(),
+        resourceOwner: z.string(),
+    }),
+});
+
+export type UserGrantType = z.infer<typeof UserGrantSchema>;
 
 const ZITADEL_DOMAIN = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
 const ZITADEL_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
 const ZITADEL_ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID as string;
+const PROJECT_ID = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID as string;
 
 // Helper function to get a random character from a string
 const getRandomChar = (str: string): string =>
@@ -37,9 +51,44 @@ const generateRandomString = (length = 15): string => {
     return randomString;
 };
 
+export const addUserGrantToPorject = async (
+    param: {
+        userId: string;
+        grant: string;
+    },
+): Promise<UserGrantType> => {
+    const data = JSON.stringify({
+        "projectId": PROJECT_ID,
+        "roleKeys": [
+            param.grant,
+        ],
+    });
+
+    const config = {
+        method: "post",
+        maxBodyLength: Number.POSITIVE_INFINITY,
+        url: `${ZITADEL_DOMAIN}/management/v1/users/${param.userId}/grants`,
+        headers: {
+            "x-zitadel-orgid": ZITADEL_ORGANIZATION_ID,
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${ZITADEL_TOKEN}`,
+        },
+        data: data,
+    };
+
+    try {
+        const response = await axios.request(config);
+        const result = response.data as UserGrantType;
+        return result;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
 export const POST: APIRoute = async ({ request }) => {
     try {
-        const { givenName, familyName, displayName, gender, email, phone } =
+        const { givenName, familyName, displayName, gender, email, phone, role } =
             (await request.json()) as SignUpFormData;
 
         const userExist = await getOrganizationUsers(email);
@@ -89,19 +138,36 @@ export const POST: APIRoute = async ({ request }) => {
 
             const response: AxiosResponse<{ userId: string }> =
                 await axios.request(config);
-            return response.data.userId === undefined
-                ? new Response(
+
+            if (response.data.userId === undefined) {
+                return new Response(
                     JSON.stringify({
                         error: "Unable to create user",
                     }),
                     { status: 200 },
                 )
-                : new Response(
-                    JSON.stringify({
-                        userId: response.data.userId,
-                    }),
-                    { status: 200 },
-                );
+            } else {
+                const roleResponse = await addUserGrantToPorject({
+                    userId: response.data.userId,
+                    grant: role
+                });
+                if (roleResponse.userGrantId) {
+                    return new Response(
+                        JSON.stringify({
+                            userId: response.data.userId,
+                        }),
+                        { status: 200 },
+                    );
+                } else {
+                    return new Response(
+                        JSON.stringify({
+                            error: 'Can not assign user role',
+                        }),
+                        { status: 200 },
+                    );
+                }
+            }
+
         }
     } catch {
         return new Response(JSON.stringify({ error: "Error during user signup" }), {

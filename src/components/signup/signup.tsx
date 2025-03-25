@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/no-null */
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { z } from "zod";
 import axios from "axios";
-import { resetPassword } from "./service.ts";
+import { resetPassword, getOrganizationRoles } from "../../services/zitadel.services.ts";
 import novuApiCall from "../../services/novu.service.ts";
 
 const genderOptions = [
@@ -34,11 +34,27 @@ const signUpSchema = z.object({
         .email("Invalid email format")
         .max(200, "Max 200 characters allowed"),
     phone: z.string().max(200, "Max 200 characters allowed").optional(),
+    role: z
+        .string()
+        .min(1, "Family Name is required")
+        .max(200, "Max 200 characters allowed"),
+});
+
+const RoleSchema = z.object({
+    organization_role_type_id: z.string(),
+    value: z.string(),
+});
+
+const ResponseSchema = z.object({
+    success: z.literal(true),
+    data: z.array(RoleSchema),
 });
 
 const SITE_URL = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI as string;
+
 // Form data type
 export type SignUpFormData = z.infer<typeof signUpSchema>;
+export type RoleResponseType = z.infer<typeof ResponseSchema>;
 
 const UserSignUp: React.FC = () => {
     const [formData, setFormData] = useState<SignUpFormData>({
@@ -48,17 +64,49 @@ const UserSignUp: React.FC = () => {
         gender: "GENDER_UNSPECIFIED",
         email: "",
         phone: "",
+        role: ""
     });
 
     const [notification, setNotification] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+    const [userRoles, setUserRoles] = useState<
+        { displayName: string; details: { sequence: string, creationDate: string, changeDate: string, resourceOwner: string }, key: string }[] | undefined
+    >([]);
+
+    useEffect(() => {
+
+        const controller = new AbortController();
+        const fetchRoles = async (): Promise<void> => {
+            try {
+                const roles = await getOrganizationRoles();
+                setUserRoles(roles?.result)
+            } catch (error) {
+                if (error instanceof Error && error.name !== "AbortError") {
+                    console.error("Error fetching roles:", error);
+                }
+            }
+        };
+
+        void fetchRoles();
+        return () => controller.abort();
+    }, []);
+
+    const roleOptions = useMemo(() => {
+        return userRoles?.map((user) => (
+            <option key={user.key} value={user.key}>
+                {user.key}
+            </option>
+        ));
+    }, [userRoles]);
 
     // Handle form input change
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     ): void => {
         const { name, value } = e.target;
+        console.log(name);
+        console.log(value);
         setFormData({ ...formData, [name]: value });
     };
 
@@ -91,7 +139,7 @@ const UserSignUp: React.FC = () => {
                 const encodedParams = encodeURIComponent(params);
                 const payload = {
                     firstName: formData.givenName,
-                    button: `<div style="text-align:center"><a class="btn" href="${SITE_URL}forgot-password?${encodedParams}" target="_blank">Verify Email</a></div>`,
+                    button: `<div style="text-align:center"><a class="btn" href="${SITE_URL}reset-password?${encodedParams}" target="_blank">Verify Email</a></div>`,
                 };
                 await novuApiCall("signup", payload, formData.email);
                 setFormData({
@@ -101,6 +149,7 @@ const UserSignUp: React.FC = () => {
                     gender: "GENDER_UNSPECIFIED",
                     email: "",
                     phone: "",
+                    role: ""
                 });
                 setNotification(
                     "Please verify your email to successfully complete your registration",
@@ -199,6 +248,29 @@ const UserSignUp: React.FC = () => {
                         value={formData.phone as string}
                         onChange={handleChange}
                     />
+
+                    {/* Gender */}
+                    <div>
+                        <label
+                            htmlFor="gender"
+                            className="block text-sm font-medium text-gray-700 mb-1"
+                        >
+                            Role
+                        </label>
+                        {userRoles !== undefined && userRoles.length > 0 && (
+                            <select
+                                className="block p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300"
+                                value={formData.role}
+                                onChange={handleChange}
+                                name="role"
+                            >
+                                <option value="" disabled>
+                                    Choose a user role
+                                </option>
+                                {roleOptions}
+                            </select>
+                        )}
+                    </div>
 
                     {/* Submit Button */}
                     <div className="flex justify-end">

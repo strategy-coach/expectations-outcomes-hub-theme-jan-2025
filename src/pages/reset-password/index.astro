@@ -1,0 +1,17 @@
+---
+import PasswordReset from "../../components/forgot-password/forgotPassword";
+const url = Astro.request.url;
+const params = url?.includes("?") ? decodeURIComponent(url.split("?")[1]) : "";
+const queryParams = new URLSearchParams(params);
+
+const code = queryParams.get("code") ?? undefined;
+const userId = queryParams.get("userId") ?? undefined;
+---
+
+<link rel="stylesheet" href="/assets/styles/tailwind.min.css" />
+<!-- <link rel="stylesheet" href="/assets/styles/basic.css" /> -->
+<PasswordReset
+    code={code ?? undefined}
+    userID={userId ?? undefined}
+    client:only="react"
+/>
