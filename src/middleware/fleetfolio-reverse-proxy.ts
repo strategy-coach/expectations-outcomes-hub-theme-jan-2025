@@ -2,10 +2,20 @@ import type { MiddlewareHandler } from "astro";
 import { defineMiddleware } from "astro/middleware";
 import { fleetfolioUrl } from "../utils/env.ts";
 
-const BASE_TARGET_URL = new URL(fleetfolioUrl).origin;
-const TARGET_URL = fleetfolioUrl;
+// Ensure fleetfolioUrl is defined and not empty
+if (!fleetfolioUrl) {
+    console.warn("fleetfolioUrl is not defined. Skipping fleetfolioReverseProxyMiddleware.");
+}
+
+const BASE_TARGET_URL = fleetfolioUrl ? new URL(fleetfolioUrl).origin : "";
+const TARGET_URL = fleetfolioUrl || "";
 
 export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddleware(async (context, next) => {
+    // Skip middleware if fleetfolioUrl is not set
+    if (!fleetfolioUrl) {
+        return next();
+    }
+
     const { pathname, search } = context.url;
 
     if (pathname.startsWith("/fleetfolio-service")) {
@@ -35,14 +45,16 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
 
                 // ✅ Fix relative paths in the HTML
                 html = html
-                    .replace(/(href|src)="\/([^"]+\.css)"/g, `$1="${baseUrl}/$2"`)
-                    .replace(/(href|src)="\/([^"]+\.js)"/g, `$1="${baseUrl}/$2"`)
-                    .replace(/url\(\s*['"]?\/([^'"\)]+\.css)['"]?\s*\)/g, `url('${baseUrl}/$1')`)
-                    .replace(/url\(\s*['"]?\/([^'"\)]+\.js)['"]?\s*\)/g, `url('${baseUrl}/$1')`);
+                    .replace(/(href|src)="\/(\S+\.css)"/g, `$1="${baseUrl}/$2"`)
+                    .replace(/(href|src)="\/(\S+\.js)"/g, `$1="${baseUrl}/$2"`)
+                    .replace(/url\(\s*['"]?\/(\S+\.css)['"]?\s*\)/g, `url('${baseUrl}/$1')`)
+                    .replace(/url\(\s*['"]?\/(\S+\.js)['"]?\s*\)/g, `url('${baseUrl}/$1')`);
 
+                const firstSegment = getFirstPathSegment(TARGET_URL);
+                const regex = new RegExp(`<a\\s+(.*?)href="/(${firstSegment}/[^"]+)"`, 'g');
                 // ✅ Fix internal links
                 html = html.replace(
-                    /<a\s+(.*?)href="\/(eoh-fleetfolio\/[^"]+)"/g,
+                    regex,
                     `<a $1href="/fleetfolio-service/$2"`
                 );
 
@@ -73,3 +85,14 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
 
     return next();
 });
+
+function getFirstPathSegment(urlString: string): string | null {
+    try {
+        const url = new URL(urlString);
+        const pathSegments = url.pathname.split('/').filter(segment => segment.trim() !== '');
+        return pathSegments.length > 0 ? pathSegments[0] : null;
+    } catch (error) {
+        console.error('Invalid URL:', error);
+        return null;
+    }
+}
