@@ -12,6 +12,7 @@ import Accomplishments from "../components/home/accomplishments.astro";
 import ItGovernance from "../components/home/itGovernance.astro";
 import Teams from "../components/teams/teams";
 import ActivityLog from "../components/home/activityLog.astro";
+import WhatsNext from "../components/home/whatsNext.astro";
 
 const trackers = themeConfig.trackers;
 const { title, description, activeProject } = themeConfig || {};
@@ -243,6 +244,7 @@ const menuTree = buildMenuTree(files, dirName);
       }
 
       <MeetingMinutes />
+      <WhatsNext />
       <LatestBlogs />
       <Accomplishments showViewMoreButton={true} />
       <ActivityLog recordsLimit={5} showViewMoreButton={true} hoursToFetch={1}/>
