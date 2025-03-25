@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { z } from "zod";
 import axios from "axios";
 import { resetPassword, getOrganizationRoles } from "../../services/zitadel.services.ts";
+import themeConfig from "../../../theme.config.ts";
 import novuApiCall from "../../services/novu.service.ts";
 
 const genderOptions = [
@@ -139,9 +140,10 @@ const UserSignUp: React.FC = () => {
                 const encodedParams = encodeURIComponent(params);
                 const payload = {
                     firstName: formData.givenName,
+                    siteName: themeConfig.title,
                     button: `<div style="text-align:center"><a class="btn" href="${SITE_URL}reset-password?${encodedParams}" target="_blank">Verify Email</a></div>`,
                 };
-                await novuApiCall("signup", payload, formData.email);
+                await novuApiCall("hub-signup", payload, formData.email);
                 setFormData({
                     givenName: "",
                     familyName: "",
@@ -152,7 +154,7 @@ const UserSignUp: React.FC = () => {
                     role: ""
                 });
                 setNotification(
-                    "Please verify your email to successfully complete your registration",
+                    "Successfully completed the registration",
                 );
                 setError(null);
             }
