@@ -67,7 +67,7 @@ const UserSignUp: React.FC = () => {
         role: ""
     });
 
-    const [notification, setNotification] = useState<string | null>(null);
+    const [notification, setNotification] = useState<string | null>();
     const [error, setError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [userRoles, setUserRoles] = useState<
@@ -168,17 +168,17 @@ const UserSignUp: React.FC = () => {
         }
     };
     return (
-        <div className="min-h-screen p-8 flex justify-center items-center">
-            <div className="w-full max-w-md">
+        <div className="min-h-screen flex justify-center items-center">
+            <div className="w-full border rounded-lg border-gray-250 p-8 max-w-xl">
                 <h2 className="text-2xl font-semibold text-gray-700 mb-6">
                     Add New User
                 </h2>
 
                 {notification != null && (
-                    <div className="mb-4 text-green-500">{notification}</div>
+                    <div className="mb-4 text-green-600 text-base text-center">{notification}</div>
                 )}
                 {error != null && (
-                    <div className="mb-4 text-red-500">{error}</div>
+                    <div className="mb-4 text-red-600 text-base text-center">{error}</div>
                 )}
 
                 <form onSubmit={(e) => void handleSubmit(e)} className="space-y-4">
@@ -212,7 +212,7 @@ const UserSignUp: React.FC = () => {
                     <div>
                         <label
                             htmlFor="gender"
-                            className="block text-sm font-medium text-gray-700 mb-1"
+                            className="block text-sm font-medium  mb-1 text-gray-500"
                         >
                             Gender
                         </label>
@@ -221,7 +221,7 @@ const UserSignUp: React.FC = () => {
                             name="gender"
                             value={formData.gender}
                             onChange={handleChange}
-                            className="w-full p-2 border rounded-lg"
+                            className="w-full p-2 border rounded-lg border-gray-400"
                         >
                             {genderOptions.map((gender) => (
                                 <option key={gender} value={gender}>
@@ -253,13 +253,13 @@ const UserSignUp: React.FC = () => {
                     <div>
                         <label
                             htmlFor="gender"
-                            className="block text-sm font-medium text-gray-700 mb-1"
+                            className="block text-sm font-medium text-gray-700 mb-1 text-gray-500"
                         >
                             Role
                         </label>
                         {userRoles !== undefined && userRoles.length > 0 && (
                             <select
-                                className="block p-2 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-300"
+                                className="block p-2 border border-gray-400 rounded-md shadow-sm focus:ring focus:ring-blue-300 "
                                 value={formData.role}
                                 onChange={handleChange}
                                 name="role"
@@ -280,7 +280,7 @@ const UserSignUp: React.FC = () => {
                                 }`}
                             disabled={isSubmitting}
                         >
-                            {isSubmitting ? "Processing..." : "Sign Up"}
+                            {isSubmitting ? "Processing..." : "Submit"}
                         </button>
                     </div>
                 </form>
@@ -308,7 +308,7 @@ const InputField: React.FC<InputFieldProps> = ({
     required = false,
 }) => (
     <div>
-        <label htmlFor={name} className="block text-sm font-medium text-gray-700">
+        <label htmlFor={name} className="block text-sm font-medium text-gray-500">
             {label}
         </label>
         <input
@@ -318,7 +318,7 @@ const InputField: React.FC<InputFieldProps> = ({
             value={value}
             onChange={onChange}
             required={required}
-            className="w-full p-2 border rounded-lg mt-1"
+            className="w-full p-2 border rounded-lg mt-1 text-gray-500 border-gray-400"
         />
     </div>
 );
