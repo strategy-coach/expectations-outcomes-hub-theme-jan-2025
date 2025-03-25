@@ -40,20 +40,49 @@ const UserApiResponseSchema = z.object({
                 }),
                 email: z.object({
                     email: z.string(),
-                    isVerified: z.boolean(),
+                    isVerified: z.boolean().optional(),
                 }),
             }),
         }),
     ),
 });
 
+const RoleSchema = z.object({
+    details: z.object({
+        totalResult: z.string(),
+        viewTimestamp: z.string().datetime(),
+    }),
+    result: z.array(
+        z.object({
+            key: z.string(),
+            details: z.object({
+                sequence: z.string(),
+                creationDate: z.string().datetime(),
+                changeDate: z.string().datetime(),
+                resourceOwner: z.string(),
+            }),
+            displayName: z.string(),
+        })
+    ),
+});
+
+const NoUserFoundSchema = z.object({
+    details: z.object({
+        timestamp: z.string(),
+    }),
+});
+
+const OrganizationUsersApiResponseSchema = z.union([UserApiResponseSchema, NoUserFoundSchema]);
+
 export type verificationCodeType = z.infer<typeof verificationCodeSchema>;
 export type passwordChangeType = z.infer<typeof passwordChangeSchema>;
 export type UserApiResponse = z.infer<typeof UserApiResponseSchema>;
+export type Roles = z.infer<typeof RoleSchema>;
 
 const ZITADEL_AUTHORITY = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
 const ZITADEL_API_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
 const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID as string;
+const PROJECT_ID = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID as string;
 
 export async function resetPassword(
     userId: string,
@@ -161,10 +190,131 @@ export async function getOrganizationUsers(
         if (!response.ok) {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
-        const result = UserApiResponseSchema.parse(await response.json());
+        // Only parse response once
+        const responseDataJSON = await response.json();
+
+        // Validate with Zod
+        const result = OrganizationUsersApiResponseSchema.parse(responseDataJSON);
+        if ('result' in result && result.result) {
+            return result;
+        } else {
+            return undefined;
+        }
+
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        return undefined; // Return undefined in case of an error
+    }
+}
+
+export async function getOrganizationRoles(
+): Promise<Roles | undefined> {
+    try {
+        const data = ''
+        const config = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+                "x-zitadel-orgid": ORGANIZATION_ID,
+            },
+            body: data,
+        };
+        const response = await fetch(`${ZITADEL_AUTHORITY}/management/v1/projects/${PROJECT_ID}/roles/_search`, config);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        const result = RoleSchema.parse(await response.json());
         return result;
     } catch (error) {
         console.error(error); // Log the error for debugging
         return undefined; // Return undefined in case of an error
+    }
+}
+
+export async function getUserId(
+    email: string,
+    organizationId: string,
+): Promise<{ status: number; userId?: string; message?: string } | undefined> {
+    try {
+        const data = JSON.stringify({
+            queries: [
+                {
+                    emailQuery: {
+                        emailAddress: email,
+                        method: "TEXT_QUERY_METHOD_EQUALS",
+                    },
+                },
+            ],
+        });
+
+        const config = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+            },
+            body: data,
+        };
+
+        const url = `${ZITADEL_AUTHORITY}/v2/users`;
+        const response = await fetch(url, config);
+
+        if (!response.ok) {
+            return { status: response.status, message: "Failed to fetch user data" };
+        }
+
+        const userResponse = (await response.json()) as UserApiResponse;
+
+        if (userResponse.result) {
+            const user = userResponse.result.find(
+                (org) => org.details.resourceOwner === organizationId,
+            );
+
+            return user === undefined
+                ? { status: 400, message: "User not found" }
+                : { status: 200, userId: user.userId };
+        } else {
+            return { status: 400, message: "User not found" };
+        }
+    } catch (error) {
+        console.error("Error fetching user ID:", error);
+        return { status: 500, message: "Internal server error" };
+    }
+}
+
+export async function verifyEmail(userId?: string): Promise<void> {
+    const data = JSON.stringify({
+        returnCode: {},
+    });
+    const url = `${ZITADEL_AUTHORITY}/v2/users/${userId}/email/send`;
+    const headers = new Headers({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+    });
+
+    const options = {
+        method: "post",
+        headers,
+        body: data,
+    };
+    const response = await fetch(url, options);
+    const responseData = (await response.json()) as verificationCodeType;
+    if (response.status == 200) {
+        const data = JSON.stringify({
+            verificationCode: responseData.verificationCode,
+        });
+        const url = `${ZITADEL_AUTHORITY}/v2/users/${userId}/email/verify`;
+        const headers = new Headers({
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+        });
+
+        const options = {
+            method: "post",
+            headers,
+            body: data,
+        };
+        await fetch(url, options);
     }
 }
