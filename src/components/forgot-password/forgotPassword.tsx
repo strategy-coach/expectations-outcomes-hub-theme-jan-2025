@@ -38,6 +38,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
         message: "",
         show: false,
     });
+    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     useEffect(() => {
         if (code !== undefined && userID !== undefined) {
@@ -81,6 +82,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
             }));
             throw new Error("Password does not match");
         }
+        setIsSubmitting(true);
+        await verifyEmail(userId);
         const response = (await resetPassword(
             userId,
             credentials.password,
@@ -134,6 +137,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                 });
             }, 2500);
         }
+        setIsSubmitting(false);
     };
 
     const sendCode = async (): Promise<void> => {
@@ -150,7 +154,6 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
         )) as unknown as { status: number; userId?: string; message: string };
 
         if (response.status === 200) {
-            await verifyEmail(response?.userId ?? "");
             const codeResponse = (await resetPassword(
                 response?.userId ?? "",
             )) as unknown as {
@@ -163,7 +166,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                 const params = `code=${codeResponse.verificationCode}&userId=${response.userId}`;
                 const encodedParams = encodeURIComponent(params);
                 const payload = {
-                    code: codeResponse.verificationCode ?? "",
+                    code: codeResponse.verificationCode,
                     resetButton: "true",
                     button: `<div><a class="btn" href="${SITE_URL}forgot-password?${encodedParams}" target="_blank">Reset Password</a></div>`,
                 };
@@ -365,7 +368,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                             </label>
                                             <input
                                                 type="password"
-                                                className="w-full mt-1 p-2 rounded-lg border-gray-400 border focus:ring-blue-600"
+                                                className="w-full mt-1 p-2 rounded-lg border border-gray-400 focus:ring-blue-600"
                                                 placeholder="Enter new password"
                                                 onChange={(e) => {
                                                     setCredentials((prev) => ({
@@ -383,7 +386,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                                         <div className="flex-shrink-0">
                                                             <svg
                                                                 viewBox="0 0 12 16"
-                                                                className="w-full mt-1 p-2 border rounded-lg border-gray-400 focus:ring-blue-600"
+                                                                className="h-5 w-5 text-red-800"
                                                                 fill="currentColor"
                                                                 aria-hidden="true"
                                                             >
@@ -449,10 +452,10 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                         type="button"
                                         className="px-4 py-2 bg-blue-600 w-full text-white rounded-lg hover:bg-blue-700"
                                         onClick={() => void handleChangePassword()}
+                                        disabled={isSubmitting}
                                     >
-                                        Save Changes
+                                        {isSubmitting ? "Processing..." : "Submit"}
                                     </button>
-
                                 </>
                             )}
 
