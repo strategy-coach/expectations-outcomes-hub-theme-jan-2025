@@ -2,7 +2,7 @@ import type { MiddlewareHandler } from "astro";
 import { defineMiddleware, sequence } from "astro/middleware";
 import { isZitadelEnabled } from "../utils/env.ts";
 import themeConfig from "../../theme.config.ts";
-
+import { fleetfolioReverseProxyMiddleware } from "./fleetfolio-reverse-proxy.ts"
 
 const { unauthorizedPages, isHomePagePublic } = themeConfig;
 
@@ -31,6 +31,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
 // ✅ Main middleware handler to sequence middleware functions
 export const onRequest: MiddlewareHandler = defineMiddleware((context, next) => {
   return sequence(
-    authenticationMiddleware
+    authenticationMiddleware,
+    fleetfolioReverseProxyMiddleware
   )(context, next);
 });
