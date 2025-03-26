@@ -1,76 +1,41 @@
----
-// components/AdminSidebar.astro
----
-
-<!-- Admin Sidebar Component -->
-<div
-    x-data="{ open: false }"
-    class="bg-gray-900 text-white w-64 min-h-screen transition-all duration-300"
-    :class="{'w-64': open, 'w-20': !open}"
->
-    <!-- Toggle Button -->
-    <div class="flex items-center justify-between p-4">
-        <span class="text-lg font-semibold" x-show="open">Admin Menu</span>
-        <button
-            @click="open = !open"
-            class="p-2 rounded-md text-gray-300 hover:bg-gray-700"
+<nav class="mt-4">
+    <a
+        href="/admin/add-user"
+        class="flex items-center px-4 py-2 hover:bg-gray-700"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
         >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
-    </div>
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"></path>
+        </svg>
+        <span class="ml-3" x-show="open">Add New User</span>
+    </a>
 
-    <!-- Menu Items -->
-    <nav class="mt-4">
-        <a
-            href="/admin/add-user"
-            class="flex items-center px-4 py-2 hover:bg-gray-700"
+    <a
+        href="/admin/users"
+        class="flex items-center px-4 py-2 hover:bg-gray-700"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
         >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 4v16m8-8H4"></path>
-            </svg>
-            <span class="ml-3" x-show="open">Add New User</span>
-        </a>
-
-        <a href="/admin/users" class="flex items-center px-4 py-2 hover:bg-gray-700">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M8 14s1.5 2 4 2 4-2 4-2m-4-8a4 4 0 1 1 0 8"></path>
-            </svg>
-            <span class="ml-3" x-show="open">Users</span>
-        </a>
-    </nav>
-</div>
-
-<!-- Alpine.js for expand/collapse -->
-<script src="https://unpkg.com/alpinejs" defer></script>
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 14s1.5 2 4 2 4-2 4-2m-4-8a4 4 0 1 1 0 8"></path>
+        </svg>
+        <span class="ml-3" x-show="open">Users</span>
+    </a>
+</nav>
