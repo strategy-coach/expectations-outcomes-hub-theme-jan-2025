@@ -37,7 +37,7 @@ const signUpSchema = z.object({
     phone: z.string().max(200, "Max 200 characters allowed").optional(),
     role: z
         .string()
-        .min(1, "Family Name is required")
+        .min(1, "Role is required")
         .max(200, "Max 200 characters allowed"),
 });
 
@@ -186,7 +186,7 @@ const UserSignUp: React.FC = () => {
                 <form onSubmit={(e) => void handleSubmit(e)} className="space-y-4">
                     {/* Given Name */}
                     <InputField
-                        label="Given Name"
+                        label="Given Name *"
                         name="givenName"
                         value={formData.givenName}
                         onChange={handleChange}
@@ -195,7 +195,7 @@ const UserSignUp: React.FC = () => {
 
                     {/* Family Name */}
                     <InputField
-                        label="Family Name"
+                        label="Family Name *"
                         name="familyName"
                         value={formData.familyName}
                         onChange={handleChange}
@@ -235,7 +235,7 @@ const UserSignUp: React.FC = () => {
 
                     {/* Email */}
                     <InputField
-                        label="Email"
+                        label="Email *"
                         name="email"
                         type="email"
                         value={formData.email}
@@ -255,16 +255,17 @@ const UserSignUp: React.FC = () => {
                     <div>
                         <label
                             htmlFor="gender"
-                            className="block text-sm font-medium text-gray-700 mb-1 text-gray-500"
+                            className="block text-sm font-medium mb-1 text-gray-500"
                         >
-                            Role
+                            Role *
                         </label>
                         {userRoles !== undefined && userRoles.length > 0 && (
                             <select
-                                className="block p-2 border border-gray-400 rounded-md shadow-sm focus:ring focus:ring-blue-300 "
+                                className="block p-2 border border-gray-400 rounded-md shadow-sm focus:ring focus:ring-blue-300"
                                 value={formData.role}
                                 onChange={handleChange}
                                 name="role"
+                                required
                             >
                                 <option value="" disabled>
                                     Choose a user role

@@ -2,35 +2,51 @@
 import PageFind from "../components/PageFind.astro";
 import { isZitadelEnabled } from "../utils/env";
 import { Gravatar } from "../components/profile/gravatar/Gravatar";
-import themeConfig from '../../theme.config';
+import themeConfig from "../../theme.config";
 
-const { logo,headerMenu , darkmodeLogo } = themeConfig || {}; 
+const { logo, headerMenu, darkmodeLogo } = themeConfig || {};
 
 const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
+const userRole = Astro.cookies.get("zitadel_user_role")?.value || "";
 const email = Astro.cookies.get("zitadel_user_email");
 const userName = Astro.cookies.get("zitadel_user_name");
 ---
 
-<header class="bg-white shadow-sm border-b dark:border-gray-600 dark:bg-gray-900">
+<header
+  class="bg-white shadow-sm border-b dark:border-gray-600 dark:bg-gray-900"
+>
   <div
     class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 flex justify-between items-center sm:flex-row flex-col"
   >
     <div class="flex items-center">
-      <div class="text-lg font-bold text-gray-900 dark:text-gray-300 py-4 block dark:hidden">
+      <div
+        class="text-lg font-bold text-gray-900 dark:text-gray-300 py-4 block dark:hidden"
+      >
         <a href="/"><img src={logo} class="mr-3 h-10" alt="logo" /></a>
       </div>
-      <div class="text-lg font-bold text-gray-900 dark:text-gray-300 py-4 hidden dark:block">
+      <div
+        class="text-lg font-bold text-gray-900 dark:text-gray-300 py-4 hidden dark:block"
+      >
         <a href="/"><img src={darkmodeLogo} class="mr-3 h-10" alt="logo" /></a>
       </div>
       <nav class="lg:flex space-x-8 flex-wrap font-semibold -mb-1.5">
-        {headerMenu.map(({ label, path, requiresAuth }) => (
-          (!requiresAuth || userId) && (
-            <a href={path} data-path={path} class="menu-link py-4 inline-flex dark:text-gray-300 dark:border-gray-300">{label}</a>
+        {
+          headerMenu.map(
+            ({ label, path, requiresAuth }) =>
+              (!requiresAuth || userId) && (
+                <a
+                  href={path}
+                  data-path={path}
+                  class="menu-link py-4 inline-flex dark:text-gray-300 dark:border-gray-300"
+                >
+                  {label}
+                </a>
+              ),
           )
-        ))}
+        }
       </nav>
     </div>
-    <div class="flex items-center space-x-4 py-3"> 
+    <div class="flex items-center space-x-4 py-3">
       <PageFind />
       <!-- <div class="relative flex items-center space-x-4">
         <button
@@ -96,10 +112,8 @@ const userName = Astro.cookies.get("zitadel_user_name");
           {
             isZitadelEnabled && userId ? (
               <li>
-                <span
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >
-                 Welcome {userName?userName.value.split(" ")[0]:""}
+                <span class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                  Welcome {userName ? userName.value.split(" ")[0] : ""}
                 </span>
               </li>
             ) : (
@@ -121,6 +135,21 @@ const userName = Astro.cookies.get("zitadel_user_name");
                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Profile
+                </a>
+              </li>
+            ) : (
+              ""
+            )
+          }
+
+          {
+            isZitadelEnabled && userRole == "admin" ? (
+              <li>
+                <a
+                  href="/admin"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Administration
                 </a>
               </li>
             ) : (
@@ -152,7 +181,28 @@ const userName = Astro.cookies.get("zitadel_user_name");
           }
         </ul>
       </div>
-      <button id="toggle-theme"  class="text-muted dark:bg-gray-900 dark:text-gray-400 dark:focus:ring-gray-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 inline-flex items-center p-2.5 rounded-lg text-sm" type="button" aria-label="Toggle between Dark and Light mode" data-aw-toggle-color-scheme=""><svg class="w-6 h-6 md:h-5 md:inline-block md:w-5" data-icon="tabler:sun" height="1em" width="1em"><symbol id="ai:tabler:sun" viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></symbol><use href="#ai:tabler:sun"></use></svg></button>     
+      <button
+        id="toggle-theme"
+        class="text-muted dark:bg-gray-900 dark:text-gray-400 dark:focus:ring-gray-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 inline-flex items-center p-2.5 rounded-lg text-sm"
+        type="button"
+        aria-label="Toggle between Dark and Light mode"
+        data-aw-toggle-color-scheme=""
+        ><svg
+          class="w-6 h-6 md:h-5 md:inline-block md:w-5"
+          data-icon="tabler:sun"
+          height="1em"
+          width="1em"
+          ><symbol id="ai:tabler:sun" viewBox="0 0 24 24"
+            ><path
+              d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"></path></symbol
+          ><use href="#ai:tabler:sun"></use></svg
+        ></button
+      >
     </div>
   </div>
 </header>
