@@ -318,3 +318,18 @@ export async function verifyEmail(userId?: string): Promise<void> {
         await fetch(url, options);
     }
 }
+export async function DeleteUser(id: string): Promise<void> {
+    const url = `${ZITADEL_AUTHORITY}/v2/users/${id}`;
+    const headers = new Headers({
+        Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+        "Content-Type": "application/json",
+    });
+
+    const options = {
+        method: "DELETE",
+        headers,
+        body: JSON.stringify({}),
+    };
+
+    await fetch(url, options);
+}

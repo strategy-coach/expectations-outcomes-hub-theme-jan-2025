@@ -97,6 +97,7 @@ const UserList: React.FC = () => {
                         email: user.email || "No Email",
                         role: user.roleKeys?.[0] || "No Role",
                         status: member?.human?.email?.isVerified ? "Active" : "Inactive",
+                        "user-list-userId": user.userId
                     };
                 })
                 setUsers(mappedUsers);
