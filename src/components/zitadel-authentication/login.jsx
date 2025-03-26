@@ -40,6 +40,7 @@ const LoggedIn = ({ clientId, authority, redirectUri, postLogoutRedirectUri, org
                 const roleKeys = Object.keys(roles);
                 if (roleKeys.length > 0) {
                     setCookie("zitadel_user_roles", JSON.stringify(roleKeys));
+                    setCookie("zitadel_user_role", roleKeys[0]);
                     if (decoded["urn:zitadel:iam:user:resourceowner:id"]) {
                         setCookie("zitadel_tenant_id", decoded["urn:zitadel:iam:user:resourceowner:id"]);
                     }
