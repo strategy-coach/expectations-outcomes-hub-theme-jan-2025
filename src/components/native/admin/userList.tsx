@@ -1,6 +1,35 @@
 import React, { useEffect, useState } from "react";
 import AgGridComponent from "../../AgGrid/AgGridComponent.tsx";
 import axios from "axios";
+import z from "zod"
+
+const UserInfoSchema = z.object({
+    userId: z.string(),
+    human: z.object({
+        profile: z.object({
+            givenName: z.string(),
+            familyName: z.string(),
+            nickName: z.string(),
+            displayName: z.string(),
+            preferredLanguage: z.string(),
+        }),
+        email: z.object({
+            email: z.string().email(),
+            isEmailVerified: z.boolean(),
+        })
+    }),
+});
+
+
+const UserGrantSchema = z.object({
+    userId: z.string(),
+    displayName: z.string(),
+    email: z.string(),
+    roleKeys: z.array(z.string()),
+});
+
+export type UserApiResponse = z.infer<typeof UserInfoSchema>;
+export type UserGrantApiResponse = z.infer<typeof UserGrantSchema>;
 
 const projectId = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID;
 const token = import.meta.env.PUBLIC_ZITADEL_API_TOKEN;
@@ -43,13 +72,33 @@ const UserList: React.FC = () => {
                         },
                     }
                 );
-
-                const mappedUsers: DataItem[] = response.data.result.map((user: any) => ({
-                    "display name": `${user.displayName}`,
-                    email: user.email,
-                    role: user.roleKeys[0]
-                }));
-
+                const userConfig = {
+                    method: 'post',
+                    url: `${authority}/v2/users`,
+                    headers: {
+                        'x-zitadel-orgid': organizationId,
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    data: JSON.stringify({
+                        queries: [{ organizationIdQuery: { organizationId } }],
+                    }),
+                };
+                const responseUser = await axios.request(userConfig);
+                if (!response.data?.result || !responseUser.data?.result) {
+                    setError("No Users Found...");
+                    setLoading(false);
+                    return;
+                }
+                const mappedUsers: DataItem[] = response.data.result.map((user: UserGrantApiResponse) => {
+                    const member = responseUser.data.result.find((member: UserApiResponse) => member.userId === user.userId);
+                    return {
+                        "display name": user.displayName || "Unknown",
+                        email: user.email || "No Email",
+                        role: user.roleKeys?.[0] || "No Role",
+                        status: member?.human?.email?.isVerified ? "Active" : "Inactive",
+                    };
+                })
                 setUsers(mappedUsers);
             } catch (err) {
                 setError("No Users Found...");
