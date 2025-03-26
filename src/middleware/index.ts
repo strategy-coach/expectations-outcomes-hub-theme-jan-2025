@@ -12,7 +12,6 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
   const userRole = context.cookies.get("zitadel_user_role")?.value;
   const { pathname } = context.url;
   const splittedPath = pathname == "/" ? "/" : pathname.split("/");
-  console.log(pathname)
   if (isZitadelEnabled) {
     if (
       pathname === "/post-authorization/" ||
