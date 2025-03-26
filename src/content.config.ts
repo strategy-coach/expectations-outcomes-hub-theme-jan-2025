@@ -40,6 +40,12 @@ const baseSchema = z.object({
           category: z.string().optional(),
         })
         .optional(),
+      whatsNext: z
+        .object({
+          category: z.string().optional(),
+          order: z.number().optional(),
+        })
+        .optional(),
     })
     .optional(),
 });

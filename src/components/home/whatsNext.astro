@@ -3,8 +3,7 @@ const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
 
-
-const whatsNextTList = Object.values(newFiles)
+const whatsNextList = Object.values(newFiles)
   .filter((file) => file.frontmatter?.home?.whatsNext?.category === "whatsNext") // Filter by "skipTo" category
   .map((file) => {
     // Remove the base path '/src/content' from the file path
@@ -15,10 +14,11 @@ const whatsNextTList = Object.values(newFiles)
     
     return {
       title: file.frontmatter?.title, // Get the title
-      path: `${relativePath}` // Correct the path to be relative
+      path: `${relativePath}`, // Correct the path to be relative
+      order: file.frontmatter?.home?.whatsNext?.order || 9999 // Default large number if order is missing
     };
   })
-  .filter((file) => file.title && file.path); // Ensure title and path exist
+  .filter((file) => file.title && file.path).sort((a, b) => a.order - b.order); // Sort based on order value; // Ensure title and path exist
 
 
 ---
@@ -33,7 +33,7 @@ const whatsNextTList = Object.values(newFiles)
     </h3>
 
     <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {whatsNextTList.map((file) => {
+      {whatsNextList.map((file) => {
         return (
           <li>
             <a href={file.path} class="text-sm hover:text-black">
