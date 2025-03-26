@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import AdminSidebar from "../../layouts/AdminSidebar.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
+import ActivityLog from "../../components/home/activityLog.astro";
 ---
 
 <Layout title="Admin Dashboard">
@@ -37,7 +38,18 @@ import "astro-breadcrumbs/breadcrumbs.css";
             <h1 class="text-2xl font-semibold mt-5">
                 Welcome to Admin Dashboard
             </h1>
+            <p class="mt-3">
+                Welcome to the Admin Dashboard. Manage users, monitor activity,
+                and ensure the smooth operation of the system from this
+                centralized interface.
+            </p>
+            <div class="mt-3">
+                <ActivityLog
+                    recordsLimit={10}
+                    showViewMoreButton={true}
+                    hoursToFetch={24}
+                />
+            </div>
         </div>
     </div>
 </Layout>
-
