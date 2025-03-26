@@ -12,7 +12,7 @@
           "required": true,
           "initial": [
             {
-              "valueString": "The Alim Foundation"
+              "valueString": ""
             }
           ]
         },
@@ -23,7 +23,7 @@
           "required": true,
           "initial": [
             {
-              "valueString": "14804 First Baptist Lane, Laurel, Maryland 20707, USA"
+              "valueString": ""
             }
           ]
         },
@@ -34,7 +34,7 @@
           "required": true,
           "initial": [
             {
-              "valueString": "Alim"
+              "valueString": ""
             }
           ]
         },
@@ -45,7 +45,7 @@
           "required": true,
           "initial": [
             {
-              "valueUri": "https://www.alim.org/"
+              "valueUri": ""
             }
           ]
         },
