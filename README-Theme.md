@@ -383,6 +383,16 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 - Multiple Markdown files can be added with this configuration, and their titles will appear under the **Featured Blogs** card.
 
+### 8\. **What's Next?**
+
+- Displays a list of titles from Markdown files configured with the whatsNext frontmatter. The order of items can be also specified
+
+- ```
+  home:
+    whatsNext:
+      category: "whatsNext"
+      order: 2
+
 **Combination Frontmatter**
 ---------------------------
 
