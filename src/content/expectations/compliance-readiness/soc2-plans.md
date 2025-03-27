@@ -1,5 +1,5 @@
 ---
-title: Choose the Right Compliance Plan for Your Business
+title: CaaS Plans for Your Business
 home:
   ItGovernance:
     category: "it-governance"
