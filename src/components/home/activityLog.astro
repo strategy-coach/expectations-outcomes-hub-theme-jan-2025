@@ -75,7 +75,7 @@ const countQuery = `SELECT trace_id FROM default WHERE organizationid='${ORGANIZ
   AND str_match(url, '${host}') AND operation_name IN ('element-click', 'documentLoad')`;
 
 // Fetch total records count
-const countData = await fetchActivityLog(countQuery, recordsLimit, 1);
+const countData = await fetchActivityLog(countQuery, 100000000000000, 1);
 
 const totalActivityRecords = countData?.total ?? 0;
 const totalPages = Math.ceil(totalActivityRecords / recordPerPage);
