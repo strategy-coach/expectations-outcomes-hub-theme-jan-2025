@@ -1,6 +1,6 @@
 ---
-import { z } from 'zod';
-import moment from 'moment';
+import { z } from "zod";
+import moment from "moment";
 
 // Define schema for activity log entries
 const ActivityLogSchema = z.object({
@@ -21,14 +21,14 @@ const ActivityLogSchema = z.object({
       trace_id: z.string(),
       url: z.string(),
       username: z.string(),
-    })
+    }),
   ),
   total: z.number(),
 });
 
 // Extract Astro props
 const { recordsLimit, showViewMoreButton, hoursToFetch } = Astro.props;
-const page = Number(Astro.url.searchParams.get('page')) || 1;
+const page = Number(Astro.url.searchParams.get("page")) || 1;
 let recordPerPage = 20;
 
 // Environment variables
@@ -38,110 +38,179 @@ const OPENOBSERVE_API_TOKEN = import.meta.env.PUBLIC_OPENOBSERVE_TOKEN;
 
 // Define time range for data retrieval
 const currentTimeMicroseconds = Date.now() * 1000;
-const startTimeMicroseconds = currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000;
+const startTimeMicroseconds =
+  currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000;
 const offset = (page - 1) * recordPerPage;
-
+const host = Astro.request.headers.get("host");
 // Function to fetch data from OpenObserve
 async function fetchActivityLog(query: string, size: number, from: number) {
-  const response = await fetch(`${OPENOBSERVE_API_URL}api/default/_search?type=traces`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${btoa(OPENOBSERVE_API_TOKEN)}`,
-      'Content-Type': 'application/json',
+  const response = await fetch(
+    `${OPENOBSERVE_API_URL}api/default/_search?type=traces`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${btoa(OPENOBSERVE_API_TOKEN)}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: {
+          sql: btoa(query),
+          start_time: startTimeMicroseconds,
+          end_time: currentTimeMicroseconds,
+          from,
+          size,
+        },
+        encoding: "base64",
+      }),
     },
-    body: JSON.stringify({
-      query: { sql: btoa(query), start_time: startTimeMicroseconds, end_time: currentTimeMicroseconds, from, size },
-      encoding: 'base64',
-    }),
-  });
+  );
   return response.json();
 }
 
 // Queries
 const activityLogQuery = `SELECT * FROM default WHERE organizationid='${ORGANIZATION_ID}' 
-  AND operation_name IN ('element-click', 'documentLoad')`;
+ AND str_match(url, '${host}') AND operation_name IN ('element-click', 'documentLoad')`;
 
 const countQuery = `SELECT trace_id FROM default WHERE organizationid='${ORGANIZATION_ID}' 
-  AND operation_name IN ('element-click', 'documentLoad')`;
+  AND str_match(url, '${host}') AND operation_name IN ('element-click', 'documentLoad')`;
 
 // Fetch total records count
-const countData = await fetchActivityLog(countQuery, recordsLimit,1 );
+const countData = await fetchActivityLog(countQuery, recordsLimit, 1);
 
 const totalActivityRecords = countData?.total ?? 0;
 const totalPages = Math.ceil(totalActivityRecords / recordPerPage);
 
 // Fetch activity log data
-recordPerPage = recordsLimit < recordPerPage ?recordsLimit:recordPerPage;
-const responseData = await fetchActivityLog(activityLogQuery, recordPerPage, offset);
+recordPerPage = recordsLimit < recordPerPage ? recordsLimit : recordPerPage;
+const responseData = await fetchActivityLog(
+  activityLogQuery,
+  recordPerPage,
+  offset,
+);
 const parsedActivityData = ActivityLogSchema.safeParse(responseData);
-const activityLogEntries = parsedActivityData.success ? parsedActivityData.data.hits : [];
+const activityLogEntries = parsedActivityData.success
+  ? parsedActivityData.data.hits
+  : [];
 
 // Function to parse activity details
 const getActivityDescription = (details: string) => {
   try {
     const parsed = JSON.parse(details);
-    return parsed.title ? `clicked on '${parsed.title}'` : `performed an action`;
+    return parsed.title
+      ? `clicked on '${parsed.title}'`
+      : `performed an action`;
   } catch {
     return `performed an action`;
   }
 };
 
 const getIconAndColor = (operation: string) => {
-  return operation === 'element-click'
-    ? { icon: '🔘', color: 'bg-emerald-500' }
-    : { icon: '📄', color: 'bg-blue-500' };
+  return operation === "element-click"
+    ? { icon: "🔘", color: "bg-emerald-500" }
+    : { icon: "📄", color: "bg-blue-500" };
 };
 
-const getActivityMessage = (log: { _timestamp: number; details: string; duration: number; email: string; end_time: number; operation_name: string; pagetitle: string; service_name: string; start_time: number; timestamp: string; title: string; trace_id: string; url: string; username: string; organizationname?: string | undefined; }) => {
-  return log.operation_name === 'element-click'
+const getActivityMessage = (log: {
+  _timestamp: number;
+  details: string;
+  duration: number;
+  email: string;
+  end_time: number;
+  operation_name: string;
+  pagetitle: string;
+  service_name: string;
+  start_time: number;
+  timestamp: string;
+  title: string;
+  trace_id: string;
+  url: string;
+  username: string;
+  organizationname?: string | undefined;
+}) => {
+  return log.operation_name === "element-click"
     ? `${log.username} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
     : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
 };
 
-const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
+const getRelativeTime = (timestamp: string) =>
+  moment(Number(timestamp)).fromNow();
 ---
 
 <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-  <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
+  <h3
+    class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center"
+  >
     <div class="flex gap-2 items-center">
-      <img src="/assets/images/fi-rr-calendar.svg" class="w-6 h-6" alt="Calendar Icon" />
+      <img
+        src="/assets/images/fi-rr-calendar.svg"
+        class="w-6 h-6"
+        alt="Calendar Icon"
+      />
       <span>Activity Log</span>
     </div>
-    {showViewMoreButton && (
-      <a href="/activity">
-        <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white">
-          View More
-        </button>
-      </a>
-    )}
+    {
+      showViewMoreButton && (
+        <a href="/activity">
+          <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white">
+            View More
+          </button>
+        </a>
+      )
+    }
   </h3>
 
-  {activityLogEntries.length > 0 ? (
-    <ul role="feed" class="relative flex flex-col gap-6 py-6 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed">
-      {activityLogEntries.map((log) => {
-        const { icon, color } = getIconAndColor(log.operation_name);
-        return (
-          <li role="article" class="relative pl-8">
-            <span class={`absolute left-0 z-10 flex items-center justify-center w-8 h-8 text-white -translate-x-1/2 rounded-full ring-2 ring-white ${color}`}>
-              {icon}
-            </span>
-            <div class="flex flex-col flex-1 gap-0">
-              <h4 class="text-sm font-medium dark:text-gray-300" set:html={getActivityMessage(log)}></h4>
-              <p class="text-xs dark:text-gray-300 ">{getRelativeTime(log.timestamp)}</p>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
-  ) : (
-    <p class="text-gray-600">No activity log available.</p>
-  )}
+  {
+    activityLogEntries.length > 0 ? (
+      <ul
+        role="feed"
+        class="relative flex flex-col gap-6 py-6 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed"
+      >
+        {activityLogEntries.map((log) => {
+          const { icon, color } = getIconAndColor(log.operation_name);
+          return (
+            <li role="article" class="relative pl-8">
+              <span
+                class={`absolute left-0 z-10 flex items-center justify-center w-8 h-8 text-white -translate-x-1/2 rounded-full ring-2 ring-white ${color}`}
+              >
+                {icon}
+              </span>
+              <div class="flex flex-col flex-1 gap-0">
+                <h4
+                  class="text-sm font-medium dark:text-gray-300"
+                  set:html={getActivityMessage(log)}
+                />
+                <p class="text-xs dark:text-gray-300 ">
+                  {getRelativeTime(log.timestamp)}
+                </p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    ) : (
+      <p class="text-gray-600">No activity log available.</p>
+    )
+  }
 
-  {totalActivityRecords > recordPerPage && (
-    <div class="flex justify-between items-center mt-4">
-      <a href={`?page=${page - 1}`} class={`px-4 py-2 bg-gray-200 rounded-md ${page === 1 ? 'opacity-50 pointer-events-none' : ''}`}>Previous</a>
-      <span class="text-gray-700">Page {page} of {totalPages}</span>
-      <a href={`?page=${page + 1}`} class={`px-4 py-2 bg-gray-200 rounded-md ${page >= totalPages ? 'opacity-50 pointer-events-none' : ''}`}>Next</a>
-    </div>
-  )}
+  {
+    totalActivityRecords > recordPerPage && (
+      <div class="flex justify-between items-center mt-4">
+        <a
+          href={`?page=${page - 1}`}
+          class={`px-4 py-2 bg-gray-200 rounded-md ${page === 1 ? "opacity-50 pointer-events-none" : ""}`}
+        >
+          Previous
+        </a>
+        <span class="text-gray-700">
+          Page {page} of {totalPages}
+        </span>
+        <a
+          href={`?page=${page + 1}`}
+          class={`px-4 py-2 bg-gray-200 rounded-md ${page >= totalPages ? "opacity-50 pointer-events-none" : ""}`}
+        >
+          Next
+        </a>
+      </div>
+    )
+  }
 </div>
