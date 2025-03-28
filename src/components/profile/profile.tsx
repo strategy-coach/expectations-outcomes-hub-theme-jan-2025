@@ -80,6 +80,7 @@ const Profile: React.FC = () => {
                             <div className="col-span-1 md:col-span-6 flex items-end justify-end">
                                 <button
                                     onClick={handleEditProfile}
+                                    title="Edit Profile"
                                     className="mt-4 bg-blue-700 text-white py-2 px-4 h-10 rounded flex"
                                 >
                                     <svg
@@ -271,6 +272,7 @@ const Profile: React.FC = () => {
                                     <div className="col-span-1 md:col-span-4 flex">
                                         <button
                                             type="button"
+                                            title="Sync Data Models and Zitadel Users"
                                             onClick={() => handleSync("models-users")}
                                             disabled={loading !== null}
                                             className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 
@@ -290,6 +292,7 @@ const Profile: React.FC = () => {
                                     <div className="col-span-1 md:col-span-4 flex">
                                         <button
                                             type="button"
+                                            title="Sync Zitadel Users"
                                             onClick={() => handleSync("users-only")}
                                             disabled={loading !== null}
                                             className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 

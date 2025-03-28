@@ -748,7 +748,7 @@ const Comment: React.FC<
                                                             <button
                                                                 onClick={() =>
                                                                     editComment(item.logId, item.userId ?? "")
-                                                                }
+                                                                } title="Edit Comment"
                                                             >
                                                                 <svg
                                                                     xmlns="http://www.w3.org/2000/svg"
@@ -846,6 +846,7 @@ const Comment: React.FC<
                                     {
                                         <button
                                             className="bg-gray-100 inline-flex px-3 py-1 rounded-xl text-sm text-gray-800"
+                                            title="Load More"
                                             onClick={() => {
                                                 setLoadMore();
                                             }}

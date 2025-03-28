@@ -305,6 +305,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                     )}
                                     <button
                                         type="button"
+                                        title="Send Code"
                                         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                                         onClick={() => {
                                             void sendCode();
@@ -450,6 +451,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                     </div>
                                     <button
                                         type="button"
+                                        title="Submit"
                                         className="px-4 py-2 bg-blue-600 w-full text-white rounded-lg hover:bg-blue-700"
                                         onClick={() => void handleChangePassword()}
                                         disabled={isSubmitting}

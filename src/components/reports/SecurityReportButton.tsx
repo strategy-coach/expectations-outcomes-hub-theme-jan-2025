@@ -10,7 +10,7 @@ const SecurityReportButton: React.FC = () => {
   };
 
   return (
-    <button className="font-semibold text-[#028db7]" onClick={openReport}>
+    <button className="font-semibold text-[#028db7]" onClick={openReport} title="Read the Penetration Testing Report">
       Read the Penetration Testing Report
     </button>
   );

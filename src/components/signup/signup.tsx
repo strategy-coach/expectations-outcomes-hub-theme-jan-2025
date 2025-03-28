@@ -279,6 +279,7 @@ const UserSignUp: React.FC = () => {
                     <div className="flex justify-end">
                         <button
                             type="submit"
+                            title="Submit"
                             className={`px-4 py-2 text-base bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition ${isSubmitting ? "bg-gray-400 cursor-not-allowed" : ""
                                 }`}
                             disabled={isSubmitting}
