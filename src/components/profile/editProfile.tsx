@@ -732,6 +732,7 @@ const EditProfile: React.FC = () => {
                     <article className="border-t dark:border-gray-600  px-6 py-6 flex gap-3 justify-end">
                         <button
                             onClick={handleCancel}
+                            title="Cancel"
                             className="bg-white text-slate-700 border border-gray-300 py-2 px-4 h-10 rounded"
                         >
                             Cancel
@@ -739,6 +740,7 @@ const EditProfile: React.FC = () => {
 
                         <button
                             onClick={handleSubmit}
+                            title="Update"
                             disabled={!isChangesMade}
                             className={`bg-blue-700 text-white border border-gray-300 py-2 px-4 h-10 rounded ${isChangesMade ? "" : "cursor-not-allowed opacity-50"
                                 }`}

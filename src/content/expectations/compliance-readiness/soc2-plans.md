@@ -21,7 +21,7 @@ enableEditButton: true
         <div class="block w-full p-5 border-gray-200 rounded-lg bg-gray-200 dark:border-gray-600 dark:bg-gray-700"><h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">Not Sure Which Plan is Right for You?</h3>
                   <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">If you're unsure which plan best fits your business needs, our sales team is here to help guide you in selecting the perfect compliance solution. Contact us today!</p>
           <a href="https://opsfolio.com/contact" target="_new">
-          <button class="block w-full px-6 py-2 font-medium text-l text-center text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-gray-100 hover:bg-gray-100 hover:text-gray-700 dark: dark:hover:bg-gray-700 focus:outline-none focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700">Contact Sales</button></a></div>
+          <button class="block w-full px-6 py-2 font-medium text-l text-center text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-gray-100 hover:bg-gray-100 hover:text-gray-700 dark: dark:hover:bg-gray-700 focus:outline-none focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700" title="Contact Sales">Contact Sales</button></a></div>
       </div>
       <div class="mb-8 md:mb-0">
         <span
@@ -80,21 +80,21 @@ existing compliance structure.
       <div class="mb-8 md:mb-0">
         <a href="/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0" title="Select Essentials"
         >
           Select Essentials</button></a>
       </div>
       <div class="mb-8 md:mb-0">
         <a href="/expectations/questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-purple-700 dark:bg-purple-600 hover:bg-purple-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 dark:hover:bg-purple-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-purple-700 dark:bg-purple-600 hover:bg-purple-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 dark:hover:bg-purple-700 md:mr-5 md:mb-0" title="Select Flex"
         >
           Select Flex</button></a>
       </div>
       <div class="mb-3 md:mb-0">
         <a href="/expectations/questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-pink-700 dark:bg-pink-600 hover:bg-pink-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-pink-300 dark:hover:bg-pink-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-pink-700 dark:bg-pink-600 hover:bg-pink-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-pink-300 dark:hover:bg-pink-700 md:mr-5 md:mb-0" title="Select Enterprise"
         >
           Select Enterprise</button></a>
       </div>
@@ -159,21 +159,21 @@ existing compliance structure.
       <div class="mb-8 md:mb-0">
         <a href="/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-blue-700 dark:bg-blue-600 hover:bg-blue-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:hover:bg-blue-700 md:mr-5 md:mb-0" title="Select Essentials"
         >
           Select Essentials</button></a>
       </div>
       <div class="mb-8 md:mb-0">
         <a href="/expectations/questionnaire/plan-2/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-purple-700 dark:bg-purple-600 hover:bg-purple-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 dark:hover:bg-purple-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-purple-700 dark:bg-purple-600 hover:bg-purple-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-300 dark:hover:bg-purple-700 md:mr-5 md:mb-0" title="Select Flex"
         >
           Select Flex</button></a>
       </div>
       <div class="mb-3 md:mb-0">
         <a href="/expectations/questionnaire/plan-3/general-information-evidence-collection.lhc-form.json/">
         <button
-          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-pink-700 dark:bg-pink-600 hover:bg-pink-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-pink-300 dark:hover:bg-pink-700 md:mr-5 md:mb-0"
+          class="items-center justify-center w-full px-6 py-2 mb-3 text-base font-medium text-center text-white bg-pink-700 dark:bg-pink-600 hover:bg-pink-800 rounded-lg focus:outline-none focus:ring-4 focus:ring-pink-300 dark:hover:bg-pink-700 md:mr-5 md:mb-0" title="Select Enterprise"
         >
           Select Enterprise</button></a>
       </div>

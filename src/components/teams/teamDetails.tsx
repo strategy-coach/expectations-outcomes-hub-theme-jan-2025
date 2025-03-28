@@ -71,6 +71,7 @@ const TeamDetails = () => {
                         className={`flex items-center font-semibold py-2 px-4 rounded-lg shadow-md border transition 
                 ${gridView ? "bg-slate-200 text-slate-900 border-slate-400" : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100 active:bg-slate-200"}`}
                         onClick={() => setGridView(true)}
+                        title="Grid View"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 mr-2">
                             <path fillRule="evenodd" d="M15 11a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6ZM7.25 7.5a.5.5 0 0 0-.5-.5H3a.5.5 0 0 0-.5.5V8a.5.5 0 0 0 .5.5h3.75a.5.5 0 0 0 .5-.5v-.5Zm1.5 3a.5.5 0 0 1 .5-.5H13a.5.5 0 0 1 .5.5v.5a.5.5 0 0 1-.5.5H9.25a.5.5 0 0 1-.5-.5v-.5ZM13.5 8v-.5A.5.5 0 0 0 13 7H9.25a.5.5 0 0 0-.5.5V8a.5.5 0 0 0 .5.5H13a.5.5 0 0 0 .5-.5Zm-6.75 3.5a.5.5 0 0 0 .5-.5v-.5a.5.5 0 0 0-.5-.5H3a.5.5 0 0 0-.5.5v.5a.5.5 0 0 0 .5.5h3.75Z" clipRule="evenodd" />
@@ -82,6 +83,7 @@ const TeamDetails = () => {
                         className={`flex items-center font-semibold py-2 px-4 rounded-lg shadow-md border transition 
                 ${!gridView ? "bg-slate-200 text-slate-900 border-slate-400" : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100 active:bg-slate-200"}`}
                         onClick={() => setGridView(false)}
+                        title="List View"
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 mr-2">
                             <path d="M2 4a2 2 0 0 1 2-2h8a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2ZM2 9.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 9.25ZM2.75 12.5a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H2.75Z" />

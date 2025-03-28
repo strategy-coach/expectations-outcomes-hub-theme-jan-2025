@@ -13,7 +13,7 @@ const CheckLogin = () => {
     const auth = useAuth();
     return auth?.userData ? (
         <div>
-            <button style={{ display: "none" }} onClick={() => auth.signOut()}>
+            <button style={{ display: "none" }} title="Logout" onClick={() => auth.signOut()}>
                 Logout
             </button>
         </div>

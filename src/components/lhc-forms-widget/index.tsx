@@ -83,6 +83,7 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, isUpdat
                     <div className="ms-3 text-sm font-medium">{notification.message}</div>
                     <button
                         type="button"
+                        title="Close"
                         onClick={() => setNotification({ show: false, color: "", message: "" })}
                         className={`ms-auto bg-${notification.color}-50 text-${notification.color}-500 rounded-lg p-1.5 hover:bg-${notification.color}-200 dark:bg-gray-800 dark:hover:bg-gray-700`}
                         aria-label="Close"
@@ -122,7 +123,7 @@ const LHCFormsWidget: React.FC<LHCFormsWidgetProps> = ({ data, fileName, isUpdat
 
 
             <div className="w-full text-center">
-                <button onClick={getLHCFormData} type="button" disabled={showLoader} className="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                <button onClick={getLHCFormData} title="LHC Form" type="button" disabled={showLoader} className="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                     {isUpdate ? 'Update' : 'Submit'}
                 </button>
             </div>
