@@ -179,7 +179,9 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 {["all", "element-click", "documentLoad"].map((filter) => (
                     <button
                         key={filter}
-                        className={`px-4 py-2 ${currentFilter === filter ? "bg-blue-500 text-white" : "bg-gray-200"
+                        className={`px-4 py-2 ${currentFilter === filter
+                            ? "bg-blue-500 text-white"
+                            : "filter-btn bg-gray-200 hover:text-white hover:bg-blue-500"
                             }`}
                         onClick={() => {
                             setCurrentFilter(filter);
