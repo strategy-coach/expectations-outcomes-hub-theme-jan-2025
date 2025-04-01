@@ -591,6 +591,14 @@ a h3 {
   color: #d1d5db!important;
 }
 
+.dark .filter-btn {
+  color:#000 !important;
+}
+
+.dark .filter-btn:hover {
+  color:#fff !important;
+}
+
 /* lhc-forms */
 #lhc-form-container {
   color: #000;

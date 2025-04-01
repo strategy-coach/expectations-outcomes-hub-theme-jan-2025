@@ -128,7 +128,7 @@ export type Organization = z.infer<typeof OrganizationSchema>;
 /**
  * Constants for data mapping.
  */
-const organizationRoleTypes = [{ organization_role_type_id: 1, code: "ADMIN", value: "admin" }];
+const organizationRoleTypes = [{ organization_role_type_id: 1, code: "ADMIN", value: "admin" }, { organization_role_type_id: 2, code: "USER", value: "user" }];
 
 const contactTypes = [
     { contact_type_id: 1, code: "HOME_ADDRESS", value: "Home Address" },
