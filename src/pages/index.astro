@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { buildMenuTree } from "../utils/helper.astro";
-import MyContent from "../content/progress/activity-logs/activity-log.md";
 import LatestUpdates from "../components/LatestUpdates.astro";
 import themeConfig from "../../theme.config";
 import SkipTo from "../components/home/skipTo.astro";
@@ -11,25 +9,24 @@ import LatestBlogs from "../components/home/blogLatest.astro";
 import Accomplishments from "../components/home/accomplishments.astro";
 import ItGovernance from "../components/home/itGovernance.astro";
 import Teams from "../components/teams/teams";
-import ActivityLog from "../components/home/activityLog.astro";
+import ActivityLog from "../components/activity-log/activityLog";
 import WhatsNext from "../components/home/whatsNext.astro";
 
 const trackers = themeConfig.trackers;
 const { title, description, activeProject } = themeConfig || {};
-const files = import.meta.glob("/src/content/progress/**/*.{md,mdx}", {
-  eager: true,
-});
-const dirName = "progress";
-const menuTree = buildMenuTree(files, dirName);
 ---
 
 <Layout title="Expectations and Outcomes Hub Theme">
   <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
     <div class="border-b border-slate-300 dark:border-gray-600 pb-3">
-      <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 dark:text-gray-300 mt-2">
+      <h1
+        class="text-2xl lg:text-4xl font-bold text-slate-700 dark:text-gray-300 mt-2"
+      >
         Welcome to {title}
       </h1>
-      <p class="text-slate-500 dark:text-gray-300 mt-1 font-semibold">{description}</p>
+      <p class="text-slate-500 dark:text-gray-300 mt-1 font-semibold">
+        {description}
+      </p>
       <p class="text-slate-500 dark:text-gray-300 mt-3 font-semibold">
         New to the Hub? <a target="_blank" href="/presentation">Click here</a> to
         view the overview presentation
@@ -37,9 +34,13 @@ const menuTree = buildMenuTree(files, dirName);
     </div>
 
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-6">
-      <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+      <div
+        class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4"
+      >
         <span class="font-semibold">Active Project: </span>{activeProject}
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 mt-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 mt-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span
@@ -54,13 +55,18 @@ const menuTree = buildMenuTree(files, dirName);
           </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-1.5 font-semibold flex-wrap">
-              <span class="bg-gray-100 dark:bg-gray-700 text-sm px-2 py-1 rounded">Q1 2025</span>
+              <span
+                class="bg-gray-100 dark:bg-gray-700 text-sm px-2 py-1 rounded"
+                >Q1 2025</span
+              >
               <span class="text-sm px-2 py-1 rounded">Q2 2025</span>
             </div>
           </div>
         </aside>
 
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span
@@ -86,7 +92,9 @@ const menuTree = buildMenuTree(files, dirName);
           </div>
         </aside>
 
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span
@@ -111,7 +119,9 @@ const menuTree = buildMenuTree(files, dirName);
           </div>
         </aside>
 
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span
@@ -142,7 +152,9 @@ const menuTree = buildMenuTree(files, dirName);
           </div>
         </aside>
 
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <a href="/team">
               <div class="flex gap-2.5 items-center text-sm">
@@ -164,7 +176,9 @@ const menuTree = buildMenuTree(files, dirName);
           </div>
         </aside>
 
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span
@@ -179,12 +193,17 @@ const menuTree = buildMenuTree(files, dirName);
           </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-1.5 font-semibold flex-wrap">
-              <span class="bg-orange-100 dark:bg-gray-700 text-sm px-2 py-1 rounded">P1</span>
+              <span
+                class="bg-orange-100 dark:bg-gray-700 text-sm px-2 py-1 rounded"
+                >P1</span
+              >
             </div>
           </div>
         </aside>
 
-        <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
           <div class="col-span-12 md:col-span-4">
             <div class="flex gap-2.5 items-center text-sm">
               <span
@@ -201,11 +220,9 @@ const menuTree = buildMenuTree(files, dirName);
         </aside>
       </div>
       <ItGovernance />
-      
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
-      
       <SkipTo />
 
       <KeyResources />
@@ -247,8 +264,12 @@ const menuTree = buildMenuTree(files, dirName);
       <WhatsNext />
       <LatestBlogs />
       <Accomplishments showViewMoreButton={true} />
-      <ActivityLog recordsLimit={5} showViewMoreButton={true} hoursToFetch={1}/>
-      
+      <ActivityLog
+        recordsLimit={5}
+        showViewMoreButton={true}
+        hoursToFetch={1}
+        client:only="react"
+      />
     </section>
   </main>
 </Layout>

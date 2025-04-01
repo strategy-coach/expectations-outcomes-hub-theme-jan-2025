@@ -1,8 +1,13 @@
 ---
-import ActivityLog from '../../components/home/activityLog.astro';
-import Layout from '../../layouts/Layout.astro';
-
+import ActivityLog from "../../components/activity-log/activityLog";
+import Layout from "../../layouts/Layout.astro";
 ---
+
 <Layout title="Activity Log">
-	<ActivityLog recordsLimit={100} hoursToFetch={48} />
+	<ActivityLog
+		recordsLimit={100}
+		showViewMoreButton={false}
+		hoursToFetch={48}
+		client:only="react"
+	/>
 </Layout>
