@@ -404,7 +404,6 @@ Each markdown (.md) file must include the following attributes in its frontmatte
 - ```
 title: "Complete Questionnaires"
 summary: "Customer: Fill the SOC2 questionnaire - Control Environment Evidence Collection Form"
-date: "2025-04-01"
 home:
   pendingItems:
     category: "pendingItems"
