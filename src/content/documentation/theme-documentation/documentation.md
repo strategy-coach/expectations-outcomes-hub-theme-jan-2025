@@ -390,13 +390,52 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 ### 8\. **What's Next?**
 
-- Displays a list of titles from Markdown files configured with the whatsNext frontmatter. The order of items can be also specified
+This widget displays a list of files from the frontmatter where the pendingItems attribute is set. It provides a structured way to highlight important next steps for users.
+
+Features
+
+- Lists files with the pendingItems attribute in the frontmatter.
+
+- Displays the summary attribute as the title in the UI.
+
+- Supports redirecting files to an external .lhc-form.json path.
+
+- Allows files to be hidden from direct navigation by setting draft: true.
+
+Frontmatter Configuration
+
+Each markdown (.md) file must include the following attributes in its frontmatter to be processed by the widget:
 
 - ```
-  home:
-    whatsNext:
-      category: "whatsNext"
-      order: 2
+title: "Complete Questionnaires"
+summary: "Customer: Fill the SOC2 questionnaire - Control Environment Evidence Collection Form"
+date: "2025-04-01"
+home:
+  pendingItems:
+    category: "pendingItems"
+    order: 4
+redirect: "/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/"
+draft: true
+
+### Handling Redirects
+
+To support redirections, ensure that the redirect frontmatter is passed in slug.astro where the layout is called:
+
+```
+<Layout redirect={ entry.data.redirect }>
+```
+
+### Usage
+
+- Create a new Markdown file in the content directory.
+
+- Set whatsNext under home in the frontmatter.
+
+- Add a summary to describe the item in the UI.
+
+- If redirection is needed, specify the redirect path and set draft: true.
+
+- Ensure the layout properly handles the redirect attribute when rendering the page.
 
 **Combination Frontmatter**
 ---------------------------
