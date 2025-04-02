@@ -87,7 +87,7 @@ if (isLform) {
 }
 ---
 
-<Layout title={isLform ? title : entry.data.title} enableEditButton={isLform ? false : entry.data.enableEditButton} >
+<Layout title={isLform ? title : entry.data.title} redirect={isLform ? "" : entry.data.redirect} enableEditButton={isLform ? false : entry.data.enableEditButton} >
   <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs"

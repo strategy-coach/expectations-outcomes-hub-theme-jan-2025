@@ -8,6 +8,8 @@ const baseSchema = z.object({
   description: z.string().optional(),
   discussionsEnabled: z.boolean().optional().default(false),
   enableEditButton: z.boolean().optional().default(false),
+  redirect: z.string().optional(),
+  summary: z.string().optional(),
   home: z
     .object({
       skipTo: z
@@ -41,6 +43,12 @@ const baseSchema = z.object({
         })
         .optional(),
       whatsNext: z
+        .object({
+          category: z.string().optional(),
+          order: z.number().optional(),
+        })
+        .optional(),
+      pendingItems: z
         .object({
           category: z.string().optional(),
           order: z.number().optional(),

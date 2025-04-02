@@ -43,6 +43,9 @@ export function buildMenuTree(files, dirName, sorting, sortOrder) {
         // Access the frontmatter from the file module
         const fileModule = files[path];
         const frontmatter = fileModule?.frontmatter || {};
+        if (frontmatter.draft) {
+          return;
+        }
         const title =
           extractTitle(frontmatter) ||
           formatName(part.replace(/\.(md|mdx|json|yml)$/, "")); // Use title or formatted file name
