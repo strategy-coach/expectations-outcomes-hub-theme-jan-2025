@@ -10,7 +10,7 @@ import Accomplishments from "../components/home/accomplishments.astro";
 import ItGovernance from "../components/home/itGovernance.astro";
 import Teams from "../components/teams/teams";
 import ActivityLog from "../components/activity-log/activityLog";
-import WhatsNext from "../components/home/whatsNext.astro";
+import PendingItems from "../components/home/pendingItems.astro";
 
 const trackers = themeConfig.trackers;
 const { title, description, activeProject } = themeConfig || {};
@@ -219,13 +219,16 @@ const { title, description, activeProject } = themeConfig || {};
           <div class="col-span-12 md:col-span-8"></div>
         </aside>
       </div>
-      <ItGovernance />
+      <PendingItems />
+
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
       <SkipTo />
 
       <KeyResources />
+      <ItGovernance />
+
       <LatestUpdates />
 
       {
@@ -261,7 +264,6 @@ const { title, description, activeProject } = themeConfig || {};
       }
 
       <MeetingMinutes />
-      <WhatsNext />
       <LatestBlogs />
       <Accomplishments showViewMoreButton={true} />
       <ActivityLog

@@ -6,11 +6,13 @@ import themeConfig from "../../theme.config";
 interface Props {
   title: string;
   enableEditButton?: boolean;
+  redirect?: string;
 }
 
 const { title } = Astro.props;
 const { baseHyperLinkColor } = themeConfig || {};
 const { enableEditButton } = Astro.props;
+const { redirect } = Astro.props;
 
 const enableOpenObserve =
   import.meta.env.ENABLE_OPEN_OBSERVE !== undefined
@@ -48,6 +50,9 @@ const enableSupportAndFeedback =
 <!doctype html>
 <html lang="en" style={`--hyperlink-color: ${baseHyperLinkColor || "#007BFF"}`}>
   <head>
+    {redirect && (
+      <meta http-equiv="refresh" content={`0; url=${redirect}`} />
+    )}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
