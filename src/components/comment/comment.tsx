@@ -203,7 +203,7 @@ const Comment: React.FC<
             };
 
             fetchTeam();
-        }, [comment]);
+        }, []);
 
         const highlightUsersInComment = (text: string): string => {
 
@@ -359,40 +359,20 @@ const Comment: React.FC<
                         const mentionedMembers = members
                             ?.filter(member => comment.includes(`@${member.displayName} `)).map(member => member.email);
                         const allMembers = members?.map(member => member.email);
-                        if (notificationEnableForAllUsers == true) {
+                        const recipients = notificationEnableForAllUsers == "true" ? allMembers : mentionedMembers;
+
+                        if (recipients && recipients?.length > 0) {
                             const payload = {
                                 commentContent: comment,
                                 commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
                                 commenterName: userName,
                                 date: new Date().toString(),
                                 organizationName: organization
-
                             };
-                            await novuApiCall(
-                                commentNotificationTemplate,
-                                payload,
-                                adminEmail,
-                                allMembers
-                            )
-                        } else {
-                            if (mentionedMembers && mentionedMembers?.length > 0) {
-                                const payload = {
-                                    commentContent: comment,
-                                    commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
-                                    commenterName: userName,
-                                    date: new Date().toString(),
-                                    organizationName: organization
 
-                                };
-                                await novuApiCall(
-                                    commentNotificationTemplate,
-                                    payload,
-                                    adminEmail,
-                                    mentionedMembers
-                                );
-                            }
+                            await novuApiCall(commentNotificationTemplate, payload, adminEmail, recipients);
                         }
-                        setIsSubmitting(false)
+
                         setComment("");
                         setNotification({
                             show: false,
@@ -401,6 +381,7 @@ const Comment: React.FC<
                         });
                         const currentWindow: Window = window;
                         currentWindow.location.reload();
+
                     } catch (error) {
                         console.error(error);
                     }
@@ -426,28 +407,26 @@ const Comment: React.FC<
                             throw new Error("Failed to edit comment");
                         }
                         const mentionedMembers = members
-                            ?.filter(member => comment.includes(`@${member.displayName} `))
-                            .map(member => member.email);
-                        if (mentionedMembers && mentionedMembers.length > 0) {
-                            if (mentionedMembers.length > 0) {
-                                const payload = {
-                                    commentContent: comment,
-                                    commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
-                                    commenterName: userName
-                                };
-                                await novuApiCall(
-                                    "eoh-comment-notification",
-                                    payload,
-                                    adminEmail,
-                                    mentionedMembers
-                                );
-                            }
+                            ?.filter(member => comment.includes(`@${member.displayName} `)).map(member => member.email);
+                        const allMembers = members?.map(member => member.email);
+                        const recipients = notificationEnableForAllUsers == "true" ? allMembers : mentionedMembers;
+
+                        if (recipients && recipients?.length > 0) {
+                            const payload = {
+                                commentContent: comment,
+                                commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Edited Comment</a>`,
+                                commenterName: userName,
+                                date: new Date().toString(),
+                                organizationName: organization
+                            };
+
+                            await novuApiCall("edited-comment-notification", payload, adminEmail, recipients);
                         }
-                        setIsSubmitting(false)
                         setComment("");
                         setSubmitOption("add");
                         const currentWindow: Window = window;
                         currentWindow.location.reload();
+
                     } catch (error) {
                         console.error(error);
                     }

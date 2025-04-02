@@ -1085,11 +1085,13 @@ Ensure that the following environment variables are set in your .env file:
 - PUBLIC_RSSD_DB – Specifies the path to the resource surveillance database.
 - PUBLIC_PRODUCTION_URL – Defines the production URL of the site.
 - PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE – Represents the template name used for comment notifications.
+- PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS - If set to "true," the comment notification will be sent to all members; otherwise, it will be sent only to the mentioned members.
 
 ```
 PUBLIC_RSSD_DB=src/content/db/rssd/resource-surveillance.sqlite.db
 PUBLIC_PRODUCTION_URL="https://demo.hub.opsfolio.com"
 PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE="comment-template"
+PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS=false
 
 ```
 
