@@ -15,7 +15,8 @@ const whatsNextList = Object.values(newFiles)
     return {
       title: file.frontmatter?.title, // Get the title
       path: `${relativePath}`, // Correct the path to be relative
-      order: file.frontmatter?.home?.whatsNext?.order || 9999 // Default large number if order is missing
+      order: file.frontmatter?.home?.whatsNext?.order || 9999, // Default large number if order is missing
+      summary: file.frontmatter?.summary || "", // Default empty string if summary is missing
     };
   })
   .filter((file) => file.title && file.path).sort((a, b) => a.order - b.order); // Sort based on order value; // Ensure title and path exist
@@ -37,7 +38,7 @@ const whatsNextList = Object.values(newFiles)
         return (
           <li>
             <a href={file.path} class="text-sm hover:text-black">
-              {file.title}
+              {file.summary}
             </a>
           </li>
         );

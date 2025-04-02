@@ -385,11 +385,11 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 ### 8\. **What's Next?**
 
-This widget displays a list of files from the frontmatter where the pendingItems attribute is set. It provides a structured way to highlight important next steps for users.
+This widget displays a list of files from the frontmatter where the whatsNext attribute is set. It provides a structured way to highlight important next steps for users.
 
 Features
 
-- Lists files with the pendingItems attribute in the frontmatter.
+- Lists files with the whatsNext attribute in the frontmatter.
 
 - Displays the summary attribute as the title in the UI.
 
@@ -405,8 +405,8 @@ Each markdown (.md) file must include the following attributes in its frontmatte
 title: "Complete Questionnaires"
 summary: "Customer: Fill the SOC2 questionnaire - Control Environment Evidence Collection Form"
 home:
-  pendingItems:
-    category: "pendingItems"
+  whatsNext:
+    category: "whatsNext"
     order: 4
 redirect: "/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/"
 draft: true
