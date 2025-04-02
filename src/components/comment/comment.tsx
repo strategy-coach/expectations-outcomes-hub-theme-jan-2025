@@ -6,6 +6,9 @@ import axios from "axios"
 import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
 import { zitadelConfig } from "../../utils/env.ts"
 import novuApiCall from "./novu-mail-api/index.tsx";
+import themeConfig from "../../../theme.config";
+
+const { organization } = themeConfig || {};
 
 const projectId = zitadelConfig.projectId;
 const token = zitadelConfig.zitalAPIToken;
@@ -14,6 +17,7 @@ const authority = zitadelConfig.authority;
 const productionUrl = import.meta.env.PUBLIC_PRODUCTION_URL
 const adminEmail = import.meta.env.public_novu_contactus_admin_email
 const commentNotificationTemplate = import.meta.env.PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE
+const notificationEnableForAllUsers = import.meta.env.PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS
 
 interface MemberType {
     displayName: string;
@@ -97,6 +101,7 @@ const Comment: React.FC<
         const [editLogId, setEditLogId] = useState<number>();
         const [filteredMembers, setFilteredMembers] = useState<MemberType[]>();
         const [members, setMembers] = useState<MemberType[]>()
+        const [isSubmitting, setIsSubmitting] = useState<boolean>()
         const [showUser, setShowUser] = useState(false);
         const userRole = Cookie.get("user_roles");
         const [notification, setNotification] = useState({
@@ -333,6 +338,7 @@ const Comment: React.FC<
                 });
                 if (submitOption == "add") {
                     try {
+                        setIsSubmitting(true)
                         const postBody = {
                             type: "addComment",
                             description: comment,
@@ -351,14 +357,32 @@ const Comment: React.FC<
                             throw new Error("Failed to add comment");
                         }
                         const mentionedMembers = members
-                            ?.filter(member => comment.includes(`@${member.displayName} `))
-                            .map(member => member.email);
-                        if (mentionedMembers && mentionedMembers.length > 0) {
-                            if (mentionedMembers.length > 0) {
+                            ?.filter(member => comment.includes(`@${member.displayName} `)).map(member => member.email);
+                        const allMembers = members?.map(member => member.email);
+                        if (notificationEnableForAllUsers == true) {
+                            const payload = {
+                                commentContent: comment,
+                                commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
+                                commenterName: userName,
+                                date: new Date().toString(),
+                                organizationName: organization
+
+                            };
+                            await novuApiCall(
+                                commentNotificationTemplate,
+                                payload,
+                                adminEmail,
+                                allMembers
+                            )
+                        } else {
+                            if (mentionedMembers && mentionedMembers?.length > 0) {
                                 const payload = {
                                     commentContent: comment,
                                     commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
-                                    commenterName: userName
+                                    commenterName: userName,
+                                    date: new Date().toString(),
+                                    organizationName: organization
+
                                 };
                                 await novuApiCall(
                                     commentNotificationTemplate,
@@ -368,6 +392,7 @@ const Comment: React.FC<
                                 );
                             }
                         }
+                        setIsSubmitting(false)
                         setComment("");
                         setNotification({
                             show: false,
@@ -381,6 +406,7 @@ const Comment: React.FC<
                     }
                 } else {
                     try {
+                        setIsSubmitting(true)
                         const postBody = {
                             type: "editLog",
                             description: comment,
@@ -417,6 +443,7 @@ const Comment: React.FC<
                                 );
                             }
                         }
+                        setIsSubmitting(false)
                         setComment("");
                         setSubmitOption("add");
                         const currentWindow: Window = window;
@@ -949,7 +976,34 @@ const Comment: React.FC<
                                     title="Submit Comment"
                                     className="bg-gray-700 text-white p-3 rounded-lg"
                                 >
-                                    {submitOption === "add" ? "Submit" : "Update"}
+                                    {isSubmitting ? (
+                                        <div className="flex justify-center items-center">
+                                            <svg
+                                                className="animate-spin h-5 w-5 mr-2 text-white"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <circle
+                                                    className="opacity-25"
+                                                    cx="12"
+                                                    cy="12"
+                                                    r="10"
+                                                    stroke="currentColor"
+                                                    strokeWidth="4"
+                                                ></circle>
+                                                <path
+                                                    className="opacity-75"
+                                                    fill="currentColor"
+                                                    d="M4 12a8 8 0 018-8v2a6 6 0 000 12v2a8 8 0 01-8-8z"
+                                                ></path>
+                                            </svg>
+                                            Processing...
+                                        </div>
+                                    ) : (
+                                        submitOption === "add" ? "Submit" : "Update"
+                                    )}
+
                                 </button>
                             </div>
                         </div>
