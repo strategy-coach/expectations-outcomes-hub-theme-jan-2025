@@ -18,7 +18,7 @@ const enableOpenObserve =
   import.meta.env.ENABLE_OPEN_OBSERVE !== undefined
     ? import.meta.env.ENABLE_OPEN_OBSERVE
     : false;
-    let user: string;
+let user: string;
 if (Astro.cookies.get("User")?.value !== undefined) {
   user = Astro.cookies.get("User")!.value; // Using non-null assertion operator (!)
 } else {
@@ -32,10 +32,11 @@ const envData = {
   GITHUB_REPO: import.meta.env.PUBLIC_GITHUB_REPO as string,
   NOVU_API_URL: import.meta.env.PUBLIC_NOVU_API_URL as string,
   NOVU_API_KEY: import.meta.env.PUBLIC_NOVU_API_KEY as string,
-  CONTACTUS_ADMIN_EMAIL: import.meta.env.PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL as string,
+  CONTACTUS_ADMIN_EMAIL: import.meta.env
+    .PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL as string,
   NOVU_CONTACTUS_TEMPLATE: import.meta.env
     .PUBLIC_NOVU_CONTACTUS_TEMPLATE as string,
-    NOVU_CONTACT_ADMIN_TEMPLATE: import.meta.env
+  NOVU_CONTACT_ADMIN_TEMPLATE: import.meta.env
     .PUBLIC_NOVU_ADMIN_TEMPLATE as string,
   NOVU_SUBSCRIBER_ID: import.meta.env.PUBLIC_NOVU_SUBSCRIBER_ID as string,
   GOOGLE_CAPTCHA_SITE_KEY: import.meta.env.GOOGLE_CAPTCHA_SITE_KEY as string,
@@ -44,15 +45,12 @@ const enableSupportAndFeedback =
   import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined
     ? import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK
     : false;
-
 ---
 
 <!doctype html>
 <html lang="en" style={`--hyperlink-color: ${baseHyperLinkColor || "#007BFF"}`}>
   <head>
-    {redirect && (
-      <meta http-equiv="refresh" content={`0; url=${redirect}`} />
-    )}
+    {redirect && <meta http-equiv="refresh" content={`0; url=${redirect}`} />}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
@@ -90,27 +88,29 @@ const enableSupportAndFeedback =
     ></script>
 
     <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"
-  />
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"
+    />
 
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-material.css"
-  />
-  
-  <script
-    src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"
-  ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-material.css"
+    />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
       type="module"
       crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"
+    ></script>
 
     {
       enableOpenObserve == "true" && (
@@ -118,20 +118,20 @@ const enableSupportAndFeedback =
           <script
             type="module"
             crossorigin="anonymous"
-            src="/assets/scripts/index.28871fbc.js"
+            src="/assets/scripts/index.14cf0d49.js"
           />
           <link rel="modulepreload" href="/assets/scripts/vendor.4c9b4c60.js" />
         </>
       )
     }
-<script is:inline>
-  // Apply dark mode before rendering to prevent the white flash
-  (function () {
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  })();
-</script>
+    <script is:inline>
+      // Apply dark mode before rendering to prevent the white flash
+      (function () {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -155,23 +155,25 @@ const enableSupportAndFeedback =
     </script>
     {
       enableSupportAndFeedback == "true" && (
-      <script src="/assets/js/support-and-feedback.js" is:inline></script>
+        <script src="/assets/js/support-and-feedback.js" is:inline />
       )
     }
-    
+
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('toggle-theme');
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("toggle-theme");
         const htmlElement = document.documentElement;
-  
-        themeToggle?.addEventListener('click', () => {
-          htmlElement.classList.toggle('dark');
-          const newTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
-          localStorage.setItem('theme', newTheme);
+
+        themeToggle?.addEventListener("click", () => {
+          htmlElement.classList.toggle("dark");
+          const newTheme = htmlElement.classList.contains("dark")
+            ? "dark"
+            : "light";
+          localStorage.setItem("theme", newTheme);
         });
       });
     </script>
-    
+
     <slot />
     <Footer enableEditButton={enableEditButton} />
   </body>
@@ -185,7 +187,7 @@ const enableSupportAndFeedback =
     // Function to apply URL modification to links
     function updateLinks() {
       const resultLinks = document.querySelectorAll(
-        ".pagefind-ui__result-link"
+        ".pagefind-ui__result-link",
       );
       resultLinks.forEach((link) => {
         const originalHref = link.getAttribute("href");
@@ -197,34 +199,32 @@ const enableSupportAndFeedback =
 
       // Remove the class `pagefind-ui__result-thumb` from elements
       const thumbElements = document.querySelectorAll(
-        ".pagefind-ui__result-thumb"
+        ".pagefind-ui__result-thumb",
       );
       thumbElements.forEach((element) => {
         element.classList.remove("pagefind-ui__result-thumb");
       });
     }
-   
-      // Event delegation: Run only when search input is clicked
-  document.addEventListener("click", function (event) {
-    if (event.target.matches(".pagefind-ui__search-input")) {
-      // Add keyup event listeners only after search input is clicked
-      window.addEventListener("keydown", function () {
-      setTimeout(updateLinks, 1500);
-    });
-    window.addEventListener("keyup", function () {
-      setTimeout(updateLinks, 500);
+
+    // Event delegation: Run only when search input is clicked
+    document.addEventListener("click", function (event) {
+      if (event.target.matches(".pagefind-ui__search-input")) {
+        // Add keyup event listeners only after search input is clicked
+        window.addEventListener("keydown", function () {
+          setTimeout(updateLinks, 1500);
+        });
+        window.addEventListener("keyup", function () {
+          setTimeout(updateLinks, 500);
+        });
+
+        window.addEventListener("click", function () {
+          setTimeout(updateLinks, 500);
+        });
+      }
     });
 
-    window.addEventListener("click", function () {
-      setTimeout(updateLinks, 500);
-    });
-    }
-  });
-    
     // Add a click event listener to handle "Load more Results" button
   });
-
-  
 </script>
 
 <style is:global>

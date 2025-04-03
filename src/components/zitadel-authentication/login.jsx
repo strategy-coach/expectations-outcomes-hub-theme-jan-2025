@@ -48,18 +48,30 @@ const LoggedIn = ({ clientId, authority, redirectUri, postLogoutRedirectUri, org
                     setCookie("zitadel_user_name", user);
                     setCookie("zitadel_user_id", response.profile.sub);
                     setCookie("zitadel_user_email", response.profile.email);
-                    window.location.href = "/"
+                    try {
+                        const attributes = globalThis.setAttributes("User Login", {
+                            loginStatus: "Successful",
+                            username: user,
+                            email: response.profile.email,
+                            userId: response.profile.sub,
+                            organizationId: decoded["urn:zitadel:iam:user:resourceowner:id"],
+                        });
+                        globalThis.setOTTracer("user-authentication", attributes);
+                    } catch (error) {
+                        console.log(error)
+                    }
+                    globalThis.location.href = "/"
                 } else {
-                    window.location.href = "/no-permission"
+                    globalThis.location.href = "/no-permission"
                 }
             }
         } else {
-            window.location.href = "/no-permission"
+            globalThis.location.href = "/no-permission"
         }
     };
 
     const handleSignOut = async () => {
-        window.location.reload();
+        globalThis.location.reload();
     };
 
     const oidcConfig = state !== undefined ? {
@@ -79,7 +91,7 @@ const LoggedIn = ({ clientId, authority, redirectUri, postLogoutRedirectUri, org
         scope: `openid profile email urn:zitadel:iam:org:id:${organizationId} urn:zitadel:iam:user:metadata`,
         postLogoutRedirectUri: postLogoutRedirectUri,
         onSignOut: async () => {
-            window.location.reload();
+            globalThis.location.reload();
         },
     };
 

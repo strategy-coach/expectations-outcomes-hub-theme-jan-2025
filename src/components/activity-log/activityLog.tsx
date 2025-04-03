@@ -43,7 +43,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 }) => {
     const [activityLogEntries, setActivityLogEntries] = useState<ActivityLogType[]>([]);
     const [totalActivityRecords, setTotalActivityRecords] = useState<number>(0);
-    const [currentFilter, setCurrentFilter] = useState<string>("all");
+    const [currentFilter, setCurrentFilter] = useState<string>("documentLoad");
     const [page, setPage] = useState<number>(1);
     const [searchTerm, setSearchTerm] = useState("");
     const recordPerPage = Math.min(50, recordsLimit);
@@ -69,10 +69,10 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     // Build query based on filter
     const getQuery = useCallback(
         (filter: string, type: "data" | "count") => {
-            let baseQuery = `FROM default WHERE str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad'" : `'${filter}'`
+            let baseQuery = `FROM default WHERE str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication'" : `'${filter}'`
                 })`;
             if (searchTerm.length > 0) {
-                baseQuery = `FROM default WHERE (str_match_ignore_case(email, '${searchTerm}') OR str_match_ignore_case(username, '${searchTerm}')) AND str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad'" : `'${filter}'`
+                baseQuery = `FROM default WHERE (str_match_ignore_case(email, '${searchTerm}') OR str_match_ignore_case(username, '${searchTerm}')) AND str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication'" : `'${filter}'`
                     })`;
             }
             return type === "data"
@@ -143,14 +143,18 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     const getIconAndColor = (operation: string) => {
         return operation === "element-click"
-            ? { icon: "🔘", color: "bg-emerald-500" }
-            : { icon: "📄", color: "bg-blue-500" };
+            ? { icon: "🔘", color: "bg-emerald-500" } // Click Events
+            : operation === "user-authentication"
+                ? { icon: "🔑", color: "bg-purple-500" } // User Login
+                : { icon: "📄", color: "bg-blue-500" }; // Page Visit
     };
 
     const getActivityMessage = (log: ActivityLogType) => {
         return log.operation_name === "element-click"
             ? `${log.username} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
-            : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
+            : log.operation_name === "user-authentication"
+                ? `${log.username} logged in successfully`
+                : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
@@ -176,7 +180,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             </h3>
 
             {!showViewMoreButton && (<div className="mt-4 mb-4 space-x-2">
-                {["all", "element-click", "documentLoad"].map((filter) => (
+                {["documentLoad", "element-click", "user-authentication", "all"].map((filter) => (
                     <button
                         key={filter}
                         className={`px-4 py-2 ${currentFilter === filter
@@ -188,7 +192,13 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             setPage(1);
                         }}
                     >
-                        {filter === "all" ? "All Events" : filter === "element-click" ? "Click Events" : "Page Visit"}
+                        {filter === "all"
+                            ? "All Events"
+                            : filter === "element-click"
+                                ? "Click Events"
+                                : filter === "user-authentication"
+                                    ? "User Login"
+                                    : "Page Visit"}
                     </button>
                 ))}
                 <input
