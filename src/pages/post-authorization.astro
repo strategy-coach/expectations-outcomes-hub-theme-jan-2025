@@ -7,7 +7,21 @@ const redirectUri = envData.PUBLIC_ZITADEL_REDIRECT_URI;
 const postLogoutRedirectUri = envData.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI;
 const organizationId = envData.PUBLIC_ZITADEL_ORGANIZATION_ID;
 const projectId = envData.PUBLIC_ZITADEL_PROJECT_ID;
+const enableOpenObserve = envData.ENABLE_OPEN_OBSERVE;
 ---
+
+{
+  enableOpenObserve == "true" && (
+    <>
+      <script
+        type="module"
+        crossorigin="anonymous"
+        src="/assets/scripts/index.14cf0d49.js"
+      />
+      <link rel="modulepreload" href="/assets/scripts/vendor.4c9b4c60.js" />
+    </>
+  )
+}
 
 <Authentication
   clientId={clientId}
