@@ -146,7 +146,9 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             ? { icon: "🔘", color: "bg-emerald-500" } // Click Events
             : operation === "user-authentication"
                 ? { icon: "🔑", color: "bg-purple-500" } // User Login
-                : { icon: "📄", color: "bg-blue-500" }; // Page Visit
+                : operation === "add-comment"
+                    ? { icon: "💬", color: "bg-indigo-500" } // Comment Added
+                    : { icon: "📄", color: "bg-blue-500" }; // Page Visit
     };
 
     const getActivityMessage = (log: ActivityLogType) => {
@@ -154,7 +156,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             ? `${log.username} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
             : log.operation_name === "user-authentication"
                 ? `${log.username} logged in successfully`
-                : log.operation_name === "add-comment" ? `${log.username} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notification were send to all users" : ` and notification were send to <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
+                : log.operation_name === "add-comment" ? `${log.username} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
