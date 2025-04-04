@@ -358,6 +358,8 @@ const Comment: React.FC<
                         }
                         const mentionedMembers = members
                             ?.filter(member => comment.includes(`@${member.displayName} `)).map(member => member.email);
+                        const mentionedMembersName = members
+                            ?.filter(member => comment.includes(`@${member.displayName} `)).map(member => member.displayName);
                         const allMembers = members?.map(member => member.email);
                         const recipients = notificationEnableForAllUsers == "true" ? allMembers : mentionedMembers;
 
@@ -372,7 +374,12 @@ const Comment: React.FC<
 
                             await novuApiCall(commentNotificationTemplate, payload, adminEmail, recipients);
                         }
-
+                        const attributes = notificationEnableForAllUsers ? globalThis.setAttributes("Add Comment", {
+                            mentioned: "allusers",
+                        }) : globalThis.setAttributes("Add Comment", {
+                            mentioned: mentionedMembersName?.join(", "),
+                        });
+                        globalThis.setOTTracer("add-comment", attributes);
                         setComment("");
                         setNotification({
                             show: false,

@@ -69,7 +69,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     // Build query based on filter
     const getQuery = useCallback(
         (filter: string, type: "data" | "count") => {
-            let baseQuery = `FROM default WHERE str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication'" : `'${filter}'`
+            let baseQuery = `FROM default WHERE str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication','add-comment'" : `'${filter}'`
                 })`;
             if (searchTerm.length > 0) {
                 baseQuery = `FROM default WHERE (str_match_ignore_case(email, '${searchTerm}') OR str_match_ignore_case(username, '${searchTerm}')) AND str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication'" : `'${filter}'`
@@ -154,7 +154,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             ? `${log.username} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
             : log.operation_name === "user-authentication"
                 ? `${log.username} logged in successfully`
-                : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
+                : log.operation_name === "add-comment" ? `${log.username} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notification were send to all users" : ` and notification were send to <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
