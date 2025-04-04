@@ -50,11 +50,7 @@ const LoggedIn = ({ clientId, authority, redirectUri, postLogoutRedirectUri, org
                     setCookie("zitadel_user_email", response.profile.email);
                     try {
                         const attributes = globalThis.setAttributes("User Login", {
-                            loginStatus: "Successful",
-                            username: user,
-                            email: response.profile.email,
-                            userId: response.profile.sub,
-                            organizationId: decoded["urn:zitadel:iam:user:resourceowner:id"],
+                            loginStatus: "Successful"
                         });
                         globalThis.setOTTracer("user-authentication", attributes);
                     } catch (error) {
