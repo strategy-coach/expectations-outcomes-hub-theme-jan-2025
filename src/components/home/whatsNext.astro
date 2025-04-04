@@ -15,7 +15,7 @@ const whatsNextList = Object.values(newFiles)
       .replace(/^.*\/src\/content/, '')  // Remove everything up to '/src/content'
       .replace('.md', '')               // Remove the '.md' extension
       .replace('.mdx', '');             // Remove the '.mdx' extension
-    
+
     return {
       title: file.frontmatter?.title, // Get the title
       path: `${relativePath}`, // Correct the path to be relative
@@ -34,6 +34,7 @@ const whatsNextList = Object.values(newFiles)
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
         <span>What's Next?</span>
+        <img class="badgen-img-watch" src="https://badgen.net/badge/Status/Waiting?color=red&amp;scale=1.2" alt="Watch" data-toggle="tooltip" data-html="true" data-placement="auto top" title="watch">
       </div>
     </h3>
 
