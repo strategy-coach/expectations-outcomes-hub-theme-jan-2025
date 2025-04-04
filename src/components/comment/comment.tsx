@@ -374,7 +374,7 @@ const Comment: React.FC<
 
                             await novuApiCall(commentNotificationTemplate, payload, adminEmail, recipients);
                         }
-                        const attributes = notificationEnableForAllUsers ? globalThis.setAttributes("Add Comment", {
+                        const attributes = notificationEnableForAllUsers == "true" ? globalThis.setAttributes("Add Comment", {
                             mentioned: "allusers",
                         }) : globalThis.setAttributes("Add Comment", {
                             mentioned: mentionedMembersName?.join(", "),
