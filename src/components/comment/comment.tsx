@@ -15,7 +15,7 @@ const token = zitadelConfig.zitalAPIToken;
 const organizationId = zitadelConfig.organizationId;
 const authority = zitadelConfig.authority;
 const productionUrl = import.meta.env.PUBLIC_PRODUCTION_URL
-const adminEmail = import.meta.env.public_novu_contactus_admin_email
+const adminEmail = import.meta.env.PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL
 const commentNotificationTemplate = import.meta.env.PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE
 const notificationEnableForAllUsers = import.meta.env.PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS
 
