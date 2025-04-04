@@ -390,11 +390,13 @@ Theme includes widgets designed for the home page: **Skip To**, **Key Resources*
 
 ### 8\. **What's Next?**
 
-This widget displays a list of files from the frontmatter where the whatsNext attribute is set. It provides a structured way to highlight important next steps for users.
+This widget displays a list of files from the frontmatter where the whatsNext attribute is set and the status is marked as "ongoing". It provides a structured way to highlight important next steps for users.
 
 Features
 
 - Lists files with the whatsNext attribute in the frontmatter.
+
+- Filters and displays items with status "ongoing".
 
 - Displays the summary attribute as the title in the UI.
 
@@ -413,6 +415,7 @@ home:
   whatsNext:
     category: "whatsNext"
     order: 4
+    status: "on going"
 redirect: "/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/"
 draft: true
 
@@ -435,6 +438,18 @@ To support redirections, ensure that the redirect frontmatter is passed in slug.
 - If redirection is needed, specify the redirect path and set draft: true.
 
 - Ensure the layout properly handles the redirect attribute when rendering the page.
+
+
+### 9\. Progress Notes
+The Progress Notes widget displays a list of markdown files where the whatsNext attribute is set and the status is "completed". This allows users to track completed tasks or milestones.
+
+Features
+
+- Lists files with the whatsNext attribute and status set to "completed".
+
+- Displays the summary attribute in the UI.
+
+- Helps users see recently completed actions or updates.
 
 **Combination Frontmatter**
 ---------------------------

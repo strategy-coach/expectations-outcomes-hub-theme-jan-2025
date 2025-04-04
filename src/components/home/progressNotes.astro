@@ -3,11 +3,11 @@ const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
 
-const whatsNextList = Object.values(newFiles)
-  .filter(
+const progressNotesList = Object.values(newFiles)
+     .filter(
     (file) =>
       file.frontmatter?.home?.whatsNext?.category === "whatsNext" &&
-      file.frontmatter?.home?.whatsNext?.status === "on going"
+      file.frontmatter?.home?.whatsNext?.status === "completed"
   )
   .map((file) => {
     // Remove the base path '/src/content' from the file path
@@ -28,17 +28,17 @@ const whatsNextList = Object.values(newFiles)
 
 ---
 
-{whatsNextList.length > 0 && (
+{progressNotesList.length > 0 && (
   <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>What's Next?</span>
+        <span>Progress Notes</span>
       </div>
     </h3>
 
     <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {whatsNextList.map((file) => {
+      {progressNotesList.map((file) => {
         return (
           <li>
             <a href={file.path} class="text-sm hover:text-black">

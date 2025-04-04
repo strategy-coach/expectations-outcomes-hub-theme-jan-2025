@@ -46,12 +46,7 @@ const baseSchema = z.object({
         .object({
           category: z.string().optional(),
           order: z.number().optional(),
-        })
-        .optional(),
-      pendingItems: z
-        .object({
-          category: z.string().optional(),
-          order: z.number().optional(),
+          status: z.string().optional(),
         })
         .optional(),
     })

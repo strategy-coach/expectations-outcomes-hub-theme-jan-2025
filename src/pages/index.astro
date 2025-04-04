@@ -11,6 +11,7 @@ import ItGovernance from "../components/home/itGovernance.astro";
 import Teams from "../components/teams/teams";
 import ActivityLog from "../components/activity-log/activityLog";
 import WhatsNext from "../components/home/whatsNext.astro";
+import ProgressNotes from "../components/home/progressNotes.astro";
 
 const trackers = themeConfig.trackers;
 const { title, description, activeProject } = themeConfig || {};
@@ -227,6 +228,8 @@ const { title, description, activeProject } = themeConfig || {};
       <SkipTo />
 
       <KeyResources />
+
+      <ProgressNotes />
       <ItGovernance />
 
       <LatestUpdates />
@@ -264,8 +267,8 @@ const { title, description, activeProject } = themeConfig || {};
       }
 
       <MeetingMinutes />
-      <LatestBlogs />
       <Accomplishments showViewMoreButton={true} />
+      <LatestBlogs />
       <ActivityLog
         recordsLimit={5}
         showViewMoreButton={true}
