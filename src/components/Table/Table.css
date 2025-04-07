@@ -48,11 +48,11 @@ tr {
 .card-wrapper {
   padding: 10px;
 }
-h3 {
+/* h3 {
   color: var(--tw-prose-headings) !important;
   font-weight: 600 !important;
   font-size: 1.25em !important;
   margin-top: 1.6em !important;
   margin-bottom: 0.6em !important;
   line-height: 1.6 !important;
-}
+} */
