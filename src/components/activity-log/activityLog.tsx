@@ -45,6 +45,24 @@ const formatUserRole = (role?: string) => {
     return ` (${formatted})`;
 };
 
+const getTimeDifferenceString = (fromDate: string | Date, toDate: Date = new Date()) => {
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+
+    const diffTime = to.getTime() - from.getTime();
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const diffMonths = Math.floor(diffDays / 30);
+    const diffYears = Math.floor(diffDays / 365);
+
+    if (diffDays < 30) {
+        return diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+    } else if (diffDays < 365) {
+        return diffMonths === 1 ? '1 month ago' : `${diffMonths} months ago`;
+    } else {
+        return diffYears === 1 ? '1 year ago' : `${diffYears} years ago`;
+    }
+};
+
 const ActivityLog: React.FC<ActivityLogProps> = ({
     recordsLimit,
     showViewMoreButton,
@@ -55,11 +73,13 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const [startTimeMicroseconds, setStartTimeMicroseconds] = useState(() =>
         currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000
     );
+    const [calender, setCalender] = useState(false)
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
     const [totalActivityRecords, setTotalActivityRecords] = useState<number>(0);
     const [currentFilter, setCurrentFilter] = useState<string>("documentLoad");
     const [page, setPage] = useState<number>(1);
+    const [days, setDays] = useState("")
     const [searchTerm, setSearchTerm] = useState("");
     const recordPerPage = Math.min(50, recordsLimit);
     const totalPages = useMemo(
@@ -72,26 +92,32 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const OPENOBSERVE_API_URL = import.meta.env.PUBLIC_OPENOBSERVE_URL;
     const OPENOBSERVE_API_TOKEN = import.meta.env.PUBLIC_OPENOBSERVE_TOKEN;
 
-    // Time range for data retrieval
-    // const currentTimeMicroseconds = useMemo(() => Date.now() * 1000, []);
-    // const startTimeMicroseconds = useMemo(
-    //     () => currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000,
-    //     [currentTimeMicroseconds, hoursToFetch]
-    // );
 
     const offset = useMemo(() => (page - 1) * recordPerPage, [page, recordPerPage]);
 
     useEffect(() => {
-        if (fromDate) {
+        if (fromDate && toDate) {
             const from = new Date(fromDate);
             from.setHours(0, 0, 0, 0);
-            setStartTimeMicroseconds(from.getTime() * 1000);
-        }
-
-        if (toDate) {
             const to = new Date(toDate);
             to.setHours(23, 59, 59, 999);
-            setCurrentTimeMicroseconds(to.getTime() * 1000);
+            const fromMicro = from.getTime() * 1000;
+            const toMicro = to.getTime() * 1000;
+            setStartTimeMicroseconds(fromMicro);
+            setCurrentTimeMicroseconds(toMicro);
+            const diffDays = getTimeDifferenceString(from, to);
+            setDays(diffDays);
+            setCalender(false);
+        } else {
+            const now = Date.now();
+            const from = new Date(now - hoursToFetch * 3600 * 1000);
+            const to = new Date(now);
+            const defaultToMicro = to.getTime() * 1000;
+            const defaultFromMicro = from.getTime() * 1000;
+            setCurrentTimeMicroseconds(defaultToMicro);
+            setStartTimeMicroseconds(defaultFromMicro);
+            const diffDays = getTimeDifferenceString(from, to);
+            setDays(diffDays);
         }
     }, [fromDate, toDate]);
 
@@ -142,7 +168,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
         [OPENOBSERVE_API_URL, OPENOBSERVE_API_TOKEN, startTimeMicroseconds, currentTimeMicroseconds]
     );
 
-    // Fetch and update data
     const fetchData = useCallback(async () => {
         const countQuery = getQuery(currentFilter, "count");
         const activityLogQuery = getQuery(currentFilter, "data");
@@ -171,12 +196,12 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     const getIconAndColor = (operation: string) => {
         return operation === "element-click"
-            ? { icon: "🔘", color: "bg-emerald-500" } // Click Events
+            ? { icon: "🔘", color: "bg-emerald-500" }
             : operation === "user-authentication"
-                ? { icon: "🔑", color: "bg-purple-500" } // User Login
+                ? { icon: "🔑", color: "bg-purple-500" }
                 : operation === "add-comment"
-                    ? { icon: "💬", color: "bg-indigo-500" } // Comment Added
-                    : { icon: "📄", color: "bg-blue-500" }; // Page Visit
+                    ? { icon: "💬", color: "bg-indigo-500" }
+                    : { icon: "📄", color: "bg-blue-500" };
     };
 
     const getActivityMessage = (log: ActivityLogType) => {
@@ -231,21 +256,35 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                     : "Page Visit"}
                     </button>
                 ))}
-                <span className="inline-flex items-center border border-gray-300 rounded-lg px-1 py-1 gap-2">
-                    <input
-                        type="date"
-                        value={fromDate}
-                        onChange={(e) => setFromDate(e.target.value)}
-                        className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
-                    />
-                    <span className="text-gray-500 text-sm">to</span>
-                    <input
-                        type="date"
-                        value={toDate}
-                        onChange={(e) => setToDate(e.target.value)}
-                        className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
-                    />
-                </span>
+                {calender == false ? (
+                    <span
+                        onClick={() => {
+                            setFromDate("")
+                            setToDate("")
+                            setCalender(true)
+                        }}
+                        className=" bg-blue-500 text-white inline-flex items-center border border-gray-300  px-4 py-2 gap-2 cursor-pointer"
+                    >
+                        {days}
+                    </span>
+                ) : (
+                    <span className="inline-flex items-center border border-gray-300 rounded-lg px-1 py-1 gap-2">
+                        <input
+                            type="date"
+                            value={fromDate}
+                            onChange={(e) => setFromDate(e.target.value)}
+                            className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
+                        />
+                        <span className="text-gray-500 text-sm">to</span>
+                        <input
+                            type="date"
+                            value={toDate}
+                            onChange={(e) => setToDate(e.target.value)}
+                            className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
+                        />
+                    </span>
+                )}
+
                 <input
                     type="text"
                     value={searchTerm}
@@ -254,63 +293,68 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                     className="p-2 mb-4 border border-gray-300 rounded-lg"
                 />
 
-            </div>)}
+            </div>)
+            }
 
-            {activityLogEntries.length > 0 ? (
-                <ul
-                    role="feed"
-                    className="relative flex flex-col gap-6 py-6 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed"
-                >
-                    {activityLogEntries.map((log) => {
-                        const { icon, color } = getIconAndColor(log.operation_name);
-                        return (
-                            <li key={log.trace_id} role="article" className="relative pl-8">
-                                <span
-                                    className={`absolute left-0 z-10 flex items-center justify-center w-8 h-8 text-white -translate-x-1/2 rounded-full ring-2 ring-white ${color}`}
-                                >
-                                    {icon}
-                                </span>
-                                <div className="flex flex-col flex-1 gap-0">
-                                    <h4
-                                        className="text-sm font-medium dark:text-gray-300"
-                                        dangerouslySetInnerHTML={{
-                                            __html: getActivityMessage(log),
-                                        }}
-                                    />
-                                    <p className="text-xs dark:text-gray-300">
-                                        {getRelativeTime(log.timestamp)}
-                                    </p>
-                                </div>
-                            </li>
-                        );
-                    })}
-                </ul>
-            ) : (
-                <p className="text-gray-600">No activity log available.</p>
-            )}
+            {
+                activityLogEntries.length > 0 ? (
+                    <ul
+                        role="feed"
+                        className="relative flex flex-col gap-6 py-6 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed"
+                    >
+                        {activityLogEntries.map((log) => {
+                            const { icon, color } = getIconAndColor(log.operation_name);
+                            return (
+                                <li key={log.trace_id} role="article" className="relative pl-8">
+                                    <span
+                                        className={`absolute left-0 z-10 flex items-center justify-center w-8 h-8 text-white -translate-x-1/2 rounded-full ring-2 ring-white ${color}`}
+                                    >
+                                        {icon}
+                                    </span>
+                                    <div className="flex flex-col flex-1 gap-0">
+                                        <h4
+                                            className="text-sm font-medium dark:text-gray-300"
+                                            dangerouslySetInnerHTML={{
+                                                __html: getActivityMessage(log),
+                                            }}
+                                        />
+                                        <p className="text-xs dark:text-gray-300">
+                                            {getRelativeTime(log.timestamp)}
+                                        </p>
+                                    </div>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                ) : (
+                    <p className="text-gray-600">No activity log available.</p>
+                )
+            }
 
-            {totalPages > 1 && showViewMoreButton == false ? <div className="flex justify-between items-center mt-4">
-                <button
-                    onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                    className={`px-4 py-2 bg-gray-200 rounded-md ${page === 1 ? "opacity-50 cursor-not-allowed" : ""
-                        }`}
-                    disabled={page === 1}
-                >
-                    Previous
-                </button>
-                <span className="text-sm text-gray-600">
-                    Page {page} of {totalPages}
-                </span>
-                <button
-                    onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-                    className={`px-4 py-2 bg-gray-200 rounded-md ${page === totalPages ? "opacity-50 cursor-not-allowed" : ""
-                        }`}
-                    disabled={page === totalPages}
-                >
-                    Next
-                </button>
-            </div> : undefined}
-        </div>
+            {
+                totalPages > 1 && showViewMoreButton == false ? <div className="flex justify-between items-center mt-4">
+                    <button
+                        onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                        className={`px-4 py-2 bg-gray-200 rounded-md ${page === 1 ? "opacity-50 cursor-not-allowed" : ""
+                            }`}
+                        disabled={page === 1}
+                    >
+                        Previous
+                    </button>
+                    <span className="text-sm text-gray-600">
+                        Page {page} of {totalPages}
+                    </span>
+                    <button
+                        onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
+                        className={`px-4 py-2 bg-gray-200 rounded-md ${page === totalPages ? "opacity-50 cursor-not-allowed" : ""
+                            }`}
+                        disabled={page === totalPages}
+                    >
+                        Next
+                    </button>
+                </div> : undefined
+            }
+        </div >
     );
 };
 
