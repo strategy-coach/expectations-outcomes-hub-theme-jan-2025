@@ -144,7 +144,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
         const countQuery = getQuery(currentFilter, "count");
         const activityLogQuery = getQuery(currentFilter, "data");
 
-        const countData = await fetchActivityLog(countQuery, 1_000_000, 0);
+        const countData = await fetchActivityLog(countQuery, 8_000_000, 0);
         setTotalActivityRecords(countData?.total ?? 0);
 
         const responseData = await fetchActivityLog(activityLogQuery, recordPerPage, offset);
@@ -178,10 +178,10 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     const getActivityMessage = (log: ActivityLogType) => {
         return log.operation_name === "element-click"
-            ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
+            ? `${log.username} ${log.userrole ? `${formatUserRole(log.userrole)}` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
             : log.operation_name === "user-authentication"
-                ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} logged in successfully`
-                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
+                ? `${log.username} ${log.userrole ? ` ${formatUserRole(log.userrole)}` : ""} logged in successfully`
+                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? `${formatUserRole(log.userrole)}` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} ${log.userrole ? `${formatUserRole(log.userrole)}` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
