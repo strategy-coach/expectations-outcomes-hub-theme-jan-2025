@@ -112,10 +112,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             const now = Date.now();
             const from = new Date(now - hoursToFetch * 3600 * 1000);
             const to = new Date(now);
-            const defaultToMicro = to.getTime() * 1000;
-            const defaultFromMicro = from.getTime() * 1000;
-            setCurrentTimeMicroseconds(defaultToMicro);
-            setStartTimeMicroseconds(defaultFromMicro);
             const diffDays = getTimeDifferenceString(from, to);
             setDays(diffDays);
         }
