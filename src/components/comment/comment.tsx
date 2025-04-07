@@ -48,9 +48,7 @@ const buildTree = (activities: LogType[]): LogType[] => {
 interface CommentProps {
     source: string;
     url: string;
-    setLoadMore: () => void;
-    loadMore: boolean;
-    activityTitle?: string;
+
 
 }
 export function FormatTimeDifference(date: Date): string {
@@ -86,9 +84,8 @@ const Comment: React.FC<
     activities,
     url,
     source,
-    setLoadMore,
-    loadMore,
 }) => {
+        const [loadMore, setLoadMore] = useState(false);
         const [submitOption, setSubmitOption] = useState("add");
         const [showReplies, setShowReplies] = useState<Record<string, boolean>>({});
         const [reply, setReply] = useState<{
@@ -601,7 +598,7 @@ const Comment: React.FC<
             depth = 0,
         ): React.ReactNode {
             if (!nodes) return;
-            return (loadMore ? nodes : nodes.slice(-3)).map((item: any) =>
+            return (loadMore == true ? nodes : nodes.slice(-3)).map((item: any) =>
             (
                 <li
                     key={item.logId}
@@ -852,23 +849,25 @@ const Comment: React.FC<
                     </ul>
 
                     <div className="md:col-span-6 lg:col-span-12 ml-4 mt-8 mb-6">
-                        {loadMore
-                            ? ""
-                            : activities.length > 3 && (
-                                <div className="flex text-base">
-                                    {
-                                        <button
-                                            className="bg-gray-100 inline-flex px-3 py-1 rounded-xl text-sm text-gray-800"
-                                            title="Load More"
-                                            onClick={() => {
-                                                setLoadMore();
-                                            }}
-                                        >
-                                            Load More
-                                        </button>
-                                    }
-                                </div>
-                            )}
+
+                        <div className="flex text-base">
+                            {
+                                <button
+                                    className="bg-gray-100 inline-flex px-3 py-1 rounded-xl text-sm text-gray-800"
+                                    title="Load More"
+                                    onClick={() => {
+                                        if (loadMore == true) {
+                                            setLoadMore(false);
+                                        } else {
+                                            setLoadMore(true);
+                                        }
+                                    }}>
+
+                                    {loadMore == false ? "Load More" : "Show less"}
+                                </button>
+                            }
+                        </div>
+
                     </div>
 
                     <div ref={cardRef} className="">

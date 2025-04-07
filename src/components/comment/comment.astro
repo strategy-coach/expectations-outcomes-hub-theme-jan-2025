@@ -1,5 +1,5 @@
 ---
-import CommentLog from "./commentLog";
+import CommentLog from "./comment";
 import CommentService from "../../components/comment/commentService";
 
 const path = Astro.url.pathname;
@@ -10,12 +10,12 @@ const commentData = [...activities, ...comments];
 commentData.sort((a, b) => {
   return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
 });
-const {source,activityTitle,discussionEnabled}=Astro.props
+const {source,discussionEnabled}=Astro.props
 
 ---
 {discussionEnabled ? (
   user && user.value ? (
-    <CommentLog data={commentData} url={path} activityTitle={activityTitle} source={source}  client:only="react"/>
+    <CommentLog activities={commentData} url={path}  source={source}  client:only="react"/>
   ) : (
     <p class="text-md mt-1">You must be logged in to view comments.</p>
   )
