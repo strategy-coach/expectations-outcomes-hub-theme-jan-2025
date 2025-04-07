@@ -5,16 +5,15 @@ import { getUserInfo, getUserMetaData } from "./userService"
 import type { ProfileInformation, UserMeta } from "./userService"
 
 const userId = Cookie.get("zitadel_user_id") || ""
-let userRoles = Cookie.get("zitadel_user_roles") || "[]";
-userRoles = JSON.parse(userRoles);
+const userRole = Cookie.get("zitadel_user_role") || "";
 let isAdmin = false;
 
-if (userRoles.includes('admin')) {
+if (userRole.includes('admin')) {
     isAdmin = true;
 }
 
 const handleEditProfile = (): void => {
-    window.location.href = "/edit-profile";
+    globalThis.location.href = "/edit-profile";
 };
 
 const Profile: React.FC = () => {

@@ -96,7 +96,7 @@ const UserSignUp: React.FC = () => {
     const roleOptions = useMemo(() => {
         return userRoles?.map((user) => (
             <option key={user.key} value={user.key}>
-                {user.key}
+                {user.displayName}
             </option>
         ));
     }, [userRoles]);

@@ -25,7 +25,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
     }
 
     if (isLoggedIn && pathname.includes('/admin')) {
-      if (userRole != 'admin') {
+      if (!userRole?.includes('admin')) {
         return context.redirect("/"); // 
       }
     }
