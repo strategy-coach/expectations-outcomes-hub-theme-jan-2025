@@ -22,6 +22,7 @@ const ActivityLogSchema = z.object({
             trace_id: z.string(),
             url: z.string(),
             username: z.string(),
+            userrole: z.string().optional(),
         })
     ),
     total: z.number(),
@@ -35,6 +36,14 @@ interface ActivityLogProps {
     hoursToFetch: number;
 }
 const host = globalThis.location.host;
+
+const formatUserRole = (role?: string) => {
+    if (!role) return "";
+    const formatted = role
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+    return ` (${formatted})`;
+};
 
 const ActivityLog: React.FC<ActivityLogProps> = ({
     recordsLimit,
@@ -169,10 +178,10 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     const getActivityMessage = (log: ActivityLogType) => {
         return log.operation_name === "element-click"
-            ? `${log.username} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
+            ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
             : log.operation_name === "user-authentication"
-                ? `${log.username} logged in successfully`
-                : log.operation_name === "add-comment" ? `${log.username} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} viewed the <strong>${log.pagetitle}</strong> page`;
+                ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} logged in successfully`
+                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
@@ -219,13 +228,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                     : "Page Visit"}
                     </button>
                 ))}
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => { setSearchTerm(e.target.value) }}
-                    placeholder="Search by username or email..."
-                    className="p-2 mb-4 border border-gray-300 rounded-lg"
-                />
                 <span className="inline-flex items-center border border-gray-300 rounded-lg px-1 py-1 gap-2">
                     <input
                         type="date"
@@ -241,6 +243,13 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
                     />
                 </span>
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => { setSearchTerm(e.target.value) }}
+                    placeholder="Search by username or email..."
+                    className="p-2 mb-4 border border-gray-300 rounded-lg"
+                />
 
             </div>)}
 
