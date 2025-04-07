@@ -269,18 +269,20 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             type="date"
                             value={fromDate}
                             onChange={(e) => setFromDate(e.target.value)}
-                            max={new Date().toISOString().split("T")[0]}
+                            max={toDate || new Date().toISOString().split("T")[0]} // Don't allow future or > toDate
                             className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
                         />
                         <span className="text-gray-500 text-sm">to</span>
                         <input
                             type="date"
                             value={toDate}
-                            max={new Date().toISOString().split("T")[0]}
                             onChange={(e) => setToDate(e.target.value)}
+                            min={fromDate} // Can't pick before fromDate
+                            max={new Date().toISOString().split("T")[0]} // Can't pick in the future
                             className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
                         />
                     </span>
+
                 )}
 
                 <input
