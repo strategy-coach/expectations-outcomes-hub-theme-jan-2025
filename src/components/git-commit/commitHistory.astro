@@ -1,0 +1,136 @@
+---
+import json from "../../../gitcommit-details/githubLatestCommit.json";
+
+const { filename } = Astro.props;
+
+const filteredJsonData = json.filter((item) => {
+  if (!item.fileStatus) return false;
+
+  const filePath = item.fileStatus.split("\t")[1];
+  if (!filePath) return false;
+
+  const cleanedPath = filePath
+    .replace(/^src\/content\/[^/]+\//, "") // Remove "src/content/<dynamic-folder>/"
+    .replace(/\.\w+$/, ""); // Remove file extension
+
+  return filename === cleanedPath;
+});
+
+// Sort by commit date (ascending order)
+const sortedCommits = filteredJsonData.sort((a, b) => 
+  new Date(a.authorDate) - new Date(b.authorDate)
+);
+
+//console.log('--filename---', filename);
+//console.log('--filteredJsonData---', filteredJsonData);
+//onsole.log('--json---', json); // Add this line for debugging
+function getTimeDifference(commitDate: string | number | Date) {
+  const currentDate = new Date();
+  const commitDateTime = new Date(commitDate);
+  const timeDifference = Math.abs(currentDate - commitDateTime);
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysDifference === 1) {
+    return "1 day ago";
+  } else if (daysDifference > 1) {
+    return `${daysDifference} days ago`;
+  } else {
+    return "today";
+  }
+}
+---
+
+<div class="md:col-span-3 pl-5" id="">
+  <!-- <h2 class="text-2xl font-bold mb-4 pt-1">Git Commit Details</h2> -->
+
+  <aside style="display: block;">
+    <div class="flow-root min-h-90">
+      <ul class="-mb-8">
+        <li>
+          <div class="relative pb-8">
+            <div class="relative flex space-x-3">
+              <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                <div>
+                  {
+                    filteredJsonData?.slice(0, 5).map((item) => (
+                      <div class="flow-root">
+                        <ul class="-mb-8">
+                          <li>
+                            <div class="relative pb-8">
+                              <span
+                                class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200"
+                                aria-hidden="true"
+                              />
+                              <div class="relative flex space-x-3">
+                                <div>
+                                  <span class="h-5 w-5 rounded-full bg-gray-200 flex items-center justify-center ring-8 ring-white">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      strokeWidth="1.5"
+                                      stroke="currentColor"
+                                      className="w-6 h-6"
+                                      style={{ color: "black" }}
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                                      />
+                                    </svg>
+                                  </span>
+                                </div>
+                                <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                  <div>
+                                    <p class="text-base pb-6 mt-0 ">
+                                      <span class="font-medium text-base">
+                                        {item.subject}
+                                      </span>{" "}
+                                      <br />
+                                      <span class="text-gray-500 text-sm">
+                                        <span class="font-medium">
+                                          {item.authorName}
+                                        </span>{" "}
+                                        commited{" "}
+                                        {getTimeDifference(item.authorDate)}
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</div>
+<br /><br /><br />
+{
+  filteredJsonData.length > 4 ? (
+    <button
+      type="button"
+      id="showMoreGitCommit"
+      onclick="javascript:showMoreGitCommit();"
+    >
+      Load More
+    </button>
+  ) : (
+    ""
+  )
+}
+<script is:inline>
+  function showMoreGitCommit() {
+    var element = document.getElementById("git-commit-more");
+    element.classList.remove("hidden");
+  }
+</script>

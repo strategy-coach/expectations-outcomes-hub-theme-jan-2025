@@ -18,6 +18,7 @@ const themeConfig = (config: {
   headerMenu: { label: string; path: string; requiresAuth?: boolean }[];
   unauthorizedPages: string[];
   isHomePagePublic: boolean;
+  enablePageHistory: boolean;
   authorizedSlides: number[];
 }) => {
   return {
@@ -84,5 +85,6 @@ export default themeConfig({
     "contact",
   ],
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
+  enablePageHistory: true,
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
 });

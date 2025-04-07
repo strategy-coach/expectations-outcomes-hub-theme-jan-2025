@@ -1,0 +1,194 @@
+---
+import json from "../../../gitcommit-details/githubLatestCommit.json";
+
+const { filename, pageTitle } = Astro.props;
+
+// const filteredJsonData = json.filter((item) => {
+//   //console.log('--item.fileStatus---', item.fileStatus.substring(23)); // Add this line for debugging
+//   //return item.fileStatus !== undefined && filename.includes(item.fileStatus? item.fileStatus.substring(23) : '');
+//   return (
+//     item.fileStatus !== undefined &&
+//     filename === (item.fileStatus ? item.fileStatus.substring(23) : "")
+//   );
+// });
+
+const filteredJsonData = json.filter((item) => {
+  if (!item.fileStatus) return false;
+
+  const filePath = item.fileStatus.split("\t")[1];
+  if (!filePath) return false;
+
+  const cleanedPath = filePath
+    .replace(/^src\/content\/[^/]+\//, "") // Remove "src/content/<dynamic-folder>/"
+    .replace(/\.\w+$/, ""); // Remove file extension
+
+  return filename === cleanedPath;
+});
+
+// Sort by commit date (ascending order)
+const sortedCommits = filteredJsonData.sort((a, b) => 
+  new Date(a.authorDate) - new Date(b.authorDate)
+);
+
+//console.log('--filename---', filename);
+//console.log('--json---', json); // Add this line for debugging
+function getTimeDifference(commitDate: string | number | Date) {
+  const currentDate = new Date();
+  const commitDateTime = new Date(commitDate);
+  const timeDifference = Math.abs(currentDate - commitDateTime);
+  const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (daysDifference === 1) {
+    return "1 day ago";
+  } else if (daysDifference > 1) {
+    return `${daysDifference} days ago`;
+  } else {
+    return "today";
+  }
+}
+---
+
+<div
+  class="relative z-10 hidden"
+  id="git-commit-more"
+  aria-labelledby="slide-over-title"
+  aria-modal="true"
+>
+  <div class="fixed inset-0"></div>
+  <div
+    class="fixed inset-0 overflow-hidden bg-transparent-black slide-over-content"
+  >
+    <div class="absolute inset-0 overflow-hidden">
+      <div
+        class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
+      >
+        <div class="pointer-events-auto w-screen max-w-5xl">
+          <div class="flex h-full flex-col bg-white shadow-2xl">
+            <div class="px-7 pt-5">
+              <div class="flex items-start justify-between">
+                {
+                  pageTitle !== null && (
+                    <h2 class="text-lg font-bold leading-6 text-gray-900">
+                      <span id="auditType">
+                        {pageTitle} - Page Commit Details
+                      </span>
+                    </h2>
+                  )
+                }
+
+                <div class="ml-3 flex h-7 items-center">
+                  <button
+                    id="closeMoreGitCommit"
+                    onclick="closeMoreGitCommit();"
+                    type="button"
+                    class="selected relative rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <span class="absolute -inset-2.5"></span>
+                    <span class="sr-only">Close panel</span>
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="prose max-w-screen-xl withbullet flex min-h-0 flex-1 flex-col overflow-y-scroll py-6 mx-6 mt-0 scroll-bar"
+            >
+              <div class="relative flex-1 pr-7">
+                <div class="md:col-span-3 pl-5 mt-0" id="">
+                  <aside style="display: block;">
+                    <div class="flow-root min-h-90">
+                      <div class="relative pb-8">
+                        <div class="relative flex space-x-3">
+                          <div
+                            class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5"
+                          >
+                            <div>
+                              {
+                                filteredJsonData?.map((item) => (
+                                  <div class="flow-root">
+                                    <ul class="-mb-8 list-none pl-0 pt-0">
+                                      <li>
+                                        <div class="relative pb-8">
+                                          <span
+                                            class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200"
+                                            aria-hidden="true"
+                                          />
+                                          <div class="relative flex space-x-3">
+                                            <div>
+                                              <span class="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center ring-8 ring-white">
+                                                <svg
+                                                  xmlns="http://www.w3.org/2000/svg"
+                                                  fill="none"
+                                                  viewBox="0 0 24 24"
+                                                  strokeWidth="1.5"
+                                                  stroke="currentColor"
+                                                  className="w-6 h-6"
+                                                  style={{ color: "black" }}
+                                                >
+                                                  <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
+                                                  />
+                                                </svg>
+                                              </span>
+                                            </div>
+                                            <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                                              <div>
+                                                <p class="text-base pb-6 mt-0 ">
+                                                  <span class="font-medium text-base">
+                                                    {item.subject}
+                                                  </span>{" "}
+                                                  <br />
+                                                  <span class="text-gray-500 text-sm">
+                                                    <span class="font-medium">
+                                                      {item.authorName}
+                                                    </span>{" "}
+                                                    commited{" "}
+                                                    {getTimeDifference(
+                                                      item.authorDate,
+                                                    )}
+                                                  </span>
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                ))
+                              }
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  function closeMoreGitCommit() {
+    var element = document.getElementById("git-commit-more");
+    element.classList.add("hidden");
+  }
+</script>
