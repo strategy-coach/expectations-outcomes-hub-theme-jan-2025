@@ -42,6 +42,12 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     hoursToFetch,
 }) => {
     const [activityLogEntries, setActivityLogEntries] = useState<ActivityLogType[]>([]);
+    const [currentTimeMicroseconds, setCurrentTimeMicroseconds] = useState(() => Date.now() * 1000);
+    const [startTimeMicroseconds, setStartTimeMicroseconds] = useState(() =>
+        currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000
+    );
+    const [fromDate, setFromDate] = useState("");
+    const [toDate, setToDate] = useState("");
     const [totalActivityRecords, setTotalActivityRecords] = useState<number>(0);
     const [currentFilter, setCurrentFilter] = useState<string>("documentLoad");
     const [page, setPage] = useState<number>(1);
@@ -58,15 +64,25 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const OPENOBSERVE_API_TOKEN = import.meta.env.PUBLIC_OPENOBSERVE_TOKEN;
 
     // Time range for data retrieval
-    const currentTimeMicroseconds = useMemo(() => Date.now() * 1000, []);
-    const startTimeMicroseconds = useMemo(
-        () => currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000,
-        [currentTimeMicroseconds, hoursToFetch]
-    );
+    // const currentTimeMicroseconds = useMemo(() => Date.now() * 1000, []);
+    // const startTimeMicroseconds = useMemo(
+    //     () => currentTimeMicroseconds - hoursToFetch * 3600 * 1_000_000,
+    //     [currentTimeMicroseconds, hoursToFetch]
+    // );
 
     const offset = useMemo(() => (page - 1) * recordPerPage, [page, recordPerPage]);
 
-    // Build query based on filter
+    useEffect(() => {
+        if (fromDate) {
+            const fromTime = new Date(fromDate).getTime() * 1000;
+            setStartTimeMicroseconds(fromTime);
+        }
+        if (toDate) {
+            const toTime = new Date(toDate).getTime() * 1000;
+            setCurrentTimeMicroseconds(toTime);
+        }
+    }, [fromDate, toDate]);
+
     const getQuery = useCallback(
         (filter: string, type: "data" | "count") => {
             let baseQuery = `FROM default WHERE str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication','add-comment'" : `'${filter}'`
@@ -210,6 +226,22 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                     placeholder="Search by username or email..."
                     className="p-2 mb-4 border border-gray-300 rounded-lg"
                 />
+                <span className="inline-flex items-center border border-gray-300 rounded-lg px-1 py-1 gap-2">
+                    <input
+                        type="date"
+                        value={fromDate}
+                        onChange={(e) => setFromDate(e.target.value)}
+                        className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
+                    />
+                    <span className="text-gray-500 text-sm">to</span>
+                    <input
+                        type="date"
+                        value={toDate}
+                        onChange={(e) => setToDate(e.target.value)}
+                        className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
+                    />
+                </span>
+
             </div>)}
 
             {activityLogEntries.length > 0 ? (
