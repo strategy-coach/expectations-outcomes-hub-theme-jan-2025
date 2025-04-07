@@ -83,12 +83,15 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     useEffect(() => {
         if (fromDate) {
-            const fromTime = new Date(fromDate).getTime() * 1000;
-            setStartTimeMicroseconds(fromTime);
+            const from = new Date(fromDate);
+            from.setHours(0, 0, 0, 0);
+            setStartTimeMicroseconds(from.getTime() * 1000);
         }
+
         if (toDate) {
-            const toTime = new Date(toDate).getTime() * 1000;
-            setCurrentTimeMicroseconds(toTime);
+            const to = new Date(toDate);
+            to.setHours(23, 59, 59, 999);
+            setCurrentTimeMicroseconds(to.getTime() * 1000);
         }
     }, [fromDate, toDate]);
 
@@ -144,7 +147,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
         const countQuery = getQuery(currentFilter, "count");
         const activityLogQuery = getQuery(currentFilter, "data");
 
-        const countData = await fetchActivityLog(countQuery, 8_000_000, 0);
+        const countData = await fetchActivityLog(countQuery, 1_000_000, 0);
         setTotalActivityRecords(countData?.total ?? 0);
 
         const responseData = await fetchActivityLog(activityLogQuery, recordPerPage, offset);
