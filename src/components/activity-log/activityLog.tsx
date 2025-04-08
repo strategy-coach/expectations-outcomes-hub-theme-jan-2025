@@ -2,8 +2,9 @@ import React, { useEffect, useState, useMemo, useCallback } from "react";
 import moment from "moment";
 import { z } from "zod";
 import axios from "axios";
+import { DatePicker } from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
 
-// Define schema for activity log entries
 const ActivityLogSchema = z.object({
     hits: z.array(
         z.object({
@@ -48,20 +49,27 @@ const formatUserRole = (role?: string) => {
 const getTimeDifferenceString = (fromDate: string | Date, toDate: Date = new Date()) => {
     const from = new Date(fromDate);
     const to = new Date(toDate);
+    from.setHours(0, 0, 0, 0);
+    to.setHours(0, 0, 0, 0);
 
     const diffTime = to.getTime() - from.getTime();
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const diffMonths = Math.floor(diffDays / 30);
-    const diffYears = Math.floor(diffDays / 365);
 
-    if (diffDays < 30) {
-        return diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+    if (diffDays === 0) {
+        return "Today";
+    } else if (diffDays == 1) {
+        return "1 day ago";
+    } else if (diffDays < 30) {
+        return `${diffDays} days ago`;
     } else if (diffDays < 365) {
-        return diffMonths === 1 ? '1 month ago' : `${diffMonths} months ago`;
+        const diffMonths = Math.floor(diffDays / 30);
+        return diffMonths === 1 ? "1 month ago" : `${diffMonths} months ago`;
     } else {
-        return diffYears === 1 ? '1 year ago' : `${diffYears} years ago`;
+        const diffYears = Math.floor(diffDays / 365);
+        return diffYears === 1 ? "1 year ago" : `${diffYears} years ago`;
     }
 };
+
 
 const ActivityLog: React.FC<ActivityLogProps> = ({
     recordsLimit,
@@ -75,7 +83,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     );
     const [calender, setCalender] = useState(false)
     const [fromDate, setFromDate] = useState("");
-    const [toDate, setToDate] = useState("");
     const [totalActivityRecords, setTotalActivityRecords] = useState<number>(0);
     const [currentFilter, setCurrentFilter] = useState<string>("documentLoad");
     const [page, setPage] = useState<number>(1);
@@ -96,10 +103,10 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const offset = useMemo(() => (page - 1) * recordPerPage, [page, recordPerPage]);
 
     useEffect(() => {
-        if (fromDate && toDate) {
+        if (fromDate) {
             const from = new Date(fromDate);
             from.setHours(0, 0, 0, 0);
-            const to = new Date(toDate);
+            const to = new Date();
             to.setHours(23, 59, 59, 999);
             const fromMicro = from.getTime() * 1000;
             const toMicro = to.getTime() * 1000;
@@ -107,7 +114,6 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             setCurrentTimeMicroseconds(toMicro);
             const diffDays = getTimeDifferenceString(from, to);
             setDays(diffDays);
-            setCalender(false);
         } else {
             const now = Date.now();
             const from = new Date(now - hoursToFetch * 3600 * 1000);
@@ -115,7 +121,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             const diffDays = getTimeDifferenceString(from, to);
             setDays(diffDays);
         }
-    }, [fromDate, toDate]);
+    }, [fromDate]);
 
     const getQuery = useCallback(
         (filter: string, type: "data" | "count") => {
@@ -252,39 +258,36 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                     : "Page Visit"}
                     </button>
                 ))}
-                {calender == false ? (
+                {calender === false ? (
                     <span
                         onClick={() => {
-                            setFromDate("")
-                            setToDate("")
-                            setCalender(true)
+                            setFromDate("");
+                            setCalender(true);
                         }}
-                        className=" bg-blue-500 text-white inline-flex items-center border border-gray-300  px-4 py-2 gap-2 cursor-pointer"
+                        className=" bg-blue-500 text-white inline-flex items-center border border-gray-300 px-4 py-2 gap-2 cursor-pointer"
                     >
                         {days}
                     </span>
                 ) : (
-                    <span className="inline-flex items-center border border-gray-300 rounded-lg px-1 py-1 gap-2">
-                        <input
-                            type="date"
-                            value={fromDate}
-                            onChange={(e) => setFromDate(e.target.value)}
-                            max={toDate || new Date().toISOString().split("T")[0]} // Don't allow future or > toDate
-                            className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
-                        />
-                        <span className="text-gray-500 text-sm">to</span>
-                        <input
-                            type="date"
-                            value={toDate}
-                            onChange={(e) => setToDate(e.target.value)}
-                            min={fromDate} // Can't pick before fromDate
-                            max={new Date().toISOString().split("T")[0]} // Can't pick in the future
-                            className="border border-gray-300 rounded-md px-2 py-1 h-8 text-sm"
-                        />
-                    </span>
+                    <div className="inline-flex items-center gap-2">
+                        <DatePicker
+                            oneTap
+                            value={fromDate ? new Date(fromDate) : null}
+                            onChange={(value: Date | null) => {
+                                if (value) {
+                                    const iso = value.toISOString().split("T")[0];
+                                    setFromDate(iso);
+                                    setCalender(false);
+                                }
+                            }}
+                            size="lg"
+                            shouldDisableDate={(date: Date) => date > new Date()}
+                            placement="bottomStart"
+                            style={{ height: '32px' }}
 
+                        />
+                    </div>
                 )}
-
                 <input
                     type="text"
                     value={searchTerm}

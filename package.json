@@ -55,6 +55,7 @@
     "reading-time-estimator": "^1.11.0",
     "rehype-mermaid": "^3.0.0",
     "reveal.js": "^5.1.0",
+    "rsuite": "^5.79.1",
     "sequelize": "^6.37.5",
     "sharp": "^0.33.5",
     "slugify": "^1.6.6",
