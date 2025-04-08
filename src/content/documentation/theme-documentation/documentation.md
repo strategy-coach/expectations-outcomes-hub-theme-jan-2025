@@ -1225,5 +1225,10 @@ Cart *--* Product : "contains"
 @enduml
 ```
 
+**Enable or Disable Page History**
+
+To enable or disable page commit history, set the `enablePageHistory` variable in `theme.config.ts` file as 
+`true` or `false`.
+
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
 
