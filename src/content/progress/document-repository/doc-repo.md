@@ -1,7 +1,7 @@
 ---
 title: Centralized storage for SOWs, designs and reports
 enableEditButton: true
-
+description:  The document contains a project estimation sheet outlining tasks,effort hours, and timelines across key phases like analysis,design, development, testing, and project management. It includes metrics such as confidence factors, consumed hours, and completion dates.
 ---
 # Centralized storage for SOWs, designs and reports
 
