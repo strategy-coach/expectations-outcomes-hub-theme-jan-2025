@@ -184,9 +184,8 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     useEffect(() => {
         fetchData();
-    }, [fetchData]);
+    }, [fetchData, fromDate]);
 
-    // Parse activity details
     const getActivityDescription = (details: string) => {
         try {
             const parsed = JSON.parse(details);
@@ -277,6 +276,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                 if (value) {
                                     const iso = value.toISOString().split("T")[0];
                                     setFromDate(iso);
+                                    setPage(1);
                                     setCalender(false);
                                 }
                             }}
