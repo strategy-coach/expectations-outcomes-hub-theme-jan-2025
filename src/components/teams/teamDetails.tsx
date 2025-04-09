@@ -25,7 +25,10 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [gridView, setGridView] = useState(true);
-
+  const userTypeTitle =
+  userType == `engineering`
+    ? "Engineering"
+    : "";
   useEffect(() => {
     let data = JSON.stringify({
       queries: [
@@ -67,9 +70,10 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
 
   return (
     <div className="p-6 pt-4 mt-3 mx-auto">
-      <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-300 mb-4">
-        {organization} Members
-      </h2>
+      <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-300 mb-4">
+        {organization} {userTypeTitle} Members
+      </h3>
+
       <div className="">
         <div className="flex space-x-4">
           <button
