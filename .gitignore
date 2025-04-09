@@ -30,3 +30,4 @@ src/content/db/lforms/resource-surveillance.sqlite.db
 src/content/db/models/resource-surveillance.sqlite.db
 src/content/db/users/resource-surveillance.sqlite.db
 *.db
+public/beoe

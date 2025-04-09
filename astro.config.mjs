@@ -6,7 +6,11 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
-import rehypeMermaid from "rehype-mermaid";
+//import rehypeMermaid from "rehype-mermaid";
+import { rehypeMermaid } from "@beoe/rehype-mermaid";
+import { getCache } from "@beoe/cache";
+
+const cache = await getCache();
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +21,18 @@ export default defineConfig({
       excludeLangs: ["mermaid", "math"],
     },
     remarkPlugins: [remarkPlantUML],
-    rehypePlugins: [rehypeMermaid],
+    //rehypePlugins: [rehypeMermaid],
+    rehypePlugins: [
+      [
+        rehypeMermaid,
+        {
+          strategy: "file",      // alternatively use "data-url"
+          fsPath: "public/beoe", // add this to gitignore
+          webPath: "/beoe",
+          cache,
+        },
+      ],
+    ],
   },
   output: "server",
   // adapter: deno({

@@ -1,0 +1,104 @@
+/* Core */
+
+.beoe {
+  overflow: hidden;
+  touch-action: pan-x pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: grab;
+  
+}
+
+.beoe svg,
+.beoe img,
+.beoe iframe,
+.beoe embed {
+  /* need to center smaller images to fix bug in zoom functionality */
+  margin: auto;
+  display: block;
+  /* need to fit bigger images */
+  max-width: 100%;
+  height: auto;
+}
+
+.beoe img {
+  pointer-events: none;
+}
+
+.beoe iframe {
+  width: 100%;
+}
+
+/* UI */
+
+.beoe {
+  position: relative;
+}
+
+.beoe .buttons {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 300ms;
+}
+
+.beoe:hover .buttons {
+  opacity: 1;
+}
+
+.buttons button{
+  background-color: #ddd !important;
+  color: black !important;
+  border-radius: 2px !important;
+  border: 1px solid #aaa !important;
+  padding: 3px 5px !important;
+  margin-left: 3px !important;
+  font-size: 16px !important;
+  cursor: pointer;
+  line-height: 16px !important;
+
+}
+
+@media (hover: none) {
+  .beoe .buttons {
+    display: none;
+  }
+}
+
+.beoe .touchscreen-warning {
+  position: absolute;
+  right: 0rem;
+  bottom: 0rem;
+  left: 0rem;
+  top: 0rem;
+  pointer-events: none;
+  display: none;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 300ms;
+  container-type: inline-size;
+}
+
+/* fit text to container */
+.beoe .touchscreen-warning p {
+  font-size: min(10cqw, 10cqh);
+}
+
+.beoe .touchscreen-warning.active {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .beoe .touchscreen-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    padding: 1rem;
+  }
+}
