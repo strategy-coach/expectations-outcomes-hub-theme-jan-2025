@@ -93,71 +93,12 @@ const { title, description, activeProject } = themeConfig || {};
           </div>
         </aside>
 
+  
         <aside
           class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
         >
           <div class="col-span-12 md:col-span-4">
-            <div class="flex gap-2.5 items-center text-sm">
-              <span
-                ><img
-                  src="/assets/images/fi-rr-user.svg"
-                  class="w-4 h-4"
-                  alt=""
-                /></span
-              >
-              <span>Team Driver</span>
-            </div>
-          </div>
-          <div class="col-span-12 md:col-span-8">
-            <div class="flex gap-3 font-semibold flex-wrap">
-              <div class="text-sm rounded flex space-x-2 items-center">
-                <span class="rounded-full overflow-hidden w-4 h-4"
-                  ><img src="/assets/images/avatar-img-1.jpg" alt="" /></span
-                >
-                <span>Thomas Adams</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <aside
-          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
-        >
-          <div class="col-span-12 md:col-span-4">
-            <div class="flex gap-2.5 items-center text-sm">
-              <span
-                ><img
-                  src="/assets/images/users.svg"
-                  class="w-4 h-4"
-                  alt=""
-                /></span
-              >
-              <span>Eng Leads</span>
-            </div>
-          </div>
-          <div class="col-span-12 md:col-span-8">
-            <div class="flex gap-3 font-semibold flex-wrap">
-              <div class="text-sm rounded flex space-x-2 items-center">
-                <span class="rounded-full overflow-hidden w-4 h-4"
-                  ><img src="/assets/images/avatar-img-1.jpg" alt="" /></span
-                >
-                <span>George Roberts</span>
-              </div>
-              <div class="text-sm rounded flex space-x-2 items-center">
-                <span class="rounded-full overflow-hidden w-4 h-4"
-                  ><img src="/assets/images/avatar-img-1.jpg" alt="" /></span
-                >
-                <span>Daniel Hill</span>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <aside
-          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
-        >
-          <div class="col-span-12 md:col-span-4">
-            <a href="/team">
+            <a href="/team?userType=customer">
               <div class="flex gap-2.5 items-center text-sm">
                 <span
                   ><img
@@ -166,13 +107,38 @@ const { title, description, activeProject } = themeConfig || {};
                     alt=""
                   /></span
                 >
-                <span>Teams</span>
+                <span>{activeProject} Teams</span>
               </div>
             </a>
           </div>
           <div class="col-span-12 md:col-span-8">
             <div class="flex gap-3 font-semibold flex-wrap">
-              <Teams client:only="react" />
+              <Teams client:only="react" userType="customer" />
+            </div>
+          </div>
+        </aside>
+
+
+        <aside
+          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
+        >
+          <div class="col-span-12 md:col-span-4">
+            <a href="/team?userType=engineering">
+              <div class="flex gap-2.5 items-center text-sm">
+                <span
+                  ><img
+                    src="/assets/images/fi-rr-rec.svg"
+                    class="w-4 h-4"
+                    alt=""
+                  /></span
+                >
+                <span>Engineering Teams</span>
+              </div>
+            </a>
+          </div>
+          <div class="col-span-12 md:col-span-8">
+            <div class="flex gap-3 font-semibold flex-wrap">
+              <Teams client:only="react" userType="engineering" />
             </div>
           </div>
         </aside>

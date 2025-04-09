@@ -7,6 +7,9 @@ import { teamDBConfig } from "../../utils/env";
 import themeConfig from "../../../theme.config";
 import DatabaseQueryRenderer from "../../components/database-query-Renderer/databaseQueryRenderer.astro";
 const { organization } = themeConfig || {};
+
+const url = new URL(Astro.request.url);
+const userType = url.searchParams.get('userType');
 ---
 
 <Layout title="Team">
@@ -33,7 +36,8 @@ const { organization } = themeConfig || {};
       </Breadcrumbs>
     </div>
 
-    <TeamDetails client:only="react" />
+    <TeamDetails client:only="react" userType= {userType} />
+
 {
       teamDBConfig.isEnableTeamDB ? (
     <div class="team-list-views p-6 pt-4 mt-3 mx-auto">

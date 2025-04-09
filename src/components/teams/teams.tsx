@@ -8,6 +8,10 @@ const token = zitadelConfig.zitalAPIToken;
 const organizationId = zitadelConfig.organizationId;
 const authority = zitadelConfig.authority;
 
+interface TeamDetailsProps {
+  userType?: string;
+}
+
 type TeamMember = {
     userId: string;
     displayName: string;
@@ -15,7 +19,8 @@ type TeamMember = {
     roleKeys: string[];
 };
 
-const Teams = () => {
+const Teams: React.FC<TeamDetailsProps> = ({ userType }) => {
+
     const [team, setTeam] = useState<TeamMember[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -58,22 +63,36 @@ const Teams = () => {
     if (error) return <div className="text-center text-red-500">{error}</div>;
 
     // Show only first 5 users unless "Show More" is clicked
-    const visibleTeam = team.slice(0, 5);
+    const filteredTeam = !userType
+      ? team
+      : team.filter((member) => member.roleKeys.some((role) => role.startsWith(userType)));
+
+
+    const visibleTeam = filteredTeam.slice(0, 4);
+    const remainingCount = filteredTeam.length - visibleTeam.length;
 
     return (
-        <>
-            {
-                visibleTeam.map((member) => (
-                    <div key={member.userId} className="text-sm rounded flex space-x-2 items-center">
-                        <span className="rounded-full overflow-hidden w-4 h-4">
-                            <Gravatar userEmail={member.email} height={5} width={5} />
-                        </span>
-                        <span>{member.displayName}</span>
-                    </div>
-                ))
-            }
-        </>
-
+      <>
+        {visibleTeam.map((member) => (
+          <div
+            key={member.userId}
+            className="text-sm rounded flex space-x-2 items-center"
+          >
+            <span className="rounded-full overflow-hidden w-4 h-4">
+              <Gravatar userEmail={member.email} height={5} width={5} />
+            </span>
+            <span>{member.displayName}</span>
+          </div>
+        ))}
+        {remainingCount > 0 && (
+          <a
+            href={`/team?userType=${userType}`}
+            className="text-xs hover:underline ml-6"
+          >
+            +{remainingCount} {remainingCount === 1 ? "member" : "members"}
+          </a>
+        )}
+      </>
     );
 };
 
