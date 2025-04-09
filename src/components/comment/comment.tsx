@@ -85,7 +85,7 @@ const Comment: React.FC<
     url,
     source,
 }) => {
-        const [loadMore, setLoadMore] = useState(false);
+        const [loadMore, setLoadMore] = useState<boolean | undefined>();
         const [submitOption, setSubmitOption] = useState("add");
         const [showReplies, setShowReplies] = useState<Record<string, boolean>>({});
         const [reply, setReply] = useState<{
@@ -146,6 +146,9 @@ const Comment: React.FC<
         };
 
         useEffect(() => {
+            if (activities.length > 3) {
+                setLoadMore(false)
+            }
             if (comment.length === 0) {
                 setShowUser(false);
                 return;
@@ -863,7 +866,7 @@ const Comment: React.FC<
                                         }
                                     }}>
 
-                                    {loadMore == false ? "Load More" : "Show less"}
+                                    {loadMore == false && activities.length > 3 ? "Load More" : loadMore == true ? "Show less" : ""}
                                 </button>
                             }
                         </div>
