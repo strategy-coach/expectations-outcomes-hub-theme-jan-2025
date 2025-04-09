@@ -10,8 +10,7 @@ const latestBlogList = Object.values(newFiles)
     // Remove the base path '/src/content' from the file path
     const relativePath = file.file
       .replace(/^.*\/src\/content/, '')  // Remove everything up to '/src/content'
-      .replace('.md', '')               // Remove the '.md' extension
-      .replace('.mdx', '');             // Remove the '.mdx' extension
+      .replace(/\.(md|mdx)$/, '');            // Remove the '.mdx' extension
     
     return {
       title: file.frontmatter?.title, // Get the title
