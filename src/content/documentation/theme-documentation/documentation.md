@@ -1230,5 +1230,44 @@ Cart *--* Product : "contains"
 To enable or disable page commit history, set the `enablePageHistory` variable in `theme.config.ts` file as 
 `true` or `false`.
 
+
+**Enable zoom for Plantuml diagram**
+
+To enable zoom for Plantuml diagram, include the tag`<figure class="beoe mermaid">` `Plantuml Script` `</figure>` in the markdown as given below.
+
+```
+<figure class="beoe mermaid">
+```plantuml
+@startuml
+ 
+class User {
+    - username: String
+    - password: String
+    - email: String
+    + login()
+    + register()
+}
+
+class Product {
+    - name: String
+    - price: double
+    - description: String
+}
+
+class Cart {
+    - items: List<Product>
+    + addProduct(product: Product)
+    + removeProduct(product: Product)
+}
+
+User "has" --* Cart : "shopping cart"
+User "can view" --* Product : "products"
+Cart *--* Product : "contains" 
+
+@enduml
+
+</figure>
+```
+
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
 

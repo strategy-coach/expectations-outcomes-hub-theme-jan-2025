@@ -116,6 +116,8 @@ Cart *--* Product : "contains"
 @enduml
 ```
 
+<figure class="beoe mermaid">
+
 ```plantuml
 @startuml
  
@@ -145,6 +147,7 @@ Cart *--* Product : "contains"
 
 @enduml
 ```
+</figure>
 
 <style>
 .beoe{
