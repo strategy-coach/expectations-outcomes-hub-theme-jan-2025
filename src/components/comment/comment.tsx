@@ -854,21 +854,16 @@ const Comment: React.FC<
                     <div className="md:col-span-6 lg:col-span-12 ml-4 mt-8 mb-6">
 
                         <div className="flex text-base">
-                            {
+                            {activities.length > 3 && (
                                 <button
                                     className="bg-gray-100 inline-flex px-3 py-1 rounded-xl text-sm text-gray-800"
                                     title="Load More"
-                                    onClick={() => {
-                                        if (loadMore == true) {
-                                            setLoadMore(false);
-                                        } else {
-                                            setLoadMore(true);
-                                        }
-                                    }}>
-
-                                    {loadMore == false && activities.length > 3 ? "Load More" : loadMore == true ? "Show less" : ""}
+                                    onClick={() => setLoadMore(!loadMore)}
+                                >
+                                    {loadMore ? "Show less" : "Load More"}
                                 </button>
-                            }
+                            )}
+
                         </div>
 
                     </div>
