@@ -26,8 +26,8 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
   const [error, setError] = useState<string | null>(null);
   const [gridView, setGridView] = useState(true);
   const userTypeTitle =
-  userType == `engineering`
-    ? "Engineering"
+  userType == `netspective`
+    ? "Netspective"
     : "";
   useEffect(() => {
     let data = JSON.stringify({
