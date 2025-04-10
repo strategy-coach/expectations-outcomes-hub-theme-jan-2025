@@ -35,6 +35,7 @@ interface ActivityLogProps {
     recordsLimit: number;
     showViewMoreButton: boolean;
     hoursToFetch: number;
+    pageUrl?: string;
 }
 const host = globalThis.location.host;
 
@@ -43,7 +44,7 @@ const formatUserRole = (role?: string) => {
     const formatted = role
         .replace(/-/g, " ")
         .replace(/\b\w/g, (c) => c.toUpperCase());
-    return ` (${formatted})`;
+    return `${formatted}`;
 };
 
 const getTimeDifferenceString = (fromDate: string | Date, toDate: Date = new Date()) => {
@@ -72,10 +73,14 @@ const getTimeDifferenceString = (fromDate: string | Date, toDate: Date = new Dat
 
 
 const ActivityLog: React.FC<ActivityLogProps> = ({
+    pageUrl,
     recordsLimit,
     showViewMoreButton,
     hoursToFetch,
 }) => {
+    const [showRoleDropdown, setShowRoleDropdown] = useState(false);
+    const [selectedRoles, setSelectedRoles] = useState<string[]>(showViewMoreButton == true || pageUrl ? [] : ["customer-staff"]);
+    const [roles, setRoles] = useState<string[]>([]);
     const [activityLogEntries, setActivityLogEntries] = useState<ActivityLogType[]>([]);
     const [currentTimeMicroseconds, setCurrentTimeMicroseconds] = useState(() => Date.now() * 1000);
     const [startTimeMicroseconds, setStartTimeMicroseconds] = useState(() =>
@@ -84,7 +89,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const [calender, setCalender] = useState(false)
     const [fromDate, setFromDate] = useState("");
     const [totalActivityRecords, setTotalActivityRecords] = useState<number>(0);
-    const [currentFilter, setCurrentFilter] = useState<string>("documentLoad");
+    const [currentFilter, setCurrentFilter] = useState<string>(pageUrl ? "all" : "documentLoad");
     const [page, setPage] = useState<number>(1);
     const [days, setDays] = useState("")
     const [searchTerm, setSearchTerm] = useState("");
@@ -98,9 +103,48 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID;
     const OPENOBSERVE_API_URL = import.meta.env.PUBLIC_OPENOBSERVE_URL;
     const OPENOBSERVE_API_TOKEN = import.meta.env.PUBLIC_OPENOBSERVE_TOKEN;
-
+    const ZITADEL_AUTHORITY = import.meta.env.PUBLIC_ZITADEL_AUTHORITY;
+    const PROJECT_ID = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID;
+    const ZITADEL_API_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN;
 
     const offset = useMemo(() => (page - 1) * recordPerPage, [page, recordPerPage]);
+
+    const fetchRole = useCallback(
+        async () => {
+            try {
+                const response = await axios.post(
+                    `${ZITADEL_AUTHORITY}/management/v1/projects/${PROJECT_ID}/roles/_search`,
+                    {},
+                    {
+                        headers: {
+                            'x-zitadel-orgid': `${ORGANIZATION_ID}`,
+                            Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+                const result = response.data.result.map((role: any) => role.key);
+                setRoles(result);
+            } catch (error) {
+                console.error("Error fetching activity log:", error);
+                return null;
+            }
+        },
+        [ZITADEL_AUTHORITY, ZITADEL_API_TOKEN, PROJECT_ID]
+    );
+
+    useEffect(() => {
+        let roleFilter
+        if (selectedRoles.length > 0) {
+            roleFilter = selectedRoles
+                .map(role => `str_match(userrole, '${role}')`)
+                .join(" OR ");
+            roleFilter = `AND (${roleFilter})`;
+        }
+
+        fetchRole();
+    }, [selectedRoles])
+
 
     useEffect(() => {
         if (fromDate) {
@@ -123,21 +167,48 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
         }
     }, [fromDate]);
 
+
     const getQuery = useCallback(
         (filter: string, type: "data" | "count") => {
-            let baseQuery = `FROM default WHERE str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication','add-comment'" : `'${filter}'`
-                })`;
+            const roleFilter =
+                selectedRoles.length > 0
+                    ? `AND (${selectedRoles.map(role => `str_match(userrole, '${role}')`).join(" OR ")})`
+                    : "";
+
+            let baseQuery = `FROM default 
+            WHERE str_match(url, '${pageUrl ? pageUrl : host}') 
+            AND organizationid='${ORGANIZATION_ID}' 
+            AND operation_name IN (${filter === "all"
+                    ? "'element-click', 'documentLoad','user-authentication','add-comment'"
+                    : `'${filter}'`
+                }) 
+            ${roleFilter}`;
+
             if (searchTerm.length > 0) {
-                baseQuery = `FROM default WHERE (str_match_ignore_case(email, '${searchTerm}') OR str_match_ignore_case(username, '${searchTerm}')) AND str_match(url, '${host}') AND organizationid='${ORGANIZATION_ID}' AND operation_name IN (${filter === "all" ? "'element-click', 'documentLoad','user-authentication'" : `'${filter}'`
-                    })`;
+                baseQuery = `FROM default 
+                WHERE (str_match_ignore_case(email, '${searchTerm}') 
+                OR str_match_ignore_case(username, '${searchTerm}')) 
+                AND str_match(url, '${pageUrl ? pageUrl : host}') 
+                AND organizationid='${ORGANIZATION_ID}' 
+                AND operation_name IN (${filter === "all"
+                        ? "'element-click', 'documentLoad','user-authentication'"
+                        : `'${filter}'`
+                    }) 
+                ${roleFilter}`;
             }
+
             return type === "data"
                 ? `SELECT * ${baseQuery}`
                 : `SELECT trace_id ${baseQuery}`;
         },
-        [ORGANIZATION_ID, searchTerm, host]
+        [ORGANIZATION_ID, searchTerm, host, selectedRoles, pageUrl]
     );
 
+    const toggleRole = (role: string) => {
+        setSelectedRoles((prev) =>
+            prev.includes(role) ? prev.filter((r) => r !== role) : [...prev, role]
+        );
+    };
     // Fetch activity log data
     const fetchActivityLog = useCallback(
         async (query: string, size: number, from: number) => {
@@ -184,7 +255,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     useEffect(() => {
         fetchData();
-    }, [fetchData, fromDate]);
+    }, [fetchData, fromDate, selectedRoles]);
 
     const getActivityDescription = (details: string) => {
         try {
@@ -207,10 +278,10 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
     const getActivityMessage = (log: ActivityLogType) => {
         return log.operation_name === "element-click"
-            ? `${log.username} ${log.userrole ? `${formatUserRole(log.userrole)}` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
+            ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
             : log.operation_name === "user-authentication"
-                ? `${log.username} ${log.userrole ? ` ${formatUserRole(log.userrole)}` : ""} logged in successfully`
-                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? `${formatUserRole(log.userrole)}` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} ${log.userrole ? `${formatUserRole(log.userrole)}` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
+                ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} logged in successfully`
+                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
@@ -235,68 +306,115 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 )}
             </h3>
 
-            {!showViewMoreButton && (<div className="mt-4 mb-4 space-x-2">
-                {["documentLoad", "element-click", "user-authentication", "all"].map((filter) => (
-                    <button
-                        key={filter}
-                        className={`px-4 py-2 ${currentFilter === filter
-                            ? "bg-blue-500 text-white"
-                            : "filter-btn bg-gray-200 hover:text-white hover:bg-blue-500"
-                            }`}
-                        onClick={() => {
-                            setCurrentFilter(filter);
-                            setPage(1);
-                        }}
-                    >
-                        {filter === "all"
-                            ? "All Events"
-                            : filter === "element-click"
-                                ? "Click Events"
-                                : filter === "user-authentication"
-                                    ? "User Login"
-                                    : "Page Visit"}
-                    </button>
-                ))}
-                {calender === false ? (
-                    <span
-                        onClick={() => {
-                            setFromDate("");
-                            setCalender(true);
-                        }}
-                        className=" bg-blue-500 text-white inline-flex items-center border border-gray-300 px-4 py-2 gap-2 cursor-pointer"
-                    >
-                        {days}
-                    </span>
-                ) : (
-                    <div className="inline-flex items-center gap-2">
-                        <DatePicker
-                            oneTap
-                            value={fromDate ? new Date(fromDate) : null}
-                            onChange={(value: Date | null) => {
-                                if (value) {
-                                    const iso = value.toISOString().split("T")[0];
-                                    setFromDate(iso);
-                                    setPage(1);
-                                    setCalender(false);
-                                }
+            {(showViewMoreButton == false && pageUrl !== undefined) || (!showViewMoreButton && pageUrl == undefined) && (
+                <div className="mt-4 mb-4 space-x-2">
+                    {["documentLoad", "element-click", "user-authentication", "all"].map((filter) => (
+                        <button
+                            key={filter}
+                            className={`px-4 py-2 ${currentFilter === filter
+                                ? "bg-blue-500 text-white"
+                                : "filter-btn bg-gray-200 hover:text-white hover:bg-blue-500"
+                                }`}
+                            onClick={() => {
+                                setCurrentFilter(filter);
+                                setPage(1);
                             }}
-                            size="lg"
-                            shouldDisableDate={(date: Date) => date > new Date()}
-                            placement="bottomStart"
-                            style={{ height: '32px' }}
+                        >
+                            {filter === "all"
+                                ? "All Events"
+                                : filter === "element-click"
+                                    ? "Click Events"
+                                    : filter === "user-authentication"
+                                        ? "User Login"
+                                        : "Page Visit"}
+                        </button>
+                    ))}
+                    {calender === false ? (
+                        <span
+                            onClick={() => {
+                                setFromDate("");
+                                setCalender(true);
+                            }}
+                            className=" bg-blue-500 text-white inline-flex items-center border border-gray-300 px-4 py-2 gap-2 cursor-pointer"
+                        >
+                            {days}
+                        </span>
+                    ) : (
+                        <div className="inline-flex items-center gap-2">
+                            <DatePicker
+                                oneTap
+                                value={fromDate ? new Date(fromDate) : null}
+                                onChange={(value: Date | null) => {
+                                    if (value) {
+                                        const iso = value.toISOString().split("T")[0];
+                                        setFromDate(iso);
+                                        setPage(1);
+                                        setCalender(false);
+                                    }
+                                }}
+                                size="lg"
+                                shouldDisableDate={(date: Date) => date > new Date()}
+                                placement="bottomStart"
+                                style={{ height: '32px' }}
 
-                        />
+                            />
+                        </div>
+                    )}
+                    <div className="relative inline-block">
+                        <button
+                            onClick={() => setShowRoleDropdown(!showRoleDropdown)}
+                            className="flex flex-wrap gap-1 px-2 py-2 min-h-[2.5rem] bg-gray-200 rounded "
+                        >
+                            {selectedRoles.length === 0 ? (
+                                <span className="text-gray-600">Select Roles</span>
+                            ) : (
+                                selectedRoles.map((role) => (
+                                    <span
+                                        key={role}
+                                        className="flex items-center px-2 py-1 bg-blue-500 text-white rounded-lg text-sm "
+                                    >
+                                        {formatUserRole(role)}
+                                        <span
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                toggleRole(role);
+                                            }}
+                                            className="ml-2 text-white  cursor-pointer"
+                                        >
+                                            &times;
+                                        </span>
+                                    </span>
+                                ))
+                            )}
+                        </button>
+
+                        {showRoleDropdown && (
+                            <div className="absolute z-10 mt-2 w-60 bg-white border border-gray-300 rounded shadow-lg">
+                                {roles.map((role) => (
+                                    <label key={role} className="flex items-center px-4 py-2 hover:bg-gray-100">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedRoles.includes(role)}
+                                            onChange={() => toggleRole(role)}
+                                            className="mr-2"
+                                        />
+                                        {formatUserRole(role)}
+                                    </label>
+                                ))}
+                            </div>
+                        )}
                     </div>
-                )}
-                <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => { setSearchTerm(e.target.value) }}
-                    placeholder="Search by username or email..."
-                    className="p-2 mb-4 border border-gray-300 rounded-lg"
-                />
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => { setSearchTerm(e.target.value) }}
+                        placeholder="Search by username or email..."
+                        className="p-2 mb-4 border border-gray-300 rounded-lg"
+                    />
 
-            </div>)
+
+
+                </div>)
             }
 
             {

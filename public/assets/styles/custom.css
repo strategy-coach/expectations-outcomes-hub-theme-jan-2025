@@ -603,3 +603,9 @@ a h3 {
 #lhc-form-container {
   color: #000;
 }
+#history-tab .text-blue-600 {
+    color:#028db7 !important;
+   }
+   #history-tab .border-blue-600 {
+    border-color:#028db7 !important;
+   }  
