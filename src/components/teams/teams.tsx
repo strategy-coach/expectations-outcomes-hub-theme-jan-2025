@@ -68,7 +68,7 @@ const Teams: React.FC<TeamDetailsProps> = ({ userType }) => {
       : team.filter((member) => member.roleKeys.some((role) => role.startsWith(userType)));
 
 
-    const visibleTeam = filteredTeam.slice(0, 4);
+    const visibleTeam = filteredTeam.slice(0, 2);
     const remainingCount = filteredTeam.length - visibleTeam.length;
 
     return (
