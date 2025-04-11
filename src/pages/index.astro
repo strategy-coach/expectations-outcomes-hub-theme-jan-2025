@@ -93,7 +93,6 @@ const { title, description, activeProject } = themeConfig || {};
           </div>
         </aside>
 
-  
         <aside
           class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
         >
@@ -117,7 +116,6 @@ const { title, description, activeProject } = themeConfig || {};
             </div>
           </div>
         </aside>
-
 
         <aside
           class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
@@ -187,7 +185,6 @@ const { title, description, activeProject } = themeConfig || {};
         </aside>
       </div>
       <WhatsNext />
-
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
@@ -236,6 +233,7 @@ const { title, description, activeProject } = themeConfig || {};
       <Accomplishments showViewMoreButton={true} />
       <LatestBlogs />
       <ActivityLog
+        title={title}
         recordsLimit={5}
         showViewMoreButton={true}
         hoursToFetch={1}

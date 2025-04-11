@@ -36,6 +36,7 @@ interface ActivityLogProps {
     showViewMoreButton: boolean;
     hoursToFetch: number;
     pageUrl?: string;
+    title?: string
 }
 const host = globalThis.location.host;
 
@@ -73,13 +74,14 @@ const getTimeDifferenceString = (fromDate: string | Date, toDate: Date = new Dat
 
 
 const ActivityLog: React.FC<ActivityLogProps> = ({
+    title,
     pageUrl,
     recordsLimit,
     showViewMoreButton,
     hoursToFetch,
 }) => {
     const [showRoleDropdown, setShowRoleDropdown] = useState(false);
-    const [selectedRoles, setSelectedRoles] = useState<string[]>(showViewMoreButton == true || pageUrl ? [] : ["customer-staff"]);
+    const [selectedRoles, setSelectedRoles] = useState<string[]>((showViewMoreButton == true && !pageUrl) ? ["customer-staff", "customer-admin"] : (showViewMoreButton == false && pageUrl) ? [] : ["customer-staff"]);
     const [roles, setRoles] = useState<string[]>([]);
     const [activityLogEntries, setActivityLogEntries] = useState<ActivityLogType[]>([]);
     const [currentTimeMicroseconds, setCurrentTimeMicroseconds] = useState(() => Date.now() * 1000);
@@ -295,7 +297,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         className="w-6 h-6"
                         alt="Calendar Icon"
                     />
-                    <span>Activity Log</span>
+                    <span>{title ? `${title} Recent Activity` : "Activity"}</span>
                 </div>
                 {showViewMoreButton && (
                     <a href="/activity">
@@ -448,7 +450,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         })}
                     </ul>
                 ) : (
-                    <p className="text-gray-600">No activity log available.</p>
+                    <p className="text-gray-600">{(showViewMoreButton == true && pageUrl == undefined) ? "No recent customer activity found. Click here to see the full activity log." : (showViewMoreButton == false && pageUrl !== undefined) ? "No activiy log available" : "No activity found for the filter criteria. Please update the filters above."}</p>
                 )
             }
 
