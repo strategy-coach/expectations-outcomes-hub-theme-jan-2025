@@ -1,0 +1,9 @@
+---
+import MarkdownFetcher from "../components/MarkdownFetcher";
+import Layout from "../layouts/Layout.astro";
+---
+<Layout title="Expectations and Outcomes Hub Theme">
+    <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[70vh]">
+        <MarkdownFetcher client:only="react"/>
+    </main>
+</Layout>
