@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
-    const GITHUB_TOKEN = import.meta.env.PUBLIC_GITHUB_PAT;
+    const GITHUB_TOKEN = import.meta.env.PUBLIC_GITHUB_TOKEN;
     const FILE_URL ="https://api.github.com/repos/surveilr/www.surveilr.com/contents/src/content/docs/docs/evidence/surveilr-evidence-collection-guide.md";
 
  
