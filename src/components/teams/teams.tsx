@@ -65,7 +65,7 @@ const Teams: React.FC<TeamDetailsProps> = ({ userType }) => {
     // Show only first 5 users unless "Show More" is clicked
     const filteredTeam = !userType
       ? team
-      : team.filter((member) => member.roleKeys.some((role) => role.startsWith(userType)));
+      : team.filter((member) => member.roleKeys?.some((role) => role.startsWith(userType)));
 
 
     const visibleTeam = filteredTeam.slice(0, 2);

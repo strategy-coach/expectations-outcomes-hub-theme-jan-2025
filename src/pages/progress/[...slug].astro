@@ -10,6 +10,7 @@ import themeConfig from '../../../theme.config';
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
 import CommitHistory from "../../components/git-commit/commitHistory.astro";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
+import ActivityLog from "../../components/activity-log/activityLog";
 
 const { contentCollectionSort } = themeConfig || {}; 
 const { enablePageHistory } = themeConfig || {};
@@ -31,6 +32,7 @@ if (!entry) {
   throw new Error("Could not find data");
 }
 const { Content } = await render(entry);
+const pageUrl=Astro.url.href;
 
 // export async function getStaticPaths() {
 //   const posts = await getCollection("progress");
@@ -103,43 +105,72 @@ const { Content } = await render(entry);
     
       <div class="col-span-12 md:col-span-3 lg:col-span-3 xl:col-span-3 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300">
         <aside style="display: block; padding-top:20px; height:700px ">
-          <div class="flow-root">
-            <ul
-              class="flex flex-wrap -mb-px font-medium text-center"
-              id="default-tab"
-              data-tabs-toggle="#default-tab-content"
-            >
-              
-              <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
-                <button style="color:#028db7 !important; border-color: #028db7 !important;"
-                  class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                  id="dashboard-tab"
-                  data-tabs-target="#dashboard"
-                  type="button"
-                  role="tab"
-                  aria-controls="dashboard"
-                  aria-selected="false"
-                  aria-label="Commit History"
-                >
-                  Page History
-                </button>
-              </li>
-            </ul>
-            <div id="default-tab-content">
-           
-              <div
-                class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
-                id="dashboard"
-                role="tabpanel"
-                aria-labelledby="dashboard-tab"
+        <div class="flow-root">
+          <ul
+            class="flex flex-wrap -mb-px font-medium text-center"
+            id="history-tab"
+            data-tabs-toggle="#default-tab-content"
+          >
+          { enablePageHistory ? (
+            <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
+              <button
+                class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                id="dashboard-tab"
+                data-tabs-target="#dashboard"
+                type="button"
+                role="tab"
+                aria-controls="dashboard"
+                aria-selected="false"
+                aria-label="Commit History"
               >
-                <p class="text-sm text-gray-500 dark:text-gray-400">
-                  <CommitHistory filename={entryid} />
-                </p>
-              </div>
+                Page History
+              </button>
+            </li>
+            ) : "" }
+            <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
+              <button
+                class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                id="activity-tab"
+                data-tabs-target="#activity"
+                type="button"
+                role="tab"
+                aria-controls="activity"
+                aria-selected="false"
+                aria-label="Activity"
+              >
+                Activity
+              </button>
+            </li>
+          </ul>
+          <div id="default-tab-content">
+         
+            <div
+              class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+              id="dashboard"
+              role="tabpanel"
+              aria-labelledby="dashboard-tab"
+            >
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                <CommitHistory filename={entryid} />
+              </p>
+            </div>
+            <div
+              class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+              id="activity"
+              role="tabpanel"
+              aria-labelledby="activity-tab"
+            >
+             <ActivityLog
+            pageUrl={pageUrl}
+            recordsLimit={5}
+            showViewMoreButton={false}
+            hoursToFetch={8,760}
+             client:only="react"
+      />
             </div>
           </div>
-        </aside>
+        </div>
+      </aside>
       </div>
       
       <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} />

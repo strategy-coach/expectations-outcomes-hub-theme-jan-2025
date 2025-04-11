@@ -129,7 +129,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
               .filter(
                 (member) =>
                   !userType ||
-                  member.roleKeys.some((role) => role.startsWith(userType))
+                  member.roleKeys?.some((role) => role.startsWith(userType))
               )
               .map((member) => (
                 <div
@@ -190,7 +190,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
                   .filter(
                     (member) =>
                       !userType ||
-                      member.roleKeys.some((role) => role.startsWith(userType))
+                      member.roleKeys?.some((role) => role.startsWith(userType))
                   )
                   .map((member) => (
                     <tr className="hover:bg-gray-50 dark:hover:bg-gray-600 dark:bg-gray-700">

@@ -210,7 +210,7 @@ const pageUrl=Astro.url.href
       </article>) }
      
     </div>
-    {  enablePageHistory ? (
+    
     
     <div class="col-span-12 md:col-span-3 lg:col-span-3 xl:col-span-3 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300">
      <aside style="display: block; padding-top:20px; height:700px ">
@@ -220,7 +220,7 @@ const pageUrl=Astro.url.href
             id="history-tab"
             data-tabs-toggle="#default-tab-content"
           >
-           
+          { enablePageHistory ? (
             <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
               <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
@@ -235,6 +235,7 @@ const pageUrl=Astro.url.href
                 Page History
               </button>
             </li>
+            ) : "" }
             <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
               <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
@@ -282,6 +283,6 @@ const pageUrl=Astro.url.href
     </div>
     
     <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} />
-  ) : "" }
+  
   </main>
 </Layout>
