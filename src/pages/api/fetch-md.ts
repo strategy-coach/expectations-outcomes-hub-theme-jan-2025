@@ -30,8 +30,11 @@ export const GET: APIRoute = async () => {
       },
     });
     const text = await fileResponse.text();
-    const { content } = matter(text);
-    markdownContent = content;
+    const stripped = text.replace(/^```yaml\s*([\s\S]*?)```[\r\n]+/, '').trim();
+    
+markdownContent = stripped;
+   // markdownContent = parsed.content.trim(); // remove any leading/trailing whitespace
+    
   }
 
   return new Response(JSON.stringify({
