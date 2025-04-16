@@ -14,7 +14,7 @@ import type {Questionnaire,OutputNode} from "./typs";
 import {convertQuestionnaire,replaceQuestionnaire} from "./questionnaireOrder"
 import {getPageFromSlug,slugify} from "../../components/lhc-forms-widget/service";
 import order from "./order.json";
-import CommitHistory from "../../components/git-commit/commitHistory.astro";
+import CommitHistory from "../../components/git-commit/commitHistory.tsx";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
 import ActivityLog from "../../components/activity-log/activityLog";
 
@@ -259,9 +259,7 @@ const pageUrl=Astro.url.href;
               role="tabpanel"
               aria-labelledby="dashboard-tab"
             >
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                <CommitHistory filename={entryid} />
-              </p>
+              <CommitHistory filename={entryid} client:only="react"/>    
             </div>
             <div
               class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
@@ -282,7 +280,7 @@ const pageUrl=Astro.url.href;
       </aside>
     </div>
     
-    <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} />
+    <!-- <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} /> -->
   
   </main>
 </Layout>

@@ -8,7 +8,7 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from '../../../theme.config';
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
-import CommitHistory from "../../components/git-commit/commitHistory.astro";
+import CommitHistory from "../../components/git-commit/commitHistory.tsx";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
 import ActivityLog from "../../components/activity-log/activityLog";
 
@@ -100,8 +100,7 @@ const pageUrl=Astro.url.href;
         </div>
         <Content />
       </article>
-    </div>
-    {  enablePageHistory ? (
+    </div>    
     
       <div class="col-span-12 md:col-span-3 lg:col-span-3 xl:col-span-3 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300">
         <aside style="display: block; padding-top:20px; height:700px ">
@@ -149,10 +148,9 @@ const pageUrl=Astro.url.href;
               id="dashboard"
               role="tabpanel"
               aria-labelledby="dashboard-tab"
-            >
-              <p class="text-sm text-gray-500 dark:text-gray-400">
-                <CommitHistory filename={entryid} />
-              </p>
+            >             
+                <CommitHistory filename={entryid} client:only="react"/>    
+              
             </div>
             <div
               class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
@@ -173,7 +171,7 @@ const pageUrl=Astro.url.href;
       </aside>
       </div>
       
-      <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} />
-    ) : "" }
+      <!-- <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} /> -->
+  
   </main>
 </Layout>
