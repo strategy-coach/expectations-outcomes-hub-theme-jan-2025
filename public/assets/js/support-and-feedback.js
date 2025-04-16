@@ -48,11 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const captureScreenshot = async () => {
         try {
            /* global html2canvas */
-           console.log("innn");
             const canvas = await html2canvas(document.body);
-            console.log(canvas); 
             const screenshotCanvas = document.getElementById(ELEMENTS.screenshotCanvas);
-            console.log("333"); 
             screenshotCanvas.width = canvas.width / 2;
             screenshotCanvas.height = canvas.height / 2;
             screenshotCanvas.getContext("2d").drawImage(canvas, 0, 0, screenshotCanvas.width, screenshotCanvas.height);
@@ -63,148 +60,47 @@ document.addEventListener("DOMContentLoaded", () => {
     };
    
     
-    
-    // Function: Upload screenshot to GitHub repository
-    const uploadFileToGitHub = async (issueId, screenshotBase64) => {
-        const fileName = `${issueId}.png`;
-        const filePath = `uploads/${fileName}`;
+  const callSupportAPI = async (type, data) => {
+    const response = await fetch("/api/support-and-feedback", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...data, type }),
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error?.error || "Unknown error");
+    }
 
-        try {
-            const response = await fetch(
-                `https://api.github.com/repos/${window.widgetConfig.GITHUB_OWNER}/${window.widgetConfig.GITHUB_REPO}/contents/${filePath}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        Authorization: `Bearer ${window.widgetConfig.GITHUB_PAT}`,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        message: `Upload screenshot for issue #${issueId}`,
-                        content: screenshotBase64.split(",")[1],
-                    }),
-                }
-            );
+    return response.json();
+  };
 
-            if (!response.ok) {
-                const errorDetails = await response.json();
-                console.error("Error uploading file to GitHub:", errorDetails);
-                throw new Error("Failed to upload screenshot to GitHub");
-            }
-        } catch (error) {
-            console.error("Error during upload to GitHub:", error);
-            throw new Error("Failed to upload screenshot to GitHub");
-        }
-    };
+  const createGitHubIssue = async (
+    formData,
+    submissionDate,
+    screenshotBase64,
+    currentURL
+  ) => {
+    return await callSupportAPI("createIssue", {
+      formData,
+      submissionDate,
+      screenshotBase64,
+      currentURL,
+    });
+  };
 
-    // Function: Create GitHub issue with feedback details
-    const createGitHubIssue = async (formData, submissionDate, screenshotBase64,currentURL) => {
-        const issueDescription = `
-name: ${formData.username}
-email: ${formData.email}
-subject: ${formData.subject}
-message: ${formData.message.split("\n").join("\n")}
-submissionDate: ${submissionDate}
-pageUrl: ${currentURL}
-`.trim();
+  const sendAdminMail = async (payload) => {
+    return await callSupportAPI("sendAdminMail", {
+      formData: payload,
+    });
+  };
 
-    const urlObj = new URL(currentURL);
-    const hostnameParts = urlObj.hostname.split("."); // Split hostname by dots
-    let siteLabel = hostnameParts[0] +" hub";
-
-        try {
-            const response = await fetch(
-                `https://api.github.com/repos/${window.widgetConfig.GITHUB_OWNER}/${window.widgetConfig.GITHUB_REPO}/issues`,
-                {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${window.widgetConfig.GITHUB_PAT}`,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        title: formData.subject,
-                        body: `### Feedback Details\n\`\`\`yaml\n${issueDescription}\n\`\`\``,
-                        labels: ["feedback", siteLabel],
-                    }),
-                }
-            );
-
-            if (!response.ok) {
-                const errorDetails = await response.json();
-                console.error("Error creating GitHub issue:", errorDetails);
-                throw new Error("GitHub issue creation failed");
-            }
-
-            const issueData = await response.json();
-
-            if (screenshotBase64) {
-                await uploadFileToGitHub(issueData.number, screenshotBase64);
-            }
-
-            return issueData;
-        } catch (error) {
-            console.error("Error creating GitHub issue:", error);
-            throw new Error("GitHub issue creation failed");
-        }
-    };
-    const sendAdminMail = async (payload) => {
-        try {            
-          const response = await fetch(window.widgetConfig.NOVU_API_URL, {
-            method: "POST",
-            headers: {
-              Authorization: `ApiKey ${window.widgetConfig.NOVU_API_KEY}`, // Novu API key
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: window.widgetConfig.NOVU_CONTACT_ADMIN_TEMPLATE,
-              to: {
-                subscriberId: window.widgetConfig.NOVU_SUBSCRIBER_ID,  
-                email: `${window.widgetConfig.CONTACTUS_ADMIN_EMAIL}`,            
-              },
-              payload: payload,
-            }),
-          });
-      
-          if (!response.ok) {
-            const errorResponse = await response.json();
-            console.error("Novu API error:", errorResponse);
-            throw new Error("Email sending failed");
-          }
-        } catch (error) {
-          console.error("Error sending email:", error);
-          throw error;
-        }
-      };
-
-      const sendAknowledgementMail = async (formData) => {        
-        try {            
-          const response = await fetch(window.widgetConfig.NOVU_API_URL, {
-            method: "POST",
-            headers: {
-              Authorization: `ApiKey ${window.widgetConfig.NOVU_API_KEY}`, // Novu API key
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: window.widgetConfig.NOVU_CONTACTUS_TEMPLATE,
-              to: {
-                subscriberId: window.widgetConfig.NOVU_SUBSCRIBER_ID,  
-                email: formData.email,             
-              },
-              payload: {
-                name: formData.username,
-              },
-            }),
-          });
-      
-          if (!response.ok) {
-            const errorResponse = await response.json();
-            console.error("Novu API error:", errorResponse);
-            throw new Error("Email sending failed");
-          }
-        } catch (error) {
-          console.error("Error sending email:", error);
-          throw error;
-        }
-      };
+  const sendAcknowledgementMail = async (formData) => {
+    return await callSupportAPI("sendAcknowledgement", {
+      formData,
+    });
+  };
       
     // Error handling and UI manipulation
     const clearErrors = () => {
@@ -368,7 +264,7 @@ pageUrl: ${currentURL}
            
             try {
                 await sendAdminMail(payload);        
-                await sendAknowledgementMail(formData);
+                await sendAcknowledgementMail(formData);
                 // Show success message
                 const successNotification = document.getElementById(ELEMENTS.successNotification);
                 successNotification.style.display = "block";

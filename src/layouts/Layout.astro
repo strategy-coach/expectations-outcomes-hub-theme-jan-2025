@@ -26,21 +26,7 @@ if (Astro.cookies.get("User")?.value !== undefined) {
 }
 const userName = Astro.cookies.get("zitadel_user_name");
 const userEmail = Astro.cookies.get("zitadel_user_email");
-const envData = {
-  GITHUB_PAT: import.meta.env.PUBLIC_GITHUB_PAT as string,
-  GITHUB_OWNER: import.meta.env.PUBLIC_GITHUB_OWNER as string,
-  GITHUB_REPO: import.meta.env.PUBLIC_GITHUB_REPO as string,
-  NOVU_API_URL: import.meta.env.PUBLIC_NOVU_API_URL as string,
-  NOVU_API_KEY: import.meta.env.PUBLIC_NOVU_API_KEY as string,
-  CONTACTUS_ADMIN_EMAIL: import.meta.env
-    .PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL as string,
-  NOVU_CONTACTUS_TEMPLATE: import.meta.env
-    .PUBLIC_NOVU_CONTACTUS_TEMPLATE as string,
-  NOVU_CONTACT_ADMIN_TEMPLATE: import.meta.env
-    .PUBLIC_NOVU_ADMIN_TEMPLATE as string,
-  NOVU_SUBSCRIBER_ID: import.meta.env.PUBLIC_NOVU_SUBSCRIBER_ID as string,
-  GOOGLE_CAPTCHA_SITE_KEY: import.meta.env.GOOGLE_CAPTCHA_SITE_KEY as string,
-};
+
 const enableSupportAndFeedback =
   import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined
     ? import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK
@@ -137,27 +123,17 @@ const enableSupportAndFeedback =
   </head>
   <body class="bg-gray-50 dark:bg-gray-900 dark:text-white">
     <Header />
-    <script define:vars={{ userName, userEmail, envData }} is:inline>
+    <script define:vars={{ userName, userEmail }} is:inline>
       window.widgetConfig = {
-        GITHUB_OWNER: envData.GITHUB_OWNER,
-        GITHUB_REPO: envData.GITHUB_REPO,
-        GITHUB_PAT: envData.GITHUB_PAT,
         USER_EMAIL: userEmail ? userEmail.value : "Unauth",
         USER_FULL_NAME: userName ? userName.value : "Unauth",
-        NOVU_API_URL: envData.NOVU_API_URL,
-        NOVU_API_KEY: envData.NOVU_API_KEY,
-        NOVU_SUBSCRIBER_ID: envData.NOVU_SUBSCRIBER_ID,
-        NOVU_CONTACTUS_TEMPLATE: envData.NOVU_CONTACTUS_TEMPLATE,
-        NOVU_CONTACT_ADMIN_TEMPLATE: envData.NOVU_CONTACT_ADMIN_TEMPLATE,
-        CONTACTUS_ADMIN_EMAIL: envData.CONTACTUS_ADMIN_EMAIL,
-        GOOGLE_CAPTCHA_SITE_KEY: envData.GOOGLE_CAPTCHA_SITE_KEY,
       };
     </script>
     {
-      enableSupportAndFeedback == "true" && (
+      enableSupportAndFeedback == "true" && ( 
         <script src="/assets/js/support-and-feedback.js" is:inline />
-      )
-    }
+       )
+    } 
 
     <script is:inline>
       document.addEventListener("DOMContentLoaded", () => {

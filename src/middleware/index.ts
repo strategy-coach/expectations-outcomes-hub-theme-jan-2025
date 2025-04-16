@@ -15,10 +15,12 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
   if (isZitadelEnabled) {
     if (
       pathname === "/post-authorization/" ||
+      "/api/support-and-feedback" ||
       (isHomePagePublic && pathname === "/")
     ) {
       return next(); // Allow access without further checks
     }
+
 
     if (!isLoggedIn && !unauthorizedPages.includes(splittedPath[1])) {
       return context.redirect("/logout"); // Redirect unauthenticated users
