@@ -89,8 +89,7 @@ if (isLform) {
   }
   ({ Content, headings, remarkPluginFrontmatter } = await render(entry));
 }
-const pageUrl=Astro.url.href
-
+const pageUrl=Astro.url.href;
 ---
 
 <Layout title={isLform ? title : entry.data.title} redirect={isLform ? "" : entry.data.redirect} enableEditButton={isLform ? false : entry.data.enableEditButton} >
@@ -220,7 +219,7 @@ const pageUrl=Astro.url.href
             id="history-tab"
             data-tabs-toggle="#default-tab-content"
           >
-          { enablePageHistory ? (
+          {!isLform && enablePageHistory && (
             <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
               <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
@@ -235,7 +234,8 @@ const pageUrl=Astro.url.href
                 Page History
               </button>
             </li>
-            ) : "" }
+          )}         
+          
             <li class="me-2" style="margin-top: 30px; margin-left: 50px;">
               <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
