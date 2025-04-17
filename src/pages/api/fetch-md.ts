@@ -30,19 +30,8 @@ export const GET: APIRoute = async () => {
       },
     });
     const text = await fileResponse.text();
-    const stripped = text
-  .replace(/^```yaml\s*([\s\S]*?)```[\r\n]+/, '')  // Remove ```yaml block
-  .replace(/^---[\r\n]+/, '')                      // Remove '---' line if present
-  .trim();
-    
-    // Force gray-matter to use '---' as frontmatter delimiter
-    // const parsed = matter(text);
-    // console.log(parsed,'---parsed')
-    
-
-    markdownContent = stripped;
-    //markdownContent = parsed.content.trim(); // remove any leading/trailing whitespace
-    console.log(markdownContent,'---markdownContent')
+    const { content } = matter(text);
+    markdownContent = content;
   }
 
   return new Response(JSON.stringify({
