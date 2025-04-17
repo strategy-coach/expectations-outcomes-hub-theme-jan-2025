@@ -24,13 +24,14 @@ export const imapDBPath = import.meta.env.PUBLIC_IMAP_DB;
 
 export const reportConfig = {
     nmap: import.meta.env.PUBLIC_NMAP_DB,
-    alimNmap: import.meta.env.PUBLIC_ALIM_NMAP_DB,
+    alimNmap: import.meta.env.PUBLIC_ZAP_DB,
     zap: import.meta.env.PUBLIC_ALIM_ZAP_DB,
     sqlmap: import.meta.env.PUBLIC_SQLMAP_DB,
     subfinder: import.meta.env.PUBLIC_SUBFINDER_DB,
     nuclei: import.meta.env.PUBLIC_NUCLEI_DB,
     dirb: import.meta.env.PUBLIC_DIRB_DB
 };
+
 export const nmapDBPath = import.meta.env.PUBLIC_NMAP_DB;
 
 export const fleetfolioUrl = import.meta.env.PUBLIC_FLEETFOLIO_URL;
