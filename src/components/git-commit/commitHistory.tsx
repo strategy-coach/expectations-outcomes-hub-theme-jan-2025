@@ -67,7 +67,7 @@ const GitCommitDetails: React.FC<GitCommitDetailsProps> = ({ filename }) => {
                   <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
                   <div className="relative flex space-x-3">
                     <div>                    
-                      <span className="h-8 w-8 p-1 rounded-full flex items-center justify-center ring-8 ring-white bg-blue-500">📄</span>
+                      <span className="mt-1 ml-1 flex items-center justify-center w-8 h-8 text-white rounded-full ring-2 ring-white bg-blue-500">📄</span>
                     </div>
                     <div className="flex min-w-0 flex-1 justify-between space-x-4">
                       <div>
