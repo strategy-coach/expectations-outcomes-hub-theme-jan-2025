@@ -66,6 +66,7 @@ jobs:
           PUBLIC_SQLMAP_DB: ${{ vars.PUBLIC_SQLMAP_DB }}  
           PUBLIC_FLEETFOLIO_URL: ${{ vars.PUBLIC_FLEETFOLIO_URL }}
           PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS: ${{ vars.PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS }}
+          PUBLIC_ZAP_DB: ${{ vars.PUBLIC_ZAP_DB }}  
         run: |
           bash -x support/ci-cd.sh      
           
