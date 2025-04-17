@@ -64,7 +64,7 @@ const GitCommitDetails: React.FC<GitCommitDetailsProps> = ({ filename }) => {
             {paginatedCommits.map((item, index) => (
               <li key={index} className="overflow-hidden">
                 <div className="relative pb-6">
-                  <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200" />
+                  <span className="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
                   <div className="relative flex space-x-3">
                     <div>                    
                       <span className="h-8 w-8 p-1 rounded-full flex items-center justify-center ring-8 ring-white bg-blue-500">📄</span>
@@ -93,19 +93,19 @@ const GitCommitDetails: React.FC<GitCommitDetailsProps> = ({ filename }) => {
                 <button
                 onClick={handlePrev}
                 disabled={page === 0}
-                className="px-4 py-2 bg-gray-300 text-base rounded disabled:opacity-50"
+                className="px-4 py-2 bg-gray-300 text-base rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white"
                 >
                 Previous
                 </button>
 
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-gray-600 dark:text-white">
                 Page {page + 1} of {Math.ceil(filteredCommits.length / itemsPerPage)}
                 </span>
 
                 <button
                 onClick={handleNext}
                 disabled={(page + 1) * itemsPerPage >= filteredCommits.length}
-                className="px-4 py-2 bg-gray-300 text-base rounded disabled:opacity-50"
+                className="px-4 py-2 bg-gray-300 text-base rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white"
                 >
                 Next
                 </button>
