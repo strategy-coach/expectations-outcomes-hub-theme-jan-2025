@@ -458,18 +458,18 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 totalPages > 1 && showViewMoreButton == false ? <div className="flex justify-between items-center mt-4">
                     <button
                         onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                        className={`px-4 py-2 bg-gray-200 rounded-md ${page === 1 ? "opacity-50 cursor-not-allowed" : ""
+                        className={`px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md ${page === 1 ? "opacity-50 cursor-not-allowed" : ""
                             }`}
                         disabled={page === 1}
                     >
                         Previous
                     </button>
-                    <span className="text-sm text-gray-600">
+                    <span className="text-sm text-gray-600 dark:text-white">
                         Page {page} of {totalPages}
                     </span>
                     <button
                         onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
-                        className={`px-4 py-2 bg-gray-200 rounded-md ${page === totalPages ? "opacity-50 cursor-not-allowed" : ""
+                        className={`px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md ${page === totalPages ? "opacity-50 cursor-not-allowed" : ""
                             }`}
                         disabled={page === totalPages}
                     >
