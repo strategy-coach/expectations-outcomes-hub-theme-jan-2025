@@ -18,7 +18,7 @@ const filteredJsonData = json.filter((item) => {
 
 // Sort by commit date (ascending order)
 const sortedCommits = filteredJsonData.sort((a, b) => 
-  new Date(a.authorDate) - new Date(b.authorDate)
+  new Date(b.authorDate) - new Date(a.authorDate)
 );
 
 //console.log('--filename---', filename);

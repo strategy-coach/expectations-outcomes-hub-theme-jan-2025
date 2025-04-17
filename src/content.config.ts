@@ -8,6 +8,7 @@ const baseSchema = z.object({
   description: z.string().optional(),
   discussionsEnabled: z.boolean().optional().default(false),
   enableEditButton: z.boolean().optional().default(false),
+  enablePageHistory: z.boolean().optional().default(true),
   redirect: z.string().optional(),
   summary: z.string().optional(),
   home: z

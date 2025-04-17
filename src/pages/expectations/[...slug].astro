@@ -59,6 +59,7 @@ let submittedForm;
 let activeTabClass;
 let inActiveTabClass;
 let title;
+let checkPageHistory;
 
 const slugval = "/expectations/" + pageSlug;
 let folderPath = slugval.replace(/\/[^/]+$/, "").replace(/^\/+/, "");
@@ -89,6 +90,8 @@ if (isLform) {
   }
   ({ Content, headings, remarkPluginFrontmatter } = await render(entry));
 }
+checkPageHistory = entry?.data.enablePageHistory;
+
 const pageUrl=Astro.url.href;
 ---
 
@@ -219,7 +222,7 @@ const pageUrl=Astro.url.href;
             id="history-tab"
             data-tabs-toggle="#default-tab-content"
           >
-          {!isLform && enablePageHistory && (
+          {!isLform && enablePageHistory && checkPageHistory && (
             <li class="ml-4 mt-3">
               <button
                 class="inline-block p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
