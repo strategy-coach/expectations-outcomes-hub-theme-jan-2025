@@ -15,6 +15,10 @@ const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
         linkTextFormat="capitalized"
         ariaLabel="Site navigation"
         separatorAriaHidden={false}
+        customizeLinks={[
+          { index: 2, "aria-disabled": true },
+          { index: 3, "aria-disabled": true },
+        ]}
       >
         <svg
           slot="separator"
