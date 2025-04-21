@@ -27,14 +27,18 @@ export default function GithubDataFetcher() {
   return (
     <div>
       <article
-        className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: marked.parse(data.markdownContent) }}
+        className="prose max-w-none [&_pre]:whitespace-pre-wrap [&_code]:whitespace-pre-wrap"
+        dangerouslySetInnerHTML={{
+          __html: marked.parse(data.markdownContent),
+        }}
       />
       <h2>Downloadable Files</h2>
       <ul>
         {data.otherFiles.map((file) => (
           <li key={file.sha}>
-            <a href={file.download_url} download>{file.name}</a>
+            <a href={file.download_url} download>
+              {file.name}
+            </a>
           </li>
         ))}
       </ul>
