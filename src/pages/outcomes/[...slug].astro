@@ -77,10 +77,7 @@ const pageUrl=Astro.url.href;
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>
-      <article class="prose max-w-screen-xl withbullet markdown-content">
-        <div class="flex justify-end text-sm">
-          <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
-        </div>  
+      <article class="prose max-w-screen-xl withbullet markdown-content">         
         <Content />
       </article>
     </div>
@@ -133,7 +130,12 @@ const pageUrl=Astro.url.href;
               role="tabpanel"
               aria-labelledby="dashboard-tab"
             >              
-                <CommitHistory filename={entryid} client:only="react"/>              
+            <div>
+              <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
+            </div>
+            <div>
+              <CommitHistory filename={entryid} client:only="react"/>   
+            </div>            
             </div>
             <div
               class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"

@@ -57,7 +57,7 @@ const GitCommitDetails: React.FC<GitCommitDetailsProps> = ({ filename }) => {
   };
 
   return (
-    <div className="md:col-span-3 pl-5 bg-white dark:bg-gray-800 shadow rounded-lg pt-6">
+    <div className="md:col-span-3 pl-5 bg-white dark:bg-gray-800 pt-6 mt-4">
       <aside>
         <div className="flow-root min-h-90">
           <ul>

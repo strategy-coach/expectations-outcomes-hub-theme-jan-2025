@@ -94,10 +94,7 @@ const pageUrl=Astro.url.href;
           {entry.data.title}
         </h1>
       </div> -->
-      <article class="prose max-w-screen-xl withbullet markdown-content">
-        <div class="flex justify-end text-sm">
-          <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
-        </div>
+      <article class="prose max-w-screen-xl withbullet markdown-content">       
         <Content />
       </article>
     </div>    
@@ -149,7 +146,12 @@ const pageUrl=Astro.url.href;
               role="tabpanel"
               aria-labelledby="dashboard-tab"
             >             
-                <CommitHistory filename={entryid} client:only="react"/>    
+            <div>
+              <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
+            </div>
+            <div>
+              <CommitHistory filename={entryid} client:only="react"/>   
+            </div>
               
             </div>
             <div
