@@ -1,0 +1,80 @@
+---
+let folders = [];
+const path = import.meta.env.PUBLIC_BOX_API_URL;
+try {
+   const res = await fetch(path);
+
+  if (res.ok) {
+    folders = await res.json();
+  } else {
+    console.error('API Error:', await res.text());
+  }
+} catch (err) {
+  console.error("Fetch failed", err);
+}
+---
+{folders.length > 0 ? (
+  <ul id="folder-list" class="space-y-2 p-4">
+    {folders.map((item) => (
+      <li key={item.id}>
+        {item.type === 'folder' ? (
+          <div class="flex items-center gap-2 text-blue-700 font-semibold">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 4a2 2 0 012-2h4l2 2h6a2 2 0 012 2v1H2V4zM2 8v8a2 2 0 002 2h12a2 2 0 002-2V8H2z" />
+            </svg>
+            {item.name}
+          </div>
+        ) : (
+          <div>
+            <button
+              class="file-item flex items-center gap-2 p-2 bg-gray-100 rounded hover:bg-gray-200 text-sm text-gray-800 w-full text-left"
+              data-id={item.id}
+              data-name={item.name}
+            >
+              <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V7l-6-4H4z" />
+              </svg>
+              {item.name}
+              <span class="ml-auto text-blue-500 text-xs">(Click to Download)</span>
+            </button>
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+) : (
+  <p class="text-gray-500 italic p-4">No items found or API error.</p>
+)}
+
+
+<script client:load>
+    document.addEventListener("DOMContentLoaded", () => {
+        async function fetchFileContent(fileId, fileName) {
+        const response = await fetch(`/api/box?download=true&fileId=${fileId}&fileName=${encodeURIComponent(fileName)}`);
+
+            if (!response.ok) {
+                console.error("Failed to download file");
+                return;
+            }
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            a=null;
+            window.URL.revokeObjectURL(url);
+        }
+
+        document.addEventListener("click", (e) => {
+  const el = e.target.closest(".file-item");
+  if (!el) return;
+
+  const fileId = el.getAttribute("data-id");
+  const fileName = el.getAttribute("data-name");
+  fetchFileContent(fileId, fileName);
+});
+    });
+</script>
