@@ -1340,6 +1340,45 @@ BOX_FOLDER_ID=your_target_folder_id
 PUBLIC_BOX_API_URL=http://localhost:4321/api/box
 
 ```
+## Google Drive Demo Integration Setup
+
+To enable private Google Drive access via a service account, follow these steps:
+
+**1. Create a Google Cloud Project**
+- Go to [Google Cloud Console](https://console.cloud.google.com/)
+- Click the project dropdown at the top bar → **New Project**
+- Name it something like `Astro Private Drive Access`
+- Click **Create**
+
+**2. Enable Required APIs**
+- Navigate to **APIs & Services > Library**
+- Search and enable the following:
+  - ✅ **Google Drive API**
+  - ✅ **Google Sheets API**
+
+**3. Create a Service Account**
+- Go to **IAM & Admin > Service Accounts**
+- Click **Create Service Account**
+  - **Name**: `astro-drive-access`
+- Click **Create and Continue**
+- (Optional) Skip the role or choose `Basic > Viewer`
+- Click **Done**
+
+**4. Generate and Download Credentials**
+- Click on the service account name you just created
+- Go to the **Keys** tab
+- Click **Add Key** → **Create new key**
+  - Choose **JSON**
+  - A `.json` file will be downloaded automatically
+
+**5. Store the Credentials**
+- Move the `.json` file to your project directory: src/keys folder
+
+- Add the following to your `.env` file:
+
+```env
+GDRIVE_JSON_PATH=src/keys/gdrive-sample.json
+``` 
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
 
