@@ -72,7 +72,8 @@ jobs:
           BOX_ACCESS_TOKEN: ${{ vars.BOX_ACCESS_TOKEN }}
           BOX_REFRESH_TOKEN: ${{ vars.BOX_REFRESH_TOKEN }}
           BOX_FOLDER_ID: ${{ vars.BOX_FOLDER_ID }}
-          PUBLIC_BOX_API_URL: ${{ vars.PUBLIC_BOX_API_URL }}             
+          PUBLIC_BOX_API_URL: ${{ vars.PUBLIC_BOX_API_URL }}
+          GDRIVE_JSON_PATH: ${{ vars.GDRIVE_JSON_PATH }}
         run: |
           bash -x support/ci-cd.sh      
           
