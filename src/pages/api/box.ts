@@ -10,6 +10,7 @@ const folderId = import.meta.env.BOX_FOLDER_ID;
 
 
 const refreshAccessToken = async () => {
+  console.log("inisde refresh token............");
   const response = await fetch("https://api.box.com/oauth2/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -19,7 +20,10 @@ const refreshAccessToken = async () => {
       client_secret: clientSecret,
       refresh_token: refreshToken,
     }),
-  });
+
+  }
+
+);
 
   const data = await response.json();
   accessToken = data.access_token;
@@ -71,7 +75,6 @@ export const GET: APIRoute = async ({ url }) => {
       },
     }
   );
-
   if (response.status === 401) {
     await refreshAccessToken();
     response = await fetch(

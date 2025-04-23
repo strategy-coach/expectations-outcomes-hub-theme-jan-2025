@@ -1209,4 +1209,76 @@ Cart *--* Product : "contains"
 To enable or disable page commit history, set the `enablePageHistory` variable in your `theme.config.ts` file as 
 `true` or `false`.
 
+
+## 📁 Box Folder Listing Integration
+
+This setup enables fetching and displaying files from a Box folder using the **Box API with refresh token authentication**.
+
+---
+
+### 1. Create a Box Developer Account
+
+- Go to [https://account.box.com/login](https://account.box.com/login)  
+- Sign in or create an account using your email.  
+
+### 2. Access Developer Console
+
+- Navigate to the Box Developer Console: [https://app.box.com/developers/console](https://app.box.com/developers/console)  
+- Create a new **Custom App**  
+  - Choose `OAuth 2.0 with Refresh Token`  
+  - Note down the following credentials:  
+    - Client ID  
+    - Client Secret
+  - Set the **Redirect URI** to `http://localhost:4321/box-auth` for local testing or `https://demo.hub.opsfolio.com/box-auth` for live environment.
+  - Enable the scopes
+
+### 3. Generate Authorization Code
+
+
+`https://account.box.com/api/oauth2/authorize?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=https://demo.hub.opsfolio.com/box-auth`
+
+- Visit the URL in your browser   replacing `YOUR_CLIENT_ID` with your actual client ID and `YOUR_REDIRECT_URI` with your redirect URI.
+- Sign in and authorize access  
+- Copy the `code` returned in the URL
+
+---
+
+### 4. Exchange Code for Access & Refresh Tokens
+
+**Local Example**
+```
+curl -X POST https://api.box.com/oauth2/token
+-H "Content-Type: application/x-www-form-urlencoded"
+-d "grant_type=authorization_code"
+-d "code=REPLACE_WITH_AUTH_CODE"
+-d "client_id=YOUR_CLIENT_ID"
+-d "client_secret=YOUR_CLIENT_SECRET"
+-d "redirect_uri=http://localhost:4321/box-auth"
+```
+
+- Save the `access_token` and `refresh_token` from the response  
+- Update your environment variables accordingly
+
+---
+
+## 🌟 Functionality Achieved
+
+The integration enables:
+
+- Listing contents of a specific Box folder using the `/folders/:folder_id/items` endpoint  
+- Secure token management using the **refresh token flow**  
+
+Make sure to define the following in your `.env` file:
+
+```
+
+BOX_CLIENT_ID=your_client_id
+BOX_CLIENT_SECRET=your_client_secret
+BOX_ACCESS_TOKEN=your_access_token
+BOX_REFRESH_TOKEN=your_refresh_token
+BOX_FOLDER_ID=your_target_folder_id
+PUBLIC_BOX_API_URL=http://localhost:4321/api/box
+
+```
+
 **Enjoy building with the EOH Astro 5 Theme!** 🚀  
