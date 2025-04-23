@@ -1,0 +1,56 @@
+---
+const siteUrl = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI;
+const origin = Astro.site ?? siteUrl;
+const res = await fetch(`${origin}api/drive-list-and-fetch`);
+const files = await res.json();
+//console.log(files);
+---
+<article class="prose max-w-screen-xl withbullet markdown-content-doc mt-5">
+  <h2 class="text-lg font-semibold">Fetched Google Drive Files</h2>
+  {files.length > 0 ? (
+    <ul class="space-y-2 p-4">
+      {files.map((item) => (
+        <li key={item.id}>
+          
+            <div>
+              <button
+                class="file-item flex items-center gap-2 p-2 bg-gray-100 rounded hover:bg-gray-200 text-lg text-gray-800 w-full text-left"
+                data-id={item.id}
+                data-name={item.name}
+                data-type={item.mimeType}
+              >
+                {item.name}
+                <span class="ml-auto text-blue-500 text-sm">(Click to Download)</span>
+              </button>
+            </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="text-gray-500 italic p-4">No items found or API error.</p>
+  )}
+</article> 
+ 
+
+<script client:load>
+  document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".file-item").forEach(el => {
+    el.addEventListener("click", () => {
+      const fileId = el.getAttribute("data-id");
+      const fileName = el.getAttribute("data-name");
+      const mimeType = el.getAttribute("data-type");
+
+      const downloadUrl = `/api/drive-download?id=${encodeURIComponent(fileId)}&name=${encodeURIComponent(fileName)}&type=${encodeURIComponent(mimeType)}`;
+
+      const a = document.createElement("a");
+      a.href = downloadUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  });
+});
+
+</script>
+
