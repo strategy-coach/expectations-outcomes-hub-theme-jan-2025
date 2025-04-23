@@ -91,10 +91,12 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const [calender, setCalender] = useState(false)
     const [fromDate, setFromDate] = useState("");
     const [totalActivityRecords, setTotalActivityRecords] = useState<number>(0);
-    const [currentFilter, setCurrentFilter] = useState<string>(pageUrl ? "all" : "documentLoad");
+    const [currentFilter, setCurrentFilter] = useState<string>("documentLoad");
     const [page, setPage] = useState<number>(1);
     const [days, setDays] = useState("")
     const [searchTerm, setSearchTerm] = useState("");
+    const [clicksChecked, setClicksChecked] = useState(false);
+    const [visitsChecked, setVisitsChecked] = useState(pageUrl ? true : false);
     const recordPerPage = Math.min(50, recordsLimit);
     const totalPages = useMemo(
         () => Math.ceil(totalActivityRecords / recordPerPage),
@@ -126,6 +128,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                     }
                 );
                 const result = response.data.result.map((role: any) => role.key);
+                console.log('entry here-----------------------')
                 setRoles(result);
             } catch (error) {
                 console.error("Error fetching activity log:", error);
@@ -136,15 +139,18 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     );
 
     useEffect(() => {
+        fetchRole();
+    }, []);
+
+    useEffect(() => {
         let roleFilter
         if (selectedRoles.length > 0) {
             roleFilter = selectedRoles
                 .map(role => `str_match(userrole, '${role}')`)
                 .join(" OR ");
             roleFilter = `AND (${roleFilter})`;
+            console.log(roleFilter)
         }
-
-        fetchRole();
     }, [selectedRoles])
 
 
@@ -259,6 +265,16 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
         fetchData();
     }, [fetchData, fromDate, selectedRoles]);
 
+    useEffect(() => {
+        if (clicksChecked && visitsChecked) {
+            setCurrentFilter('all');
+        } else if (clicksChecked) {
+            setCurrentFilter('element-click');
+        } else if (visitsChecked) {
+            setCurrentFilter('documentLoad');
+        }
+    }, [clicksChecked, visitsChecked]);
+
     const getActivityDescription = (details: string) => {
         try {
             const parsed = JSON.parse(details);
@@ -308,6 +324,40 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 )}
             </h3>
 
+            {pageUrl ?
+                <div className="filter-container" style={{ display: 'flex', alignItems: 'center' }}>
+
+
+                    {/* Checkbox group pushed to right */}
+                    <div
+                        className="filter-checkbox-group"
+                        style={{
+                            display: 'flex',
+                            gap: '16px',
+                            alignItems: 'center',
+                            marginLeft: 'auto',
+                        }}
+                    >
+                        <label className="filter-checkbox" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <input
+                                type="checkbox"
+                                checked={clicksChecked}
+                                onChange={(e) => setClicksChecked(e.target.checked)}
+                            />
+                            Clicks
+                        </label>
+                        <label className="filter-checkbox" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <input
+                                type="checkbox"
+                                checked={visitsChecked}
+                                onChange={(e) => setVisitsChecked(e.target.checked)}
+                            />
+                            Page Visits
+                        </label>
+                    </div>
+                </div>
+
+                : undefined}
             {(showViewMoreButton == false && pageUrl !== undefined) || (!showViewMoreButton && pageUrl == undefined) && (
                 <div className="mt-4 mb-4 space-x-2">
                     {["documentLoad", "element-click", "user-authentication", "all"].map((filter) => (
