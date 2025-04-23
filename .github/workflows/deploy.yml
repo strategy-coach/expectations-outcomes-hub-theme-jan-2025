@@ -66,7 +66,13 @@ jobs:
           PUBLIC_SQLMAP_DB: ${{ vars.PUBLIC_SQLMAP_DB }}  
           PUBLIC_FLEETFOLIO_URL: ${{ vars.PUBLIC_FLEETFOLIO_URL }}
           PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS: ${{ vars.PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS }}
-          PUBLIC_ZAP_DB: ${{ vars.PUBLIC_ZAP_DB }}  
+          PUBLIC_ZAP_DB: ${{ vars.PUBLIC_ZAP_DB }}
+          BOX_CLIENT_ID: ${{ vars.BOX_CLIENT_ID }} 
+          BOX_CLIENT_SECRET: ${{ vars.BOX_CLIENT_SECRET }}
+          BOX_ACCESS_TOKEN: ${{ vars.BOX_ACCESS_TOKEN }}
+          BOX_REFRESH_TOKEN: ${{ vars.BOX_REFRESH_TOKEN }}
+          BOX_FOLDER_ID: ${{ vars.BOX_FOLDER_ID }}
+          PUBLIC_BOX_API_URL: ${{ vars.PUBLIC_BOX_API_URL }}             
         run: |
           bash -x support/ci-cd.sh      
           
