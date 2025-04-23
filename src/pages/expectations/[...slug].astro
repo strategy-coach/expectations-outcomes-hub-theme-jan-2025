@@ -17,6 +17,7 @@ import order from "./order.json";
 import CommitHistory from "../../components/git-commit/commitHistory.tsx";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
 import ActivityLog from "../../components/activity-log/activityLog";
+import SurveilrCommits from "../../components/git-commit/surveilrCommit.tsx";
 
 const orderJson = order;
 const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
@@ -91,6 +92,8 @@ if (isLform) {
   ({ Content, headings, remarkPluginFrontmatter } = await render(entry));
 }
 checkPageHistory = entry?.data.enablePageHistory;
+
+const isSurveilr = pageSlug === "compliance-readiness/evidence-workflow";
 
 const pageUrl=Astro.url.href;
 ---
@@ -264,7 +267,10 @@ const pageUrl=Astro.url.href;
               <LatestCommit filename={entryid} pageTitle={entry?.data.title} />
             </div>
             <div>
-              <CommitHistory filename={entryid} client:only="react"/>   
+              {isSurveilr
+                ? <SurveilrCommits filename={entryid} client:only="react" />
+                : <CommitHistory filename={entryid} client:only="react" />
+              }
             </div>               
             </div>
             <div
