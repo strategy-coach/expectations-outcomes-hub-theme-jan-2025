@@ -14,7 +14,11 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
   const splittedPath = pathname == "/" ? "/" : pathname.split("/");
   if (isZitadelEnabled) {
     if (
-      pathname === "/post-authorization/" || pathname === "/api/support-and-feedback" ||
+      pathname === "/post-authorization/" ||
+      pathname === "/api/support-and-feedback" ||
+      pathname === "/api/box" ||
+      pathname === "/api/drive-download" ||
+      pathname === "/api/drive-list-and-fetch" ||
       (isHomePagePublic && pathname === "/")
     ) {
       return next(); // Allow access without further checks

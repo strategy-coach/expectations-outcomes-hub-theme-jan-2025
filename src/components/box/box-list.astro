@@ -1,17 +1,24 @@
 ---
 let folders = [];
+let errorMessage = ""; // 🆕 for user-friendly error
+
 const path = import.meta.env.PUBLIC_BOX_API_URL;
+
 try {
-   const res = await fetch(path);
+  const res = await fetch(path);
 
   if (res.ok) {
     folders = await res.json();
   } else {
-    console.error('API Error:', await res.text());
+    const errText = await res.text();
+    console.error("API Error:", errText);
+    errorMessage = "⚠️ Access failed. The token might be expired or invalid. Please refresh or contact support if the issue persists.";
   }
 } catch (err) {
   console.error("Fetch failed", err);
+  errorMessage = "⚠️ Something went wrong while fetching files.";
 }
+
 ---
 {folders.length > 0 ? (
   <ul id="folder-list" class="space-y-2 p-4">
@@ -42,12 +49,14 @@ try {
       </li>
     ))}
   </ul>
+) : errorMessage ? (
+  <p class="text-red-600 bg-red-50 p-4 rounded">{errorMessage}</p>
 ) : (
-  <p class="text-gray-500 italic p-4">No items found or API error.</p>
+  <p class="text-gray-500 italic p-4">No items found.</p>
 )}
 
 
-<script client:load>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
         async function fetchFileContent(fileId, fileName) {
         const response = await fetch(`/api/box?download=true&fileId=${fileId}&fileName=${encodeURIComponent(fileName)}`);
