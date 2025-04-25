@@ -19,6 +19,7 @@ import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro
 import ActivityLog from "../../components/activity-log/activityLog";
 import SurveilrCommits from "../../components/git-commit/surveilrCommit.tsx";
 import Reaction from "../../components/page-reaction/reaction.astro";
+import Comment from "../../components/comment/comment.astro";
 
 const orderJson = order;
 const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
@@ -218,7 +219,7 @@ const pageUrl=Astro.url.href;
         
         <Content />
       </article>) }
-     
+      <Comment discussionEnabled={entry?.data.discussionsEnabled ? true : false} source="Demo"/>
     </div>
     
     
