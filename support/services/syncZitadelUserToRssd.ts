@@ -172,6 +172,7 @@ const reactionType = [
     { reaction_type_id: 7, reaction_name: "eye_glasses" },
     { reaction_type_id: 8, reaction_name: "thumbs_down" },
     { reaction_type_id: 9, reaction_name: "perfect_score" },
+    { reaction_type_id: 10, reaction_name: "approved" },
 ];
 
 const communicationTypes = [

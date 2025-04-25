@@ -1,0 +1,8 @@
+---
+import PageReaction from "./pageReaction";
+import { getReactions } from "./service.tsx";
+const pageUrl = Astro.url.href;
+const reactions = await getReactions(pageUrl);
+---
+
+<PageReaction url={pageUrl} reactions={reactions} client:only="react" />

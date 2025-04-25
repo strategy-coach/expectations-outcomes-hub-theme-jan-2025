@@ -137,6 +137,38 @@ const createView = (): Promise<void> => {
            `);
 
             RSSD_DB.query(`
+            CREATE VIEW IF NOT EXISTS "page_reactions_list" AS 
+            WITH LatestReactions AS (
+            SELECT
+             pr.url,
+             pr.user_id,
+             pr.reaction_type_id,
+             pr.created_at,
+             ROW_NUMBER() OVER (PARTITION BY pr.url, pr.user_id ORDER BY pr.created_at DESC) AS rn
+            FROM page_reaction pr
+            ),
+            FilteredReactions AS (
+            SELECT
+            url,
+            user_id,
+            reaction_type_id
+           FROM LatestReactions
+             WHERE rn = 1
+             )
+            SELECT
+            fr.url,
+           rt.reaction_type_id,
+           rt.reaction_name,
+           json_group_array(p.party_name) AS user_list,
+           COUNT(fr.reaction_type_id) AS reaction_count
+           FROM FilteredReactions fr
+          JOIN reaction_type rt ON fr.reaction_type_id = rt.reaction_type_id
+          JOIN party p ON fr.user_id = p.party_id
+         GROUP BY fr.url, rt.reaction_type_id, rt.reaction_name;
+       `);
+
+
+            RSSD_DB.query(`
             CREATE VIEW IF NOT EXISTS "comments"(
             "log_id",
             "parentId",

@@ -8,6 +8,7 @@ const baseSchema = z.object({
   description: z.string().optional(),
   discussionsEnabled: z.boolean().optional().default(false),
   enableEditButton: z.boolean().optional().default(false),
+  enableReaction: z.boolean().optional().default(false),
   enablePageHistory: z.boolean().optional().default(true),
   redirect: z.string().optional(),
   summary: z.string().optional(),
@@ -62,9 +63,9 @@ const blog = defineCollection({
     heroImage: z.string().optional(),
     home: z
       .object({
-        featuredBlog: z.boolean().optional(), 
+        featuredBlog: z.boolean().optional(),
       })
-      .optional(), 
+      .optional(),
   }),
 });
 

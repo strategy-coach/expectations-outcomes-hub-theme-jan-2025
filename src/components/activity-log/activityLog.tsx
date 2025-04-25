@@ -97,6 +97,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const [searchTerm, setSearchTerm] = useState("");
     const [clicksChecked, setClicksChecked] = useState(false);
     const [visitsChecked, setVisitsChecked] = useState(pageUrl ? true : false);
+    const [reactionChecked, setReactionChecked] = useState(false);
     const recordPerPage = Math.min(50, recordsLimit);
     const totalPages = useMemo(
         () => Math.ceil(totalActivityRecords / recordPerPage),
@@ -187,7 +188,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             WHERE str_match(url, '${pageUrl ? pageUrl : host}') 
             AND organizationid='${ORGANIZATION_ID}' 
             AND operation_name IN (${filter === "all"
-                    ? "'element-click', 'documentLoad','user-authentication','add-comment'"
+                    ? "'element-click', 'documentLoad','user-authentication','add-comment','add-page-reaction'"
                     : `'${filter}'`
                 }) 
             ${roleFilter}`;
@@ -266,14 +267,16 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     }, [fetchData, fromDate, selectedRoles]);
 
     useEffect(() => {
-        if (clicksChecked && visitsChecked) {
+        if (!clicksChecked && !visitsChecked && !reactionChecked) {
             setCurrentFilter('all');
         } else if (clicksChecked) {
             setCurrentFilter('element-click');
         } else if (visitsChecked) {
             setCurrentFilter('documentLoad');
+        } else if (reactionChecked) {
+            setCurrentFilter('add-page-reaction');
         }
-    }, [clicksChecked, visitsChecked]);
+    }, [clicksChecked, visitsChecked, reactionChecked]);
 
     const getActivityDescription = (details: string) => {
         try {
@@ -290,8 +293,8 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             : operation === "user-authentication"
                 ? { icon: "🔑", color: "bg-purple-500" }
                 : operation === "add-comment"
-                    ? { icon: "💬", color: "bg-indigo-500" }
-                    : { icon: "📄", color: "bg-blue-500" };
+                    ? { icon: "💬", color: "bg-indigo-500" } : operation === "add-page-reaction" ? { icon: "💬", color: "bg-indigo-700" }
+                        : { icon: "📄", color: "bg-blue-500" };
     };
 
     const getActivityMessage = (log: ActivityLogType) => {
@@ -299,7 +302,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
             : log.operation_name === "user-authentication"
                 ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} logged in successfully`
-                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
+                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : log.operation_name === "add-page-reaction" ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} reacted with ${JSON.parse(log.details).reactionname} ${JSON.parse(log.details).icon}  on  <strong>${log.pagetitle}</strong> page` : `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
     };
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
@@ -330,7 +333,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
                     {/* Checkbox group pushed to right */}
                     <div
-                        className="filter-checkbox-group"
+                        className="filter-checkbox-group mt-5"
                         style={{
                             display: 'flex',
                             gap: '16px',
@@ -338,21 +341,44 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             marginLeft: 'auto',
                         }}
                     >
-                        <label className="filter-checkbox" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <label className="filter-checkbox text-sm" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <input
                                 type="checkbox"
                                 checked={clicksChecked}
-                                onChange={(e) => setClicksChecked(e.target.checked)}
+                                onChange={(e) => {
+                                    setPage(1)
+                                    setVisitsChecked(false)
+                                    setReactionChecked(false)
+                                    setClicksChecked(e.target.checked)
+                                }}
                             />
                             Clicks
                         </label>
-                        <label className="filter-checkbox" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <label className="filter-checkbox text-sm" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <input
                                 type="checkbox"
                                 checked={visitsChecked}
-                                onChange={(e) => setVisitsChecked(e.target.checked)}
+                                onChange={(e) => {
+                                    setPage(1)
+                                    setClicksChecked(false)
+                                    setReactionChecked(false)
+                                    setVisitsChecked(e.target.checked)
+                                }}
                             />
                             Page Visits
+                        </label>
+                        <label className="filter-checkbox text-sm" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <input
+                                type="checkbox"
+                                checked={reactionChecked}
+                                onChange={(e) => {
+                                    setPage(1)
+                                    setVisitsChecked(false)
+                                    setClicksChecked(false)
+                                    setReactionChecked(e.target.checked)
+                                }}
+                            />
+                            Reactions
                         </label>
                     </div>
                 </div>
@@ -360,7 +386,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 : undefined}
             {(showViewMoreButton == false && pageUrl !== undefined) || (!showViewMoreButton && pageUrl == undefined) && (
                 <div className="mt-4 mb-4 space-x-2">
-                    {["documentLoad", "element-click", "user-authentication", "all"].map((filter) => (
+                    {["documentLoad", "element-click", "add-page-reaction", "user-authentication", "all"].map((filter) => (
                         <button
                             key={filter}
                             className={`px-4 py-2 ${currentFilter === filter
@@ -378,7 +404,8 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                                     ? "Click Events"
                                     : filter === "user-authentication"
                                         ? "User Login"
-                                        : "Page Visit"}
+                                        : filter === "add-page-reaction" ? "Reactions" : "Page Visit"
+                            }
                         </button>
                     ))}
                     {calender === false ? (
@@ -500,7 +527,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         })}
                     </ul>
                 ) : (
-                    <p className="text-gray-600">{(showViewMoreButton == true && pageUrl == undefined) ? "No recent customer activity found. Click here to see the full activity log." : (showViewMoreButton == false && pageUrl !== undefined) ? "No activiy log available" : "No activity found for the filter criteria. Please update the filters above."}</p>
+                    <p className="text-gray-600 mt-4">{(showViewMoreButton == true && pageUrl == undefined) ? "No recent customer activity found. Click here to see the full activity log." : (showViewMoreButton == false && pageUrl !== undefined) ? "No activiy log available" : "No activity found for the filter criteria. Please update the filters above."}</p>
                 )
             }
 

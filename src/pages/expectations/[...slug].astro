@@ -18,6 +18,7 @@ import CommitHistory from "../../components/git-commit/commitHistory.tsx";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
 import ActivityLog from "../../components/activity-log/activityLog";
 import SurveilrCommits from "../../components/git-commit/surveilrCommit.tsx";
+import Reaction from "../../components/page-reaction/reaction.astro";
 
 const orderJson = order;
 const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
@@ -138,6 +139,12 @@ const pageUrl=Astro.url.href;
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>
+      
+      { entry.data.enableReaction && <div class="flex justify-end w-full">
+        <Reaction/>
+      </div>}
+
+
       {isLform ? ( <div>
             <div class="border-b border-slate-300 dark:border-gray-700 pb-3">
               <h1 class="text-2xl lg:text-4xl font-bold text-slate-700 dark:text-gray-300 mt-4 mb-1">

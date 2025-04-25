@@ -323,6 +323,34 @@ const messageReaction = gm.textPkTable("message_reaction", {
   },
 });
 
+const pageReaction = gm.textPkTable("page_reaction", {
+  page_reaction_id: gm.keys.varCharPrimaryKey(),
+  url: udm.text(),
+  user_id: party.references.party_id(),
+  reaction_type_id: reactionType.references.reaction_type_id(),
+  ...gm.housekeeping.columns,
+}, {
+  isIdempotent: true,
+  constraints: (props, tableName) => {
+    const c = SQLa.tableConstraints(tableName, props);
+    return [
+      c.unique("url", "user_id", "reaction_type_id", "created_at"),
+    ];
+  },
+  indexes: (props, tableName) => {
+    const tif = SQLa.tableIndexesFactory(tableName, props);
+    return [
+      tif.index(
+        { isIdempotent: true },
+        "url",
+        "user_id",
+        "reaction_type_id",
+      ),
+    ];
+  },
+});
+
+
 const attachment = gm.textPkTable("attachment", {
   attachment_id: gm.keys.varCharPrimaryKey(),
   communication_id: communication.references.communication_id(),
@@ -563,6 +591,7 @@ export const allContentTables: SQLa.TableDefinition<
     communication,
     message,
     reactionType,
+    pageReaction,
     messageReaction,
     attachment
   ];
