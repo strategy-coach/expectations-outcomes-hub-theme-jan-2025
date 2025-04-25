@@ -1,0 +1,68 @@
+---
+title: "Reaction Integration"
+---
+
+# Reaction Integration
+
+The `Reaction` component allows users to **view**, **add**, and **engage with reactions** on a specific page. It can be conditionally rendered based on the variable `enableReaction`.
+
+---
+
+## ✨ Features
+
+- Display and interact with reactions like 👍,👎, etc.
+- Shows reaction counts and participant details.
+- Fetches and groups data based on the current page URL.
+
+---
+
+## ⚙️ Environment Setup
+
+Make sure the following variable is defined in your `.env` file:
+
+PUBLIC_RSSD_DB=src/content/db/rssd/resource-surveillance.sqlite.db
+
+This should point to your SQLite database used for resource surveillance and reaction data.
+
+---
+
+## 📦 Usage
+
+To use the `Reaction` component on a page:
+
+### 1. In your MDX file frontmatter:
+
+```yaml
+---
+title: "My Page"
+enableReaction: true
+---
+```
+
+### 2. In the corresponding Astro page or layout:
+
+```
+// Import the component
+import Reaction from "../../../components/reaction/Reaction.astro";
+
+// Use frontmatter passed via props (e.g., entry.data)
+<main>
+<h1>Page Title</h1>
+
+{entry.data.enableReaction && (
+<div class="flex justify-end w-full">
+<Reaction />
+</div>
+)}
+</main>
+```
+
+The component will only be rendered when enableReaction is set to true.
+
+---
+
+## Demo
+
+import Reaction from "../../../components/page-reaction/reaction.astro";
+
+<Reaction />

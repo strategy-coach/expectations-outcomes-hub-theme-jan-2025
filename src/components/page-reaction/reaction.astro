@@ -1,8 +1,14 @@
 ---
 import PageReaction from "./pageReaction";
 import { getReactions } from "./service.tsx";
+
 const pageUrl = Astro.url.href;
 const reactions = await getReactions(pageUrl);
+const user = Astro.cookies.get("zitadel_user_id");
 ---
 
+{user && user.value ? (
 <PageReaction url={pageUrl} reactions={reactions} client:only="react" />
+) : (
+<p class="text-md mt-1">You must be logged in to view,add and engage with reactions</p>
+)}
