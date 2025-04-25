@@ -1,11 +1,10 @@
 ---
+const siteUrl = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI;
+const origin = Astro.site ?? siteUrl;
 let folders = [];
-let errorMessage = ""; // 🆕 for user-friendly error
-
-const path = import.meta.env.PUBLIC_BOX_API_URL;
-
+let errorMessage = ""; 
 try {
-  const res = await fetch(path);
+  const res = await fetch(`${origin}api/box`);
 
   if (res.ok) {
     folders = await res.json();

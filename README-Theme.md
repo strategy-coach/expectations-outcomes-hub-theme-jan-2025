@@ -1257,8 +1257,11 @@ curl -X POST https://api.box.com/oauth2/token
 ```
 
 - Save the `access_token` and `refresh_token` from the response  
-- Update your environment variables accordingly
-
+- Update box-auth.json with accessToken and refreshToken in the sr/keys path
+  {
+    "accessToken": "xxxxx",
+    "refreshToken": "yyyy"
+  }
 ---
 
 ## 🌟 Functionality Achieved
@@ -1274,10 +1277,8 @@ Make sure to define the following in your `.env` file:
 
 BOX_CLIENT_ID=your_client_id
 BOX_CLIENT_SECRET=your_client_secret
-BOX_ACCESS_TOKEN=your_access_token
-BOX_REFRESH_TOKEN=your_refresh_token
 BOX_FOLDER_ID=your_target_folder_id
-PUBLIC_BOX_API_URL=http://localhost:4321/api/box
+
 
 ```
 ## Google Drive Demo Integration Setup
