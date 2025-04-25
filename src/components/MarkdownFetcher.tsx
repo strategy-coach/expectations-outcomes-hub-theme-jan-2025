@@ -36,7 +36,7 @@ export default function GithubDataFetcher() {
       <ul>
         {data.otherFiles.map((file) => (
           <li key={file.sha}>
-            <a href={file.download_url} download>
+            <a href={`/api/download?url=${encodeURIComponent(file.download_url)}&name=${file.name}`}>
               {file.name}
             </a>
           </li>
