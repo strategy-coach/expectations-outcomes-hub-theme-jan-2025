@@ -141,7 +141,7 @@ const pageUrl=Astro.url.href;
         </svg>
       </Breadcrumbs>
       
-      { entry.data.enableReaction && <div class="flex justify-end w-full">
+      { entry?.data.enableReaction && <div class="flex justify-end w-full">
         <Reaction/>
       </div>}
 
