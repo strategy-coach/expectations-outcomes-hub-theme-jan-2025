@@ -292,12 +292,15 @@ export async function getUsers(): Promise<UserData[] | undefined> {
  */
 export async function getUsersRole(): Promise<UsersRole[] | undefined> {
     try {
+
         const requestBody = {
             query: { offset: "0", limit: 1000, asc: true },
             queries: [
                 { projectIdQuery: { projectId: PROJECT_ID } },
+                { userTypeQuery: { type: "TYPE_HUMAN" } }
             ],
         };
+
         const response = await fetchFromZitadel("/management/v1/users/grants/_search", requestBody);
         if (!response.ok) return undefined;
         const data = await response.json();
