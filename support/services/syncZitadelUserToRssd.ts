@@ -280,7 +280,7 @@ export async function getUsers(): Promise<UserData[] | undefined> {
         const response = await fetchFromZitadel("/management/v1/users/_search");
         if (!response.ok) return undefined;
         const data = await response.json();
-        return UserApiResponseSchema.safeParse(data).success ? data.result : undefined;
+        return UserApiResponseSchema.safeParse(data) ? data.result : undefined;
     } catch (error) {
         console.error("Error fetching users:", error);
         return undefined;
