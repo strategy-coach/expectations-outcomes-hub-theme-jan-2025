@@ -11,6 +11,7 @@ const {
     PUBLIC_ZITADEL_API_TOKEN: ZITADEL_API_TOKEN,
     PUBLIC_ZITADEL_ORGANIZATION_ID: ZITADEL_ORGANIZATION_ID,
     PUBLIC_ZITADEL_AUTHORITY: ZITADEL_AUTHORITY,
+    PUBLIC_ZITADEL_PROJECT_ID: PROJECT_ID
 } = env;
 
 if (!ZITADEL_API_TOKEN || !ZITADEL_ORGANIZATION_ID || !ZITADEL_AUTHORITY) {
@@ -240,7 +241,7 @@ const communicationPlatforms = [
 /**
  * API Request Function
  */
-async function fetchFromZitadel(endpoint: string): Promise<Response> {
+async function fetchFromZitadel(endpoint: string, postData = {}): Promise<Response> {
     return fetch(`${ZITADEL_AUTHORITY}${endpoint}`, {
         method: "POST",
         headers: {
@@ -248,7 +249,7 @@ async function fetchFromZitadel(endpoint: string): Promise<Response> {
             "Content-Type": "application/json",
             "x-zitadel-orgid": ZITADEL_ORGANIZATION_ID,
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify(postData),
     });
 }
 
@@ -291,7 +292,13 @@ export async function getUsers(): Promise<UserData[] | undefined> {
  */
 export async function getUsersRole(): Promise<UsersRole[] | undefined> {
     try {
-        const response = await fetchFromZitadel("/management/v1/users/grants/_search");
+        const requestBody = {
+            query: { offset: "0", limit: 1000, asc: true },
+            queries: [
+                { projectIdQuery: { projectId: PROJECT_ID } },
+            ],
+        };
+        const response = await fetchFromZitadel("/management/v1/users/grants/_search", requestBody);
         if (!response.ok) return undefined;
         const data = await response.json();
         return data.result as UsersRole[];
