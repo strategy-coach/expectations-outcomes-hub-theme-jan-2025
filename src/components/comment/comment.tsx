@@ -351,6 +351,7 @@ const Comment: React.FC<
                         };
                         const response = await fetch("/api/comment", {
                             method: "POST",
+                            headers: { "Content-Type": "application/json" },
                             body: JSON.stringify(postBody),
                         });
                         if (!response.ok) {
@@ -408,6 +409,7 @@ const Comment: React.FC<
                         };
                         const response = await fetch("/api/comment", {
                             method: "POST",
+                            headers: { "Content-Type": "application/json" },
                             body: JSON.stringify(postBody),
                         });
                         if (!response.ok) {
@@ -551,6 +553,7 @@ const Comment: React.FC<
                     };
                     const response = await fetch("/api/comment", {
                         method: "POST",
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(postActivityBody),
                     });
 
