@@ -384,13 +384,14 @@ function insertRecords(tableName: string, records: RecordType[], columns: string
 async function main(): Promise<void> {
     try {
         let tenantData: { party_id: string; party_type_id: string | undefined; party_name: string; }[] = []
-        const users = await getUsers();
+        let users = await getUsers();
         let userRoles = await getUsersRole();
         const partyTypes = fetchPartyTypes();
         if (!Array.isArray(partyTypes)) {
             console.error("Failed to fetch party types:", partyTypes.error);
             return;
         }
+        users = users?.filter((user) => userRoles?.some((u) => u.userId === user.id));
         const personType = partyTypes.find((p) => p.code === "PERSON");
         const organizationType = partyTypes.find((p) => p.code === "ORGANIZATION");
         let organizationData: RecordType[] = [];
