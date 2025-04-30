@@ -1,310 +1,650 @@
 {
   "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
   "title": "order",
   "status": "active",
   "item": [
     {
       "item": [
         {
-          "type": "text",
-          "linkId": "588625093979",
-          "text": "General Information Evidence Collection",
-          "readOnly": true,
-          "initial": [
+          "type": "group",
+          "linkId": "826815358789",
+          "text": "Plan 1",
+          "item": [
             {
-              "valueString": "/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json"
+              "type": "text",
+              "linkId": "588625093979",
+              "text": "General Information Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-1/general-information-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "994183875420",
+              "text": "Control Environment Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-1/control-environment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "869712719888",
+              "text": "Information And Communications Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-1/information-and-communications-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "linkId": "655657583951",
+              "text": "Risk Assessment Monitoring Controls Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-1/risk-assessment-monitoring-controls-evidence-collection.lhc-form.json"
+                }
+              ]
             }
           ]
         },
         {
-          "type": "text",
-          "linkId": "994183875420",
-          "text": "Control Environment Evidence Collection",
-          "readOnly": true,
-          "initial": [
+          "type": "group",
+          "linkId": "826815358790",
+          "text": "Plan 2",
+          "item": [
             {
-              "valueString": "/expectations/questionnaire/plan-1/control-environment-evidence-collection.lhc-form.json"
+              "type": "text",
+              "linkId": "448473921244",
+              "text": "General Information Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/general-information-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "703182333462",
+              "text": "Control Environment Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/control-environment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "943422145875",
+              "text": "Information And Communications Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/information-and-communications-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "360972474564",
+              "text": "Risk Assessment Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/risk-assessment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "989551956057",
+              "text": "Monitoring Of Controls Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/monitoring-of-controls-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "634272141512",
+              "text": "Control Activities Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/control-activities-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "275743275227",
+              "text": "Logical And Physical Access Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/logical-and-physical-access-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "656397152650",
+              "text": "Systems Operations Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/systems-operations-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "629488050854",
+              "text": "Change Management Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/change-management-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "string",
+              "linkId": "142611181088",
+              "text": "Risk Mitigation Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/risk-mitigation-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "947014158415",
+              "text": "Confidentiality And Availability Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-2/confidentiality-and-availability-evidence-collection.lhc-form.json"
+                }
+              ]
             }
           ]
         },
         {
-          "type": "text",
-          "linkId": "869712719888",
-          "text": "Information And Communications Evidence Collection",
-          "readOnly": true,
-          "initial": [
+          "type": "group",
+          "linkId": "518432765096",
+          "text": "Plan 3",
+          "item": [
             {
-              "valueString": "/expectations/questionnaire/plan-1/information-and-communications-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "string",
-          "linkId": "655657583951",
-          "text": "Risk Assessment Monitoring Controls Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "string",
+              "linkId": "685419173677",
+              "text": "General Information Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/general-information-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-1/risk-assessment-monitoring-controls-evidence-collection.lhc-form.json"
+              "type": "text",
+              "linkId": "118682717690",
+              "text": "Control Environment Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/control-environment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "736841156390",
+              "text": "Information And Communications Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/information-and-communications-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "803007209342",
+              "text": "Risk Assessment Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/risk-assessment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "943765557955",
+              "text": "Monitoring Of Controls Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/monitoring-of-controls-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "600776492021",
+              "text": "Control Activities Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/control-activities-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "620267710579",
+              "text": "Logical And Physical Access Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/logical-and-physical-access-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "220065476765",
+              "text": "Systems Operations Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/systems-operations-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "992805178217",
+              "text": "Change Management Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/change-management-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "251871364803",
+              "text": "Risk Mitigation Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/risk-mitigation-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "964157192109",
+              "text": "Confidentiality And Availability Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-1/plan-3/confidentiality-and-availability-evidence-collection.lhc-form.json"
+                }
+              ]
             }
           ]
         }
       ],
       "type": "group",
-      "linkId": "826815358789",
-      "text": "Plan 1"
+      "linkId": "soc2-type-1",
+      "text": "SOC2 Type 1"
     },
     {
       "item": [
         {
-          "type": "text",
-          "linkId": "448473921244",
-          "text": "General Information Evidence Collection",
-          "readOnly": true,
-          "initial": [
+          "item": [
             {
-              "valueString": "/expectations/questionnaire/plan-2/general-information-evidence-collection.lhc-form.json"
+              "type": "text",
+              "linkId": "117998966813",
+              "text": "Change Management Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/change-management-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "954127681412",
+              "text": "Confidentiality and Availabity Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/confidentiality-and-availability-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "236926711381",
+              "text": "Control Activities Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/control-activities-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "166879515163",
+              "text": "Control Environment Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/control-environment-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "315317620550",
+              "text": "Information and Communication evidence",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/information-and-communications-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "674639374895",
+              "text": "Logical and Physical access control environment",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/logical-and-physical-access-control-envirnment.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "115391041089",
+              "text": "Monitoring Of Control Evidence",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/monitoring-of-control-evidence.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "109146174533",
+              "text": "Risk Assessment Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/risk-assessment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "441955620615",
+              "text": "Risk Mitigation Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/risk-mitigation-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "737679315109",
+              "text": "System Operation",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/system-operation.lhc-form.json"
+                }
+              ]
             }
-          ]
+          ],
+          "type": "group",
+          "linkId": "soc2-type-2-plan-1",
+          "text": "Plan 1"
         },
         {
-          "type": "text",
-          "linkId": "703182333462",
-          "text": "Control Environment Evidence Collection",
-          "readOnly": true,
-          "initial": [
+          "item": [
             {
-              "valueString": "/expectations/questionnaire/plan-2/control-environment-evidence-collection.lhc-form.json"
+              "type": "text",
+              "linkId": "159964907007",
+              "text": "Change Management Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/change-management-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "386057953127",
+              "text": "Confidentiality and Availability Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/confidentiality-and-availability-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "143156766751",
+              "text": "Control Activities Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/control-activities-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "556750506037",
+              "text": "Control Environment Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/control-environment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "627407199566",
+              "text": "Information and Communication Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/information-and-communications-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "112164500959",
+              "text": "Logical and Physical Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/logical-and-physical-access.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "407593120978",
+              "text": "Monitoring of Controls Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/monitoring-of-controls-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "461083758275",
+              "text": "Risk Assesment Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/risk-assessment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "853994610622",
+              "text": "Risk Mitigation Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/risk-mitigation-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "169941313565",
+              "text": "System Operation evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/systems-operations-evidence-collection.lhc-form.json"
+                }
+              ]
             }
-          ]
+          ],
+          "type": "group",
+          "linkId": "soc2-type-2-plan-2",
+          "text": "Plan 2"
         },
         {
-          "type": "text",
-          "linkId": "943422145875",
-          "text": "Information And Communications Evidence Collection",
-          "readOnly": true,
-          "initial": [
+          "item": [
             {
-              "valueString": "/expectations/questionnaire/plan-2/information-and-communications-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "360972474564",
-          "text": "Risk Assessment Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "text",
+              "linkId": "293083178810",
+              "text": "Change Management",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/change-management.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/risk-assessment-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "989551956057",
-          "text": "Monitoring Of Controls Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "text",
+              "linkId": "228433525498",
+              "text": "Confidentiality and Availability",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/confidentiality-and-availability-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/monitoring-of-controls-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "634272141512",
-          "text": "Control Activities Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "text",
+              "linkId": "847008922003",
+              "text": "Control Activities",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/control-activities.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/control-activities-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "275743275227",
-          "text": "Logical And Physical Access Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "text",
+              "linkId": "450678039967",
+              "text": "Control Environment Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/control-environment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/logical-and-physical-access-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "656397152650",
-          "text": "Systems Operations Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "text",
+              "linkId": "109461805031",
+              "text": "Information and Communication Evidence",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/information-and-communications-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/systems-operations-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "629488050854",
-          "text": "Change Management Evidence Collection",
-          "initial": [
+              "type": "text",
+              "linkId": "593443245047",
+              "text": "Logical and Physical Access",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/logical-and-physical-access.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/change-management-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "string",
-          "linkId": "142611181088",
-          "text": "Risk Mitigation Evidence Collection",
-          "initial": [
+              "type": "text",
+              "linkId": "901029190215",
+              "text": "Monitoring Of Controls",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/monitoring-of-controls.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/risk-mitigation-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "947014158415",
-          "text": "Confidentiality And Availability Evidence Collection",
-          "readOnly": true,
-          "initial": [
+              "type": "text",
+              "linkId": "506266732486",
+              "text": "Risk Assessment Evidence Collection",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/risk-assessment-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
             {
-              "valueString": "/expectations/questionnaire/plan-2/confidentiality-and-availability-evidence-collection.lhc-form.json"
+              "type": "text",
+              "linkId": "132087612470",
+              "text": "Risk Mitigation",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/risk-mitigation.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "linkId": "871383165659",
+              "text": "System Operation",
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/systems-operations.lhc-form.json"
+                }
+              ]
             }
-          ]
+          ],
+          "type": "group",
+          "linkId": "soc2-type-2-plan-3",
+          "text": "Plan 3"
         }
       ],
       "type": "group",
-      "linkId": "826815358790",
-      "text": "Plan 2"
-    },
-    {
-      "item": [
-        {
-          "type": "string",
-          "linkId": "685419173677",
-          "text": "General Information Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/general-information-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "118682717690",
-          "text": "Control Environment Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/control-environment-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "736841156390",
-          "text": "Information And Communications Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/information-and-communications-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "803007209342",
-          "text": "Risk Assessment Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/risk-assessment-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "943765557955",
-          "text": "Monitoring Of Controls Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/monitoring-of-controls-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "600776492021",
-          "text": "Control Activities Evidence Collection",
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/control-activities-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "620267710579",
-          "text": "Logical And Physical Access Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/logical-and-physical-access-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "220065476765",
-          "text": "Systems Operations Evidence Collection",
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/systems-operations-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "992805178217",
-          "text": "Change Management Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/change-management-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "251871364803",
-          "text": "Risk Mitigation Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/risk-mitigation-evidence-collection.lhc-form.json"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "linkId": "964157192109",
-          "text": "Confidentiality And Availability Evidence Collection",
-          "readOnly": true,
-          "initial": [
-            {
-              "valueString": "/expectations/questionnaire/plan-3/confidentiality-and-availability-evidence-collection.lhc-form.json"
-            }
-          ]
-        }
-      ],
-      "type": "group",
-      "linkId": "518432765096",
-      "text": "Plan 3"
+      "linkId": "soc2-type-2",
+      "text": "SOC2 Type 2"
     }
   ]
 }

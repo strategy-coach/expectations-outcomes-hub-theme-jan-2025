@@ -17,15 +17,25 @@ const isMenuOpen = (menu: MenuNode[], slugval: string): boolean => {
       (item.children && isMenuOpen(item.children, slugval))
   );
 };
-
-const renderMenu = (menu: MenuNode[], slugval: string) => {
+const getIndentationClass = (level: number) => {
+  if (level === 0) return "pl-1";
+  if (level === 1) return "pl-2";
+  if (level === 2) return "pl-2.5";
+  return "pl-3"; // level 3 or more
+};
+const renderMenu = (menu: MenuNode[], slugval: string, level: number = 0) => {
   return (
-    <ul className="max-w space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+    <ul className={`max-w space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400 level-${level}`}>
       {menu.map((item) => {
         const isSelected = item.path === slugval; // Check if the current folder is selected
 
         return (
-          <li key={item.path} className={`policy_cmp ${isSelected ? "bg-white dark:bg-gray-800" : ""}`}>
+          <li
+            key={item.path}
+            className={`policy_cmp ${getIndentationClass(level)} ${
+              isSelected ? "bg-white dark:bg-gray-800" : ""
+            }`}
+          >
             {item.isFile ? (
               <a
                 href={`${item.path}/`}
@@ -55,7 +65,7 @@ const renderMenu = (menu: MenuNode[], slugval: string) => {
                 </summary>
                 {item.children && (
                   <ul className="top-level border-gray-200 my-2 sub-folder">
-                    {renderMenu(item.children, slugval)}
+                    {renderMenu(item.children, slugval, level + 1)}
                   </ul>
                 )}
               </details>

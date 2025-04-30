@@ -1,0 +1,3119 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "Common Criteria Related to Monitoring of Controls",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "535262171116",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Monitoring system configurations used to monitor system performance, capacity, utilization, and unusual system activity",
+          "item": [
+            {
+              "linkId": "535262171116_helpText",
+              "type": "display",
+              "text": "As evidence, you can provide Monitoring system configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "139398304186",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Monitoring system notification configurations showing which individuals are notified when monitoring thresholds have been exceeded",
+          "item": [
+            {
+              "linkId": "225962948154",
+              "type": "display",
+              "text": "As evidence, you can provide Monitoring system notifications.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "828599617589",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0014"
+            }
+          ],
+          "text": "Screenshot showing the antivirus software dashboard console",
+          "item": [
+            {
+              "linkId": "833247408340",
+              "type": "display",
+              "text": "As evidence, you can provide Antivirus systems.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "127881053927",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0002.3"
+            }
+          ],
+          "text": "Most recently completed backup restoration test",
+          "item": [
+            {
+              "linkId": "104332714214",
+              "type": "display",
+              "text": "As evidence, you can provide Backup restoration test.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "724902944984",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0011"
+            }
+          ],
+          "text": "Provide evidence of incremental and full backups/snapshots performed for a sample of production databases.",
+          "item": [
+            {
+              "linkId": "866244536837",
+              "type": "display",
+              "text": "As evidence, you can provide Backup Configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "407487120339",
+              "text": "Please provide the URL to VPN user access review (sample).",
+              "enableWhen": [
+                {
+                  "question": "956371372489",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "124650133454",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "859310092188",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "769158207401",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "108058633382",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "816860868706",
+                  "text": "For new users that are provisioned in the system requestor, approver, provisoning details are available ( date, person)"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "451858252235",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "864333155998",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "563176381077",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "993748152930",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "166905770194",
+                  "text": "Alerts from Monitoring Software for any attempt to misuse is enabled and events are gathered and attended. Logs of access to system is available"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "622994983873",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "740202233434",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "270579509734",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "338131358508",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "666244560355",
+                  "text": "User Access Changes , requests, approvals , provision and communication"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "545305012327",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "892459393729",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "176714898100",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "961310246419",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "593716989577",
+                  "text": "Segregation of duties in accesses ( dev, build, test, deploy )"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "972670218398",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "643955149222",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "375178444954",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "379086811506",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "785007399565",
+                  "text": "Review of user profiles - admins and non admins for all user details"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "562981136589",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "509648775015",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "545217426633",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "669684340983",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "918656257265",
+                  "text": "Review Employee Termination , last log in after exit date"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "135583551270",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "150249424418",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "209847859706",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "735371605588",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "407798725890",
+                  "text": "Communicate Between Departments about access initiation, changes"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "836656343469",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "270327311490",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "777861958731",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "897830618267",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "303282723587",
+                  "text": "Unused profiles are disabled or inactivated after certain duration"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "678415487987",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "273548313358",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "429006356833",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "252391952209",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "644629229584",
+                  "text": "SSO Issues"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "597045444106",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "235294853829",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "778368996222",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "730653438175",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "264096640066",
+                  "text": "Users complaints on acceess"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "697837423005",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "155272457751",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "977675677053",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "478573097451",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "944340115398",
+                  "text": "Access Misuse related incidents"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "450885265843",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "364320940988",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "459718576877",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "346385543064",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "114570600302",
+                  "text": "Documentation of Requests DeProvision and Changes in  the ticket - who , when , what, why, how"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "277710915439",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "684134328199",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "698549368609",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "763622052142",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "516019584524",
+                  "text": "How many times forgot password used? And who"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "533938115153",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "381338940130",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "686050659400",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "411685315605",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "351346919217",
+                  "text": "How many accounts we have - total? Vs How many employees we have? "
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "599699033603",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "615921146214",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "494118868721",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "490762225133",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "129116819580",
+                  "text": "Temporary and emergency accounts should be removed or disabled automatically"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "468621125371",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "673158897037",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "956366713380",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "433909744668",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "466927947607",
+                  "text": "The organization should require users to log out after a predefined period"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "577127177572",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "346054569154",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "388028004876",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "369436345469",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "438319572261",
+                  "text": "Limit the use of shared/group account credentials"
+                }
+              ],
+              "type": "group",
+              "linkId": "602242113823",
+              "text": "Access Reviews",
+              "enableWhen": [
+                {
+                  "question": "956371372489",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "732156510406",
+              "type": "display",
+              "text": "As evidence, you can provide VPN user access review (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "956371372489",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0017"
+            }
+          ],
+          "text": "VPN user access reviews for a sample of months or quarters",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "909976489936",
+              "text": "Please provide the URL to Network user access review (sample)",
+              "enableWhen": [
+                {
+                  "question": "708184068454",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "361356158686",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "738574340665",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "234452791889",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "454243096072",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "777365592943",
+                  "text": "For new users that are provisioned in the system requestor, approver, provisoning details are available ( date, person)"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "271869610595",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "106581115128",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "367716484048",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "274957971189",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "329839102763",
+                  "text": "Alerts from Monitoring Software for any attempt to misuse is enabled and events are gathered and attended. Logs of access to system is available"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "352566022389",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "191745157436",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "320824056631",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "239974082786",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "569048616142",
+                  "text": "User Access Changes , requests, approvals , provision and communication"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "857655412508",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "674545161627",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "551149268197",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "637782342451",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "549263435331",
+                  "text": "Segregation of duties in accesses ( dev, build, test, deploy )"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "656286407518",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "806114998514",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "717034563627",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "230036418179",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "636905942522",
+                  "text": "Review of user profiles - admins and non admins for all user details"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "840017301868",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "501548135660",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "858331670981",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "776245767839",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "835880388861",
+                  "text": "Review Employee Termination , last log in after exit date"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "947345231377",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "731249152628",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "822304678707",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "196498305433",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "807813265580",
+                  "text": "Communicate Between Departments about access initiation, changes"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "901560670615",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "732299552930",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "334592981991",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "743856256846",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "707258240768",
+                  "text": "Unused profiles are disabled or inactivated after certain duration"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "324280720079",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "433263737825",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "501370056555",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "879237502603",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "373248365200",
+                  "text": "SSO Issues"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "578373484953",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "408619525330",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "572126330720",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "969116203317",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "693756033745",
+                  "text": "Users complaints on acceess"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "197577729733",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "883131016294",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "380708895698",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "384961721339",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "872784295264",
+                  "text": "Access Misuse related incidents"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "276789350758",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "999405998305",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "909342426481",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "635802740496",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "371992873395",
+                  "text": "Documentation of Requests DeProvision and Changes in  the ticket - who , when , what, why, how"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "928500057120",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "459338284621",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "701376704643",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "462200748742",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "203074104443",
+                  "text": "How many times forgot password used? And who"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "975972351534",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "991664111323",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "496832014236",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "713255885087",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "909787820721",
+                  "text": "How many accounts we have - total? Vs How many employees we have? "
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "644979853764",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "554354427740",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "701903333954",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "722626822611",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "266851138437",
+                  "text": "Temporary and emergency accounts should be removed or disabled automatically"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "211928799416",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "929075162156",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "171009002717",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "170646372986",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "483135174845",
+                  "text": "The organization should require users to log out after a predefined period"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "560954248519",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "727161794133",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "370899729439",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "750597828327",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "704309106556",
+                  "text": "Limit the use of shared/group account credentials"
+                }
+              ],
+              "type": "group",
+              "linkId": "547783292721",
+              "text": "Access Reviews",
+              "enableWhen": [
+                {
+                  "question": "708184068454",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "915967846338",
+              "type": "display",
+              "text": "As evidence, you can provide Network user access review (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "708184068454",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0017"
+            }
+          ],
+          "text": "Network user access reviews for a sample of months or quarters",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "766620618410",
+              "text": "Please provide the URL to Operating Systems user access review (sample)",
+              "enableWhen": [
+                {
+                  "question": "659591618612",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "745134921425",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "857981977642",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "545097256570",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "289279049800",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "519084280784",
+                  "text": "For new users that are provisioned in the system requestor, approver, provisoning details are available ( date, person)"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "801822256572",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "724026367203",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "312731821823",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "962802639403",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "299214690684",
+                  "text": "Alerts from Monitoring Software for any attempt to misuse is enabled and events are gathered and attended. Logs of access to system is available"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "802751951123",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "870493051815",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "914285073705",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "476701487047",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "874245283213",
+                  "text": "User Access Changes , requests, approvals , provision and communication"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "545225315504",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "112330329127",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "586745294277",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "906770966240",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "558512326644",
+                  "text": "Segregation of duties in accesses ( dev, build, test, deploy )"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "574293989295",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "451241043708",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "349786146844",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "499730610850",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "249090162277",
+                  "text": "Review of user profiles - admins and non admins for all user details"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "155230341856",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "758848683711",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "345095747548",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "541375358319",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "461672101326",
+                  "text": "Review Employee Termination , last log in after exit date"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "615230243292",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "564865351193",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "604840187851",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "298892793653",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "139208209575",
+                  "text": "Communicate Between Departments about access initiation, changes"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "633429032277",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "442301883310",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "146838770496",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "443422537792",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "314548973002",
+                  "text": "Unused profiles are disabled or inactivated after certain duration"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "922483819008",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "235865474619",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "175704904731",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "645862757214",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "821621444629",
+                  "text": "SSO Issues"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "645416135019",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "562227555729",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "547719307198",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "988748455439",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "339936083805",
+                  "text": "Users complaints on acceess"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "502960535985",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "675935538805",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "929232729186",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "409217192219",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "652351904407",
+                  "text": "Access Misuse related incidents"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "340035043721",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "962374763631",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "145033403297",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "120470832235",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "831356582679",
+                  "text": "Documentation of Requests DeProvision and Changes in  the ticket - who , when , what, why, how"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "651926998364",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "556646873820",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "329297473897",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "413621966970",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "351974963607",
+                  "text": "How many times forgot password used? And who"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "619333046692",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "483591785744",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "993362498584",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "220352723965",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "472823096781",
+                  "text": "How many accounts we have - total? Vs How many employees we have? "
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "256675957235",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "690100579972",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "404485211354",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "330452146720",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "572353937889",
+                  "text": "Temporary and emergency accounts should be removed or disabled automatically"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "516870199319",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "936610311038",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "400006452211",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "646174267105",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "880091185268",
+                  "text": "The organization should require users to log out after a predefined period"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "944082340870",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "171595911654",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "819865005313",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "369218208847",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "687891057655",
+                  "text": "Limit the use of shared/group account credentials"
+                }
+              ],
+              "type": "group",
+              "linkId": "586899078267",
+              "text": "Access Reviews",
+              "enableWhen": [
+                {
+                  "question": "659591618612",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "801444131538",
+              "type": "display",
+              "text": "As evidence, you can provide Operating system user access review (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "659591618612",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0017"
+            }
+          ],
+          "text": "Operating system user access reviews for a sample of months or quarters",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "551563825821",
+              "text": "Please provide the URL to Database user access review (sample)",
+              "enableWhen": [
+                {
+                  "question": "761481604684",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "779370372512",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "781679210307",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "768169673790",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "690346140792",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "776034194772",
+                  "text": "For new users that are provisioned in the system requestor, approver, provisoning details are available ( date, person)"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "269217881635",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "161581474728",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "734003785506",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "405246645727",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "843970047198",
+                  "text": "Alerts from Monitoring Software for any attempt to misuse is enabled and events are gathered and attended. Logs of access to system is available"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "859118246858",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "575928083489",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "794602646612",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "535802233274",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "444892972969",
+                  "text": "User Access Changes , requests, approvals , provision and communication"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "175627708973",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "390371159575",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "272844817104",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "491132705870",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "189294195187",
+                  "text": "Segregation of duties in accesses ( dev, build, test, deploy )"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "737283378259",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "911243604695",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "689144415623",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "988956995775",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "311202636798",
+                  "text": "Review of user profiles - admins and non admins for all user details"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "678475729337",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "866818740954",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "390290564869",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "971925365415",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "828891220175",
+                  "text": "Review Employee Termination , last log in after exit date"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "650036008851",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "652681060134",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "162732691568",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "678413455736",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "865119893895",
+                  "text": "Communicate Between Departments about access initiation, changes"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "788795272224",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "745933243128",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "346903476390",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "691237546834",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "341765968394",
+                  "text": "Unused profiles are disabled or inactivated after certain duration"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "748058380250",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "878367309291",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "284154496894",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "470459467341",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "332373281615",
+                  "text": "SSO Issues"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "263736181343",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "388811868680",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "312658647032",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "428908262518",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "795340111821",
+                  "text": "Users complaints on acceess"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "171786226597",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "380994292901",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "803753878969",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "671194986418",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "974052246818",
+                  "text": "Access Misuse related incidents"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "369201628571",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "640967890894",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "421355736206",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "687874276365",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "912500714862",
+                  "text": "Documentation of Requests DeProvision and Changes in  the ticket - who , when , what, why, how"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "851628566987",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "946330866008",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "238427949816",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "152187295310",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "378980576300",
+                  "text": "How many times forgot password used? And who"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "142917711860",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "952291181455",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "283060178174",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "626819788703",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "329598709252",
+                  "text": "How many accounts we have - total? Vs How many employees we have? "
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "364096972540",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "634095569418",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "897732009691",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "110260572620",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "410649470464",
+                  "text": "Temporary and emergency accounts should be removed or disabled automatically"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "957584680088",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "655420437692",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "873470941307",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "499000176252",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "874382214877",
+                  "text": "The organization should require users to log out after a predefined period"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "657211407386",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "841893896391",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "522033058154",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "635259721320",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "112186811744",
+                  "text": "Limit the use of shared/group account credentials"
+                }
+              ],
+              "type": "group",
+              "linkId": "839881149491",
+              "text": "Access Reviews",
+              "enableWhen": [
+                {
+                  "question": "761481604684",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "818428987928",
+              "type": "display",
+              "text": "As evidence, you can provide Database user access review (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "761481604684",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0017"
+            }
+          ],
+          "text": "Database user access reviews for a sample of months or quarters",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "268282223233",
+              "text": "Please provide the URL to Application user access review (sample)",
+              "enableWhen": [
+                {
+                  "question": "397488761686",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "124991990107",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "269426144566",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "623697194585",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "539002389872",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "243866765556",
+                  "text": "For new users that are provisioned in the system requestor, approver, provisoning details are available ( date, person)"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "311479213480",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "347734470683",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "791968699667",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "817539653398",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "867652016354",
+                  "text": "Alerts from Monitoring Software for any attempt to misuse is enabled and events are gathered and attended. Logs of access to system is available"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "393275687775",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "670869769009",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "937145234260",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "777418445947",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "183610046984",
+                  "text": "User Access Changes , requests, approvals , provision and communication"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "941540568673",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "980355345810",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "742913016827",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "376431466026",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "636130635062",
+                  "text": "Segregation of duties in accesses ( dev, build, test, deploy )"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "799573866186",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "618385257775",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "126098250316",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "760566516958",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "639220732856",
+                  "text": "Review of user profiles - admins and non admins for all user details"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "127209270846",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "588312992133",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "494017254172",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "461953979548",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "512983239882",
+                  "text": "Review Employee Termination , last log in after exit date"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "480307170884",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "698667430296",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "865276797844",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "894850108305",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "227639223582",
+                  "text": "Communicate Between Departments about access initiation, changes"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "979358001451",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "719418092500",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "285429530784",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "480274357543",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "412404686163",
+                  "text": "Unused profiles are disabled or inactivated after certain duration"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "278315428092",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "854278005379",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "597319253687",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "810188497687",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "511980558467",
+                  "text": "SSO Issues"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "353415913728",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "738977499554",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "715949164793",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "188720180189",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "128912389760",
+                  "text": "Users complaints on acceess"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "939526614946",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "559134758154",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "800271952457",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "857702757588",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "499475418759",
+                  "text": "Access Misuse related incidents"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "574356243596",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "513274660650",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "594435781142",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "974493694961",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "963447595320",
+                  "text": "Documentation of Requests DeProvision and Changes in  the ticket - who , when , what, why, how"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "409496749561",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "777706851850",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "896685115101",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "163619979578",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "243556054916",
+                  "text": "How many times forgot password used? And who"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "541840448829",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "248119240001",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "190477380142",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "631996593404",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "292058191506",
+                  "text": "How many accounts we have - total? Vs How many employees we have? "
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "380790545093",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "256315139053",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "843543281758",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "671582428110",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "837056476852",
+                  "text": "Temporary and emergency accounts should be removed or disabled automatically"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "400137597059",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "566434276084",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "970543245683",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "790905040008",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "437048087071",
+                  "text": "The organization should require users to log out after a predefined period"
+                },
+                {
+                  "item": [
+                    {
+                      "type": "string",
+                      "linkId": "139161286199",
+                      "text": "Reviewed by"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "554846757548",
+                      "text": "Reviewed On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "937865919088",
+                      "text": "Evidence On"
+                    },
+                    {
+                      "type": "string",
+                      "linkId": "825782008997",
+                      "text": "Notes"
+                    }
+                  ],
+                  "type": "group",
+                  "linkId": "577155265453",
+                  "text": "Limit the use of shared/group account credentials"
+                }
+              ],
+              "type": "group",
+              "linkId": "172985853894",
+              "text": "Access Reviews",
+              "enableWhen": [
+                {
+                  "question": "397488761686",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "647257457448",
+              "type": "display",
+              "text": "As evidence, you can provide Application user access review (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "397488761686",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0017"
+            }
+          ],
+          "text": "Application user access reviews for a sample of months or quarters",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "829911623806",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0006"
+            }
+          ],
+          "text": "Most recently completed internal and external vulnerability scan results/report If vulnerability scans are performed monthly or quarterly, the auditor will haphazardly select a sample of scans",
+          "item": [
+            {
+              "linkId": "146390046858",
+              "type": "display",
+              "text": "As evidence, you can provide Vulnerability scan(s).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "124123428596",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0006"
+            }
+          ],
+          "text": "Most recently completed annual internal and external penetration test results/report",
+          "item": [
+            {
+              "linkId": "749235747941",
+              "type": "display",
+              "text": "As evidence, you can provide Penetration testing.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "572695088005",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0006"
+            }
+          ],
+          "text": "For an example deviation or gap identified from the tool/system used to monitor/assess key systems, tools, and applications for compliance, evidence (e.g. incident ticket, emails) that the deviation was documented, investigated, and addressed",
+          "item": [
+            {
+              "linkId": "773104209715",
+              "type": "display",
+              "text": "As evidence, you can provide Penetration testing.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "292413387242",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0006"
+            }
+          ],
+          "text": "For an example vulnerability identified from the vulnerability scans or penetration tests, evidence (e.g. incident ticket, emails) that the vulnerability was documented, investigated, and addressed using one of the following strategies: - remediate the identified vulnerability; - avoid the risk posed by the identified vulnerability; - mitigate the risk posed by the identified vulnerability; - transfer the risk posed by the identified vulnerability; or - accept the risk posed by the identified vulnerability",
+          "item": [
+            {
+              "linkId": "672613696689",
+              "type": "display",
+              "text": "As evidence, you can provide Risk mitigation sourced from vuln scan/pentest.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "808067520983",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0001.1"
+            }
+          ],
+          "text": "Most recently completed internal compliance assessment performed by internal audit including evidence that: - key systems, applications, and tools were identified and documented - the key systems, applications, and tools were assessed for compliance against documented policies and procedures - deviations and control gaps were documented - risks were identified and documented relating to the deviations and controls gaps - identified risks were addressed / mitigated - remediation efforts and corrective actions were communicated and assigned to process owners - management reviewed/signed off on the compliance assessment - evidence (e.g. meeting minutes, reports, notes, emails, PowerPoint deck, emails, etc.) that executive management assessed the results of compliance, control and risk assessments, including reviewing the identified high risk vulnerabilities, deviations and controls gaps and control gaps were addressed in a timely manner.",
+          "item": [
+            {
+              "linkId": "319620069782",
+              "type": "display",
+              "text": "As evidence, you can provide Internal compliance assessment.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "318618053613",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Evidence of tool/system (e.g. Qualys) used to monitor/assess key systems, tools, and applications for compliance against documented policies and procedures",
+          "item": [
+            {
+              "linkId": "376270400625",
+              "type": "display",
+              "text": "As evidence, you can provide Tool/system to monitor/assess system configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "785142250198",
+      "text": "Common Criteria Related to Monitoring of Controls"
+    },
+    {
+      "type": "group",
+      "linkId": "662296423950",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Monitoring of Controls informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Monitoring of Controls\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

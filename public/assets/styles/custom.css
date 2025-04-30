@@ -144,6 +144,12 @@ details[open] > .fst_mn .caret {
   color: #028db7 !important;
   border-radius: 4px;
 }
+.sidebar-left-menu .sub-folder ul.level-2 details summary {
+  background: transparent !important;
+}
+.sidebar-left-menu .sub-folder ul.level-2 details[open] summary {
+  background: #f2f2f2 !important;
+}
 
 .inner-menu-select {
   background: #f2f2f2 !important;

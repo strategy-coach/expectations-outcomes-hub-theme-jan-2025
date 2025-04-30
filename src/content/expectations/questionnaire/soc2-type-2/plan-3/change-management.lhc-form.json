@@ -1,0 +1,390 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ],
+    "tag": [
+      {
+        "code": "lhc-qnvconv-R5-to-R4",
+        "display": "Converted from R5 to R4 by the LHC Questionnaire Version Converter"
+      }
+    ]
+  },
+  "title": "Common Criteria Related to Change Management",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "linkId": "491016019132",
+              "type": "display",
+              "text": "As evidence, you can provide List of application changes details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "822127492536",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Population of application changes during the audit period NOTE: Please provide evidence of how the listing was created {e.g. screen shot of parameters/query/filtering/explanation)"
+        },
+        {
+          "item": [
+            {
+              "linkId": "133980203762",
+              "type": "display",
+              "text": "As evidence, you can provide Application change tickets details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "863114862749",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "For a sample of application changes, the documented change tickets/records showing: - Change was authorized - Change was tested - Change was approved - Who performed each function (including who implemented the change into production) NOTE: If all types of changes (app, infrastructure, OS, DB, etc.) are tracked and managed using the same process/controls, please let us know"
+        },
+        {
+          "item": [
+            {
+              "linkId": "342531846134",
+              "type": "display",
+              "text": "As evidence, you can provide List of infrastructure changes details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "242554169346",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Population of infrastructure changes during the audit period NOTE: Please provide evidence of how the listing was created {e.g. screen shot of parameters/query/filtering/explanation) Expected Evidence"
+        },
+        {
+          "item": [
+            {
+              "linkId": "379013944043",
+              "type": "display",
+              "text": "As evidence, you can provide Infrastructure change tickets.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "219028287137",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "For a sample of infrastructure changes, the documented change tickets/records showing: - Change was authorized - Change was tested - Change was approved - Who performed each function (including who implemented the change into production) NOTE: If all types of changes (app, infrastructure, OS, DB, etc.) are tracked and managed using the same process/controls, please let us know"
+        },
+        {
+          "item": [
+            {
+              "linkId": "494828653681",
+              "type": "display",
+              "text": "As evidence, you can provide List of operating system changes details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "726123372671",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Population of operating system changes during the audit period NOTE: Please provide evidence of how the listing was created {e.g. screen shot of parameters/query/filtering/explanation)"
+        },
+        {
+          "item": [
+            {
+              "linkId": "569311168144",
+              "type": "display",
+              "text": "As evidence, you can provide Operation system change tickets.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "231315950471",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "For a sample of operating system changes, the documented change tickets/records showing: - Change was authorized - Change was tested - Change was approved - Who performed each function (including who implemented the change into production) NOTE: If all types of changes (app, infrastructure, OS, DB, etc.) are tracked and managed using the same process/controls, please let us know"
+        },
+        {
+          "item": [
+            {
+              "linkId": "428707566271",
+              "type": "display",
+              "text": "As evidence, you can provide List of database changes.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "836672992029",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Population of database changes during the audit period NOTE: Please provide evidence of how the listing was created {e.g. screen shot of parameters/query/filtering/explanation)"
+        },
+        {
+          "item": [
+            {
+              "linkId": "203830932563",
+              "type": "display",
+              "text": "As evidence, you can provide Database change tickets.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "657708654104",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "For a sample of database changes, the documented change tickets/records showing: - Change was authorized - Change was tested - Change was approved - Who performed each function (including who implemented the change into production) NOTE: If all types of changes (app, infrastructure, OS, DB, etc.) are tracked and managed using the same process/controls, please let us know"
+        },
+        {
+          "item": [
+            {
+              "linkId": "359534857960",
+              "type": "display",
+              "text": "As evidence, you can provide Change control software.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "905025892530",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Screenshot of the change control software being utilized to track system changes"
+        },
+        {
+          "item": [
+            {
+              "linkId": "206617427470",
+              "type": "display",
+              "text": "As evidence, you can provide Source code software.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "303507325571",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Evidence of system generated screenshot of configurations for the source code software (TFS, Git, SVN, etc.) utilized for the in-scope applications."
+        },
+        {
+          "item": [
+            {
+              "linkId": "313973055728",
+              "type": "display",
+              "text": "As evidence, you can provide Lower environments.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "207727077966",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Evidence (screenshots) of separate application environments: DEV, QA and PROD"
+        }
+      ],
+      "type": "group",
+      "linkId": "731722894577",
+      "text": "Common Criteria Related to Change Management"
+    },
+    {
+      "type": "group",
+      "linkId": "685791569580",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Change Management informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Change Management\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

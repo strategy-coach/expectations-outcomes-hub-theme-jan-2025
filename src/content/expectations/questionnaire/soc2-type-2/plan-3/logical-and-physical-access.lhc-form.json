@@ -1,0 +1,1554 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "Common Criteria Related to Logical and Physical Access",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "805774887666",
+              "text": "Please provide the URL to Asset inventory details.",
+              "enableWhen": [
+                {
+                  "question": "339486520665",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "type": "string",
+                  "linkId": "432166519473",
+                  "text": "Name",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "377807042924",
+                  "text": "Server",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "785000455085",
+                  "text": "Asset Type",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "674740258288",
+                  "text": "Boundary",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "181926465207",
+                  "text": "Description",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "276762826688",
+                  "text": "Port",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "501904269399",
+                  "text": "Experimental version",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "230676641129",
+                  "text": "Production Server",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "623534008909",
+                  "text": "Latest Version",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "811155538908",
+                  "text": "Resource Utilization ",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "921653453188",
+                  "text": "Log file",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "624552862733",
+                  "text": "Vendor Link",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "155444120964",
+                  "text": "Installation Date",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "choice",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "drop-down",
+                            "display": "Drop down"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "586804218905",
+                  "text": "Criticality ",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ],
+                  "answerOption": [
+                    {
+                      "valueCoding": {
+                        "display": "Yes"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "232758226908",
+                  "text": "Owner",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "choice",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "drop-down",
+                            "display": "Drop down"
+                          }
+                        ]
+                      }
+                    }
+                  ],
+                  "linkId": "646169847785",
+                  "text": "Asset Criticality ",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ],
+                  "answerOption": [
+                    {
+                      "valueCoding": {
+                        "display": "Yes"
+                      }
+                    },
+                    {
+                      "valueCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "944729768017",
+                  "text": "Asymmetric Keys ",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "510872499378",
+                  "text": "Cryptographic Keys",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "591135636815",
+                  "text": "Symmetric Keys",
+                  "enableWhen": [
+                    {
+                      "question": "339486520665",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "type": "group",
+              "linkId": "140218749338",
+              "text": "Listing of all systems, DBs, and applications details.",
+              "enableWhen": [
+                {
+                  "question": "339486520665",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "625947301201",
+              "type": "display",
+              "text": "As evidence, you can provide Asset inventory details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "339486520665",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.1"
+            }
+          ],
+          "text": "Inventory listing of system assets and components (servers, operating systems, databases, applications, tools, network devices) as of the audit period end date NOTE: Please provide evidence of how the listing was created (e.g. screen shot of parameters/query/filtering/explanation)",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "515718740370",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0002"
+            }
+          ],
+          "text": "Listing of In-Scope Networks as of the audit period end date NOTE: Networks that support the in-scope system/service",
+          "item": [
+            {
+              "linkId": "357743117371",
+              "type": "display",
+              "text": "As evidence, you can provide List of networks.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "361288869777",
+          "code": [
+            {
+              "code": "FII-SCF-CFG-0004.2"
+            }
+          ],
+          "text": "User listings for networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "211286645214",
+              "type": "display",
+              "text": "As evidence, you can provide User list for each IT layer.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "798755156549",
+          "code": [
+            {
+              "code": "FII-SCF-CFG-0004.2"
+            }
+          ],
+          "text": "Administrators/super user listing for in-scope networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "568350127168",
+              "type": "display",
+              "text": "As evidence, you can provide Admin user list for each IT layer.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "510989428817",
+          "code": [
+            {
+              "code": "FII-SCF-CFG-0004.2"
+            }
+          ],
+          "text": "Access rights associated with each group/role for in-scope networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "173830496214",
+              "type": "display",
+              "text": "As evidence, you can provide User security groups for each IT layer.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "940483081702",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0002"
+            }
+          ],
+          "text": "Opportunity to observe IT applications, data flows, and infrastructure",
+          "item": [
+            {
+              "linkId": "496910088466",
+              "type": "display",
+              "text": "As evidence, you can provide IT system screen share/observational meeting details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "993237803541",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0016"
+            }
+          ],
+          "text": "Password configurations for in-scope networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "350694444726",
+              "type": "display",
+              "text": "As evidence, you can provide Password configurations details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "530032598782",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.6"
+            }
+          ],
+          "text": "Account lockout configurations for in-scope networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "753208695474",
+              "type": "display",
+              "text": "As evidence, you can provide Account lockout configurations details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "731814100313",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001"
+            }
+          ],
+          "text": "Audit logging configurations for in-scope networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "151076405101",
+              "type": "display",
+              "text": "As evidence, you can provide Audit logging configurations details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "292050062600",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001"
+            }
+          ],
+          "text": "Example audit logging extract for in-scope networks, operating systems, databases, and applications",
+          "item": [
+            {
+              "linkId": "318051509287",
+              "type": "display",
+              "text": "As evidence, you can provide Example audit logging details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "969199496633",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.1"
+            }
+          ],
+          "text": "Listing of In-Scope Operating Systems as of the audit period end date NOTE: Only include Operating Systems that support the in-scope system/service",
+          "item": [
+            {
+              "linkId": "821782533261",
+              "type": "display",
+              "text": "As evidence, you can provide List of operating systems details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "313565949778",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.1"
+            }
+          ],
+          "text": "Listing of In-Scope Databases as of the audit period end date NOTE: DBs that support the in-scope system/service",
+          "item": [
+            {
+              "linkId": "476108835948",
+              "type": "display",
+              "text": "As evidence, you can provide List of databases details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "144993925619",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.1"
+            }
+          ],
+          "text": "Listing of In-Scope Applications as of the audit period end date NOTE: Applications that support the in-scope system/service",
+          "item": [
+            {
+              "linkId": "925098177050",
+              "type": "display",
+              "text": "As evidence, you can provide List of applications (including products) details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "780053196669",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.1"
+            }
+          ],
+          "text": "Listing of production servers as of the audit period end date",
+          "item": [
+            {
+              "linkId": "747117523648",
+              "type": "display",
+              "text": "As evidence, you can provide List of production servers details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "466148474612",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0012.2"
+            }
+          ],
+          "text": "Firewall rule sets for a sample of production servers Evidence that Network Address Translation (NAT) is utilized to manage internal IP addresses",
+          "item": [
+            {
+              "linkId": "792635793178",
+              "type": "display",
+              "text": "As evidence, you can provide Firewall rules details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "506268516892",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0003"
+            }
+          ],
+          "text": "Provide evidence such as screenshots of configurations from sources where encryption is utilized showing that only verified SSL digital certificates are accepted",
+          "item": [
+            {
+              "linkId": "414851755537",
+              "type": "display",
+              "text": "As evidence, you can provide SSL certificates.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "718691939805",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0005"
+            }
+          ],
+          "text": "Provide evidence of secure file transfer protocol configurations, or other encrypted communication methods for FTP servers.",
+          "item": [
+            {
+              "linkId": "685547285236",
+              "type": "display",
+              "text": "As evidence, you can provide SFTP Configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "977974512016",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0005"
+            }
+          ],
+          "text": "Encryption Policy - This document will be used to confirm the following: â€¢ The acceptance of only trusted keys and/or certificates â€¢ Only secure versions of protocols are in use and insecure versions are not supported â€¢ Encryption method (SSL, TLS, VPC) â€¢ Encryption key generation, security, storage, use and destruction",
+          "item": [
+            {
+              "linkId": "142557062128",
+              "type": "display",
+              "text": "As evidence, you can provide Encryption Policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "956167430708",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0002.1"
+            }
+          ],
+          "text": "For a sample of users granted access to the in-scope system/environment, evidence that: 1 - Access request was documented 2- Access request was approved 3- Access was provisioned as requested Note: Sample will be chosen from list of new hires",
+          "item": [
+            {
+              "linkId": "754697316035",
+              "type": "display",
+              "text": "As evidence, you can provide Access request tickets (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "147988373584",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009"
+            }
+          ],
+          "text": "Listing of all personnel terminated during the audit period NOTE: Please provide evidence of how the listing was created {e.g. screen shot of parameters/query/filtering/explanation)",
+          "item": [
+            {
+              "linkId": "392437800169",
+              "type": "display",
+              "text": "As evidence, you can provide List of terminations details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "878879590520",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0009.2"
+            }
+          ],
+          "text": "User revocation tickets for a sample of terminated employees",
+          "item": [
+            {
+              "linkId": "454533172931",
+              "type": "display",
+              "text": "As evidence, you can provide Termination tickets (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "379581615122",
+          "code": [
+            {
+              "code": "FII-SCF-TPM-0001"
+            }
+          ],
+          "text": "Third party data centers most recent SOC report with evidence of management review",
+          "item": [
+            {
+              "linkId": "733011264094",
+              "type": "display",
+              "text": "As evidence, you can provide Vendor SOC reports.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "172126360526",
+          "code": [
+            {
+              "code": "FII-SCF-AST-0009"
+            }
+          ],
+          "text": "Data disposal and destruction policies and procedures with revision history including: â€¢ Data storage amount and retention time is limited to what is required for legal, regulatory, and/or business requirements â€¢ Specific requirements for retention and destruction of sensitive / confidential data â€¢ Defined processes for secure deletion/destruction of data when it is no longer needed for business purposes (This applies to all data stored electronically on disk, databases, phone recordings, backup media, and in hardcopy format)",
+          "item": [
+            {
+              "linkId": "493114479664",
+              "type": "display",
+              "text": "As evidence, you can provide Data disposal/destruction policies.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "807028967734",
+          "code": [
+            {
+              "code": "FII-SCF-AST-0009"
+            }
+          ],
+          "text": "Population of requests to dispose of data, purge a system, or physically destroy a system during the audit period NOTE: Please provide evidence of how the listing was created (e.g. screen shot of parameters/query/filtering/explanation)",
+          "item": [
+            {
+              "linkId": "844397344575",
+              "type": "display",
+              "text": "As evidence, you can provide Disposal requests.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "252584231084",
+          "code": [
+            {
+              "code": "FII-SCF-AST-0009"
+            }
+          ],
+          "text": "For a sample of requests to dispose of data, purge a system, or physically destroy a system, evidence the data was properly disposed of, system purged, or system destroyed.",
+          "item": [
+            {
+              "linkId": "142955169265",
+              "type": "display",
+              "text": "As evidence, you can provide Evidence that data was properly disposed (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "251780756225",
+          "code": [
+            {
+              "code": "FII-SCF-END-0004.2"
+            }
+          ],
+          "text": "Antivirus configurations for a sample of servers and workstations, including MS, Mac and Linux workstations. Please include update and distribution settings, virus definition level and antivirus version number, antivirus scanning schedule/settings",
+          "item": [
+            {
+              "linkId": "310958107893",
+              "type": "display",
+              "text": "As evidence, you can provide Antivirus configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "721611257151",
+          "code": [
+            {
+              "code": "FII-SCF-CFG-0004.2"
+            }
+          ],
+          "text": "Listing of users with access to deploy changes into the production environment",
+          "item": [
+            {
+              "linkId": "955585399976",
+              "type": "display",
+              "text": "As evidence, you can provide List of production software implementors.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "892552994133",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Change management policies and procedures with revision history (including emergency procedures)",
+          "item": [
+            {
+              "linkId": "534218205860",
+              "type": "display",
+              "text": "As evidence, you can provide Change management policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "662152481551",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0001"
+            }
+          ],
+          "text": "Vulnerability scanning process policies and procedures including a requirement to scan assets, software, hardware, tools, and applications for vulnerabilities and malware prior to implementation into the environment",
+          "item": [
+            {
+              "linkId": "210522470965",
+              "type": "display",
+              "text": "As evidence, you can provide Vulnerability scanning policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "445102757768",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0007.1"
+            }
+          ],
+          "text": "Population of workstations with access to the in-scope system/service as of the audit period end date NOTE: Please provide evidence of how the listing was created (e.g. screen shot of parameters/query/filtering/explanation)",
+          "item": [
+            {
+              "linkId": "924162642989",
+              "type": "display",
+              "text": "As evidence, you can provide List of laptops/workstations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "797643412175",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0008"
+            }
+          ],
+          "text": "Evidence that stored passwords are encrypted",
+          "item": [
+            {
+              "linkId": "927847598400",
+              "type": "display",
+              "text": "As evidence, you can provide Password encryption details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "659561227926",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0003"
+            }
+          ],
+          "text": "Data classification (e.g. confidential, public, private) policies and procedures / scheme",
+          "item": [
+            {
+              "linkId": "880210136181",
+              "type": "display",
+              "text": "As evidence, you can provide Data classification policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "782582504395",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0004"
+            }
+          ],
+          "text": "Evidence to show that backed up data is properly disposed of when no longer needed",
+          "item": [
+            {
+              "linkId": "362380093960",
+              "type": "display",
+              "text": "As evidence, you can provide Backup data disposal.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "478039073460",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0010"
+            }
+          ],
+          "text": "Vendor provided listing of users with the ability to recall backup media from third party storage facility",
+          "item": [
+            {
+              "linkId": "667109662535",
+              "type": "display",
+              "text": "As evidence, you can provide Users who can recall backup media.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "688711979194",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0004.1"
+            }
+          ],
+          "text": "Screenshot of the warning message when an employee downloads an application or software OR Screenshot of the denied message when an employee downloads an application or software",
+          "item": [
+            {
+              "linkId": "997385359615",
+              "type": "display",
+              "text": "As evidence, you can provide Download protection details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "940809000483",
+      "text": "Common Criteria Related to Logical and Physical Access"
+    },
+    {
+      "type": "group",
+      "linkId": "262172459815",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Logical and Physical Access informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Logical and Physical Access\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

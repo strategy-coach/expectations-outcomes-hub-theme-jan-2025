@@ -1,0 +1,768 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "Information and Communications  Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "linkId": "592330886531",
+              "type": "display",
+              "text": "As evidence, you can provide the Intrusion Detection/Prevention System (IDS/IPS).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "683163909840",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.5"
+            }
+          ],
+          "text": "Intrusion Detection System (IDS) configurations and/or Intrusion Prevention System (IPS), example log, and example alert"
+        },
+        {
+          "item": [
+            {
+              "linkId": "978225616170",
+              "type": "display",
+              "text": "As evidence, you can provide the Network diagram.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "393177480058",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0002"
+            }
+          ],
+          "text": "Network diagram showing firewalls and IDS and/or IPS in place"
+        },
+        {
+          "item": [
+            {
+              "linkId": "602424123679",
+              "type": "display",
+              "text": "As evidence, you can provide the Encryption algorithms.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "951892296424",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0002"
+            }
+          ],
+          "text": "Encryption methods and configurations for data in transit (SSL, TLS, VPN, etc.)"
+        },
+        {
+          "item": [
+            {
+              "linkId": "105511588122",
+              "type": "display",
+              "text": "As evidence, you can provide the Encryption configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "191882553338",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0005"
+            }
+          ],
+          "text": "Encryption methods (AES, 3DES, ECC, Diffie-Hellman, RSA) and configurations for data at rest. As part of this evidence, please provide evidence that: 1. stored passwords are encrypted 2. stored backup media is encrypted"
+        },
+        {
+          "item": [
+            {
+              "linkId": "363306733174",
+              "type": "display",
+              "text": "As evidence, you can provide the Data retention policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "385802682384",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0018"
+            }
+          ],
+          "text": "Data retention policies and procedures with revision history"
+        },
+        {
+          "item": [
+            {
+              "linkId": "714844316721",
+              "type": "display",
+              "text": "As evidence, you can provide the Incident response policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "627241417321",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "Incident response policies and procedures with revision history Ensure policies and procedures cover incidents, failures, concerns, complaints"
+        },
+        {
+          "item": [
+            {
+              "linkId": "805784304029",
+              "type": "display",
+              "text": "As evidence, you can provide the Information Security Awareness Training tracking details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "843314245796",
+          "code": [
+            {
+              "code": "FII-SCF-SAT-0001"
+            }
+          ],
+          "text": "Evidence that Information security and awareness training is tracked and monitored for employees (e.g. tracking tool, spreadsheet)"
+        },
+        {
+          "item": [
+            {
+              "linkId": "698456044904",
+              "type": "display",
+              "text": "As evidence, you can provide the Customer service agreement template.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "349233825944",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0010.1"
+            }
+          ],
+          "text": "Service agreement / contract template provided to customers"
+        },
+        {
+          "item": [
+            {
+              "linkId": "308990144866",
+              "type": "display",
+              "text": "As evidence, you can provide the Medium to communicate service commitment changes.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "698476502135",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0002"
+            }
+          ],
+          "text": "Evidence that changes to commitments, requirements, and responsibilities are communicated to third parties, contractors, and customers via updated agreements, website notices, or mass notifications Evidence could come from the entity's website, newsletters, email, or an example updated agreement with a third party / contractor / customer that includes revision history dates"
+        },
+        {
+          "item": [
+            {
+              "linkId": "663556719202",
+              "type": "display",
+              "text": "As evidence, you can provide the Management meeting discussing results from third party assessments.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "203784020476",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0001.1"
+            }
+          ],
+          "text": "Evidence (e.g. meeting minutes, reports, notes, PowerPoint deck, emails, etc.) that executive management met with operational management annually to discuss the results of assessments performed by third parties"
+        },
+        {
+          "item": [
+            {
+              "linkId": "872895960251",
+              "type": "display",
+              "text": "As evidence, you can provide the Communication of system changes.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "378485027042",
+          "code": [
+            {
+              "code": "FII-SCF-CHG-0005"
+            }
+          ],
+          "text": "Evidence that system changes are communicated to affected users (employees and customers) Evidence could include emails, newsletters, website, intranet, shared drive, or within the actual change tickets"
+        },
+        {
+          "item": [
+            {
+              "linkId": "125554175676",
+              "type": "display",
+              "text": "As evidence, you can provide the Main product/service walk through (screen share).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "750962243407",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0008"
+            }
+          ],
+          "text": "Opportunity to observe and walk through product and services in scope, review data entered in the in-scope system, review data processed, and review data outputted from the in-scope system for completeness / accuracy"
+        },
+        {
+          "item": [
+            {
+              "linkId": "147961249824",
+              "type": "display",
+              "text": "As evidence, you can provide the Data flow diagram.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "505762577694",
+          "code": [
+            {
+              "code": "FII-SCF-AST-0004"
+            }
+          ],
+          "text": "Data flow diagrams, process flow charts, and narratives identifying how data flows within the environment including the relevant information sources and systems"
+        },
+        {
+          "item": [
+            {
+              "linkId": "694053857358",
+              "type": "display",
+              "text": "As evidence, you can provide the File integrity monitoring details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "236080723430",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.7"
+            }
+          ],
+          "text": "File integrity monitoring software configurations and example alert generated from the file integrity monitoring software"
+        },
+        {
+          "item": [
+            {
+              "linkId": "998016368264",
+              "type": "display",
+              "text": "As evidence, you can provide the VPN authentication configuration details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "630454750177",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0012.2"
+            }
+          ],
+          "text": "VPN authentication configurations including password settings"
+        },
+        {
+          "item": [
+            {
+              "linkId": "198808024830",
+              "type": "display",
+              "text": "As evidence, you can provide the SSH authentication configurations.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "609993340926",
+          "code": [
+            {
+              "code": "FII-SCF-NET-0004"
+            }
+          ],
+          "text": "Provide evidence of SSH configurations and authentication screenshots for access via secured shell to production instances/servers requiring SSH access."
+        },
+        {
+          "item": [
+            {
+              "linkId": "894078253228",
+              "type": "display",
+              "text": "As evidence, you can provide the Multi-Factor Authentication.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "722476740995",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0010"
+            }
+          ],
+          "text": "Evidence of Multi-Factor Authentication configurations, including initial MFA token, session keys, etc., in use for access to the in-scope networks, operating systems, databases, and applications."
+        },
+        {
+          "item": [
+            {
+              "linkId": "795196936736",
+              "type": "display",
+              "text": "As evidence, you can provide the Information Security Awareness Training new hire testing (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "149608033715",
+          "code": [
+            {
+              "code": "FII-SCF-SAT-0001"
+            }
+          ],
+          "text": "For a sample of new hires, evidence that information security and awareness training was performed upon hire. Evidence could include training completion forms, tracking tool/spreadsheet, or certificates"
+        },
+        {
+          "item": [
+            {
+              "linkId": "579083790925",
+              "type": "display",
+              "text": "As evidence, you can provide the Information Security Awareness Training current employee testing (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "348882929771",
+          "code": [
+            {
+              "code": "FII-SCF-SAT-0002"
+            }
+          ],
+          "text": "For a sample of current employees, evidence that information security and awareness training was performed annually. Evidence could include training completion forms, tracking tool/spreadsheet, or certificates"
+        },
+        {
+          "item": [
+            {
+              "linkId": "648027346772",
+              "type": "display",
+              "text": "As evidence, you can provide the Policies are available to vendors/contractors.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "194401695376",
+          "code": [
+            {
+              "code": "FII-SCF-TPM-0002"
+            }
+          ],
+          "text": "Evidence showing key policies and procedures (e.g. Information Security, Change Management, Incident Management) were available to external parties (contractors, third parties, vendors, customers)) via company [website, shared drive, intranet, email, or contract/agreement, etc.]"
+        },
+        {
+          "item": [
+            {
+              "linkId": "997449420131",
+              "type": "display",
+              "text": "As evidence, you can provide the Escalation Policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "442475984935",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0014"
+            }
+          ],
+          "text": "Copy of the Escalation policies and procedures for reporting failures, concerns, incidents, and complaints with revision history AND evidence that these escalation policies and procedures were available to external parties (contractors, third parties, vendors, customers) via company [website, shared drive, intranet, email, or contract/agreement, etc.]"
+        },
+        {
+          "item": [
+            {
+              "linkId": "978773940957",
+              "type": "display",
+              "text": "As evidence, you can provide the List of new customers.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "862527204346",
+          "code": [
+            {
+              "code": "FII-SCF-IAC-0002"
+            }
+          ],
+          "text": "Listing of new customers during the audit period"
+        },
+        {
+          "item": [
+            {
+              "linkId": "862017367868",
+              "type": "display",
+              "text": "As evidence, you can provide the Contracts for new customers (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "string",
+          "linkId": "818812008572",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0010.1"
+            }
+          ],
+          "text": "Contract (service agreement) for a sample of new customers"
+        }
+      ],
+      "type": "group",
+      "linkId": "688660921201",
+      "text": "Common Criteria Related to Information and Communications "
+    },
+    {
+      "type": "group",
+      "linkId": "782061346593",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Information and Communications informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Information and Communications\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

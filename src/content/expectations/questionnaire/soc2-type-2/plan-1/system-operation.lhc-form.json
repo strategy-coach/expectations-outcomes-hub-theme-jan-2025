@@ -1,0 +1,699 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "Common Criteria Related to Systems Operations",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "555490812889",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "Evidence (e.g. meeting minutes, reports, notes, PowerPoint deck, emails, etc.) that management reviewed reports summarizing security incidents, root cause of incidents, and corrective action plans",
+          "item": [
+            {
+              "linkId": "800187110502",
+              "type": "display",
+              "text": "As evidence, you can provide Management review of incidents, root cause analysis, action plans.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "905553460776",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "Population of security incidents during the audit period NOTE: Please provide evidence of how the listing was created (e.g. screen shot of parameters/query/filtering/explanation)",
+          "item": [
+            {
+              "linkId": "556586046610",
+              "type": "display",
+              "text": "As evidence, you can provide List of security incidents.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "546350787987",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "Incident tickets for a sample of security incidents",
+          "item": [
+            {
+              "linkId": "239883849928",
+              "type": "display",
+              "text": "As evidence, you can provide Security incident tickets (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "944999308816",
+              "text": "Please provide the URL to Security impact analysis.",
+              "enableWhen": [
+                {
+                  "answerCoding": {
+                    "display": "Yes"
+                  },
+                  "question": "519157352881",
+                  "operator": "="
+                }
+              ],
+              "item": [
+                {
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "type": "display",
+                  "linkId": "795395116140",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "text": "Help-Button",
+                        "coding": [
+                          {
+                            "code": "help",
+                            "display": "Help-Button",
+                            "system": "http://hl7.org/fhir/questionnaire-item-control"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "type": "string",
+                  "linkId": "542964963464",
+                  "text": "incident",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "346274941559",
+                  "text": "Incident_Date",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "886036018611",
+                  "text": "time_and_time_zone",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "862309277774",
+                  "text": "category",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "280651681485",
+                  "text": "severity"
+                },
+                {
+                  "type": "string",
+                  "linkId": "759947885834",
+                  "text": "priority",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "264075416891",
+                  "text": "internal_or_external",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "873400960112",
+                  "text": "location",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "316192270237",
+                  "text": "it_service_impacted",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "766970128269",
+                  "text": "impacted_modules",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "118603922620",
+                  "text": "impacted_dept"
+                },
+                {
+                  "type": "string",
+                  "linkId": "127358393533",
+                  "text": "reported_by",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "466154754585",
+                  "text": "reported_To",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "754019126512",
+                  "text": "brief_description",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "731369446113",
+                  "text": "detailed_description",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "275921099581",
+                  "text": "assigned_to",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "989457496925",
+                  "text": "assigned_date",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "299579430420",
+                  "text": "investigation_details",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "441040848409",
+                  "text": "containment_details"
+                },
+                {
+                  "type": "string",
+                  "linkId": "825901594691",
+                  "text": "eradication_details",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "557869466539",
+                  "text": "bussiness_impact",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "524091115831",
+                  "text": "lessons_learned",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "531510871419",
+                  "text": "status",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "827639003425",
+                  "text": "closed_date",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "677051448576",
+                  "text": "feedback_from_business",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "815383796244",
+                  "text": "reported_to_regulatory",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "211777854628",
+                  "text": "report_date",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "114053773615",
+                  "text": "report_time",
+                  "enableWhen": [
+                    {
+                      "question": "519157352881",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "type": "group",
+              "linkId": "476937082567",
+              "text": "Security Impact Analaysis",
+              "enableWhen": [
+                {
+                  "question": "519157352881",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "780915385927",
+              "type": "display",
+              "text": "As evidence, you can provide Security impact analysis.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "519157352881",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "For critical security incidents during the audit period, evidence that an impact analysis was performed to determine the root cause, system impact, and resolution",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "908161188231",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0005"
+            }
+          ],
+          "text": "System build guides, procedures, and/or custom images for critical systems (e.g. servers, OS, DB)",
+          "item": [
+            {
+              "linkId": "625234883006",
+              "type": "display",
+              "text": "As evidence, you can provide System build guides details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "758415591885",
+          "code": [
+            {
+              "code": "FII-SCF-VPM-0005"
+            }
+          ],
+          "text": "Evidence of most recent WSUS or Linux system patching procedures performed during review period.",
+          "item": [
+            {
+              "linkId": "206084652494",
+              "type": "display",
+              "text": "As evidence, you can provide System patching details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "276941622010",
+          "code": [
+            {
+              "code": "FII-SCF-IRO-0001"
+            }
+          ],
+          "text": "For critical security incidents that resulted in unauthorized disclosure of personal information, evidence (e.g. emails, newsletters, incident ticket) that the affected users were notified",
+          "item": [
+            {
+              "linkId": "452750080451",
+              "type": "display",
+              "text": "As evidence, you can provide Notifications of critical security incidents details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "325644455080",
+      "text": "Common Criteria Related to Systems Operations"
+    },
+    {
+      "type": "group",
+      "linkId": "422438490716",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Systems Operations informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Systems Operations\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

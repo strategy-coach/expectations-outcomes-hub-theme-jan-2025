@@ -1,0 +1,256 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "Common Criteria Related to Risk Assessment Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "527806457131",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0006"
+            }
+          ],
+          "text": "Documentation showing the entity's organizational strategies and objectives Evidence could include PowerPoint deck, internal policies/procedures, website",
+          "item": [
+            {
+              "linkId": "442642457190",
+              "type": "display",
+              "text": "As evidence, you can provide Company strategies and objectives.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "794291081464",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0001"
+            }
+          ],
+          "text": "Risk assessment/management policy with revision history",
+          "item": [
+            {
+              "linkId": "139663335256",
+              "type": "display",
+              "text": "As evidence, you can provide Risk Management Policy.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "112248270625",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0003"
+            }
+          ],
+          "text": "Most recently completed risk assessment including evidence that: - critical assets, systems, applications, technologies, tools, and operations were identified, documented and prioritized - relevant statutory, regulatory, legislative and contractual requirements were identified, were considered and documented - the use of technology in business processes was considered - key management and operational personnel were considered and documented - third party/vendor/service provider/customer relationships were considered and documented - vulnerabilities and control gaps were documented and prioritized - risks were identified, documented and prioritized relating to the vulnerabilities - identified risks were addressed / mitigated - remediation efforts and corrective actions were communicated and assigned to process owners - internal and operational controls were modified and implemented where appropriate - management reviewed/signed off on the risk assessment",
+          "item": [
+            {
+              "linkId": "592502560720",
+              "type": "display",
+              "text": "As evidence, you can provide Risk Assessment details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "833218187450",
+          "code": [
+            {
+              "code": "FII-SCF-RSK-0004.1"
+            }
+          ],
+          "text": "Most recently completed fraud risk assessment including evidence that the assessment: - identifies and assesses the types of fraud that could impact business and operations (e.g. fraudulent reporting, loss of assets, unauthorized system access, overriding controls, inadequate segregation of duties, default accounts/passwords; open ports and services) - identifies and documents the fraud-related risks - addresses and mitigates the fraud-related risks - documents/considers the fraud factors such as incentives, pressures, and opportunity - identifies/considers how personnel could engage in fraudulent activities NOTE: Consideration of fraud risks could be part of a comprehensive risk assessment",
+          "item": [
+            {
+              "linkId": "853389642118",
+              "type": "display",
+              "text": "As evidence, you can provide Fraud Risk Assessment details.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "750796384567",
+          "code": [
+            {
+              "code": "FII-SCF-HRS-0011"
+            }
+          ],
+          "text": "Documented key performance indicators for operational and internal controls effectiveness (including acceptable level of issues/deviations)",
+          "item": [
+            {
+              "linkId": "274690833320",
+              "type": "display",
+              "text": "As evidence, you can provide Key performance indicators (KPIs).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "588701190767",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0001.1"
+            }
+          ],
+          "text": "Evidence (e.g. meeting minutes, reports, notes, PowerPoint deck, emails, etc.) that executive management reviewed the entity's strategies, objectives, and budgets at least annually",
+          "item": [
+            {
+              "linkId": "777485983482",
+              "type": "display",
+              "text": "As evidence, you can provide Company strategies and objectives review.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "458898787656",
+          "code": [
+            {
+              "code": "FII-SCF-GOV-0001.1"
+            }
+          ],
+          "text": "Evidence (e.g. meeting minutes, reports, notes, PowerPoint deck, emails, etc.) that executive management reviewed key operational reports (KPIs, control failures, bandwidth) for precision and accuracy",
+          "item": [
+            {
+              "linkId": "822230522616",
+              "type": "display",
+              "text": "As evidence, you can provide Evidence of KPI review.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "177288750351",
+      "text": "Common Criteria Related to Risk Assessment"
+    },
+    {
+      "type": "group",
+      "linkId": "282577431639",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Risk Assessment informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Risk Assessment\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}

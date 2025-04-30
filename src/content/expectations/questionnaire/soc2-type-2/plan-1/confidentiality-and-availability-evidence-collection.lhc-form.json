@@ -1,0 +1,672 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "Confidentiality and Availability Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "436461726767",
+              "text": "Please provide the URL to Confidential Asset register.",
+              "enableWhen": [
+                {
+                  "question": "945417292519",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ],
+              "item": [
+                {
+                  "linkId": "380915461550",
+                  "type": "display",
+                  "text": "Provide evidence as a URL along with details of Dropbox, Box, Google Drive, Portal, or other storage platforms.",
+                  "extension": [
+                    {
+                      "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                      "valueCodeableConcept": {
+                        "coding": [
+                          {
+                            "system": "http://hl7.org/fhir/questionnaire-item-control",
+                            "code": "help",
+                            "display": "Help-Button"
+                          }
+                        ],
+                        "text": "Help-Button"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "item": [
+                {
+                  "type": "string",
+                  "linkId": "164927043142",
+                  "text": "NAME",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "180129059261",
+                  "text": "SERVER",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "888083862581",
+                  "text": "ASSET TYPE",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "979889542840",
+                  "text": "BOUNDARY",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "744368743718",
+                  "text": "DESCRIPTION",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "813223067455",
+                  "text": "EXPERIMENTAL VERSION",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "397601921098",
+                  "text": "PRODUCTION VERSION",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "452492351584",
+                  "text": "LATEST VENDOR VERSION",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "920753223934",
+                  "text": "RESOURCE UTILIZATION",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "855998774794",
+                  "text": "LOG FILE",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "988328838768",
+                  "text": "INSTALLATION DATE",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "903390186120",
+                  "text": "CRITICALITY",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "951724444913",
+                  "text": "OWNER",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "764145834347",
+                  "text": "ASSET CRITICALITY",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "167557227759",
+                  "text": "ASYMMETRIC KEYS",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "865854678434",
+                  "text": "CRYPTOGRAPHIC KEY",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "string",
+                  "linkId": "529047549309",
+                  "text": "SYMMETRIC KEYS",
+                  "enableWhen": [
+                    {
+                      "question": "945417292519",
+                      "operator": "=",
+                      "answerCoding": {
+                        "display": "No"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "type": "group",
+              "linkId": "409334415571",
+              "text": "Assets",
+              "enableWhen": [
+                {
+                  "question": "945417292519",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "384376582010",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential Asset register",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "945417292519",
+          "code": [
+            {
+              "code": "FII-SCF-AST-0001.2"
+            }
+          ],
+          "text": "Inventory listing noting assets that maintain confidential data.",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "131673940528",
+          "code": [
+            {
+              "code": "FII-SCF-PRI-0004.1"
+            }
+          ],
+          "text": "Inventory listing of confidential data within assets, including their classification and retention period.",
+          "item": [
+            {
+              "linkId": "923130623005",
+              "type": "display",
+              "text": "As evidence, you can provide Population of Confidential data.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "item": [
+            {
+              "type": "string",
+              "linkId": "320824727746",
+              "text": "Please provide the URL to share Access Control Policy",
+              "enableWhen": [
+                {
+                  "question": "625263859832",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "Yes"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "display",
+              "linkId": "163929339307",
+              "_text": {
+                "extension": [
+                  {
+                    "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+                    "valueString": "<p>If you don't have a Access Control Policy, you can refer to our standard version <span style=\"color:blue; text-decoration:none; cursor:pointer;\"  onclick=\"window.open('https://suite.opsfolio.com/policies/common/information-technology-quality-infrastructure/access-control-policy', 'blank')\">here</span></p>"
+                  }
+                ]
+              },
+              "enableWhen": [
+                {
+                  "question": "625263859832",
+                  "operator": "=",
+                  "answerCoding": {
+                    "display": "No"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "740143614555",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential data testing (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ],
+          "type": "choice",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "radio-button",
+                    "display": "Radio Button"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "625263859832",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0022"
+            }
+          ],
+          "text": "For a sample of files/documents marked as confidential, evidence of the file / directory access permissions and the list of users with access to the confidential file/document were property limited.",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "display": "Yes"
+              }
+            },
+            {
+              "valueCoding": {
+                "display": "No"
+              }
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "586514889978",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0003"
+            }
+          ],
+          "text": "For a sample of files/documents marked as confidential that required disposal, evidence that the file/document was disposed following the procedures documented in the Confidentiality and/or Data Disposal policies.",
+          "item": [
+            {
+              "linkId": "534507524243",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential data disposal testing (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "872661743105",
+          "code": [
+            {
+              "code": "FII-SCF-DCH-0022"
+            }
+          ],
+          "text": "Evidence that confidential information maintenance procedures were followed for a sample of confidential information.",
+          "item": [
+            {
+              "linkId": "996906411649",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential data maintenance testing (sample).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "870537995487",
+          "code": [
+            {
+              "code": "FII-SCF-CRY-0005"
+            }
+          ],
+          "text": "Evidence that confidential information is stored in an encrypted, secure environment.",
+          "item": [
+            {
+              "linkId": "674087582069",
+              "type": "display",
+              "text": "As evidence, you can provide Confidential data encryption.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "type": "group",
+      "linkId": "634968453971",
+      "text": "Confidentiality"
+    },
+    {
+      "type": "group",
+      "linkId": "121005996834",
+      "text": "Availability",
+      "item": [
+        {
+          "type": "string",
+          "linkId": "765295070791",
+          "code": [
+            {
+              "code": "FII-SCF-BCD-0012"
+            }
+          ],
+          "text": "Does the organization meet its availability requirements?",
+          "item": [
+            {
+              "linkId": "832859613207",
+              "type": "display",
+              "text": "As evidence, you can provide Evidence of annual backup restoration testing.",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "string",
+          "linkId": "444851738149",
+          "code": [
+            {
+              "code": "FII-SCF-MON-0001.4"
+            }
+          ],
+          "text": "Does the organization meet its availability requirements?",
+          "item": [
+            {
+              "linkId": "113173293135",
+              "type": "display",
+              "text": "As evidence, you can provide Evidence of hardware usage monitoring (usage alerts).",
+              "extension": [
+                {
+                  "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+                  "valueCodeableConcept": {
+                    "coding": [
+                      {
+                        "system": "http://hl7.org/fhir/questionnaire-item-control",
+                        "code": "help",
+                        "display": "Help-Button"
+                      }
+                    ],
+                    "text": "Help-Button"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "linkId": "363745865812",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3, this fully customizable option allows organizations to bring their own policies while we build the necessary evidence around their existing framework to meet SOC 2 requirements. Designed for organizations with established policies and frameworks, it tailors the audit preparation process to fit the existing structure, ensuring compliance while minimizing disruptions to current operations. This approach helps organizations align with SOC 2 standards by providing the required documentation and evidence to support their compliance efforts. The following questionnaire is intended to collect Confidentiality and Availability informations and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Confidentiality and Availability\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}
