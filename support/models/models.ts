@@ -373,6 +373,35 @@ const attachment = gm.textPkTable("attachment", {
   },
 });
 
+const surveilrReport = gm.textPkTable(
+  "surveilr_report",
+  {
+    surveilr_report_id: gm.keys.varCharPrimaryKey(),
+    versions: udm.jsonTextNullable(),
+    static_extensions: udm.jsonTextNullable(),
+    dynamic_extensions: udm.jsonTextNullable(),
+    views: udm.jsonTextNullable(),
+    env_vars: udm.jsonTextNullable(),
+    capturable_executables: udm.jsonTextNullable(),
+    telemetry: udm.jsonTextNullable(),
+    payload: udm.jsonTextNullable(),
+    ...gm.housekeeping.columns,
+  },
+  {
+    isIdempotent: true,
+    indexes: (props, tableName) => {
+      const tif = SQLa.tableIndexesFactory(tableName, props);
+      return [
+        tif.index(
+          { isIdempotent: true },
+          "versions",
+          "telemetry"
+        ),
+      ];
+    },
+  },
+);
+
 
 // View Creation
 
@@ -593,7 +622,8 @@ export const allContentTables: SQLa.TableDefinition<
     reactionType,
     pageReaction,
     messageReaction,
-    attachment
+    attachment,
+    surveilrReport
   ];
 
 export const allContentViews: SQLa.ViewDefinition<
