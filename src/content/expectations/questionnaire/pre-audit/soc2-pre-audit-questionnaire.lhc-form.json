@@ -1,0 +1,226 @@
+{
+  "resourceType": "Questionnaire",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/4.0/StructureDefinition/Questionnaire"
+    ]
+  },
+  "title": "SOC2 Pre-Audit Questionnaire",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "945995390220",
+          "text": "What is the legal name of your organization?"
+        },
+        {
+          "type": "string",
+          "linkId": "895717394258",
+          "text": "What is your primary product or service offering?"
+        },
+        {
+          "type": "string",
+          "linkId": "176493114478",
+          "text": "Who are the key stakeholders responsible for information security and compliance (name, title, contact)?"
+        },
+        {
+          "type": "string",
+          "linkId": "589911398329",
+          "text": "What is your target SOC 2 report type? (Type I / Type II)?"
+        }
+      ],
+      "type": "group",
+      "linkId": "434213370999",
+      "text": "General Organization Information"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "456321551304",
+          "text": "Which cloud service providers (CSPs) does your organization currently use (e.g., AWS, Azure, GCP)?"
+        },
+        {
+          "type": "string",
+          "linkId": "783409266845",
+          "text": "Are all customer data and applications hosted within the cloud environment?"
+        },
+        {
+          "type": "string",
+          "linkId": "347966611913",
+          "text": "How is access to cloud infrastructure managed (e.g., IAM policies, MFA)?"
+        }
+      ],
+      "type": "group",
+      "linkId": "456103433633",
+      "text": "Cloud Infrastructure & Hosting"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "167543481970",
+          "text": "List all critical SaaS applications used for operations (e.g., GitHub, Jira, Slack, Salesforce)"
+        },
+        {
+          "type": "string",
+          "linkId": "536108937951",
+          "text": "What security tools are deployed (e.g., EDR, SAST/DAST scanners, firewalls, SIEM)?"
+        }
+      ],
+      "type": "group",
+      "linkId": "390140428947",
+      "text": "Applications & Tools"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "904213683938",
+          "text": "What types of sensitive data does your system collect, process, or store (PII, PHI, financial data)?"
+        },
+        {
+          "type": "string",
+          "linkId": "554683159725",
+          "text": "Are there data retention and deletion policies in place?"
+        }
+      ],
+      "type": "group",
+      "linkId": "151232557086",
+      "text": "Data Management"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "764489022122",
+          "text": "Do you have Single Sign-On (SSO) or Identity Providers (IdPs) implemented (e.g., Okta, Azure AD)?"
+        },
+        {
+          "type": "string",
+          "linkId": "697282600960",
+          "text": "How is role-based access control enforced?"
+        },
+        {
+          "type": "string",
+          "linkId": "853736977319",
+          "text": "Is multi-factor authentication (MFA) enforced across systems?"
+        }
+      ],
+      "type": "group",
+      "linkId": "521129921455",
+      "text": "Access Control & Identity Management"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "719877219661",
+          "text": "What tools are used for monitoring and logging (e.g., Datadog, Splunk)?"
+        },
+        {
+          "type": "string",
+          "linkId": "729224283060",
+          "text": "Do you have a documented incident response plan?"
+        }
+      ],
+      "type": "group",
+      "linkId": "786565217426",
+      "text": "Monitoring, Logging, & Incident Response"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "488047840622",
+          "text": "Are there written information security, data privacy, and acceptable use policies?"
+        }
+      ],
+      "type": "string",
+      "linkId": "576144319785",
+      "text": "Policies & Procedures"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "627289974336",
+          "text": "Do you assess and monitor third-party vendors for security posture?"
+        },
+        {
+          "type": "string",
+          "linkId": "573400073301",
+          "text": "Is there a formal vendor risk management process?"
+        }
+      ],
+      "type": "group",
+      "linkId": "425527700422",
+      "text": "Vendor Management"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "225786233707",
+          "text": "Do you have documented and tested business continuity and disaster recovery (BC/DR) plans?"
+        }
+      ],
+      "type": "string",
+      "linkId": "769240399297",
+      "text": "Business Continuity & Disaster Recovery"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "206372227425",
+          "text": "Have you previously undergone any audits (SOC 2, ISO 27001, etc.)?"
+        },
+        {
+          "type": "string",
+          "linkId": "354569287768",
+          "text": "Are regular risk assessments conducted?"
+        }
+      ],
+      "type": "group",
+      "linkId": "136699341216",
+      "text": "Compliance & Risk Management"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "633384173625",
+          "text": "Describe your software development lifecycle (SDLC)"
+        },
+        {
+          "type": "string",
+          "linkId": "850997698305",
+          "text": "What CI/CD tools are in use (e.g., Jenkins, GitHub Actions, GitLab CI)?"
+        }
+      ],
+      "type": "group",
+      "linkId": "135102708849",
+      "text": "Change Management & DevOps"
+    },
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "607474067482",
+          "text": "Do employees receive regular security awareness training?"
+        },
+        {
+          "type": "string",
+          "linkId": "975110154628",
+          "text": "Are developers trained in secure coding practices?"
+        }
+      ],
+      "type": "group",
+      "linkId": "834916679802",
+      "text": "Employee Training & Awareness"
+    }
+  ]
+}

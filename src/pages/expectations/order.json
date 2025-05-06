@@ -11,9 +11,31 @@
     {
       "item": [
         {
+          "item": [
+            {
+              "type": "text",
+              "linkId": "944123203914",
+              "text": "SOC2 Pre-audit Questionnaire",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/pre-audit/soc2-pre-audit-questionnaire.lhc-form.json"
+                }
+              ]
+            }
+          ],
           "type": "group",
-          "linkId": "826815358789",
-          "text": "Plan 1",
+          "linkId": "456293322394",
+          "text": "Pre-audit Questionnaire"
+        }
+      ],
+      "type": "string",
+      "linkId": "973710237798",
+      "text": "Precondition"
+    },
+    {
+      "item": [
+        {
           "item": [
             {
               "type": "text",
@@ -59,7 +81,10 @@
                 }
               ]
             }
-          ]
+          ],
+          "type": "group",
+          "linkId": "826815358789",
+          "text": "Plan 1"
         },
         {
           "type": "group",
