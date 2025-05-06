@@ -91,6 +91,13 @@ export const POST: APIRoute = async ({ request }) => {
         const { givenName, familyName, displayName, gender, email, phone, role } =
             (await request.json()) as SignUpFormData;
 
+        const timestamp = Date.now().toString();
+        let userName = (displayName ?? "")
+            .toLowerCase()
+            .replaceAll(/\s+/g, "#");
+        userName = `${userName}${timestamp}`;
+        userName = userName.length > 25 ? userName.slice(0, 25) : userName;
+
         const userExist = await getOrganizationUsers(email);
         if (userExist !== undefined && Number(userExist?.details.totalResult) > 0) {
             return new Response(
@@ -102,6 +109,7 @@ export const POST: APIRoute = async ({ request }) => {
             );
         } else {
             const signUpData = JSON.stringify({
+                username: userName,
                 organization: {
                     orgId: ZITADEL_ORGANIZATION_ID,
                 },

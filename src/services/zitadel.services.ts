@@ -1,5 +1,33 @@
 import { z } from "zod";
+import axios from "axios";
+import themeConfig from "../../theme.config.ts";
 
+const { activeProject } = themeConfig;
+
+const Details = z.object({
+    sequence: z.string(),
+    creationDate: z.string(),
+    changeDate: z.string(),
+    resourceOwner: z.string(),
+});
+
+const TotalDetails = z.object({
+    totalResult: z.string(),
+    viewTimestamp: z.string(),
+});
+
+const Organization = z.object({
+    id: z.string(),
+    details: Details,
+    state: z.string(),
+    name: z.string(),
+    primaryDomain: z.string(),
+});
+
+const OrganizationResponse = z.object({
+    details: TotalDetails,
+    result: z.array(Organization),
+});
 const verificationCodeSchema = z.object({
     details: z.object({
         resourceOwner: z.string(),
@@ -74,6 +102,50 @@ const NoUserFoundSchema = z.object({
 
 const OrganizationUsersApiResponseSchema = z.union([UserApiResponseSchema, NoUserFoundSchema]);
 
+
+const RootDetailsSchema = z.object({
+    totalResult: z.string(),
+    viewTimestamp: z.string().datetime(),
+});
+
+const ResultDetailsSchema = z.object({
+    sequence: z.string(),
+    creationDate: z.string().datetime(),
+    changeDate: z.string().datetime(),
+    resourceOwner: z.string(),
+});
+
+const ResultSchema = z.object({
+    id: z.string(),
+    details: ResultDetailsSchema,
+    roleKeys: z.array(z.string()),
+    state: z.string(),
+    userId: z.string(),
+    userName: z.string(),
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string().email(),
+    displayName: z.string(),
+    orgId: z.string(),
+    orgName: z.string(),
+    orgDomain: z.string(),
+    projectId: z.string(),
+    projectName: z.string(),
+    preferredLoginName: z.string(),
+    userType: z.string(),
+    grantedOrgId: z.string(),
+    grantedOrgName: z.string(),
+    grantedOrgDomain: z.string(),
+});
+
+const UserGrantSchema = z.object({
+    details: RootDetailsSchema,
+    result: z.array(ResultSchema),
+});
+
+
+export type UserGrantResponse = z.infer<typeof UserGrantSchema>;
+export type OrganizationData = z.infer<typeof OrganizationResponse>;
 export type verificationCodeType = z.infer<typeof verificationCodeSchema>;
 export type passwordChangeType = z.infer<typeof passwordChangeSchema>;
 export type UserApiResponse = z.infer<typeof UserApiResponseSchema>;
@@ -83,6 +155,7 @@ const ZITADEL_AUTHORITY = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
 const ZITADEL_API_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
 const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID as string;
 const PROJECT_ID = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID as string;
+
 
 export async function resetPassword(
     userId: string,
@@ -332,4 +405,43 @@ export async function DeleteUser(id: string): Promise<void> {
     };
 
     await fetch(url, options);
+}
+
+
+export async function getUserRole(
+    userId: string,
+    organizationId: string,
+): Promise<UserGrantResponse | undefined> {
+    try {
+        console.log("User ID:", userId);
+        const requestBody = {
+            query: { offset: "0", limit: 1, asc: true },
+            queries: [
+                { userIdQuery: { userId } },
+                {
+                    projectNameQuery: {
+                        projectName: activeProject,
+                        method: "TEXT_QUERY_METHOD_EQUALS",
+                    },
+                },
+            ],
+        };
+
+        const response = await axios.post(
+            `${ZITADEL_AUTHORITY}/management/v1/users/grants/_search`,
+            requestBody,
+            {
+                headers: {
+                    "x-zitadel-orgid": organizationId,
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
+                },
+            },
+        );
+        const parsedResponse = UserGrantSchema.parse(response.data);
+        return parsedResponse;
+    } catch (error) {
+        console.error(error);
+        return undefined;
+    }
 }

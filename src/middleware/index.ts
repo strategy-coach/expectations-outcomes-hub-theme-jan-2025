@@ -15,7 +15,9 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
   if (isZitadelEnabled) {
     if (
       pathname.startsWith("/api/") ||
-      pathname === "/post-authorization/" ||
+      pathname === "/logout" ||
+      pathname === "/login" ||
+      pathname == "/forgot-password" ||
       (isHomePagePublic && pathname === "/")
     ) {
       return next(); // Allow access without further checks
@@ -23,7 +25,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
 
 
     if (!isLoggedIn && !unauthorizedPages.includes(splittedPath[1])) {
-      return context.redirect("/logout"); // Redirect unauthenticated users
+      return context.redirect("/login"); // Redirect unauthenticated users
     }
 
     if (isLoggedIn && pathname.includes('/admin')) {

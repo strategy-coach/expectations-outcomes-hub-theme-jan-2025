@@ -1,0 +1,21 @@
+---
+import UserLogin from "../components/zitadel/login";
+const envData = import.meta.env;
+const enableOpenObserve = envData.ENABLE_OPEN_OBSERVE;
+---
+
+{
+  enableOpenObserve == "true" && (
+    <>
+      <script
+        type="module"
+        crossorigin="anonymous"
+        src="/assets/scripts/index.9987069c.js"
+      />
+      <link rel="modulepreload" href="/assets/scripts/vendor.4c9b4c60.js" />
+    </>
+  )
+}
+<link rel="stylesheet" href="/assets/ds/tailwind/css/basic.css" />
+<link rel="stylesheet" href="/assets/ds/tailwind/css/tailwind.min.css" />
+<UserLogin client:only="react" />

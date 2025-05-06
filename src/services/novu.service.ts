@@ -10,7 +10,7 @@ const GenericPayloadSchema = z.object({
     commentContent: z.string().optional(),
     tenantName: z.string().optional(),
     // Allow additional properties of type string or number
-}).catchall(z.union([z.string(), z.number(), z.undefined()]));
+}).catchall(z.union([z.string(), z.number(), z.undefined(), z.boolean()]));
 
 // Infer TypeScript type from Zod schema
 type GenericPayload = z.infer<typeof GenericPayloadSchema>;

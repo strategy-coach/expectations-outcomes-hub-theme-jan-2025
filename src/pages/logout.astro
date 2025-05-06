@@ -1,15 +1,7 @@
 ---
-import { Authentication } from "../components/zitadel-authentication";
-import { zitadelConfig } from "../utils/env";
-
+import UserLogout from "../components/zitadel/logout";
 ---
 
-<Authentication
-  clientId={zitadelConfig.clientId}
-  authority={zitadelConfig.authority}
-  redirectUri={zitadelConfig.redirectUri}
-  postLogoutRedirectUri={zitadelConfig.postLogoutRedirectUri}
-  organizationId={zitadelConfig.organizationId}
-  projectId={zitadelConfig.projectId}
-  operation="logout"
-/>
+<link rel="stylesheet" href="/assets/ds/tailwind/css/basic.css" />
+<link rel="stylesheet" href="/assets/ds/tailwind/css/tailwind.min.css" />
+<UserLogout client:only="react" />
