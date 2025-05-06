@@ -76,12 +76,12 @@ if (isLform) {
   inActiveTabClass =
     "hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300";
   title = fileName
-    .replace(/\.lhc-form/, "")
-    .replace(/\.(json|yml)$/, "")
-    .replace(/[-_.]+/g, " ")
-    .split(" ") // Split by hyphens or underscores
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitalize the first letter
-    .join(" ");
+  .replace(/\.lhc-form/, "")
+  .replace(/\.(json|yml)$/, "")
+  .replace(/[-_.]+/g, " ")
+  .split(" ")
+  .map(word => word.toLowerCase() === "soc2" ? "SOC2" : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+  .join(" ");
 } else {
   
   entry = await getEntry("expectations", pageSlug);
