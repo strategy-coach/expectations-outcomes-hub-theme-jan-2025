@@ -221,6 +221,19 @@
       "type": "group",
       "linkId": "834916679802",
       "text": "Employee Training & Awareness"
+    },
+    {
+      "type": "group",
+      "linkId": "508014173022",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 1 for the SOC 2 Type 1 audit, this questionnaire helps prepare for a fixed-price SOC 2 Type 1 audit and offers guidance for ongoing SOC 2 Type 2 coaching, mentoring, and monitoring to maintain continuous compliance and mitigate risks. Designed for startups and small businesses, it assists in evaluating existing policies, procedures, and security controls to ensure alignment with SOC 2 requirements. The following questionnaire is intended to collect key organizational information and assess readiness for SOC 2 compliance.\",\n    \"title\": \"SOC2 Pre-Audit Questionnaire\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
     }
   ]
 }
