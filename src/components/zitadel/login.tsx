@@ -71,14 +71,20 @@ const UserLogin: React.FC = (): JSX.Element => {
         setLoading(true);
         setError(null);
         try {
-            // Step 1: Create session with email
-            console.log("Form data before API call:", formData);
             const response = await axios.post<AuthResponse>("/api/auth", {
                 email: formData.email,
                 password: formData.password,
             });
-            console.log("Response from API:", response.data);
             if (response.data.userId === undefined) {
+                try {
+                    const attributes = globalThis.setAttributes("User Login", {
+                        loginStatus: "Authentication Failed",
+                        email: formData.email,
+                    });
+                    globalThis.setOTTracer("authentication-failure", attributes);
+                } catch (error) {
+                    console.log(error)
+                }
                 setErrors({
                     email: response.data.error,
                     password: "",
