@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import {
-    getUserId,
-    resetPassword,
-    verifyEmail,
-} from "../../services/zitadel.services.ts";
-import { getOrganizationUsers } from "../../services/zitadel.services.ts";
-import novuApiCall from "../../services/novu.service.ts";
+import { getUserId } from "../../services/zitadel.services.ts";
+import axios from "axios";
+import React from "react";
 
-const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID as string;
-const SITE_URL = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI as string;
+const organizationId = import.meta.env
+    .PUBLIC_ZITADEL_ORGANIZATION_ID as string;
 
 interface ForgotPasswordProps {
     code?: string;
     userID?: string;
 }
-
+interface CodeResetResponse {
+    message?: string;
+    status?: number;
+    error?: string;
+}
 const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
     const [emailError, setEmailError] = useState("");
     const [userId, setUserId] = useState("");
@@ -29,6 +29,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
         password: "",
         confirmPassword: "",
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [successNotification, setSuccessNotification] = useState({
         show: false,
         message: "",
@@ -38,7 +39,6 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
         message: "",
         show: false,
     });
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
     useEffect(() => {
         if (code !== undefined && userID !== undefined) {
@@ -48,6 +48,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
     }, []);
 
     const handleChangePassword = async (): Promise<void> => {
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!$%&*?@])[\d!$%&*?@A-Za-z]{8,}$/;
         setEmailError("");
         setpasswordValidationErrors({
             verificationCode: "",
@@ -75,6 +77,16 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
             }));
             throw new Error("Please fill confirm password");
         }
+        if (!passwordRegex.test(credentials.password)) {
+            setpasswordValidationErrors((prev) => ({
+                ...prev,
+                password:
+                    "Password must be at least 8 characters, include uppercase, lowercase, number, and special character",
+            }));
+            throw new Error(
+                "Password must be at least 8 characters, include uppercase, lowercase, number, and special character",
+            );
+        }
         if (credentials.password !== credentials.confirmPassword) {
             setpasswordValidationErrors((prev) => ({
                 ...prev,
@@ -83,27 +95,36 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
             throw new Error("Password does not match");
         }
         setIsSubmitting(true);
-        await verifyEmail(userId);
-        const response = (await resetPassword(
-            userId,
-            credentials.password,
-            credentials.verificationCode,
-        )) as { status: number; message: string };
-        if (response.status == 200) {
-            const responseUser = await getOrganizationUsers(
-                credentials.email,
-            );
+        const response = await axios.post<CodeResetResponse>(
+            "/api/reset-password",
+            {
+                email: credentials.email,
+                userId,
+                password: credentials.password,
+                verificationCode: credentials.verificationCode,
+            },
+        );
+        if (response.data.message == undefined) {
+            setIsSubmitting(false);
+            setPasswordNotification({
+                show: true,
+                isError: true,
+                message:
+                    typeof response.data.error === "string"
+                        ? response.data.error === "Code not found"
+                            ? "Verification already done with this code. Please sign in with the credentials."
+                            : response.data.error
+                        : "",
+            });
 
-            if (responseUser?.result) {
-                for (const user of responseUser.result) {
-                    if (!user.human.email.isVerified) {
-                        await verifyEmail(user.userId);
-                    }
-                    if (user.userId !== userId) {
-                        await resetPassword(user.userId, credentials.password);
-                    }
-                }
-            }
+            setTimeout(() => {
+                setPasswordNotification({
+                    show: false,
+                    isError: false,
+                    message: "",
+                });
+            }, 2500);
+        } else {
             setSuccessNotification({
                 show: true,
                 message: "Password Changed Successfully",
@@ -122,25 +143,12 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                     message: "",
                 });
                 globalThis.location.href = "/logout";
-            }, 1500);
-        } else {
-            setPasswordNotification({
-                show: true,
-                isError: true,
-                message: response.message,
-            });
-            setTimeout(() => {
-                setPasswordNotification({
-                    show: false,
-                    isError: false,
-                    message: "",
-                });
-            }, 2500);
+            }, 3000);
         }
-        setIsSubmitting(false);
     };
 
     const sendCode = async (): Promise<void> => {
+        setIsSubmitting(true);
         setEmailError("");
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (credentials.email.length === 0 || !emailRegex.test(credentials.email)) {
@@ -150,27 +158,18 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
 
         const response = (await getUserId(
             credentials.email,
-            ORGANIZATION_ID,
+            organizationId,
         )) as unknown as { status: number; userId?: string; message: string };
 
         if (response.status === 200) {
-            const codeResponse = (await resetPassword(
-                response?.userId ?? "",
-            )) as unknown as {
-                status: number;
-                message: string;
-                verificationCode?: string;
-            };
-
-            if (codeResponse.status === 200) {
-                const params = `code=${codeResponse.verificationCode}&userId=${response.userId}`;
-                const encodedParams = encodeURIComponent(params);
-                const payload = {
-                    code: codeResponse.verificationCode,
-                    resetButton: "true",
-                    button: `<div><a class="btn" href="${SITE_URL}forgot-password?${encodedParams}" target="_blank">Reset Password</a></div>`,
-                };
-                await novuApiCall("password-change", payload, credentials.email);
+            const sendCodeResponse = await axios.post<CodeResetResponse>(
+                "/api/send-code",
+                {
+                    email: credentials.email,
+                    userId: response.userId,
+                },
+            );
+            if (sendCodeResponse.status == 200) {
                 setSuccessNotification({
                     show: true,
                     message:
@@ -181,6 +180,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
         } else {
             setEmailError(response.message ?? "");
         }
+        setIsSubmitting(false);
     };
 
     return (
@@ -198,34 +198,6 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                         >
                             <span className="block sm:inline font-normal text-base">
                                 {passwordNotification.message}
-                            </span>
-                            <span
-                                className="absolute top-0 bottom-0 right-0 px-4 py-3"
-                                onClick={() => {
-                                    setPasswordNotification({
-                                        show: false,
-                                        isError: false,
-                                        message: "",
-                                    });
-                                }}
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className={`h-6 w-6 ${passwordNotification.isError
-                                        ? "text-red-500"
-                                        : "text-green-500"
-                                        } cursor-pointer`}
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12M7 7l9 9M7 17l9-9"
-                                    ></path>
-                                </svg>
                             </span>
                         </div>
                     )}
@@ -305,13 +277,13 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                     )}
                                     <button
                                         type="button"
-                                        title="Send Code"
-                                        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                                        className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 ${credentials.email === "" || isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
                                         onClick={() => {
                                             void sendCode();
                                         }}
+                                        disabled={isSubmitting || credentials.email === ""}
                                     >
-                                        Send Code
+                                        {isSubmitting ? "processing..." : "Send Code"}
                                     </button>
                                 </div>
                             ) : (
@@ -369,7 +341,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                             </label>
                                             <input
                                                 type="password"
-                                                className="w-full mt-1 p-2 rounded-lg border border-gray-400 focus:ring-blue-600"
+                                                className="w-full mt-1 p-2 border rounded-lg border-gray-400  focus:ring-blue-600"
                                                 placeholder="Enter new password"
                                                 onChange={(e) => {
                                                     setCredentials((prev) => ({
@@ -451,16 +423,24 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                     </div>
                                     <button
                                         type="button"
-                                        title="Submit"
-                                        className="px-4 py-2 bg-blue-600 w-full text-white rounded-lg hover:bg-blue-700"
+                                        className={`px-4 py-2 bg-blue-600 w-full text-white rounded-lg hover:bg-blue-700 ${credentials.password === "" || credentials.confirmPassword === "" || credentials.verificationCode == "" ? "opacity-50 cursor-not-allowed" : ""}`}
                                         onClick={() => void handleChangePassword()}
-                                        disabled={isSubmitting}
+                                        disabled={
+                                            isSubmitting ||
+                                            credentials.password === "" ||
+                                            credentials.confirmPassword === "" ||
+                                            credentials.verificationCode == ""
+                                        }
                                     >
-                                        {isSubmitting ? "Processing..." : "Submit"}
+                                        {isSubmitting ? "processing..." : "Save Changes"}
                                     </button>
                                 </>
                             )}
-
+                            <div className="flex justify-between mt-4 text-sm">
+                                <a href="/logout" className="text-blue-500 hover:underline">
+                                    Back To Login
+                                </a>
+                            </div>
                         </>
                     )}
                 </div>

@@ -17,7 +17,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(async (cont
       pathname.startsWith("/api/") ||
       pathname === "/logout" ||
       pathname === "/login" ||
-      pathname == "/forgot-password" ||
+      pathname == "/reset-password" ||
       (isHomePagePublic && pathname === "/")
     ) {
       return next(); // Allow access without further checks

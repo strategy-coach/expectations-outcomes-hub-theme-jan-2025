@@ -180,7 +180,7 @@ const UserLogin: React.FC = (): JSX.Element => {
                     </button>
                 </form>
                 <div className="flex justify-between mt-4 text-sm">
-                    <a href="/forgot-password" className="text-blue-500 hover:underline">
+                    <a href="/reset-password" className="text-blue-500 hover:underline">
                         Forgot Password?
                     </a>
 

@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request }) => {
         const payload = {
             code: codeResponse.verificationCode,
             resetButton: true,
-            button: `<div><a class="btn" href="${SITE_URL}forgot-password?${params}" target="_blank">Reset Password</a></div>`,
+            button: `<div><a class="btn" href="${SITE_URL}reset-password?${params}" target="_blank">Reset Password</a></div>`,
         };
         await novuApiCall("password-change", payload, email);
 
