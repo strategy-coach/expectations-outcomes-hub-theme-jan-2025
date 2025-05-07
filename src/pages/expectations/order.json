@@ -349,6 +349,17 @@
           "item": [
             {
               "type": "text",
+              "linkId": "388625093979",
+              "text": "General Information Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-1/general-information-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
               "linkId": "117998966813",
               "text": "Change Management Evidence Collection",
               "initial": [
@@ -456,6 +467,17 @@
           "item": [
             {
               "type": "text",
+              "linkId": "288625093979",
+              "text": "General Information Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-2/general-information-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
+            {
+              "type": "text",
               "linkId": "159964907007",
               "text": "Change Management Evidence Collection",
               "initial": [
@@ -561,6 +583,17 @@
         },
         {
           "item": [
+            {
+              "type": "text",
+              "linkId": "188625093979",
+              "text": "General Information Evidence Collection",
+              "readOnly": true,
+              "initial": [
+                {
+                  "valueString": "/expectations/questionnaire/soc2-type-2/plan-3/general-information-evidence-collection.lhc-form.json"
+                }
+              ]
+            },
             {
               "type": "text",
               "linkId": "293083178810",

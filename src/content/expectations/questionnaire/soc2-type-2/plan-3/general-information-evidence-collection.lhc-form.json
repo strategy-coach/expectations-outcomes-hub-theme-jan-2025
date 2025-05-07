@@ -1,0 +1,69 @@
+{
+  "resourceType": "Questionnaire",
+  "title": "General Information Evidence Collection Form",
+  "status": "draft",
+  "item": [
+    {
+      "item": [
+        {
+          "type": "string",
+          "linkId": "843509936337",
+          "text": "Organization Name",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "834824167845",
+          "text": "Organization Address",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "574440750588",
+          "text": "Product Name",
+          "required": true
+        },
+        {
+          "type": "url",
+          "linkId": "924260494641",
+          "text": "Website",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "403261366197",
+          "text": "Point of Contact",
+          "required": true
+        },
+        {
+          "type": "string",
+          "linkId": "647686221633",
+          "text": "Contact Email",
+          "required": true
+        },
+        {
+          "type": "date",
+          "linkId": "960033154529",
+          "text": "Date of Submission",
+          "required": true
+        }
+      ],
+      "type": "group",
+      "linkId": "323289382098",
+      "text": "General Information"
+    },
+    {
+      "type": "group",
+      "linkId": "508014173022",
+      "text": "Meta Information",
+      "_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 3 for the SOC2 Type II audit, this questionnaire helps prepare for a fixed-price SOC2 Type II audit and offers guidance for ongoing SOC2 Type II coaching, mentoring, and monitoring to maintain continuous compliance and mitigate risks. Designed for startups and small businesses, it assists in evaluating existing policies, procedures, and security controls to ensure alignment with SOC2 requirements. The following questionnaire is intended to collect key organizational information and assess readiness for SOC2 compliance.\",\n    \"title\": \"Organizational Information\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      }
+    }
+  ]
+}
