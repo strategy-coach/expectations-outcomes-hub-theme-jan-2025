@@ -298,12 +298,41 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     };
 
     const getActivityMessage = (log: ActivityLogType) => {
-        return log.operation_name === "element-click"
-            ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`
-            : log.operation_name === "user-authentication"
-                ? `${log.username} ${log.userrole ? ` (${formatUserRole(log.userrole)})` : ""} logged in successfully`
-                : log.operation_name === "add-comment" ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} commented on <strong>${log.pagetitle}</strong> page${JSON.parse(log.details).mentioned == "" ? "" : JSON.parse(log.details).mentioned == "allusers" ? " and notified to all users" : ` and notified <strong>${JSON.parse(log.details).mentioned}</strong>`}` : log.operation_name === "add-page-reaction" ? `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} reacted with ${JSON.parse(log.details).reactionname} ${JSON.parse(log.details).icon}  on  <strong>${log.pagetitle}</strong> page` : `${log.username} ${log.userrole ? `(${formatUserRole(log.userrole)})` : ""} viewed the <strong>${log.pagetitle}</strong> page`;
+        const roleText = log.userrole ? `(${formatUserRole(log.userrole)})` : "";
+        const details = JSON.parse(log.details || "{}");
+
+        if (log.operation_name === "element-click") {
+            return `${log.username} ${roleText} ${getActivityDescription(log.details)} on <strong>${log.pagetitle}</strong> page`;
+        }
+        if (log.operation_name === "user-authentication") {
+            if (details.loginStatus === "Password Changed") {
+                return `Password was changed for <strong>${details.email}</strong>`;
+            }
+
+            if (details.loginStatus === "Authentication Failed") {
+                return `Failed login attempt using <strong>${details.email}</strong>`;
+            }
+
+            return `${log.username} ${roleText} logged in successfully`;
+        }
+        if (log.operation_name === "add-comment") {
+            const mentioned = details.mentioned;
+            const mentionText =
+                mentioned === ""
+                    ? ""
+                    : mentioned === "allusers"
+                        ? " and notified to all users"
+                        : ` and notified <strong>${mentioned}</strong>`;
+
+            return `${log.username} ${roleText} commented on <strong>${log.pagetitle}</strong> page${mentionText}`;
+        }
+
+        if (log.operation_name === "add-page-reaction") {
+            return `${log.username} ${roleText} reacted with ${details.reactionname} ${details.icon} on <strong>${log.pagetitle}</strong> page`;
+        }
+        return `${log.username} ${roleText} viewed the <strong>${log.pagetitle}</strong> page`;
     };
+
 
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
 

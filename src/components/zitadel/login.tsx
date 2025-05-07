@@ -76,15 +76,18 @@ const UserLogin: React.FC = (): JSX.Element => {
                 password: formData.password,
             });
             if (response.data.userId === undefined) {
+                Cookies.set("zitadel_tenant_id", ORGANIZATION);
+
                 try {
                     const attributes = globalThis.setAttributes("User Login", {
                         loginStatus: "Authentication Failed",
                         email: formData.email,
                     });
-                    globalThis.setOTTracer("authentication-failure", attributes);
+                    globalThis.setOTTracer("user-authentication", attributes);
                 } catch (error) {
                     console.log(error)
                 }
+                Cookies.remove("zitadel_tenant_id");
                 setErrors({
                     email: response.data.error,
                     password: "",

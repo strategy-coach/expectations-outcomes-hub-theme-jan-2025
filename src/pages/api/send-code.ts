@@ -35,26 +35,36 @@ export const POST: APIRoute = async ({ request }) => {
         const params = new URLSearchParams({
             code: codeResponse.verificationCode ?? "",
             userId,
+            email
         }).toString();
 
         const payload = {
             code: codeResponse.verificationCode,
             resetButton: true,
             button: `
-             <div style="font-family: sans-serif;">
-             <a 
-              href="${SITE_URL}reset-password?${params}" 
-              target="_blank"
-             style="display: inline-block; padding: 8px 16px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; text-align: center;"
-            >
-            Reset Your Password
-          </a>
-          <p style="font-size: 12px; margin-top: 10px;">
-          Or copy and paste this link:<br />
-          <span style="word-break: break-all;">${SITE_URL}reset-password?${params}</span>
-          </p>
-          </div>
-        `,
+                  <div style="font-family: sans-serif;">
+                  <a 
+                  href="${SITE_URL}reset-password?${params}" 
+                  target="_blank"
+                  style="display: inline-block; padding: 8px 16px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; text-align: center;"
+                 >
+                 Reset Your Password
+                 </a>
+                <p style="font-size: 12px; margin-top: 10px;">
+                Or copy and paste this link:<br />
+                <span style="word-break: break-all;">${SITE_URL}reset-password?${params}</span>
+                </p>
+               </div>
+               `,
+            imgUrl: `
+                 <div style="text-align: center; margin-bottom: 16px;">
+                 <img 
+                 src="https://demo.hub.opsfolio.com/assets/images/logo.png"
+                 alt="Reset Password Illustration"
+                 style="width:20%;height:20%"
+                 />
+               </div>
+                `,
             siteName: title
         };
         await novuApiCall("reset-password", payload, email);

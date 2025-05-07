@@ -142,6 +142,15 @@ const UserSignUp: React.FC = () => {
                     firstName: formData.givenName,
                     siteName: themeConfig.title,
                     button: `<div style="text-align:center"><a class="btn" href="${SITE_URL}reset-password?${encodedParams}" target="_blank">Verify Email</a></div>`,
+                    imgUrl: `
+                 <div style="text-align: center; margin-bottom: 16px;">
+                 <img 
+                 src="https://demo.hub.opsfolio.com/assets/images/logo.png"
+                 alt="Reset Password Illustration"
+                 style="width:20%;height:20%"
+                 />
+               </div>
+                `
                 };
                 await novuApiCall("hub-signup", payload, formData.email);
                 setFormData({

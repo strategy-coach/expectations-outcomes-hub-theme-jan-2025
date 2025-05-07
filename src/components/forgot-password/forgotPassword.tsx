@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getUserId } from "../../services/zitadel.services.ts";
 import axios from "axios";
 import React from "react";
+import Cookies from "js-cookie";
 
 const organizationId = import.meta.env
     .PUBLIC_ZITADEL_ORGANIZATION_ID as string;
@@ -9,13 +10,16 @@ const organizationId = import.meta.env
 interface ForgotPasswordProps {
     code?: string;
     userID?: string;
+    email?: string;
 }
 interface CodeResetResponse {
     message?: string;
     status?: number;
     error?: string;
 }
-const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
+const ORGANIZATION = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID as string;
+
+const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) => {
     const [emailError, setEmailError] = useState("");
     const [userId, setUserId] = useState("");
     const [credentials, setCredentials] = useState({
@@ -125,16 +129,22 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                 });
             }, 2500);
         } else {
+            if (email !== undefined) {
+                Cookies.set("zitadel_tenant_id", ORGANIZATION);
+                try {
+                    const attributes = globalThis.setAttributes("User Login", {
+                        loginStatus: "Password Changed",
+                        email: email,
+                    });
+                    globalThis.setOTTracer("user-authentication", attributes);
+                } catch (error) {
+                    console.log(error)
+                }
+                Cookies.remove("zitadel_tenant_id");
+            }
             setSuccessNotification({
                 show: true,
                 message: "Password Changed Successfully",
-            });
-
-            setCredentials({
-                email: "",
-                password: "",
-                confirmPassword: "",
-                verificationCode: "",
             });
             setTimeout(() => {
                 setPasswordNotification({
@@ -143,7 +153,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                     message: "",
                 });
                 globalThis.location.href = "/login";
-            }, 1500);
+            }, 2000);
         }
     };
 
