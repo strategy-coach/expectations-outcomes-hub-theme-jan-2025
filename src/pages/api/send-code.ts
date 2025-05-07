@@ -2,6 +2,9 @@
 import type { APIRoute } from "astro";
 import { resetPassword } from "../../services/zitadel.services.ts";
 import novuApiCall from "../../services/novu.service.ts";
+import themeConfig from "../../../theme.config.ts";
+
+const { title } = themeConfig;
 
 const SITE_URL = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI as string;
 
@@ -37,9 +40,24 @@ export const POST: APIRoute = async ({ request }) => {
         const payload = {
             code: codeResponse.verificationCode,
             resetButton: true,
-            button: `<div><a class="btn" href="${SITE_URL}reset-password?${params}" target="_blank">Reset Password</a></div>`,
+            button: `
+             <div style="font-family: sans-serif;">
+             <a 
+              href="${SITE_URL}reset-password?${params}" 
+              target="_blank"
+             style="display: inline-block; padding: 8px 16px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; text-align: center;"
+            >
+            Reset Your Password
+          </a>
+          <p style="font-size: 12px; margin-top: 10px;">
+          Or copy and paste this link:<br />
+          <span style="word-break: break-all;">${SITE_URL}reset-password?${params}</span>
+          </p>
+          </div>
+        `,
+            siteName: title
         };
-        await novuApiCall("password-change", payload, email);
+        await novuApiCall("reset-password", payload, email);
 
         return new Response(
             JSON.stringify({

@@ -142,8 +142,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                     isError: false,
                     message: "",
                 });
-                globalThis.location.href = "/logout";
-            }, 3000);
+                globalThis.location.href = "/login";
+            }, 1500);
         }
     };
 
@@ -203,38 +203,54 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                     )}
 
                     {successNotification.show == true && (
-                        <div
-                            className="mt-4 flex flex-col items-center text-center text-green-900"
-                            role="alert"
-                        >
-                            <span className="font-bold  text-md">
-                                {successNotification.message}
-                            </span>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-8 w-8  text-green-900 mt-1"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
+                        <>
+                            <div
+                                className="mt-4 flex flex-col items-center text-center text-green-900"
+                                role="alert"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                        </div>
+                                <span className="font-bold text-md">
+                                    {successNotification.message}
+                                </span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-8 w-8 text-green-900 mt-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M5 13l4 4L19 7"
+                                    />
+                                </svg>
+                            </div>
+
+                            <div className="mt-6 w-full flex justify-start">
+                                <a href="/login" className="text-blue-500 hover:underline text-sm">
+                                    Back to Login
+                                </a>
+                            </div>
+
+                        </>
+
                     )}
 
                     {successNotification.show == false && (
                         <>
                             {" "}
-                            <div className="flex items-center justify-center pb-4 border-b">
-                                <h3 className="text-lg text-center font-semibold text-gray-900 dark:text-white">
+                            <div className="flex flex-col items-center justify-center pb-4 border-b">
+                                <img
+                                    src="/assets/images/logo.png"
+                                    alt="Logo"
+                                    className="w-16 mb-4"
+                                />
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">
                                     Reset Your Password
                                 </h3>
                             </div>
+
                             {code === undefined && userID == undefined ? (
                                 <div className="flex flex-col gap-3 py-4 pb-2">
                                     <div className="flex gap-3 w-full items-center">
@@ -437,7 +453,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID }) => {
                                 </>
                             )}
                             <div className="flex justify-between mt-4 text-sm">
-                                <a href="/logout" className="text-blue-500 hover:underline">
+                                <a href="/login" className="text-blue-500 hover:underline">
                                     Back To Login
                                 </a>
                             </div>
