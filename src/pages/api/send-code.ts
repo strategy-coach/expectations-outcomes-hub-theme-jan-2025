@@ -59,9 +59,9 @@ export const POST: APIRoute = async ({ request }) => {
             imgUrl: `
                  <div style="text-align: center; margin-bottom: 16px;">
                  <img 
-                 src="https://demo.hub.opsfolio.com/assets/images/logo.png"
-                 alt="Reset Password Illustration"
-                 style="width:20%;height:20%"
+                 src="${SITE_URL}assets/images/logo.png"
+                 alt="Reset Password"
+                 style="width:50px;height:50px"
                  />
                </div>
                 `,
