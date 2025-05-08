@@ -147,7 +147,7 @@ const UserSignUp: React.FC = () => {
                  <img 
                  src="${SITE_URL}assets/images/logo.png"
                  alt="logo"
-                 style="width:50px;height:50px"
+                 style="width:auto;height:60px"
                  />
                </div>
                 `

@@ -61,7 +61,7 @@ export const POST: APIRoute = async ({ request }) => {
                  <img 
                  src="${SITE_URL}assets/images/logo.png"
                  alt="Reset Password"
-                 style="width:50px;height:50px"
+                 style="width:auto;height:60px"
                  />
                </div>
                 `,
