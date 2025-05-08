@@ -3,10 +3,9 @@ import type { APIRoute } from "astro";
 import type { AxiosResponse } from "axios";
 import axios from "axios";
 import { z } from "zod";
-import themeConfig from "../../../theme.config.ts";
 
 
-const { activeProject } = themeConfig;
+const PROJECT_ID = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID as string;
 const ZITADEL_DOMAIN = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
 const ZITADEL_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
 const ORGANIZATION = import.meta.env
@@ -215,9 +214,8 @@ async function getUserRole(userId: string): Promise<{
             queries: [
                 { userIdQuery: { userId } },
                 {
-                    projectNameQuery: {
-                        projectName: activeProject,
-                        method: "TEXT_QUERY_METHOD_EQUALS",
+                    projectIdQuery: {
+                        projectId: PROJECT_ID
                     },
                 },
             ],
@@ -386,7 +384,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
                 status: 200,
             });
         }
-    } catch {
+    } catch (error) {
         cookies.set("session_id", "", {
             httpOnly: true,
             secure: true,
@@ -394,6 +392,18 @@ export const POST: APIRoute = async ({ request, cookies }) => {
             sameSite: "strict",
             maxAge: 0,
         });
+
+        if (axios.isAxiosError(error)) {
+            if (error.response?.data?.details[0]?.message === "Errors.User.NotActive") {
+                return new Response(
+                    JSON.stringify({
+                        error:
+                            'User is locked',
+                    }),
+                    { status: 200, headers: { 'Content-Type': 'application/json' } },
+                );
+            }
+        }
         return new Response(
             JSON.stringify({ error: "Incorrect password. Please try again." }),
             { status: 200 },

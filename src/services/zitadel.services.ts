@@ -1,8 +1,6 @@
 import { z } from "zod";
 import axios from "axios";
-import themeConfig from "../../theme.config.ts";
 
-const { activeProject } = themeConfig;
 
 const Details = z.object({
     sequence: z.string(),
@@ -419,9 +417,8 @@ export async function getUserRole(
             queries: [
                 { userIdQuery: { userId } },
                 {
-                    projectNameQuery: {
-                        projectName: activeProject,
-                        method: "TEXT_QUERY_METHOD_EQUALS",
+                    projectIdQuery: {
+                        projectId: PROJECT_ID
                     },
                 },
             ],

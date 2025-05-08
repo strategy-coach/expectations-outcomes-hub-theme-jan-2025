@@ -43,7 +43,10 @@ const UserLogin: React.FC = (): JSX.Element => {
     const [errors, setErrors] = useState<{ email?: string; password?: string }>(
         {},
     );
-
+    const [notification, setNotification] = useState({
+        message: "",
+        show: false,
+    });
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         setErrors((prevErrors) => ({ ...prevErrors, [e.target.name]: undefined }));
@@ -70,6 +73,7 @@ const UserLogin: React.FC = (): JSX.Element => {
         if (!validateForm()) return;
         setLoading(true);
         setError(null);
+        setNotification({ show: false, message: "" });
         try {
             const response = await axios.post<AuthResponse>("/api/auth", {
                 email: formData.email,
@@ -88,10 +92,11 @@ const UserLogin: React.FC = (): JSX.Element => {
                     console.log(error)
                 }
                 Cookies.remove("zitadel_tenant_id");
-                setErrors({
-                    email: response.data.error,
-                    password: "",
-                });
+                response.data.error == "User is locked" ? setNotification({
+                    message: response.data.error,
+                    show: true,
+                }) : setErrors({ email: response.data.error });
+
             } else {
                 const isValidSession = await axios.post<AuthResponse>("/api/auth", {
                     userID: response.data.userId,
@@ -140,60 +145,87 @@ const UserLogin: React.FC = (): JSX.Element => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-96 ">
-                <img
+        <div className="flex flex-col items-center justify-center min-h-screen  bg-gray-100">
+            <div className=" p-8 rounded-lg shadow-lg w-96 ">
+                {notification.show ? (
+                    <>
+                        <div
+                            className="mt-4 flex flex-col items-center text-center text-red-900"
+                            role="alert"
+                        >
+                            {notification.message == "User is locked" ?
+                                <span className="font-semibold text-md">
+                                    Your account has been temporarily locked due to multiple unsuccessful login attempts. Please contact the administrator at{" "}
+                                    <a href="mailto:admin@opsfolio.com" className="text-blue-500 underline">
+                                        admin@opsfolio.com
+                                    </a>{" "}
+                                    for assistance.
+                                </span> : <span className="font-semibold text-md">
+                                    {notification.message}
+                                </span>
+                            }
+                        </div>
+
+                        <div className="mt-6 w-full flex justify-start">
+                            <a href="/login" className="text-blue-500 hover:underline text-sm">
+                                Back to Login
+                            </a>
+                        </div>
+
+                    </>
+                ) : (<> <img
                     src="/assets/images/logo.png"
                     alt="Logo"
                     className="w-16 mx-auto mb-4"
                 />
-                <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
-                {error != null && <p className="text-red-500 text-center">{error}</p>}
-                <form onSubmit={(e) => void onSubmit(e)} className="space-y-4">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded"
-                        disabled={userSession?.userId != undefined}
-                    />
-                    {errors.email != null && (
-                        <p className="text-red-500">{errors.email}</p>
-                    )}
+                    <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
+                    {error != null && <p className="text-red-500 text-center">{error}</p>}
+                    <form onSubmit={(e) => void onSubmit(e)} className="space-y-4">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded"
+                            disabled={userSession?.userId != undefined}
+                        />
+                        {errors.email != null && (
+                            <p className="text-red-500">{errors.email}</p>
+                        )}
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded"
-                        autoComplete="current-password"
-                    />
-                    {errors.password != null && (
-                        <p className="text-red-500">{errors.password}</p>
-                    )}
-                    <button
-                        type="submit"
-                        className={`w-full bg-blue-500 text-white p-2 rounded disabled:opacity-50 ${loading || formData.email === "" || formData.password === ""
-                            ? "opacity-50 cursor-not-allowed"
-                            : ""
-                            }`}
-                        disabled={
-                            loading || formData.email === "" || formData.password === ""
-                        }
-                    >
-                        {loading ? "Processing..." : "Login"}
-                    </button>
-                </form>
-                <div className="flex justify-between mt-4 text-sm">
-                    <a href="/reset-password" className="text-blue-500 hover:underline">
-                        Forgot Password?
-                    </a>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded"
+                            autoComplete="current-password"
+                        />
+                        {errors.password != null && (
+                            <p className="text-red-500">{errors.password}</p>
+                        )}
+                        <button
+                            type="submit"
+                            className={`w-full bg-blue-500 text-white p-2 rounded disabled:opacity-50 ${loading || formData.email === "" || formData.password === ""
+                                ? "opacity-50 cursor-not-allowed"
+                                : ""
+                                }`}
+                            disabled={
+                                loading || formData.email === "" || formData.password === ""
+                            }
+                        >
+                            {loading ? "Processing..." : "Login"}
+                        </button>
+                    </form>
+                    <div className="flex justify-between mt-4 text-sm">
+                        <a href="/reset-password" className="text-blue-500 hover:underline">
+                            Forgot Password?
+                        </a>
 
-                </div>
+                    </div>
+                </>)}
 
             </div>
         </div>
