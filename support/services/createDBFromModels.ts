@@ -1,75 +1,35 @@
-import { exec } from "node:child_process";
+import { exec as execCallback } from "node:child_process";
+import { promisify } from "node:util";
 
-const databasePath = "src/content/db/models/models.db";
-const sqlFilePath = "src/content/db/models/models.auto.sql";
+const exec = promisify(execCallback);
 
-exec(`sqlite3 ${databasePath} ""`, (error, _stdout, stderr) => {
-    if (error) {
-        console.error(`Failed to create SQLite database: ${error.message}`);
-        return;
-    }
+async function runSequentialCommands() {
+    const databasePath = "src/content/db/models/models.db";
+    const sqlFilePath = "src/content/db/models/models.auto.sql";
 
-    if (stderr.trim()) {
-        console.error(`SQLite database creation error: ${stderr}`);
-        return;
-    }
+    try {
+        await exec(`sqlite3 ${databasePath} ""`);
+        console.log(`SQLite database successfully created at ${databasePath}`);
 
-    console.log(`SQLite database successfully created at ${databasePath}`);
-
-    exec(`sqlite3 ${databasePath} ".read ${sqlFilePath}"`, (error, _stdout, stderr) => {
-        if (error) {
-            console.error(`Failed to import SQL file: ${error.message}`);
-            return;
-        }
-
-        if (stderr.trim()) {
-            console.error(`SQL import error: ${stderr}`);
-            return;
-        }
-
+        await exec(`sqlite3 ${databasePath} ".read ${sqlFilePath}"`);
         console.log(`SQL file successfully imported into SQLite database`);
 
-        exec(`mv src/content/db/models/models.db src/content/db/rssd`, (error, _stdout, stderr) => {
-            if (error) {
-                console.error(`Failed to move models.db: ${error.message}`);
-                return;
-            }
+        await exec(`mv ${databasePath} src/content/db/rssd`);
+        console.log(`models.db moved successfully`);
 
-            if (stderr.trim()) {
-                console.error(`Move command error: ${stderr}`);
-                return;
-            }
+        await exec(`rm -rf ${sqlFilePath}`);
+        console.log(`models.auto.sql removed successfully`);
 
-            console.log(`models.db moved successfully`);
+        await exec(`cd src/content/db/rssd && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" -p "page%" -p "surveilr_report%" && rm -rf resource-surveillance.sqlite.db && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf models.db`);
+        console.log(`Merge command executed successfully`);
 
-            exec(`rm -rf src/content/db/models/models.auto.sql`, (error, _stdout, stderr) => {
-                if (error) {
-                    console.error(`Failed to remove models.auto.sql: ${error.message}`);
-                    return;
-                }
+    } catch (error) {
+        if (error instanceof Error) {
+            console.error(`Command failed: ${error.message}`);
+        } else {
+            console.error("Unknown error in getDBPath:", error);
+        }
+    }
+}
 
-                if (stderr.trim()) {
-                    console.error(`Remove command error: ${stderr}`);
-                    return;
-                }
-
-                console.log(`models.auto.sql removed successfully`);
-
-                exec(`cd src/content/db/rssd && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" -p "page%" -p "surveilr_report%" && rm -rf resource-surveillance.sqlite.db && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf models.db`, (error, _stdout, stderr) => {
-                    if (error) {
-                        console.error(`Failed to execute merge command: ${error.message}`);
-                        return;
-                    }
-
-                    if (stderr.trim()) {
-                        console.error(`Merge command error: ${stderr}`);
-                        return;
-                    }
-
-                    console.log(`Merge command executed successfully`);
-                });
-            });
-        });
-    });
-});
-
+runSequentialCommands();
