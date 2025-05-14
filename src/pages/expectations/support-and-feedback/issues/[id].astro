@@ -1,0 +1,151 @@
+---
+import Layout from "../../../../layouts/Layout.astro";
+import { getGitHubIssue, postGitHubComment, closeGitHubIssue } from '../../../../lib/github.ts';
+import themeConfig from '../../../../../theme.config';
+import order from "../../../expectations/order.json";
+import {convertQuestionnaire, replaceQuestionnaire} from "../../../expectations/questionnaireOrder"
+import { buildMenuTree } from "../../../../utils/helper.astro";
+// import { getPageFromSlug } from "../../../../components/lhc-forms-widget/service";
+import Sidebar from "../../../../components/Sidebar";
+import { Breadcrumbs } from "astro-breadcrumbs";
+import "astro-breadcrumbs/breadcrumbs.css";
+
+const { id } = Astro.params;
+if (!id) {
+  throw new Error('Issue ID is missing from URL.');
+}
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const action = new URL(Astro.url).searchParams.get('action');
+  const comment = formData.get('comment')?.toString();
+
+  try {
+    if (action === 'comment' && comment) {
+      await postGitHubComment(id, comment);
+    } else if (action === 'close') {
+      await closeGitHubIssue(id);
+      return Astro.redirect(`/expectations/support-and-feedback/issues`); 
+
+    }
+  } catch (err) {
+    console.error('❌ Failed to process GitHub action:', err);
+  }
+}
+
+const issueData = await getGitHubIssue(id);
+const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx}", {
+  eager: true,
+});
+
+const { contentCollectionSort } = themeConfig || {}; 
+const orderJson = order;
+const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
+const dirName = "expectations";
+
+const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
+const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
+//const pageSlug = getPageFromSlug(id as string);
+const slugval = "/expectations/support-and-feedback/issues";
+---
+
+<Layout title="">
+  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+    <div class="col-span-12 md:col-span-4 lg:col-span-2 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs">
+      <div id="starlight__sidebar" class="sidebar-pane">
+        <div class="sidebar-content">
+          <div class="sidebar sl-flex sidebar-left-menu font-medium text-base">
+            <Sidebar menuTree={updatedMenuTree} slugval={slugval} />
+          </div>
+        </div>
+      </div>
+    </div>
+   
+    <section class="col-span-12 md:col-span-6 lg:col-span-7 xl:col-span-7 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300">
+      <div class="pb-5">
+        <Breadcrumbs
+          linkTextFormat="capitalized"
+          ariaLabel="Site navigation"
+          separatorAriaHidden={false}
+          customizeLinks={[
+            { index: 2, "aria-disabled": true },
+            { index: 4, "aria-disabled": true },
+          ]}
+        >
+          <svg slot="separator" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </Breadcrumbs>
+      </div>
+
+      <h1 class="text-3xl font-bold text-gray-900 mb-3">
+        #<span class="text-blue-600">{issueData.number}</span>: {issueData.title}
+      </h1>
+
+      <p class="text-sm text-gray-500 mb-4">
+        Created by
+        <a href={issueData.user.html_url} target="_blank" class="text-blue-600 hover:underline">
+          {issueData.user.login}
+        </a>
+      </p>
+
+      <div class="bg-gray-50 p-4 rounded border text-gray-800 whitespace-pre-wrap mb-6 shadow-md">
+        {issueData.body}
+      </div>
+
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Add a Comment</h2>
+      <form method="post" class="space-y-4">
+        <textarea
+          name="comment"
+          rows="4"
+          class="w-full border border-gray-300 rounded p-3 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          placeholder="Write your comment here..."
+        ></textarea>
+
+        <div class="flex gap-3">
+          <button
+            type="submit"
+            formaction="?action=comment"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm font-medium transition"
+          >
+            Comment
+          </button>
+
+          <!-- Trigger modal for confirmation -->
+          <button
+            type="button"
+            class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-md text-sm font-medium transition"
+            onclick="document.getElementById('confirmModal').showModal()"
+          >
+            Close Issue
+          </button>
+        </div>
+      </form>
+
+      <!-- Modal for confirmation -->
+      <dialog id="confirmModal" class="rounded-lg p-6 shadow-lg max-w-md w-full border border-gray-300 backdrop:bg-black/50">
+        <form method="post" action="?action=close">
+          <h3 class="text-lg font-semibold mb-4 text-gray-800">Confirm Close Issue</h3>
+          <p class="text-sm text-gray-600 mb-6">Are you sure you want to close this issue?</p>
+
+          <div class="flex justify-end gap-3">
+            <button
+              type="button"
+              class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md"
+              onclick="document.getElementById('confirmModal').close()"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-black hover:bg-black text-white px-4 py-2 rounded-md"
+            >
+              Confirm
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </section>
+  </main>
+</Layout>

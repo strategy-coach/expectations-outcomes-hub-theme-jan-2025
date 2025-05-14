@@ -1,0 +1,52 @@
+---
+import { getGitHubIssues } from '../../lib/github';
+const issues = await getGitHubIssues('feedback'); // Or leave empty to get all open issues
+
+function timeSince(dateStr: string) {
+  const date = new Date(dateStr);
+  const now = new Date();
+
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const diffMonths = now.getMonth() - date.getMonth() + 12 * (now.getFullYear() - date.getFullYear());
+  const isSameYear = now.getFullYear() === date.getFullYear();
+
+  if (diffDays === 0) return 'today';
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 30) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+  if (diffMonths === 1) return 'last month';
+  if (diffMonths < 12) return `${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short',
+    day: 'numeric',
+    ...(isSameYear ? {} : { year: 'numeric' }),
+  };
+  return `on ${date.toLocaleDateString('en-US', options)}`;
+}
+
+---
+
+<h1>GitHub Issues (Support & Feedback)</h1>
+
+{issues.length === 0 ? (
+  <p class="text-gray-500 italic">No data found.</p>
+) : (
+  <ul class="space-y-4 border rounded shadow-sm dark:border-gray-600" style="padding-left:0px!important;list-style: none!important;">
+    {issues.map(issue => (
+      <li class="p-3 border-b last:border-b-0 my-0 dark:border-gray-600" style="margin-top: 0px!important;">
+        <a href={`/expectations/support-and-feedback/issues/${issue.number}`} class="text-blue-600 text-sm font-semibold hover:underline">
+          #{issue.number}: {issue.title}
+        </a>
+        <div class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">
+          By <a href={issue.user.html_url} target="_blank" class="underline">{issue.user.login}</a> - Opended {timeSince(issue.created_at)}  
+        </div>
+        {/* <div class="mt-2 space-x-2 mb-0">
+          {issue.labels.map(label => (
+            <span class="inline-block bg-gray-200 text-sm px-2 py-0.5 rounded">{label.name}</span>
+          ))}
+        </div>         */}
+      </li>
+    ))}
+  </ul>
+)}
