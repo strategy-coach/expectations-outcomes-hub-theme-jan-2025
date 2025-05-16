@@ -4,7 +4,7 @@
 
 The **EOH Astro 5 Theme** is a highly customizable and versatile Astro-based theme. It comes equipped with essential components like breadcrumbs, headers, footers, and sidebars for seamless navigation. The theme supports dynamic content creation, including features such as blog collections, landing pages, static pages, and GitHub Discussions integration.
 
-## EOH Features 
+## Features 
 
 - **Header and Footer**: Easily customizable components.  
 - **Blog Pages**:  
