@@ -11,6 +11,16 @@ import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import yaml from 'js-yaml';
 
+type FormData = {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  submissionDate?: string;
+  pageUrl?: string;
+};
+
+
 const { id } = Astro.params;
 if (!id) {
   throw new Error('Issue ID is missing from URL.');
@@ -39,15 +49,6 @@ const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx}", {
   eager: true,
 });
 
-type FormData = {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
-  submissionDate?: string;
-  pageUrl?: string;
-};
-
 // Extract YAML block from the body using RegEx
 let formData: FormData = {};
 const match = issueData.body.match(/```yaml\n([\s\S]*?)\n```/);
@@ -70,6 +71,29 @@ const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
 const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
 //const pageSlug = getPageFromSlug(id as string);
 const slugval = "/expectations/support-and-feedback/issues";
+
+function timeSince(dateStr: string) {
+  const date = new Date(dateStr);
+  const now = new Date();
+
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const diffMonths = now.getMonth() - date.getMonth() + 12 * (now.getFullYear() - date.getFullYear());
+  const isSameYear = now.getFullYear() === date.getFullYear();
+
+  if (diffDays === 0) return 'today';
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 30) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+  if (diffMonths === 1) return 'last month';
+  if (diffMonths < 12) return `${diffMonths} month${diffMonths > 1 ? 's' : ''} ago`;
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short',
+    day: 'numeric',
+    ...(isSameYear ? {} : { year: 'numeric' }),
+  };
+  return `on ${date.toLocaleDateString('en-US', options)}`;
+}
 ---
 
 <Layout title="">
@@ -121,7 +145,7 @@ const slugval = "/expectations/support-and-feedback/issues";
               <li><strong>Name:</strong> {formData.name}</li>
               <li><strong>Email:</strong> {formData.email}</li>
               <li><strong>Message:</strong> {formData.message}</li>
-              <li><strong>Submitted On:</strong> {formData.submissionDate}</li>
+              <li><strong>Submitted On:</strong> {timeSince(formData.submissionDate ?? "")}</li>
               <li><strong>Page URL:</strong> <a href={formData.pageUrl}>{formData.pageUrl}</a></li>
             </ul>
           ) : (
