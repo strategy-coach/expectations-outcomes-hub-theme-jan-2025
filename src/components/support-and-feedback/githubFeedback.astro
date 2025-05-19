@@ -36,10 +36,10 @@ function timeSince(dateStr: string) {
     {issues.map(issue => (
       <li class="p-3 border-b last:border-b-0 my-0 dark:border-gray-600" style="margin-top: 0px!important;">
         <a href={`/expectations/support-and-feedback/issues/${issue.number}`} class="text-blue-600 text-sm font-semibold hover:underline">
-          #{issue.number}: {issue.title}
+          {issue.title}
         </a>
         <div class="text-xs text-gray-600 dark:text-gray-400 mt-1 mb-0">
-          By <a href={issue.user.html_url} target="_blank" class="underline">{issue.user.login}</a> - Opended {timeSince(issue.created_at)}  
+          #{issue.number}: <a href={issue.user.html_url} target="_blank" class="underline">{issue.user.login}</a> - Opended {timeSince(issue.created_at)}  
         </div>
         {/* <div class="mt-2 space-x-2 mb-0">
           {issue.labels.map(label => (
