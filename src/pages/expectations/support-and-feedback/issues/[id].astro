@@ -9,6 +9,7 @@ import { buildMenuTree } from "../../../../utils/helper.astro";
 import Sidebar from "../../../../components/Sidebar";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
+import yaml from 'js-yaml';
 
 const { id } = Astro.params;
 if (!id) {
@@ -38,6 +39,28 @@ const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx}", {
   eager: true,
 });
 
+type FormData = {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  submissionDate?: string;
+  pageUrl?: string;
+};
+
+// Extract YAML block from the body using RegEx
+let formData: FormData = {};
+const match = issueData.body.match(/```yaml\n([\s\S]*?)\n```/);
+
+if (match && match[1]) {
+  try {
+    formData = yaml.load(match[1]);
+  } catch (error) {
+    console.error("YAML parsing error:", error);
+  }
+} else {
+  console.error("No YAML block found in issue body.");
+}
 const { contentCollectionSort } = themeConfig || {}; 
 const orderJson = order;
 const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
@@ -90,8 +113,20 @@ const slugval = "/expectations/support-and-feedback/issues";
         </a>
       </p>
 
-      <div class="bg-gray-50 p-4 rounded border text-gray-800 whitespace-pre-wrap mb-6 shadow-md">
-        {issueData.body}
+      <div class="bg-gray-50 p-4 rounded border text-gray-800 mb-6 shadow-md">
+      
+         <h3 class="font-semibold text-lg mb-2">Submitted Details</h3>
+          {formData.name ? (
+            <ul class="space-y-1">
+              <li><strong>Name:</strong> {formData.name}</li>
+              <li><strong>Email:</strong> {formData.email}</li>
+              <li><strong>Message:</strong> {formData.message}</li>
+              <li><strong>Submitted On:</strong> {formData.submissionDate}</li>
+              <li><strong>Page URL:</strong> <a href={formData.pageUrl}>{formData.pageUrl}</a></li>
+            </ul>
+          ) : (
+            <p>No valid YAML data found.</p>
+          )}
       </div>
 
       <h2 class="text-xl font-semibold text-gray-800 mb-2">Add a Comment</h2>
