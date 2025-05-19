@@ -38,7 +38,9 @@ interface ActivityLogProps {
     pageUrl?: string;
     title?: string
 }
+
 const host = globalThis.location.host;
+const siteProtocol = globalThis.location.protocol;
 
 const formatUserRole = (role?: string) => {
     if (!role) return "";
@@ -183,6 +185,11 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                 selectedRoles.length > 0
                     ? `AND (${selectedRoles.map(role => `str_match(userrole, '${role}')`).join(" OR ")})`
                     : "";
+
+            if (pageUrl !== undefined && !pageUrl.startsWith(siteProtocol)) {
+                // Replace the existing protocol with the correct one
+                pageUrl = pageUrl.replace(/^(https?:)/, siteProtocol);
+            }
 
             let baseQuery = `FROM default 
             WHERE str_match(url, '${pageUrl ? pageUrl : host}') 
