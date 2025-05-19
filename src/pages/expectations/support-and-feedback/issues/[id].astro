@@ -130,14 +130,15 @@ const slugval = "/expectations/support-and-feedback/issues";
       </div>
 
       <h2 class="text-xl font-semibold text-gray-800 mb-2">Add a Comment</h2>
-      <form method="post" class="space-y-4">
+      <form method="post" class="space-y-4" onsubmit="return validateComment()">
         <textarea
           name="comment"
+          id="comment"
           rows="4"
           class="w-full border border-gray-300 rounded p-3 text-sm focus:ring-2 focus:ring-blue-400 focus:outline-none"
           placeholder="Write your comment here..."
         ></textarea>
-
+        <p id="commentError" class="text-red-600 text-sm hidden">Comment cannot be empty.</p>
         <div class="flex gap-3">
           <button
             type="submit"
@@ -184,3 +185,17 @@ const slugval = "/expectations/support-and-feedback/issues";
     </section>
   </main>
 </Layout>
+<script is:inline>
+  function validateComment() {
+    const comment = document.getElementById('comment').value.trim();
+    const error = document.getElementById('commentError');
+
+    if (comment === '') {
+      error.classList.remove('hidden');
+      return false; // Block form submission
+    } else {
+      error.classList.add('hidden');
+      return true; // Allow form submission
+    }
+  }
+</script>
