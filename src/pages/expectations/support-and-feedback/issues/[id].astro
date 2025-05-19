@@ -94,6 +94,9 @@ function timeSince(dateStr: string) {
   };
   return `on ${date.toLocaleDateString('en-US', options)}`;
 }
+const owner = import.meta.env.PUBLIC_GITHUB_OWNER;
+const repo = import.meta.env.PUBLIC_GITHUB_REPO;
+
 ---
 
 <Layout title="">
@@ -127,30 +130,34 @@ function timeSince(dateStr: string) {
       </div>
 
       <h1 class="text-3xl font-bold text-gray-900 mb-3">
-        #<span class="text-blue-600">{issueData.number}</span>: {issueData.title}
+        {issueData.title}
       </h1>
 
-      <p class="text-sm text-gray-500 mb-4">
+      <p class="text-sm text-gray-500 mb-4 hidden">
         Created by
         <a href={issueData.user.html_url} target="_blank" class="text-blue-600 hover:underline">
           {issueData.user.login}
         </a>
       </p>
 
-      <div class="bg-gray-50 p-4 rounded border text-gray-800 mb-6 shadow-md">
-      
-         <h3 class="font-semibold text-lg mb-2">Submitted Details</h3>
+      <div class="bg-gray-50 p-4 rounded border text-gray-800 mb-6 shadow-md">      
+         
           {formData.name ? (
-            <ul class="space-y-1">
-              <li><strong>Name:</strong> {formData.name}</li>
-              <li><strong>Email:</strong> {formData.email}</li>
-              <li><strong>Message:</strong> {formData.message}</li>
-              <li><strong>Submitted On:</strong> {timeSince(formData.submissionDate ?? "")}</li>
-              <li><strong>Page URL:</strong> <a href={formData.pageUrl}>{formData.pageUrl}</a></li>
+            <ul class="space-y-1 mb-3">
+              <h3 class="font-semibold text-base mb-2">Submitted :  {formData.name} - {timeSince(formData.submissionDate ?? "")}</h3>
+              {/* <li><strong>Name:</strong> {formData.name}</li> */}
+              {/* <li><strong>Email:</strong> {formData.email}</li> */}
+              <li class="text-sm">{formData.message}</li>
+              {/* <li><strong>Submitted On:</strong> {timeSince(formData.submissionDate ?? "")}</li> */}
+              {/* <li><strong>Page URL:</strong> <a href={formData.pageUrl}>{formData.pageUrl}</a></li> */}
             </ul>
           ) : (
             <p>No valid YAML data found.</p>
           )}
+          <img
+           src={`https://raw.githubusercontent.com/${owner}/${repo}/main/uploads/${issueData.number}.png`}
+          alt={`Screenshot for issue #${issueData.number}`}
+          />
       </div>
 
       <h2 class="text-xl font-semibold text-gray-800 mb-2">Add a Comment</h2>
