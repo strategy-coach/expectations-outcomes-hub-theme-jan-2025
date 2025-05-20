@@ -1,3 +1,9 @@
+---
+title: "EOH Astro 5 Theme Documentation"
+enableEditButton: true
+
+---
+
 # EOH Astro 5 Theme  
 
 ## Overview  
