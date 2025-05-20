@@ -1,4 +1,10 @@
-# Welcome to the Public Presentation! 
+---
+title: "Anonymous Pages Presentation Demo"
+enableEditButton: true
+
+---
+
+# Welcome to the Public Presentation
 
 This is an open-access presentation that anyone can view. No login is required.
 
