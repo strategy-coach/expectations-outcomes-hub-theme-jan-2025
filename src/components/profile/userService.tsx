@@ -139,6 +139,24 @@ export async function getUserMetaData(
     }
 }
 
+export async function deleteUserMeta(type: string, userId): Promise<void> {
+    const url = `${authority}/management/v1/users/${userId}/metadata/${type}`;
+    const apiKey = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
+    const headers = new Headers({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "x-zitadel-orgid":
+            organizationId == undefined ? "" : organizationId.toString(),
+    });
+
+    const options = {
+        method: "DELETE",
+        headers,
+        body: JSON.stringify({}),
+    };
+
+    await fetch(url, options);
+}
 
 export async function UpdateUserMetaData(
     status: string,

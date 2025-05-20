@@ -20,6 +20,7 @@ const Profile: React.FC = () => {
 
     const [userNotificationStatus, setNotificationStatus] = useState<string>();;
     const [userBio, setUserBio] = useState<string>("");
+    const [gitHubToken, setGitHubToken] = useState<string>("");
     const [loading, setLoading] = useState<string | null>(null);
     const [user, setUser] = useState<ProfileInformation | undefined>();
 
@@ -38,6 +39,9 @@ const Profile: React.FC = () => {
                     setNotificationStatus(decodedValue);
                 } else if (key === "bio") {
                     setUserBio(decodedValue);
+                }
+                else if (key === "gitHubToken") {
+                    setGitHubToken(decodedValue);
                 }
             });
         };
@@ -226,6 +230,17 @@ const Profile: React.FC = () => {
                                     </div>
                                 </aside>
                             )}
+                            {gitHubToken !== "" && (
+                                <aside className="grid grid-cols-1 md:grid-cols-12 gap-4 py-3 text-base">
+                                    <div className="col-span-1 md:col-span-4 font-semibold">
+                                        GitHub Token
+                                    </div>
+                                    <div className="col-span-1 md:col-span-8 flex">
+                                        {gitHubToken}
+                                    </div>
+                                </aside>
+                            )}
+
                         </article>
                     </div>
                     <div className="col-span-1 md:col-span-4 ">
