@@ -1,3 +1,15 @@
+---
+title: Journey of Excellence - Key Milestones
+date: "2025-01-01"
+home:
+  skipTo: 
+    category: "skipTo"
+description:  The document contains a project estimation sheet outlining tasks,effort hours, and timelines across key phases like analysis,design, development, testing, and project management. It includes metrics such as confidence factors, consumed hours, and completion dates.
+enableEditButton: true
+enableReaction : true
+discussionsEnabled: true
+---
+
 # Journey of Excellence - Key Milestones
 
 Achieving success is a journey marked by significant milestones. Below, you'll find a breakdown of the key phases that drive our project forward.
