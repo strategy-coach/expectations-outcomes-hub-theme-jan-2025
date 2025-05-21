@@ -145,7 +145,7 @@ const repo = import.meta.env.PUBLIC_GITHUB_REPO;
          
           {formData.name ? (
             <ul class="space-y-1 mb-3">
-              <h3 class="font-semibold text-sm mb-4 text-end">Submitted By :  {formData.name} - {timeSince(formData.submissionDate ?? "")}</h3>
+              <h3 class="text-sm font-normal mb-4 text-end"><span class="text-gray-500 font-medium">Submitted By :  </span><strong class="text-gray-500">{formData.name}</strong> - <span class="text-gray-500">{timeSince(formData.submissionDate ?? "")}</span></h3>
               {/* <li><strong>Name:</strong> {formData.name}</li> */}
               {/* <li><strong>Email:</strong> {formData.email}</li> */}
               <li class="text-sm mb-4">{formData.message}</li>
