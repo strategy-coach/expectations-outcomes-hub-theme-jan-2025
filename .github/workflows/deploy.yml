@@ -23,7 +23,7 @@ jobs:
 
       - name: Execute Environment variables
         env:
-          PUBLIC_GITHUB_TOKEN: ${{ vars.PUBLIC_GITHUB_TOKEN }}
+          PUBLIC_GITHUB_TOKEN: ${{ secrets.PUBLIC_GITHUB_TOKEN }}
           PUBLIC_GITHUB_REPO_NAME: ${{ vars.PUBLIC_GITHUB_REPO_NAME }}
           PUBLIC_GITHUB_OWNER_NAME: ${{ vars.PUBLIC_GITHUB_OWNER_NAME }}
           PUBLIC_ZITADEL_CLIENT_ID: ${{ vars.PUBLIC_ZITADEL_CLIENT_ID }}
