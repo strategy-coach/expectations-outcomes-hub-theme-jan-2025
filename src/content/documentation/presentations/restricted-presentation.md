@@ -4,7 +4,7 @@ enableEditButton: true
 
 ---
 
-# Welcome to the Secure Presentation 🔒  
+# Welcome to the Secure Presentation!!!
 
 This presentation includes both **public and restricted** slides. By default, you can view the demo without logging in, but certain slides require authentication.  
 
