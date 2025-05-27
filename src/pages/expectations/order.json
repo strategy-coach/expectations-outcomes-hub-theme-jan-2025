@@ -13,11 +13,11 @@
           {
             "type": "string",
             "linkId": "458625093979",
-            "text": "Pre Audit Questionnaire",
+            "text": "Opsfolio CaaS Onboarding Questionnaire",
             "readOnly": true,
             "initial": [
               {
-                "valueString": "/expectations/questionnaire/pre-audit/soc2-pre-audit-questionnaire.lhc-form.json"
+                "valueString": "/expectations/questionnaire/pre-audit/opsfolio-caas-onboarding-questionnaire.lhc-form.json"
               }
             ]
           }
