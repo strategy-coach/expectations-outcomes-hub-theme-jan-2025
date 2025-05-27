@@ -179,7 +179,7 @@ const UserSignUp: React.FC = () => {
         }
     };
     return (
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-[75vh] flex justify-center mt-5">
             <div className="w-full border rounded-lg border-gray-250 p-8 max-w-xl">
                 <h2 className="text-2xl font-semibold text-gray-700 mb-6">
                     Add New User
