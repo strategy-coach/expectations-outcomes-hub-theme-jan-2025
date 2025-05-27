@@ -19,6 +19,7 @@ const themeConfig = (config: {
   unauthorizedPages: string[];
   isHomePagePublic: boolean;
   enablePageHistory: boolean;
+  enableFeedbackList: boolean;
   authorizedSlides: number[];
 }) => {
   return {
@@ -87,4 +88,5 @@ export default themeConfig({
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
   enablePageHistory: true,
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
+  enableFeedbackList: false, // Set to true if you want to enable feedback list
 });
