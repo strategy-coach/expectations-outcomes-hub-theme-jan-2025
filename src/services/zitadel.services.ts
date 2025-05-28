@@ -442,3 +442,47 @@ export async function getUserRole(
         return undefined;
     }
 }
+
+export async function getUsers(
+    email: string,
+): Promise<UserApiResponse | undefined> {
+    console.log("Fetching organization users for email:", email);
+    try {
+        const data = JSON.stringify({
+            queries: [
+                {
+                    emailQuery: {
+                        emailAddress: email,
+                        method: "TEXT_QUERY_METHOD_EQUALS",
+                    },
+                }
+            ],
+        });
+        const config = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${ZITADEL_API_TOKEN}`
+            },
+            body: data,
+        };
+        const response = await fetch(`${ZITADEL_AUTHORITY}/v2/users`, config);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        // Only parse response once
+        const responseDataJSON = await response.json();
+        console.log("Response Data:", responseDataJSON); // Log the response data for debugging
+        // Validate with Zod
+        const result = OrganizationUsersApiResponseSchema.parse(responseDataJSON);
+        if ('result' in result && result.result) {
+            return result;
+        } else {
+            return undefined;
+        }
+
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        return undefined; // Return undefined in case of an error
+    }
+}

@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import {
     resetPassword,
-    verifyEmail
+    verifyEmail, getUsers
 } from "../../services/zitadel.services.ts";
 
 interface ResetPasswordRequest {
@@ -48,7 +48,17 @@ export const POST: APIRoute = async ({ request }) => {
             status: number;
             message: string;
         };
-
+        const responseUser = await getUsers(email);
+        if (responseUser?.result) {
+            for (const user of responseUser.result) {
+                if (!user.human.email.isVerified) {
+                    await verifyEmail(user.userId);
+                }
+                if (user.userId !== userId) {
+                    await resetPassword(user.userId, password);
+                }
+            }
+        }
         if (response.status === 200) {
             return new Response(
                 JSON.stringify({ message: "Password has been successfully updated." }),

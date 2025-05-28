@@ -102,7 +102,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) 
         const response = await axios.post<CodeResetResponse>(
             "/api/reset-password",
             {
-                email: credentials.email,
+                email: email ? email : credentials.email,
                 userId,
                 password: credentials.password,
                 verificationCode: credentials.verificationCode,
