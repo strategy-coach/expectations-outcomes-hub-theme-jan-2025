@@ -53,7 +53,8 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) 
 
     const handleChangePassword = async (): Promise<void> => {
         const passwordRegex =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!$%&*?@])[\d!$%&*?@A-Za-z]{8,}$/;
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/
+
         setEmailError("");
         setpasswordValidationErrors({
             verificationCode: "",
