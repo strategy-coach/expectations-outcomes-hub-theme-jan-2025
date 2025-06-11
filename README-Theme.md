@@ -1158,20 +1158,15 @@ graph TD
 **ℹ️ Info:** Mermaid requires Node.js v20.9.0 or later to function properly.
 
 - **Plantuml Diagram**
-Install `pnpm install @akebifiky/remark-simple-plantuml` package using pnpm:
+Install `pnpm install astro-plantuml` package using pnpm:
 
 Add the below code snippet in `astro.config.mjs`
 
-import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
+import plantuml from 'astro-plantuml';
 
 Add the below code snippet in `astro.config.mjs` **defineConfig** function
-markdown: {
-    remarkPlugins: [
-      
-      remarkPlantUML,
-     
-    ],
-  }
+
+integrations: [plantuml() ]
 
 Use the following code snippet to add a Plantuml diagram:
 ```plantuml
