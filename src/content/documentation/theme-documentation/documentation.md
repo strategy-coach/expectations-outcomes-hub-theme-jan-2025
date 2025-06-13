@@ -113,7 +113,7 @@ Easily integrate ZITADEL authentication into your project.
 
 | Username | Password       |
 |----------|----------------|
-| EOHdemo  | Demo@eoh1234   |
+| eoh_demo@eoh.com  | Demo@eoh1234   |
 
 ## Getting Started  
 
