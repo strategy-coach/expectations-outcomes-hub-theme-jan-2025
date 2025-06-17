@@ -57,7 +57,7 @@ const GitCommitDetails: React.FC<GitCommitDetailsProps> = ({ filename }) => {
   };
 
   return (
-    <div className="md:col-span-3 pl-5 bg-white dark:bg-gray-800 pt-6 mt-4">
+    <div className="px-4 bg-white dark:bg-gray-800 pt-6 mt-4">
       <aside>
         <div className="flow-root min-h-90">
           <ul>
@@ -89,16 +89,16 @@ const GitCommitDetails: React.FC<GitCommitDetailsProps> = ({ filename }) => {
 
           {/* Pagination Controls */}
           {filteredCommits.length > itemsPerPage && (
-            <div className="flex justify-between items-center mt-4 pb-4 pr-4 relative">
+            <div className="flex justify-between items-center mt-4 pb-4 relative">
                 <button
                 onClick={handlePrev}
                 disabled={page === 0}
                 className="px-4 py-2 bg-gray-300 text-base rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white"
                 >
-                Previous
+                Prev
                 </button>
 
-                <span className="text-sm text-gray-600 dark:text-white">
+                <span className="text-xs lg:text-xs xl:text-sm text-gray-600 dark:text-white mx-1">
                 Page {page + 1} of {Math.ceil(filteredCommits.length / itemsPerPage)}
                 </span>
 
