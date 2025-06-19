@@ -134,17 +134,17 @@ Easily integrate ZITADEL authentication into your project.
    ```bash
    pnpm run pagefind-search
 
-4. **Start the development server**  
 
-   ```bash
-   pnpm run dev
-   
-
-5. **Build the site**  
+4. **Build the site**  
 
    ```bash
    pnpm run build
    ```
+
+5. **Start the development server**  
+
+   ```bash
+   pnpm run dev
 
 ## Folder Structure  
 
