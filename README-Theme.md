@@ -16,6 +16,123 @@ The **EOH Astro 5 Theme** is a highly customizable and versatile Astro-based the
 - **Landing Page**: Includes cards, mission, and vision sections etc.  
 - **Custom Pages**: Easily add new pages as needed.  
 
+
+
+## Getting Started  
+
+
+# Local Setup Guide for Expectations-Outcomes-Hub (EOH) Theme Site
+
+To run the EOH theme site demo locally, it's recommended to first set up your **Engineering Sandbox**.
+
+> 📘 **Note:** If you haven't set up the Engineering Sandbox yet, follow the guide here:  
+> [https://github.com/netspective-labs/home-polyglot](https://github.com/netspective-labs/home-polyglot)
+
+## 🚧 Prerequisites
+
+Make sure the following tools are installed and properly configured:
+
+### 1. Node.js
+
+Ensure **Node.js version 20.9.0 or higher** is installed.
+
+Check version:
+
+```bash
+node -v
+```
+
+### 2. pnpm (Package Manager)
+
+This project uses `pnpm` as the package manager.
+
+Install it globally if not already installed:
+
+```bash
+npm install -g pnpm
+```
+
+### 3. Surveilr
+
+Surveilr is required for this project. Install it using `eget`:
+
+```bash
+eget opsfolio/releases.opsfolio.com --asset tar.gz --tag=1.8.4
+```
+
+Confirm the version:
+
+```bash
+surveilr --version
+# Expected output: surveilr 1.8.4
+```
+
+
+
+---
+
+## ⚙️ Project Setup Steps
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025.git
+cd expectations-outcomes-hub-theme-jan-2025
+```
+
+### 2. Copy Environment Variables
+
+Copy `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+### 3. Configure Environment Variables
+
+Open the newly copied `.env` file and fill in the required values according to your local setup and credentials.
+
+---
+
+### 4. Install Dependencies
+
+```bash
+pnpm install
+```
+
+### 5. Enable Local Search
+
+```bash
+pnpm run pagefind-search
+```
+
+### 6. Build the Site
+
+```bash
+pnpm run build
+```
+
+### 7. Start the Development Server
+
+```bash
+pnpm run dev
+```
+
+---
+
+## 🔄 Final Step: Sync Data Models
+
+Once the dev server is running:
+
+- Open the site in your browser.
+- Go to the **Profile** page from the top-right menu.
+- Click on the **"Sync now"** button.  
+  _(This will synchronize Data Models and Zitadel Users.)_
+
+---
+
+
+
 ## GitHub Discussions Integration  
 
 This theme demonstrates integration with GitHub Discussions using the `github-discussions-blog-loader`.
@@ -109,36 +226,6 @@ Easily integrate ZITADEL authentication into your project.
 |----------|----------------|
 | eoh_demo@eoh.com  | Demo@eoh1234   |
 
-## Getting Started  
-
-1. **Clone the Repository**  
-
-   ```bash
-   git clone <repository-url>  
-   cd <repository-directory>
-   
-2. **Install Dependencies**  
-
-   ```bash
-   pnpm install
-
-   
-3. **To enable search in local run the following command**
-
-   ```bash
-   pnpm run pagefind-search
-
-4. **Start the development server**  
-
-   ```bash
-   pnpm run dev
-   
-
-5. **Build the site**  
-
-   ```bash
-   pnpm run build
-   ```
 
 ## Folder Structure  
 
