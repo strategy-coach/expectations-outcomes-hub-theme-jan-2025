@@ -344,7 +344,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const getRelativeTime = (timestamp: string) => moment(Number(timestamp)).fromNow();
 
     return (
-        <div className="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+        <div className="lg:col-span-6 bg-white dark:bg-gray-800 rounded-lg p-4">
             <h3 className="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
                 <div className="flex gap-2 items-center">
                     <img
@@ -575,9 +575,9 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             }`}
                         disabled={page === 1}
                     >
-                        Previous
+                        Prev
                     </button>
-                    <span className="text-sm text-gray-600 dark:text-white">
+                    <span className="text-xs lg:text-xs xl:text-sm text-gray-600 dark:text-white">
                         Page {page} of {totalPages}
                     </span>
                     <button

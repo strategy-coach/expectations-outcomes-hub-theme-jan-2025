@@ -5,22 +5,24 @@ import tailwind from "@astrojs/tailwind";
 
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
-import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
+//import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
 //import rehypeMermaid from "rehype-mermaid";
 import { rehypeMermaid } from "@beoe/rehype-mermaid";
 import { getCache } from "@beoe/cache";
+import plantuml from 'astro-plantuml';
+
 
 const cache = await getCache();
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), mdx()],
+  integrations: [tailwind(), react(), mdx(),plantuml()],
   markdown: {
     syntaxHighlight: {
       type: "shiki",
       excludeLangs: ["mermaid", "math"],
     },
-    remarkPlugins: [remarkPlantUML],
+    //remarkPlugins: [remarkPlantUML],
     //rehypePlugins: [rehypeMermaid],
     rehypePlugins: [
       [

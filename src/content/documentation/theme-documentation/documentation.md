@@ -113,7 +113,7 @@ Easily integrate ZITADEL authentication into your project.
 
 | Username | Password       |
 |----------|----------------|
-| EOHdemo  | Demo@eoh1234   |
+| eoh_demo@eoh.com  | Demo@eoh1234   |
 
 ## Getting Started  
 
@@ -1172,25 +1172,20 @@ graph TD
 
 - **Plantuml Diagram**
 
-Install `pnpm install @akebifiky/remark-simple-plantuml` package using pnpm:
+Install `pnpm install astro-plantuml` package using pnpm:
 
 Add the below code snippet in `astro.config.mjs`
 
 ```
-import remarkPlantUML from "@akebifiky/remark-simple-plantuml";
+import plantuml from 'astro-plantuml';;
 
 ```
 
 Add the below code snippet in `astro.config.mjs` **defineConfig** function
 
 ```
-markdown: {
-    remarkPlugins: [
-      
-      remarkPlantUML,
-     
-    ],
-  }
+integrations: [plantuml() ]
+
 ```
 
 Use the following code snippet to add a Plantuml diagram:
