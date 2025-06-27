@@ -21,7 +21,7 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
     if (pathname.startsWith("/fleetfolio-service")) {
         let targetUrl;
 
-        if (pathname === "/fleetfolio-service") {
+        if (pathname === "/fleetfolio-service" || pathname === "/fleetfolio-service/") {
             targetUrl = `${TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
         } else {
             targetUrl = `${BASE_TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
