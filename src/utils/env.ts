@@ -35,3 +35,4 @@ export const reportConfig = {
 export const nmapDBPath = import.meta.env.PUBLIC_NMAP_DB;
 
 export const fleetfolioUrl = import.meta.env.PUBLIC_FLEETFOLIO_URL;
+export const qualityfolioUrl = import.meta.env.PUBLIC_QUALITYFOLIO_URL;
