@@ -10,6 +10,9 @@ const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
 const userRole = Astro.cookies.get("zitadel_user_role")?.value || "";
 const email = Astro.cookies.get("zitadel_user_email");
 const userName = Astro.cookies.get("zitadel_user_name");
+const currentUrl = new URL(Astro.request.url);
+const darkModeHide =
+  currentUrl.pathname.includes('fleetfolio-service') || currentUrl.pathname.includes('qualityfolio');
 ---
 
 <header
@@ -181,29 +184,29 @@ const userName = Astro.cookies.get("zitadel_user_name");
           }
         </ul>
       </div>
-      <button
-        id="toggle-theme"
-        class="text-muted dark:bg-gray-900 dark:text-gray-400 dark:focus:ring-gray-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 inline-flex items-center p-2.5 rounded-lg text-sm"
-        type="button"
-        title="Toggle between Dark and Light mode"
-        aria-label="Toggle between Dark and Light mode"
-        data-aw-toggle-color-scheme=""
-        ><svg
-          class="w-6 h-6 md:h-5 md:inline-block md:w-5"
-          data-icon="tabler:sun"
-          height="1em"
-          width="1em"
-          ><symbol id="ai:tabler:sun" viewBox="0 0 24 24"
-            ><path
-              d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"></path></symbol
-          ><use href="#ai:tabler:sun"></use></svg
-        ></button
-      >
+      {!darkModeHide && (
+        <button
+          id="toggle-theme"
+          class="text-muted dark:bg-gray-900 dark:text-gray-400 dark:focus:ring-gray-700 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 hover:bg-gray-100 inline-flex items-center p-2.5 rounded-lg text-sm"
+          type="button"
+          title="Toggle between Dark and Light mode"
+          aria-label="Toggle between Dark and Light mode"
+          data-aw-toggle-color-scheme=""
+          ><svg
+            class="w-6 h-6 md:h-5 md:inline-block md:w-5"
+            data-icon="tabler:sun"
+            height="1em"
+            width="1em"
+            ><symbol id="ai:tabler:sun" viewBox="0 0 24 24"
+              ><path
+                d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0m-5 0h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7l-.7.7m0 11.4l.7.7m-12.1-.7l-.7.7"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"></path></symbol><use href="#ai:tabler:sun"></use></svg>
+          </button>
+      )}
     </div>
   </div>
 </header>
