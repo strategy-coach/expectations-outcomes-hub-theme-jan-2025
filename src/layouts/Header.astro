@@ -235,3 +235,9 @@ const darkModeHide =
     });
   });
 </script>
+<script>
+  const path = window.location.pathname;
+  if (path.includes("fleetfolio-service") || path.includes("qualityfolio")) {
+    document.documentElement.classList.remove("dark");
+  }
+</script>
