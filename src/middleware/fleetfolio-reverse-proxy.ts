@@ -18,10 +18,13 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
 
     const { pathname, search } = context.url;
 
+    // You can also get these additional URL parts:
+
+
     if (pathname.startsWith("/fleetfolio-service")) {
         let targetUrl;
 
-        if (pathname === "/fleetfolio-service" || pathname === "/fleetfolio-service/") {
+        if (pathname === "/fleetfolio-service") {
             targetUrl = `${TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
         } else {
             targetUrl = `${BASE_TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
@@ -56,6 +59,17 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
                 html = html.replace(
                     regex,
                     `<a $1href="/fleetfolio-service/$2"`
+                );
+
+                const firstSegmentPathName = pathname.split('/').filter(Boolean)[0];// To get firstsegmant of the path
+                console.log("firstSegmentPathName:", firstSegmentPathName)
+                html = html.replace(
+                    /<a\s+([^>]*?)href="(\/?[a-zA-Z0-9_-]+\.sql(?:\?[^"]*)?)"([^>]*)>/gi,
+                    (match, beforeHref, sqlHref, afterHref) => {
+                        // Only transform hrefs that start with SQL files (with or without leading slash)
+                        const newHref = `/fleetfolio-service/netspective-fleetfolio/fleetfolio/${sqlHref.replace(/^\//, '')}`;
+                        return `<a ${beforeHref}href="${newHref}"${afterHref}>`;
+                    }
                 );
 
                 // ✅ Remove empty <h1> tags (including attributes)
