@@ -94,10 +94,16 @@ const enableSupportAndFeedback =
       src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
       type="module"
       crossorigin="anonymous"></script>
-    <!-- <script
-      src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"
-    ></script> -->
-   
+    <script>
+      if (!window.location.href.includes("qualityfolio")) {
+        const script = document.createElement("script");
+        script.src =
+          "https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js";
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+    </script>
+
     {
       enableOpenObserve == "true" && (
         <>
