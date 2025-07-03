@@ -97,34 +97,7 @@ const enableSupportAndFeedback =
     <script
       src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"
     ></script>
-    <script>
-      function ensureChartsRender() {
-        const tryInit = () => {
-          if (typeof window.sqlpageInit === "function") {
-            try {
-              window.sqlpageInit();
-            } catch (err) {
-              console.error("sqlpageInit failed:", err);
-            }
-          } else {
-            console.warn("sqlpageInit not available");
-            setTimeout(tryInit, 200);
-          }
-        };
-        tryInit();
-      }
-
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          const script = document.createElement("script");
-          script.src =
-            "https://demo.hub.opsfolio.com/eoh-qualityfolio/apexcharts.2f3aec098bc6d001.js";
-          script.onload = ensureChartsRender;
-          document.head.appendChild(script);
-        }, 100);
-      });
-    </script>
-
+   
     {
       enableOpenObserve == "true" && (
         <>
