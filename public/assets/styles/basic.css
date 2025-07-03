@@ -1480,6 +1480,11 @@ select {
     background-color: rgb(249 250 251 / var(--tw-bg-opacity))
 }
 
+.bg-gray-40 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity))
+}
+
 .bg-teal-400 {
     --tw-bg-opacity: 1;
     background-color: rgb(45 212 191 / var(--tw-bg-opacity))
@@ -1818,7 +1823,10 @@ select {
     --tw-bg-opacity: 1;
     background-color: rgb(249 250 251 / var(--tw-bg-opacity))
 }
-
+.hover\:bg-gray-40:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity))
+}
 .hover\:text-gray-500:hover {
     --tw-text-opacity: 1;
     color: rgb(107 114 128 / var(--tw-text-opacity))

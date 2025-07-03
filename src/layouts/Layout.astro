@@ -13,7 +13,6 @@ const { title } = Astro.props;
 const { baseHyperLinkColor } = themeConfig || {};
 const { enableEditButton } = Astro.props;
 const { redirect } = Astro.props;
-
 const enableOpenObserve =
   import.meta.env.ENABLE_OPEN_OBSERVE !== undefined
     ? import.meta.env.ENABLE_OPEN_OBSERVE
@@ -127,7 +126,7 @@ const enableSupportAndFeedback =
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-50 dark:bg-gray-900 dark:text-white">
+  <body class="bg-gray-40 dark:bg-gray-900 dark:text-white">
     <Header />
     <script define:vars={{ userName, userEmail }} is:inline>
       window.widgetConfig = {
