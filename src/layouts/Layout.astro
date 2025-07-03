@@ -97,6 +97,33 @@ const enableSupportAndFeedback =
     <script
       src="https://cdn.jsdelivr.net/npm/apexcharts@3.46.0/dist/apexcharts.min.js"
     ></script>
+    <script>
+      function ensureChartsRender() {
+        const tryInit = () => {
+          if (typeof window.sqlpageInit === "function") {
+            try {
+              window.sqlpageInit();
+            } catch (err) {
+              console.error("sqlpageInit failed:", err);
+            }
+          } else {
+            console.warn("sqlpageInit not available");
+            setTimeout(tryInit, 200);
+          }
+        };
+        tryInit();
+      }
+
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const script = document.createElement("script");
+          script.src =
+            "https://demo.hub.opsfolio.com/eoh-qualityfolio/apexcharts.2f3aec098bc6d001.js";
+          script.onload = ensureChartsRender;
+          document.head.appendChild(script);
+        }, 100);
+      });
+    </script>
 
     {
       enableOpenObserve == "true" && (
@@ -130,10 +157,10 @@ const enableSupportAndFeedback =
       };
     </script>
     {
-      enableSupportAndFeedback == "true" && ( 
+      enableSupportAndFeedback == "true" && (
         <script src="/assets/js/support-and-feedback.js" is:inline />
-       )
-    } 
+      )
+    }
 
     <script is:inline>
       document.addEventListener("DOMContentLoaded", () => {
@@ -163,7 +190,7 @@ const enableSupportAndFeedback =
     // Function to apply URL modification to links
     function updateLinks() {
       const resultLinks = document.querySelectorAll(
-        ".pagefind-ui__result-link",
+        ".pagefind-ui__result-link"
       );
       resultLinks.forEach((link) => {
         const originalHref = link.getAttribute("href");
@@ -175,7 +202,7 @@ const enableSupportAndFeedback =
 
       // Remove the class `pagefind-ui__result-thumb` from elements
       const thumbElements = document.querySelectorAll(
-        ".pagefind-ui__result-thumb",
+        ".pagefind-ui__result-thumb"
       );
       thumbElements.forEach((element) => {
         element.classList.remove("pagefind-ui__result-thumb");
@@ -214,11 +241,10 @@ const enableSupportAndFeedback =
   }
 </style>
 
-
 <script>
   import "../../public/assets/styles/PanZoomUi.css";
   import { PanZoomUi } from "@beoe/pan-zoom";
-  
+
   // for BEOE diagrams
   document.querySelectorAll(".beoe").forEach((container) => {
     const element = container.firstElementChild;
@@ -226,7 +252,7 @@ const enableSupportAndFeedback =
     // @ts-expect-error
     new PanZoomUi({ element, container }).on();
   });
-  
+
   // for content images
   document
     .querySelectorAll(
