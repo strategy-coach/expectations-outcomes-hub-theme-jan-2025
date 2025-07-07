@@ -195,7 +195,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             WHERE str_match(url, '${pageUrl ? pageUrl : host}') 
             AND organizationid='${ORGANIZATION_ID}' 
             AND operation_name IN (${filter === "all"
-                    ? "'element-click', 'documentLoad','user-authentication','add-comment','add-page-reaction'"
+                    ? "'element-click', 'documentLoad','user-authentication','add-comment','add-page-reaction','add-user','delete-user'"
                     : `'${filter}'`
                 }) 
             ${roleFilter}`;
@@ -300,9 +300,18 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
             : operation === "user-authentication"
                 ? { icon: "🔑", color: "bg-purple-500" }
                 : operation === "add-comment"
-                    ? { icon: "💬", color: "bg-indigo-500" } : operation === "add-page-reaction" ? { icon: "💬", color: "bg-indigo-700" }
-                        : { icon: "📄", color: "bg-blue-500" };
+                    ? { icon: "💬", color: "bg-indigo-500" }
+                    : operation === "add-page-reaction"
+                        ? { icon: "💬", color: "bg-indigo-700" }
+                        : operation === "add-user"
+                            ? { icon: "👤", color: "bg-green-700" }        // Darker green
+                            : operation === "delete-user"
+                                ? { icon: "🗑️", color: "bg-rose-700" }         // Matches red tone used for destructive actions
+                                : { icon: "📄", color: "bg-blue-500" };
     };
+
+
+
 
     const getActivityMessage = (log: ActivityLogType) => {
         const roleText = log.userrole ? `(${formatUserRole(log.userrole)})` : "";
@@ -333,7 +342,12 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
             return `${log.username} ${roleText} commented on <strong>${log.pagetitle}</strong> page${mentionText}`;
         }
-
+        if (log.operation_name === "add-user") {
+            return `${log.username} ${roleText} added <strong>${details.user}</strong> as a new user with role <strong>${formatUserRole(details.role)}</strong>`;
+        }
+        if (log.operation_name === "delete-user") {
+            return `${log.username} ${roleText} deleted the user <strong>${details.user}</strong>`;
+        }
         if (log.operation_name === "add-page-reaction") {
             return `${log.username} ${roleText} reacted with ${details.reactionname} ${details.icon} on <strong>${log.pagetitle}</strong> page`;
         }

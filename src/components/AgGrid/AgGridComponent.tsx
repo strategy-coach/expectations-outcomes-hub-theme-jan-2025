@@ -95,6 +95,10 @@ const AgGridComponent: React.FC<Props> = ({
 
     if (isConfirmed) {
       await DeleteUser(id);
+      const attributes = globalThis.setAttributes("Delete User", {
+        user: name
+      });
+      globalThis.setOTTracer("delete-user", attributes);
       const event = new CustomEvent("delete-user", {
         detail: {
           description: "Delete User",

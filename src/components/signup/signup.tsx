@@ -153,6 +153,11 @@ const UserSignUp: React.FC = () => {
                 `
                 };
                 await novuApiCall("hub-signup", payload, formData.email);
+                const attributes = globalThis.setAttributes("Add User", {
+                    user: formData.displayName,
+                    role: formData.role
+                });
+                globalThis.setOTTracer("add-user", attributes);
                 setFormData({
                     givenName: "",
                     familyName: "",
