@@ -209,6 +209,17 @@ const enableSupportAndFeedback =
 </script>
 
 <style is:global>
+  /* Hide separators after hidden breadcrumb items */
+  /* Hide separator following hidden links */
+  .c-breadcrumbs__link[hidden] + .c-breadcrumbs__separator {
+    display: none;
+  }
+
+  /* OR hide the whole <li> if the <a> inside is hidden */
+  .c-breadcrumbs__crumb:has(.c-breadcrumbs__link[hidden]) {
+    display: none;
+  }
+
   main a {
     color: var(--hyperlink-color, #007bff);
     text-decoration: none;
