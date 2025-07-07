@@ -87,12 +87,16 @@ jobs:
           
       - name: Build using pnpm
         run: |
-          pnpm run build       
+          pnpm run build
+          
+      - name: Generate qualityfolio DB
+        run: |
+          pnpm run repare-qualityfolio-db
           
       - name: Archive build artifacts
         run: |
-          tar -czvf expectations-outcomes-hub-theme.tar.gz dist node_modules
-
+          tar -czvf expectations-outcomes-hub-theme.tar.gz dist node_modules src/content/db/qualityfolio/resource-surveillance.sqlite.db
+          
       - name: Copy build artifacts to the production server
         run: |
           scp -P22 -o StrictHostKeyChecking=no expectations-outcomes-hub-theme.tar.gz "${{ secrets.PRODUCTION_DEPLOYMENT_USER }}@${{ secrets.PRODUCTION_DEPLOYMENT_SERVER_IP }}:"
