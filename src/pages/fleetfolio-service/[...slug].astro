@@ -3,7 +3,6 @@ import Layout from "../../layouts/Layout.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
-
 ---
 
 <Layout title="Fleetfolio">
@@ -16,9 +15,12 @@ const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
         ariaLabel="Site navigation"
         separatorAriaHidden={false}
         customizeLinks={[
-          { index: 2, "aria-disabled": true },
-          { index: 3, "aria-disabled": true },
-          { index: 4, "aria-disabled": true },
+          { index: 2, hidden: true },
+          { index: 3, hidden: true },
+          {
+            index: 4,
+            hidden: true,
+          },
         ]}
       >
         <svg
@@ -46,3 +48,72 @@ const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
     </div>
   </main>
 </Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Step 1: Get and hide the source breadcrumb (old nav)
+    const sourceNav = document.querySelector('nav[aria-label="breadcrumb"]');
+    if (!(sourceNav instanceof HTMLElement)) return;
+    sourceNav.style.display = "none";
+
+    const breadcrumbItems = Array.from(
+      sourceNav.querySelectorAll("li.breadcrumb-item a")
+    );
+
+    // Step 2: Take all items from index 2 onward
+    const itemsToInject = breadcrumbItems.slice(3);
+    if (itemsToInject.length === 0) return;
+
+    // Step 3: Get target breadcrumb
+    const targetNav = document.querySelector(
+      'nav[aria-label="Site navigation"]'
+    );
+    if (!targetNav) return;
+
+    const crumbsList = targetNav.querySelector("ol.c-breadcrumbs__crumbs");
+    const lastCrumb = crumbsList?.lastElementChild;
+    if (!crumbsList || !lastCrumb) return;
+
+
+    itemsToInject.forEach((item, index) => {
+      const text = item.textContent?.trim() || "";
+      const href = item.getAttribute("href") ?? "#";
+
+      const li = document.createElement("li");
+      li.className = "c-breadcrumbs__crumb";
+
+      const isLast = index === itemsToInject.length - 1;
+
+      if (isLast) {
+
+        const span = document.createElement("span");
+        span.className = "c-breadcrumbs__link is-current";
+        span.textContent = text;
+        span.setAttribute("aria-current", "location"); // mark as current
+        li.appendChild(span);
+      } else {
+      
+        const a = document.createElement("a");
+        a.className = "c-breadcrumbs__link";
+        a.href = href;
+        a.textContent = text;
+        a.setAttribute("aria-current", "false");
+        li.appendChild(a);
+
+        // Add separator
+        const separator = document.createElement("span");
+        separator.className = "c-breadcrumbs__separator";
+        separator.setAttribute("aria-hidden", "true");
+        separator.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>`;
+        li.appendChild(separator);
+      }
+
+      crumbsList.insertBefore(li, lastCrumb);
+    });
+  });
+</script>

@@ -40,7 +40,7 @@ export const qualityfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddl
                 let html = await response.text();
                 html = html.replace(/;+\s*$/, "");
                 const baseUrl = new URL(TARGET_URL).origin;
-                // // ✅ Fix relative paths in the HTML
+                // // // ✅ Fix relative paths in the HTML
                 html = html
                     .replace(/(href|src)="\/(\S+\.css)"/g, `$1="${baseUrl}/$2"`)
                     .replace(/(href|src)="\/(\S+\.js)"/g, `$1="${baseUrl}/$2"`)
@@ -57,16 +57,15 @@ export const qualityfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddl
                 );
 
                 const firstSegment = getFirstPathSegment(TARGET_URL);
-                console.log("[QUALITYFOLIO] firstSegment:", firstSegment)
 
-                // ✅ Fix internal links - handle multiple patterns
+
+                // // ✅ Fix internal links - handle multiple patterns
                 if (firstSegment) {
                     // Pattern 1: Links that start with the first segment
                     const regex1 = new RegExp(`<a\\s+(.*?)href="/(${firstSegment}/[^"]+)"`, 'g');
                     html = html.replace(
                         regex1,
                         (match, attrs, path) => {
-                            console.log(`[QUALITYFOLIO] Replacing link: ${match} -> <a ${attrs}href="/qualityfolio/${path}"`);
                             return `<a ${attrs}href="/qualityfolio/${path}"`;
                         }
                     );
@@ -80,15 +79,14 @@ export const qualityfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddl
                         if (path.startsWith('qualityfolio/') || path.startsWith('http')) {
                             return match;
                         }
-                        console.log(`[QUALITYFOLIO] Replacing general link: ${match} -> <a ${attrs}href="/qualityfolio/${path}"`);
                         return `<a ${attrs}href="/qualityfolio/${path}"`;
                     }
                 );
 
                 // ✅ Remove empty <h1> tags (including attributes)
                 html = html.replace(/<h1[^>]*>\s*<\/h1>/g, "");
-                // ✅ Remove <nav> elements (including content inside)
-                html = html.replace(/<nav[^>]*>[\s\S]*?<\/nav>/g, "");
+                // // ✅ Remove <nav> elements (including content inside)
+                // html = html.replace(/<nav[^>]*>[\s\S]*?<\/nav>/g, "");
 
                 // ✅ Pass HTML to layout via `locals`
                 context.locals.proxiedHtml = html;
