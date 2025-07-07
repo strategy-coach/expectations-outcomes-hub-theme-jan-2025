@@ -1,0 +1,158 @@
+{
+  "test_case_fii": "TC-EOH-SEC-001",
+  "title": "Verify SQL Injection Protection in Authentication Forms",
+  "status": "passed",
+  "start_time": "2024-01-20T14:15:30.123Z",
+  "end_time": "2024-01-20T14:18:45.567Z",
+  "total_duration": "3 minutes 15 seconds",
+  "environment": "Demo",
+  "security_tool": "OWASP ZAP 2.14.0",
+  "executed_by": "security-automation@eoh-theme.demo",
+  "demo_notice": "⚠️ DEMO DATA - Synthetic security test results for demonstration purposes",
+  "steps": [
+    {
+      "step": 1,
+      "stepname": "Test basic SQL injection in email field",
+      "status": "passed",
+      "start_time": "2024-01-20T14:15:30.134Z",
+      "end_time": "2024-01-20T14:15:45.234Z",
+      "duration": "15.1 seconds",
+      "details": {
+        "injection_payload": "admin@example.com' OR '1'='1' --",
+        "response_time": "0.8 seconds",
+        "http_status": 401,
+        "error_message": "Invalid email or password",
+        "sql_injection_detected": false,
+        "input_sanitization": "successful",
+        "security_protection": "active"
+      }
+    },
+    {
+      "step": 2,
+      "stepname": "Test union-based SQL injection",
+      "status": "passed",
+      "start_time": "2024-01-20T14:15:45.245Z",
+      "end_time": "2024-01-20T14:16:12.456Z",
+      "duration": "27.2 seconds",
+      "details": {
+        "injection_payload": "test@example.com' UNION SELECT username, password FROM users --",
+        "response_time": "0.9 seconds",
+        "http_status": 401,
+        "data_exposure": "none",
+        "union_injection_blocked": true,
+        "parameterized_queries": "confirmed"
+      }
+    },
+    {
+      "step": 3,
+      "stepname": "Test time-based blind SQL injection",
+      "status": "passed",
+      "start_time": "2024-01-20T14:16:12.467Z",
+      "end_time": "2024-01-20T14:16:45.123Z",
+      "duration": "32.7 seconds",
+      "details": {
+        "injection_payload": "admin@example.com'; WAITFOR DELAY '00:00:05' --",
+        "response_time": "0.7 seconds",
+        "expected_delay": "5 seconds",
+        "actual_delay": "0 seconds",
+        "time_injection_blocked": true,
+        "query_timeout_protection": "active"
+      }
+    },
+    {
+      "step": 4,
+      "stepname": "Test boolean-based blind SQL injection",
+      "status": "passed",
+      "start_time": "2024-01-20T14:16:45.134Z",
+      "end_time": "2024-01-20T14:17:15.567Z",
+      "duration": "30.4 seconds",
+      "details": {
+        "injection_payload": "admin@example.com' AND (SELECT COUNT(*) FROM users) > 0 --",
+        "response_time": "0.8 seconds",
+        "http_status": 401,
+        "information_disclosure": "none",
+        "boolean_injection_blocked": true,
+        "consistent_error_response": true
+      }
+    },
+    {
+      "step": 5,
+      "stepname": "Test error-based SQL injection",
+      "status": "passed",
+      "start_time": "2024-01-20T14:17:15.578Z",
+      "end_time": "2024-01-20T14:17:58.234Z",
+      "duration": "42.7 seconds",
+      "details": {
+        "injection_payload": "Complex error-based injection payload",
+        "response_time": "0.9 seconds",
+        "http_status": 401,
+        "database_info_exposed": false,
+        "error_message": "Invalid email or password",
+        "generic_error_handling": true,
+        "error_injection_blocked": true
+      }
+    },
+    {
+      "step": 6,
+      "stepname": "Verify logging and monitoring",
+      "status": "passed",
+      "start_time": "2024-01-20T14:17:58.245Z",
+      "end_time": "2024-01-20T14:18:45.556Z",
+      "duration": "47.3 seconds",
+      "details": {
+        "security_logs_generated": true,
+        "injection_attempts_logged": 5,
+        "alert_severity": "HIGH",
+        "incident_response_triggered": true,
+        "log_retention": "90 days",
+        "monitoring_system": "active"
+      }
+    }
+  ],
+  "security_assessment": {
+    "overall_security_rating": "SECURE",
+    "sql_injection_protection": "EXCELLENT",
+    "input_validation": "ROBUST",
+    "error_handling": "SECURE",
+    "logging_monitoring": "COMPREHENSIVE"
+  },
+  "vulnerability_scan_results": {
+    "sql_injection_vulnerabilities": 0,
+    "input_validation_issues": 0,
+    "information_disclosure_risks": 0,
+    "authentication_bypasses": 0,
+    "total_security_issues": 0
+  },
+  "protection_mechanisms": {
+    "parameterized_queries": "implemented",
+    "input_sanitization": "active",
+    "output_encoding": "enabled",
+    "error_handling": "secure",
+    "rate_limiting": "configured",
+    "web_application_firewall": "active"
+  },
+  "compliance_validation": {
+    "owasp_top_10": "compliant",
+    "sans_top_25": "compliant",
+    "cwe_89_sql_injection": "protected",
+    "security_standards": "met"
+  },
+  "monitoring_alerts": [
+    {
+      "timestamp": "2024-01-20T14:15:30.134Z",
+      "severity": "HIGH",
+      "type": "SQL_INJECTION_ATTEMPT",
+      "source_ip": "192.168.1.100",
+      "payload": "admin@example.com' OR '1'='1' --",
+      "action_taken": "BLOCKED"
+    },
+    {
+      "timestamp": "2024-01-20T14:15:45.245Z",
+      "severity": "HIGH",
+      "type": "UNION_INJECTION_ATTEMPT",
+      "source_ip": "192.168.1.100",
+      "payload": "UNION SELECT attack",
+      "action_taken": "BLOCKED"
+    }
+  ]
+}

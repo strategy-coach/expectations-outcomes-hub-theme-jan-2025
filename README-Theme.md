@@ -1,31 +1,34 @@
-# EOH Astro 5 Theme  
+# EOH Astro 5 Theme
 
-## Overview  
+## Overview
 
-The **EOH Astro 5 Theme** is a highly customizable and versatile Astro-based theme. It comes equipped with essential components like breadcrumbs, headers, footers, and sidebars for seamless navigation. The theme supports dynamic content creation, including features such as blog collections, landing pages, static pages, and GitHub Discussions integration.
+The **EOH Astro 5 Theme** is a highly customizable and versatile Astro-based
+theme. It comes equipped with essential components like breadcrumbs, headers,
+footers, and sidebars for seamless navigation. The theme supports dynamic
+content creation, including features such as blog collections, landing pages,
+static pages, and GitHub Discussions integration.
 
-## Features  
+## Features
 
-- **Header and Footer**: Easily customizable components.  
-- **Blog Pages**:  
-  - Blog listing page.  
-  - Blog detail page.  
-- **Expectations & Outcomes Collection**:  
-  - Generates a sidebar menu from items in `src/content`.  
-  - Sidebar is a customizable component.  
-- **Landing Page**: Includes cards, mission, and vision sections etc.  
-- **Custom Pages**: Easily add new pages as needed.  
+- **Header and Footer**: Easily customizable components.
+- **Blog Pages**:
+  - Blog listing page.
+  - Blog detail page.
+- **Expectations & Outcomes Collection**:
+  - Generates a sidebar menu from items in `src/content`.
+  - Sidebar is a customizable component.
+- **Landing Page**: Includes cards, mission, and vision sections etc.
+- **Custom Pages**: Easily add new pages as needed.
 
-
-
-## Getting Started  
-
+## Getting Started
 
 # Local Setup Guide for Expectations-Outcomes-Hub (EOH) Theme Site
 
-To run the EOH theme site demo locally, it's recommended to first set up your **Engineering Sandbox**.
+To run the EOH theme site demo locally, it's recommended to first set up your
+**Engineering Sandbox**.
 
-> 📘 **Note:** If you haven't set up the Engineering Sandbox yet, follow the guide here:  
+> 📘 **Note:** If you haven't set up the Engineering Sandbox yet, follow the
+> guide here:\
 > [https://github.com/netspective-labs/home-polyglot](https://github.com/netspective-labs/home-polyglot)
 
 ## 🚧 Prerequisites
@@ -67,8 +70,6 @@ surveilr --version
 # Expected output: surveilr 1.8.4
 ```
 
-
-
 ---
 
 ## ⚙️ Project Setup Steps
@@ -90,7 +91,8 @@ cp .env.example .env
 
 ### 3. Configure Environment Variables
 
-Open the newly copied `.env` file and fill in the required values according to your local setup and credentials.
+Open the newly copied `.env` file and fill in the required values according to
+your local setup and credentials.
 
 ---
 
@@ -126,31 +128,31 @@ Once the dev server is running:
 
 - Open the site in your browser.
 - Go to the **Profile** page from the top-right menu.
-- Click on the **"Sync now"** button.  
+- Click on the **"Sync now"** button.\
   _(This will synchronize Data Models and Zitadel Users.)_
 
 ---
 
+## GitHub Discussions Integration
 
+This theme demonstrates integration with GitHub Discussions using the
+`github-discussions-blog-loader`.
 
-## GitHub Discussions Integration  
+### Setup
 
-This theme demonstrates integration with GitHub Discussions using the `github-discussions-blog-loader`.
-
-### Setup  
-
-1. **Copy Environment Variables**:  
-   Copy `.env.example` to `.env`:  
+1. **Copy Environment Variables**:\
+   Copy `.env.example` to `.env`:
 
    ```bash
    cp .env.example .env
    ```
 
-2. **Configure Environment Variables**:  
+2. **Configure Environment Variables**:\
    Update the `.env` file with the following values:
-   - `PUBLIC_GITHUB_TOKEN`: GitHub Personal Access Token with read access to discussions.  
-   - `PUBLIC_GITHUB_REPO_NAME`: Repository name.  
-   - `PUBLIC_GITHUB_OWNER_NAME`: Repository owner (user or organization).  
+   - `PUBLIC_GITHUB_TOKEN`: GitHub Personal Access Token with read access to
+     discussions.
+   - `PUBLIC_GITHUB_REPO_NAME`: Repository name.
+   - `PUBLIC_GITHUB_OWNER_NAME`: Repository owner (user or organization).
 
    Example:
 
@@ -160,8 +162,8 @@ This theme demonstrates integration with GitHub Discussions using the `github-di
    PUBLIC_GITHUB_OWNER_NAME=your-username
    ```
 
-3. **Use the GitHub Discussion Loader Component**:  
-   Import and include the component in your Astro templates:  
+3. **Use the GitHub Discussion Loader Component**:\
+   Import and include the component in your Astro templates:
 
    ```astro
    ---
@@ -170,12 +172,12 @@ This theme demonstrates integration with GitHub Discussions using the `github-di
    <GithubDiscussionLoader />
    ```
 
-## ZITADEL Authentication Component  
+## ZITADEL Authentication Component
 
-Easily integrate ZITADEL authentication into your project.  
+Easily integrate ZITADEL authentication into your project.
 
-1. **Update Environment Variables**:  
-   Add the following to the `.env` file:  
+1. **Update Environment Variables**:\
+   Add the following to the `.env` file:
 
    ```env
    PUBLIC_ZITADEL_CLIENT_ID="your-client-id"
@@ -185,11 +187,10 @@ Easily integrate ZITADEL authentication into your project.
    PUBLIC_ZITADEL_ORGANIZATION_ID="your-organization-id"
    PUBLIC_ZITADEL_PROJECT_ID="your-project-id"
    PUBLIC_ZITADEL_API_TOKEN = xxxxxxxxxxxxxxxxxx
-
    ```
 
-2. **Use the Authentication Component**:  
-   Import and use it in your templates:  
+2. **Use the Authentication Component**:\
+   Import and use it in your templates:
 
    ```astro
    ---
@@ -207,27 +208,26 @@ Easily integrate ZITADEL authentication into your project.
    />
    ```
 
-3. **Example Usage**:  
-   - **Login**:  
+3. **Example Usage**:
+   - **Login**:
 
      ```astro
      <Authentication operation="login" />
      ```
 
-   - **Logout**:  
+   - **Logout**:
 
      ```astro
      <Authentication operation="logout" />
      ```
 
-## Demo Login Credentials  
+## Demo Login Credentials
 
-| Username | Password       |
-|----------|----------------|
-| eoh_demo@eoh.com  | Demo@eoh1234   |
+| Username         | Password     |
+| ---------------- | ------------ |
+| eoh_demo@eoh.com | Demo@eoh1234 |
 
-
-## Folder Structure  
+## Folder Structure
 
 ```plaintext
 ├── LICENSE
@@ -318,19 +318,22 @@ Easily integrate ZITADEL authentication into your project.
 
 To configure Qualityfolio, add the URL to your environment variables:
 
-``` PUBLIC_QUALITYFOLIO_URL="xxxxx" ```
+`PUBLIC_QUALITYFOLIO_URL="xxxxx"`
 
 Replace xxxxx with the appropriate URL.
 
-## Customization  
+## Customization
 
-- Update `header` and `footer` components to match your branding.  
-- Add or modify pages in the `src/pages` directory.  
+- Update `header` and `footer` components to match your branding.
+- Add or modify pages in the `src/pages` directory.
 - Customize the sidebar menu by editing `src/content`.
 
 ## Theme Configuration
 
-The `theme.config.ts` file allows you to customize certain aspects of the site's theme, including the logo, title, admin email, active project name, tracker details, navigation menu etc. These configurations are passed as an object to the `themeConfig` function.
+The `theme.config.ts` file allows you to customize certain aspects of the site's
+theme, including the logo, title, admin email, active project name, tracker
+details, navigation menu etc. These configurations are passed as an object to
+the `themeConfig` function.
 
 ### Example Configuration
 
@@ -371,7 +374,7 @@ export default themeConfig({
     { label: "Qualityfolio", path: "/qualityfolio", requiresAuth: true },
     { label: "Blog", path: "/blog" },
   ],
-   unauthorizedPages: [
+  unauthorizedPages: [
     "documentation",
     "blog",
     "logout",
@@ -381,98 +384,117 @@ export default themeConfig({
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
   authorizedSlides: [5], // Example: Only slides 5 require authentication
 });
-
 ```
 
 ## Home Page Widgets
 
-Theme includes widgets designed for the home page: **Skip To**, **Key Resources**, **Meeting Minutes**, **Accomplishments**, **IT Governance, Risk and Compliance** and **Latest Accomplishments**. These widgets dynamically display content based on Markdown files with specific frontmatter configurations. If no Markdown files contain the required frontmatter configuration for a widget, the corresponding widget block will not appear on the page.
+Theme includes widgets designed for the home page: **Skip To**, **Key
+Resources**, **Meeting Minutes**, **Accomplishments**, **IT Governance, Risk and
+Compliance** and **Latest Accomplishments**. These widgets dynamically display
+content based on Markdown files with specific frontmatter configurations. If no
+Markdown files contain the required frontmatter configuration for a widget, the
+corresponding widget block will not appear on the page.
 
-**Widgets Overview**
---------------------
+## **Widgets Overview**
 
 ### 1\. **Skip To**
 
-- Displays a list of titles from Markdown files configured with the skipTo frontmatter.
+- Displays a list of titles from Markdown files configured with the skipTo
+  frontmatter.
 
-- ```
-      home:
-         skipTo: 
-            category: "skipTo"
-    ```
+- ```yaml
+  home:
+     skipTo: 
+        category: "skipTo"
+  ```
 
-- You can add multiple Markdown files with this configuration, and their titles will appear under the **Skip To** card.
+- You can add multiple Markdown files with this configuration, and their titles
+  will appear under the **Skip To** card.
 
 ### 2\. **Key Resources**
 
-- Displays a list of titles from Markdown files configured with the keyResources frontmatter.
+- Displays a list of titles from Markdown files configured with the keyResources
+  frontmatter.
 
-- ```
-      home:
-         keyResources: 
-            category: "keyResources"
-     ```
+- ```yaml
+  home:
+     keyResources:
+        category: "keyResources"
+  ```
 
-- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Key Resources** card.
+- Multiple Markdown files can be added with this configuration, and their titles
+  will appear under the **Key Resources** card.
 
 ### 3\. **Latest Accomplishments**
 
-- Displays a list of content items sorted by date. The content is sourced from Markdown files with a date field in the frontmatter.
+- Displays a list of content items sorted by date. The content is sourced from
+  Markdown files with a date field in the frontmatter.
 
 - date: "2025-01-01"
 
-- Content is displayed in descending order of the date field, ensuring the latest accomplishments appear first.
+- Content is displayed in descending order of the date field, ensuring the
+  latest accomplishments appear first.
 
 ### 4\. **Accomplishments**
 
-- Displays a list of titles from Markdown files configured with the accomplishments frontmatter.
+- Displays a list of titles from Markdown files configured with the
+  accomplishments frontmatter.
 
-- ```
-      home:
-         accomplishments: 
-            category: "accomplishments"
-     ```
+- ```yaml
+  home:
+     accomplishments:
+        category: "accomplishments"
+  ```
 
-- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Accomplishments** card.
+- Multiple Markdown files can be added with this configuration, and their titles
+  will appear under the **Accomplishments** card.
 
 ### 5\. **IT Governance, Risk and Compliance**
 
-- Displays a list of titles from Markdown files configured with the ItGovernance frontmatter.
+- Displays a list of titles from Markdown files configured with the ItGovernance
+  frontmatter.
 
-- ```
-      home:
-         ItGovernance: 
-            category: "it-governance"
-     ```
+- ```yaml
+  home:
+     ItGovernance:
+        category: "it-governance"
+  ```
 
-- Multiple Markdown files can be added with this configuration, and their titles will appear under the **IT Governance, Risk and Compliance** card.
+- Multiple Markdown files can be added with this configuration, and their titles
+  will appear under the **IT Governance, Risk and Compliance** card.
 
 ### 6\. **Meeting Minutes**
 
-- Displays a list of titles from Markdown files configured with the meetingMinutes frontmatter.
+- Displays a list of titles from Markdown files configured with the
+  meetingMinutes frontmatter.
 
-- ```
-      home:
-         meetingMinutes: 
-            category: "meetingMinutes"
-     ```
+- ```yaml
+  home:
+     meetingMinutes:
+        category: "meetingMinutes"
+  ```
 
-- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Meeting Minutes** card.
+- Multiple Markdown files can be added with this configuration, and their titles
+  will appear under the **Meeting Minutes** card.
 
 ### 7\. **Featured Blogs**
 
-- Displays a list of titles from Blog files configured with the featured frontmatter.
+- Displays a list of titles from Blog files configured with the featured
+  frontmatter.
 
-- ```
-      home:
-        featuredBlog: true
+- ```yaml
+  home:
+    featuredBlog: true
   ```
 
-- Multiple Markdown files can be added with this configuration, and their titles will appear under the **Featured Blogs** card.
+- Multiple Markdown files can be added with this configuration, and their titles
+  will appear under the **Featured Blogs** card.
 
 ### 8\. **What's Next?**
 
-This widget displays a list of files from the frontmatter where the whatsNext attribute is set and the status is marked as "ongoing". It provides a structured way to highlight important next steps for users.
+This widget displays a list of files from the frontmatter where the whatsNext
+attribute is set and the status is marked as "ongoing". It provides a structured
+way to highlight important next steps for users.
 
 Features
 
@@ -488,24 +510,26 @@ Features
 
 Frontmatter Configuration
 
-Each markdown (.md) file must include the following attributes in its frontmatter to be processed by the widget:
+Each markdown (.md) file must include the following attributes in its
+frontmatter to be processed by the widget:
 
-- ```
-title: "Complete Questionnaires"
-summary: "Customer: Fill the SOC2 questionnaire - Control Environment Evidence Collection Form"
-home:
-  whatsNext:
-    category: "whatsNext"
-    order: 4
-    status: "on going"
-redirect: "/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/"
-draft: true
+- ```yaml
+  title: "Complete Questionnaires"
+  summary: "Customer: Fill the SOC2 questionnaire - Control Environment Evidence Collection Form"
+  home: whatsNext:
+  category: "whatsNext"
+  order: 4
+  status: "on going"
+  redirect: "/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json/"
+  draft: true
+  ```
 
 ### Handling Redirects
 
-To support redirections, ensure that the redirect frontmatter is passed in slug.astro where the layout is called:
+To support redirections, ensure that the redirect frontmatter is passed in
+slug.astro where the layout is called:
 
-```
+```astro
 <Layout redirect={ entry.data.redirect }>
 ```
 
@@ -519,11 +543,14 @@ To support redirections, ensure that the redirect frontmatter is passed in slug.
 
 - If redirection is needed, specify the redirect path and set draft: true.
 
-- Ensure the layout properly handles the redirect attribute when rendering the page.
-
+- Ensure the layout properly handles the redirect attribute when rendering the
+  page.
 
 ### 9\. Progress Notes
-The Progress Notes widget displays a list of markdown files where the whatsNext attribute is set and the status is "completed". This allows users to track completed tasks or milestones.
+
+The Progress Notes widget displays a list of markdown files where the whatsNext
+attribute is set and the status is "completed". This allows users to track
+completed tasks or milestones.
 
 Features
 
@@ -533,26 +560,26 @@ Features
 
 - Helps users see recently completed actions or updates.
 
-**Combination Frontmatter**
----------------------------
+## **Combination Frontmatter**
 
 Markdown files can include configurations for multiple widgets. For example:
 
-```
+```yaml
 home:
   keyResources:
     category: "keyResources"
-  skipTo: 
+  skipTo:
     category: "skipTo"
 ```
 
-This configuration allows the file to be listed under both the **Key Resources** and **Skip To** widgets.
+This configuration allows the file to be listed under both the **Key Resources**
+and **Skip To** widgets.
 
 ## Observability
 
 To enable observabilty and tracking, set the env variable as true
 
-```
+```bash
 ENABLE_OPEN_OBSERVE=true
 ```
 
@@ -560,13 +587,14 @@ ENABLE_OPEN_OBSERVE=true
 
 To enable side menu sorting set the variable as true in theme.config
 
-```
+```bash
 contentCollectionSort=true
 ```
 
-In order specify which all folders must be at the top in side menu, we can specify in theme.config like below
+In order specify which all folders must be at the top in side menu, we can
+specify in theme.config like below
 
-```
+```javascript
 staticFixedFolders: [
     { parent: "progress", child: ["activity-logs","begin"] },
     { parent: "outcomes", child: ["deliverables"] },
@@ -582,12 +610,14 @@ const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
 ## Presentation Mode
 
-Allows users to create slide-based presentations directly within the theme.
-Help icon in the header opens the presentaion url and slide content can be updated in the src/pages/presentation.astro
+Allows users to create slide-based presentations directly within the theme. Help
+icon in the header opens the presentaion url and slide content can be updated in
+the src/pages/presentation.astro
 
 ## Breadcrumbs Implementation
 
-We are using the `astro-breadcrumbs` package for listing breadcrumbs in our project.
+We are using the `astro-breadcrumbs` package for listing breadcrumbs in our
+project.
 
 ### Usage
 
@@ -616,35 +646,38 @@ We are using the `astro-breadcrumbs` package for listing breadcrumbs in our proj
     <polyline points="9 18 15 12 9 6"></polyline>
   </svg>
 </Breadcrumbs>
-
 ```
 
-### Disabling Breadcrumb Links  
+### Disabling Breadcrumb Links
 
-You can disable specific breadcrumb links by setting the `aria-disabled` property to `true` using `customizeLinks`:
+You can disable specific breadcrumb links by setting the `aria-disabled`
+property to `true` using `customizeLinks`:
 
 ```astro
 customizeLinks={[
   { index: 2, "aria-disabled": true },
   { index: 3, "aria-disabled": true },
 ]}
-
 ```
 
-### Removing Breadcrumbs  
+### Removing Breadcrumbs
 
-To remove a specific breadcrumb, set the `index` of the crumb you want to remove and use `customizeListElements`:
+To remove a specific breadcrumb, set the `index` of the crumb you want to remove
+and use `customizeListElements`:
 
 ```astro
 customizeListElements={[{ index: 1, remove: true }]}
-
 ```
 
-For more information, check out the [official documentation](https://docs.astro-breadcrumbs.kasimir.dev/start-here/getting-started/).
+For more information, check out the
+[official documentation](https://docs.astro-breadcrumbs.kasimir.dev/start-here/getting-started/).
 
 # 📄 DatabaseQueryRenderer
 
-The `DatabaseQueryRenderer` component in Astro allows you to fetch data from an SQLite database and render it in different layouts such as **Table, JSON List, or Card List**. It also includes a **detail view** feature for `card` and `table` layouts.
+The `DatabaseQueryRenderer` component in Astro allows you to fetch data from an
+SQLite database and render it in different layouts such as **Table, JSON List,
+or Card List**. It also includes a **detail view** feature for `card` and
+`table` layouts.
 
 ## 🚀 Usage
 
@@ -681,9 +714,11 @@ Then, use it in your Astro template by passing the necessary props:
 
 ### ⚠️ Important Notes
 
-- All layouts can use any query, but the **card layout** must have a `title` field in `fields`. The `description` field is optional.
+- All layouts can use any query, but the **card layout** must have a `title`
+  field in `fields`. The `description` field is optional.
 - **Detail view** is only available for `card` and `table` layouts.
-- The `detailWhere` prop determines which fields should be used to filter detail views.
+- The `detailWhere` prop determines which fields should be used to filter detail
+  views.
 
 ### 🎨 Layout Options
 
@@ -703,12 +738,12 @@ Then, use it in your Astro template by passing the necessary props:
   title="Employee List"
   layout="json"
   dbName="database-query-renderer-demo/employee.db"
-  fields={['*']}
+  fields={["*"]}
   table="employees"
   where=""
   orderBy=""
   limit="2"
-/>
+/>;
 ```
 
 ![alt text](/assets/images/documentation-demo/image-1.png)
@@ -721,14 +756,14 @@ Then, use it in your Astro template by passing the necessary props:
   title="Employee Table"
   layout="table"
   dbName="database-query-renderer-demo/employee.db"
-  fields={['*']}
+  fields={["*"]}
   table="employees"
   where=""
   orderBy=""
   limit="2"
   detail={true}
   detailWhere={["first_name", "last_name"]}
-/>
+/>;
 ```
 
 ![alt text](/assets/images/documentation-demo/image-2.png)
@@ -741,33 +776,37 @@ Then, use it in your Astro template by passing the necessary props:
 
 ## ⚙️ Props
 
-| Prop         | Type       | Description                                    |
-| ------------ | ---------- | ---------------------------------------------- |
-| `identifier` | `string`   | Unique identifier for the instance.           |
-| `title`      | `string`   | Title of the section.                         |
-| `layout`     | `"table" \| "json" \| "card"` | Specifies the display format. |
-| `dbName`     | `string`   | Name of the SQLite database file.             |
-| `table`      | `string`   | Name of the table to query.                   |
-| `fields`     | `string[]` | Array of fields to select. Defaults to `*`.   |
-| `where`      | `string`   | SQL WHERE clause.                             |
-| `orderBy`    | `string`   | SQL ORDER BY clause.                          |
-| `limit`      | `number`   | Limit the number of results.                  |
-| `detail`     | `boolean`  | Enables detail view (only for `card` & `table`). |
-| `detailWhere` | `string[]` | Fields to use for filtering in the detail view. |
+| Prop          | Type                          | Description                                      |
+| ------------- | ----------------------------- | ------------------------------------------------ |
+| `identifier`  | `string`                      | Unique identifier for the instance.              |
+| `title`       | `string`                      | Title of the section.                            |
+| `layout`      | `"table" \| "json" \| "card"` | Specifies the display format.                    |
+| `dbName`      | `string`                      | Name of the SQLite database file.                |
+| `table`       | `string`                      | Name of the table to query.                      |
+| `fields`      | `string[]`                    | Array of fields to select. Defaults to `*`.      |
+| `where`       | `string`                      | SQL WHERE clause.                                |
+| `orderBy`     | `string`                      | SQL ORDER BY clause.                             |
+| `limit`       | `number`                      | Limit the number of results.                     |
+| `detail`      | `boolean`                     | Enables detail view (only for `card` & `table`). |
+| `detailWhere` | `string[]`                    | Fields to use for filtering in the detail view.  |
 
 ## 🛠️ Error Handling
 
-- If the database does **not** exist, an error message will be displayed instead of crashing the app.
-- If `layout` is "card" and `fields` does not include a `title` field, an error will be thrown where the component is used.
+- If the database does **not** exist, an error message will be displayed instead
+  of crashing the app.
+- If `layout` is "card" and `fields` does not include a `title` field, an error
+  will be thrown where the component is used.
 - If an invalid `layout` is provided, a **default message** is shown.
 - If `detail` is enabled for `json` layout, an error will be thrown.
 
 ## 📌 Notes
 
 - The database file (`dbName`) must be present in the working directory.
-- Ensure your SQL query returns data in a format suitable for the selected layout.
+- Ensure your SQL query returns data in a format suitable for the selected
+  layout.
 - The `detail` feature works only for `card` and `table` layouts.
-- If working in a local environment, place the database in `database-query-renderer-demo/employee.db`.
+- If working in a local environment, place the database in
+  `database-query-renderer-demo/employee.db`.
 
 ---
 
@@ -777,12 +816,16 @@ Then, use it in your Astro template by passing the necessary props:
 
 ## Team List from Database
 
-The team list is rendered using the Astro component `DatabaseQueryRenderer`. This component fetches data from the database and displays it in a table format. To enable this feature, ensure the configuration in the `.env` file is updated correctly.
+The team list is rendered using the Astro component `DatabaseQueryRenderer`.
+This component fetches data from the database and displays it in a table format.
+To enable this feature, ensure the configuration in the `.env` file is updated
+correctly.
 
 ### Configuration
 
-1. **Update `.env` File**  
-   Set the database file path and enable the team list feature by updating your `.env` file with the following variables:
+1. **Update `.env` File**\
+   Set the database file path and enable the team list feature by updating your
+   `.env` file with the following variables:
 
 ```env
 # TEAM DB Configuration
@@ -790,11 +833,14 @@ PUBLIC_TEAM_DB="user_demo_db/resource-surveillance.sqlite.db"
 ENABLE_DB_TEAM=true
 ```
 
-- `PUBLIC_TEAM_DB`: Path to the SQLite database file (can be placed in any folder).
+- `PUBLIC_TEAM_DB`: Path to the SQLite database file (can be placed in any
+  folder).
 - `ENABLE_DB_TEAM`: Set to `true` to enable the team list functionality.
 
-2. **Placing the Database**  
-   The SQLite database is expected to be placed at the path defined in the `.env` file (`user_demo_db/resource-surveillance.sqlite.db`), or you can specify any other valid SQLite file path in the `.env` configuration.
+2. **Placing the Database**\
+   The SQLite database is expected to be placed at the path defined in the
+   `.env` file (`user_demo_db/resource-surveillance.sqlite.db`), or you can
+   specify any other valid SQLite file path in the `.env` configuration.
 
 ### Team List Display
 
@@ -804,7 +850,8 @@ The team list is located in the file:
 src/pages/team/index.astro
 ```
 
-Within this file, the `DatabaseQueryRenderer` component is used to display the team members:
+Within this file, the `DatabaseQueryRenderer` component is used to display the
+team members:
 
 ```astro
 {
@@ -830,20 +877,26 @@ Within this file, the `DatabaseQueryRenderer` component is used to display the t
 - **dbName**: The database name (set from the `.env` configuration).
 - **table**: The table to fetch data from (`uniform_resource_user`).
 - **fields**: Fetches all fields (`*`).
-- **orderBy**: Orders the results by the `Name` field in ascending order (`asc`).
+- **orderBy**: Orders the results by the `Name` field in ascending order
+  (`asc`).
 
 ### How to Use
 
-1. Make sure the database is placed at the location specified in the `.env` file, or update the path accordingly.
-2. Ensure that the `.env` configuration has `ENABLE_DB_TEAM=true` to activate the database query.
-3. When visiting the team list page, the data will automatically be fetched and displayed in a table format from the specified database.
+1. Make sure the database is placed at the location specified in the `.env`
+   file, or update the path accordingly.
+2. Ensure that the `.env` configuration has `ENABLE_DB_TEAM=true` to activate
+   the database query.
+3. When visiting the team list page, the data will automatically be fetched and
+   displayed in a table format from the specified database.
 
 ### Comments
 
-To enable the comments section in specific markdown (.md or .mdx) files, set discussionsEnabled: true in the front matter.
-By default, the discussionsEnabled field is false, meaning the comments section will be hidden unless explicitly enabled.
+To enable the comments section in specific markdown (.md or .mdx) files, set
+discussionsEnabled: true in the front matter. By default, the discussionsEnabled
+field is false, meaning the comments section will be hidden unless explicitly
+enabled.
 
-```
+```yaml
 discussionsEnabled: true
 ```
 
@@ -853,16 +906,19 @@ discussionsEnabled: true
 
 ## Overview
 
-`lhc-forms-widget` is an Astro component used to display LForms. Form definitions are stored in a JSON structure, which can be either:
+`lhc-forms-widget` is an Astro component used to display LForms. Form
+definitions are stored in a JSON structure, which can be either:
 
 - **FHIR Questionnaire** (recommended)
 - **LHC-Forms internal format**
 
-This component renders the form as HTML, making it easier to integrate structured forms into your Astro project.
+This component renders the form as HTML, making it easier to integrate
+structured forms into your Astro project.
 
 ## Installation
 
-Ensure that your project is set up with Astro and that the required dependencies are installed.
+Ensure that your project is set up with Astro and that the required dependencies
+are installed.
 
 ## Environment Setup
 
@@ -885,26 +941,31 @@ import LHCFormsWidget from "../../components/lhc-forms-widget/lhc-forms-widget.a
 Use the component in your Astro template:
 
 ```tsx
-<LHCFormsWidget fileName={fileName} folderPath="lforms" />
+<LHCFormsWidget fileName={fileName} folderPath="lforms" />;
 ```
 
-### Parameters  
+### Parameters
 
-- **fileName**: The name of the JSON file containing the form definition. This file should be stored inside the specified `folderPath`.  
+- **fileName**: The name of the JSON file containing the form definition. This
+  file should be stored inside the specified `folderPath`.
 
-- **folderPath**: The folder that contains the form definition file. The base path is always `src/content/`, so only the relative folder path needs to be provided.  
-  - Example: If the form file is located in `src/content/lforms`, set `folderPath="lforms"`.  
-  - If the file is inside a nested folder, specify the full relative path. For example:  
+- **folderPath**: The folder that contains the form definition file. The base
+  path is always `src/content/`, so only the relative folder path needs to be
+  provided.
+  - Example: If the form file is located in `src/content/lforms`, set
+    `folderPath="lforms"`.
+  - If the file is inside a nested folder, specify the full relative path. For
+    example:
 
     ```tsx
-    <LHCFormsWidget fileName={fileName} folderPath="folder/innerFolder" />
+    <LHCFormsWidget fileName={fileName} folderPath="folder/innerFolder" />;
     ```
 
 ### Handling Form Submissions
 
 After submitting the `LHCFormsWidget`, the response is saved in:
 
-```
+```text
 src/content/lforms/submissions
 ```
 
@@ -918,7 +979,7 @@ surveilr ingest files -r src/content/lforms -d src/content/db/lforms/resource-su
 
 This will create a database at:
 
-```
+```text
 src/content/db/lforms/
 ```
 
@@ -933,10 +994,11 @@ import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-r
 Use the component in your Astro template:
 
 ```tsx
-<LHCFormsResponseWidget fileName={submittedForm} />
+<LHCFormsResponseWidget fileName={submittedForm} />;
 ```
 
-- **submittedForm**: The file name passed to `LHCFormsResponseWidget` is the JSON file generated after submitting the form.
+- **submittedForm**: The file name passed to `LHCFormsResponseWidget` is the
+  JSON file generated after submitting the form.
 
 ## File Structure
 
@@ -962,62 +1024,68 @@ project-root/
 
 - It is recommended to use FHIR Questionnaire format for form definitions.
 - The component will dynamically render the provided form as HTML.
-- Submitted form responses can be ingested into Surveilr for further processing..
+- Submitted form responses can be ingested into Surveilr for further
+  processing..
 
 ---
 
-# **IMAP Mail Box Component**  
+# **IMAP Mail Box Component**
 
-The **imap-mail-box** component is an Astro component used to display ingested emails from any mail source in **EOH**.  
+The **imap-mail-box** component is an Astro component used to display ingested
+emails from any mail source in **EOH**.
 
-## **Environment Configuration**  
+## **Environment Configuration**
 
-Before using the component, set up the required **environment variables**:  
+Before using the component, set up the required **environment variables**:
 
-### **Required Environment Variables**  
+### **Required Environment Variables**
 
-| Variable            | Description                                         | Example Value |
-|--------------------|-------------------------------------------------|--------------|
-| `ENABLE_IMAP_VIEW` | Enable or disable IMAP ingestion (`true/false`). If `true`, it will ingest mail content. | `true` |
-| `PUBLIC_IMAP_DB`   | Path to the IMAP database. **Do not change this path.** | `src/content/db/imap-mail-db/resource-surveillance.sqlite.db` |
-| `IMAP_FOLDER`      | The IMAP folder to fetch emails from. | `Inbox` |
-| `IMAP_USER_NAME`   | IMAP account username. | `your_email@example.com` |
-| `IMAP_PASS`        | IMAP account password. | `your_password` |
-| `IMAP_HOST`        | IMAP server host. | `imap.example.com` |
+| Variable           | Description                                                                              | Example Value                                                 |
+| ------------------ | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `ENABLE_IMAP_VIEW` | Enable or disable IMAP ingestion (`true/false`). If `true`, it will ingest mail content. | `true`                                                        |
+| `PUBLIC_IMAP_DB`   | Path to the IMAP database. **Do not change this path.**                                  | `src/content/db/imap-mail-db/resource-surveillance.sqlite.db` |
+| `IMAP_FOLDER`      | The IMAP folder to fetch emails from.                                                    | `Inbox`                                                       |
+| `IMAP_USER_NAME`   | IMAP account username.                                                                   | `your_email@example.com`                                      |
+| `IMAP_PASS`        | IMAP account password.                                                                   | `your_password`                                               |
+| `IMAP_HOST`        | IMAP server host.                                                                        | `imap.example.com`                                            |
 
 ---
 
-## **Setup & Running Locally**  
+## **Setup & Running Locally**
 
-### **1. Install Surveilr**  
+### **1. Install Surveilr**
 
-To complete **IMAP ingestion**, make sure you have **Surveilr** installed. If not, follow the installation guide:  
+To complete **IMAP ingestion**, make sure you have **Surveilr** installed. If
+not, follow the installation guide:
 
-📖 [Surveilr Installation Guide](https://www.surveilr.com/docs/core/installation/)  
+📖
+[Surveilr Installation Guide](https://www.surveilr.com/docs/core/installation/)
 
-### **2. Prepare the Database**  
+### **2. Prepare the Database**
 
-After setting up the environment variables, run the following command in the **root terminal**:  
+After setting up the environment variables, run the following command in the
+**root terminal**:
 
 ```sh
 pnpm run prepare-imap-db
 ```
-  
-This command will automatically create the database in the specified directory.  
 
-⚠️ **Make sure the target directory exists before running the command.**  
+This command will automatically create the database in the specified directory.
+
+⚠️ **Make sure the target directory exists before running the command.**
 
 ---
 
-## **Using the Component in Astro**  
+## **Using the Component in Astro**
 
-### **Astro SSR Requirement**  
+### **Astro SSR Requirement**
 
-The **imap-mail-box** component is built for **Astro Server-Side Rendering (SSR)** and **will only work in SSR mode**.  
+The **imap-mail-box** component is built for **Astro Server-Side Rendering
+(SSR)** and **will only work in SSR mode**.
 
-### **Importing the Component**  
+### **Importing the Component**
 
-To use the component in an **Astro page**, import it as follows:  
+To use the component in an **Astro page**, import it as follows:
 
 ```astro
 import MailBox from "../../components/imap-mail-box/mailBox.astro";
@@ -1027,26 +1095,30 @@ import MailBox from "../../components/imap-mail-box/mailBox.astro";
 
 ---
 
-## **Query Parameters**  
+## **Query Parameters**
 
-- If **no `account` ID** is passed in the URL (`?account=****&view=list`), the component will **automatically select** the first ingested account.  
-- **Required query parameters:**  
-  - `account` → Specifies the account ID.  
-  - `view=list` → Must be set to `"list"`.  
+- If **no `account` ID** is passed in the URL (`?account=****&view=list`), the
+  component will **automatically select** the first ingested account.
+- **Required query parameters:**
+  - `account` → Specifies the account ID.
+  - `view=list` → Must be set to `"list"`.
 
-**Example URL:**  
+**Example URL:**
 
-``` http://localhost:3000/?account=1234&view=list ```
+`http://localhost:3000/?account=1234&view=list`
 
-⚠️ **Ensure you follow the correct query parameter names to prevent bugs.**  
+⚠️ **Ensure you follow the correct query parameter names to prevent bugs.**
 
 ---
 
-## **Notes**  
+## **Notes**
 
-- The component will **only display ingested emails** if `ENABLE_IMAP_VIEW` is set to `true`.  
-- Ensure that **Surveilr is installed and configured correctly** before running the ingestion process.  
-- Provide valid IMAP credentials and database configurations for successful ingestion.  
+- The component will **only display ingested emails** if `ENABLE_IMAP_VIEW` is
+  set to `true`.
+- Ensure that **Surveilr is installed and configured correctly** before running
+  the ingestion process.
+- Provide valid IMAP credentials and database configurations for successful
+  ingestion.
 
 ---
 
@@ -1054,42 +1126,48 @@ import MailBox from "../../components/imap-mail-box/mailBox.astro";
 
 ## Overview
 
-This feature allows users to manage the order of menu items in the expectations/questionnaire section. Previously, the names of JSON files were displayed by the file order. With this new enhancement, users can now define the order according to their preferences.
+This feature allows users to manage the order of menu items in the
+expectations/questionnaire section. Previously, the names of JSON files were
+displayed by the file order. With this new enhancement, users can now define the
+order according to their preferences.
 
 ## Order File
 
-A JSON file named `order.json` (do not change the filename) has been created to handle the menu order. This file is located at:
+A JSON file named `order.json` (do not change the filename) has been created to
+handle the menu order. This file is located at:
 
-``` src/pages/expectations/order.json ```
+`src/pages/expectations/order.json`
 
-The `order.json` file is generated using the **NML Form Builder** (National Library of Medicine). To edit this form, follow the steps below:
+The `order.json` file is generated using the **NML Form Builder** (National
+Library of Medicine). To edit this form, follow the steps below:
 
 ## Editing the Order JSON
 
-1. Navigate to the NML Form Builder: [https://formbuilder.nlm.nih.gov/](https://formbuilder.nlm.nih.gov/)
+1. Navigate to the NML Form Builder:
+   [https://formbuilder.nlm.nih.gov/](https://formbuilder.nlm.nih.gov/)
 2. Import the existing `order.json` file from:
 
-   ``` src/pages/expectations/order.json ```
-![alt text](public/assets/images/documentation-demo/nlc-form/image-1.png)
+   `src/pages/expectations/order.json`
+   ![alt text](public/assets/images/documentation-demo/nlc-form/image-1.png)
 
-1. Make necessary changes **without altering the existing structure**.
-2. You **can add more menus**, but keep the existing format unchanged.
+3. Make necessary changes **without altering the existing structure**.
+4. You **can add more menus**, but keep the existing format unchanged.
 
 ### Example Structure
 
 The `questionnaire` menu contains submenus such as:
 
-``` Plan 1, Plan 2, Plan 3 ```
+`Plan 1, Plan 2, Plan 3`
 
 These are folders that contain JSON files inside:
 
-``` src/content/expectations/questionnaire/plan-1 ```
+`src/content/expectations/questionnaire/plan-1`
 
 When adding folders as groups:
 
 - Fill the field **`Question text`** (menu name)
 - Set **`Data type`** to **`group`**
-  
+
   ![alt text](public/assets/images/documentation-demo/nlc-form/image-2.png)
 
 ### Creating Each Menu (e.g., General Information, Evidence Collection)
@@ -1097,11 +1175,12 @@ When adding folders as groups:
 1. Click the **three dots** next to `Plan 1` in the dropdown menu.
 2. Select **`Insert a new child item`**.
 3. In the form filler that appears, fill:
-   - **`Question text`** → Menu name (e.g., General Information, Evidence Collection)
+   - **`Question text`** → Menu name (e.g., General Information, Evidence
+     Collection)
    - **`Data type`** → `text`
    - **`Initial value`** → Path to the JSON file, e.g.,
 
-     ``` /expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json ```
+     `/expectations/questionnaire/plan-1/general-information-evidence-collection.lhc-form.json`
 
 4. **Do not fill any other fields** not mentioned in this README.
 
@@ -1114,17 +1193,18 @@ When adding folders as groups:
 3. The updated JSON file will download to your local `Downloads` directory.
 4. Rename the downloaded file to:
 
-   ``` order.json ```
+   `order.json`
 
 5. Place the renamed file in:
 
-   ``` src/pages/expectations ```
+   `src/pages/expectations`
 
-By following these steps, you can effectively manage the order of the menu while ensuring consistency in the JSON structure.
+By following these steps, you can effectively manage the order of the menu while
+ensuring consistency in the JSON structure.
 
 ## Edit Option
 
-Provides a direct link to edit the page in the GitHub repository. 
+Provides a direct link to edit the page in the GitHub repository.
 
 This can be configured in the Markdown file using the following frontmatter:
 
@@ -1132,20 +1212,22 @@ This can be configured in the Markdown file using the following frontmatter:
 enableEditButton: true
 ```
 
-When set to true, an "Edit" button will appear in the footer of the page, allowing users to quickly access and modify the content on GitHub.
+When set to true, an "Edit" button will appear in the footer of the page,
+allowing users to quickly access and modify the content on GitHub.
 
-##  Support & Feedback Widget  
+## Support & Feedback Widget
 
-A JavaScript-based widget that allows users to submit feedback or support requests via a GitHub issue and send email notifications using Novu API.
+A JavaScript-based widget that allows users to submit feedback or support
+requests via a GitHub issue and send email notifications using Novu API.
 
 ## 🚀 Features
 
 - Capture and upload screenshots to GitHub issues
 - Create GitHub issues with user-submitted feedback
 - Send email notifications to admins via Novu
-- Acknowledge users with an automated email respons 
+- Acknowledge users with an automated email respons
 
-Before using the widget, configure the following environment variables:  
+Before using the widget, configure the following environment variables:
 
 ```
 PUBLIC_NOVU_API_URL="novu-api-url"
@@ -1158,37 +1240,42 @@ PUBLIC_GITHUB_PAT = "your-personal-access-token"
 PUBLIC_GITHUB_OWNER = "your-github-username"
 PUBLIC_GITHUB_REPO = "your-repository-name"
 ENABLE_SUPPORT_AND_FEEDBACK=true
-
 ```
-You can enable or disable support and feedback widget by setting the `ENABLE_SUPPORT_AND_FEEDBACK` variable to `true` or `false`.
+
+You can enable or disable support and feedback widget by setting the
+`ENABLE_SUPPORT_AND_FEEDBACK` variable to `true` or `false`.
 
 ## Comment Integration
 
-The *Comment* component allows users to add, view, and engage in discussions. It is integrated into the application and can be enabled or disabled based on the `discussionEnabled` flag.
+The _Comment_ component allows users to add, view, and engage in discussions. It
+is integrated into the application and can be enabled or disabled based on the
+`discussionEnabled` flag.
 
 ## Installation & Setup
-
 
 Ensure that the following environment variables are set in your .env file:
 
 - PUBLIC_RSSD_DB – Specifies the path to the resource surveillance database.
 - PUBLIC_PRODUCTION_URL – Defines the production URL of the site.
-- PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE – Represents the template name used for comment notifications.
-- PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS - If set to "true," the comment notification will be sent to all members; otherwise, it will be sent only to the mentioned members.
+- PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE – Represents the template name used
+  for comment notifications.
+- PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS - If set to "true," the comment
+  notification will be sent to all members; otherwise, it will be sent only to
+  the mentioned members.
 
 ```
 PUBLIC_RSSD_DB=src/content/db/rssd/resource-surveillance.sqlite.db
 PUBLIC_PRODUCTION_URL="https://demo.hub.opsfolio.com"
 PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE="comment-template"
 PUBLIC_NOTIFICATION_FOR_ALL_MEMBERS=false
-
 ```
 
 ## Usage
 
-To integrate the *Comment* component, import it and configure the required properties:
+To integrate the _Comment_ component, import it and configure the required
+properties:
 
-```	
+````
 import Comment from "../../../components/comment/comment.astro";
 
 <Comment source="EOH" discussionEnabled={true} />
@@ -1219,8 +1306,8 @@ Mermaid and Planthtml are tools for creating diagrams using simple text-based sy
 - **Mermaid Diagram**
 
 #### Example: Using Mermaid in Markdown (.md)
+````
 
-```
 ---
 title: "Flowchart Example"
 ---
@@ -1233,7 +1320,6 @@ graph TD
     D --> B
 ```
 
-
 ```mermaid
 graph TD
     A[Start] --> B{Is it working?}
@@ -1244,8 +1330,7 @@ graph TD
 
 **ℹ️ Info:** Mermaid requires Node.js v20.9.0 or later to function properly.
 
-- **Plantuml Diagram**
-Install `pnpm install astro-plantuml` package using pnpm:
+- **Plantuml Diagram** Install `pnpm install astro-plantuml` package using pnpm:
 
 Add the below code snippet in `astro.config.mjs`
 
@@ -1256,6 +1341,7 @@ Add the below code snippet in `astro.config.mjs` **defineConfig** function
 integrations: [plantuml() ]
 
 Use the following code snippet to add a Plantuml diagram:
+
 ```plantuml
 @startuml
  
@@ -1287,40 +1373,41 @@ Cart *--* Product : "contains"
 ```
 
 **Enable or Disable Page History**
-
-To enable or disable page commit history, set the `enablePageHistory` variable in your `theme.config.ts` file as 
-`true` or `false`.
-
+To enable or disable page commit history, set the `enablePageHistory` variable
+in your `theme.config.ts` file as `true` or `false`.
 
 ## 📁 Box Folder Listing Integration
 
-This setup enables fetching and displaying files from a Box folder using the **Box API with refresh token authentication**.
+This setup enables fetching and displaying files from a Box folder using the
+**Box API with refresh token authentication**.
 
 ---
 
 ### 1. Create a Box Developer Account
 
-- Go to [https://account.box.com/login](https://account.box.com/login)  
-- Sign in or create an account using your email.  
+- Go to [https://account.box.com/login](https://account.box.com/login)
+- Sign in or create an account using your email.
 
 ### 2. Access Developer Console
 
-- Navigate to the Box Developer Console: [https://app.box.com/developers/console](https://app.box.com/developers/console)  
-- Create a new **Custom App**  
-  - Choose `OAuth 2.0 with Refresh Token`  
-  - Note down the following credentials:  
-    - Client ID  
+- Navigate to the Box Developer Console:
+  [https://app.box.com/developers/console](https://app.box.com/developers/console)
+- Create a new **Custom App**
+  - Choose `OAuth 2.0 with Refresh Token`
+  - Note down the following credentials:
+    - Client ID
     - Client Secret
-  - Set the **Redirect URI** to `http://localhost:4321/box-auth` for local testing or `https://demo.hub.opsfolio.com/box-auth` for live environment.
+  - Set the **Redirect URI** to `http://localhost:4321/box-auth` for local
+    testing or `https://demo.hub.opsfolio.com/box-auth` for live environment.
   - Enable the scopes
 
 ### 3. Generate Authorization Code
 
-
 `https://account.box.com/api/oauth2/authorize?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=https://demo.hub.opsfolio.com/box-auth`
 
-- Visit the URL in your browser   replacing `YOUR_CLIENT_ID` with your actual client ID and `YOUR_REDIRECT_URI` with your redirect URI.
-- Sign in and authorize access  
+- Visit the URL in your browser replacing `YOUR_CLIENT_ID` with your actual
+  client ID and `YOUR_REDIRECT_URI` with your redirect URI.
+- Sign in and authorize access
 - Copy the `code` returned in the URL
 
 ---
@@ -1328,6 +1415,7 @@ This setup enables fetching and displaying files from a Box folder using the **B
 ### 4. Exchange Code for Access & Refresh Tokens
 
 **Local Example**
+
 ```
 curl -X POST https://api.box.com/oauth2/token
 -H "Content-Type: application/x-www-form-urlencoded"
@@ -1338,48 +1426,48 @@ curl -X POST https://api.box.com/oauth2/token
 -d "redirect_uri=http://localhost:4321/box-auth"
 ```
 
-- Save the `access_token` and `refresh_token` from the response  
-- Update box-auth.json with accessToken and refreshToken in the sr/keys path
-  {
-    "accessToken": "xxxxx",
-    "refreshToken": "yyyy"
-  }
+- Save the `access_token` and `refresh_token` from the response
+- Update box-auth.json with accessToken and refreshToken in the sr/keys path {
+  "accessToken": "xxxxx", "refreshToken": "yyyy" }
+
 ---
 
 ## 🌟 Functionality Achieved
 
 The integration enables:
 
-- Listing contents of a specific Box folder using the `/folders/:folder_id/items` endpoint  
-- Secure token management using the **refresh token flow**  
+- Listing contents of a specific Box folder using the
+  `/folders/:folder_id/items` endpoint
+- Secure token management using the **refresh token flow**
 
 Make sure to define the following in your `.env` file:
 
 ```
-
 BOX_CLIENT_ID=your_client_id
 BOX_CLIENT_SECRET=your_client_secret
 BOX_FOLDER_ID=your_target_folder_id
-
-
 ```
+
 ## Google Drive Demo Integration Setup
 
 To enable private Google Drive access via a service account, follow these steps:
 
 **1. Create a Google Cloud Project**
+
 - Go to [Google Cloud Console](https://console.cloud.google.com/)
 - Click the project dropdown at the top bar → **New Project**
 - Name it something like `Astro Private Drive Access`
 - Click **Create**
 
 **2. Enable Required APIs**
+
 - Navigate to **APIs & Services > Library**
 - Search and enable the following:
   - ✅ **Google Drive API**
   - ✅ **Google Sheets API**
 
 **3. Create a Service Account**
+
 - Go to **IAM & Admin > Service Accounts**
 - Click **Create Service Account**
   - **Name**: `astro-drive-access`
@@ -1388,6 +1476,7 @@ To enable private Google Drive access via a service account, follow these steps:
 - Click **Done**
 
 **4. Generate and Download Credentials**
+
 - Click on the service account name you just created
 - Go to the **Keys** tab
 - Click **Add Key** → **Create new key**
@@ -1395,6 +1484,7 @@ To enable private Google Drive access via a service account, follow these steps:
   - A `.json` file will be downloaded automatically
 
 **5. Store the Credentials**
+
 - Move the `.json` file to your project directory: src/keys folder
 
 - Add the following to your `.env` file:
@@ -1403,4 +1493,98 @@ To enable private Google Drive access via a service account, follow these steps:
 GDRIVE_JSON_PATH=src/keys/gdrive-sample.json
 ```
 
-**Enjoy building with the EOH Astro 5 Theme!** 🚀  
+**Enjoy building with the EOH Astro 5 Theme!** 🚀
+
+## 📊 Qualityfolio Integration
+
+The Expectations-Outcomes-Hub theme includes integration with Qualityfolio for
+data analysis and visualization.
+
+### Qualityfolio Data Preparation
+
+The `qualityfolio-surveilr-prepare.ts` script automates the process of preparing
+Qualityfolio data by executing Surveilr ingest commands with proper error
+handling, path validation, and environment integration.
+
+#### 🚧 Prerequisites
+
+- **Surveilr**: Must be installed and accessible in your PATH
+  ```bash
+  surveilr --version
+  # Should return version 1.8.4 or higher
+  ```
+- **Deno**: Required to run the script
+- **Proper directory structure**: Ensure the target directories exist
+
+#### ⚙️ Configuration
+
+Configure Qualityfolio by setting these environment variables in your `.env`
+file:
+
+```env
+# Qualityfolio Configuration
+PUBLIC_QUALITYFOLIO_URL="your-qualityfolio-url"
+ENABLE_QUALITYFOLIO_PREPARE=true
+PUBLIC_QUALITYFOLIO_DB="src/content/db/qualityfolio/resource-surveillance.sqlite.db"
+```
+
+| Variable                      | Description                      | Default Value                                                 |
+| ----------------------------- | -------------------------------- | ------------------------------------------------------------- |
+| `PUBLIC_QUALITYFOLIO_URL`     | URL for the Qualityfolio service | Required                                                      |
+| `ENABLE_QUALITYFOLIO_PREPARE` | Enable/disable data preparation  | `false`                                                       |
+| `PUBLIC_QUALITYFOLIO_DB`      | Path to the SQLite database file | `src/content/db/qualityfolio/resource-surveillance.sqlite.db` |
+
+#### 🚀 Usage
+
+1. **Run the preparation script**:
+
+   ```bash
+   pnpm run prepare-qualityfolio-db
+   ```
+
+   Or run directly with Deno:
+
+   ```bash
+   deno run -A qualityfolio-surveilr-prepare.ts
+   ```
+
+2. **Command-line arguments** (optional):
+
+   ```bash
+   deno run -A qualityfolio-surveilr-prepare.ts rssdPath=custom/path/to/db.sqlite.db ingestDir=./custom-qualityfolio enable=true
+   ```
+
+#### 📋 Process Overview
+
+The script performs the following operations:
+
+1. **Environment Validation**: Checks if Surveilr is installed and validates
+   directories
+2. **Database Preparation**:
+   - Creates a backup of any existing database
+   - Removes the old database
+   - Ensures the parent directory exists
+3. **Data Ingestion**:
+   - Executes the Surveilr ingest command to populate the database
+   - Loads the Qualityfolio package from
+     `https://surveilr.com/lib/service/qualityfolio/package.sql`
+
+#### 🔄 Integration with EOH Theme
+
+Once the database is prepared, the EOH theme can access Qualityfolio data
+through the database. The theme includes components that query this database to
+display Qualityfolio visualizations and reports.
+
+To view Qualityfolio data in the theme, navigate to the Qualityfolio page after
+running the preparation script:
+
+```
+http://localhost:4321/qualityfolio
+```
+
+#### ⚠️ Troubleshooting
+
+- If the script fails with a "command not found" error, ensure Surveilr is
+  properly installed and in your PATH
+- If database operations fail, check file permissions for the target directories
+- For ingestion errors, verify your Qualityfolio URL and connectivity

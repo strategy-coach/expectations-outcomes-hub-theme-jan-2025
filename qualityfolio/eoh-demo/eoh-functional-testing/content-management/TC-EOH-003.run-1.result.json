@@ -1,0 +1,151 @@
+{
+  "test_case_fii": "TC-EOH-003",
+  "title": "Verify Blog Post Creation and Publishing Workflow",
+  "status": "passed",
+  "start_time": "2024-01-20T10:30:45.123Z",
+  "end_time": "2024-01-20T10:35:12.456Z",
+  "total_duration": "4 minutes 27 seconds",
+  "environment": "Demo",
+  "browser": "Chrome 120.0.6099.109",
+  "executed_by": "content-tester@eoh-theme.demo",
+  "demo_notice": "⚠️ DEMO DATA - Synthetic test results for demonstration purposes",
+  "steps": [
+    {
+      "step": 1,
+      "stepname": "Navigate to the blog creation interface",
+      "status": "passed",
+      "start_time": "2024-01-20T10:30:45.134Z",
+      "end_time": "2024-01-20T10:30:47.234Z",
+      "duration": "2.1 seconds",
+      "details": {
+        "url": "https://eoh-demo.example.com/admin/blog/new",
+        "page_load_time": "1.8 seconds",
+        "form_elements_loaded": true,
+        "editor_initialized": true,
+        "validation": "Blog creation interface fully functional"
+      }
+    },
+    {
+      "step": 2,
+      "stepname": "Create a new blog post with comprehensive content",
+      "status": "passed",
+      "start_time": "2024-01-20T10:30:47.245Z",
+      "end_time": "2024-01-20T10:32:15.567Z",
+      "duration": "1 minute 28 seconds",
+      "details": {
+        "title_entered": "EOH Theme Demo: Streamlining Project Expectations Management",
+        "slug_generated": "eoh-theme-demo-expectations-management",
+        "content_length": "1,247 characters",
+        "markdown_rendering": "successful",
+        "tags_added": ["project-management", "expectations", "stakeholder-communication"],
+        "category_selected": "Project Updates"
+      }
+    },
+    {
+      "step": 3,
+      "stepname": "Add media content to the blog post",
+      "status": "passed",
+      "start_time": "2024-01-20T10:32:15.578Z",
+      "end_time": "2024-01-20T10:32:45.234Z",
+      "duration": "29.7 seconds",
+      "details": {
+        "featured_image_uploaded": true,
+        "featured_image_size": "1920x1080",
+        "featured_image_optimized": true,
+        "inline_images_count": 3,
+        "alt_text_provided": true,
+        "image_compression": "WebP format, 85% quality",
+        "total_media_size": "2.4 MB"
+      }
+    },
+    {
+      "step": 4,
+      "stepname": "Configure SEO and metadata",
+      "status": "passed",
+      "start_time": "2024-01-20T10:32:45.245Z",
+      "end_time": "2024-01-20T10:33:12.123Z",
+      "duration": "26.9 seconds",
+      "details": {
+        "meta_description_length": "156 characters",
+        "seo_title_optimized": true,
+        "open_graph_tags_generated": true,
+        "twitter_card_configured": true,
+        "structured_data_added": true,
+        "canonical_url_set": true
+      }
+    },
+    {
+      "step": 5,
+      "stepname": "Save as draft and preview",
+      "status": "passed",
+      "start_time": "2024-01-20T10:33:12.134Z",
+      "end_time": "2024-01-20T10:33:45.456Z",
+      "duration": "33.3 seconds",
+      "details": {
+        "draft_saved": true,
+        "auto_save_enabled": true,
+        "preview_generated": true,
+        "preview_load_time": "2.1 seconds",
+        "responsive_preview": "tested on mobile and desktop",
+        "content_validation": "all formatting preserved"
+      }
+    },
+    {
+      "step": 6,
+      "stepname": "Publish the blog post",
+      "status": "passed",
+      "start_time": "2024-01-20T10:33:45.467Z",
+      "end_time": "2024-01-20T10:35:12.445Z",
+      "duration": "1 minute 27 seconds",
+      "details": {
+        "publish_status_changed": true,
+        "static_site_regeneration": "triggered",
+        "build_time": "1 minute 15 seconds",
+        "public_url_accessible": true,
+        "blog_listing_updated": true,
+        "rss_feed_updated": true,
+        "sitemap_updated": true
+      }
+    }
+  ],
+  "content_metrics": {
+    "word_count": 247,
+    "reading_time": "1 minute",
+    "seo_score": 95,
+    "accessibility_score": 98,
+    "performance_score": 92
+  },
+  "seo_validations": {
+    "meta_title_length": "optimal (58 characters)",
+    "meta_description_length": "optimal (156 characters)",
+    "heading_structure": "proper H1-H3 hierarchy",
+    "image_alt_text": "all images have descriptive alt text",
+    "internal_links": 2,
+    "external_links": 0
+  },
+  "performance_metrics": {
+    "page_load_time": "1.2 seconds",
+    "largest_contentful_paint": "1.8 seconds",
+    "first_input_delay": "45ms",
+    "cumulative_layout_shift": "0.02",
+    "total_page_size": "3.1 MB",
+    "image_optimization": "WebP format, lazy loading enabled"
+  },
+  "accessibility_checks": {
+    "wcag_aa_compliant": true,
+    "color_contrast_ratio": "4.8:1",
+    "keyboard_navigation": "fully accessible",
+    "screen_reader_compatible": true,
+    "focus_indicators": "visible and clear"
+  },
+  "publishing_results": {
+    "public_url": "https://eoh-demo.example.com/blog/eoh-theme-demo-expectations-management",
+    "social_sharing_urls": {
+      "twitter": "generated",
+      "linkedin": "generated",
+      "facebook": "generated"
+    },
+    "rss_feed_entry": "added",
+    "search_indexing": "submitted to search engines"
+  }
+}

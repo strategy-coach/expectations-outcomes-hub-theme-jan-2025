@@ -1,0 +1,124 @@
+{
+  "test_case_fii": "TC-EOH-002",
+  "title": "Verify Invalid Login Credentials Handling",
+  "status": "passed",
+  "start_time": "2024-01-20T09:20:15.234Z",
+  "end_time": "2024-01-20T09:20:18.567Z",
+  "total_duration": "3.33 seconds",
+  "environment": "Demo",
+  "browser": "Chrome 120.0.6099.109",
+  "executed_by": "automation-system@eoh-theme.demo",
+  "demo_notice": "⚠️ DEMO DATA - Synthetic test results for demonstration purposes",
+  "steps": [
+    {
+      "step": 1,
+      "stepname": "Navigate to the EOH theme login page",
+      "status": "passed",
+      "start_time": "2024-01-20T09:20:15.245Z",
+      "end_time": "2024-01-20T09:20:16.123Z",
+      "duration": "0.88 seconds",
+      "details": {
+        "url": "https://eoh-demo.example.com/login",
+        "page_load_time": "0.85 seconds",
+        "form_elements_present": true,
+        "validation": "Login form accessible"
+      }
+    },
+    {
+      "step": 2,
+      "stepname": "Enter invalid email address",
+      "status": "passed",
+      "start_time": "2024-01-20T09:20:16.134Z",
+      "end_time": "2024-01-20T09:20:16.987Z",
+      "duration": "0.85 seconds",
+      "details": {
+        "email_entered": "invalid.user@nonexistent.domain",
+        "password_entered": "[MASKED]",
+        "auth_api_response_time": "0.6 seconds",
+        "http_status": 401,
+        "error_message": "Invalid email or password",
+        "information_disclosure": "none"
+      }
+    },
+    {
+      "step": 3,
+      "stepname": "Verify appropriate error handling",
+      "status": "passed",
+      "start_time": "2024-01-20T09:20:16.998Z",
+      "end_time": "2024-01-20T09:20:17.234Z",
+      "duration": "0.24 seconds",
+      "details": {
+        "error_message_displayed": true,
+        "generic_error_message": true,
+        "no_email_existence_info": true,
+        "form_retry_available": true,
+        "security_compliant": true
+      }
+    },
+    {
+      "step": 4,
+      "stepname": "Test with valid email but invalid password",
+      "status": "passed",
+      "start_time": "2024-01-20T09:20:17.245Z",
+      "end_time": "2024-01-20T09:20:18.123Z",
+      "duration": "0.88 seconds",
+      "details": {
+        "email_entered": "stakeholder.demo@eoh-theme.demo",
+        "password_entered": "[MASKED]",
+        "auth_api_response_time": "0.7 seconds",
+        "http_status": 401,
+        "error_message": "Invalid email or password",
+        "consistent_error_messaging": true
+      }
+    },
+    {
+      "step": 5,
+      "stepname": "Verify security measures",
+      "status": "passed",
+      "start_time": "2024-01-20T09:20:18.134Z",
+      "end_time": "2024-01-20T09:20:18.556Z",
+      "duration": "0.42 seconds",
+      "details": {
+        "rate_limiting_active": true,
+        "failed_attempts_logged": true,
+        "account_lockout_threshold": "5 attempts",
+        "no_sensitive_data_exposed": true,
+        "brute_force_protection": "active"
+      }
+    }
+  ],
+  "security_validations": {
+    "generic_error_messages": true,
+    "no_user_enumeration": true,
+    "rate_limiting_enforced": true,
+    "failed_attempts_logged": true,
+    "no_information_disclosure": true,
+    "brute_force_protection": true
+  },
+  "performance_metrics": {
+    "total_memory_usage": "42.8 MB",
+    "network_requests": 6,
+    "total_data_transferred": "1.2 MB",
+    "error_response_time": "0.65 seconds average"
+  },
+  "test_scenarios": [
+    {
+      "scenario": "Invalid email domain",
+      "email": "invalid.user@nonexistent.domain",
+      "result": "Generic error message",
+      "security_compliant": true
+    },
+    {
+      "scenario": "Valid email, invalid password",
+      "email": "stakeholder.demo@eoh-theme.demo",
+      "result": "Same generic error message",
+      "security_compliant": true
+    }
+  ],
+  "compliance_checks": {
+    "owasp_authentication": "compliant",
+    "information_disclosure": "prevented",
+    "user_enumeration": "prevented",
+    "brute_force_protection": "active"
+  }
+}

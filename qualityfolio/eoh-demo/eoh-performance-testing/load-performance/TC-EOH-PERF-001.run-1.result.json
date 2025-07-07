@@ -1,0 +1,174 @@
+{
+  "test_case_fii": "TC-EOH-PERF-001",
+  "title": "Verify EOH Dashboard Performance Under Concurrent User Load",
+  "status": "passed",
+  "start_time": "2024-01-20T16:00:00.000Z",
+  "end_time": "2024-01-20T16:45:30.000Z",
+  "total_duration": "45 minutes 30 seconds",
+  "environment": "Demo",
+  "load_testing_tool": "Artillery.io v2.0.0",
+  "executed_by": "performance-automation@eoh-theme.demo",
+  "demo_notice": "⚠️ DEMO DATA - Synthetic performance test results for demonstration purposes",
+  "steps": [
+    {
+      "step": 1,
+      "stepname": "Establish baseline performance with single user",
+      "status": "passed",
+      "start_time": "2024-01-20T16:00:00.000Z",
+      "end_time": "2024-01-20T16:05:00.000Z",
+      "duration": "5 minutes",
+      "details": {
+        "concurrent_users": 1,
+        "avg_response_time": "1.2 seconds",
+        "dashboard_load_time": "1.8 seconds",
+        "api_response_time": "0.4 seconds",
+        "cpu_usage": "15%",
+        "memory_usage": "32%",
+        "error_rate": "0%"
+      }
+    },
+    {
+      "step": 2,
+      "stepname": "Test with 10 concurrent users",
+      "status": "passed",
+      "start_time": "2024-01-20T16:05:00.000Z",
+      "end_time": "2024-01-20T16:10:00.000Z",
+      "duration": "5 minutes",
+      "details": {
+        "concurrent_users": 10,
+        "avg_response_time": "1.8 seconds",
+        "dashboard_load_time": "2.4 seconds",
+        "api_response_time": "0.7 seconds",
+        "cpu_usage": "35%",
+        "memory_usage": "45%",
+        "error_rate": "0%",
+        "throughput": "85 req/sec"
+      }
+    },
+    {
+      "step": 3,
+      "stepname": "Test with 25 concurrent users",
+      "status": "passed",
+      "start_time": "2024-01-20T16:10:00.000Z",
+      "end_time": "2024-01-20T16:20:00.000Z",
+      "duration": "10 minutes",
+      "details": {
+        "concurrent_users": 25,
+        "avg_response_time": "2.4 seconds",
+        "dashboard_load_time": "3.1 seconds",
+        "api_response_time": "0.9 seconds",
+        "cpu_usage": "52%",
+        "memory_usage": "58%",
+        "error_rate": "0.1%",
+        "throughput": "180 req/sec"
+      }
+    },
+    {
+      "step": 4,
+      "stepname": "Test with 50 concurrent users",
+      "status": "passed",
+      "start_time": "2024-01-20T16:20:00.000Z",
+      "end_time": "2024-01-20T16:35:00.000Z",
+      "duration": "15 minutes",
+      "details": {
+        "concurrent_users": 50,
+        "avg_response_time": "3.2 seconds",
+        "dashboard_load_time": "4.1 seconds",
+        "api_response_time": "1.3 seconds",
+        "cpu_usage": "68%",
+        "memory_usage": "72%",
+        "error_rate": "0.3%",
+        "throughput": "320 req/sec"
+      }
+    },
+    {
+      "step": 5,
+      "stepname": "Stress test with 100 concurrent users",
+      "status": "passed",
+      "start_time": "2024-01-20T16:35:00.000Z",
+      "end_time": "2024-01-20T16:45:00.000Z",
+      "duration": "10 minutes",
+      "details": {
+        "concurrent_users": 100,
+        "avg_response_time": "4.8 seconds",
+        "dashboard_load_time": "6.2 seconds",
+        "api_response_time": "2.1 seconds",
+        "cpu_usage": "78%",
+        "memory_usage": "81%",
+        "error_rate": "0.8%",
+        "throughput": "580 req/sec",
+        "graceful_degradation": true
+      }
+    },
+    {
+      "step": 6,
+      "stepname": "Recovery and stability validation",
+      "status": "passed",
+      "start_time": "2024-01-20T16:45:00.000Z",
+      "end_time": "2024-01-20T16:45:30.000Z",
+      "duration": "30 seconds",
+      "details": {
+        "recovery_time": "15 seconds",
+        "baseline_performance_restored": true,
+        "memory_leaks_detected": false,
+        "resource_cleanup": "successful",
+        "system_stability": "excellent"
+      }
+    }
+  ],
+  "performance_summary": {
+    "peak_concurrent_users": 100,
+    "max_throughput": "580 req/sec",
+    "system_stability": "excellent",
+    "scalability_rating": "good",
+    "user_experience_impact": "minimal"
+  },
+  "detailed_metrics": {
+    "response_time_percentiles": {
+      "p50": "2.1 seconds",
+      "p75": "3.4 seconds",
+      "p90": "4.8 seconds",
+      "p95": "5.9 seconds",
+      "p99": "8.2 seconds"
+    },
+    "resource_utilization": {
+      "peak_cpu": "78%",
+      "peak_memory": "81%",
+      "peak_disk_io": "45%",
+      "peak_network": "120 Mbps"
+    },
+    "error_analysis": {
+      "total_requests": 45680,
+      "successful_requests": 45320,
+      "failed_requests": 360,
+      "timeout_errors": 180,
+      "connection_errors": 120,
+      "server_errors": 60
+    }
+  },
+  "scalability_assessment": {
+    "linear_scalability": "up to 50 users",
+    "degradation_point": "75+ users",
+    "breaking_point": "not reached",
+    "recommended_capacity": "60 concurrent users",
+    "scaling_recommendations": [
+      "Consider horizontal scaling for >75 users",
+      "Optimize database queries for better performance",
+      "Implement caching for frequently accessed data"
+    ]
+  },
+  "user_experience_metrics": {
+    "perceived_performance": "good",
+    "interaction_responsiveness": "acceptable",
+    "content_loading": "smooth",
+    "navigation_fluidity": "good",
+    "overall_satisfaction": "85%"
+  },
+  "infrastructure_metrics": {
+    "server_instances": 2,
+    "database_connections": 150,
+    "cache_hit_rate": "78%",
+    "cdn_offload": "65%",
+    "load_balancer_efficiency": "92%"
+  }
+}

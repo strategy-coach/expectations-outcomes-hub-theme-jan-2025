@@ -1,0 +1,107 @@
+{
+  "test_case_fii": "TC-EOH-001",
+  "title": "Verify Successful Stakeholder Login to EOH Dashboard",
+  "status": "passed",
+  "start_time": "2024-01-20T09:15:22.145Z",
+  "end_time": "2024-01-20T09:15:25.367Z",
+  "total_duration": "3.22 seconds",
+  "environment": "Demo",
+  "browser": "Chrome 120.0.6099.109",
+  "executed_by": "automation-system@eoh-theme.demo",
+  "demo_notice": "⚠️ DEMO DATA - Synthetic test results for demonstration purposes",
+  "steps": [
+    {
+      "step": 1,
+      "stepname": "Navigate to the EOH theme login page",
+      "status": "passed",
+      "start_time": "2024-01-20T09:15:22.156Z",
+      "end_time": "2024-01-20T09:15:23.267Z",
+      "duration": "1.11 seconds",
+      "details": {
+        "url": "https://eoh-demo.example.com/login",
+        "page_load_time": "1.1 seconds",
+        "elements_found": ["email_field", "password_field", "signin_button"],
+        "validation": "Login form rendered correctly"
+      }
+    },
+    {
+      "step": 2,
+      "stepname": "Enter valid stakeholder credentials",
+      "status": "passed",
+      "start_time": "2024-01-20T09:15:23.278Z",
+      "end_time": "2024-01-20T09:15:23.445Z",
+      "duration": "0.17 seconds",
+      "details": {
+        "email_entered": "stakeholder.demo@eoh-theme.demo",
+        "password_masked": true,
+        "form_validation": "passed",
+        "submit_enabled": true
+      }
+    },
+    {
+      "step": 3,
+      "stepname": "Verify successful authentication and redirection",
+      "status": "passed",
+      "start_time": "2024-01-20T09:15:23.456Z",
+      "end_time": "2024-01-20T09:15:24.289Z",
+      "duration": "0.83 seconds",
+      "details": {
+        "auth_api_response_time": "0.8 seconds",
+        "http_status": 200,
+        "jwt_token_received": true,
+        "redirect_url": "https://eoh-demo.example.com/dashboard",
+        "redirect_status": "successful"
+      }
+    },
+    {
+      "step": 4,
+      "stepname": "Validate dashboard content and stakeholder-specific information",
+      "status": "passed",
+      "start_time": "2024-01-20T09:15:24.301Z",
+      "end_time": "2024-01-20T09:15:25.234Z",
+      "duration": "0.93 seconds",
+      "details": {
+        "dashboard_load_time": "0.9 seconds",
+        "projects_displayed": ["EOH-DEMO-PROJECT-001", "EOH-DEMO-PROJECT-002"],
+        "user_name_displayed": "Demo Stakeholder",
+        "navigation_menu": "stakeholder_level",
+        "personalization": "active"
+      }
+    },
+    {
+      "step": 5,
+      "stepname": "Verify session establishment and security",
+      "status": "passed",
+      "start_time": "2024-01-20T09:15:25.245Z",
+      "end_time": "2024-01-20T09:15:25.356Z",
+      "duration": "0.11 seconds",
+      "details": {
+        "jwt_token_stored": true,
+        "token_size": "512 bytes",
+        "session_timeout": "30 minutes",
+        "https_enforced": true,
+        "csrf_protection": "active",
+        "secure_cookies": true
+      }
+    }
+  ],
+  "performance_metrics": {
+    "total_memory_usage": "45.2 MB",
+    "network_requests": 8,
+    "total_data_transferred": "2.1 MB",
+    "cache_hit_rate": "75%"
+  },
+  "security_validations": {
+    "https_enforcement": true,
+    "password_encryption": true,
+    "jwt_signature_valid": true,
+    "csrf_token_present": true,
+    "no_sensitive_data_logged": true
+  },
+  "test_data_used": {
+    "user_email": "stakeholder.demo@eoh-theme.demo",
+    "user_role": "stakeholder",
+    "projects_count": 2,
+    "organization": "Demo Organization Inc."
+  }
+}
