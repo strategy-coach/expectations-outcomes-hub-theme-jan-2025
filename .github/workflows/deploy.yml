@@ -74,6 +74,8 @@ jobs:
           BOX_FOLDER_ID: ${{ vars.BOX_FOLDER_ID }}
           PUBLIC_BOX_API_URL: ${{ vars.PUBLIC_BOX_API_URL }}
           GDRIVE_JSON_PATH: ${{ vars.GDRIVE_JSON_PATH }}
+          ENABLE_QUALITYFOLIO_PREPARE: ${{ vars.ENABLE_QUALITYFOLIO_PREPARE }}
+          PUBLIC_QUALITYFOLIO_DB: ${{ vars.PUBLIC_QUALITYFOLIO_DB }}
         run: |
           bash -x support/ci-cd.sh      
           
