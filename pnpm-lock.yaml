@@ -4,25 +4,54 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@astrojs/node': 9.0.1_astro@5.1.8
+  '@astrojs/react': 4.1.6_uah2musuksu5kh3w2kypik6f24
+  '@astrojs/tailwind': 5.1.5_ekjat2vx7zilqnbxy7enjfmowa
+  '@types/react': 19.0.7
+  '@types/react-dom': 19.0.3_@types+react@19.0.7
+  astro: 5.1.8
+  astro-breadcrumbs: 3.3.1_astro@5.1.8
+  axios: 1.7.9
+  github-discussions-blog-loader: 1.0.1_astro@5.1.8
+  gravatar-url: 4.0.1
+  gray-matter: 4.0.3
+  js-cookie: 3.0.5
+  jwt-decode: 4.0.0
+  markdown-it: 14.1.0
+  oidc-react: 3.4.1_upmzqgzhjrquwzo2dphtigtdgi
+  querystring: 0.2.1
+  react: 19.0.0
+  react-dom: 19.0.0_react@19.0.0
+  react-markdown-editor-lite: 1.3.4_react@19.0.0
+  reading-time-estimator: 1.11.0
+  sharp: 0.33.5
+  slugify: 1.6.6
+  string-strip-html: 13.4.8
+  zod: 3.24.1
+
+devDependencies:
+  '@tailwindcss/forms': 0.5.10_tailwindcss@3.4.17
+  '@tailwindcss/typography': 0.5.16_tailwindcss@3.4.17
+  '@types/js-cookie': 3.0.6
+  tailwindcss: 3.4.17
+
 importers:
 
   .:
     dependencies:
-      '@akebifiky/remark-simple-plantuml':
-        specifier: ^1.0.2
-        version: 1.0.2
       '@astrojs/mdx':
         specifier: ^4.3.0
-        version: 4.3.0(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
+        version: 4.3.0(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
       '@astrojs/node':
-        specifier: ^9.2.2
-        version: 9.2.2(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
+        specifier: ^9.3.0
+        version: 9.3.0(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
       '@astrojs/react':
         specifier: ^4.3.0
         version: 4.3.0(@types/node@22.15.21)(@types/react-dom@19.1.5(@types/react@19.1.5))(@types/react@19.1.5)(jiti@1.21.7)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass-embedded@1.89.0)(yaml@2.8.0)
       '@astrojs/tailwind':
         specifier: ^6.0.2
-        version: 6.0.2(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))(tailwindcss@3.4.17)
+        version: 6.0.2(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))(tailwindcss@3.4.17)
       '@beoe/cache':
         specifier: ^0.1.0
         version: 0.1.1(typescript@5.8.3)
@@ -57,11 +86,14 @@ importers:
         specifier: 32.1.0
         version: 32.1.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       astro:
-        specifier: ^5.8.1
-        version: 5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+        specifier: ^5.11.0
+        version: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
       astro-breadcrumbs:
         specifier: ^3.3.1
-        version: 3.3.1(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
+        version: 3.3.1(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
+      astro-plantuml:
+        specifier: ^0.1.4
+        version: 0.1.4(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
       axios:
         specifier: ^1.7.9
         version: 1.9.0
@@ -73,7 +105,7 @@ importers:
         version: 0.39.3(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(sqlite3@5.1.7)
       github-discussions-blog-loader:
         specifier: ^1.0.1
-        version: 1.0.1(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
+        version: 1.0.1(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))
       googleapis:
         specifier: ^148.0.0
         version: 148.0.0(encoding@0.1.13)
@@ -192,9 +224,6 @@ importers:
 
 packages:
 
-  '@akebifiky/remark-simple-plantuml@1.0.2':
-    resolution: {integrity: sha512-y5rWgQvU+DMpLKx1KlXCsgUeqVooqQm1S3hePLF9iecZy6YhKRybznFdvAvoAoiV2GoGhObQDHnneAl93llIcg==}
-
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
@@ -209,8 +238,8 @@ packages:
   '@antfu/utils@8.1.1':
     resolution: {integrity: sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==}
 
-  '@astrojs/compiler@2.12.0':
-    resolution: {integrity: sha512-7bCjW6tVDpUurQLeKBUN9tZ5kSv5qYrGmcn0sG0IwacL7isR2ZbyyA3AdZ4uxsuUFOS2SlgReTH7wkxO6zpqWA==}
+  '@astrojs/compiler@2.12.2':
+    resolution: {integrity: sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==}
 
   '@astrojs/internal-helpers@0.6.1':
     resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
@@ -224,8 +253,8 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  '@astrojs/node@9.2.2':
-    resolution: {integrity: sha512-PtLPuuojmcl9O3CEvXqL/D+wB4x5DlbrGOvP0MeTAh/VfKFprYAzgw1+45xsnTO+QvPWb26l1cT+ZQvvohmvMw==}
+  '@astrojs/node@9.3.0':
+    resolution: {integrity: sha512-IV8NzGStHAsKBz1ljxxD8PBhBfnw/BEx/PZfsncTNXg9D4kQtZbSy+Ak0LvDs+rPmK0VeXLNn0HAdWuHCVg8cw==}
     peerDependencies:
       astro: ^5.3.0
 
@@ -1013,6 +1042,10 @@ packages:
     resolution: {integrity: sha512-JxbD3ci+CLoGupqnTq3FMDTuT2Fdepd44FNhQIh8bqSc++JerRypIDMNygHTX+IdCmkt4thzR6nvaTa5vs0rUQ==}
     deprecated: This is a stub types definition for ag-grid (https://github.com/ceolter/ag-grid). ag-grid provides its own type definitions, so you don't need @types/ag-grid installed!
 
+  '@types/axios@0.14.4':
+    resolution: {integrity: sha512-9JgOaunvQdsQ/qW2OPmE5+hCeUB52lQSolecrFrthct55QekhmXEwT203s20RL+UHtCQc15y3VXpby9E7Kkh/g==}
+    deprecated: This is a stub types definition. axios provides its own type definitions, so you do not need this installed.
+
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
 
@@ -1317,8 +1350,13 @@ packages:
     peerDependencies:
       astro: ^2.0.0-beta.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
 
-  astro@5.8.1:
-    resolution: {integrity: sha512-lkBg1smMRFW+FQ6i92SgEN53o4+ItRjlRt6Ck+rEjmTcb57Bid7faTNKUQNYuNnxiesTWw3NJDyVPQPbfKDyfw==}
+  astro-plantuml@0.1.4:
+    resolution: {integrity: sha512-aVNeT1sT6Z77gGYYk62flpbUWLfbFNP3vMRDVWOI8cN1v99dg1To0J6KE2vL24oR7ip/Vk4owBbKL64XMyXj7w==}
+    peerDependencies:
+      astro: ^5.5.6
+
+  astro@5.11.0:
+    resolution: {integrity: sha512-MEICntERthUxJPSSDsDiZuwiCMrsaYy3fnDhp4c6ScUfldCB8RBnB/myYdpTFXpwYBy6SgVsHQ1H4MuuA7ro/Q==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -3253,9 +3291,6 @@ packages:
   pkg-types@2.1.0:
     resolution: {integrity: sha512-wmJwA+8ihJixSoHKxZJRBQG1oY8Yr9pGLzRmSsNms0iNWyHHAlZCa7mmKiFR10YPZuz/2k169JiS/inOjBCZ2A==}
 
-  plantuml-encoder@1.4.0:
-    resolution: {integrity: sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g==}
-
   playwright-core@1.52.0:
     resolution: {integrity: sha512-l2osTgLXSMeuLZOML9qYODUQoPPnUsKsb5/P6LJ2e6uPKXUdPK5WYhN4z03G+YNbWmGDY4YENauNu4ZKczreHg==}
     engines: {node: '>=18'}
@@ -4147,9 +4182,6 @@ packages:
   unist-util-find-after@5.0.0:
     resolution: {integrity: sha512-amQa0Ep2m6hE2g72AugUItjbuM8X8cGQnFoHk0pGfrFeT9GZhzN5SW8nRsiGKK7Aif4CrACPENkA6P/Lw6fHGQ==}
 
-  unist-util-is@4.1.0:
-    resolution: {integrity: sha512-ZOQSsnce92GrxSqlnEEseX0gi7GH9zTJZ0p9dtu87WRb/37mMPO2Ilx1s/t9vBHrFhbgweUwb+t7cIn5dxPhZg==}
-
   unist-util-is@6.0.0:
     resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}
 
@@ -4171,14 +4203,8 @@ packages:
   unist-util-visit-children@3.0.0:
     resolution: {integrity: sha512-RgmdTfSBOg04sdPcpTSD1jzoNBjt9a80/ZCzp5cI9n1qPzLZWF9YdvWGN2zmTumP1HWhXKdUWexjy/Wy/lJ7tA==}
 
-  unist-util-visit-parents@3.1.1:
-    resolution: {integrity: sha512-1KROIZWo6bcMrZEwiH2UrXDyalAa0uqzWCxCJj6lPOvTve2WkfgCytoDTPaMnodXh1WrXOq0haVYHj99ynJlsg==}
-
   unist-util-visit-parents@6.0.1:
     resolution: {integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==}
-
-  unist-util-visit@2.0.3:
-    resolution: {integrity: sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==}
 
   unist-util-visit@5.0.0:
     resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
@@ -4447,44 +4473,7 @@ packages:
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
-dependencies:
-  '@astrojs/node': 9.0.1_astro@5.1.8
-  '@astrojs/react': 4.1.6_uah2musuksu5kh3w2kypik6f24
-  '@astrojs/tailwind': 5.1.5_ekjat2vx7zilqnbxy7enjfmowa
-  '@types/react': 19.0.7
-  '@types/react-dom': 19.0.3_@types+react@19.0.7
-  astro: 5.1.8
-  astro-breadcrumbs: 3.3.1_astro@5.1.8
-  axios: 1.7.9
-  github-discussions-blog-loader: 1.0.1_astro@5.1.8
-  gravatar-url: 4.0.1
-  gray-matter: 4.0.3
-  js-cookie: 3.0.5
-  jwt-decode: 4.0.0
-  markdown-it: 14.1.0
-  oidc-react: 3.4.1_upmzqgzhjrquwzo2dphtigtdgi
-  querystring: 0.2.1
-  react: 19.0.0
-  react-dom: 19.0.0_react@19.0.0
-  react-markdown-editor-lite: 1.3.4_react@19.0.0
-  reading-time-estimator: 1.11.0
-  sharp: 0.33.5
-  slugify: 1.6.6
-  string-strip-html: 13.4.8
-  zod: 3.24.1
-
-devDependencies:
-  '@tailwindcss/forms': 0.5.10_tailwindcss@3.4.17
-  '@tailwindcss/typography': 0.5.16_tailwindcss@3.4.17
-  '@types/js-cookie': 3.0.6
-  tailwindcss: 3.4.17
-
 snapshots:
-
-  '@akebifiky/remark-simple-plantuml@1.0.2':
-    dependencies:
-      plantuml-encoder: 1.4.0
-      unist-util-visit: 2.0.3
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -4500,7 +4489,7 @@ snapshots:
 
   '@antfu/utils@8.1.1': {}
 
-  '@astrojs/compiler@2.12.0': {}
+  '@astrojs/compiler@2.12.2': {}
 
   '@astrojs/internal-helpers@0.6.1': {}
 
@@ -4530,12 +4519,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))':
+  '@astrojs/mdx@4.3.0(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.2
       '@mdx-js/mdx': 3.1.0(acorn@8.14.1)
       acorn: 8.14.1
-      astro: 5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4549,10 +4538,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.2.2(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))':
+  '@astrojs/node@9.3.0(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
-      astro: 5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
       send: 1.2.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -4585,9 +4574,9 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/tailwind@6.0.2(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))(tailwindcss@3.4.17)':
+  '@astrojs/tailwind@6.0.2(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0))(tailwindcss@3.4.17)':
     dependencies:
-      astro: 5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
       autoprefixer: 10.4.21(postcss@8.5.3)
       postcss: 8.5.3
       postcss-load-config: 4.0.2(postcss@8.5.3)
@@ -5305,6 +5294,12 @@ snapshots:
     dependencies:
       ag-grid: 18.1.2
 
+  '@types/axios@0.14.4':
+    dependencies:
+      axios: 1.9.0
+    transitivePeerDependencies:
+      - debug
+
   '@types/babel__core@7.20.5':
     dependencies:
       '@babel/parser': 7.27.2
@@ -5632,13 +5627,21 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro-breadcrumbs@3.3.1(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)):
+  astro-breadcrumbs@3.3.1(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
-      astro: 5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
 
-  astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0):
+  astro-plantuml@0.1.4(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
-      '@astrojs/compiler': 2.12.0
+      '@types/axios': 0.14.4
+      astro: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+      axios: 1.9.0
+    transitivePeerDependencies:
+      - debug
+
+  astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0):
+    dependencies:
+      '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/markdown-remark': 6.3.2
       '@astrojs/telemetry': 3.3.0
@@ -6660,9 +6663,9 @@ snapshots:
       dunder-proto: 1.0.1
       es-object-atoms: 1.1.1
 
-  github-discussions-blog-loader@1.0.1(astro@5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)):
+  github-discussions-blog-loader@1.0.1(astro@5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)):
     dependencies:
-      astro: 5.8.1(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
+      astro: 5.11.0(@types/node@22.15.21)(encoding@0.1.13)(jiti@1.21.7)(rollup@4.41.1)(sass-embedded@1.89.0)(typescript@5.8.3)(yaml@2.8.0)
 
   github-from-package@0.0.0: {}
 
@@ -8069,8 +8072,6 @@ snapshots:
       exsolve: 1.0.5
       pathe: 2.0.3
 
-  plantuml-encoder@1.4.0: {}
-
   playwright-core@1.52.0: {}
 
   playwright@1.52.0:
@@ -9136,8 +9137,6 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.0
 
-  unist-util-is@4.1.0: {}
-
   unist-util-is@6.0.0:
     dependencies:
       '@types/unist': 3.0.3
@@ -9168,21 +9167,10 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  unist-util-visit-parents@3.1.1:
-    dependencies:
-      '@types/unist': 2.0.11
-      unist-util-is: 4.1.0
-
   unist-util-visit-parents@6.0.1:
     dependencies:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.0
-
-  unist-util-visit@2.0.3:
-    dependencies:
-      '@types/unist': 2.0.11
-      unist-util-is: 4.1.0
-      unist-util-visit-parents: 3.1.1
 
   unist-util-visit@5.0.0:
     dependencies:
