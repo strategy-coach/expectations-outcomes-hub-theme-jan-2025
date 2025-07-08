@@ -51,6 +51,8 @@ This project uses `pnpm` as the package manager.
 
 Install it globally if not already installed:
 
+**pnpm version must be 9.12.0** 
+
 ```bash
 npm install -g pnpm
 ```
