@@ -10,6 +10,20 @@ if (!fleetfolioUrl) {
 const BASE_TARGET_URL = fleetfolioUrl ? new URL(fleetfolioUrl).origin : "";
 const TARGET_URL = fleetfolioUrl || "";
 
+// Extract the path from fleetfolioUrl for dynamic href construction
+const getFleetfolioPath = () => {
+    if (!fleetfolioUrl) return "";
+    try {
+        const url = new URL(fleetfolioUrl);
+        // Remove the filename (e.g., assets.sql) and keep the directory path
+        const pathParts = url.pathname.split('/').filter(part => part && !part.endsWith('.sql'));
+        return pathParts.length > 0 ? `/${pathParts.join('/')}/` : "/";
+    } catch (error) {
+        console.warn("Error parsing fleetfolioUrl:", error);
+        return "";
+    }
+};
+
 export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddleware(async (context, next) => {
     // Skip middleware if fleetfolioUrl is not set
     if (!fleetfolioUrl) {
@@ -61,13 +75,12 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
                     `<a $1href="/fleetfolio-service/$2"`
                 );
 
-                const firstSegmentPathName = pathname.split('/').filter(Boolean)[0];// To get firstsegmant of the path
-                console.log("firstSegmentPathName:", firstSegmentPathName)
                 html = html.replace(
                     /<a\s+([^>]*?)href="(\/?[a-zA-Z0-9_-]+\.sql(?:\?[^"]*)?)"([^>]*)>/gi,
                     (match, beforeHref, sqlHref, afterHref) => {
                         // Only transform hrefs that start with SQL files (with or without leading slash)
-                        const newHref = `/fleetfolio-service/netspective-fleetfolio/fleetfolio/${sqlHref.replace(/^\//, '')}`;
+                        const dynamicPath = getFleetfolioPath();
+                        const newHref = `/fleetfolio-service${dynamicPath}${sqlHref.replace(/^\//, '')}`;
                         return `<a ${beforeHref}href="${newHref}"${afterHref}>`;
                     }
                 );
