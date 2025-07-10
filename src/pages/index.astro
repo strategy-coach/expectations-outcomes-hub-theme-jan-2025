@@ -12,6 +12,7 @@ import Teams from "../components/teams/teams";
 import ActivityLog from "../components/activity-log/activityLog";
 import WhatsNext from "../components/home/whatsNext.astro";
 import ProgressNotes from "../components/home/progressNotes.astro";
+import POAMList from "../components/home/poam.astro";
 
 const trackers = themeConfig.trackers;
 const { title, description, activeProject } = themeConfig || {};
@@ -184,16 +185,19 @@ const { title, description, activeProject } = themeConfig || {};
           <div class="col-span-12 md:col-span-8"></div>
         </aside>
       </div>
-      <WhatsNext />
+      <POAMList showViewMoreButton={true} compact={false}/>
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
       <SkipTo />
 
       <KeyResources />
+      <WhatsNext />
+
+      <ItGovernance />
+
 
       <ProgressNotes />
-      <ItGovernance />
 
       <LatestUpdates />
 

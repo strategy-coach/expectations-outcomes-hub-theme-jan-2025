@@ -1,9 +1,13 @@
 ---
 
 title: Statement of Work (SOW)
+summary: "Statement of Work (SOW)"
 home:
   skipTo: 
     category: "skipTo"
+  poam:
+    category: "poam"
+    order: 1
 enableEditButton: true
 
 ---

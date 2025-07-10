@@ -6,6 +6,7 @@ home:
     category: "whatsNext"
     order: 4
     status: "on going"
+    
 redirect: "/expectations/questionnaire/pre-audit/opsfolio-caas-onboarding-questionnaire.lhc-form.json/"
 draft: true
 ---

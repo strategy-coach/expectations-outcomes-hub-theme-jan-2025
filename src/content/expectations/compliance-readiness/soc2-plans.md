@@ -7,6 +7,9 @@ home:
   whatsNext:
     category: "whatsNext"
     order: 2
+  poam:
+    category: "poam"
+    order: 1
 description:  SOC 2 (Service Organization Control 2) is a widely recognized framework designed to evaluate and enhance the security, availability, processing integrity, confidentiality, and privacy of service organizations. Choose the right compliance plan for your business.
 enableEditButton: true
 ---

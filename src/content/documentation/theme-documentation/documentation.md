@@ -557,6 +557,37 @@ home:
 
 This configuration allows the file to be listed under both the **Key Resources** and **Skip To** widgets.
 
+
+
+### 10\. POA&M Widget Documentation
+
+This widget displays a list of Plan of Action and Milestones (POA&M) items based on frontmatter attributes in markdown content files.
+It can be reused both on the home page and on a detailed listing page, with flexible styling controlled via props.
+
+---
+
+### Features
+- Lists content files with the frontmatter attribute: `home.poam.category` set to `"poam"`.
+- Sorts the list based on the `home.poam.order` value (ascending order).
+- Displays the `summary` field as the title or description in the UI.
+- Optionally shows a **"View More"** button that links to the full POA&M listing page.
+- Supports hiding items from listing by setting `draft: true` in the frontmatter.
+
+---
+
+### Frontmatter Example
+To include a markdown file in this widget, add the following to its frontmatter:
+```yaml
+home:
+  poam:
+    category: "poam"
+    order: 5
+summary: "Short description shown in the POA&M widget"
+draft: false  # Optional: set to true to hide this item
+```
+
+
+
 ## Observability
 
 To enable observabilty and tracking, set the env variable as true
