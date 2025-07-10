@@ -6,9 +6,26 @@ import { qualityfolioUrl } from "../utils/env.ts";
 if (!qualityfolioUrl) {
     console.warn("fleetfolioUrl is not defined. Skipping fleetfolioReverseProxyMiddleware.");
 }
+interface State {
+    proxiedHtml?: string;
+}
 
 const BASE_TARGET_URL = qualityfolioUrl ? new URL(qualityfolioUrl).origin : "";
 const TARGET_URL = qualityfolioUrl || "";
+
+// Extract the path from qualityfolioUrl for dynamic href construction
+const getQualityfolioPath = () => {
+    if (!qualityfolioUrl) return "";
+    try {
+        const url = new URL(qualityfolioUrl);
+        // Remove the filename (e.g., index.sql) and keep the directory path
+        const pathParts = url.pathname.split('/').filter(part => part && !part.endsWith('.sql'));
+        return pathParts.length > 0 ? `/${pathParts.join('/')}/` : "/";
+    } catch (error) {
+        console.warn("Error parsing qualityfolioUrl:", error);
+        return "";
+    }
+};
 
 export const qualityfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddleware(async (context, next) => {
     // Skip middleware if fleetfolioUrl is not set
@@ -80,6 +97,16 @@ export const qualityfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddl
                             return match;
                         }
                         return `<a ${attrs}href="/qualityfolio/${path}"`;
+                    }
+                );
+
+                html = html.replace(
+                    /<a\s+([^>]*?)href="(\/?[a-zA-Z0-9_-]+\.sql(?:\?[^"]*)?)"([^>]*)>/gi,
+                    (match, beforeHref, sqlHref, afterHref) => {
+                        // Only transform hrefs that start with SQL files (with or without leading slash)
+                        const dynamicPath = getQualityfolioPath();
+                        const newHref = `/qualityfolio${dynamicPath}${sqlHref.replace(/^\//, '')}`;
+                        return `<a ${beforeHref}href="${newHref}"${afterHref}>`;
                     }
                 );
 
