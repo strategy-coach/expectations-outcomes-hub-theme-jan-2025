@@ -30,33 +30,35 @@ const limitedPOAMList = showViewMoreButton ? POAMList.slice(0, 5) : POAMList;
 
 ---
 
-<div class={`lg:col-span-6 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
-  <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
-    <div class="flex gap-2 items-center text-xl">
-      <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-      <span>Plan of Action and Milestones (POA&M) </span>
-      <!-- <img class="badgen-img-watch" src="https://badgen.net/badge/Status/Completed?color=green&amp;scale=1.2" alt="Completed"> -->
-    </div>
-    {showViewMoreButton && (
-      <a href="/expectations/plan-of-action-and-milestones/list">
-        <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
-          View More
-        </button>
-      </a>
-    )}
-  </h3>
+{POAMList.length > 0 && (
+  <div class={`lg:col-span-6 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
+    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
+      <div class="flex gap-2 items-center text-xl">
+        <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
+        <span>Plan of Action and Milestones (POA&M)</span>
+        {/* <img class="badgen-img-watch" src="https://badgen.net/badge/Status/Completed?color=green&amp;scale=1.2" alt="Completed"> */}
+      </div>
+      {showViewMoreButton && (
+        <a href="/expectations/plan-of-action-and-milestones/list">
+          <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
+            View More
+          </button>
+        </a>
+      )}
+    </h3>
 
-  {limitedPOAMList.length > 0 ? (
-    <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {limitedPOAMList.map((file) => (
-        <li>
-          <a href={file.path} class="text-sm hover:text-black">
-            {file.summary}
-          </a>
-        </li>
-      ))}
-    </ul>
-  ) : (
-    <p class="text-gray-600">No POA&M items available.</p>
-  )}
-</div>
+    {limitedPOAMList.length > 0 ? (
+      <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+        {limitedPOAMList.map((file) => (
+          <li>
+            <a href={file.path} class="text-sm hover:text-black">
+              {file.summary}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="text-gray-600">No POA&M items available.</p>
+    )}
+  </div>
+)}
