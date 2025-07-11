@@ -38,26 +38,25 @@ const accomplishmentsList = Object.values(newFiles)
 
 ---
 
-<div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-  <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
-    <div class="flex gap-2 items-center">
-      <img src="/assets/images/fi-rr-calendar.svg" class="w-6 h-6" alt="Calendar Icon" />
-      <span>Accomplishments</span>
-    </div>
-    {showViewMoreButton && (
-      <a href="/outcomes/dashboard">
-        <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
-          View More
-        </button>
-      </a>
-    )}
-  </h3>
+{accomplishmentsList.length > 0 && (
+  <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
+      <div class="flex gap-2 items-center">
+        <img src="/assets/images/fi-rr-calendar.svg" class="w-6 h-6" alt="Calendar Icon" />
+        <span>Accomplishments</span>
+      </div>
+      {showViewMoreButton && (
+        <a href="/outcomes/dashboard">
+          <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
+            View More
+          </button>
+        </a>
+      )}
+    </h3>
 
-  {accomplishmentsList.length > 0 ? (
     <ul role="feed" class="relative flex flex-col gap-6 py-6 pl-8 before:absolute before:top-0 before:left-8 before:h-full before:border before:-translate-x-1/2 before:border-slate-200 before:border-dashed">
       {accomplishmentsList.map((log) => {
         const { icon, color } = getIconAndColor(log.title);
-        
         return (
           <li role="article" class="relative pl-8">
             <span class={`absolute left-0 z-10 flex items-center justify-center w-8 h-8 text-white -translate-x-1/2 rounded-full ring-2 ring-white ${color}`}>
@@ -65,59 +64,17 @@ const accomplishmentsList = Object.values(newFiles)
             </span>
             <div class="flex flex-col flex-1 gap-0">
               {showViewMoreButton === undefined ? (
-              <a href={(log.path)}>
+                <a href={(log.path)}>
+                  <h4 class="text-sm font-medium dark:text-gray-300" set:html={(log.title)}></h4>
+                </a>
+              ) : (
                 <h4 class="text-sm font-medium dark:text-gray-300" set:html={(log.title)}></h4>
-              </a>
-            ) : (
-              <h4 class="text-sm font-medium dark:text-gray-300" set:html={(log.title)}></h4>
-            )}
+              )}
               <p class="text-xs dark:text-gray-300">{getRelativeTime(log.date)}</p>
             </div>
           </li>
         );
       })}
     </ul>
-  ) : (
-    <p class="text-gray-600">No activity log available.</p>
-  )}
-
-<!-- {accomplishmentsList.length > 0 && (
-  <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
-      <div class="flex gap-2 items-center text-xl justify-between">
-        <div class="flex gap-2 items-center"><span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-          <span>Accomplishments</span></div>
-        
-        <div><a href="/outcomes/milestone-achievements/achievements"><button
-        type="button"
-        class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white"
-      >
-        Read More
-      </button></a></div>
-      </div>
-    </h3>
-    <div class="mt-2 space-y-0.5 ml-8 markdown-content">
-      <table class="border-collapse border border-gray-300 dark:border-gray-600 w-full">
-        <thead>
-          <tr class="bg-gray-100 dark:bg-gray-700 dark:text-gray-300">
-            <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Title</th>
-            <th class="border border-gray-300 dark:border-gray-600 px-4 py-2 text-left">Date</th>
-          </tr>
-        </thead>
-        <tbody class="dark:bg-gray-700 dark:text-gray-300">
-          {accomplishmentsList.map((file) => (
-            <tr  class="hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">
-                <a href={file.path} class="text-blue-600 hover:underline">
-                  {file.title}
-                </a>
-              </td>
-              <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">{file.date}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      
-    </div>
   </div>
-)} -->
+)}
