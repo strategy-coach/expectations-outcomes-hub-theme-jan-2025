@@ -1,5 +1,5 @@
 ---
-title: "Enhancing Your Astro Site with Dynamic Components"
+title: "Dynamic Components"
 description: "Discover how to use Astro components and islands to create a faster, more interactive site."
 heroImage: '/assets/images/blog-thumb.jpg'
 home:
