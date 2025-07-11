@@ -16,7 +16,9 @@ const userName = Astro.cookies.get("zitadel_user_name");
 const userEmail = Astro.cookies.get("zitadel_user_email");
 
 ---
-
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
 {
   enableOpenObserve == "true" && (
     <>
@@ -35,6 +37,7 @@ const userEmail = Astro.cookies.get("zitadel_user_email");
       rel="stylesheet"
       href="/assets/css/support-and-feedback/support-and-feedback.css"
     />
+</head>
      <script define:vars={{ userName, userEmail }} is:inline>
       window.widgetConfig = {
         USER_EMAIL: userEmail ? userEmail.value : "Unauth",
@@ -45,5 +48,5 @@ const userEmail = Astro.cookies.get("zitadel_user_email");
       enableSupportAndFeedback == "true" && (
         <script src="/assets/js/support-and-feedback.js" is:inline />
       )
-    }
+    } 
 <UserLogin client:only="react" />
