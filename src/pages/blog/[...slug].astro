@@ -19,6 +19,7 @@ const { Content } = await render(entry);
     <main
       class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]"
     >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
       <Breadcrumbs
         linkTextFormat="capitalized"
         ariaLabel="Site navigation"
@@ -35,14 +36,30 @@ const { Content } = await render(entry);
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          ><polyline points="9 18 15 12 9 6"></polyline>
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <article class="prose max-w-screen-xl withbullet markdown-content">
-          <Content />
-        </article>
+    </div>
+    {entry.data.heroImage && (
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 mt-6">
+        <div class="w-full h-64 sm:h-80 md:h-96 lg:h-[450px] rounded-lg overflow-hidden shadow">
+          <img
+            src={entry.data.heroImage}
+            alt={entry.data.title}
+            class="w-full h-full object-cover"
+          />
+        </div>
       </div>
+    )}
+
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <article class="prose max-w-screen-xl withbullet markdown-content">
+        <Content />
+      </article>
+    </div>
+
     </main>
   </div>
 </Layout>
