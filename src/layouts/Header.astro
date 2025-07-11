@@ -18,12 +18,14 @@ const darkModeHide =
 <header
   class="bg-white shadow-sm border-b dark:border-gray-600 dark:bg-gray-900"
 >
-  <div
-    class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 flex justify-between items-center sm:flex-row flex-col"
+
+  <div class="max-w-full mx-auto px-4 flex items-center justify-between">
+    <div
+    class="flex w-full justify-between items-center sm:flex-row flex-col"
   >
     <div class="flex items-center">
       <div
-        class="text-lg font-bold text-gray-900 dark:text-gray-300 py-4 block dark:hidden"
+        class="text-lg mr-2 font-bold text-gray-900 dark:text-gray-300 py-4 block dark:hidden"
       >
         <a href="/"><img src={logo} class="mr-3 h-10" alt="logo" /></a>
       </div>
@@ -32,7 +34,7 @@ const darkModeHide =
       >
         <a href="/"><img src={darkmodeLogo} class="mr-3 h-10" alt="logo" /></a>
       </div>
-      <nav class="lg:flex flex-wrap font-semibold -mb-1.5">
+      <nav class="hidden xl:flex items-center space-x-8 flex-wrap font-semibold">
         {
           headerMenu.map(
             ({ label, path, requiresAuth }) =>
@@ -40,7 +42,7 @@ const darkModeHide =
                 <a
                   href={path}
                   data-path={path}
-                  class="menu-link py-4 px-3 inline-flex dark:text-gray-300 dark:border-gray-300"
+                  class="menu-link py-1.5 inline-flex dark:text-gray-300 dark:border-gray-300 text-gray-700 hover:text-black"
                 >
                   {label}
                 </a>
@@ -208,6 +210,68 @@ const darkModeHide =
           </button>
       )}
     </div>
+    </div>
+      <!-- Right side -->
+    <div class="flex items-center space-x-4">
+
+      <!-- Profile -->
+      
+      <!-- Hamburger (shown below xl) -->
+      <button id="hamburger" class="xl:hidden inline-flex items-center rounded-lg justify-center w-10 h-10 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile/Tablet Menu (visible below xl) -->
+  <div id="mobile-menu" class="hidden xl:hidden px-4 pb-4 font-semibold">
+
+
+      
+      <!-- Dropdown menu -->
+      <div
+        id="dropdown"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownDefaultButton"
+        >
+          
+          <li>
+            <a
+              href="/"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              >Dashboard</a
+            >
+          </li>
+          
+
+
+          
+        </ul>
+      </div>
+      {!darkModeHide && (
+        ""
+      )}
+    
+    {
+          headerMenu.map(
+            ({ label, path, requiresAuth }) =>
+              (!requiresAuth || userId) && (
+                <a
+                  href={path}
+                  data-path={path}
+                  class="block menu-link py-2 dark:text-gray-300 dark:border-gray-300 text-black border-b-2 border-slate-700"
+                >
+                  {label}
+                </a>
+              ),
+          )
+        }
+      
   </div>
 </header>
 
@@ -240,4 +304,21 @@ const darkModeHide =
   if (path.includes("fleetfolio-service") || path.includes("qualityfolio")) {
     document.documentElement.classList.remove("dark");
   }
+</script>
+
+<script>
+  // Hamburger menu toggle
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  // Profile dropdown toggle
+  document.getElementById('profile-toggle').addEventListener('click', function () {
+    document.getElementById('profile-dropdown').classList.toggle('hidden');
+  });
+
+  // Dark mode toggle
+  document.getElementById('dark-toggle').addEventListener('click', function () {
+    document.documentElement.classList.toggle('dark');
+  });
 </script>
