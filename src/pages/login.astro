@@ -2,6 +2,19 @@
 import UserLogin from "../components/zitadel/login";
 const envData = import.meta.env;
 const enableOpenObserve = envData.ENABLE_OPEN_OBSERVE;
+const enableSupportAndFeedback =
+  import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined
+    ? import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK
+    : false;
+    let user: string;
+if (Astro.cookies.get("User")?.value !== undefined) {
+  user = Astro.cookies.get("User")!.value; 
+} else {
+  user = "Unauth";
+}
+const userName = Astro.cookies.get("zitadel_user_name");
+const userEmail = Astro.cookies.get("zitadel_user_email");
+
 ---
 
 {
@@ -18,4 +31,19 @@ const enableOpenObserve = envData.ENABLE_OPEN_OBSERVE;
 }
 <link rel="stylesheet" href="/assets/ds/tailwind/css/basic.css" />
 <link rel="stylesheet" href="/assets/ds/tailwind/css/tailwind.min.css" />
+<link
+      rel="stylesheet"
+      href="/assets/css/support-and-feedback/support-and-feedback.css"
+    />
+     <script define:vars={{ userName, userEmail }} is:inline>
+      window.widgetConfig = {
+        USER_EMAIL: userEmail ? userEmail.value : "Unauth",
+        USER_FULL_NAME: userName ? userName.value : "Unauth",
+      };
+    </script>
+    {
+      enableSupportAndFeedback == "true" && (
+        <script src="/assets/js/support-and-feedback.js" is:inline />
+      )
+    }
 <UserLogin client:only="react" />
