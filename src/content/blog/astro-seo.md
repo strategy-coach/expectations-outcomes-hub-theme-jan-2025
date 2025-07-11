@@ -1,7 +1,8 @@
 ---
 title: "Optimizing Astro for SEO and Performance"
 description: "Learn how to improve your Astro site's SEO and performance with best practices."
-heroImage: '/assets/images/content-imge-22.jpg'
+heroImage: '/assets/images/astro-blog.jpg'
+date: "04-04-2025"
 home:
   featuredBlog: true
 ---
