@@ -78,6 +78,7 @@ const JsonList: React.FC<DataTableProps> = ({ data }) => {
                 {/* Moon and Sun icons for toggling dark mode */}
                 <span
                     onClick={toggleMode}
+                    title={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
                     style={{
                         position: "absolute",
                         top: "10px",
@@ -129,6 +130,7 @@ const JsonList: React.FC<DataTableProps> = ({ data }) => {
                 {/* Copy to Clipboard button */}
                 <span
                     onClick={copyToClipboard}
+                    title="Copy JSON to clipboard"
                     style={{
                         position: "absolute",
                         top: "10px",
