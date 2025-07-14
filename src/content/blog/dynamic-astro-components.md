@@ -4,6 +4,7 @@ description: "Discover how to use Astro components and islands to create a faste
 heroImage: '/assets/images/blog-thumb.jpg'
 home:
   featuredBlog: true
+date: "2025-10-07"
 ---
 
 # Enhancing Your Astro Site with Dynamic Components  

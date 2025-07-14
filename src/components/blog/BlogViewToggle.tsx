@@ -58,11 +58,15 @@ const BlogViewToggle: React.FC<Props> = ({ posts }) => {
                   {post.title}
                 </h2>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
+                  {post.date && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </p>
+                  )}
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {post.description.slice(0, 100)}
@@ -92,13 +96,15 @@ const BlogViewToggle: React.FC<Props> = ({ posts }) => {
                 <h2 className="text-2xl font-bold mb-2 dark:text-gray-300">
                   {post.title}
                 </h2>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                  {new Date(post.date).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </p>
+                {post.date && (
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">
+                    {new Date(post.date).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </p>
+                )}
                 <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                   {post.description.slice(0, 100)}
                   {post.description.length > 100 ? "…" : ""}

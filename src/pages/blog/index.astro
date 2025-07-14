@@ -8,7 +8,7 @@ import BlogViewToggle from '../../components/blog/BlogViewToggle';
 const posts = await getCollection('blog');
 const formattedPosts = posts.map((post) => ({
   id: post.id,
-  date:post.data.date || new Date().toISOString(),
+  date:post.data.date,
   title: post.data.title,
   description: post.data.description,
   heroImage: post.data.heroImage,
