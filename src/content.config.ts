@@ -59,13 +59,12 @@ const blog = defineCollection({
   loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
   schema: z.object({
     title: z.string(),
-    date: z
-      .string()
-      .refine((date) => /^\d{4}-\d{2}-\d{2}$/.test(date), {
-        message: "Date must be in format YYYY-MM-DD",
-      }),
+    date: z.string().refine((date) => /^\d{4}-\d{2}-\d{2}$/.test(date), {
+      message: "Date must be in format YYYY-MM-DD",
+    }),
     description: z.string(),
-    heroImage: z.string().optional(),
+    featuredImage: z.string().optional(),
+    thumbImage: z.string().optional(),
     home: z
       .object({
         featuredBlog: z.boolean().optional(),
