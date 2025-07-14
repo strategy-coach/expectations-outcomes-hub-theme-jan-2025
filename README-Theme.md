@@ -1528,7 +1528,34 @@ To enable private Google Drive access via a service account, follow these steps:
 GDRIVE_JSON_PATH=src/keys/gdrive-sample.json
 ```
 
-**Enjoy building with the EOH Astro 5 Theme!** 🚀
+
+## 📝 Blog
+The theme contains the **blog section** of the site.
+
+---
+
+### ✨ Features
+- Grid and list view toggle with icons.
+- Blog posts fetched from Markdown files or content collections.
+- Responsive design built with Tailwind CSS.
+- Support for both **featured images** and **thumbnail images**.
+
+---
+
+### 🖼️ Featured & Thumbnail Images
+
+Each blog post can define:
+- `featuredImage` → a **high-resolution image** shown on the **detail page**.
+- `thumbImage` → a **smaller image** displayed in the **grid or list view** on the blog listing page.
+
+✅ **If `featuredImage` is not provided** in the Markdown frontmatter:
+- No image will appear on the detail page.
+- It’s recommended to include a high-resolution image to keep the detail page visually engaging.
+
+✅ **If `thumbImage` is not provided**:
+- The system automatically uses the default thumbnail image: /assets/images/blog/blog-thumb.jpg
+
+
 
 ## 📊 Qualityfolio Integration
 
@@ -1623,3 +1650,5 @@ http://localhost:4321/qualityfolio
   properly installed and in your PATH
 - If database operations fail, check file permissions for the target directories
 - For ingestion errors, verify your Qualityfolio URL and connectivity
+
+**Enjoy building with the EOH Astro 5 Theme!** 🚀
