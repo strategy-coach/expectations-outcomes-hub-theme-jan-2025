@@ -624,3 +624,6 @@ body, html {
     line-height: 20px;
     color: #71717A;
 }
+main {
+   word-break: break-word!important;
+}
