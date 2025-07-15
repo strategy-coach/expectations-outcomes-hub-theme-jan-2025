@@ -518,9 +518,9 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         </button>
 
                         {showRoleDropdown && (
-                            <div className="absolute z-10 mt-2 w-60 bg-white border border-gray-300 rounded shadow-lg">
+                            <div className="absolute z-10 mt-2 w-60 bg-white dark:bg-gray-800 border border-gray-300 rounded shadow-lg">
                                 {roles.map((role) => (
-                                    <label key={role} className="flex items-center px-4 py-2 hover:bg-gray-100">
+                                    <label key={role} className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-900">
                                         <input
                                             type="checkbox"
                                             checked={selectedRoles.includes(role)}
