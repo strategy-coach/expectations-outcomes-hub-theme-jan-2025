@@ -80,7 +80,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
             className={`flex items-center font-semibold py-2 px-4 rounded-lg shadow-md border transition 
                 ${
                   gridView
-                    ? "bg-slate-200 text-slate-900 border-slate-400"
+                    ? "bg-black text-white border-slate-400"
                     : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100 active:bg-slate-200"
                 }`}
             onClick={() => setGridView(true)}
@@ -105,7 +105,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
             className={`flex items-center font-semibold py-2 px-4 rounded-lg shadow-md border transition 
                 ${
                   !gridView
-                    ? "bg-slate-200 text-slate-900 border-slate-400"
+                    ? "bg-black text-white border-slate-400"
                     : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100 active:bg-slate-200"
                 }`}
             onClick={() => setGridView(false)}
