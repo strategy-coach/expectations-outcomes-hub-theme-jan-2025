@@ -80,7 +80,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
             className={`flex items-center font-semibold py-2 px-4 rounded-lg shadow-md border transition 
                 ${
                   gridView
-                    ? "bg-black text-white border-slate-400"
+                    ? "bg-black text-white border-grey-700"
                     : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100 active:bg-slate-200"
                 }`}
             onClick={() => setGridView(true)}
@@ -105,7 +105,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
             className={`flex items-center font-semibold py-2 px-4 rounded-lg shadow-md border transition 
                 ${
                   !gridView
-                    ? "bg-black text-white border-slate-400"
+                    ? "bg-black text-white border-grey-700"
                     : "bg-white text-slate-700 border-slate-300 hover:bg-slate-100 active:bg-slate-200"
                 }`}
             onClick={() => setGridView(false)}
@@ -134,7 +134,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
               .map((member) => (
                 <div
                   key={member.userId}
-                  className=" leading-[3rem] col-span-4 md:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
+                  className=" leading-[3rem] col-span-12 md:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
                 >
                   <div className="flex items-center gap-3">
                     <Gravatar userEmail={member.email} width={20} height={20} />
