@@ -432,7 +432,10 @@ details[open] > .fst_mn .caret {
 }
 
 .markdown-content summary::-webkit-details-marker {
-  display: none;
+  display: none !important;
+  height: 0;
+  width: 0;
+  opacity: 0;
 }
 #activityLog h1{
   display: none;
