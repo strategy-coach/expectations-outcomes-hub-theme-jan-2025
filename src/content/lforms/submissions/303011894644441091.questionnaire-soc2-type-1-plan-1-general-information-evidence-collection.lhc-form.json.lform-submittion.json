@@ -1,0 +1,197 @@
+{
+  "lformsVersion": "36.8.0",
+  "PATH_DELIMITER": "/",
+  "code": null,
+  "codeList": null,
+  "identifier": null,
+  "name": "General Information Evidence Collection Form",
+  "template": "table",
+  "items": [
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "General Information",
+      "questionCode": "323289382098",
+      "questionCodeSystem": "LinkId",
+      "linkId": "323289382098",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "ST",
+          "question": "Organization Name",
+          "questionCode": "843509936337",
+          "questionCodeSystem": "LinkId",
+          "linkId": "843509936337",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "test"
+        },
+        {
+          "dataType": "ST",
+          "question": "Organization Address",
+          "questionCode": "834824167845",
+          "questionCodeSystem": "LinkId",
+          "linkId": "834824167845",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "test"
+        },
+        {
+          "dataType": "ST",
+          "question": "Product Name",
+          "questionCode": "574440750588",
+          "questionCodeSystem": "LinkId",
+          "linkId": "574440750588",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "test"
+        },
+        {
+          "dataType": "URL",
+          "question": "Website",
+          "questionCode": "924260494641",
+          "questionCodeSystem": "LinkId",
+          "linkId": "924260494641",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "https://test.com"
+        },
+        {
+          "dataType": "ST",
+          "question": "Point of Contact",
+          "questionCode": "403261366197",
+          "questionCodeSystem": "LinkId",
+          "linkId": "403261366197",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "1234566"
+        },
+        {
+          "dataType": "ST",
+          "question": "Contact Email",
+          "questionCode": "647686221633",
+          "questionCodeSystem": "LinkId",
+          "linkId": "647686221633",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "test@gmail.com"
+        },
+        {
+          "dataType": "DT",
+          "question": "Date of Submission",
+          "questionCode": "960033154529",
+          "questionCodeSystem": "LinkId",
+          "linkId": "960033154529",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "1"
+          },
+          "codeList": [],
+          "value": "2025-07-16"
+        }
+      ],
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Meta Information",
+      "obj_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input  id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"2-10-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"As part of Plan 1 for the SOC 2 Type 1 audit, this questionnaire helps prepare for a fixed-price SOC 2 Type 1 audit and offers guidance for ongoing SOC 2 Type 2 coaching, mentoring, and monitoring to maintain continuous compliance and mitigate risks. Designed for startups and small businesses, it assists in evaluating existing policies, procedures, and security controls to ensure alignment with SOC 2 requirements. The following questionnaire is intended to collect key organizational information and assess readiness for SOC 2 compliance.\",\n    \"title\": \"Organizational Information\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      },
+      "questionCode": "508014173022",
+      "questionCodeSystem": "LinkId",
+      "linkId": "508014173022",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    }
+  ],
+  "templateOptions": {
+    "showQuestionCode": false,
+    "showCodingInstruction": false,
+    "allowMultipleEmptyRepeatingItems": false,
+    "allowHTML": true,
+    "displayControl": {
+      "questionLayout": "vertical"
+    },
+    "viewMode": "auto",
+    "defaultAnswerLayout": {
+      "answerLayout": {
+        "type": "COMBO_BOX",
+        "columns": "0"
+      }
+    },
+    "hideTreeLine": false,
+    "hideIndentation": false,
+    "hideRepetitionNumber": false,
+    "displayScoreWithAnswerText": true,
+    "displayInvalidHTML": false,
+    "messageLevel": "error"
+  },
+  "hasSavedData": true,
+  "fhirVersion": "R4"
+}
