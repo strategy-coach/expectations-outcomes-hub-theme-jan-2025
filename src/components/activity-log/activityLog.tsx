@@ -577,7 +577,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         })}
                     </ul>
                 ) : (
-                    <p className="text-gray-600 mt-4">{(showViewMoreButton == true && pageUrl == undefined) ? "No recent customer activity found. Click here to see the full activity log." : (showViewMoreButton == false && pageUrl !== undefined) ? "No activiy log available" : "No activity found for the filter criteria. Please update the filters above."}</p>
+                    <p className="text-gray-600 mt-4 dark:text-gray-300">{(showViewMoreButton == true && pageUrl == undefined) ? "No recent customer activity found. Click here to see the full activity log." : (showViewMoreButton == false && pageUrl !== undefined) ? "No activiy log available" : "No activity found for the filter criteria. Please update the filters above."}</p>
                 )
             }
 
