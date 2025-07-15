@@ -552,7 +552,7 @@ a h3 {
 }
 
 /* :::::: markdown css ::::::> ends */
-.dark .markdown-content-doc, .dark .markdown-content-doc .breadcrumb a, .dark .markdown-content-doc h1, .dark .markdown-content-doc h2, .dark .markdown-content-doc h3, .dark .markdown-content-doc h4, .dark .markdown-content-doc ul li::marker, .dark .markdown-content-doc b, .dark .markdown-content-doc strong, .dark .markdown-content-doc blockquote, .dark .markdown-content-doc code   {
+.dark .markdown-content-doc, .dark .markdown-content-doc .breadcrumb a, .dark .markdown-content-doc h1, .dark .markdown-content-doc h2, .dark .markdown-content-doc h3, .dark .markdown-content-doc h4, .dark .markdown-content-doc ul li::marker, .dark .markdown-content-doc b, .dark .markdown-content-doc strong, .dark .markdown-content-doc blockquote, .dark .markdown-content-doc code, .dark .markdown-content li   {
   color: #d1d5db!important;
 
 }
