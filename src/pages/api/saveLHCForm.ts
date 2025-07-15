@@ -2,8 +2,17 @@ import { writeFile } from 'fs/promises';
 import { exec as execCb } from 'node:child_process';
 import { promisify } from 'node:util';
 import type { APIContext } from 'astro';
+import { Buffer } from 'node:buffer';
+import axios from 'axios';
+import type { AxiosError } from 'axios';
 
-const exec = promisify(execCb); // Promisified version of exec
+const exec = promisify(execCb);
+
+
+const GITHUB_TOKEN = import.meta.env.PUBLIC_GITHUB_PAT
+const GITHUB_OWNER = import.meta.env.PUBLIC_GITHUB_OWNER
+const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO
+const GITHUB_BRANCH = 'develop';
 
 export async function POST({ request }: APIContext) {
     try {
@@ -30,6 +39,45 @@ export async function POST({ request }: APIContext) {
         // await exec(`sqlite3 src/content/db/rssd/resource-surveillance.sqlite.db "PRAGMA wal_checkpoint(FULL);"`);
 
         // ✅ Return final response
+
+        if (GITHUB_TOKEN && GITHUB_OWNER && GITHUB_REPO) {
+            const githubPath = `src/content/lforms/submissions/${userId}.${sanitizedFileName}.lform-submittion.json`;
+            const encodedContent = Buffer.from(JSON.stringify(formData, null, 2)).toString('base64');
+            const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${githubPath}`;
+
+            let sha: string | undefined = undefined;
+            try {
+                const { data } = await axios.get(apiUrl, {
+                    headers: {
+                        Authorization: `Bearer ${GITHUB_TOKEN}`,
+                        Accept: 'application/vnd.github+json',
+                    },
+                    params: { ref: GITHUB_BRANCH },
+                });
+                sha = data.sha;
+            } catch (err: unknown) {
+                const axiosErr = err as AxiosError;
+                if (axiosErr.response?.status !== 404) throw err;
+            }
+            await axios.put(
+                apiUrl,
+                {
+                    message: `chore: auto-commit form submission`,
+                    content: encodedContent,
+                    branch: GITHUB_BRANCH,
+                    ...(sha && { sha }),
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${GITHUB_TOKEN}`,
+                        Accept: 'application/vnd.github+json',
+                    },
+                }
+            );
+        } else {
+            console.log("Skipping GitHub sync: Missing token, owner, or repo.");
+        }
+
         return new Response(JSON.stringify({ message: "Form data saved and ingested successfully!" }), {
             status: 200,
             headers: { "Content-Type": "application/json" },
