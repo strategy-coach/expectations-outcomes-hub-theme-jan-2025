@@ -55,7 +55,14 @@ const renderMenu = (menu: MenuNode[], slugval: string, level: number = 0) => {
                     isSelected ? "bg-gray-300 dark:bg-gray-700" : ""
                   }`}
                 >{(item.name === "Support And Feedback" && enableFeedbackList === false) ? (
-                      ""
+                      <>
+                        <a
+                          href="/expectations/support-and-feedback/issues"
+                          className={isSelected ? "inner-menu-select" : ""}
+                        >
+                          {item.name}
+                        </a>                        
+                      </>
                     ) : (
                       <>
                         <h2 className="grow">{item.name}</h2>
