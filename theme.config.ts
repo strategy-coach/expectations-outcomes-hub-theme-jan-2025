@@ -91,5 +91,5 @@ export default themeConfig({
   enablePageHistory: true,
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
   enableFeedbackList: false, // Set to true if you want to enable feedback list
-  releaseListUrl: "divya-binil/astro-remote", // GitHub repository in the format "owner/repo"
+  releaseListUrl: "strategy-coach/expectations-outcomes-hub-theme-jan-2025",
 });
