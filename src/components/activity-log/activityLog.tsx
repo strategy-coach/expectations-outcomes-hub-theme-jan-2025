@@ -383,7 +383,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
 
                     {/* Checkbox group pushed to right */}
                     <div
-                        className="filter-checkbox-group mt-5"
+                        className="filter-checkbox-group mt-5 flex-wrap"
                         style={{
                             display: 'flex',
                             gap: '16px',
@@ -391,7 +391,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             marginLeft: 'auto',
                         }}
                     >
-                        <label className="filter-checkbox text-sm" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <label className="filter-checkbox text-sm flex-shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <input
                                 type="checkbox"
                                 checked={clicksChecked}
@@ -404,7 +404,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             />
                             Clicks
                         </label>
-                        <label className="filter-checkbox text-sm" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <label className="filter-checkbox text-sm flex-shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <input
                                 type="checkbox"
                                 checked={visitsChecked}
@@ -417,7 +417,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                             />
                             Page Visits
                         </label>
-                        <label className="filter-checkbox text-sm" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <label className="filter-checkbox text-sm flex-shrink-0" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <input
                                 type="checkbox"
                                 checked={reactionChecked}

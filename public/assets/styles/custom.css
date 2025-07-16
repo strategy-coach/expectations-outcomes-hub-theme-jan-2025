@@ -636,3 +636,19 @@ summary::-webkit-details-marker {
   display: none !important;
   content: "" !important;
 }
+.min-h-plan-1{
+  min-height: 430px;
+}
+
+.table-border-plan th, .table-border-plan td {
+    border: 0px solid #e5e7eb;
+    padding: 12px 12px;
+   }
+.btn-plan{
+width: 210px;
+}
+@media (max-width: 1199px) {
+  .min-h-plan-1{
+  min-height: auto;
+}
+}
