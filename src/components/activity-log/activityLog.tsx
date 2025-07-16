@@ -538,7 +538,7 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
                         value={searchTerm}
                         onChange={(e) => { setSearchTerm(e.target.value) }}
                         placeholder="Search by username or email..."
-                        className="p-2 mb-4 border border-gray-300 rounded-lg"
+                        className="p-2 mb-4 border border-gray-300 text-gray-600  dark:text-gray-600 rounded-lg"
                     />
 
 
