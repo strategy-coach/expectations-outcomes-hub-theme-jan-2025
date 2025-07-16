@@ -51,6 +51,7 @@ const renderMenu = (menu: MenuNode[], slugval: string, level: number = 0) => {
             ) : (
               <details open={isMenuOpen([item], slugval)}>
                 <summary
+                style={{ listStyleType: 'none' }}
                   className={`cursor-pointer flex fst_mn list-none ${
                     isSelected ? "bg-gray-300 dark:bg-gray-700" : ""
                   }`}
