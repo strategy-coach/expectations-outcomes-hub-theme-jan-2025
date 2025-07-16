@@ -73,7 +73,7 @@ const renderMenu = (menu: MenuNode[], slugval: string, level: number = 0) => {
                         <h2 className="grow">{item.name}</h2>
                         <svg
                           aria-hidden="true"
-                          className="caret arrow-ico"
+                          className="caret arrow-ico flex-shrink-0"
                           width="30"
                           height="30"
                           viewBox="0 0 24 24"
