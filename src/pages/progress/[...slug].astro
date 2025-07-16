@@ -20,7 +20,7 @@ const files = import.meta.glob("/src/content/progress/**/*.{md,mdx}", {
 });
 const dirName = "progress";
 
-const menuTree = buildMenuTree(files, "progress",contentCollectionSort,"desc");
+const menuTree = buildMenuTree(files, "progress",contentCollectionSort,"asc");
 //const menuTree = buildMenuTree(files, dirName,contentCollectionSort,"asc");
 
 const slug = Astro.params.slug;
