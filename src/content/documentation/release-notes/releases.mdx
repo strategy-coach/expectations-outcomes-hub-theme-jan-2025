@@ -1,8 +1,16 @@
 ---
 title: Release Notes
 ---
-
+ 
 import ReleasesList from '../../../components/release-notes/ReleasesList';
-
-
-<ReleasesList client:load />
+import { fetchReleases } from '../../../lib/fetchReleases';
+ 
+ 
+export const { allReleases, error } = await fetchReleases();
+ 
+ 
+{error ? (
+  <p style={{ color: 'red', fontWeight: 'bold' }}>{error}</p>
+) : (
+  <ReleasesList allReleases={allReleases} />
+)}

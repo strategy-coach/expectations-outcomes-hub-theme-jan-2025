@@ -21,6 +21,7 @@ const themeConfig = (config: {
   enablePageHistory: boolean;
   enableFeedbackList: boolean;
   authorizedSlides: number[];
+  releaseListUrl: string; 
 }) => {
   return {
     ...config,
@@ -29,7 +30,8 @@ const themeConfig = (config: {
 
 export default themeConfig({
   version: "v1.0.14.13",
-  themeReleaseNotesLink: "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/releases",
+  themeReleaseNotesLink:
+    "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/releases",
   logo: "/assets/images/logo.png",
   darkmodeLogo: "/assets/images/EOH-Whitemode.png",
   title: "EOH Astro 5 Site",
@@ -89,4 +91,5 @@ export default themeConfig({
   enablePageHistory: true,
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
   enableFeedbackList: false, // Set to true if you want to enable feedback list
+  releaseListUrl: "divya-binil/astro-remote", // GitHub repository in the format "owner/repo"
 });

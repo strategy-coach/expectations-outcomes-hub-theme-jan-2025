@@ -1525,6 +1525,43 @@ Each blog post can define:
 - The system automatically uses the default thumbnail image: /assets/images/blog/blog-thumb.jpg
 
 
-
+### 📦 Release Notes Feature
+ 
+This theme can automatically fetch and display release notes from any GitHub repository.
+ 
+**Supports:**
+- Public repositories
+- Private repositories (add a GitHub token in your `.env` file)
+ 
+### 🔧 Setup
+ 
+Define the repository you want to fetch releases from in your theme config:
+ 
+```js
+// theme.config.ts
+export default themeConfig({
+  releaseListUrl: "ownername/reponame",
+};
+```
+ 
+If the repo is private, create a GitHub Personal Access Token with at least `repo:read` permission, and add it to your `.env` file:
+ 
+```env
+PUBLIC_RELEASE_NOTES_GITHUB_TOKEN="ghp_XXXXXXXXXXXXXXXXXXXX"
+```
+ 
+> This token should belong to a user who has read access to that repository.
+ 
+### ⚙️ How It Works
+ 
+- If a token is present: always uses it for API requests.
+- If no token: tries unauthenticated request (works for public repos).
+- If the repo is private and no valid token: shows a friendly message in the UI:
+ 
+  > “We couldn’t find the repository or it might be private. Please check the repository URL in theme.config or add your GitHub token in the .env file.”
+ 
+**Note:**  
+You can fetch release notes from any repository—even if your site itself lives in a different repo.  
+Just make sure the token (if used) has access to the target repository.
 
 **Enjoy building with the EOH Astro 5 Theme!** 🚀
