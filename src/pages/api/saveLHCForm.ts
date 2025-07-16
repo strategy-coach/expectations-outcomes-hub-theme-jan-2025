@@ -12,7 +12,7 @@ const exec = promisify(execCb);
 const GITHUB_TOKEN = import.meta.env.PUBLIC_GITHUB_PAT
 const GITHUB_OWNER = import.meta.env.PUBLIC_GITHUB_OWNER
 const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO
-const GITHUB_BRANCH = 'develop';
+const GITHUB_BRANCH = 'main';
 
 export async function POST({ request }: APIContext) {
     try {

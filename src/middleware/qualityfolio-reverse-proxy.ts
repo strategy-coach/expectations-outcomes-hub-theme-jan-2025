@@ -101,6 +101,32 @@ export const qualityfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddl
                 );
 
                 html = html.replace(
+                    /<a\s+([^>]*?)href="(\/[^"]+)"([^>]*)>/g,
+                    (match, beforeHref, pathWithQuery, afterHref) => {
+                        try {
+                            const decodedPath = pathWithQuery.replace(/&amp;/g, "&").replace(/&#x3D;/g, "=");
+                            const [rawPath, ...queryParts] = decodedPath.split("?");
+                            const segments = rawPath.split("/").filter(Boolean);
+
+                            if (segments[0] === "qualityfolio") {
+                                return match;
+                            }
+
+                            segments.unshift("qualityfolio");
+
+                            const newPath = "/" + segments.join("/");
+                            const query = queryParts.length ? "?" + queryParts.join("?") : "";
+                            const fullHref = `${newPath}${query}`;
+
+                            return `<a ${beforeHref}href="${fullHref}"${afterHref}>`;
+                        } catch (_e) {
+                            return match;
+                        }
+                    }
+                );
+
+
+                html = html.replace(
                     /<a\s+([^>]*?)href="(\/?[a-zA-Z0-9_-]+\.sql(?:\?[^"]*)?)"([^>]*)>/gi,
                     (match, beforeHref, sqlHref, afterHref) => {
                         // Only transform hrefs that start with SQL files (with or without leading slash)
