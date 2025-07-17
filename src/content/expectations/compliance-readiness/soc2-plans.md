@@ -23,7 +23,8 @@ enableEditButton: true
     <p class="mb-10 text-lg font-normal text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl lg:mb-16">
       Find the perfect compliance solution tailored to your business needs, whether you're a startup, growing company, or an established enterprise.<br />Our flexible plans ensure you meet all necessary standards while fitting seamlessly into your existing structure.
     </p>
-    <div class="grid grid-cols-12 gap-8 bg-gray-50 dark:bg-gray-800 p-8 rounded-t-lg">
+    <article class="lg:bg-gray-50 lg:dark:bg-gray-800 lg:p-8 rounded-t-lg">
+    <div class="grid grid-cols-12 gap-6">
       <div class="col-span-12 xl:col-span-3 lg:col-span-6">
         <div class="block w-full p-5 border-gray-200 rounded-lg bg-gray-200 dark:border-gray-600 dark:bg-gray-700"><h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">Not Sure Which Plan is Right for You?</h3>
                   <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">If you're unsure which plan best fits your business needs, our sales team is here to help guide you in selecting the perfect compliance solution. Contact us today!</p>
@@ -97,9 +98,10 @@ enableEditButton: true
           Select Enterprise</button></a>
       </div>
     </div>
-
+ </article>
   <div>
   <div class="py-8 text-3xl font-bold text-gray-700 dark:text-gray-600 lg:text-center lg:text-xl">Detailed Plan Comparison</div>
+  <div class="overflow-auto">
     <table class="min-w-full table-auto border-collapse text-sm text-left text-gray-700 table-border-plan">
     <thead class="text-gray-900 bg-gray-100 dark:bg-gray-800  dark:text-white">
     <tr class="bg-gray-100">
@@ -160,5 +162,6 @@ enableEditButton: true
       </tr>
     </tbody>
     </table>
+    </div>
   </div>
     
