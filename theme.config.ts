@@ -90,6 +90,6 @@ export default themeConfig({
   isHomePagePublic: true, // Set this to false if the homepage should require authentication
   enablePageHistory: true,
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
-  enableFeedbackList: false, // Set to true if you want to enable feedback list
+  enableFeedbackList: true, // Set to true if you want to enable feedback list
   releaseListUrl: "strategy-coach/expectations-outcomes-hub-theme-jan-2025",
 });
