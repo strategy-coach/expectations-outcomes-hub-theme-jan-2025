@@ -29,7 +29,7 @@ const themeConfig = (config: {
 };
 
 export default themeConfig({
-  version: "v1.0.14.13",
+  version: "v1.0.15",
   themeReleaseNotesLink:
     "https://github.com/strategy-coach/expectations-outcomes-hub-theme-jan-2025/releases",
   logo: "/assets/images/logo.png",
