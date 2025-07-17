@@ -627,7 +627,7 @@ body, html {
     line-height: 20px;
     color: #71717A;
 }
-main {
+main pre, main code{
    word-break: break-word!important;
 }
 
@@ -643,6 +643,14 @@ summary::-webkit-details-marker {
 .table-border-plan th, .table-border-plan td {
     border: 0px solid #e5e7eb;
     padding: 12px 12px;
+   }
+   .dark .table-border-plan th, .dark .table-border-plan td {
+    border: 1px solid #1f2125!important;
+    padding: 12px 12px;
+    border-color: #1f2125!important;
+   }
+   .dark .table-border-plan th{
+    background-color: #2a323f!important;
    }
 .btn-plan{
 width: 210px;

@@ -134,7 +134,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ userType }) => {
               .map((member) => (
                 <div
                   key={member.userId}
-                  className=" leading-[3rem] col-span-12 md:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
+                  className=" leading-[3rem] col-span-12 md:col-span-12 lg:col-span-6 xl:col-span-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg"
                 >
                   <div className="flex items-center gap-3">
                     <Gravatar userEmail={member.email} width={20} height={20} />

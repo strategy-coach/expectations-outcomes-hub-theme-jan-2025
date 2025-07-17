@@ -15,21 +15,21 @@ enableEditButton: true
 ---
 
 <div class="grow">
-<section class="py-8 bg-white dark:bg-gray-900 lg:py-24 mt-6" id="soc2-plans">
+<section class="py-8 bg-white dark:bg-gray-800 lg:py-24 mt-6" id="soc2-plans">
   <div class="px-4 mx-auto max-w-8xl lg:px-4">
     <h2 class="mb-4 text-4xl font-bold text-gray-900 lg:font-extrabold lg:text-4xl lg:leading-snug dark:text-white lg:text-center 2xl:px-48">
       Choose the right Compliance Plan for your Business
     </h2>
-    <p class="mb-10 text-lg font-normal text-gray-500 dark:text-gray-400 lg:text-center lg:text-xl lg:mb-16">
+    <p class="mb-10 text-lg font-normal text-gray-500 dark:text-gray-300 lg:text-center lg:text-xl lg:mb-16">
       Find the perfect compliance solution tailored to your business needs, whether you're a startup, growing company, or an established enterprise.<br />Our flexible plans ensure you meet all necessary standards while fitting seamlessly into your existing structure.
     </p>
-    <article class="lg:bg-gray-50 lg:dark:bg-gray-800 lg:p-8 rounded-t-lg">
+    <article class="lg:bg-gray-50 lg:dark:bg-gray-800 lg:p-8 rounded-t-lg dark:bg-gray-800">
       <div class="grid grid-cols-12 gap-6">
         <div class="col-span-12 xl:col-span-3 lg:col-span-6">
           <div class="block w-full p-5 border-gray-200 rounded-lg bg-gray-200 dark:border-gray-600 dark:bg-gray-700"><h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">Not Sure Which Plan is Right for You?</h3>
-                    <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">If you're unsure which plan best fits your business needs, our sales team is here to help guide you in selecting the perfect compliance solution. Contact us today!</p>
+                    <p class="mb-4 text-sm text-gray-500 dark:text-gray-300">If you're unsure which plan best fits your business needs, our sales team is here to help guide you in selecting the perfect compliance solution. Contact us today!</p>
             <a href="https://opsfolio.com/contact" target="_new">
-            <button class="block w-full px-6 py-2 font-medium text-l text-center text-gray-900 bg-white border border-gray-200 rounded-lg dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-gray-100 hover:bg-gray-100 hover:text-gray-700 dark: dark:hover:bg-gray-700 focus:outline-none focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700" title="Contact Sales">Contact Sales</button></a></div>
+            <button class="block w-full px-6 py-2 font-medium text-l text-center text-gray-900 bg-white  dark:bg-gray-800 dark:bg-gray-800  border border-gray-200 rounded-lg dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:text-gray-100 hover:bg-gray-100 hover:text-gray-700 dark: dark:hover:bg-gray-700 focus:outline-none focus:z-10 focus:ring-2 focus:ring-gray-700 focus:text-gray-700" title="Contact Sales">Contact Sales</button></a></div>
         </div>
         <div class="col-span-12 xl:col-span-3 lg:col-span-6">
         <aside class="min-h-plan-1">
@@ -43,7 +43,7 @@ enableEditButton: true
           <h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">
             Ideal for startups and small businesses.
           </h3>
-          <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">
+          <p class="mb-4 text-sm text-gray-500 dark:text-gray-300">
             A budget-friendly option that provides our complete set of policies and procedures. Includes a fixed-price SOC 2 Type 1 audit letter and ongoing SOC 2 Type 2 coaching, mentoring, and monitoring.
           </p>
         </aside>
@@ -65,7 +65,7 @@ enableEditButton: true
           <h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">
             Balanced compliance for growing businesses.
           </h3>
-          <p class="my-4 text-sm text-gray-500 dark:text-gray-400">
+          <p class="my-4 text-sm text-gray-500 dark:text-gray-300">
             Use our technical policies while retaining your own IT and HR policies for a flexible compliance approach.
           </p>
         </aside>        
@@ -87,7 +87,7 @@ enableEditButton: true
           <h3 class="mb-1 text-lg font-bold text-gray-900 dark:text-white">
             Fully customizable for enterprises and organizations with existing frameworks.
           </h3>
-          <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">
+          <p class="mb-4 text-sm text-gray-500 dark:text-gray-300">
             Bring your own policies, and we’ll build the required evidence around your existing compliance structure.
           </p>
         </aside>        
@@ -100,7 +100,7 @@ enableEditButton: true
       </div>
     </article>
   <div>
-  <div class="py-8 text-3xl font-bold text-gray-700 dark:text-gray-600 lg:text-center lg:text-xl">Detailed Plan Comparison</div>
+  <div class="py-8 text-3xl font-bold text-gray-700 lg:text-center lg:text-xl dark:text-gray-300">Detailed Plan Comparison</div>
     <div class="overflow-auto">
       <table class="min-w-full table-auto border-collapse text-sm text-left text-gray-700 table-border-plan">
         <thead class="text-gray-900 bg-gray-100 dark:bg-gray-800  dark:text-white">
@@ -113,34 +113,34 @@ enableEditButton: true
         </thead>
         <tbody class="divide-y divide-gray-200">
           <tr class="text-sm text-gray-700">
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400 font-bold">Best for</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Startups & Small Businesses</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Growing Businesses</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Enterprises & Custom Needs</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300 font-bold">Best for</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Startups & Small Businesses</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Growing Businesses</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Enterprises & Custom Needs</td>
           </tr>
           <tr class="bg-gray-100">
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400 bg-gray-100">Policies & Procedures</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300 bg-gray-100">Policies & Procedures</td>
             <td class="px-4 py-3 text-green-500 font-medium bg-gray-100">Full set provided</td>
             <td class="px-4 py-3 text-blue-500 font-medium bg-gray-100">Use our technical policies + <br />your IT/HR policies</td>
             <td class="px-4 py-3 text-red-500 font-medium bg-gray-100">Fully customizable (bring your own)</td>
           </tr>
           <tr>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">SOC 2 Type 1 Audit Letter</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Fixed-price included</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Available as an add-on</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Available as an add-on</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">SOC 2 Type 1 Audit Letter</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Fixed-price included</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Available as an add-on</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Available as an add-on</td>
           </tr>
           <tr>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">SOC 2 Type 2 Support</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Coaching, mentoring & <br />monitoring</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Limited support</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Custom support based on your policies</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">SOC 2 Type 2 Support</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Coaching, mentoring & <br />monitoring</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Limited support</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Custom support based on your policies</td>
           </tr>
           <tr>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Customization</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">None (predefined policies)</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Partial (your IT/HR policies)</td>
-            <td class="px-4 py-3 text-gray-500 dark:text-gray-400">Full (use your own framework)</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Customization</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">None (predefined policies)</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Partial (your IT/HR policies)</td>
+            <td class="px-4 py-3 text-gray-500 dark:text-gray-300">Full (use your own framework)</td>
           </tr>
           <tr>
             <td class="bg-gray-50 dark:bg-gray-800"><div class="p-6"></div></td>
