@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import themeConfig from '../../theme.config';
 
 // Fetch updates from multiple collections
 const collection1 = await getCollection('expectations');
@@ -19,7 +20,7 @@ const allUpdates = [...collection1, ...collection2, ...collection3]
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
         <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
-        <span>POA&M Status Updates</span>
+        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'poamStatusUpdates')?.label}</span>
         </div>
     </h3>
 <ul class="mt-2 space-y-0.5 font-semibold ml-8">

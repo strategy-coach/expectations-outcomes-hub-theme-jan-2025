@@ -190,9 +190,9 @@ const { title, description, activeProject } = themeConfig || {};
     </section>
 
     <section class="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
-      <SkipTo />
+      <SkipTo showViewMoreButton={true} compact={false} />
 
-      <KeyResources />
+      <KeyResources showViewMoreButton={true} compact={false}/>
       <POAMList showViewMoreButton={true} compact={false}/>
 
       <ItGovernance />
@@ -234,7 +234,7 @@ const { title, description, activeProject } = themeConfig || {};
         )
       }
 
-      <MeetingMinutes />
+      <MeetingMinutes showViewMoreButton={true} compact={false} />
       <Accomplishments showViewMoreButton={true} />
       <LatestBlogs />
       <ActivityLog

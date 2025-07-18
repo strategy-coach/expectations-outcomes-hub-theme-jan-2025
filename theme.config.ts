@@ -16,6 +16,7 @@ const themeConfig = (config: {
   baseHyperLinkColor: string;
   presentationBgColor: string;
   headerMenu: { label: string; path: string; requiresAuth?: boolean }[];
+  widgetTitle: { label: string; value: string }[];
   unauthorizedPages: string[];
   isHomePagePublic: boolean;
   enablePageHistory: boolean;
@@ -92,4 +93,16 @@ export default themeConfig({
   authorizedSlides: [4, 5], // Example: Only slides 5 require authentication
   enableFeedbackList: true, // Set to true if you want to enable feedback list
   releaseListUrl: "strategy-coach/expectations-outcomes-hub-theme-jan-2025",
+  widgetTitle: [
+    { label: "Key Resources", value: "keyResources" },
+    { label: "Meeting Minutes", value: "meetingMinutes" },
+    { label: "Skip to...", value: "skipto" },
+    { label: "IT Governance, Risk and Compliance", value: "itGovernance" },
+    { label: "Trackers", value: "trackers" },
+    { label: "Featured Blogs", value: "featuredBlogs" },
+    { label: "Plan of Action and Milestones (POA&M)", value: "poamMilstones" },
+    { label: "POA&M Status Updates", value: "poamStatusUpdates" },
+    { label: "Plan of Action and Milestones (POA&M) – Next Steps", value: "poamNextSteps" },
+    { label: "POA&M Progress Update", value: "poamProgressUpdate" },
+  ]
 });

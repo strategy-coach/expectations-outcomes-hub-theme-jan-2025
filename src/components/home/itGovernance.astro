@@ -1,4 +1,6 @@
 ---
+import themeConfig from "../../../theme.config";
+
 const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
@@ -27,7 +29,7 @@ const ItGovernanceList = Object.values(newFiles)
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-shield-check.svg" class="w-6 h-6" alt="" /></span>
-        <span>IT Governance, Risk and Compliance </span>
+        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'itGovernance')?.label}</span>
       </div>
     </h3>
 

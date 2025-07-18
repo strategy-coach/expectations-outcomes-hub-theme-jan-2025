@@ -1,4 +1,6 @@
 ---
+import themeConfig from "../../../theme.config";
+
 const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
@@ -32,7 +34,7 @@ const progressNotesList = Object.values(newFiles)
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>POA&M Progress Update</span><img class="badgen-img-watch" src="https://badgen.net/badge/Status/Completed?color=green&amp;scale=1.2" alt="Completed" data-toggle="tooltip" data-html="true" data-placement="auto top" title="Completed">
+        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'poamProgressUpdate')?.label}</span><img class="badgen-img-watch" src="https://badgen.net/badge/Status/Completed?color=green&amp;scale=1.2" alt="Completed" data-toggle="tooltip" data-html="true" data-placement="auto top" title="Completed">
       </div>
     </h3>
 

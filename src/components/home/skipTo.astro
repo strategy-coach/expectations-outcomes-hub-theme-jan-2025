@@ -1,46 +1,55 @@
 ---
+import themeConfig from "../../../theme.config";
+
+const { showViewMoreButton, compact } = Astro.props;
+
 const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
 
-
 const skipToList = Object.values(newFiles)
-  .filter((file) => file.frontmatter?.home?.skipTo?.category === "skipTo") // Filter by "skipTo" category
+  .filter((file) => file.frontmatter?.home?.skipTo?.category === "skipTo")
   .map((file) => {
-    // Remove the base path '/src/content' from the file path
     const relativePath = file.file
-      .replace(/^.*\/src\/content/, '')  // Remove everything up to '/src/content'
-      .replace(/\.(md|mdx)$/, '');           // Remove the '.mdx' extension
-    
+      .replace(/^.*\/src\/content/, '')
+      .replace(/\.(md|mdx)$/, '');
+
     return {
-      title: file.frontmatter?.title, // Get the title
-      path: `${relativePath}` // Correct the path to be relative
+      title: file.frontmatter?.title,
+      path: `${relativePath}`
     };
   })
-  .filter((file) => file.title && file.path); // Ensure title and path exist
-
-
+  .filter((file) => file.title && file.path);
 ---
 
 {skipToList.length > 0 && (
-  <div class="lg:col-span-3 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
+  <div class={`lg:col-span-3 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
+    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>Skip to...</span>
+        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'skipto')?.label}</span>
       </div>
+      {showViewMoreButton && (
+        <a href="/expectations/skip-to/list">
+          <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
+            View More
+          </button>
+        </a>
+      )}
     </h3>
 
-    <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {skipToList.map((file) => {
-        return (
+    {(showViewMoreButton ? skipToList.slice(0, 5) : skipToList).length > 0 ? (
+      <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+        {(showViewMoreButton ? skipToList.slice(0, 5) : skipToList).map((file) => (
           <li>
             <a href={file.path} class="text-sm hover:text-black">
               {file.title}
             </a>
           </li>
-        );
-      })}
-    </ul>
+        ))}
+      </ul>
+    ) : (
+      <p class="text-gray-600">No items available.</p>
+    )}
   </div>
 )}
