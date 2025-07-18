@@ -1,0 +1,43 @@
+---
+import themeConfig from "../../../theme.config";
+
+
+const trackers = themeConfig.trackers;
+const { showViewMoreButton } = Astro.props;
+
+---
+
+{trackers.length > 0 && (
+  <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+    <div class="flex justify-between items-center mb-2">
+      <div class="flex gap-2 items-center text-xl">
+        <img
+          src="/assets/images/fi-rr-bug.svg"
+          class="w-6 h-6"
+          alt="Trackers Icon"
+        />
+        <span>Trackers</span>
+      </div>
+      {showViewMoreButton && (
+        <a href="/trackers" title="View More">
+          <button class="rounded-md bg-white/10 px-3 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white">
+            View More
+          </button>
+        </a>
+      )}
+    </div>
+    <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+      {trackers.map((tracker) => (
+        <li>
+          <a
+            href={tracker.url}
+            target="_blank"
+            class="text-sm hover:text-black"
+          >
+            {tracker.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}

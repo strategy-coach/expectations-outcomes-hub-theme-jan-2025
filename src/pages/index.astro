@@ -13,8 +13,10 @@ import ActivityLog from "../components/activity-log/activityLog";
 import WhatsNext from "../components/home/whatsNext.astro";
 import ProgressNotes from "../components/home/progressNotes.astro";
 import POAMList from "../components/home/poam.astro";
+import Trackers from "../components/home/Trackers.astro";
 
-const trackers = themeConfig.trackers;
+
+
 const { title, description, activeProject } = themeConfig || {};
 ---
 
@@ -202,37 +204,7 @@ const { title, description, activeProject } = themeConfig || {};
 
       <LatestUpdates />
 
-      {
-        trackers.length > 0 && (
-          <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-            <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
-              <div class="flex gap-2 items-center text-xl">
-                <span>
-                  <img
-                    src="/assets/images/fi-rr-bug.svg"
-                    class="w-6 h-6"
-                    alt="Trackers Icon"
-                  />
-                </span>
-                <span>Trackers</span>
-              </div>
-            </h3>
-            <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-              {trackers.map((tracker) => (
-                <li>
-                  <a
-                    href={tracker.url}
-                    target="_blank"
-                    class="text-sm hover:text-black"
-                  >
-                    {tracker.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
+      <Trackers  />
 
       <MeetingMinutes showViewMoreButton={true} compact={false} />
       <Accomplishments showViewMoreButton={true} />
