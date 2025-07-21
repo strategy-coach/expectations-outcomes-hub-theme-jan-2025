@@ -22,7 +22,8 @@ const latestBlogList = Object.values(newFiles)
   })
   .filter((file) => file.title && file.path); // Ensure title and path exist
 
-
+const widgetLimit = themeConfig.widgetTitle.find(widget => widget.value === 'featuredBlogs')?.limit || 5;
+const limitedBlogList = showViewMoreButton ? latestBlogList.slice(0, widgetLimit) : latestBlogList;
 ---
 
 {latestBlogList.length > 0 && (
@@ -43,7 +44,7 @@ const latestBlogList = Object.values(newFiles)
     </div>
 
     <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {latestBlogList.map((file) => (
+      {limitedBlogList.map((file) => (
         <li>
           <a href={file.path} class="text-sm hover:text-black dark:hover:text-white">
             {file.title}

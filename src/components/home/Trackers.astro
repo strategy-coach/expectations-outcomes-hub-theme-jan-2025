@@ -3,12 +3,12 @@ import themeConfig from "../../../theme.config";
 
 
 const trackers = themeConfig.trackers;
-const { showViewMoreButton } = Astro.props;
+const { showViewMoreButton, compact } = Astro.props;
 
 ---
 
 {trackers.length > 0 && (
-  <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
+   <div class={`lg:col-span-6 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
     <div class="flex justify-between items-center mb-2">
       <div class="flex gap-2 items-center text-xl">
         <img
