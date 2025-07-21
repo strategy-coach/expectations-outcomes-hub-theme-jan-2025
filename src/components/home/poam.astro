@@ -28,7 +28,8 @@ const POAMList = Object.values(newFiles)
   .sort((a, b) => a.order - b.order);
 // console.log("POAMList", POAMList);
 // Limit to first 3 items if showViewMoreButton is true
-const limitedPOAMList = showViewMoreButton ? POAMList.slice(0, 5) : POAMList;
+const widgetLimit = themeConfig.widgetTitle.find(widget => widget.value === 'poamMilstones')?.limit || 5;
+const limitedPOAMList = showViewMoreButton ? POAMList.slice(0, widgetLimit) : POAMList;
 
 ---
 

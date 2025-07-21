@@ -19,6 +19,7 @@ const ItGovernanceList = Object.values(newFiles)
     };
   })
   .filter((file) => file.title && file.path);
+  const widgetLimit = themeConfig.widgetTitle.find(widget => widget.value === 'itGovernance')?.limit || 5;
 ---
 
 {ItGovernanceList.length > 0 && (
@@ -37,9 +38,9 @@ const ItGovernanceList = Object.values(newFiles)
       )}
     </h3>
 
-    {(showViewMoreButton ? ItGovernanceList.slice(0, 5) : ItGovernanceList).length > 0 ? (
+    {(showViewMoreButton ? ItGovernanceList.slice(0, widgetLimit) : ItGovernanceList).length > 0 ? (
       <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-        {(showViewMoreButton ? ItGovernanceList.slice(0, 5) : ItGovernanceList).map((file) => (
+        {(showViewMoreButton ? ItGovernanceList.slice(0, widgetLimit) : ItGovernanceList).map((file) => (
           <li>
             <a href={file.path} class="text-sm hover:text-black">
               {file.title}

@@ -20,6 +20,7 @@ const skipToList = Object.values(newFiles)
     };
   })
   .filter((file) => file.title && file.path);
+  const widgetLimit = themeConfig.widgetTitle.find(widget => widget.value === 'skipto')?.limit || 5;
 ---
 
 {skipToList.length > 0 && (
@@ -38,9 +39,9 @@ const skipToList = Object.values(newFiles)
       )}
     </h3>
 
-    {(showViewMoreButton ? skipToList.slice(0, 5) : skipToList).length > 0 ? (
+    {(showViewMoreButton ? skipToList.slice(0, widgetLimit) : skipToList).length > 0 ? (
       <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-        {(showViewMoreButton ? skipToList.slice(0, 5) : skipToList).map((file) => (
+        {(showViewMoreButton ? skipToList.slice(0, widgetLimit) : skipToList).map((file) => (
           <li>
             <a href={file.path} class="text-sm hover:text-black">
               {file.title}

@@ -20,13 +20,22 @@ const meetingMinutesList = Object.values(newFiles)
     };
   })
   .filter((file) => file.title && file.path);
+
+// 🔹 Get limit from themeConfig
+const widgetKey = 'meetingMinutes';
+const widgetConfig = themeConfig.widgetTitle.find(widget => widget.value === widgetKey);
+const limit = widgetConfig?.limit || 5;
+
+// Apply limit conditionally
+const limitedMeetingMinutesList = showViewMoreButton ? meetingMinutesList.slice(0, limit) : meetingMinutesList;
 ---
+
 {meetingMinutesList.length > 0 && (
   <div class={`lg:col-span-6 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
     <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'meetingMinutes')?.label}</span>
+        <span>{widgetConfig?.label}</span>
       </div>
       {showViewMoreButton && (
         <a href="/progress/meeting-notes/list">
@@ -37,9 +46,9 @@ const meetingMinutesList = Object.values(newFiles)
       )}
     </h3>
 
-    {(showViewMoreButton ? meetingMinutesList.slice(0, 5) : meetingMinutesList).length > 0 ? (
+    {limitedMeetingMinutesList.length > 0 ? (
       <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-        {(showViewMoreButton ? meetingMinutesList.slice(0, 5) : meetingMinutesList).map((file) => (
+        {limitedMeetingMinutesList.map((file) => (
           <li>
             <a href={file.path} class="text-sm hover:text-black">
               {file.title}

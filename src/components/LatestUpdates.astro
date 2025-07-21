@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import themeConfig from '../../theme.config';
+const { showViewMoreButton, compact } = Astro.props;
 
 // Fetch updates from multiple collections
 const collection1 = await getCollection('expectations');
@@ -12,28 +13,41 @@ const allUpdates = [...collection1, ...collection2, ...collection3]
     const dateA = a.data.date ? new Date(a.data.date) : new Date(0);
     const dateB = b.data.date ? new Date(b.data.date) : new Date(0);
     return dateB - dateA;
-  })
-  .slice(0, 5);
+  });
+const widgetLimit = themeConfig.widgetTitle.find(widget => widget.value === 'poamStatusUpdates')?.limit || 5;
+const limitedUpdates = showViewMoreButton ? allUpdates.slice(0, widgetLimit) : allUpdates;
 ---
 
-<div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
-        <div class="flex gap-2 items-center text-xl">
-        <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt=""></span>
+{limitedUpdates.length > 0 && (
+  <div class={`lg:col-span-6 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
+    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
+      <div class="flex gap-2 items-center text-xl">
+        <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
         <span>{themeConfig.widgetTitle.find(widget => widget.value === 'poamStatusUpdates')?.label}</span>
-        </div>
-    </h3>
-<ul class="mt-2 space-y-0.5 font-semibold ml-8">
-  {allUpdates.map((update) => {
-    const url = update.filePath ? `/${update.filePath.replace('src/content/', '').replace(/\.(md|mdx)$/, '')}` : '#';
-
-    return (
-      <li>
-        <a href={url} class="text-sm hover:text-black">
-          {update.data.title || "Untitled"}
+      </div>
+      {showViewMoreButton && (
+        <a href="/expectations/plan-of-action-and-milestones/list">
+          <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
+            View More
+          </button>
         </a>
-      </li>
-    );
-  })}
-</ul>
-</div>
+      )}
+    </h3>
+
+    <ul class="mt-2 space-y-0.5 font-semibold ml-8">
+      {limitedUpdates.map((update) => {
+        const url = update.filePath
+          ? `/${update.filePath.replace('src/content/', '').replace(/\.(md|mdx)$/, '')}`
+          : '#';
+
+        return (
+          <li>
+            <a href={url} class="text-sm hover:text-black">
+              {update.data.title || "Untitled"}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+)}

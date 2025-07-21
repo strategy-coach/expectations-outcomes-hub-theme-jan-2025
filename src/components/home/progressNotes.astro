@@ -1,53 +1,62 @@
 ---
 import themeConfig from "../../../theme.config";
+const { showViewMoreButton, compact } = Astro.props;
 
 const newFiles = import.meta.glob("/src/content/**/*.{md,mdx}", {
   eager: true,
 });
 
 const progressNotesList = Object.values(newFiles)
-     .filter(
+  .filter(
     (file) =>
       file.frontmatter?.home?.whatsNext?.category === "whatsNext" &&
       file.frontmatter?.home?.whatsNext?.status === "completed"
   )
   .map((file) => {
-    // Remove the base path '/src/content' from the file path
     const relativePath = file.file
-      .replace(/^.*\/src\/content/, '')  // Remove everything up to '/src/content'
-      .replace(/\.(md|mdx)$/, '');             // Remove the '.mdx' extension
+      .replace(/^.*\/src\/content/, '')
+      .replace(/\.(md|mdx)$/, '');
 
     return {
-      title: file.frontmatter?.title, // Get the title
-      path: `${relativePath}`, // Correct the path to be relative
-      order: file.frontmatter?.home?.whatsNext?.order || 9999, // Default large number if order is missing
-      summary: file.frontmatter?.summary || "", // Default empty string if summary is missing
+      title: file.frontmatter?.title,
+      path: `${relativePath}`,
+      order: file.frontmatter?.home?.whatsNext?.order || 9999,
+      summary: file.frontmatter?.summary || "",
     };
   })
-  .filter((file) => file.title && file.path).sort((a, b) => a.order - b.order); // Sort based on order value; // Ensure title and path exist
+  .filter((file) => file.title && file.path)
+  .sort((a, b) => a.order - b.order);
 
-
+// Show only first 5 if showViewMoreButton is true
+const limitedProgressNotes = showViewMoreButton ? progressNotesList.slice(0, 5) : progressNotesList;
 ---
 
 {progressNotesList.length > 0 && (
-  <div class="lg:col-span-6 bg-white dark:bg-gray-800 shadow rounded-lg p-4">
-    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300">
+<div class={`lg:col-span-6 ${compact ? '' : 'bg-white dark:bg-gray-800 shadow rounded-lg p-4'}`}>
+    <h3 class="text-lg font-semibold text-slate-700 dark:text-gray-300 flex justify-between items-center">
       <div class="flex gap-2 items-center text-xl">
         <span><img src="/assets/images/fi-rr-interactive.svg" class="w-6 h-6" alt="" /></span>
-        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'poamProgressUpdate')?.label}</span><img class="badgen-img-watch" src="https://badgen.net/badge/Status/Completed?color=green&amp;scale=1.2" alt="Completed" data-toggle="tooltip" data-html="true" data-placement="auto top" title="Completed">
+        <span>{themeConfig.widgetTitle.find(widget => widget.value === 'poamProgressUpdate')?.label}</span>
+        <img class="badgen-img-watch" src="https://badgen.net/badge/Status/Completed?color=green&amp;scale=1.2" alt="Completed" data-toggle="tooltip" data-html="true" data-placement="auto top" title="Completed" />
       </div>
+
+      {showViewMoreButton && (
+        <a href="/expectations/plan-of-action-and-milestones/pom-progress">
+          <button class="rounded-md bg-white/10 px-2.5 py-1.5 text-sm font-semibold text-[#028db7] shadow-sm hover:bg-white/20 hover:text-black dark:hover:text-white" title="View More">
+            View More
+          </button>
+        </a>
+      )}
     </h3>
 
     <ul class="mt-2 space-y-0.5 font-semibold ml-8">
-      {progressNotesList.map((file) => {
-        return (
-          <li>
-            <a href={file.path} class="text-sm hover:text-black">
-              {file.summary}
-            </a>
-          </li>
-        );
-      })}
+      {limitedProgressNotes.map((file) => (
+        <li>
+          <a href={file.path} class="text-sm hover:text-black">
+            {file.summary}
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 )}
