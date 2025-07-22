@@ -1564,4 +1564,28 @@ PUBLIC_RELEASE_NOTES_GITHUB_TOKEN="ghp_XXXXXXXXXXXXXXXXXXXX"
 You can fetch release notes from any repository—even if your site itself lives in a different repo.  
 Just make sure the token (if used) has access to the target repository.
 
+#### 🔧 Configurable Widget Titles and Entry Limits
+
+This update introduces support for configurable widget titles and entry limits for homepage widgets such as Key Resources, Meeting Minutes, Skip to..., IT Governance, Risk and Compliance, Trackers, Featured Blogs,Plan of Action and Milestones (POA&M), POA&M Status Updates, Plan of Action and Milestones (POA&M) - Next Steps and POA&M Progress Update.
+
+***You can now customize:***
+- Widget label - display name for the section.
+- Value - identifier used in content filtering.
+- Limit - number of items to show before “View More” appears.
+  Example configuration (theme.config.ts):
+
+```
+widgetTitle: [
+    { label: "Key Resources", value: "keyResources", limit: 5 },
+    { label: "Meeting Minutes", value: "meetingMinutes", limit: 5 },
+    { label: "Skip to...", value: "skipto", limit: 5 },
+    { label: "IT Governance, Risk and Compliance", value: "itGovernance", limit: 5 },
+    { label: "Trackers", value: "trackers", limit: 5 },
+    { label: "Featured Blogs", value: "featuredBlogs", limit: 5 },
+    { label: "Plan of Action and Milestones (POA&M)", value: "poamMilstones", limit: 5 },
+    { label: "POA&M Status Updates", value: "poamStatusUpdates", limit: 5 },
+    { label: "Plan of Action and Milestones (POA&M) - Next Steps", value: "poamNextSteps", limit: 5 },
+    { label: "POA&M Progress Update", value: "poamProgressUpdate", limit: 5 },
+  ]
+```
 **Enjoy building with the EOH Astro 5 Theme!** 🚀
