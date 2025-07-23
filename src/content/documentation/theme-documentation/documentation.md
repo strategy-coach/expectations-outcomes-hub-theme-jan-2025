@@ -1588,4 +1588,4 @@ widgetTitle: [
     { label: "POA&M Progress Update", value: "poamProgressUpdate", limit: 5 },
   ]
 ```
-**Enjoy building with the EOH Astro 5 Theme!** 🚀
+**Enjoy building with the EOH Astro 5 Theme!!** 🚀
