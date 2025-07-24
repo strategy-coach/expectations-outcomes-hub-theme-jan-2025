@@ -6,6 +6,8 @@ import { buildMenuTree } from '../../utils/helper.astro';
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from '../../../theme.config';
+import fs from "fs/promises";
+
 const { contentCollectionSort } = themeConfig || {}; 
 
 const files = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true });
@@ -18,9 +20,13 @@ const publishedFiles = Object.fromEntries(
 
 // Build the menu tree with only published files
 const menuTree = buildMenuTree(publishedFiles, dirName, contentCollectionSort, "asc");
-
+// Read raw markdown content
+const rawMarkdownContent = await fs.readFile(
+  "src/content/documentation/theme-documentation/documentation.md",
+  "utf-8"
+);
 ---
-<Layout title='Documentation' enableEditButton={true}>	
+<Layout title='Documentation' enableEditButton={true} rawMarkdownContent={rawMarkdownContent}>	
 	<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
     <div class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs">
       <!-- Left Menu Content Goes Here -->
