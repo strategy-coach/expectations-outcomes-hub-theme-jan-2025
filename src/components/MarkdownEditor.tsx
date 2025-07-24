@@ -78,7 +78,7 @@ const MarkdownEditor: React.FC<Props> = ({ bodyContent }) => {
     } else {
       setIsError(true);
       setFeedbackMessage(
-        "Failed to save or push to Git. Please check your GitHub token and ensure server environment variables (PUBLIC_GITHUB_OWNER_NAME, PUBLIC_GITHUB_REPO_NAME) are correctly set."
+        "Failed to save or push to Git. Please check your GitHub token and ensure server environment variables (PUBLIC_CONTENT_GITHUB_OWNER, PUBLIC_CONTENT_GITHUB_REPO) are correctly set."
       );
     }
   };

@@ -52,8 +52,8 @@ const getGitHubUserInfo = async (
 export const POST: APIRoute = async ({ request }) => {
   try {
     // Read env variables inside the handler
-    const owner = import.meta.env.PUBLIC_GITHUB_OWNER_NAME;
-    const repo = import.meta.env.PUBLIC_GITHUB_REPO_NAME;
+    const owner = import.meta.env.PUBLIC_CONTENT_GITHUB_OWNER;
+    const repo = import.meta.env.PUBLIC_CONTENT_GITHUB_REPO;
 
     // Validate that env variables are set
     if (!owner || !repo) {

@@ -1209,8 +1209,8 @@ Lets logged‑in users edit the page directly on the website using a Markdown ed
 To enable committing changes to the correct GitHub repository, make sure to set the following environment variables in your project:
 
 ```
-PUBLIC_GITHUB_OWNER_NAME=<your-github-username-or-organization>
-PUBLIC_GITHUB_REPO_NAME=<your-repository-name>
+PUBLIC_CONTENT_GITHUB_OWNER=<your-github-username-or-organization>
+PUBLIC_CONTENT_GITHUB_REPO=<your-repository-name>
 ```
 ## ✨ Benefits
 
