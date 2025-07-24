@@ -1169,17 +1169,100 @@ By following these steps, you can effectively manage the order of the menu while
 
 
 
-## Edit Option
+## ✏️ Edit Options (Edit on GitHub & Edit)
 
-Provides a direct link to edit the page in the GitHub repository. 
+This feature adds flexible edit options in the footer of each page so users can easily update content.
 
-This can be configured in the Markdown file using the following frontmatter:
+---
+
+### 🛠 Options provided
+
+### ✅ Edit on GitHub
+Provides a direct link to edit the page in the GitHub repository.
+
+- When enabled, an **Edit** button appears in the footer.
+- Clicking it takes the user directly to the GitHub editor for that page.
 
 ```
 enableEditButton: true
 ```
 
-When set to true, an "Edit" button will appear in the footer of the page, allowing users to quickly access and modify the content on GitHub.
+---
+
+### ✏️ Edit
+Lets logged‑in users edit the page directly on the website using a Markdown editor.
+
+#### How it works:
+1. User must be **logged in** and have saved a valid **GitHub Token** in their profile settings.
+2. When the user clicks **Edit** in the footer:
+   - If the token is **not set**, a modal prompts them to go to profile settings and update it.
+   - If the token is set:
+     - The rendered content is hidden.
+     - The **Markdown editor** appears in the same page.
+3. After editing, the user clicks **Submit**:
+   - A prompt asks for a commit message.
+   - The changes are **committed and pushed** to the GitHub repository.
+   - The site’s build process auto‑triggers → changes go live.
+
+---
+## Note:
+To enable committing changes to the correct GitHub repository, make sure to set the following environment variables in your project:
+
+```
+PUBLIC_GITHUB_OWNER_NAME=<your-github-username-or-organization>
+PUBLIC_GITHUB_REPO_NAME=<your-repository-name>
+```
+## ✨ Benefits
+
+- Editors can choose between:
+  - Quick direct edits on GitHub.
+  - Editing directly in the site’s UI.
+- Keeps all edits version‑controlled in Git.
+- Faster edits without switching context.
+
+---
+
+## 📦 Flow summary
+
+| Option          | Flow                                                                                     |
+|-----------------|-----------------------------------------------------------------------------------------|
+| Edit on GitHub  | Direct link to GitHub page editor                                                        |
+| Edit    | Checks token → shows markdown editor → commit & push → auto build                        |
+
+---
+
+## 🧩 Requirements for “Edit”
+
+- User must:
+  - Be logged in
+  - Save a valid GitHub token in profile (with `repo` scope)
+- Backend/API to:
+  - Fetch user metadata (`getUserMetaData`)
+  - Commit changes and push to GitHub
+- Frontend containers:
+  - `#html-content` → initially shown
+  - `#markdown-content` → initially hidden
+
+---
+
+## 🖼 UI overview
+
+- Footer button: **Edit**
+- Modal if token missing
+- Markdown editor in page
+- Submit button triggers commit
+
+---
+
+## ✅ Why this is useful
+
+- Non‑technical users can fix typos or update content without using GitHub.
+- Technical users still have the direct GitHub link.
+- Every edit is tracked in Git history and triggers the build automatically.
+
+---
+
+
 
 ##  Support & Feedback Widget  
 

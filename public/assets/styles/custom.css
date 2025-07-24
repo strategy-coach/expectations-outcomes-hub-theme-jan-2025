@@ -660,3 +660,9 @@ width: 210px;
   min-height: auto;
 }
 }
+
+/* Markdown Editor Preview custom styles starts*/
+.custom-html-style{
+  text-align: left;
+}
+/* Markdown Editor Preview custom styles ends*/

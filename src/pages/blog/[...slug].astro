@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import { render, getEntry } from "astro:content";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
+import fs from "fs/promises";
+import path from "path";
 
 const slug = Astro.params.slug;
 const entry = await getEntry("blog", slug);
@@ -10,7 +12,24 @@ if (!entry) {
   // Handle Error, for example:
   throw new Error("Could not find data");
 }
+
+// After getting the entry:
+const { id } = entry; // id will be something like "section/page-name"
+const filePath = path.resolve(`./src/content/blog/${id}.md`);
+// Check if .mdx exists instead
+let fullFilePath = filePath;
+try {
+  await fs.access(filePath.replace(/\.md$/, ".mdx"));
+  fullFilePath = filePath.replace(/\.md$/, ".mdx");
+} catch {
+  // Stick with .md
+}
+
 const { Content } = await render(entry);
+const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
+// const pageUrl=Astro.url.href;
+
+
 let formattedDate = '';
 if (entry.data.date) {
   formattedDate = new Date(entry.data.date).toLocaleDateString("en-US", {
@@ -21,11 +40,11 @@ if (entry.data.date) {
 }
 ---
 
-<Layout {...entry.data} enableEditButton={true}>
+<Layout {...entry.data} enableEditButton={true}   rawMarkdownContent={rawMarkdownContent} 
+>
   <div class="w-full mx-auto flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
-    <!-- Main Content -->
     <main
-      class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]"
+      id="main-content" class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-[70vh]"
     >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
       <Breadcrumbs
@@ -61,8 +80,6 @@ if (entry.data.date) {
       </div>
     )}
 
-
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <article class="prose max-w-screen-xl withbullet markdown-content">
         {formattedDate && (
@@ -70,15 +87,9 @@ if (entry.data.date) {
           Posted On: {formattedDate}
         </span>
         )}
-        <!-- <h1 class="text-3xl font-bold mb-4">{entry.data.title}</h1>
-        <p class="text-gray-700 dark:text-gray-300 mb-6">
-          {entry.data.description}
-        </p> -->
-
-      <Content />
+        <span id="html-content"> <Content /></span>
       </article>
     </div>
-
     </main>
   </div>
 </Layout>

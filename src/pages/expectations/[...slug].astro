@@ -10,9 +10,9 @@ import LHCFormsResponseWidget from "../../components/lhc-forms-widget/ihc-form-r
 import themeConfig from "../../../theme.config";
 import SubmittedFormList from "../../components/lhc-forms-widget/submitted-form-list.astro";
 import LatestCommit from "../../components/git-commit/latestCommit.astro";
-import type {Questionnaire,OutputNode} from "./typs";
-import {convertQuestionnaire,replaceQuestionnaire} from "./questionnaireOrder"
-import {getPageFromSlug,slugify} from "../../components/lhc-forms-widget/service";
+import type { Questionnaire, OutputNode } from "./typs";
+import { convertQuestionnaire, replaceQuestionnaire } from "./questionnaireOrder"
+import { getPageFromSlug, slugify } from "../../components/lhc-forms-widget/service";
 import order from "./order.json";
 import CommitHistory from "../../components/git-commit/commitHistory.tsx";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
@@ -20,6 +20,9 @@ import ActivityLog from "../../components/activity-log/activityLog";
 import SurveilrCommits from "../../components/git-commit/surveilrCommit.tsx";
 import Reaction from "../../components/page-reaction/reaction.astro";
 import Comment from "../../components/comment/comment.astro";
+import MarkdownEditor from "../../components/MarkdownEditor";
+import fs from "fs/promises";
+import path from "path";
 
 const orderJson = order;
 const questionnaireOrder = convertQuestionnaire(orderJson as Questionnaire);
@@ -32,11 +35,8 @@ const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
 const dirName = "expectations";
 
 // Build the menu tree
-//const menuTree = buildMenuTree(files, dirName);
 const menuTree = buildMenuTree(files, dirName, contentCollectionSort, "asc");
-
 const updatedMenuTree = replaceQuestionnaire(menuTree, questionnaireOrder);
-
 
 function hasJsonOrYamlExtension(url: string): boolean {
   return /\.(json|ya?ml)(\?.*|#.*|$)/i.test(url);
@@ -66,41 +66,51 @@ let checkPageHistory;
 
 const slugval = "/expectations/" + pageSlug;
 let folderPath = slugval.replace(/\/[^/]+$/, "").replace(/^\/+/, "");
+let fullFilePath = "";
+
 if (isLform) {
   fileName = slugval.split("/").pop() || "";
-  currentTab = searchParams.get("tab"); // Get 'tab' parameter
+  currentTab = searchParams.get("tab");
   url = Astro.url;
   submittedForm = searchParams.get("submitted-form");
-  activeTabClass =
-    " text-black border-b-2 border-black  active  dark:text-blue-500 dark:border-blue-500";
-  inActiveTabClass =
-    "hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300";
+  activeTabClass = " text-black border-b-2 border-black  active  dark:text-blue-500 dark:border-blue-500";
+  inActiveTabClass = "hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300";
   title = fileName
-  .replace(/\.lhc-form/, "")
-  .replace(/\.(json|yml)$/, "")
-  .replace(/[-_.]+/g, " ")
-  .split(" ")
-  .map(word => word.toLowerCase() === "soc2" ? "SOC2" : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-  .join(" ");
+    .replace(/\.lhc-form/, "")
+    .replace(/\.(json|yml)$/, "")
+    .replace(/[-_.]+/g, " ")
+    .split(" ")
+    .map(word => word.toLowerCase() === "soc2" ? "SOC2" : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+  fullFilePath = path.resolve(`./src/content/expectations/${pageSlug}`);
 } else {
-  
   entry = await getEntry("expectations", pageSlug);
-  
   entryid = entry?.id;
   if (!entry) {
-    // Handle Error, for example:
     throw new Error("Could not find data");
   }
+
+  const { id } = entry;
+  const filePath = path.resolve(`./src/content/expectations/${id}.md`);
+  fullFilePath = filePath;   
+  try {
+    await fs.access(filePath.replace(/\.md$/, ".mdx"));
+    fullFilePath = filePath.replace(/\.md$/, ".mdx");
+  } catch {
+    // keep .md
+  }
+
   ({ Content, headings, remarkPluginFrontmatter } = await render(entry));
 }
 checkPageHistory = entry?.data.enablePageHistory;
 
 const isSurveilr = pageSlug === "compliance-readiness/evidence-workflow";
-
-const pageUrl=Astro.url.href;
+const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
+const pageUrl = Astro.url.href;
 ---
 
-<Layout title={isLform ? title : entry.data.title} redirect={isLform ? "" : entry.data.redirect} enableEditButton={isLform ? false : entry.data.enableEditButton} >
+
+<Layout title={isLform ? title : entry.data.title} redirect={isLform ? "" : entry.data.redirect} enableEditButton={isLform ? false : entry.data.enableEditButton} rawMarkdownContent={rawMarkdownContent}>
   <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-2 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs"
@@ -215,10 +225,12 @@ const pageUrl=Astro.url.href;
       }
 
             
-          </div>) :( <article class="prose max-w-screen-xl withbullet markdown-content">
-        
-        <Content />
-      </article>) }
+          </div>) :(  <article class="prose max-w-screen-xl withbullet markdown-content">
+        {/* <span id="markdown-content" style="display:none">
+          <MarkdownEditor bodyContent={rawMarkdownContent} client:only="react" />
+        </span> */}
+        <span id="html-content"> <Content /></span>
+      </article> )}
       <Comment discussionEnabled={entry?.data.discussionsEnabled ? true : false} source="Demo"/>
     </div>
     

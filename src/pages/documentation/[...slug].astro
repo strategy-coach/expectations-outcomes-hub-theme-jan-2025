@@ -6,8 +6,8 @@ import { buildMenuTree } from "../../utils/helper.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import themeConfig from '../../../theme.config';
-import MarkdownEditor from "../../components/ContentEditor";
-import EditButton from "../../components/EditMarkdownButton";
+import fs from "fs/promises";
+import path from "path";
 
 const { contentCollectionSort } = themeConfig || {}; 
 
@@ -30,11 +30,26 @@ if (!entry) {
   // Handle Error, for example:
   throw new Error("Could not find data");
 }
+
+// After getting the entry:
+const { id } = entry; // id will be something like "section/page-name"
+const filePath = path.resolve(`./src/content/documentation/${id}.md`);
+console.log(filePath,"filePath");
+// Check if .mdx exists instead
+let fullFilePath = filePath;
+try {
+  await fs.access(filePath.replace(/\.md$/, ".mdx"));
+  fullFilePath = filePath.replace(/\.md$/, ".mdx");
+} catch {
+  // Stick with .md
+}
+
 const { Content } = await render(entry);
-const rawMarkdownContent = entry.body; // Adjust if raw content is in another property
+const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
+
 ---
 
-<Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton}>
+<Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton} rawMarkdownContent={rawMarkdownContent}>
   <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-3 xl:col-span-2 bg-white dark:bg-gray-800 p-3 shadow-xs"
@@ -74,35 +89,11 @@ const rawMarkdownContent = entry.body; // Adjust if raw content is in another pr
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>     
-      
-        <div class="">
-        <div class="flex items-center justify-end"> 
-          <EditButton client:only="react" />
-        </div>
-      </div>
 
       {
         (
           <article class="prose max-w-screen-xl withbullet markdown-content-doc">
-            <span id="markdown-content" style="display:none">
-              <MarkdownEditor
-                bodyContent={rawMarkdownContent}
-                client:only="react"
-              />
-
-              <div class="md:col-span-3 text-right">
-                <button
-                  type="button"
-                  title="Save"
-                  class="relative mt-3 inline-flex items-center gap-x-1.5 rounded text-white px-3 py-2 font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10 text-sm"
-                  style="background-color: black;"
-                >
-                  Save
-                </button>
-              </div>
-            </span>
             <span id="html-content">
-              
               <Content />
             </span>
           </article>

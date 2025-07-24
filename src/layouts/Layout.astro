@@ -7,12 +7,14 @@ interface Props {
   title: string;
   enableEditButton?: boolean;
   redirect?: string;
+  rawMarkdownContent?: string;
 }
 
-const { title } = Astro.props;
 const { baseHyperLinkColor } = themeConfig || {};
-const { enableEditButton } = Astro.props;
-const { redirect } = Astro.props;
+
+
+const { title, enableEditButton, redirect, rawMarkdownContent } = Astro.props;
+
 const enableOpenObserve =
   import.meta.env.ENABLE_OPEN_OBSERVE !== undefined
     ? import.meta.env.ENABLE_OPEN_OBSERVE
@@ -156,7 +158,7 @@ const enableSupportAndFeedback =
     </script>
 
     <slot />
-    <Footer enableEditButton={enableEditButton} />
+    <Footer enableEditButton={enableEditButton} rawMarkdownContent={rawMarkdownContent} />
   </body>
 </html>
 <script is:inline>

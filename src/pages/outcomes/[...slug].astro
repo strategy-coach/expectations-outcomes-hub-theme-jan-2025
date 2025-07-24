@@ -11,6 +11,9 @@ import LatestCommit from "../../components/git-commit/latestCommit.astro";
 import CommitHistory from "../../components/git-commit/commitHistory.tsx";
 import LatestMoreCommit from "../../components/git-commit/latestMoreCommit.astro";
 import ActivityLog from "../../components/activity-log/activityLog";
+import MarkdownEditor from "../../components/MarkdownEditor";
+import fs from "fs/promises";
+import path from "path";
 
 const { contentCollectionSort } = themeConfig || {}; 
 const { enablePageHistory } = themeConfig || {};
@@ -33,12 +36,26 @@ if (!entry) {
   // Handle Error, for example:
   throw new Error("Could not find data");
 }
+// After getting the entry:
+const { id } = entry; // id will be something like "section/page-name"
+const filePath = path.resolve(`./src/content/outcomes/${id}.md`);
+// Check if .mdx exists instead
+let fullFilePath = filePath;
+try {
+  await fs.access(filePath.replace(/\.md$/, ".mdx"));
+  fullFilePath = filePath.replace(/\.md$/, ".mdx");
+} catch {
+  // Stick with .md
+}
+
 const { Content } = await render(entry);
+const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
 const pageUrl=Astro.url.href;
+
 ---
 
-<Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton}>
-  <main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
+<Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton} rawMarkdownContent={rawMarkdownContent}>
+  <main id="main-content" class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">
     <div
       class="col-span-12 md:col-span-4 lg:col-span-2 xl:col-span-2 bg-white  dark:bg-gray-800 p-3 shadow-xs"
     >
@@ -77,8 +94,8 @@ const pageUrl=Astro.url.href;
           ><polyline points="9 18 15 12 9 6"></polyline>
         </svg>
       </Breadcrumbs>
-      <article class="prose max-w-screen-xl withbullet markdown-content">         
-        <Content />
+       <article class="prose max-w-screen-xl withbullet markdown-content">
+        <span id="html-content"> <Content /></span>
       </article>
     </div>
     
@@ -157,6 +174,5 @@ const pageUrl=Astro.url.href;
       </div>
       
       <!-- <LatestMoreCommit filename={entryid} pageTitle={entry?.data.title} /> -->
-    
   </main>
 </Layout>
