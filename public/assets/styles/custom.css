@@ -394,6 +394,11 @@ details[open] > .fst_mn .caret {
   white-space: normal !important;
 }
 
+.spacing-side.markdown-content pre
+{
+ white-space: pre-wrap !important;
+}
+
 /* table > */
 .markdown-content table {
   border-collapse: collapse;
