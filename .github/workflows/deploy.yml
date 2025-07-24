@@ -77,6 +77,8 @@ jobs:
           GDRIVE_JSON_PATH: ${{ vars.GDRIVE_JSON_PATH }}
           ENABLE_QUALITYFOLIO_PREPARE: ${{ vars.ENABLE_QUALITYFOLIO_PREPARE }}
           PUBLIC_QUALITYFOLIO_DB: ${{ vars.PUBLIC_QUALITYFOLIO_DB }}
+          PUBLIC_CONTENT_GITHUB_REPO: ${{ vars.PUBLIC_CONTENT_GITHUB_REPO }}
+          PUBLIC_CONTENT_GITHUB_OWNER: ${{ vars.PUBLIC_CONTENT_GITHUB_OWNER }}
         run: |
           bash -x support/ci-cd.sh      
           
