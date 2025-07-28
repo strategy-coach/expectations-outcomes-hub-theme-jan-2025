@@ -1,0 +1,119 @@
+
+<!-- ⚠️ DEMO DATA NOTICE: This is synthetic demonstration data created for EOH theme showcase purposes. All test results, names, and references are fictional and designed for educational use only. -->
+<h1>Test Report: TC-EOH-SEC-0143</h1>
+    
+    <p><b>Title:</b> Verify that when the access type for Create Report is set to public, the report is visible after submission without requiring any authentication token. This visibility should be accessible to all members in that session</p>
+    <p><b>Status:</b> <span class="status-passed">PASSED</span></p>
+    <p><b>Start Time:</b> 2024-07-02T11:07:30.391Z</p>
+    <p><b>End Time:</b> 2024-07-02T11:08:01.100Z</p>
+    <p><b>Total Duration:</b> 30.71 seconds</p>
+    
+      <h2>Test Steps</h2>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <th>Step</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+        </tr>
+        
+          <tr>
+            <td>1</td>
+            <td>Navigate to the URL and ensure the page loads successfully</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:30.396Z</td>
+            <td>2024-07-02T11:07:33.294Z</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Perform login with valid credentials</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:33.300Z</td>
+            <td>2024-07-02T11:07:41.274Z</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Select 'Demo Organization Inc.' as the tenant name from the top-level tenant selection dropdown</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:41.328Z</td>
+            <td>2024-07-02T11:07:43.359Z</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Navigate to the review Page</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:43.362Z</td>
+            <td>2024-07-02T11:07:45.321Z</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Navigate to the AICPA Page</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:45.323Z</td>
+            <td>2024-07-02T11:07:46.016Z</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Verify SOC2 Type I link navigation</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:46.017Z</td>
+            <td>2024-07-02T11:07:48.499Z</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Search for review session</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:48.500Z</td>
+            <td>2024-07-02T11:07:48.517Z</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Click the View button</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:48.517Z</td>
+            <td>2024-07-02T11:07:52.446Z</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Click the Document Tab</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:52.446Z</td>
+            <td>2024-07-02T11:07:54.515Z</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>page.click(//button[contains(.,"Download Report")])</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:54.519Z</td>
+            <td>2024-07-02T11:07:54.549Z</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>page.waitForEvent</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:54.550Z</td>
+            <td>2024-07-02T11:07:58.475Z</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>page.waitForTimeout</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:07:58.477Z</td>
+            <td>2024-07-02T11:08:00.977Z</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>download.saveAs</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:08:01.005Z</td>
+            <td>2024-07-02T11:08:01.006Z</td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>Close the browser</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-02T11:08:01.009Z</td>
+            <td>2024-07-02T11:08:01.112Z</td>
+          </tr>
+      </table>

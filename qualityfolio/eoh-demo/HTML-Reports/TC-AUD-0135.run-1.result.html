@@ -1,0 +1,140 @@
+
+<!-- ⚠️ DEMO DATA NOTICE: This is synthetic demonstration data created for EOH theme showcase purposes. All test results, names, and references are fictional and designed for educational use only. -->
+<h1>Test Report: TC-EOH-SEC-0135</h1>
+    
+    <p><b>Title:</b> Verify that the emoji, reply, delete, and edit functionalities associated with the submitted comment are working as expected</p>
+    <p><b>Status:</b> <span class="status-failed">FAILED</span></p>
+    <p><b>Start Time:</b> 2024-07-01T11:29:13.963Z</p>
+    <p><b>End Time:</b> 2024-07-01T11:29:51.286Z</p>
+    <p><b>Total Duration:</b> 37.32 seconds</p>
+    
+      <h2>Test Steps</h2>
+      <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+          <th>Step</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+        </tr>
+        
+          <tr>
+            <td>1</td>
+            <td>Navigate to the URL and ensure the page loads successfully</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:13.967Z</td>
+            <td>2024-07-01T11:29:17.578Z</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Perform login with valid credentials</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:17.583Z</td>
+            <td>2024-07-01T11:29:25.426Z</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Select 'Demo Organization Inc.' as the tenant name from the top-level tenant selection dropdown</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:25.484Z</td>
+            <td>2024-07-01T11:29:27.518Z</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Navigate to the review Page</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:27.521Z</td>
+            <td>2024-07-01T11:29:29.819Z</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Navigate to the AICPA Page</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:29.820Z</td>
+            <td>2024-07-01T11:29:30.526Z</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Verify SOC2 Type I link navigation</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:30.526Z</td>
+            <td>2024-07-01T11:29:33.040Z</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Search for review session</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:33.041Z</td>
+            <td>2024-07-01T11:29:33.060Z</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Click the View button</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:33.060Z</td>
+            <td>2024-07-01T11:29:37.030Z</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Click the Interaction Tab</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:37.030Z</td>
+            <td>2024-07-01T11:29:39.096Z</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>locator.click((//button[@title="reply comment"])[4])</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:39.097Z</td>
+            <td>2024-07-01T11:29:39.122Z</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>locator.fill((//textarea[@id="commentTextArea"])[2])</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:39.123Z</td>
+            <td>2024-07-01T11:29:39.131Z</td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>page.waitForTimeout</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:39.132Z</td>
+            <td>2024-07-01T11:29:41.132Z</td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>page.click((//button[@title='Submit Comment'])[2])</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:41.133Z</td>
+            <td>2024-07-01T11:29:41.168Z</td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>page.waitForTimeout</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:41.169Z</td>
+            <td>2024-07-01T11:29:46.169Z</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>expect.toBeVisible</td>
+            <td class="status-failed">failed</td>
+            <td>2024-07-01T11:29:46.170Z</td>
+            <td>2024-07-01T11:29:51.173Z</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>Close the browser</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:51.175Z</td>
+            <td>2024-07-01T11:29:51.298Z</td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td>Worker Cleanup</td>
+            <td class="status-passed">passed</td>
+            <td>2024-07-01T11:29:51.298Z</td>
+            <td>2024-07-01T11:29:51.298Z</td>
+          </tr>
+      </table>

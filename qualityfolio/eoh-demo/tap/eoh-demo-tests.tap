@@ -1,0 +1,251 @@
+# ⚠️ DEMO DATA NOTICE: This is synthetic demonstration data created for EOH theme showcase purposes.
+# All test results, names, and references are fictional and designed for educational use only.
+1..248
+ok 1 ● › [TC-EOH-review-0001] - Verify that the eoh-demo-logo visible on the home page
+ok 2 ● › [TC-EOH-review-0002] - Verify that both the dashboard and review tab lead to the identical homepage
+ok 3 ● › [TC-EOH-review-0003] - Verify if home links in the breadcrumb lead to the home page
+ok 4 ● › [TC-EOH-review-0004] - Verify if uninitiated audits are displayed in the 'New Assignment' section
+ok 5 ● › [TC-EOH-review-0005] - Check whether the session name, Project, Overall progress, Due Date. Actions of various sessions are displayed in tabular format or not
+ok 6 ● › [TC-EOH-review-0006] - Verify whether Assigned Engagements can be alphabetically sorted using the project Project Engagement sorting option
+ok 7 ● › [TC-EOH-review-0007] - Check whether Assigned Engagements can be sorted in ascending or descending order using the due date sorting option
+ok 8 ● › [TC-EOH-review-0008] - Check whether the 'Start' button in a session is working or not.
+ok 9 ● › [TC-EOH-review-0009] - Check whether the Out of quality Quality Compliance,machine validation,manual validation, Accepted by external reviewer all are represented in percentage manner or not in the detail page of session report working or not
+ok 10 ● › [TC-EOH-review-0010] - Check whether the expand and collapse arrow associated with each EOH Quality Standards key is working or not
+ok 11 ● › [TC-EOH-review-0011] - Check whether the the status, control code, questions, policies, and evidence are presented in a tabular format for each question within different EOH Quality Standards sessions or not
+ok 12 ● › [TC-EOH-review-0012] - Check whether the the policy count linked to each control code matches the number of policies and evidence file counts for each question within different EOH Quality Standards session or not
+ok 13 ● › [TC-EOH-review-0013] - Check whether the Navigation using the Back button of each EOH Quality Standards questions details page successful or not
+ok 14 ● › [TC-EOH-review-0014] - Check whether the Navigation using the Next button at the bottom of the each EOH Quality Standards questions details page sucessful or not
+ok 15 ● › [TC-EOH-review-0015] - Check whether the Navigation using the previous button at the bottom of the each EOH Quality Standards questions details page sucessful or not
+ok 16 ● › [TC-EOH-review-0016] - Check whether clicking on policy tab in each EOH Quality Standards questions details page  policy content opens or not
+ok 17 ● › [TC-EOH-review-0017] - Check On each EOH Quality Standards question details page, if the policy section is open, clicking the policy tab again close the policy section or not
+ok 18 ● › [TC-EOH-review-0018] - Check whether clicking on evidence tab in each EOH Quality Standards questions details page  evidence content opens or not
+ok 19 ● › [TC-EOH-review-0019] - Check on each EOH Quality Standards question details page, if the evidence section is open, clicking the evidence tab again close the evidence section or not
+ok 20 ● › [TC-EOH-review-0023] - Check whether it is possible to submit  the review status as 'Machine validation’ without review note
+ok 21 ● › [TC-EOH-review-0024] - Check whether it is possible to submit the review status as 'Out of quality Quality Compliance’ without review note'
+ok 22 ● › [TC-EOH-review-0025] - Check whether it is possible to submit  the review status as Manual validation’ without review note
+ok 23 ● › [TC-EOH-review-0026] - Check whether it is possible to submit  the review status as  'Accepted by external reviewer’ without review note
+ok 24 ● › [TC-EOH-review-0027] - Check whether the message popup 'Control status cannot be altered until the review status of the specified policies is fulfilled' is generated when attempting to submit the review note with a status update without verifying the policies
+ok 25 ● › [TC-EOH-review-0028] - Check whether Confirm Control Status Change popup, generated when attempting to submit the review status without fulfilling the policies, can be closed by clicking the 'OK' button
+ok 26 ● › [TC-EOH-review-0029] - Check whether the Confirm Control Status Change popup, generated when attempting to submit the review status without fulfilling the policies, can be closed by clicking the 'x' button
+not ok 27 ● › [TC-EOH-review-0030] - Check whether the review note can be submitted in the policy section without updating the review status and review note in the field
+not ok 28 ● › [TC-EOH-review-0031] - Check whether the review note can be submitted in the  policy section without updating the review status but entering data in the text field
+ok 29 ● › [TC-EOH-review-0033] - Verify when an reviewer commences the review, and upon confirming that the evidence is satisfactory, update the control status to accepted by the external reviewer. Subsequently, the corresponding session will be featured in the Active Engagements section on the dashboard
+ok 30 ● › [TC-EOH-review-0034] - Check whether the 'Resume' button in a session is working or not.
+ok 31 ● › [TC-EOH-review-0046] - Check whether the members tab should contain the member name, role, status and action or not
+not ok 32 ● › [TC-EOH-review-0047] - Ensure that upon clicking the displayed search results,which are are presented in a succinct format, and upon navigation, the page should display a message indicating 'Access Denied'
+ok 33 ● › [TC-EOH-review-0048] - Ensure that the search field provides a working clear option to remove any entered keyword
+ok 34 ● › [TC-EOH-review-0050] - Verify whether clicking over the exclamation circle triggers a popup containing information about conventional comments
+ok 35 ● › [TC-EOH-SEC-0132] - Verify navigation to the Interaction tab displays the comment text, comment box, and submit button
+ok 36 ● › [TC-EOH-SEC-0133] - Verify that the submit button in the Interaction tab’s comment box is initially disabled
+ok 37 ● › [TC-EOH-SEC-0134] - Verify successful submission and display of a comment in the Interaction tab
+not ok 38 ● › [TC-EOH-SEC-0135] - Verify that the emoji, reply, delete, and edit functionalities associated with the submitted comment are working as expected
+ok 39 ● › [TC-EOH-SEC-0136] - Verify that clicking the Action Items tab navigates to the corresponding page
+ok 40 ● › [TC-EOH-SEC-0137] - Verify that To Do comments containing either a checkbox or a due date in the format due:YYYY-MM-DD are correctly listed under the Action tab
+not ok 41 ● › [TC-EOH-SEC-0138] - Verify that when typing '@' followed by a few characters, a list of matching members appears. Upon selecting a member, adding a valid comment, and submitting it, the comment is displayed correctly, and the mentioned member’s name is properly highlighted
+ok 42 ● › [TC-EOH-SEC-0143] - Verify that when the access type for Create Report is set to public, the report is visible after submission without requiring any authentication token. This visibility should be accessible to all members in that session
+not ok 43 ● › [TC-EOH-SEC-0144] - Based on the selected template option, we are able to create review Report 1, review Report 2, and SOC 2 Type 2 review Report, and successfully view their previews
+ok 44 ● › [TC-EOH-SEC-0145] - Verify that it is not possible to generate report with duplication title
+ok 45 ● › [TC-EOH-SEC-0146] - verify that field length validation is applied to the Title field (3 to 50 characters) in the Create Report popup
+ok 46 ● › [TC-EOH-SEC-0148] - Validate character limit for Authentication Token field in the Create Report popup
+ok 47 ● › [TC-EOH-SEC-0150] - Verify that after saving the report, a success message is displayed and the Create Report popup closes automatically
+ok 48 ● › [TC-EOH-SEC-0151] - Verify that the created report is able to preview sucessfully
+ok 49 ● › [TC-EOH-AUTH-0001] - Application Login check
+ok 50 ● › [ID-NOT-FOUND] - eoh-demo-system Suite Logo visibility Check
+ok 51 ● › [ID-NOT-FOUND] - eoh-demo-system Suite - description text Check
+ok 52 ● › [TC-EOH-AUTH-0004] - Invalid username log check
+ok 53 ● › [TC-EOH-AUTH-0005] - Invalid password log check
+ok 54 ● › [ID-NOT-FOUND] - Ensure the System Rejects Empty Username Fields
+ok 55 ● › [TC-EOH-AUTH-0007] - Ensure the System Rejects Empty password Fields
+ok 56 ● › [TC-EOH-PERF-0001] - Verify that Check whether when clicking the 'Policies and Evidence', app navigates to the corresponding Policies and Evidence page or not
+ok 57 ● › [TC-EOH-PERF-0002] - Verify that the Policies and Evidence page contains all the available list or not
+ok 58 ● › [TC-EOH-PERF-0003] - Verify that when clicking the 'Code Quality Infrastructure', app navigates to the corresponding Code Quality Infrastructure page or not
+ok 59 ● › [TC-EOH-PERF-0004] - Verify that when clicking the 'Code Quality Infrastructure' expansion arrow, app shows the expanded list or not
+ok 60 ● › [TC-EOH-PERF-0005] - Verify the navigation of 'Code Quality Infrastructure (CQI)' in the Code Quality Infrastructure expanded list
+ok 61 ● › [TC-EOH-PERF-0006] - Verify the navigation of 'Policies and Evidence' breadcrumb of Code Quality Infrastructure page
+ok 62 ● › [TC-EOH-PERF-0007] - Verify the navigation of 'Code Quality' expansion arrow
+ok 63 ● › [TC-EOH-PERF-0008] - Verify that when clicking the 'Application Performance Policy' in the Code Quality expanded list, app navigates to the corresponding Application Performance Policy or not
+ok 64 ● › [TC-EOH-PERF-0009] - Verify that when clicking the 'Code Continuous Integration Policy' in the Code Quality expanded list, app navigates to the corresponding Code Continuous Integration Policy or not
+ok 65 ● › [TC-EOH-PERF-0010] - Verify that when clicking the 'Code Coverage Policy' in the Code Quality expanded list, app navigates to the corresponding Code Coverage Policy or not
+ok 66 ● › [TC-EOH-PERF-0011] - Verify that when clicking the 'Code E2E Testing Policy' in the Code Quality expanded list, app navigates to the corresponding Code E2E Testing Policy or not
+ok 67 ● › [TC-EOH-PERF-012] - Verify that when clicking the 'Code Formatting Policy' in the Code Quality expanded list, app navigates to the corresponding Code Formatting Policy or not
+ok 68 ● › [TC-EOH-PERF-0013] - Verify that when clicking the 'Code Linting Policy' in the Code Quality expanded list, app navigates to the corresponding Code Linting Policy or not
+ok 69 ● › [TC-EOH-PERF-0014] - Verify that when clicking the 'Code Unit Testing Policy' in the Code Quality expanded list, app navigates to the corresponding Code Unit Testing Policy or not
+ok 70 ● › [TC-EOH-PERF-0015] - Verify that when clicking the 'quality Quality Compliance and Auditing Policy' in the Code Quality expanded list, app navigates to the corresponding quality Quality Compliance and Auditing Policy or not
+ok 71 ● › [TC-EOH-PERF-0016] - Verify that when clicking the 'Conventional Commit Message Policy' in the Code Quality expanded list, app navigates to the corresponding Conventional Commit Message Policy or not
+ok 72 ● › [TC-EOH-PERF-0017] - Verify that when clicking the 'Data Monitoring Policy' in the Code Quality expanded list, app navigates to the corresponding Data Monitoring Policy or not
+ok 73 ● › [TC-EOH-PERF-0018] - Verify that when clicking the 'Engineering Sandbox Policy' in the Code Quality expanded list, app navigates to the corresponding Engineering Sandbox Policy or not
+ok 74 ● › [TC-EOH-PERF-0019] - Verify that when clicking the 'Git hooks Policy' in the Code Quality expanded list, app navigates to the corresponding Git hooks Policy or not
+ok 75 ● › [TC-EOH-PERF-0020] - Verify that when clicking the 'IDE Extensions Policy' in the Code Quality expanded list, app navigates to the corresponding IDE Extensions Policy or not
+ok 76 ● › [TC-EOH-PERF-0021] - Verify that when clicking the 'IDE Policy' in the Code Quality expanded list, app navigates to the corresponding IDE Policy or not
+ok 77 ● › [TC-EOH-PERF-0022] - Verify that when clicking the 'Infrastructure Monitoring Policy' in the Code Quality expanded list, app navigates to the corresponding Infrastructure Monitoring Policy or not
+ok 78 ● › [TC-EOH-PERF-0023] - Verify that when clicking the 'Operating System Policy' in the Code Quality expanded list, app navigates to the corresponding Operating System Policy or not
+ok 79 ● › [TC-EOH-PERF-0024] - Verify that when clicking the 'Security Monitoring Policy' in the Code Quality expanded list, app navigates to the corresponding Security Monitoring Policy or not
+ok 80 ● › [TC-EOH-PERF-0025] - Verify that when clicking the 'Source Control git Ignore Policy' in the Code Quality expanded list, app navigates to the corresponding Source Control git Ignore Policy or not
+ok 81 ● › [TC-EOH-PERF-0026] - Verify that when clicking the 'Source Control Policy' in the Code Quality expanded list, app navigates to the corresponding Source Control Policy or not
+ok 82 ● › [TC-EOH-PERF-0027] - Verify that when clicking the 'Source Control README Policy' in the Code Quality expanded list, app navigates to the corresponding Source Control README Policy or not
+ok 83 ● › [TC-EOH-PERF-0028] - Verify that when clicking the 'System Health Policy' in the Code Quality expanded list, app navigates to the corresponding System Health Policy or not
+ok 84 ● › [TC-EOH-PERF-0030] - Verify that when clicking the 'Version and Deployment Monitoring Policy' in the Code Quality expanded list, app navigates to the corresponding Version and Deployment Monitoring Policy or not
+ok 85 ● › [TC-EOH-PERF-0031] - Verify the navigation of 'Software Construction Checklist' expansion arrow
+ok 86 ● › [TC-EOH-PERF-0032] - Verify that when clicking the 'Code Tuning Strategies Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Code Tuning Strategies Checklist or not
+ok 87 ● › [TC-EOH-PERF-0033] - Verify that when clicking the 'Code Tuning Techniques Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Code Tuning Techniques Checklist or not
+not ok 88 ● › [TC-EOH-PERF-0034] - Verify that when clicking the 'Collaborative Construction Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Collaborative Construction Checklist or not
+ok 89 ● › [TC-EOH-PERF-0035] - Verify that when clicking the 'Commenting Technique Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Commenting Technique Checklist or not
+ok 90 ● › [TC-EOH-PERF-0036] - Verify that when clicking the 'Configuration Management Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Configuration Management Checklist or not
+ok 91 ● › [TC-EOH-PERF-0037] - Verify that when clicking the 'Controlling Loops Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Controlling Loops Checklist or not
+ok 92 ● › [TC-EOH-PERF-0038] - Verify that when clicking the 'Debugging Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Debugging Checklist or not
+ok 93 ● › [TC-EOH-PERF-0039] - Verify that when clicking the 'Defensive Programming Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Defensive Programming Checklist or not
+ok 94 ● › [TC-EOH-PERF-0040] - Verify that when clicking the 'Design In Construction Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Design In Construction Checklist or not
+ok 95 ● › [TC-EOH-PERF-0041] - Verify that when clicking the 'Developer Testing Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Developer Testing Checklist or not
+ok 96 ● › [TC-EOH-PERF-0042] - Verify that when clicking the 'Fundamental Data Types Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Fundamental Data Types Checklist or not
+ok 97 ● › [TC-EOH-PERF-0043] - Verify that when clicking the 'General Considerations In Using Data Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding General Considerations In Using Data Checklist or not
+ok 98 ● › [TC-EOH-PERF-0044] - Verify that when clicking the 'General Control Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding General Control Checklist or not
+ok 99 ● › [TC-EOH-PERF-0045] - Verify that when clicking the 'High Quality Routines Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding High Quality Routines Checklist or not
+ok 100 ● › [TC-EOH-PERF-0046] - Verify that when clicking the 'Integration Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Integration Checklist or not
+ok 101 ● › [TC-EOH-PERF-0047] - Verify that when clicking the 'Key Construction Decisions Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Key Construction Decisions Checklist or not
+ok 102 ● › [TC-EOH-PERF-0048] - Verify that when clicking the 'Layout And Style Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Layout And Style Checklist or not
+ok 103 ● › [TC-EOH-PERF-0049] - Verify that when clicking the 'Naming Variables Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Naming Variables Checklist or not
+ok 104 ● › [TC-EOH-PERF-0050] - Verify that when clicking the 'Organizing Straight Line Code Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Organizing Straight Line Code Checklist or not
+ok 105 ● › [TC-EOH-PERF-0051] - Verify that when clicking the 'Programming Tools Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Programming Tools Checklist or not
+ok 106 ● › [TC-EOH-PERF-0052] - Verify that when clicking the 'Pseudocode Programming Process Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Pseudocode Programming Process Checklist or not
+ok 107 ● › [TC-EOH-PERF-0053] - Verify that when clicking the 'Refactoring Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Refactoring Checklist or not
+ok 108 ● › [TC-EOH-PERF-0054] - Verify that when clicking the 'Requirements Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Requirements Checklist or not
+ok 109 ● › [TC-EOH-PERF-0055] - Verify that when clicking the 'Software Quality Landscape Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding or not
+ok 110 ● › [TC-EOH-PERF-0056] - Verify that when clicking the 'Table Driven Methods Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Table Driven Methods Checklist or not
+ok 111 ● › [TC-EOH-PERF-0057] - Verify that when clicking the 'Unusual Control Structures Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Unusual Control Structures Checklist or not
+ok 112 ● › [TC-EOH-PERF-0058] - Verify that when clicking the 'Unusual Data Types Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Unusual Data Types Checklist or not
+ok 113 ● › [TC-EOH-PERF-0059] - Verify that when clicking the 'Using Conditionals Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Using Conditionals Checklist or not
+ok 114 ● › [TC-EOH-PERF-0060] - Verify that when clicking the 'Working Classes Checklist' in the Software Construction Checklist expanded list, app navigates to the corresponding Working Classes Checklist or not
+ok 115 ● › [TC-EOH-PERF-0061] - Verify that when clicking the 'Database Quality Infrastructure', app navigates to the corresponding Database Quality Infrastructure page or not
+ok 116 ● › [TC-EOH-PERF-0063] - Verify the navigation of 'Database Configuration Tuning Policy' in the Database Quality Infrastructure expanded list
+ok 117 ● › [TC-EOH-PERF-0064] - Verify the navigation of 'Database Design Policy' in the Database Quality Infrastructure expanded list
+ok 118 ● › [TC-EOH-PERF-0065] - Verify the navigation of 'Database Hardware Specifications Policy' in the Database Quality Infrastructure expanded list
+ok 119 ● › [TC-EOH-PERF-0066] - Verify the navigation of 'Database Indexes Policy' in the Database Quality Infrastructure expanded list
+ok 120 ● › [TC-EOH-PERF-0067] - Verify the navigation of 'Database Migration and Change Management policy' in the Database Quality Infrastructure expanded list
+ok 121 ● › [TC-EOH-PERF-0068] - Verify the navigation of 'Database Performance and Reliability Policy' in the Database Quality Infrastructure expanded list
+ok 122 ● › [TC-EOH-PERF-0069] - Verify the navigation of 'Database Quality Infrastructure (DQI)' in the Database Quality Infrastructure expanded list
+ok 123 ● › [TC-EOH-PERF-0070] - Verify the navigation of 'Database Query Optimization Policy' in the Database Quality Infrastructure expanded list
+ok 124 ● › [TC-EOH-PERF-0071] - Verify the navigation of 'Database Security Policy' in the Database Quality Infrastructure expanded list
+ok 125 ● › [TC-EOH-PERF-0072] - Verify the navigation of 'Database Version Policy' in the Database Quality Infrastructure expanded list
+ok 126 ● › [TC-EOH-PERF-0073] - Verify that when clicking the 'Email Deliverability Quality Infrastructure', app navigates to the corresponding Email Deliverability Quality Infrastructure page or not
+ok 127 ● › [TC-EOH-PERF-0074] - Verify that when clicking the 'Email Deliverability Quality Infrastructure' expansion arrow, app shows the expanded list or not
+ok 128 ● › [TC-EOH-PERF-0075] - Verify the navigation of 'Email Deliverability and Authentication Policy' in the Email Deliverability Quality Infrastructure expanded list
+ok 129 ● › [TC-EOH-PERF-0076] - Verify that when clicking the 'Human Resource Quality Infrastructure', app navigates to the corresponding Human Resource Quality Infrastructure page or not
+ok 130 ● › [TC-EOH-PERF-0077] - Verify that when clicking the 'Human Resource Quality Infrastructure' expansion arrow, app shows the expanded list or not
+ok 131 ● › [TC-EOH-PERF-0078] - Verify the navigation of 'Employee Handbook' in the Human Resource Quality Infrastructure expanded list
+ok 132 ● › [TC-EOH-PERF-0079] - Verify the navigation of 'Hiring Policy and Checklist' in the Human Resource Quality Infrastructure expanded list
+ok 133 ● › [TC-EOH-PERF-0080] - Verify the navigation of 'Termination Policy' in the Human Resource Quality Infrastructure expanded list
+ok 134 ● › [TC-EOH-PERF-0081] - Verify that when clicking the 'Information Technology Quality Infrastructure', app navigates to the corresponding Information Technology Quality Infrastructure page or not
+ok 135 ● › [TC-EOH-PERF-0082] - Verify the navigation of 'Information Technology Quality Infrastructure' expansion arrow
+ok 136 ● › [TC-EOH-PERF-0083] - Verify that when clicking the 'Acceptable Use Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Acceptable Use Policy or not
+ok 137 ● › [TC-EOH-PERF-0084] - Verify that when clicking the 'Access Control Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Access Control Policy or not
+ok 138 ● › [TC-EOH-PERF-0085] - Verify that when clicking the 'Account Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Account Management Policy or not
+ok 139 ● › [TC-EOH-PERF-0086] - Verify that when clicking the 'Application Security Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Application Security Policy or not
+ok 140 ● › [TC-EOH-PERF-0087] - Verify that when clicking the 'Asset Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Asset Management Policy or not
+ok 141 ● › [TC-EOH-PERF-0088] - Verify that when clicking the 'Availability Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Availability Management Policy or not
+ok 142 ● › [TC-EOH-PERF-0089] - Verify that when clicking the 'Background Check Policy and Procedure' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Background Check Policy and Procedure or not
+ok 143 ● › [TC-EOH-PERF-0090] - Verify that when clicking the 'Backup and Restoration Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Backup and Restoration Policy or not
+ok 144 ● › [TC-EOH-PERF-0091] - Verify that when clicking the 'Business Continuity Plan' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Business Continuity Plan or not
+ok 145 ● › [TC-EOH-PERF-0092] - Verify that when clicking the 'Business Continuity Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Business Continuity Policy or not
+ok 146 ● › [TC-EOH-PERF-0093] - Verify that when clicking the 'Business Impact Analysis' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Business Impact Analysis or not
+ok 147 ● › [TC-EOH-PERF-0094] - Verify that when clicking the 'BYOD, Mobile, Teleworking Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding BYOD, Mobile, Teleworking Policy or not
+ok 148 ● › [TC-EOH-PERF-0095] - Verify that when clicking the 'Capacity Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Capacity Management Policy or not
+ok 149 ● › [TC-EOH-PERF-0096] - Verify that when clicking the 'Change Control Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Change Control Policy or not
+ok 150 ● › [TC-EOH-PERF-0097] - Verify that when clicking the 'Change Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Change Management Policy or not
+ok 151 ● › [TC-EOH-PERF-0098] - Verify that when clicking the 'Clear Desk Clear Screen Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Clear Desk Clear Screen Policy or not
+ok 152 ● › [TC-EOH-PERF-0099] - Verify that when clicking the 'Code of Conduct Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Code of Conduct Policy or not
+ok 153 ● › [TC-EOH-PERF-0100] - Verify that when clicking the 'Communications Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Communications Management Policy or not
+ok 154 ● › [TC-EOH-PERF-0101] - Verify that when clicking the 'quality Quality Compliance Regulatory Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding quality Quality Compliance Regulatory Policy or not
+ok 155 ● › [TC-EOH-PERF-0102] - Verify that when clicking the 'Confidentiality Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Confidentiality Policy or not
+ok 156 ● › [TC-EOH-PERF-0103] - Verify that when clicking the 'Cyber Incident Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Cyber Incident Management Policy or not
+ok 157 ● › [TC-EOH-PERF-0104] - Verify that when clicking the 'Data Center Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Center Policy or not
+ok 158 ● › [TC-EOH-PERF-0105] - Verify that when clicking the 'Data Governance Manual' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Governance Manual or not
+ok 159 ● › [TC-EOH-PERF-0106] - Verify that when clicking the 'Data Loss Prevention Procedure' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Loss Prevention Procedure or not
+ok 160 ● › [TC-EOH-PERF-0107] - Verify that when clicking the 'Data Privacy Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Privacy Policy or not
+ok 161 ● › [TC-EOH-PERF-0108] - Verify that when clicking the 'Data Retention Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Retention Policy or not
+ok 162 ● › [TC-EOH-PERF-0109] - Verify that when clicking the 'Data Security Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Security Policy or not
+ok 163 ● › [TC-EOH-PERF-0110] - Verify that when clicking the 'Disaster Recovery Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Disaster Recovery Policy or not
+ok 164 ● › [TC-EOH-PERF-0111] - Verify that when clicking the 'Data Disposal and Destruction Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Data Disposal and Destruction Policy or not
+ok 165 ● › [TC-EOH-PERF-0112] - Verify that when clicking the 'Email Communication Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Email Communication Policy or not
+ok 166 ● › [TC-EOH-PERF-0113] - Verify that when clicking the 'Email Notification Policy for Common User Login Access' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Email Notification Policy for Common User Login Access or not
+ok 167 ● › [TC-EOH-PERF-0114] - Verify that when clicking the 'Employee Progressive Discipline Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Employee Progressive Discipline Policy or not
+ok 168 ● › [TC-EOH-PERF-0115] - Verify that when clicking the 'Encryption Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Encryption Policy or not
+ok 169 ● › [TC-EOH-PERF-0116] - Verify that when clicking the 'Escalation Processes' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Escalation Processes or not
+ok 170 ● › [TC-EOH-PERF-0117] - Verify that when clicking the 'Event Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Event Management Policy or not
+ok 171 ● › [TC-EOH-PERF-0118] - Verify that when clicking the 'Fundamental Practices for Secure Code Development' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Fundamental Practices for Secure Code Development or not
+ok 172 ● › [TC-EOH-PERF-0119] - Verify that when clicking the 'Incident Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Incident Management Policy or not
+ok 173 ● › [TC-EOH-PERF-0120] - Verify that when clicking the 'Incident Response Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Incident Response Policy or not
+ok 174 ● › [TC-EOH-PERF-0121] - Verify that when clicking the 'Indicators of Compromise' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Indicators of Compromise or not
+ok 175 ● › [TC-EOH-PERF-0122] - Verify that when clicking the 'Information Assurance Program' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Information Assurance Program or not
+ok 176 ● › [TC-EOH-PERF-0123] - Verify that when clicking the 'Information Classification Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Information Classification Policy or not
+ok 177 ● › [TC-EOH-PERF-0124] - Verify that when clicking the 'Information Risk Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Information Risk Management Policy or not
+ok 178 ● › [TC-EOH-PERF-0125] - Verify that when clicking the 'Information Security Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Information Security Policy or not
+ok 179 ● › [TC-EOH-PERF-0126] - Verify that when clicking the 'Infrastructure Authentication and Authorization Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Infrastructure Authentication and Authorization Policy or not
+ok 180 ● › [TC-EOH-PERF-0127] - Verify that when clicking the 'Internal and External Communication Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Internal and External Communication Policy or not
+ok 181 ● › [TC-EOH-PERF-0128] - Verify that when clicking the 'IT Asset Management (ITAM) Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding IT Asset Management (ITAM) Policy or not
+ok 182 ● › [TC-EOH-PERF-0129] - Verify that when clicking the 'Key Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Leadership, Governance and Strategy Policy or not
+ok 183 ● › [TC-EOH-PERF-0130] - Verify that when clicking the 'Leadership, Governance and Strategy Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Acceptable Use Policy or not
+ok 184 ● › [TC-EOH-PERF-0131] - Verify that when clicking the 'Log Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Log Management Policy or not
+ok 185 ● › [TC-EOH-PERF-0132] - Verify that when clicking the 'Network Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Network Management Policy or not
+ok 186 ● › [TC-EOH-PERF-0133] - Verify that when clicking the 'Network Systems Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Network Systems Policy or not
+ok 187 ● › [TC-EOH-PERF-0134] - Verify that when clicking the 'Office Security Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Office Security Policy or not
+ok 188 ● › [TC-EOH-PERF-0135] - Verify that when clicking the 'Open Source Tools Update Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Open Source Tools Update Policy or not
+ok 189 ● › [TC-EOH-PERF-0136] - Verify that when clicking the 'Operations Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Operations Management Policy or not
+ok 190 ● › [TC-EOH-PERF-0137] - Verify that when clicking the 'Password Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Password Policy or not
+ok 191 ● › [TC-EOH-PERF-0138] - Verify that when clicking the 'Patch Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Patch Management Policy or not
+ok 192 ● › [TC-EOH-PERF-0139] - Verify that when clicking the 'Personal Data Management System' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Personal Data Management System or not
+ok 193 ● › [TC-EOH-PERF-0140] - Verify that when clicking the 'Personnel Security Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Personnel Security Policy or not
+ok 194 ● › [TC-EOH-PERF-0141] - Verify that when clicking the 'Physical and Environmental Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Physical and Environmental Policy or not
+ok 195 ● › [TC-EOH-PERF-0142] - Verify that when clicking the 'Privacy Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Privacy Management Policy or not
+ok 196 ● › [TC-EOH-PERF-0143] - Verify that when clicking the 'Remote Access Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Remote Access Policy or not
+ok 197 ● › [TC-EOH-PERF-0144] - Verify that when clicking the 'Removable Media, Cloud Storage and BYOD Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Removable Media, Cloud Storage and BYOD Policy or not
+ok 198 ● › [TC-EOH-PERF-0145] - Verify that when clicking the 'Risk Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Risk Management Policy or not
+ok 199 ● › [TC-EOH-PERF-0146] - Verify that when clicking the 'Security Awareness and Training Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Security Awareness and Training Policy or not
+ok 200 ● › [TC-EOH-PERF-0147] - Verify that when clicking the 'Security Incident Response Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Security Incident Response Policy or not
+ok 201 ● › [TC-EOH-PERF-0148] - Verify that when clicking the 'Software Development Lifecycle Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Software Development Lifecycle Policy or not
+ok 202 ● › [TC-EOH-PERF-0149] - Verify that when clicking the 'Supplier Relationship Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Supplier Relationship Policy or not
+ok 203 ● › [TC-EOH-PERF-0150] - Verify that when clicking the 'System and Services Acquisition Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding System and Services Acquisition Policy or not
+ok 204 ● › [TC-EOH-PERF-0151] - Verify that when clicking the 'System Change Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding System Change Policy or not
+ok 205 ● › [TC-EOH-PERF-00152] - Verify that when clicking the 'System Integrity Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding System Integrity Policy or not
+ok 206 ● › [TC-EOH-PERF-0153] - Verify that when clicking the 'Systems Monitoring And Auditing' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Systems Monitoring And Auditing or not
+ok 207 ● › [TC-EOH-PERF-0154] - Verify that when clicking the 'Systems Security Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Systems Security Policy or not
+ok 208 ● › [TC-EOH-PERF-0155] - Verify that when clicking the 'Training Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Training Policy or not
+ok 209 ● › [TC-EOH-PERF-0156] - Verify that when clicking the 'Vendor Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Vendor Management Policy or not
+ok 210 ● › [TC-EOH-PERF-0157] - Verify that when clicking the 'Vulnerability Management Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Vulnerability Management Policy or not
+ok 211 ● › [TC-EOH-PERF-0158] - Verify that when clicking the 'Whistleblower Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Whistleblower Policy or not
+ok 212 ● › [TC-EOH-PERF-0159] - Verify that when clicking the 'Workstation Policy' in the Information Technology Quality Infrastructure expanded list, app navigates to the corresponding Workstation Policy or not
+ok 213 ● › [TC-EOH-PERF-0160] - Verify that when clicking the 'Site Experience Quality Infrastructure', app navigates to the corresponding Site Experience Quality Infrastructure page or not
+ok 214 ● › [TC-EOH-PERF-0161] - Verify the navigation of 'Site Experience Quality Infrastructure' expansion arrow
+ok 215 ● › [TC-EOH-PERF-0162] - Verify that when clicking the 'GA4 Weekly Reports' in the Site Experience Quality Infrastructure expanded list, app navigates to the corresponding page or not
+ok 216 ● › [TC-EOH-PERF-0163] - Verify that when clicking the 'Site Experience Quality Infrastructure (SEQI)' in the Site Experience Quality Infrastructure expanded list, app navigates to the corresponding page or not
+ok 217 ● › [TC-EOH-PERF-0164] - Verify that when clicking the 'EOH Design Documents', app navigates to the corresponding EOH Design Documents page or not
+ok 218 ● › [TC-EOH-PERF-0165] - Verify the navigation of 'EOH Design Documents' expansion arrow
+ok 219 ● › [TC-EOH-PERF-0166] - Verify that when clicking the 'EOH Design Documents' in the EOH Design Documents expanded list, app navigates to the corresponding page or not
+ok 220 ● › [TC-EOH-PERF-0167] - Verify that when clicking the 'Comparison of SQL Aide (SQLa) Library and dbt Tool - RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 221 ● › [TC-EOH-PERF-0168] - Verify that when clicking the 'Database Asynchronous Queries RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 222 ● › [TC-EOH-PERF-0169] - Verify that when clicking the 'Database Connection Pooling RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 223 ● › [TC-EOH-PERF-0170] - Verify that when clicking the 'Database Design RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 224 ● › [TC-EOH-PERF-0171] - Verify that when clicking the 'Database Explain Plan Visualizer and Analyzer RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 225 ● › [TC-EOH-PERF-0172] - Verify that when clicking the 'Database Formatting and Linting RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 226 ● › [TC-EOH-PERF-0173] - Verify that when clicking the 'Database Governance RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 227 ● › [TC-EOH-PERF-0174] - Verify that when clicking the 'Database Ingestion and Ingress Center RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 228 ● › [TC-EOH-PERF-0175] - Verify that when clicking the 'Database Migration and Change Management Enhancement RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 229 ● › [TC-EOH-PERF-0176] - Verify that when clicking the 'Database Performance Monitoring RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 230 ● › [TC-EOH-PERF-0177] - Verify that when clicking the 'Database Quality Infrastructure (DQI) RFCs' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 231 ● › [TC-EOH-PERF-0178] - Verify that when clicking the 'Database Query Optimization RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 232 ● › [TC-EOH-PERF-0179] - Verify that when clicking the 'Database Unit Testing Policy RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 233 ● › [TC-EOH-PERF-0180] - Verify that when clicking the 'Ingestion and Ingres Center (IIC) RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 234 ● › [TC-EOH-PERF-0181] - Verify that when clicking the 'Migration from Legacy PgDCP to SQLa PgDCP RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 235 ● › [TC-EOH-PERF-0182] - Verify that when clicking the 'Platformatic DB Evaluation RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 236 ● › [TC-EOH-PERF-0183] - Verify that when clicking the 'PLV8ify tool evaluation RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 237 ● › [TC-EOH-PERF-0184] - Verify that when clicking the 'EOH Database Extension Manager pgxman RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 238 ● › [TC-EOH-PERF-0185] - Verify that when clicking the 'EOH Database performance work integration RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 239 ● › [TC-EOH-PERF-0186] - Verify that when clicking the 'EOH Database Version 16 upgrade RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 240 ● › [TC-EOH-PERF-0187] - Verify that when clicking the 'Secure EOH Multi-Project Architecture Policy RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 241 ● › [TC-EOH-PERF-0188] - Verify that when clicking the 'EOH Data Processing library RFC' in the EOH Data Quality Framework expanded list of EOH Design Documents, app navigates to the corresponding page or not
+ok 242 ● › [TC-EOH-SUPP-0001] - Verify that while clicking on the EOH support & feedback  it will opens a EOH support & feedback popup
+ok 243 ● › [TC-EOH-SUPP-0002] - Verify that support & feedback popup cotain subject ,message,attach screenshot titles
+not ok 244 ● › [TC-EOH-SUPP-0003] - Verify that all mandatory fields (Subject, Message) must be filled before Submit is enabled
+not ok 245 ● › [TC-EOH-SUPP-0004] - Verify that the Message field accepts multi-line input and a reasonable character limit (e.g., 500 or 1000 chars)
+ok 246 ● › [TC-EOH-SUPP-0005] - Verify that proper validation is applied for empty fields
+ok 247 ● › [TC-EOH-SUPP-0007] - Verify that uploaded screenshot preview is visible (if supported)
+ok 248 ● › [TC-EOH-SUPP-0008] - Verify that uploaded screenshot can be removed before submission
