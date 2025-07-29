@@ -81,10 +81,14 @@ jobs:
           PUBLIC_CONTENT_GITHUB_OWNER: ${{ vars.PUBLIC_CONTENT_GITHUB_OWNER }}
         run: |
           bash -x support/ci-cd.sh      
-          
-      - name: Install dependencies
+
+      - name: Clean pnpm cache
         run: |
-          pnpm install
+          pnpm store prune
+          
+      - name: Install dependencies without cache
+        run: |
+          pnpm install --no-cache
 
       - name: Generate pagefind HTML files
         run: |
