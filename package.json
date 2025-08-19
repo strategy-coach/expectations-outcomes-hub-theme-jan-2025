@@ -15,7 +15,7 @@
     "sync-db-and-users": "pnpm run generate-db-models && pnpm run generate-db-views && deno run --allow-read --allow-write --allow-net --allow-env --allow-sys --allow-run --unstable support/services/syncZitadelUserToRssd.ts",
     "sync-users": "deno run --allow-read --allow-write --allow-net --allow-env --allow-sys --allow-run --unstable support/services/syncZitadelUserToRssd.ts --syncUsersOnly=true",
     "prepare-imap-db": "deno run -A imap-prepare.ts",
-    "prepare-qualityfolio-db": "deno run -A qualityfolio-surveilr-prepare.ts",
+    "prepare-qualityfolio-db": "deno run -A https://raw.githubusercontent.com/surveilr/www.surveilr.com/refs/heads/main/lib/service/qualityfolio/qualityfolio-surveilr-prepare-service.ts",
     "postinstall": "playwright install chromium",
     "surveilrcommits": "node src/pages/api/fetch-git-commits.js"
   },
