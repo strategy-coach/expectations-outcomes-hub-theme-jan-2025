@@ -416,3 +416,6 @@ These volumes ensure persistent storage for critical application components.
 ## Build Process
 Each build process generates the application build, which is then copied to the `dist` directory. Afterwards, the server restarts in SSR (Server-Side Rendering) mode to apply the latest changes.
 
+
+
+<!-- Security scan triggered at 2025-09-02 00:52:28 -->
