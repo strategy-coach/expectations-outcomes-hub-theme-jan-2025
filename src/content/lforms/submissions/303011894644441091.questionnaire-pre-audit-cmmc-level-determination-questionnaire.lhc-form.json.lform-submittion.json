@@ -1,0 +1,974 @@
+{
+  "lformsVersion": "36.8.0",
+  "PATH_DELIMITER": "/",
+  "code": null,
+  "codeList": null,
+  "identifier": null,
+  "name": "CMMC Level Determination Questionnaire",
+  "template": "table",
+  "items": [
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Section 1: Organization and Contract Information",
+      "codeList": [
+        {
+          "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "code": "organization-and-contract-information",
+          "display": "Organization and Contract Information"
+        }
+      ],
+      "questionCode": "organization-and-contract-information",
+      "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+      "linkId": "461149605484",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/entryFormat",
+              "valueString": "Enter your organization name"
+            }
+          ],
+          "dataType": "TX",
+          "question": "What is the name of your organization?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "organization-and-contract-information-organization-name",
+              "display": "Organization And Contract Information Organization Name"
+            }
+          ],
+          "questionCode": "organization-and-contract-information-organization-name",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "589953648417",
+          "questionCardinality": {
+            "max": "1",
+            "min": "1"
+          },
+          "answerCardinality": {
+            "min": "0",
+            "max": "1"
+          },
+          "value": "Demo Org"
+        },
+        {
+          "dataType": "CODING",
+          "question": "Do you have active contracts or subcontracts with the Department of Defense (DoD)?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "organization-and-contract-information-contracts",
+              "display": "Organization And Contract Information Contracts"
+            }
+          ],
+          "questionCode": "organization-and-contract-information-contracts",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "480722725067",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Yes"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "What type of DoD contracts do you hold?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "organization-and-contract-information-contract-type",
+              "display": "Organization And Contract Information Contract Type"
+            }
+          ],
+          "questionCode": "organization-and-contract-information-contract-type",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "758789467464",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Prime contract"
+            },
+            {
+              "text": "Subcontract"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Prime contract"
+          }
+        },
+        {
+          "answerConstraint": "optionsOrString",
+          "dataType": "CODING",
+          "question": "Which clauses are included in your DoD contract or subcontract? (Select all that apply)",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "organization-and-contract-information-clauses",
+              "display": "Organization And Contract Information Clauses "
+            }
+          ],
+          "questionCode": "organization-and-contract-information-clauses",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "630210355113",
+          "answerCardinality": {
+            "max": "*",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "FAR 52.204-21 – Basic Safeguarding of Contractor Information Systems"
+            },
+            {
+              "text": "DFARS 252.204-7012 – Safeguarding CUI & Cyber Incident Reporting"
+            },
+            {
+              "text": "DFARS 252.204-7021 – CMMC Requirements Flowdown"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Has your contracting officer or prime contractor provided explicit CMMC level requirements?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "organization-and-contract-information-explicit-requirements",
+              "display": "Organization And Contract Information Explicit Requirements"
+            }
+          ],
+          "questionCode": "organization-and-contract-information-explicit-requirements",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "954379846318",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Yes"
+          }
+        }
+      ],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Section 2: Type of Information Handled",
+      "codeList": [
+        {
+          "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "code": "type-of-information-handled",
+          "display": "Type Of Information Handled"
+        }
+      ],
+      "questionCode": "type-of-information-handled",
+      "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+      "linkId": "230998337489",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "What type of information does your organization process, store, or transmit? (Select all that apply)",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "type-of-information-types",
+              "display": "Type Of Information Types"
+            }
+          ],
+          "questionCode": "type-of-information-types",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "814163232215",
+          "answerCardinality": {
+            "max": "*",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Public information (no FCI or CUI, fully public)"
+            },
+            {
+              "text": "Federal Contract Information (FCI)"
+            },
+            {
+              "text": "Controlled Unclassified Information (CUI)"
+            },
+            {
+              "text": "Highly sensitive DoD CUI or National Security information"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Do you handle technical data, schematics, or software related to defense systems?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "type-of-information-handling",
+              "display": "Type Of Information handling"
+            }
+          ],
+          "questionCode": "type-of-information-handling",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "801811034551",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Yes"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are you part of a critical weapons system or high-value defense supply chain?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "type-of-information-critical-weapons",
+              "display": "Type Of Information critical weapons"
+            }
+          ],
+          "questionCode": "type-of-information-critical-weapons",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "673847626098",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Yes"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Does your organization handle administrative or financial data related to DoD contracts?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "type-of-information-datas",
+              "display": "Type Of Information Datas"
+            }
+          ],
+          "questionCode": "type-of-information-datas",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "834352365144",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        }
+      ],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Section 3: Current Security Practices",
+      "codeList": [
+        {
+          "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "code": "current-security-practices",
+          "display": "Current Security Practices"
+        }
+      ],
+      "questionCode": "current-security-practices",
+      "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+      "linkId": "714100887220",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "Which cybersecurity practices are currently implemented? (Select all that apply)",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "current-security-practices-implemented",
+              "display": "Current Security Practices Implemented"
+            }
+          ],
+          "questionCode": "current-security-practices-implemented",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "612381612246",
+          "answerCardinality": {
+            "max": "*",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Basic cyber hygiene: antivirus, patch management, password policies"
+            },
+            {
+              "text": "Multi-factor authentication (MFA) for users"
+            },
+            {
+              "text": "Regular backups of critical data"
+            },
+            {
+              "text": "Network segmentation or access controls"
+            },
+            {
+              "text": "Implementation of NIST SP 800-171 controls for CUI protection"
+            },
+            {
+              "text": "Advanced protections for high-value CUI or national security systems"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Do you maintain a System Security Plan (SSP) or equivalent documentation?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "current-security-practices-ssp",
+              "display": "Current Security Practices SSP"
+            }
+          ],
+          "questionCode": "current-security-practices-ssp",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "347775092162",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Yes"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Do you conduct internal cybersecurity assessments or audits?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "current-security-practices-audits",
+              "display": "Current Security Practices Audits"
+            }
+          ],
+          "questionCode": "current-security-practices-audits",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "714287895007",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        }
+      ],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Section 4: Risk and Sensitivity Assessment",
+      "codeList": [
+        {
+          "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "code": "risk-and-sensitivity-assessment",
+          "display": "Risk And Sensitivity Assessment"
+        }
+      ],
+      "questionCode": "risk-and-sensitivity-assessment",
+      "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+      "linkId": "159358470692",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "How sensitive is the information you handle?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "risk-and-sensitivity-assessment-handling",
+              "display": "Risk And Sensitivity Assessment Handling"
+            }
+          ],
+          "questionCode": "risk-and-sensitivity-assessment-handling",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "712180810194",
+          "answerCardinality": {
+            "max": "*",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Low – public or administrative data"
+            },
+            {
+              "text": "Medium – Federal Contract Information (FCI)"
+            },
+            {
+              "text": "High – Controlled Unclassified Information (CUI)"
+            },
+            {
+              "text": "Very High – Highly sensitive CUI or National Security information"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are there regulatory or contractual requirements for incident reporting or safeguarding specific information?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "risk-and-sensitivity-regulatory",
+              "display": "Risk And Sensitivity Regulatory"
+            }
+          ],
+          "questionCode": "risk-and-sensitivity-regulatory",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "481728867504",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Is your organization expected to meet NIST SP 800-171 or SP 800-172 compliance?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "risk-and-sensitivity-compliance",
+              "display": "Risk And Sensitivity Compliance"
+            }
+          ],
+          "questionCode": "risk-and-sensitivity-compliance",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "132814489764",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        }
+      ],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Section 5: Confirmation and Documentation",
+      "codeList": [
+        {
+          "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "code": "confirmation-and-documentation",
+          "display": "Confirmation and Documentation"
+        }
+      ],
+      "questionCode": "confirmation-and-documentation",
+      "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+      "linkId": "161382546770",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "Have you consulted your DoD Contracting Officer or Prime Contractor to confirm the required CMMC level?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "confirmation-and-documentation-consultation",
+              "display": "Confirmation and Documentation Consultation"
+            }
+          ],
+          "questionCode": "confirmation-and-documentation-consultation",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "820272774229",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Do you have supporting contract excerpts, clauses, or SOW documents specifying CMMC requirements?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "confirmation-and-documentation-supporting",
+              "display": "Confirmation and Documentation Supporting"
+            }
+          ],
+          "questionCode": "confirmation-and-documentation-supporting",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "441694207033",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Have you documented your CMMC level determination for compliance purposes?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "confirmation-and-documentation-determination",
+              "display": "Confirmation and Documentation Determination"
+            }
+          ],
+          "questionCode": "confirmation-and-documentation-determination",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "904500538021",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        }
+      ],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Section 6: Additional Considerations",
+      "codeList": [
+        {
+          "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "code": "additional-considerations",
+          "display": "Additional Considerations"
+        }
+      ],
+      "questionCode": "additional-considerations",
+      "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+      "linkId": "589744753458",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "items": [
+        {
+          "dataType": "CODING",
+          "question": "Do you plan to share or transmit Controlled Unclassified Information (CUI) outside your organization?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "additional-considerations-sharing",
+              "display": "Additional Considerations Sharing"
+            }
+          ],
+          "questionCode": "additional-considerations-sharing",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "479451827202",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          },
+          "value": {
+            "text": "Yes"
+          }
+        },
+        {
+          "dataType": "CODING",
+          "question": "Are you subject to government-led assessments or audits?",
+          "codeList": [
+            {
+              "system": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+              "code": "additional-considerations-subject",
+              "display": "Additional Considerations Subject"
+            }
+          ],
+          "questionCode": "additional-considerations-subject",
+          "questionCodeSystem": "opsfolio/LHCform/CMMC-Level1-Questionnaire",
+          "linkId": "300258019893",
+          "answerCardinality": {
+            "max": "1",
+            "min": "0"
+          },
+          "displayControl": {
+            "answerLayout": {
+              "type": "RADIO_CHECKBOX"
+            }
+          },
+          "answers": [
+            {
+              "text": "Yes"
+            },
+            {
+              "text": "No"
+            }
+          ],
+          "questionCardinality": {
+            "min": "1",
+            "max": "1"
+          }
+        }
+      ],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    },
+    {
+      "header": true,
+      "dataType": "SECTION",
+      "question": "Meta Information",
+      "obj_text": {
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/rendering-xhtml",
+            "valueString": "<div style=\"display:none\">\n<input id=\"lhcFormMetaInformation\" value='{\n    \"createdAt\": \"10-09-2025\",\n    \"createdBy\": \"Arun KR\",\n    \"description\": \"This page enables organizations to accurately determine the Cybersecurity Maturity Model Certification (CMMC) 2.0 level applicable to their operations. By evaluating the type of information handled, relevant contract clauses, and the sensitivity of work performed under Department of Defense (DoD) engagements, the questionnaire provides a structured and objective assessment framework. Through a step-by-step process, users are guided to identify whether they manage Federal Contract Information (FCI) or Controlled Unclassified Information (CUI), review associated DoD contractual requirements, and evaluate their current cybersecurity practices. Based on these inputs, the system delivers a clear, evidence-based recommendation indicating the appropriate CMMC 2.0 level — Level 1 (Foundational), Level 2 (Advanced), or Level 3 (Expert) — ensuring organizations can align their compliance efforts effectively.\",\n    \"title\": \"CMMC Requirement Assessment\",\n    \"organization\": \"Netspective Communication LLC\"\n}'>\n</div>"
+          }
+        ]
+      },
+      "questionCode": "508014173022",
+      "questionCodeSystem": "LinkId",
+      "linkId": "508014173022",
+      "questionCardinality": {
+        "max": "1",
+        "min": "1"
+      },
+      "codeList": [],
+      "displayControl": {
+        "questionLayout": "vertical"
+      },
+      "answerCardinality": {
+        "min": "0",
+        "max": "1"
+      }
+    }
+  ],
+  "templateOptions": {
+    "showQuestionCode": false,
+    "showCodingInstruction": false,
+    "allowMultipleEmptyRepeatingItems": false,
+    "allowHTML": true,
+    "displayControl": {
+      "questionLayout": "vertical"
+    },
+    "viewMode": "auto",
+    "defaultAnswerLayout": {
+      "answerLayout": {
+        "type": "COMBO_BOX",
+        "columns": "0"
+      }
+    },
+    "hideTreeLine": false,
+    "hideIndentation": false,
+    "hideRepetitionNumber": false,
+    "displayScoreWithAnswerText": true,
+    "displayInvalidHTML": false,
+    "messageLevel": "error"
+  },
+  "hasSavedData": true,
+  "fhirVersion": "R4"
+}
