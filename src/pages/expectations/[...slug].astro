@@ -68,6 +68,9 @@ const slugval = "/expectations/" + pageSlug;
 let folderPath = slugval.replace(/\/[^/]+$/, "").replace(/^\/+/, "");
 let fullFilePath = "";
 
+const acronyms = ["SOC2", "CMMC", "HIPAA", "GDPR", "ISO"];
+const mixedCaseAcronyms = ["CaaS", "IaaS", "PaaS", "SaaS"];
+
 if (isLform) {
   fileName = slugval.split("/").pop() || "";
   currentTab = searchParams.get("tab");
@@ -76,12 +79,22 @@ if (isLform) {
   activeTabClass = " text-black border-b-2 border-black  active  dark:text-blue-500 dark:border-blue-500";
   inActiveTabClass = "hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300";
   title = fileName
-    .replace(/\.lhc-form/, "")
-    .replace(/\.(json|yml)$/, "")
-    .replace(/[-_.]+/g, " ")
-    .split(" ")
-    .map(word => word.toLowerCase() === "soc2" ? "SOC2" : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(" ");
+  .replace(/\.lhc-form/, "")
+  .replace(/\.(json|yml)$/, "")
+  .replace(/[-_.]+/g, " ")
+  .split(" ")
+  .map(word => {
+    const upper = word.toUpperCase();
+
+    if (acronyms.includes(upper)) return upper;
+    const exactMatch = mixedCaseAcronyms.find(a => a.toLowerCase() === word.toLowerCase());
+    if (exactMatch) return exactMatch;
+
+    // Default title-case behavior
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  })
+  .join(" ");
+
   fullFilePath = path.resolve(`./src/content/expectations/${pageSlug}`);
 } else {
   entry = await getEntry("expectations", pageSlug);
