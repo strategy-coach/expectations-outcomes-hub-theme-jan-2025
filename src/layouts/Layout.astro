@@ -32,6 +32,8 @@ const enableSupportAndFeedback =
   import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined
     ? import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK
     : false;
+const currentUrl = new URL(Astro.request.url);
+const noHeader = currentUrl.searchParams.get("OPSFOLIO_SUITE_INSTANCE") === "true";
 ---
 
 <!doctype html>
@@ -129,7 +131,7 @@ const enableSupportAndFeedback =
     <title>{title}</title>
   </head>
   <body class="bg-gray-40 dark:bg-gray-900 dark:text-white">
-    <Header />
+    { !noHeader && ( <Header />)}
     <script define:vars={{ userName, userEmail }} is:inline>
       window.widgetConfig = {
         USER_EMAIL: userEmail ? userEmail.value : "Unauth",
@@ -159,6 +161,24 @@ const enableSupportAndFeedback =
 
     <slot />
     <Footer enableEditButton={enableEditButton} rawMarkdownContent={rawMarkdownContent} />
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("OPSFOLIO_SUITE_INSTANCE") === "true") {
+          document.querySelectorAll("a").forEach((link) => {
+            if (link.href) {
+              try {
+                const url = new URL(link.href);
+                url.searchParams.set("OPSFOLIO_SUITE_INSTANCE", "true");
+                link.href = url.toString();
+              } catch (error) {
+                // Ignore errors for invalid URLs (e.g., mailto:, tel:)
+              }
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
 <script is:inline>
