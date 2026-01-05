@@ -7,6 +7,9 @@ const { version,themeReleaseNotesLink,editLink } = themeConfig || {};
 const { url } = Astro;
 const { enableEditButton, rawMarkdownContent } = Astro.props;
 
+
+const currentYear = new Date().getFullYear();
+
 // Split the pathname into segments
 const pathSegments = url.pathname.split("/").filter(Boolean);
 
@@ -26,7 +29,7 @@ const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
 ---
 
 <footer class="flex mt-4 items-center justify-between text-sm text-slate-700 bg-white border-t border-slate-200 dark:border-gray-600 pt-8 pb-6 px-4 dark:bg-gray-900 dark:text-white">
-    <span class="flex-1 text-center">Copyright © 2025. All rights reserved. <br>Powered by <a href={themeReleaseNotesLink} target="_blank" class="underline text-gray-500 dark:text-gray-400">EOH</a>  
+    <span class="flex-1 text-center">Copyright © {currentYear}. All rights reserved. <br>Powered by <a href={themeReleaseNotesLink} target="_blank" class="underline text-gray-500 dark:text-gray-400">EOH</a>  
       <span>@{version}</span> </span>
     
     <!-- { enableEditButton && (
