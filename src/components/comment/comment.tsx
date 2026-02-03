@@ -850,11 +850,12 @@ const Comment: React.FC<
         return (
             <>
                 <div className="w-full">
+                    <h3 className="mb-2">Comments</h3>
                     <ul style={{ paddingLeft: "0" }}>
                         {renderTree(comments)}
                     </ul>
 
-                    <div className="md:col-span-6 lg:col-span-12 ml-4 mt-8 mb-6">
+                    <div className="md:col-span-6 lg:col-span-12 ml-4 mt-4 mb-6">
 
                         <div className="flex text-base">
                             {activities.length > 3 && (
@@ -872,10 +873,9 @@ const Comment: React.FC<
                     </div>
 
                     <div ref={cardRef} className="">
-                        <div className=" font-bold text-gray-700 flex gap-2 text-base ">
+                        {/* <div className=" font-bold text-gray-700 flex gap-2 text-base ">
                             Comments
-                            {/* // <ConventionalComment /> */}
-                        </div>
+                        </div> */}
                         <div className="mt-5 bg-white border rounded-md p-2">
                             <div className="">
                                 {reply.parentId !== undefined && (
@@ -944,7 +944,7 @@ const Comment: React.FC<
                                     name="comment"
                                     id="commentTextArea"
                                     className="block w-full rounded-md border-0 p-1.5 pt-0 pb-12 max-h-52 text-gray-900 ring-0 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-0 focus:ring-inset sm:text-sm sm:leading-6"
-                                    placeholder="Comment here..."
+                                    placeholder="Add a comment..."
                                     aria-labelledby="comment-label"
                                 ></textarea>
                             </div>
