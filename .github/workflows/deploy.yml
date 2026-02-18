@@ -99,9 +99,9 @@ jobs:
         run: |
           pnpm run build
           
-      - name: Generate qualityfolio DB
-        run: |
-          pnpm run prepare-qualityfolio-db
+     # - name: Generate qualityfolio DB
+   #     run: |
+     #     pnpm run prepare-qualityfolio-db
           
       - name: Archive build artifacts
         run: |
