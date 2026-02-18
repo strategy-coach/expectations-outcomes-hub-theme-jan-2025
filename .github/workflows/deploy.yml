@@ -89,7 +89,9 @@ jobs:
           
       - name: Install dependencies without cache
         run: |
-          pnpm install --no-cache
+         #####pnpm install --no-cache###
+           pnpm install --frozen-lockfile
+
 
       - name: Generate pagefind HTML files
         run: |
