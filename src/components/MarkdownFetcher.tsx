@@ -9,12 +9,15 @@ export default function GithubDataFetcher() {
     const fetchData = async () => {
       try {
         const res = await fetch("/api/fetch-md");
-        if (!res.ok) throw new Error(`Status: ${res.status}`);
+        if (!res.ok) {
+          const message = await res.text();
+          throw new Error(message || `Status: ${res.status}`);
+        }
         const result = await res.json();
         setData(result);
       } catch (err: any) {
         console.error("Fetch error:", err);
-        setError("Error loading content.");
+        setError(err?.message || "Error loading content.");
       }
     };
 
