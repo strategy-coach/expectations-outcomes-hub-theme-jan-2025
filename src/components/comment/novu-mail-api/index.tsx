@@ -17,7 +17,7 @@ async function novuApiCall(
   emailTo?: string,
   otherRecievers?: string[] | undefined[],
 ): Promise<Response> {
-  const tenant = Cookies.get("organizationName");
+  const tenant = Cookies.get("org_lbl");
   payload.tenantName = tenant;
   const response = await fetch(import.meta.env.PUBLIC_NOVU_API_URL as string, {
     method: "POST",

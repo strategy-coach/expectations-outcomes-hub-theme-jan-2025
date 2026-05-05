@@ -6,10 +6,10 @@ import themeConfig from "../../theme.config";
 
 const { logo, headerMenu, darkmodeLogo } = themeConfig || {};
 
-const userId = Astro.cookies.get("zitadel_user_id")?.value || "";
-const userRole = Astro.cookies.get("zitadel_user_role")?.value || "";
-const email = Astro.cookies.get("zitadel_user_email");
-const userName = Astro.cookies.get("zitadel_user_name");
+const userId = Astro.cookies.get("uid")?.value || "";
+const userRole = Astro.cookies.get("auth_rl")?.value || "";
+const email = Astro.cookies.get("acct_eml");
+const userName = Astro.cookies.get("usr_lbl");
 const currentUrl = new URL(Astro.request.url);
 const darkModeHide =
   currentUrl.pathname.includes('fleetfolio-service') || currentUrl.pathname.includes('qualityfolio');

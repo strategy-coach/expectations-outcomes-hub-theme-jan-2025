@@ -5,7 +5,7 @@ import CommentService from "../../components/comment/commentService";
 const path = Astro.url.pathname;
 const comments = await CommentService.getComments(path);
 const activities = await CommentService.getActivityLogs(path);
-const user = Astro.cookies.get("zitadel_user_id")
+const user = Astro.cookies.get("uid")
 const commentData = [...activities, ...comments];
 commentData.sort((a, b) => {
   return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();

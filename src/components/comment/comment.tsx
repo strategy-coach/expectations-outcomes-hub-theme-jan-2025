@@ -220,9 +220,9 @@ const Comment: React.FC<
         };
 
 
-        const userId = Cookie.get("zitadel_user_id");
-        const tenantId = Cookie.get("zitadel_tenant_id")
-        const userName = Cookie.get("zitadel_user_name")
+        const userId = Cookie.get("uid");
+        const tenantId = Cookie.get("ctx_tid")
+        const userName = Cookie.get("usr_lbl")
 
         const handleReplyClick = (logId: number, description: string): void => {
             setReply({ parentId: logId, message: description });

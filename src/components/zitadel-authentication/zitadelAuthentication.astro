@@ -69,13 +69,12 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       const cookiesToDelete = [
         "zitadel_state",
         "zitadel_token",
-        "zitadel_user_name",
+        "usr_lbl",
         "zitadel_access_token",
-        "zitadel_user_id",
-        "zitadel_tenant_id",
-        "zitadel_user_email",
-        "zitadel_user_roles",
-        "zitadel_user_role",
+        "uid",
+        "ctx_tid",
+        "acct_eml",
+        "auth_rl",
       ];
 
       cookiesToDelete.forEach((key) => deleteCookie(key));
@@ -92,7 +91,7 @@ const zitadelLogoutUrl = createZitadelLogoutUrl();
       deleteCookie("token");
       deleteCookie("gravatar");
       deleteCookie("tenantId");
-      deleteCookie("organizationName");
+      deleteCookie("org_lbl");
       // end : Need to remove shortly
 
       localStorage.clear();

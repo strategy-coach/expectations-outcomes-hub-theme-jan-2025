@@ -80,7 +80,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Parse cookies to get userId
     const cookies = cookie.parse(request.headers.get("cookie") || "");
-    const userId = cookies["zitadel_user_id"];
+    const userId = cookies["uid"];
     if (!userId) {
       return new Response(JSON.stringify({ error: "User ID missing" }), {
         status: 401,

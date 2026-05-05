@@ -4,7 +4,7 @@ import { getReactions } from "./service.tsx";
 
 const pageUrl = Astro.url.href;
 const reactions = await getReactions(pageUrl);
-const user = Astro.cookies.get("zitadel_user_id");
+const user = Astro.cookies.get("uid");
 ---
 
 {user && user.value ? (

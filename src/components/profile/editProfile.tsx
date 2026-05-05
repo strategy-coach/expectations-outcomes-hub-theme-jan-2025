@@ -15,8 +15,8 @@ import { Gravatar } from "./gravatar/Gravatar";
 const setCookie = (key: string, value: string): void => {
     Cookie.set(key, value, { path: "/", secure: true });
 };
-const email = Cookie.get("zitadel_user_email");
-const userId = Cookie.get("zitadel_user_id") ?? "";
+const email = Cookie.get("acct_eml");
+const userId = Cookie.get("uid") ?? "";
 const handleCancel = (): void => {
     window.location.replace("/my-profile");
 };

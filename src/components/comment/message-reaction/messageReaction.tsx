@@ -30,8 +30,8 @@ const MessageReaction: React.FC<MessageReactionProps> = ({ messageId, reactions 
     const [commentReactions, setCommentReaction] = useState<ReactionType[]>(reactions);
     const [selectedReaction, setSelectedReaction] = useState<string | null>();
 
-    const user = Cookie.get("zitadel_user_name");
-    const userId = Cookie.get("zitadel_user_id")
+    const user = Cookie.get("usr_lbl");
+    const userId = Cookie.get("uid")
     const getReaction = (name: string): string => {
         const reactiontype = reactionType.find(type => type.reaction_name === name);
         return reactiontype ? reactiontype.icon : "";

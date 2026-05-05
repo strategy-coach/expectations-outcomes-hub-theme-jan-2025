@@ -23,8 +23,8 @@ interface PageReactionProps {
 const PageReaction: React.FC<PageReactionProps> = ({ url, reactions }) => {
     const [commentReactions, setCommentReaction] = useState<ReactionType[]>(reactions);
 
-    const user = Cookie.get("zitadel_user_name");
-    const userId = Cookie.get("zitadel_user_id")
+    const user = Cookie.get("usr_lbl");
+    const userId = Cookie.get("uid")
 
 
 

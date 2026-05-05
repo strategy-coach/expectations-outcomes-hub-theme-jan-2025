@@ -25,8 +25,8 @@ if (Astro.cookies.get("User")?.value !== undefined) {
 } else {
   user = "Unauth";
 }
-const userName = Astro.cookies.get("zitadel_user_name");
-const userEmail = Astro.cookies.get("zitadel_user_email");
+const userName = Astro.cookies.get("usr_lbl");
+const userEmail = Astro.cookies.get("acct_eml");
 
 const enableSupportAndFeedback =
   import.meta.env.ENABLE_SUPPORT_AND_FEEDBACK !== undefined

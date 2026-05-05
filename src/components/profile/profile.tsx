@@ -4,8 +4,8 @@ import Cookie from "js-cookie";
 import { getUserInfo, getUserMetaData } from "./userService"
 import type { ProfileInformation, UserMeta } from "./userService"
 
-const userId = Cookie.get("zitadel_user_id") || ""
-const userRole = Cookie.get("zitadel_user_role") || "";
+const userId = Cookie.get("uid") || ""
+const userRole = Cookie.get("auth_rl") || "";
 let isAdmin = false;
 
 if (userRole.includes('admin')) {

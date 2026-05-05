@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userId =
     document.cookie
       .split("; ")
-      .find((row) => row.startsWith("zitadel_user_id="))
+      .find((row) => row.startsWith("uid="))
       ?.split("=")[1] || "";
 
   const isAuthenticated = !!userId; // True if logged in, false otherwise

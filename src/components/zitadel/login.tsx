@@ -80,7 +80,7 @@ const UserLogin: React.FC = (): JSX.Element => {
                 password: formData.password,
             });
             if (response.data.userId === undefined) {
-                Cookies.set("zitadel_tenant_id", ORGANIZATION);
+                Cookies.set("ctx_tid", ORGANIZATION);
 
                 try {
                     const attributes = globalThis.setAttributes("User Login", {
@@ -91,7 +91,7 @@ const UserLogin: React.FC = (): JSX.Element => {
                 } catch (error) {
                     console.log(error)
                 }
-                Cookies.remove("zitadel_tenant_id");
+                Cookies.remove("ctx_tid");
                 response.data.error == "User is locked" ? setNotification({
                     message: response.data.error,
                     show: true,
@@ -112,13 +112,13 @@ const UserLogin: React.FC = (): JSX.Element => {
                         userRole: response.data.userRole,
                     });
                     const userRole = response.data.userRole;
-                    setCookie("zitadel_user_name", response.data.displayName ?? "");
-                    setCookie("zitadel_user_email", response.data.email ?? "");
-                    setCookie("zitadel_user_id", response.data.userId ?? "");
-                    setCookie("zitadel_tenant_id", ORGANIZATION);
+                    setCookie("usr_lbl", response.data.displayName ?? "");
+                    setCookie("acct_eml", response.data.email ?? "");
+                    setCookie("uid", response.data.userId ?? "");
+                    setCookie("ctx_tid", ORGANIZATION);
 
                     if (userRole) {
-                        setCookie("zitadel_user_role", userRole);
+                        setCookie("auth_rl", userRole);
                         try {
                             const attributes = globalThis.setAttributes("User Login", {
                                 loginStatus: "Successful"

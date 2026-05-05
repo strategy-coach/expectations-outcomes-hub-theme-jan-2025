@@ -74,8 +74,8 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(
   async (context, next) => {
     const { pathname } = context.url;
 
-    let userId = context.cookies.get("zitadel_user_id")?.value;
-    let userRole = context.cookies.get("zitadel_user_role")?.value;
+    let userId = context.cookies.get("uid")?.value;
+    let userRole = context.cookies.get("auth_rl")?.value;
 
     const embedToken = context.url.searchParams.get("embedToken");
 

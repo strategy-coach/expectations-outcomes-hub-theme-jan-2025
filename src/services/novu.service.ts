@@ -28,7 +28,7 @@ async function novuApiCall(
     otherReceivers?: string[],
 ): Promise<Response> {
     // Get tenant name from cookies and add to payload
-    const tenantName = Cookies.get("organizationName");
+    const tenantName = Cookies.get("org_lbl");
     const validatedPayload = GenericPayloadSchema.parse({
         ...payload,
         tenantName,

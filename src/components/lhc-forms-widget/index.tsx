@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback, useMemo } from "react"
 import Cookies from "js-cookie";
 
 const LForms = (window as any).LForms;
-const userId = Cookies.get("zitadel_user_id");
+const userId = Cookies.get("uid");
 
 interface LHCFormsWidgetProps {
     data: string | number | boolean | null | Record<string, unknown> | unknown[];

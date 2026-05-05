@@ -131,7 +131,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) 
             }, 2500);
         } else {
             if (email !== undefined) {
-                Cookies.set("zitadel_tenant_id", ORGANIZATION);
+                Cookies.set("ctx_tid", ORGANIZATION);
                 try {
                     const attributes = globalThis.setAttributes("User Login", {
                         loginStatus: "Password Changed",
@@ -141,7 +141,7 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) 
                 } catch (error) {
                     console.log(error)
                 }
-                Cookies.remove("zitadel_tenant_id");
+                Cookies.remove("ctx_tid");
             }
             setSuccessNotification({
                 show: true,
