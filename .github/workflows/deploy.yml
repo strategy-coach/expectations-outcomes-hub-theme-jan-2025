@@ -90,9 +90,9 @@ jobs:
       - name: Install dependencies without cache
         run: |
          #####pnpm install --no-cache###
-           ###pnpm install --frozen-lockfile###
+           pnpm install --frozen-lockfile
            ###pnpm install --no-frozen-lockfile###
-           pnpm install
+          ### pnpm install###
 
       - name: Generate pagefind HTML files
         run: |
