@@ -96,8 +96,8 @@ jobs:
         run: |
          #####pnpm install --no-cache###
            ###pnpm install --frozen-lockfile###
-           pnpm install --no-frozen-lockfile
-
+           ###pnpm install --no-frozen-lockfile###
+           pnpm install
 
       - name: Generate pagefind HTML files
         run: |
