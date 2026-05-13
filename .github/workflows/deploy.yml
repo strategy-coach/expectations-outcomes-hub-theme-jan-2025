@@ -15,7 +15,10 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9.1.12
+        
       - name: Node and pnpm versions
         run: |
           node --version
