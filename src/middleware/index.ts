@@ -5,8 +5,8 @@ import type { JwtPayload } from "jsonwebtoken";
 
 import { isZitadelEnabled } from "../utils/env.ts";
 import themeConfig from "../../theme.config.ts";
-import { fleetfolioReverseProxyMiddleware } from "./fleetfolio-reverse-proxy.ts";
-import { qualityfolioReverseProxyMiddleware } from "./qualityfolio-reverse-proxy.ts";
+// import { fleetfolioReverseProxyMiddleware } from "./fleetfolio-reverse-proxy.ts";
+// import { qualityfolioReverseProxyMiddleware } from "./qualityfolio-reverse-proxy.ts";
 import { getUserRole } from "../../src/services/zitadel.services.ts";
 
 /* -------------------------------------------------------------------------- */
@@ -142,7 +142,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(
 export const onRequest: MiddlewareHandler = defineMiddleware((context, next) =>
   sequence(
     authenticationMiddleware,
-    fleetfolioReverseProxyMiddleware,
-    qualityfolioReverseProxyMiddleware
+    //fleetfolioReverseProxyMiddleware,
+    // qualityfolioReverseProxyMiddleware
   )(context, next)
 );

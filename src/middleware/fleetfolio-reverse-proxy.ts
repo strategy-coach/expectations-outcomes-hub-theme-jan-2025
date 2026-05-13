@@ -37,11 +37,12 @@ export const fleetfolioReverseProxyMiddleware: MiddlewareHandler = defineMiddlew
 
     if (pathname.startsWith("/fleetfolio-service")) {
         let targetUrl;
+        const routePrefix = "/fleetfolio-service";
 
-        if (pathname === "/fleetfolio-service") {
-            targetUrl = `${TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
+        if (pathname === routePrefix || pathname === `${routePrefix}/`) {
+            targetUrl = `${TARGET_URL}${pathname.replace(routePrefix, "")}${search}`;
         } else {
-            targetUrl = `${BASE_TARGET_URL}${pathname.replace("/fleetfolio-service", "")}${search}`;
+            targetUrl = `${BASE_TARGET_URL}${pathname.replace(routePrefix, "")}${search}`;
         }
 
         console.log(`Proxying request to: ${targetUrl}`);

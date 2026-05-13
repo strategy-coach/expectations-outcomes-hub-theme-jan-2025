@@ -3,43 +3,44 @@ import Layout from "../../layouts/Layout.astro";
 import { Breadcrumbs } from "astro-breadcrumbs";
 import "astro-breadcrumbs/breadcrumbs.css";
 import externalWebUiUrls from "../../config/externalWebUiUrls.json";
-const { qualityfolioSourceUrl } = externalWebUiUrls;
+const proxiedHtml = (Astro.locals as any).proxiedHtml || "";
+const { fleetfolioSourceUrl } = externalWebUiUrls;
 ---
 
-<Layout title="Qualityfolio">
-  <main class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[calc(100vh-12rem)] flex flex-col">
+<Layout title="Fleetfolio">
+  <main
+    class="max-w-full mx-auto px-3 sm:px-4 lg:px-4 pt-6 min-h-[calc(100vh-12rem)] flex flex-col"
+  >
     <div
-      class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 dark:text-gray-300 flex flex-1 flex-col"
+      class="col-span-12 md:col-span-8 lg:col-span-9 xl:col-span-10 pb-5 pt-0 md:pt-5 px-5 md:px-0 md:pr-5 dark:text-gray-300 flex flex-1 flex-col"
     >
-      <div class="px-5 md:px-0 md:pr-5">
-        <Breadcrumbs
-          linkTextFormat="capitalized"
-          ariaLabel="Site navigation"
-          separatorAriaHidden={false}
-          customizeLinks={[
-            { index: 2, hidden: true },
-            { index: 3, hidden: true },
-            {
-              index: 4,
-              hidden: true,
-            },
-          ]}
-        >
-          <svg
-            slot="separator"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </Breadcrumbs>
-      </div>
+      <Breadcrumbs
+        linkTextFormat="capitalized"
+        ariaLabel="Site navigation"
+        separatorAriaHidden={false}
+        customizeLinks={[
+          { index: 2, hidden: true },
+          { index: 3, hidden: true },
+          {
+            index: 4,
+            hidden: true,
+          },
+        ]}
+      >
+        <svg
+          slot="separator"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </Breadcrumbs>
       <!-- <div class="border-b border-slate-300 dark:border-gray-600 pb-3">
         <h1
           class="text-2xl lg:text-4xl font-bold text-slate-700 dark:text-gray-300 mt-4 mb-1"
@@ -47,34 +48,39 @@ const { qualityfolioSourceUrl } = externalWebUiUrls;
           Fleetfolio
         </h1>
       </div> -->
-      {qualityfolioSourceUrl && (
-        <iframe
-          class="w-full rounded-lg border bg-card text-card-foreground shadow-sm"
-          src={`${qualityfolioSourceUrl}`}
-          title="Qualityfolio"
-          id="breadcrumb-iframe"
-          scrolling="yes"
-        ></iframe>
-      )}
+      {
+        fleetfolioSourceUrl && (
+          <iframe
+            class="w-full rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden"
+            src={`${fleetfolioSourceUrl}`}
+            title="Asset Intelligence"
+            id="breadcrumb-iframe"
+            scrolling="no"
+          />
+        )
+      }
     </div>
   </main>
 </Layout>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-
+    // Step 1: Get and hide the source breadcrumb (old nav)
     const sourceNav = document.querySelector('nav[aria-label="breadcrumb"]');
     if (!(sourceNav instanceof HTMLElement)) return;
     sourceNav.style.display = "none";
 
     const breadcrumbItems = Array.from(
-      sourceNav.querySelectorAll("li.breadcrumb-item a")
+      sourceNav.querySelectorAll("li.breadcrumb-item a"),
     );
 
-    const itemsToInject = breadcrumbItems.slice(2);
+    // Step 2: Take all items from index 2 onward
+    const itemsToInject = breadcrumbItems.slice(3);
     if (itemsToInject.length === 0) return;
 
+    // Step 3: Get target breadcrumb
     const targetNav = document.querySelector(
-      'nav[aria-label="Site navigation"]'
+      'nav[aria-label="Site navigation"]',
     );
     if (!targetNav) return;
 
@@ -92,14 +98,12 @@ const { qualityfolioSourceUrl } = externalWebUiUrls;
       const isLast = index === itemsToInject.length - 1;
 
       if (isLast) {
-   
         const span = document.createElement("span");
         span.className = "c-breadcrumbs__link is-current";
         span.textContent = text;
         span.setAttribute("aria-current", "location"); // mark as current
         li.appendChild(span);
       } else {
-       
         const a = document.createElement("a");
         a.className = "c-breadcrumbs__link";
         a.href = href;
@@ -107,6 +111,7 @@ const { qualityfolioSourceUrl } = externalWebUiUrls;
         a.setAttribute("aria-current", "false");
         li.appendChild(a);
 
+        // Add separator
         const separator = document.createElement("span");
         separator.className = "c-breadcrumbs__separator";
         separator.setAttribute("aria-hidden", "true");

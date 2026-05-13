@@ -22,7 +22,7 @@ const themeConfig = (config: {
   enablePageHistory: boolean;
   enableFeedbackList: boolean;
   authorizedSlides: number[];
-  releaseListUrl: string; 
+  releaseListUrl: string;
 }) => {
   return {
     ...config,
@@ -75,7 +75,8 @@ export default themeConfig({
     { label: "Outcomes", path: "/outcomes", requiresAuth: true },
     { label: "Progress", path: "/progress", requiresAuth: true },
     { label: "Qualityfolio", path: "/qualityfolio", requiresAuth: true },
-    { label: "Fleetfolio", path: "/fleetfolio-service", requiresAuth: true },
+    { label: "Fleetfolio", path: "/fleetfolio", requiresAuth: true },
+    // { label: "Fleetfolio", path: "/fleetfolio-service", requiresAuth: true },
     { label: "Blog", path: "/blog" },
   ],
   unauthorizedPages: [
