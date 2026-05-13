@@ -20,7 +20,7 @@ async function runSequentialCommands() {
         await exec(`rm -rf ${sqlFilePath}`);
         console.log(`models.auto.sql removed successfully`);
 
-        await exec(`cd src/content/db/rssd && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" -p "page%" -p "surveilr_report%" && rm -rf resource-surveillance.sqlite.db && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && rm -rf models.db`);
+        await exec(`cd src/content/db/rssd && surveilr admin merge -p "activity%" -p "message%" -p "communication%" -p "contact%" -p "channel%" -p "reaction%" -p "attachment%" -p "page%" -p "surveilr_report%" && rm -rf resource-surveillance.sqlite.db && mv resource-surveillance-aggregated.sqlite.db resource-surveillance.sqlite.db && sqlite3 resource-surveillance.sqlite.db "PRAGMA journal_mode=delete;" && rm -rf models.db`);
         console.log(`Merge command executed successfully`);
 
     } catch (error) {

@@ -485,7 +485,9 @@ async function main(): Promise<void> {
         ]);
         insertRecords("person", personData, ["person_id", "party_id", "person_type_id", "person_first_name", "person_last_name", "gender_id", "sex_id"]);
         insertRecords("contact_electronic", contactElectronics, ["contact_electronic_id", "contact_type_id", "party_id", "electronics_details"]);
-        insertRecords("organization_role", organizationRoleData, ["organization_role_id", "person_id", "organization_id", "organization_role_type_id"]);
+        if (syncUsersOnly === "false") {
+            insertRecords("organization_role", organizationRoleData, ["organization_role_id", "person_id", "organization_id", "organization_role_type_id"]);
+        }
     } catch (error) {
         console.error("Unexpected error in main execution:", error);
     } finally {
