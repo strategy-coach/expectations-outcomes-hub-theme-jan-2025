@@ -80,6 +80,8 @@ jobs:
           PUBLIC_CONTENT_GITHUB_REPO: ${{ vars.PUBLIC_CONTENT_GITHUB_REPO }}
           PUBLIC_CONTENT_GITHUB_OWNER: ${{ vars.PUBLIC_CONTENT_GITHUB_OWNER }}
           EMBED_SECRET: ${{ secrets.EMBED_SECRET }}
+          ENABLE_DIAGRAM_RENDERING : ${{ vars.ENABLE_DIAGRAM_RENDERING }}
+          
         run: |
           bash -x support/ci-cd.sh      
 
