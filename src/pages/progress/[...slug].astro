@@ -21,6 +21,11 @@ const { enablePageHistory } = themeConfig || {};
 const files = import.meta.glob("/src/content/progress/**/*.{md,mdx}", {
   eager: true,
 });
+const rawFiles = import.meta.glob("/src/content/progress/**/*.{md,mdx}", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
 const dirName = "progress";
 
 const menuTree = buildMenuTree(files, "progress",contentCollectionSort,"asc");
@@ -37,19 +42,11 @@ if (!entry) {
 
 
 // After getting the entry:
-const { id } = entry; // id will be something like "section/page-name"
-const filePath = path.resolve(`./src/content/progress/${id}.md`);
-// Check if .mdx exists instead
-let fullFilePath = filePath;
-try {
-  await fs.access(filePath.replace(/\.md$/, ".mdx"));
-  fullFilePath = filePath.replace(/\.md$/, ".mdx");
-} catch {
-  // Stick with .md
-}
-
+const { id } = entry; 
 const { Content } = await render(entry);
-const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
+const rawMarkdownContent = rawFiles[`/src/content/progress/${id}`] || 
+                           rawFiles[`/src/content/progress/${id}.md`] || 
+                           rawFiles[`/src/content/progress/${id}.mdx`] || "";
 const pageUrl=Astro.url.href;
 
 ---

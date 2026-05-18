@@ -102,6 +102,18 @@ const documentation = defineCollection({
     enableEditButton: z.boolean().optional().default(false),
   }),
 });
+
+const reports = defineCollection({
+  loader: glob({
+    base: "./src/content/reports",
+    pattern: "**/*.{md,mdx}",
+  }),
+  schema: z.object({
+    title: z.string().optional(),
+    draft: z.boolean().optional(),
+    enableEditButton: z.boolean().optional().default(false),
+  }),
+});
 const envData = import.meta.env;
 
 const githubToken = String(envData.PUBLIC_GITHUB_TOKEN || "");
@@ -133,4 +145,5 @@ export const collections = {
   progress,
   discussions,
   documentation,
+  reports,
 };

@@ -12,6 +12,7 @@ import path from "path";
 const { contentCollectionSort } = themeConfig || {}; 
 
 const files = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true });
+const rawFiles = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true, query: '?raw', import: 'default' });
 const dirName = "documentation";
 
 // Filter out draft files
@@ -32,21 +33,11 @@ if (!entry) {
 }
 
 // After getting the entry:
-const { id } = entry; // id will be something like "section/page-name"
-const filePath = path.resolve(`./src/content/documentation/${id}.md`);
-console.log(filePath,"filePath");
-// Check if .mdx exists instead
-let fullFilePath = filePath;
-try {
-  await fs.access(filePath.replace(/\.md$/, ".mdx"));
-  fullFilePath = filePath.replace(/\.md$/, ".mdx");
-} catch {
-  // Stick with .md
-}
-
+const { id } = entry; 
 const { Content } = await render(entry);
-const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
-
+const rawMarkdownContent = rawFiles[`/src/content/documentation/${id}`] || 
+                           rawFiles[`/src/content/documentation/${id}.md`] || 
+                           rawFiles[`/src/content/documentation/${id}.mdx`] || "";
 ---
 
 <Layout title={entry.data.title} enableEditButton={entry.data.enableEditButton} rawMarkdownContent={rawMarkdownContent}>

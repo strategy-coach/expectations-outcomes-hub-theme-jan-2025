@@ -11,6 +11,7 @@ import fs from "fs/promises";
 const { contentCollectionSort } = themeConfig || {}; 
 
 const files = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true });
+const rawFiles = import.meta.glob('/src/content/documentation/**/*.{md,mdx}', { eager: true, query: '?raw', import: 'default' });
 const dirName = "documentation";
 
 // Filter out draft files
@@ -21,10 +22,8 @@ const publishedFiles = Object.fromEntries(
 // Build the menu tree with only published files
 const menuTree = buildMenuTree(publishedFiles, dirName, contentCollectionSort, "asc");
 // Read raw markdown content
-const rawMarkdownContent = await fs.readFile(
-  "src/content/documentation/theme-documentation/documentation.md",
-  "utf-8"
-);
+const rawMarkdownContent = rawFiles["/src/content/documentation/theme-documentation/documentation.md"] || 
+                           rawFiles["/src/content/documentation/theme-documentation/documentation.mdx"] || "";
 ---
 <Layout title='Documentation' enableEditButton={true} rawMarkdownContent={rawMarkdownContent}>	
 	<main class="max-w-full mx-auto min-h-[70vh] grid grid-cols-12 gap-6 flex">

@@ -32,6 +32,12 @@ const { enablePageHistory } = themeConfig || {};
 const files = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
   eager: true,
 });
+const rawFiles = import.meta.glob("/src/content/expectations/**/*.{md,mdx,json}", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+
 const dirName = "expectations";
 
 // Build the menu tree
@@ -66,7 +72,7 @@ let checkPageHistory;
 
 const slugval = "/expectations/" + pageSlug;
 let folderPath = slugval.replace(/\/[^/]+$/, "").replace(/^\/+/, "");
-let fullFilePath = "";
+let rawMarkdownContent = "";
 
 const acronyms = ["SOC2", "CMMC", "HIPAA", "GDPR", "ISO"];
 const mixedCaseAcronyms = ["CaaS", "IaaS", "PaaS", "SaaS"];
@@ -95,7 +101,7 @@ if (isLform) {
   })
   .join(" ");
 
-  fullFilePath = path.resolve(`./src/content/expectations/${pageSlug}`);
+  rawMarkdownContent = rawFiles[`/src/content/expectations/${pageSlug}`] || "";
 } else {
   entry = await getEntry("expectations", pageSlug);
   entryid = entry?.id;
@@ -104,21 +110,14 @@ if (isLform) {
   }
 
   const { id } = entry;
-  const filePath = path.resolve(`./src/content/expectations/${id}.md`);
-  fullFilePath = filePath;   
-  try {
-    await fs.access(filePath.replace(/\.md$/, ".mdx"));
-    fullFilePath = filePath.replace(/\.md$/, ".mdx");
-  } catch {
-    // keep .md
-  }
-
   ({ Content, headings, remarkPluginFrontmatter } = await render(entry));
+  rawMarkdownContent = rawFiles[`/src/content/expectations/${id}`] || 
+                       rawFiles[`/src/content/expectations/${id}.md`] || 
+                       rawFiles[`/src/content/expectations/${id}.mdx`] || "";
 }
 checkPageHistory = entry?.data.enablePageHistory;
 
 const isSurveilr = pageSlug === "compliance-readiness/evidence-workflow";
-const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
 const pageUrl = Astro.url.href;
 ---
 
@@ -208,6 +207,7 @@ const pageUrl = Astro.url.href;
               fileName={fileName}
               folderPath={folderPath}
               pageSlug={slugify(pageSlug)}
+              content={rawMarkdownContent}
             />
           </div>
         ) : (

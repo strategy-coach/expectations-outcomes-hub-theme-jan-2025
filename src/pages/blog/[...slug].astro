@@ -6,6 +6,8 @@ import "astro-breadcrumbs/breadcrumbs.css";
 import fs from "fs/promises";
 import path from "path";
 
+const rawFiles = import.meta.glob('/src/content/blog/**/*.{md,mdx}', { eager: true, query: '?raw', import: 'default' });
+
 const slug = Astro.params.slug;
 const entry = await getEntry("blog", slug);
 if (!entry) {
@@ -15,18 +17,8 @@ if (!entry) {
 
 // After getting the entry:
 const { id } = entry; // id will be something like "section/page-name"
-const filePath = path.resolve(`./src/content/blog/${id}.md`);
-// Check if .mdx exists instead
-let fullFilePath = filePath;
-try {
-  await fs.access(filePath.replace(/\.md$/, ".mdx"));
-  fullFilePath = filePath.replace(/\.md$/, ".mdx");
-} catch {
-  // Stick with .md
-}
-
 const { Content } = await render(entry);
-const rawMarkdownContent = await fs.readFile(fullFilePath, "utf-8");
+const rawMarkdownContent = rawFiles[`/src/content/blog/${id}.md`] || rawFiles[`/src/content/blog/${id}.mdx`] || "";
 // const pageUrl=Astro.url.href;
 
 
