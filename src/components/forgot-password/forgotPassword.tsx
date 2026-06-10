@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getUserId } from "../../services/zitadel.services.ts";
 import axios from "axios";
 import React from "react";
 import Cookies from "js-cookie";
@@ -167,10 +166,15 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) 
             throw new Error("Invalid email address");
         }
 
-        const response = (await getUserId(
-            credentials.email,
+        const userResponse = await axios.post<{
+            status: number;
+            userId?: string;
+            message: string;
+        }>("/api/zitadel?action=user-id", {
+            email: credentials.email,
             organizationId,
-        )) as unknown as { status: number; userId?: string; message: string };
+        });
+        const response = userResponse.data;
 
         if (response.status === 200) {
             const sendCodeResponse = await axios.post<CodeResetResponse>(

@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { z } from "zod";
 import axios from "axios";
-import { resetPassword, getOrganizationRoles } from "../../services/zitadel.services.ts";
 import themeConfig from "../../../theme.config.ts";
 import novuApiCall from "../../services/novu.service.ts";
 
@@ -15,6 +14,7 @@ const genderOptions = [
 
 interface SignUpResponse {
     userId: string;
+    verificationCode?: string;
     error?: string;
 }
 
@@ -80,8 +80,14 @@ const UserSignUp: React.FC = () => {
         const controller = new AbortController();
         const fetchRoles = async (): Promise<void> => {
             try {
-                const roles = await getOrganizationRoles();
-                setUserRoles(roles?.result)
+                const response = await fetch("/api/zitadel?action=roles", {
+                    signal: controller.signal,
+                });
+                if (!response.ok) throw new Error("Failed to fetch roles");
+                const roles = await response.json() as {
+                    result?: typeof userRoles;
+                };
+                setUserRoles(roles.result)
             } catch (error) {
                 if (error instanceof Error && error.name !== "AbortError") {
                     console.error("Error fetching roles:", error);
@@ -129,14 +135,7 @@ const UserSignUp: React.FC = () => {
             if (response.data.userId === undefined) {
                 setError(response.data?.error ?? "An error occurred during sign-up.");
             } else {
-                const codeResponse = (await resetPassword(
-                    response.data.userId,
-                )) as unknown as {
-                    status: number;
-                    message: string;
-                    verificationCode?: string;
-                };
-                const params = `code=${codeResponse.verificationCode}&userId=${response.data.userId}`;
+                const params = `code=${response.data.verificationCode}&userId=${response.data.userId}`;
                 const encodedParams = encodeURIComponent(params);
                 const payload = {
                     firstName: formData.givenName,

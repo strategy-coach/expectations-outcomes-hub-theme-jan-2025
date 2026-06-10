@@ -2,18 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import Cookie from "js-cookie";
 import type { LogType } from "./commentService.ts";
 import MessageReaction from "./message-reaction/messageReaction.tsx";
-import axios from "axios"
 import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
-import { zitadelConfig } from "../../utils/env.ts"
 import novuApiCall from "./novu-mail-api/index.tsx";
 import themeConfig from "../../../theme.config";
 
 const { organization } = themeConfig || {};
 
-const projectId = zitadelConfig.projectId;
-const token = zitadelConfig.zitalAPIToken;
-const organizationId = zitadelConfig.organizationId;
-const authority = zitadelConfig.authority;
 const productionUrl = import.meta.env.PUBLIC_PRODUCTION_URL
 const adminEmail = import.meta.env.PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL
 const commentNotificationTemplate = import.meta.env.PUBLIC_NOVU_COMMENT_NOTIFICATION_TEMPLATE
@@ -177,26 +171,10 @@ const Comment: React.FC<
         useEffect(() => {
             const fetchTeam = async () => {
                 try {
-                    let data = JSON.stringify({
-                        "queries": [
-                            {
-                                "projectIdQuery": {
-                                    "projectId": projectId
-                                }
-                            }
-                        ]
-                    });
-                    const response = await axios.post(
-                        `${authority}/management/v1/users/grants/_search`,
-                        data,
-                        {
-                            headers: {
-                                "x-zitadel-orgid": organizationId,
-                                Authorization: `Bearer ${token}`,
-                            },
-                        }
-                    );
-                    setMembers(response.data.result);
+                    const response = await fetch("/api/zitadel?action=team");
+                    if (!response.ok) throw new Error("Failed to fetch team members");
+                    const data = await response.json() as { result?: MemberType[] };
+                    setMembers(data.result ?? []);
                 } catch (err) {
                     console.log(err)
                 }

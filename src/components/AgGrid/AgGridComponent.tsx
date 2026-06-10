@@ -3,7 +3,6 @@ import { AgGridReact } from "ag-grid-react";
 import type { SortDirection } from "ag-grid-community";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import { DeleteUser } from "../../services/zitadel.services.ts";
 
 
 type DataItem = Record<string, string | null | undefined>;
@@ -94,7 +93,11 @@ const AgGridComponent: React.FC<Props> = ({
     );
 
     if (isConfirmed) {
-      await DeleteUser(id);
+      const response = await fetch(
+        `/api/zitadel?action=user&userId=${encodeURIComponent(id)}`,
+        { method: "DELETE" },
+      );
+      if (!response.ok) throw new Error("Failed to delete user");
       const attributes = globalThis.setAttributes("Delete User", {
         user: name
       });

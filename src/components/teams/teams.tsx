@@ -1,12 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Gravatar } from "../profile/gravatar/Gravatar.tsx";
-import { zitadelConfig } from "../../utils/env.ts"
-
-const projectId = zitadelConfig.projectId;
-const token = zitadelConfig.zitalAPIToken;
-const organizationId = zitadelConfig.organizationId;
-const authority = zitadelConfig.authority;
 
 interface TeamDetailsProps {
   userType?: string;
@@ -29,26 +22,10 @@ const Teams: React.FC<TeamDetailsProps> = ({ userType }) => {
     useEffect(() => {
         const fetchTeam = async () => {
             try {
-                let data = JSON.stringify({
-                    "queries": [
-                        {
-                            "projectIdQuery": {
-                                "projectId": projectId
-                            }
-                        }
-                    ]
-                });
-                const response = await axios.post(
-                    `${authority}/management/v1/users/grants/_search`,
-                    data,
-                    {
-                        headers: {
-                            "x-zitadel-orgid": organizationId,
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                setTeam(response.data.result);
+                const response = await fetch("/api/zitadel?action=team");
+                if (!response.ok) throw new Error("Failed to fetch team members");
+                const data = await response.json() as { result?: TeamMember[] };
+                setTeam(data.result ?? []);
             } catch (err) {
                 setError("Failed to fetch team members.");
             } finally {

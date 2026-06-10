@@ -110,35 +110,21 @@ const ActivityLog: React.FC<ActivityLogProps> = ({
     const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID;
     const OPENOBSERVE_API_URL = import.meta.env.PUBLIC_OPENOBSERVE_URL;
     const OPENOBSERVE_API_TOKEN = import.meta.env.PUBLIC_OPENOBSERVE_TOKEN;
-    const ZITADEL_AUTHORITY = import.meta.env.PUBLIC_ZITADEL_AUTHORITY;
-    const PROJECT_ID = import.meta.env.PUBLIC_ZITADEL_PROJECT_ID;
-    const ZITADEL_API_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN;
 
     const offset = useMemo(() => (page - 1) * recordPerPage, [page, recordPerPage]);
 
     const fetchRole = useCallback(
         async () => {
             try {
-                const response = await axios.post(
-                    `${ZITADEL_AUTHORITY}/management/v1/projects/${PROJECT_ID}/roles/_search`,
-                    {},
-                    {
-                        headers: {
-                            'x-zitadel-orgid': `${ORGANIZATION_ID}`,
-                            Authorization: `Bearer ${ZITADEL_API_TOKEN}`,
-                            "Content-Type": "application/json",
-                        },
-                    }
-                );
-                const result = response.data.result.map((role: any) => role.key);
-                console.log('entry here-----------------------')
+                const response = await axios.get("/api/zitadel?action=roles");
+                const result = response.data.result.map((role: { key: string }) => role.key);
                 setRoles(result);
             } catch (error) {
                 console.error("Error fetching activity log:", error);
                 return null;
             }
         },
-        [ZITADEL_AUTHORITY, ZITADEL_API_TOKEN, PROJECT_ID]
+        []
     );
 
     useEffect(() => {

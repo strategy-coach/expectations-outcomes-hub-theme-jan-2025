@@ -2,7 +2,6 @@
 
 import { z } from "zod";
 
-const organizationId = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID
 const UserInfoSchema = z.object({
     id: z.string(),
     details: z.object({
@@ -78,26 +77,13 @@ interface ProfileFormData {
 
 
 
-const authority = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
-const apiKey = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
-
-
-
 export async function getUserInfo(
     userId: string,
 ): Promise<ProfileInformation | undefined> {
-    const url = `${authority}/management/v1/users/${userId}`;
-    const headers = new Headers({
-        'x-zitadel-orgid': organizationId,
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-    });
-    const options = {
-        method: "GET",
-        headers,
-    };
     try {
-        const response = await fetch(url, options);
+        const response = await fetch(
+            `/api/zitadel?action=profile&userId=${encodeURIComponent(userId)}`,
+        );
         if (response.ok) {
             const data = (await response.json()) as ProfileInformation;
             return data;
@@ -114,18 +100,10 @@ export async function getUserInfo(
 export async function getUserMetaData(
     userId: string,
 ): Promise<UserMeta | undefined> {
-    const url = `${authority}/management/v1/users/${userId}/metadata/_search`;
-    const headers = new Headers({
-        'x-zitadel-orgid': organizationId,
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-    });
-    const options = {
-        method: "POST",
-        headers,
-    };
     try {
-        const response = await fetch(url, options);
+        const response = await fetch(
+            `/api/zitadel?action=metadata&userId=${encodeURIComponent(userId)}`,
+        );
         if (response.ok) {
             const data = (await response.json()) as UserMeta;
             return data;
@@ -139,23 +117,11 @@ export async function getUserMetaData(
     }
 }
 
-export async function deleteUserMeta(type: string, userId): Promise<void> {
-    const url = `${authority}/management/v1/users/${userId}/metadata/${type}`;
-    const apiKey = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
-    const headers = new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        "x-zitadel-orgid":
-            organizationId == undefined ? "" : organizationId.toString(),
-    });
-
-    const options = {
-        method: "DELETE",
-        headers,
-        body: JSON.stringify({}),
-    };
-
-    await fetch(url, options);
+export async function deleteUserMeta(type: string, userId: string): Promise<void> {
+    await fetch(
+        `/api/zitadel?action=metadata&userId=${encodeURIComponent(userId)}&key=${encodeURIComponent(type)}`,
+        { method: "DELETE" },
+    );
 }
 
 export async function UpdateUserMetaData(
@@ -163,26 +129,18 @@ export async function UpdateUserMetaData(
     metaKey: string,
     userId: string,
 ): Promise<void> {
-    const url = `${authority}/management/v1/users/${userId}/metadata/${metaKey}`;
-    const body = {
-        value: btoa(status),
-    };
-
-    const headers = new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        "x-zitadel-orgid":
-            organizationId
-    });
-
-    const options = {
+    const options: RequestInit = {
         method: "POST",
-        headers,
-        body: JSON.stringify(body),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            userId,
+            key: metaKey,
+            value: btoa(status),
+        }),
     };
 
     try {
-        const response = await fetch(url, options);
+        const response = await fetch("/api/zitadel?action=metadata", options);
         if (response.ok) {
             //return response.status;
         } else {
@@ -198,8 +156,6 @@ export async function UpdateUserProfile(
     formData: ProfileFormData,
     userId: string
 ): Promise<void> {
-    const apiKey = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
-    const url = `${authority}/v2/users/human/${userId}`;
     const { firstName, lastName, nickName, userDisplayName, userPhone } =
         formData;
 
@@ -216,22 +172,14 @@ export async function UpdateUserProfile(
         },
     };
 
-    const headers = new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        Accept: "application/json",
-        "x-zitadel-orgid":
-            organizationId == undefined ? "" : organizationId.toString(),
-    });
-
-    const options = {
-        method: "PUT",
-        headers,
-        body: JSON.stringify(body),
+    const options: RequestInit = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, profile: body }),
     };
 
     try {
-        const response = await fetch(url, options);
+        const response = await fetch("/api/zitadel?action=profile", options);
         if (response.ok) {
             return;
         } else {
@@ -245,22 +193,5 @@ export async function UpdateUserProfile(
 
 
 export async function DeleteUserBio(userId: string): Promise<void> {
-    const url = `${authority}/management/v1/users/${userId}/metadata/bio`;
-    const apiKey = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
-    const headers = new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
-        "x-zitadel-orgid":
-            organizationId == undefined ? "" : organizationId.toString(),
-    });
-
-    const options = {
-        method: "DELETE",
-        headers,
-        body: JSON.stringify({}),
-    };
-
-    await fetch(url, options);
+    await deleteUserMeta("bio", userId);
 }
-
-

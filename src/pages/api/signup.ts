@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 import type { AxiosResponse } from "axios";
 import axios from "axios";
 import { z } from "zod";
-import { getOrganizationUsers } from "../../services/zitadel.services.ts";
+import { getOrganizationUsers, resetPassword } from "../../services/zitadel.services.ts";
 import type { SignUpFormData } from "../../components/signup/signup.tsx";
 
 const UserGrantSchema = z.object({
@@ -160,9 +160,13 @@ export const POST: APIRoute = async ({ request }) => {
                     grant: role
                 });
                 if (roleResponse.userGrantId) {
+                    const codeResponse = await resetPassword(response.data.userId);
                     return new Response(
                         JSON.stringify({
                             userId: response.data.userId,
+                            verificationCode: codeResponse && "verificationCode" in codeResponse
+                                ? codeResponse.verificationCode
+                                : undefined,
                         }),
                         { status: 200 },
                     );
