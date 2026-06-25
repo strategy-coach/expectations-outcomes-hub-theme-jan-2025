@@ -17,7 +17,7 @@ import Trackers from "../components/home/Trackers.astro";
 
 
 
-const { title, description, activeProject } = themeConfig || {};
+const { title, description, activeProject, isHomePagePublic } = themeConfig || {};
 ---
 
 <Layout title="Expectations and Outcomes Hub Theme">
@@ -120,30 +120,29 @@ const { title, description, activeProject } = themeConfig || {};
           </div>
         </aside>
 
-        <aside
-          class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
-        >
-          <div class="col-span-12 md:col-span-4">
-            <a href="/team?userType=netspective">
-              <div class="flex gap-2.5 items-center text-sm">
-                <span
-                  ><img
-                    src="/assets/images/fi-rr-rec.svg"
-                    class="w-4 h-4"
-                    alt=""
-                  /></span
-                >
-                <span>Netspective Teams</span>
-              </div>
-            </a>
-          </div>
-          <div class="col-span-12 md:col-span-8">
-            <div class="flex gap-3 font-semibold flex-wrap">
-              <Teams client:only="react" userType="netspective" />
+        {!isHomePagePublic && (
+          <aside class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300">
+            <div class="col-span-12 md:col-span-4">
+              <a href="/team?userType=netspective">
+                <div class="flex gap-2.5 items-center text-sm">
+                  <span>
+                    <img
+                      src="/assets/images/fi-rr-rec.svg"
+                      class="w-4 h-4"
+                      alt=""
+                    />
+                  </span>
+                  <span>Netspective Teams</span>
+                </div>
+              </a>
             </div>
-          </div>
-        </aside>
-
+            <div class="col-span-12 md:col-span-8">
+              <div class="flex gap-3 font-semibold flex-wrap">
+                <Teams client:only="react" userType="netspective" />
+              </div>
+            </div>
+          </aside>
+        )}
         <aside
           class="grid grid-cols-12 gap-4 flex items-center mb-3 dark:text-gray-300"
         >
