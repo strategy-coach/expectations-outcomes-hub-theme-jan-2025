@@ -104,16 +104,11 @@ const runQuery = (
 let writeQueue: Promise<any> = Promise.resolve();
 
 function resolveWriteQueue<T>(fn: () => T): Promise<T> {
-    writeQueue = writeQueue.then(() =>
-        Promise.resolve()
-            .then(fn)
-            .catch((error) => {
-                console.error(error);
-                // throw error if you want the caller to handle it
-                throw error;
-            })
-    );
-    return writeQueue as Promise<T>;
+    const result = writeQueue.then(() => fn());
+    // Keep the queue alive regardless of outcome so one failure doesn't
+    // permanently reject every subsequent call chained onto it.
+    writeQueue = result.catch(() => undefined);
+    return result;
 }
 
 const getFirstRow = <T = Record<string, unknown>>(
