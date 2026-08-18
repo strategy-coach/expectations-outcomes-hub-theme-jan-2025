@@ -194,7 +194,7 @@ const Comment: React.FC<
                 "g"
             );
 
-            return text.replace(regex, (match) => `<strong>${match}</strong>`);
+            return text.replace(regex, (match) => `<strong class="text-blue-600 font-semibold" style="color: #2563eb;">${match}</strong>`);
         };
 
 
@@ -344,7 +344,7 @@ const Comment: React.FC<
 
                         if (recipients && recipients?.length > 0) {
                             const payload = {
-                                commentContent: comment,
+                                commentContent: highlightUsersInComment(comment),
                                 commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Comment </a>`,
                                 commenterName: userName,
                                 date: new Date().toString(),
@@ -400,7 +400,7 @@ const Comment: React.FC<
 
                         if (recipients && recipients?.length > 0) {
                             const payload = {
-                                commentContent: comment,
+                                commentContent: highlightUsersInComment(comment),
                                 commentUrl: `<a href="${productionUrl}${url}" target="_blank">View Edited Comment</a>`,
                                 commenterName: userName,
                                 date: new Date().toString(),
