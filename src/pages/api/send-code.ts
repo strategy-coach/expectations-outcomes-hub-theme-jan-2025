@@ -1,22 +1,37 @@
 /* eslint-disable unicorn/no-null */
 import type { APIRoute } from "astro";
-import { resetPassword } from "../../services/zitadel.services.ts";
+import { resetPassword, getUserId } from "../../services/zitadel.services.ts";
 import novuApiCall from "../../services/novu.service.ts";
 import themeConfig from "../../../theme.config.ts";
 
 const { title } = themeConfig;
 
 const SITE_URL = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI as string;
+const defaultOrganizationId = import.meta.env.PUBLIC_ZITADEL_DEFAULT_LOGIN_ORGANIZATION as string;
 
 interface CodeRequest {
     email: string;
-    userId: string;
 }
 
 export const POST: APIRoute = async ({ request }) => {
     try {
-        const { userId, email } = (await request.json()) as CodeRequest;
-        const codeResponse = (await resetPassword(userId)) as unknown as {
+        const { email } = (await request.json()) as CodeRequest;
+        const response = (await getUserId(
+            email,
+            defaultOrganizationId,
+        )) as unknown as { status: number; userId?: string; message: string };
+
+        if (response.message == "User not found") {
+            return new Response(
+                JSON.stringify({
+                    message:
+                        "If an account is associated with this email address, you'll receive an email shortly",
+                }),
+                { status: 200 },
+            );
+        }
+
+        const codeResponse = (await resetPassword(response.userId)) as unknown as {
             status: number;
             message: string;
             verificationCode?: string;
@@ -34,7 +49,7 @@ export const POST: APIRoute = async ({ request }) => {
 
         const params = new URLSearchParams({
             code: codeResponse.verificationCode ?? "",
-            userId,
+            userId: response.userId ?? "",
             email
         }).toString();
 
