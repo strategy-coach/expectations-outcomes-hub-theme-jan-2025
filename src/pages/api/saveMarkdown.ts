@@ -3,8 +3,8 @@ import fs from "fs/promises";
 import path from "path";
 import { exec } from "child_process";
 import util from "util";
-import * as cookie from "cookie";
 import { getUserMetaData } from "../../components/profile/userService";
+import { sessionUserIdFrom, unauthorizedResponse } from "../../services/serverAuth.ts";
 
 const execAsync = util.promisify(exec);
 
@@ -78,14 +78,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Parse cookies to get userId
-    const cookies = cookie.parse(request.headers.get("cookie") || "");
-    const userId = cookies["uid"];
-    if (!userId) {
-      return new Response(JSON.stringify({ error: "User ID missing" }), {
-        status: 401,
-      });
-    }
+    const userId = await sessionUserIdFrom(request);
+    if (!userId) return unauthorizedResponse();
 
     // Get token from metadata
     const userMetaData = await getUserMetaData(userId);

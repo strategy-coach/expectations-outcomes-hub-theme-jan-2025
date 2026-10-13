@@ -58,6 +58,17 @@ export async function isAdminUser(userId: string): Promise<boolean> {
     }
 }
 
+export async function sessionUserIdFrom(request: Request): Promise<string | null> {
+    return getSessionUserId(sessionIdFromCookieHeader(request.headers.get("cookie") ?? ""));
+}
+
+export function unauthorizedResponse(): Response {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+    });
+}
+
 export async function resolveCaller(
     cookieHeader: string,
 ): Promise<{ userId: string | null; isAdmin: boolean }> {

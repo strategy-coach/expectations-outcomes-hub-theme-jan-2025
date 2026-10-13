@@ -1,6 +1,7 @@
 
 import sqlite3 from "sqlite3";
 import type { APIContext } from 'astro';
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 
 const dbPath = import.meta.env.PUBLIC_RSSD_DB
 
@@ -77,9 +78,11 @@ const addPageReaction = async (
 
 
 export async function POST({ request }: APIContext) {
-    const { url, userId, reactionTypeId } = await request.json();
+    const sessionUserId = await sessionUserIdFrom(request);
+    if (!sessionUserId) return unauthorizedResponse();
+    const { url, reactionTypeId } = await request.json();
     try {
-        await addPageReaction(userId, url, reactionTypeId);
+        await addPageReaction(sessionUserId, url, reactionTypeId);
         return new Response(JSON.stringify({ message: "Page reaction added successfully!" }), {
             status: 200,
             headers: { "Content-Type": "application/json" },

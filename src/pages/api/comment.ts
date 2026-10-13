@@ -1,11 +1,13 @@
 import type { APIContext } from 'astro';
 import CommentService from "../../components/comment/commentService";
+import { sessionUserIdFrom, unauthorizedResponse } from "../../services/serverAuth.ts";
 
 export async function POST({ request }: APIContext) {
-
+    const sessionUserId = await sessionUserIdFrom(request);
+    if (!sessionUserId) return unauthorizedResponse();
 
     try {
-        const data = await request.json();
+        const data = { ...(await request.json()), userId: sessionUserId };
         const { userId, type, tenantId, activityType, description, url, messageId, parentId, parentMessageId, updatedBy, timeStamp, reactionTypeId, logId, platform, source } = data;
         switch (type) {
             case "addComment":

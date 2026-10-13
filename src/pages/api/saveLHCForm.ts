@@ -5,6 +5,7 @@ import type { APIContext } from 'astro';
 import { Buffer } from 'node:buffer';
 import axios from 'axios';
 import type { AxiosError } from 'axios';
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 
 const exec = promisify(execCb);
 
@@ -15,8 +16,10 @@ const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO
 const GITHUB_BRANCH = 'main';
 
 export async function POST({ request }: APIContext) {
+    const userId = await sessionUserIdFrom(request);
+    if (!userId) return unauthorizedResponse();
     try {
-        const { formData, fileName, userId } = await request.json();
+        const { formData, fileName } = await request.json();
 
         const sanitizedFileName = fileName
             .replace(new RegExp(`^${userId}\\.?`), '') // Remove leading userId if exists
