@@ -1,14 +1,16 @@
 import type { APIContext } from "astro";
 import { exec } from "node:child_process";
 import { promisify } from "node:util";
+import { resolveCaller } from "../../services/serverAuth.ts";
 
 const execAsync = promisify(exec);
 
 export async function POST({ request }: APIContext) {
     try {
-        const { role, userId, type } = await request.json();
+        const { type } = await request.json();
+        const caller = await resolveCaller(request.headers.get("cookie") ?? "");
 
-        if (role !== "admin" || userId === undefined) {
+        if (!caller.isAdmin) {
             return new Response(JSON.stringify({ error: "You have no permission to sync the profile" }), {
                 status: 403,
                 headers: { "Content-Type": "application/json" },

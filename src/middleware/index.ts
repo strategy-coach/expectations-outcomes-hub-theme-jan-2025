@@ -8,6 +8,7 @@ import themeConfig from "../../theme.config.ts";
 // import { fleetfolioReverseProxyMiddleware } from "./fleetfolio-reverse-proxy.ts";
 // import { qualityfolioReverseProxyMiddleware } from "./qualityfolio-reverse-proxy.ts";
 import { getUserRole } from "../../src/services/zitadel.services.ts";
+import { resolveCaller } from "../services/serverAuth.ts";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Config                                   */
@@ -75,7 +76,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(
     const { pathname } = context.url;
 
     let userId = context.cookies.get("uid")?.value;
-    let userRole = context.cookies.get("auth_rl")?.value;
+    let embedAdmin = false;
 
     const embedToken = context.url.searchParams.get("embedToken");
 
@@ -96,7 +97,9 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(
           return context.redirect("/login");
         }
 
-        userRole = roleResponse.result[0].roleKeys?.[0];
+        embedAdmin = (roleResponse.result[0].roleKeys ?? []).some((key) =>
+          key.toLowerCase().includes("admin"),
+        );
       } catch (error) {
         return new Response("Invalid or expired embed token", {
           status: 401,
@@ -125,8 +128,9 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(
       return context.redirect("/login");
     }
 
-    if (userId && pathname.includes("/admin")) {
-      if (!userRole?.includes("admin")) {
+    if (pathname.includes("/admin") && !embedAdmin) {
+      const caller = await resolveCaller(context.request.headers.get("cookie") ?? "");
+      if (!caller.isAdmin) {
         return context.redirect("/");
       }
     }

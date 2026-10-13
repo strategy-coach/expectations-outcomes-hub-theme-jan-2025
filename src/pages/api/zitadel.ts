@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { resolveCaller } from "../../services/serverAuth.ts";
 
 const ZITADEL_AUTHORITY = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
 const ZITADEL_API_TOKEN = (import.meta.env.ZITADEL_API_TOKEN ??
@@ -51,15 +52,8 @@ async function forward(response: Response): Promise<Response> {
     });
 }
 
-function isAdmin(request: Request): boolean {
-    const cookies = request.headers.get("cookie") ?? "";
-    return /(?:^|;\s*)auth_rl=[^;]*admin/i.test(cookies);
-}
-
-function isCurrentUser(request: Request, userId: string): boolean {
-    const cookies = request.headers.get("cookie") ?? "";
-    const match = cookies.match(/(?:^|;\s*)uid=([^;]+)/);
-    return match ? decodeURIComponent(match[1]) === userId : false;
+function callerFrom(request: Request): ReturnType<typeof resolveCaller> {
+    return resolveCaller(request.headers.get("cookie") ?? "");
 }
 
 export const GET: APIRoute = async ({ request, url }) => {
@@ -86,7 +80,7 @@ export const GET: APIRoute = async ({ request, url }) => {
     }
 
     if (action === "users") {
-        if (!isAdmin(request)) return json({ error: "Forbidden" }, 403);
+        if (!(await callerFrom(request)).isAdmin) return json({ error: "Forbidden" }, 403);
 
         const [grantsResponse, usersResponse] = await Promise.all([
             zitadelRequest("/management/v1/users/grants/_search", {
@@ -132,7 +126,8 @@ export const GET: APIRoute = async ({ request, url }) => {
     }
 
     if ((action === "profile" || action === "metadata") && userId) {
-        if (!isAdmin(request) && !isCurrentUser(request, userId)) {
+        const caller = await callerFrom(request);
+        if (!caller.isAdmin && caller.userId !== userId) {
             return json({ error: "Forbidden" }, 403);
         }
         const suffix = action === "metadata" ? "/metadata/_search" : "";
@@ -175,7 +170,8 @@ export const POST: APIRoute = async ({ request, url }) => {
     }
 
     const userId = String(body.userId ?? "");
-    if (!userId || (!isAdmin(request) && !isCurrentUser(request, userId))) {
+    const caller = await callerFrom(request);
+    if (!userId || (!caller.isAdmin && caller.userId !== userId)) {
         return json({ error: "Forbidden" }, 403);
     }
 
@@ -206,13 +202,14 @@ export const POST: APIRoute = async ({ request, url }) => {
 export const DELETE: APIRoute = async ({ request, url }) => {
     const action = url.searchParams.get("action");
     const userId = url.searchParams.get("userId") ?? "";
+    const caller = await callerFrom(request);
 
-    if (!userId || (!isAdmin(request) && !isCurrentUser(request, userId))) {
+    if (!userId || (!caller.isAdmin && caller.userId !== userId)) {
         return json({ error: "Forbidden" }, 403);
     }
 
     if (action === "user") {
-        if (!isAdmin(request)) return json({ error: "Forbidden" }, 403);
+        if (!caller.isAdmin) return json({ error: "Forbidden" }, 403);
         return forward(await zitadelRequest(
             `/v2/users/${encodeURIComponent(userId)}`,
             { method: "DELETE", body: "{}" },
