@@ -7,7 +7,7 @@ import themeConfig from "../../../theme.config.ts";
 const { title } = themeConfig;
 
 const SITE_URL = import.meta.env.PUBLIC_ZITADEL_LOGOUT_REDIRECT_URI as string;
-const defaultOrganizationId = import.meta.env.PUBLIC_ZITADEL_DEFAULT_LOGIN_ORGANIZATION as string;
+const ORGANIZATION_ID = import.meta.env.PUBLIC_ZITADEL_ORGANIZATION_ID as string;
 
 interface CodeRequest {
     email: string;
@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request }) => {
         const { email } = (await request.json()) as CodeRequest;
         const response = (await getUserId(
             email,
-            defaultOrganizationId,
+            ORGANIZATION_ID,
         )) as unknown as { status: number; userId?: string; message: string };
 
         if (response.message == "User not found") {
