@@ -11,9 +11,15 @@ import {
 interface ResetPasswordRequest {
     userId: string;
     email: string;
-    password?: string;
-    verificationCode?: string;
+    password: string;
+    verificationCode: string;
 }
+
+const invalidRequest = () =>
+    new Response(JSON.stringify({ error: "Invalid password reset request." }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+    });
 
 const verificationCodeSchema = z.object({
     details: z.object({
@@ -39,7 +45,18 @@ export const POST: APIRoute = async ({ request }) => {
         const { userId, password, verificationCode, email } =
             (await request.json()) as ResetPasswordRequest;
 
-        await verifyEmail(userId);
+        if (!userId || !email || !password || !verificationCode) {
+            return invalidRequest();
+        }
+
+        const responseUser = await getUsers(email);
+        const ownsEmail = responseUser?.result?.some(
+            (user) => user.userId === userId,
+        );
+        if (!ownsEmail) {
+            return invalidRequest();
+        }
+
         const response = (await resetPassword(
             userId,
             password,
@@ -48,8 +65,8 @@ export const POST: APIRoute = async ({ request }) => {
             status: number;
             message: string;
         };
-        const responseUser = await getUsers(email);
-        if (responseUser?.result) {
+
+        if (response.status === 200 && responseUser?.result) {
             for (const user of responseUser.result) {
                 if (!user.human.email.isVerified) {
                     await verifyEmail(user.userId);
