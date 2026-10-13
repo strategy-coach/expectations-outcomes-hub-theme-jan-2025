@@ -4,39 +4,55 @@ import type { APIRoute } from "astro";
 const ZITADEL_DOMAIN = import.meta.env.PUBLIC_ZITADEL_AUTHORITY as string;
 const ZITADEL_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
 
+const AUTH_COOKIES = [
+    "session_id",
+    "uid",
+    "auth_rl",
+    "ctx_tid",
+    "acct_eml",
+    "usr_lbl",
+];
 
 export const POST: APIRoute = async ({ cookies }) => {
-    try {
-        const sessionId = cookies.get("session_id")?.value ?? "";
-        console.log(`${ZITADEL_DOMAIN}/v2/sessions/${sessionId}`);
-        // Delete session from your auth backend
-        await axios.delete(`${ZITADEL_DOMAIN}/v2/sessions/${sessionId}`, {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                Authorization: `Bearer ${ZITADEL_TOKEN.trim()}`,
-            },
-        });
+    const sessionId = cookies.get("session_id")?.value ?? "";
 
-        // Clear the cookie
-        cookies.set("session_id", "", {
-            httpOnly: true,
+    let revokeFailed = false;
+    if (sessionId) {
+        try {
+            await axios.delete(
+                `${ZITADEL_DOMAIN}/v2/sessions/${encodeURIComponent(sessionId)}`,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                        Authorization: `Bearer ${ZITADEL_TOKEN.trim()}`,
+                    },
+                },
+            );
+        } catch (error) {
+            console.error(error);
+            revokeFailed = true;
+        }
+    }
+
+    for (const name of AUTH_COOKIES) {
+        cookies.delete(name, {
+            httpOnly: name === "session_id",
             secure: true,
             path: "/",
             sameSite: "strict",
-            maxAge: 0,
-        });
-
-        return new Response(JSON.stringify({ success: true }), {
-            status: 200,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-    } catch (error) {
-        console.error(error);
-        return new Response(JSON.stringify({ error: "Logout failed" }), {
-            status: 500,
         });
     }
+
+    if (revokeFailed) {
+        return new Response(JSON.stringify({ error: "Backend session revoke failed" }), {
+            status: 502,
+            headers: { "Content-Type": "application/json" },
+        });
+    }
+
+    return new Response(JSON.stringify({ success: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+    });
 };
