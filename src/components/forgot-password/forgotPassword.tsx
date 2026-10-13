@@ -3,9 +3,6 @@ import axios from "axios";
 import React from "react";
 import Cookies from "js-cookie";
 
-const organizationId = import.meta.env
-    .PUBLIC_ZITADEL_ORGANIZATION_ID as string;
-
 interface ForgotPasswordProps {
     code?: string;
     userID?: string;
@@ -166,34 +163,19 @@ const ForgotPassword: React.FC<ForgotPasswordProps> = ({ code, userID, email }) 
             throw new Error("Invalid email address");
         }
 
-        const userResponse = await axios.post<{
-            status: number;
-            userId?: string;
-            message: string;
-        }>("/api/zitadel?action=user-id", {
-            email: credentials.email,
-            organizationId,
-        });
-        const response = userResponse.data;
-
-        if (response.status === 200) {
-            const sendCodeResponse = await axios.post<CodeResetResponse>(
-                "/api/send-code",
-                {
-                    email: credentials.email,
-                    userId: response.userId,
-                },
-            );
-            if (sendCodeResponse.status == 200) {
-                setSuccessNotification({
-                    show: true,
-                    message:
-                        "Your verification code has been successfully sent to your email",
-                });
-                setCredentials((prev) => ({ ...prev, email: "" }));
-            }
-        } else {
-            setEmailError(response.message ?? "");
+        const sendCodeResponse = await axios.post<CodeResetResponse>(
+            "/api/send-code",
+            {
+                email: credentials.email,
+            },
+        );
+        if (sendCodeResponse.status == 200) {
+            setSuccessNotification({
+                show: true,
+                message:
+                    "If an account is associated with this email address, you’ll receive an email shortly",
+            });
+            setCredentials((prev) => ({ ...prev, email: "" }));
         }
         setIsSubmitting(false);
     };
