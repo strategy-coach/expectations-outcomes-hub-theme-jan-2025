@@ -1,3 +1,4 @@
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 import { google } from 'googleapis';
 import path from 'path';
 
@@ -9,7 +10,8 @@ const auth = new google.auth.GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/drive.readonly'],
 });
 
-export async function GET({ url }) {
+export async function GET({ url, request }) {
+  if (!(await sessionUserIdFrom(request))) return unauthorizedResponse();
   const fileId = url.searchParams.get('id');
   const fileName = url.searchParams.get('name') ?? 'downloaded-file';
   const mimeType = url.searchParams.get('type') ?? 'application/octet-stream';

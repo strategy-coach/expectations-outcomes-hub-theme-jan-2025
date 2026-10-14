@@ -1,3 +1,4 @@
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 // src/pages/api/box.ts
 import type { APIRoute } from "astro";
 import fs from "fs/promises";
@@ -62,7 +63,8 @@ const refreshAccessToken = async (): Promise<boolean> => {
 };
 
 // Main handler
-export const GET: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ url, request }) => {
+  if (!(await sessionUserIdFrom(request))) return unauthorizedResponse();
   const fileId = url.searchParams.get("fileId");
   const download = url.searchParams.has("download");
   const folderId = import.meta.env.BOX_FOLDER_ID;

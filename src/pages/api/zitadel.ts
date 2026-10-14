@@ -60,6 +60,11 @@ export const GET: APIRoute = async ({ request, url }) => {
     const action = url.searchParams.get("action");
     const userId = url.searchParams.get("userId") ?? "";
 
+    if (action !== "team" && action !== "roles" && action !== "users" && action !== "profile" && action !== "metadata") {
+        return json({ error: "Unsupported ZITADEL operation." }, 400);
+    }
+    if (!(await callerFrom(request)).userId) return json({ error: "Unauthorized" }, 401);
+
     if (action === "team") {
         return forward(await zitadelRequest(
             "/management/v1/users/grants/_search",

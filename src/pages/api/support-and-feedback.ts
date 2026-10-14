@@ -1,3 +1,4 @@
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 // src/pages/api/support.ts
 import { type APIRoute } from "astro";
 import { ConsoleLogWriter } from "drizzle-orm";
@@ -16,6 +17,7 @@ const NOVU_SUBSCRIBER_ID = import.meta.env.PUBLIC_NOVU_SUBSCRIBER_ID;
 const CONTACTUS_ADMIN_EMAIL = import.meta.env.PUBLIC_NOVU_CONTACTUS_ADMIN_EMAIL;
 
 export const POST: APIRoute = async ({ request }) => {
+  if (!(await sessionUserIdFrom(request))) return unauthorizedResponse();
   try {
     const { formData, submissionDate, screenshotBase64, currentURL, type } =
       await request.json();

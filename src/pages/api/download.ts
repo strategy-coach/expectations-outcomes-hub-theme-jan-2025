@@ -1,7 +1,9 @@
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 // src/pages/api/download.ts
 import type { APIRoute } from 'astro';
 
-export const GET: APIRoute = async ({ url }) => {
+export const GET: APIRoute = async ({ url, request }) => {
+  if (!(await sessionUserIdFrom(request))) return unauthorizedResponse();
   const rawUrl = url.searchParams.get('url');
   const fileName = url.searchParams.get('name') || 'file';
 

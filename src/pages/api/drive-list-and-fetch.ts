@@ -1,3 +1,4 @@
+import { sessionUserIdFrom, unauthorizedResponse } from '../../services/serverAuth.ts';
 import { google } from 'googleapis';
 import path from 'path';
 import fs from 'fs';
@@ -12,7 +13,8 @@ const auth = new google.auth.GoogleAuth({
   scopes: ['https://www.googleapis.com/auth/drive.readonly'],
 });
 
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async ({ request }) => {
+  if (!(await sessionUserIdFrom(request))) return unauthorizedResponse();
   try {
     const drive = google.drive({ version: 'v3', auth: await auth.getClient() });
 
