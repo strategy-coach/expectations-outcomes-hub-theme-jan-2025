@@ -9,6 +9,7 @@ import themeConfig from "../../theme.config.ts";
 // import { qualityfolioReverseProxyMiddleware } from "./qualityfolio-reverse-proxy.ts";
 import { getUserRole } from "../../src/services/zitadel.services.ts";
 import { resolveCaller } from "../services/serverAuth.ts";
+import { securityHeadersMiddleware } from "./security-headers.ts";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Config                                   */
@@ -145,6 +146,7 @@ const authenticationMiddleware: MiddlewareHandler = defineMiddleware(
 
 export const onRequest: MiddlewareHandler = defineMiddleware((context, next) =>
   sequence(
+    securityHeadersMiddleware,
     authenticationMiddleware,
     //fleetfolioReverseProxyMiddleware,
     // qualityfolioReverseProxyMiddleware
