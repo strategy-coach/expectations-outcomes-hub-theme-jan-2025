@@ -11,6 +11,9 @@ const ZITADEL_TOKEN = import.meta.env.PUBLIC_ZITADEL_API_TOKEN as string;
 const ORGANIZATION = import.meta.env
     .PUBLIC_ZITADEL_ORGANIZATION_ID as string;
 
+// Same message for unknown email and wrong password, so responses don't reveal which emails are registered
+const INVALID_CREDENTIALS_MESSAGE = "Email or password is invalid";
+
 interface AuthRequest {
     email: string;
     password: string;
@@ -301,7 +304,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
                 });
 
                 return new Response(
-                    JSON.stringify({ error: "Login name not found for this email" }),
+                    JSON.stringify({ error: INVALID_CREDENTIALS_MESSAGE }),
                     { status: 200 },
                 );
             }
@@ -353,7 +356,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
                 });
 
                 return new Response(
-                    JSON.stringify({ error: "Incorrect password. Please try again." }),
+                    JSON.stringify({ error: INVALID_CREDENTIALS_MESSAGE }),
                     { status: 200 },
                 );
             } else {
@@ -405,7 +408,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
             }
         }
         return new Response(
-            JSON.stringify({ error: "Incorrect password. Please try again." }),
+            JSON.stringify({ error: INVALID_CREDENTIALS_MESSAGE }),
             { status: 200 },
         );
     }
