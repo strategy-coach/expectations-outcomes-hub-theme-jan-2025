@@ -81,6 +81,8 @@ jobs:
           PUBLIC_CONTENT_GITHUB_OWNER: ${{ vars.PUBLIC_CONTENT_GITHUB_OWNER }}
           EMBED_SECRET: ${{ secrets.EMBED_SECRET }}
           ENABLE_DIAGRAM_RENDERING : ${{ vars.ENABLE_DIAGRAM_RENDERING }}
+          PUBLIC_OTLP_TRACES_URL : ${{ vars.PUBLIC_OTLP_TRACES_URL }}
+          PUBLIC_OTLP_TOKEN : ${{ vars.PUBLIC_OTLP_TOKEN }}
           
         run: |
           bash -x support/ci-cd.sh      
