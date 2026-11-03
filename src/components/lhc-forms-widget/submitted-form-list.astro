@@ -5,6 +5,7 @@ import SubmittedHistory from "./submitted-history.astro";
 
 const { fileName } = Astro.props;
 const currentURL = Astro.url;
+console.log("Current URL:", currentURL); // Log the current URL for debugging
 const submittedFiles: FileDetails[] | string = await getFileDetails(
   fileName
 );
