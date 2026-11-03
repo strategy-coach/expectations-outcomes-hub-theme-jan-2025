@@ -39,7 +39,7 @@
     "astro-breadcrumbs": "^3.3.1",
     "astro-plantuml": "^0.1.4",
     "axios": "^1.7.9",
-    "better-sqlite3": "^11.8.1",
+    "better-sqlite3": "^12.11.1",
     "cookie": "^1.0.2",
     "drizzle-orm": "^0.39.3",
     "github-discussions-blog-loader": "^1.0.1",
@@ -87,8 +87,10 @@
   },
   "pnpm": {
     "overrides": {
+      "better-sqlite3": "$better-sqlite3",
       "rollup": "4.62.2",
-      "@rollup/rollup-linux-x64-gnu": "4.62.2"    }
+      "@rollup/rollup-linux-x64-gnu": "4.62.2"
+    }
   },
   "packageManager": "pnpm@9.12.0"
 
