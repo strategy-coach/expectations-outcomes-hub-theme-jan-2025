@@ -3,8 +3,14 @@ import { getFileHistory } from "./service";
 import { type FileDetails } from "./service";
 
 const { fileName } = Astro.props;
-const currentURL = Astro.url;
 const fileHistory: FileDetails[] | string = await getFileHistory(fileName);
+
+const getFormUrl = (contentDigest: string) => {
+  const searchParams = new URLSearchParams(Astro.url.searchParams);
+  searchParams.set("tab", "data");
+  searchParams.set("submitted-form", contentDigest);
+  return `${Astro.url.pathname}?${searchParams.toString()}`;
+};
 ---
 
 <div id="submitted-lform-history" class="p-4">
@@ -27,7 +33,7 @@ const fileHistory: FileDetails[] | string = await getFileHistory(fileName);
             <tr class="bg-white border-b hover:bg-gray-50">
               <td class="px-6 py-3 border">{index + 1}</td>
               <td class="px-6 py-3 border">
-                 <a href={`${currentURL}&submitted-form=${item.content_digest}`}>{item.uri.split("/").pop()}</a>
+                 <a href={getFormUrl(item.content_digest)}>{item.uri.split("/").pop()}</a>
               </td>
               <td class="px-6 py-3 border">
                   {new Date(item.file_date).toDateString()}
