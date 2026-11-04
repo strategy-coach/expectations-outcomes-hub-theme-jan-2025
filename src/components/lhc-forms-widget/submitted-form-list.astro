@@ -4,11 +4,16 @@ import { type FileDetails } from "./service";
 import SubmittedHistory from "./submitted-history.astro";
 
 const { fileName } = Astro.props;
-const currentURL = Astro.url;
-console.log("Current URL:", currentURL); // Log the current URL for debugging
 const submittedFiles: FileDetails[] | string = await getFileDetails(
   fileName
 );
+
+const getFormUrl = (contentDigest: string) => {
+  const searchParams = new URLSearchParams(Astro.url.searchParams);
+  searchParams.set("tab", "data");
+  searchParams.set("submitted-form", contentDigest);
+  return `${Astro.url.pathname}?${searchParams.toString()}`;
+};
 ---
 
 <div id="submitted-data" class="p-4">
@@ -28,7 +33,7 @@ const submittedFiles: FileDetails[] | string = await getFileDetails(
             <>
               <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                 <td class="p-2 break-all">
-                  <a href={`${currentURL}&submitted-form=${item.content_digest}`}>{item.uri.split("/").pop()}</a>
+                  <a href={getFormUrl(item.content_digest)}>{item.uri.split("/").pop()}</a>
                 </td>
                  <td class="px-6 py-4">
                   {item.party_name}
