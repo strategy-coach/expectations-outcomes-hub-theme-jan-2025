@@ -1,5 +1,6 @@
 import type { MiddlewareHandler } from "astro";
 import { defineMiddleware } from "astro/middleware";
+import externalWebUiUrls from "../config/externalWebUiUrls.json";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Config                                   */
@@ -28,8 +29,16 @@ const env = import.meta.env;
 // Comma/space separated list of origins, e.g. "https://host.example.com".
 const frameAncestors = originsFromList(env.SECURITY_FRAME_ANCESTORS);
 
+// Origins from external Web UI URLs config (Qualityfolio / Fleetfolio pages).
+const externalFrameSources = Object.values(
+  (externalWebUiUrls ?? {}) as Record<string, string>,
+)
+  .map(toOrigin)
+  .filter((origin): origin is string => Boolean(origin));
+
 // Sites this app embeds (Qualityfolio / Fleetfolio pages).
 const frameSources = [
+  ...externalFrameSources,
   toOrigin(env.PUBLIC_QUALITYFOLIO_URL),
   toOrigin(env.PUBLIC_FLEETFOLIO_URL),
 ].filter((origin): origin is string => Boolean(origin));
