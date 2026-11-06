@@ -17,6 +17,30 @@ function getClientIp(request: Request, clientAddress?: string): string | null {
     return candidates.find((ip) => !!ip) ?? null;
 }
 
+// The bundled browser exporter emits the legacy OTLP JSON shape
+// (`instrumentationLibrarySpans` / `instrumentationLibrary`). OpenObserve only
+// reads `scopeSpans` / `scope`, so legacy payloads are accepted with
+// `{"partialSuccess": null}` but zero spans are stored. Rename them here.
+function normalizeLegacyOtlp(payload: unknown): unknown {
+    if (typeof payload !== "object" || payload === null) return payload;
+    const root = payload as { resourceSpans?: unknown };
+    if (!Array.isArray(root.resourceSpans)) return payload;
+
+    for (const rs of root.resourceSpans as Record<string, unknown>[]) {
+        if (!rs || typeof rs !== "object") continue;
+        if (!rs.scopeSpans && Array.isArray(rs.instrumentationLibrarySpans)) {
+            rs.scopeSpans = (rs.instrumentationLibrarySpans as Record<string, unknown>[]).map(
+                ({ instrumentationLibrary, ...rest }) => ({
+                    ...rest,
+                    scope: rest.scope ?? instrumentationLibrary,
+                }),
+            );
+            delete rs.instrumentationLibrarySpans;
+        }
+    }
+    return payload;
+}
+
 // Overwrite the client-reported "ipAddress" span attribute with the
 // server-observed IP so ad-blocker/CORS failures on the browser's
 // third-party ipify/ipwho.is lookups no longer surface as "unknown-ip".
@@ -68,10 +92,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         const rawBody = await request.arrayBuffer();
 
         let body: BodyInit = rawBody;
-        if (ip && contentType.includes("application/json")) {
+        if (contentType.includes("application/json")) {
             try {
-                const json = JSON.parse(new TextDecoder().decode(rawBody));
-                body = JSON.stringify(withServerIp(json, ip));
+                const json = normalizeLegacyOtlp(
+                    JSON.parse(new TextDecoder().decode(rawBody)),
+                );
+                body = JSON.stringify(ip ? withServerIp(json, ip) : json);
             } catch {
                 // Malformed JSON: forward the original bytes untouched.
                 body = rawBody;
@@ -87,14 +113,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
             },
             body,
         });
-
-        const upstreamBody = await upstream.text();
-        if (!upstream.ok || upstreamBody.includes("errorMessage")) {
-            console.error("OTLP upstream rejected traces:", upstream.status, upstreamBody.slice(0, 500));
-        }
-
         // Return upstream status without exposing secret
-        return new Response(upstreamBody, {
+        return new Response(await upstream.text(), {
             status: upstream.status,
             headers: { "content-type": upstream.headers.get("content-type") ?? "text/plain" },
         });
