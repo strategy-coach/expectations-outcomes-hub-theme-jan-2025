@@ -88,8 +88,13 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
             body,
         });
 
+        const upstreamBody = await upstream.text();
+        if (!upstream.ok || upstreamBody.includes("errorMessage")) {
+            console.error("OTLP upstream rejected traces:", upstream.status, upstreamBody.slice(0, 500));
+        }
+
         // Return upstream status without exposing secret
-        return new Response(await upstream.text(), {
+        return new Response(upstreamBody, {
             status: upstream.status,
             headers: { "content-type": upstream.headers.get("content-type") ?? "text/plain" },
         });
